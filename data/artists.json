@@ -1,3 +1,26 @@
 {
-  "artists": []
+  "artists": [
+    {
+      "id": "mr027y86q388",
+      "name": "tawakenai_marou",
+      "x_account": "tawakenai_marou",
+      "pixiv_user": "",
+      "note": "",
+      "works": [],
+      "added_at": "2026-06-30",
+      "fetch_status": "pending",
+      "monitoring": {
+        "status": "unknown",
+        "last_checked_at": "2026-08-17T09:43:58+00:00",
+        "last_result": "unknown",
+        "last_detail": "temporary probe failure: JSONDecodeError",
+        "consecutive_unavailable": 0
+      },
+      "archive": {
+        "status": "retry_pending",
+        "last_attempt_at": "2026-08-17T09:43:59+00:00",
+        "last_error": "HTTPError"
+      }
+    }
+  ]
 }

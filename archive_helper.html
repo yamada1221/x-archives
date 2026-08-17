@@ -11,61 +11,71 @@ body{font-family:system-ui,sans-serif;background:#f5f5f3;color:#1a1a18;margin:0;
 <body>
 <div class="card">
 <h1>X archive.md 保存ヘルパー</h1>
-<p>GitHub Actions から archive.md への保存はレート制限されるため、通常のブラウザで保存します。このページは X URL のコピー、archive.md の起動、はてなブックマーク追加画面への移動を補助します。</p>
+<p>archive.mdに保存するURLと、はてなブックマークへ登録するURLを分けて扱います。リプライ欄をarchive.mdへ保存する場合でも、はてブには通常のXユーザーページを登録します。</p>
 
 <div class="step">
-<strong>1. X アカウントURLを用意</strong>
+<strong>1. Xアカウント</strong>
 <label for="account">Xアカウント名（@なし）</label>
 <input id="account" placeholder="例: tawakenai_marou" autocomplete="off">
-<label for="xurl">保存対象URL</label>
-<input id="xurl" readonly>
-<div class="row">
-<button onclick="copyXUrl()">X URLをコピー</button>
-<button class="primary" onclick="openArchive()">archive.mdを開く</button>
-</div>
-<p class="note">archive.md の画面で、コピーした X URL を貼り付けて保存してください。自動POSTは行いません。</p>
+<label for="profileUrl">はてブ対象（通常ユーザーページ）</label>
+<input id="profileUrl" readonly>
+<div class="row"><button class="primary" onclick="openHatenaProfile()">通常ユーザーページをはてブ</button></div>
+<p class="note">はてブ対象は常に https://x.com/ユーザー名 の通常プロフィールです。</p>
 </div>
 
 <div class="step">
-<strong>2. 保存後のarchive.md URLを登録</strong>
+<strong>2. archive.mdへ保存</strong>
+<label for="archiveTarget">archive対象URL</label>
+<input id="archiveTarget" placeholder="例: https://x.com/example/with_replies">
+<div class="row">
+<button onclick="useProfile()">通常ページ</button>
+<button onclick="useReplies()">リプライ欄</button>
+<button onclick="copyArchiveTarget()">archive対象URLをコピー</button>
+<button class="primary" onclick="openArchive()">archive.mdを開く</button>
+</div>
+<p id="status" class="note">通常ページでもリプライ欄でも、archive対象URLは自由に変更できます。archive.mdではコピーしたURLを貼り付けて保存してください。</p>
+</div>
+
+<div class="step">
+<strong>3. 保存結果（任意）</strong>
 <label for="archiveUrl">保存されたarchive.md URL</label>
 <input id="archiveUrl" placeholder="https://archive.md/...">
 <div class="row">
 <button onclick="copyArchiveUrl()">archive URLをコピー</button>
-<button class="primary" onclick="openHatena()">はてブ追加画面を開く</button>
+<button onclick="openHatenaArchive()">archive URL自体をはてブ（任意）</button>
 </div>
-<p id="status" class="note">archive.md の保存結果URLを貼ると、はてなブックマーク追加画面を開けます。</p>
+<p class="note">通常はこのarchive URLをはてブする必要はありません。必要な場合だけ使います。</p>
 </div>
 
-<div class="step">
-<a href="index.html">作者トラッカーへ戻る</a>
-</div>
+<div class="step"><a href="index.html">作者トラッカーへ戻る</a></div>
 </div>
 <script>
-const account = document.getElementById('account');
-const xurl = document.getElementById('xurl');
-const archiveUrl = document.getElementById('archiveUrl');
-const statusEl = document.getElementById('status');
-
+const account=document.getElementById('account');
+const profileUrl=document.getElementById('profileUrl');
+const archiveTarget=document.getElementById('archiveTarget');
+const archiveUrl=document.getElementById('archiveUrl');
+const statusEl=document.getElementById('status');
 function cleanAccount(v){return String(v||'').trim().replace(/^@/,'');}
-function updateXUrl(){const a=cleanAccount(account.value); xurl.value=a ? `https://x.com/${encodeURIComponent(a)}` : '';}
-account.addEventListener('input', updateXUrl);
-
-const params = new URLSearchParams(location.search);
-if(params.get('x')){account.value=cleanAccount(params.get('x')); updateXUrl();}
-if(params.get('archive')){archiveUrl.value=params.get('archive');}
-
-async function copyText(text){
-  if(!text) return false;
-  try{await navigator.clipboard.writeText(text); return true;}catch(e){
-    const ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); const ok=document.execCommand('copy'); ta.remove(); return ok;
-  }
-}
-async function copyXUrl(){updateXUrl(); const ok=await copyText(xurl.value); statusEl.textContent=ok?'X URLをコピーしました。archive.md に貼り付けてください。':'コピーできませんでした。';}
-function openArchive(){updateXUrl(); if(!xurl.value){alert('Xアカウント名を入力してください');return;} window.open('https://archive.md/','_blank','noopener'); copyXUrl();}
-async function copyArchiveUrl(){const ok=await copyText(archiveUrl.value.trim()); statusEl.textContent=ok?'archive URLをコピーしました。':'コピーできませんでした。';}
-function validArchiveUrl(v){try{const u=new URL(v); return u.protocol==='https:' && ['archive.md','archive.ph','archive.is','archive.today'].includes(u.hostname);}catch(e){return false;}}
-function openHatena(){const u=archiveUrl.value.trim(); if(!validArchiveUrl(u)){alert('有効な archive.md 系URLを入力してください');return;} const h='https://b.hatena.ne.jp/add?'+new URLSearchParams({mode:'confirm',url:u}).toString(); window.open(h,'_blank','noopener'); statusEl.textContent='はてなブックマーク追加画面を開きました。'; statusEl.classList.add('ok');}
+function urls(){const a=cleanAccount(account.value);if(!a)return {profile:'',replies:''};const base=`https://x.com/${encodeURIComponent(a)}`;return {profile:base,replies:base+'/with_replies'};}
+function updateAccount(){const u=urls();profileUrl.value=u.profile;if(!archiveTarget.dataset.edited)archiveTarget.value=u.replies;}
+account.addEventListener('input',()=>{archiveTarget.dataset.edited='';updateAccount();});
+archiveTarget.addEventListener('input',()=>archiveTarget.dataset.edited='1');
+const params=new URLSearchParams(location.search);
+if(params.get('x')){account.value=cleanAccount(params.get('x'));updateAccount();}
+if(params.get('target')){archiveTarget.value=params.get('target');archiveTarget.dataset.edited='1';}
+if(params.get('archive'))archiveUrl.value=params.get('archive');
+async function copyText(text){if(!text)return false;try{await navigator.clipboard.writeText(text);return true;}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();const ok=document.execCommand('copy');ta.remove();return ok;}}
+function requireAccount(){updateAccount();if(!profileUrl.value){alert('Xアカウント名を入力してください');return false;}return true;}
+function useProfile(){if(!requireAccount())return;archiveTarget.value=urls().profile;archiveTarget.dataset.edited='1';}
+function useReplies(){if(!requireAccount())return;archiveTarget.value=urls().replies;archiveTarget.dataset.edited='1';}
+async function copyArchiveTarget(){const ok=await copyText(archiveTarget.value.trim());statusEl.textContent=ok?'archive対象URLをコピーしました。':'コピーできませんでした。';}
+function openArchive(){if(!archiveTarget.value.trim()){if(!requireAccount())return;useReplies();}window.open('https://archive.md/','_blank','noopener');copyArchiveTarget();}
+function hatenaUrl(u){return 'https://b.hatena.ne.jp/add?'+new URLSearchParams({mode:'confirm',url:u}).toString();}
+function openHatenaProfile(){if(!requireAccount())return;window.open(hatenaUrl(profileUrl.value),'_blank','noopener');statusEl.textContent='通常のXユーザーページをはてなブックマーク追加画面で開きました。';statusEl.classList.add('ok');}
+function validArchiveUrl(v){try{const u=new URL(v);return u.protocol==='https:'&&['archive.md','archive.ph','archive.is','archive.today'].includes(u.hostname);}catch(e){return false;}}
+async function copyArchiveUrl(){const ok=await copyText(archiveUrl.value.trim());statusEl.textContent=ok?'archive URLをコピーしました。':'コピーできませんでした。';}
+function openHatenaArchive(){const u=archiveUrl.value.trim();if(!validArchiveUrl(u)){alert('有効な archive.md 系URLを入力してください');return;}window.open(hatenaUrl(u),'_blank','noopener');statusEl.textContent='archive URLのはてブ追加画面を開きました。';}
+if(!account.value)updateAccount();
 </script>
 </body>
 </html>

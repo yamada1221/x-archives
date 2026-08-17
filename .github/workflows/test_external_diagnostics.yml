@@ -1,0 +1,26 @@
+name: Test external diagnostics
+
+on:
+  pull_request:
+    paths:
+      - "scripts/monitor_accounts.py"
+      - "tests/test_monitor_accounts.py"
+      - ".github/workflows/test_external_diagnostics.yml"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run unit tests
+        run: python -m unittest discover -v
+      - name: Compile Python
+        run: python -m py_compile scripts/*.py
+      - name: Probe X without archive write
+        run: python scripts/monitor_accounts.py --no-archive
+      - name: Compare clearly nonexistent X profile
+        run: python scripts/monitor_accounts.py --diagnose-profile x_archives_nonexistent_9876543210

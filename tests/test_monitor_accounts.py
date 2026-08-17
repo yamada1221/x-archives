@@ -1,5 +1,8 @@
 import importlib.util
+import io
 import unittest
+import urllib.error
+from email.message import Message
 from pathlib import Path
 from unittest.mock import patch
 
@@ -49,14 +52,49 @@ class MonitorTests(unittest.TestCase):
         self.assertEqual(artist["archive"]["status"], "saved")
         self.assertIn("b.hatena.ne.jp/add", artist["archive"]["hatena_add_url"])
 
-    def test_archive_failure_is_retryable(self):
+    def test_archive_failure_is_retryable_and_keeps_detail(self):
         artist = {"x_account": "example"}
-        monitor.ensure_archive(artist, lambda _: (_ for _ in ()).throw(TimeoutError()))
+        monitor.ensure_archive(artist, lambda _: (_ for _ in ()).throw(ValueError("HTTP 429 blocked")))
         self.assertEqual(artist["archive"]["status"], "retry_pending")
+        self.assertEqual(artist["archive"]["last_error"], "ValueError")
+        self.assertIn("HTTP 429", artist["archive"]["last_error_detail"])
+
+    def test_non_json_probe_returns_unknown_with_safe_diagnostics(self):
+        class Response:
+            status = 200
+            headers = {"Content-Type": "text/html; charset=utf-8"}
+
+            def __enter__(self): return self
+            def __exit__(self, *args): return None
+            def geturl(self): return "https://x.com/example"
+            def read(self, _limit=None): return b"<html>challenge page</html>"
+
+        with patch.object(monitor, "request", return_value=Response()):
+            result, detail = monitor.probe_account("example")
+        self.assertEqual(result, "unknown")
+        self.assertIn("text/html", detail)
+        self.assertIn("challenge page", detail)
+        self.assertIn("profile page HTTP 200", detail)
+
+    def test_http_error_detail_captures_status_content_type_and_body(self):
+        headers = Message()
+        headers["Content-Type"] = "text/html"
+        exc = urllib.error.HTTPError(
+            "https://example.invalid",
+            403,
+            "Forbidden",
+            headers,
+            io.BytesIO(b"Access denied"),
+        )
+        detail = monitor.http_error_detail("probe", exc)
+        self.assertIn("HTTP 403", detail)
+        self.assertIn("text/html", detail)
+        self.assertIn("Access denied", detail)
 
     def test_archive_captcha_is_rejected_and_retryable(self):
         class Response:
             status = 200
+            headers = {"Content-Type": "text/html"}
 
             def __enter__(self): return self
             def __exit__(self, *args): return None
@@ -68,10 +106,12 @@ class MonitorTests(unittest.TestCase):
             monitor.ensure_archive(artist)
         self.assertEqual(artist["archive"]["status"], "retry_pending")
         self.assertNotIn("url", artist["archive"])
+        self.assertIn("CAPTCHA", artist["archive"]["last_error_detail"])
 
     def test_archive_submit_html_without_snapshot_redirect_is_rejected(self):
         class Response:
             status = 200
+            headers = {"Content-Type": "text/html"}
 
             def __enter__(self): return self
             def __exit__(self, *args): return None

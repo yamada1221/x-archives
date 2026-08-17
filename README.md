@@ -10,57 +10,54 @@ XやPixivで気に入った作者を管理するツールです。
 - ブラウザ上での作者追加・編集・削除、作品 URL とメモの管理
 - `data/artists.json` の GitHub Contents API 経由での読み書き
 - `repository_dispatch` による公開プロフィール取得
-
-### 今回完成した部分
-
-- 登録された X プロフィールを archive.md に一度だけ送信し、アーカイブ URL を作者データに保存
-- アーカイブ URL に対する「はてなブックマークに追加」確認 URL の生成と UI 表示
 - ログインや X Developer API を使わない公開プロフィールの定期確認
 - `active` / `unavailable` の状態変化と時刻・理由の履歴記録
 - 通信失敗・レート制限を `unknown` とし、明示的な未検出が 3 回連続するまで状態を変えない保守的な判定
 - `data/archives.json` の既存作者を、X アカウント名または ID で重複判定しながら `data/artists.json` へ互換移行
 
+### archive.md 保存方針
+
+GitHub-hosted Actions から archive.md へ保存を試すと HTTP 429 が発生した一方、通常のブラウザからは保存できることを確認しました。そのため、役割を次のように分離します。
+
+- **GitHub Actions**: X アカウントの生存確認・状態履歴更新のみ
+- **ブラウザ**: archive.md への保存操作
+- **利用者**: 保存後の archive URL を使って、はてなブックマーク追加画面から登録
+
+`archive_helper.html` を使うと、X URL のコピー、archive.md の起動、保存後 URL からはてブ追加画面を開く操作をまとめて行えます。
+
+例:
+
+```text
+archive_helper.html?x=tawakenai_marou
+```
+
+ブラウザ側から archive.md へ自動 POST はせず、利用者の通常ブラウザ操作で保存します。これは GitHub Actions の共有 IP からレート制限を受け続けることを避けるためです。
+
 ### 制約・未実装
 
-- はてなブックマークへの最終登録は、生成された確認リンクを開いて利用者が行います。ログイン情報や
-  OAuth 認証をリポジトリに要求しないため、無人での登録は行いません。
-- archive.md や X の公開エンドポイント側の仕様変更・アクセス制限時は、次回の定期実行で再試行します。
-- `unavailable` は公開プロフィールを取得できない状態です。現時点では凍結と削除を区別できないため、
-  `suspended` / `deleted` と断定して記録・表示しません。
-- `data/archives.json` は削除・変更せず保持します。定期処理の開始時に既存作者を正規データである
-  `data/artists.json` へ安全かつ冪等に取り込みます。
+- はてなブックマークへの最終登録は利用者が行います。ログイン情報や OAuth 認証をリポジトリに要求しないため、無人での登録は行いません。
+- `unavailable` は公開プロフィールを取得できない状態です。現時点では凍結と削除を区別できないため、`suspended` / `deleted` と断定して記録・表示しません。
+- `data/archives.json` は削除・変更せず保持します。定期処理の開始時に既存作者を正規データである `data/artists.json` へ安全かつ冪等に取り込みます。
+- `archive_helper.html` で作成した archive URL を `data/artists.json` に自動反映する処理は、現時点では未実装です。
 
 ### 調査時点で壊れていた部分と修正
 
-- プロフィール取得は `twscrape` に存在しないゲストアカウントでログインしようとしており、実質的に
-  フォールバック頼みでした。公開 syndication エンドポイントを直接利用するようにしました。
+- プロフィール取得は `twscrape` に存在しないゲストアカウントでログインしようとしており、実質的にフォールバック頼みでした。公開ページを使う保守的な確認へ変更しました。
 - 取得後も `fetch_status` が `pending` のままでした。成功時 `done`、失敗時 `error` を保存します。
-- 新規作者を GitHub に保存する前に Actions を起動していたため、Actions 側で作者を見つけられませんでした。
-  保存成功後にプロフィール取得を依頼する順序へ修正しました。
-
-## archive.md の実ネットワーク手動検証
-
-GitHub Actions の **Archive and monitor X accounts** は `workflow_dispatch` を維持しているため、Actions
-画面から手動実行できます。ローカルで保存応答だけを検証する場合は、公開してよいアカウント名を指定します。
-
-```bash
-python scripts/monitor_accounts.py --verify-archive example
-```
-
-このコマンドは archive.md へ実際に保存リクエストを送るため、対象 URL のスナップショットが作られる可能性が
-ありますが、JSON ファイルは変更しません。HTTPS の既知 archive ホストにあるスナップショット URL へ正常に
-遷移した場合だけ URL を出力します。CAPTCHA、保存受付ページのままの HTML 応答、HTTP エラー、未知ホストへの
-リダイレクトでは非ゼロ終了します。通常処理では同じ検証エラーを `saved` とせず `retry_pending` として記録します。
+- 新規作者を GitHub に保存する前に Actions を起動していたため、Actions 側で作者を見つけられませんでした。保存成功後にプロフィール取得を依頼する順序へ修正しました。
 
 ## セットアップ
 
 ### 1. リポジトリを作成してファイルを配置
 
-```
+```text
 your-repo/
 ├── .github/workflows/fetch_artist.yml
+├── .github/workflows/monitor_accounts.yml
 ├── scripts/fetch_artist.py
+├── scripts/monitor_accounts.py
 ├── data/artists.json
+├── archive_helper.html
 └── index.html
 ```
 
@@ -77,7 +74,7 @@ Settings → Developer settings → Personal access tokens → Fine-grained toke
 - **Contents**: Read and write
 - **Actions**: Read and write（repository_dispatch のトリガーに必要）
 
-### 4. index.html の⚙設定画面に入力
+### 4. index.html の設定画面に入力
 
 | 項目 | 内容 |
 |------|------|
@@ -88,15 +85,14 @@ Settings → Developer settings → Personal access tokens → Fine-grained toke
 
 ## 使い方
 
-1. 「＋ 作者を追加」→ Xアカウント名を入力して追加
-2. GitHub Actions が自動でプロフィールを取得（数分かかります）
-3. 「GitHubから読込」ボタンで最新データを反映
-4. 作者カードを開いて作品URLを貼り付けて保存
-
-## 既存ツールとの統合
-
-`data/artists.json` の `x_account` フィールドを既存の監視ツールの `accounts.json` と突き合わせることで、  
-BANチェック対象への自動追加などが可能です。
+1. 「＋ 作者を追加」から X アカウント名を入力して追加
+2. GitHub Actions がプロフィールを取得
+3. 「GitHubから読込」で最新データを反映
+4. `archive_helper.html?x=<Xアカウント名>` を開く
+5. 「X URLをコピー」→「archive.mdを開く」でブラウザ保存
+6. 保存された archive URL をヘルパーへ貼り付ける
+7. 「はてブ追加画面を開く」からブックマーク登録
+8. 定期監視は `Monitor X accounts` workflow が毎日実行
 
 ## artists.json のスキーマ
 
@@ -126,14 +122,7 @@ BANチェック対象への自動追加などが可能です。
         "consecutive_unavailable": 0
       },
       "status_history": [],
-      "works": [
-        {
-          "url": "https://x.com/...",
-          "type": "x_post | pixiv | other",
-          "memo": "メモ",
-          "saved_at": "2026-06-29"
-        }
-      ]
+      "works": []
     }
   ]
 }

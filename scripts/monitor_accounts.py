@@ -27,6 +27,7 @@ USER_AGENT = "x-archives/1.0 (+https://github.com/yamada1221/x-archives)"
 ARCHIVE_HOSTS = {"archive.md", "archive.ph", "archive.is", "archive.today"}
 CAPTCHA_MARKERS = (b"captcha", b"cf-chl-captcha", b"g-recaptcha", b"hcaptcha")
 DIAGNOSTIC_BODY_LIMIT = 160
+PROFILE_BODY_LIMIT = 512 * 1024
 
 
 def now() -> str:
@@ -73,10 +74,15 @@ def probe_profile_page(username: str) -> str:
             status = getattr(response, "status", 200)
             content_type = response_content_type(response)
             final_url = response.geturl()
-            raw = response.read(DIAGNOSTIC_BODY_LIMIT)
+            raw = response.read(PROFILE_BODY_LIMIT)
+        lower = raw.lower()
+        user_marker = username.lower().encode("utf-8") in lower
+        suspended_marker = b"account suspended" in lower
+        missing_marker = b"this account doesn" in lower and b"exist" in lower
         return (
-            f"profile page HTTP {status}; content-type={content_type}; "
-            f"final_url={final_url}; body={safe_preview(raw)!r}"
+            f"profile page HTTP {status}; content-type={content_type}; final_url={final_url}; "
+            f"contains_username={user_marker}; suspended_marker={suspended_marker}; "
+            f"missing_marker={missing_marker}; bytes={len(raw)}; body={safe_preview(raw)!r}"
         )
     except urllib.error.HTTPError as exc:
         return http_error_detail("profile page returned", exc)
@@ -244,9 +250,18 @@ def main() -> None:
         metavar="X_ACCOUNT",
         help="submit one public X URL and print the verified archive URL without changing data",
     )
+    parser.add_argument(
+        "--diagnose-profile",
+        metavar="X_ACCOUNT",
+        help="print public X profile-page diagnostics without changing data",
+    )
     args = parser.parse_args()
     if args.verify_archive:
         print(submit_archive(args.verify_archive.strip().lstrip("@")))
+        return
+    if args.diagnose_profile:
+        username = args.diagnose_profile.strip().lstrip("@")
+        print(f"Profile diagnostic @{username}: {probe_profile_page(username)}")
         return
     data = json.loads(DATA_PATH.read_text(encoding="utf-8")) if DATA_PATH.exists() else {"artists": []}
     if LEGACY_DATA_PATH.exists():

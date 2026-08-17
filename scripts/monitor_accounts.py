@@ -208,6 +208,7 @@ def process(data: dict, *, archive: bool = True) -> dict:
             continue
         artist["x_account"] = username
         result, detail = probe_account(username)
+        print(f"X probe @{username}: {result} — {detail}", flush=True)
         record_check(artist, result, detail, checked_at)
         if archive:
             ensure_archive(artist)

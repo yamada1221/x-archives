@@ -18,10 +18,13 @@ from pathlib import Path
 from typing import Callable
 
 DATA_PATH = Path(os.environ.get("ARTISTS_PATH", "data/artists.json"))
+LEGACY_DATA_PATH = Path(os.environ.get("ARCHIVES_PATH", "data/archives.json"))
 ARCHIVE_SUBMIT_URL = "https://archive.md/submit/"
 SYNDICATION_URL = "https://cdn.syndication.twimg.com/widgets/followbutton/info.json"
 UNAVAILABLE_THRESHOLD = 3
 USER_AGENT = "x-archives/1.0 (+https://github.com/yamada1221/x-archives)"
+ARCHIVE_HOSTS = {"archive.md", "archive.ph", "archive.is", "archive.today"}
+CAPTCHA_MARKERS = (b"captcha", b"cf-chl-captcha", b"g-recaptcha", b"hcaptcha")
 
 
 def now() -> str:
@@ -31,6 +34,35 @@ def now() -> str:
 def request(url: str, *, data: bytes | None = None, timeout: int = 20):
     req = urllib.request.Request(url, data=data, headers={"User-Agent": USER_AGENT})
     return urllib.request.urlopen(req, timeout=timeout)
+
+
+def merge_legacy_artists(current: dict, legacy: dict) -> int:
+    """Merge legacy archive entries without overwriting or duplicating artists."""
+    artists = current.setdefault("artists", [])
+
+    def keys(artist: dict) -> set[tuple[str, str]]:
+        result = set()
+        account = str(artist.get("x_account", "")).strip().lstrip("@").lower()
+        artist_id = str(artist.get("id", "")).strip()
+        if account:
+            result.add(("x_account", account))
+        if artist_id:
+            result.add(("id", artist_id))
+        if not result:
+            result.add(("record", json.dumps(artist, ensure_ascii=False, sort_keys=True)))
+        return result
+
+    known = set().union(*(keys(artist) for artist in artists)) if artists else set()
+    added = 0
+    for legacy_artist in legacy.get("artists", []):
+        legacy_keys = keys(legacy_artist)
+        if legacy_keys & known:
+            continue
+        # JSON round-trip makes a detached copy; archives.json is never mutated.
+        artists.append(json.loads(json.dumps(legacy_artist)))
+        known.update(legacy_keys)
+        added += 1
+    return added
 
 
 def probe_account(username: str) -> tuple[str, str]:
@@ -85,8 +117,18 @@ def submit_archive(username: str) -> str:
     body = urllib.parse.urlencode({"url": target}).encode()
     with request(ARCHIVE_SUBMIT_URL, data=body, timeout=90) as response:
         final_url = response.geturl()
-    if not final_url.startswith(("https://archive.md/", "http://archive.md/")):
-        raise ValueError("archive.md returned an unexpected URL")
+        status = getattr(response, "status", 200)
+        response_body = response.read(512 * 1024).lower()
+    parsed = urllib.parse.urlparse(final_url)
+    snapshot_id = parsed.path.strip("/").split("/", 1)[0]
+    if status != 200:
+        raise ValueError(f"archive service returned HTTP {status}")
+    if parsed.scheme != "https" or parsed.hostname not in ARCHIVE_HOSTS:
+        raise ValueError("archive service returned an unexpected URL")
+    if not snapshot_id or snapshot_id in {"submit", "wip"}:
+        raise ValueError("archive service did not redirect to a snapshot")
+    if any(marker in response_body for marker in CAPTCHA_MARKERS):
+        raise ValueError("archive service returned a CAPTCHA")
     return final_url
 
 
@@ -126,8 +168,19 @@ def process(data: dict, *, archive: bool = True) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--no-archive", action="store_true", help="only check account state")
+    parser.add_argument(
+        "--verify-archive",
+        metavar="X_ACCOUNT",
+        help="submit one public X URL and print the verified archive URL without changing data",
+    )
     args = parser.parse_args()
+    if args.verify_archive:
+        print(submit_archive(args.verify_archive.strip().lstrip("@")))
+        return
     data = json.loads(DATA_PATH.read_text(encoding="utf-8")) if DATA_PATH.exists() else {"artists": []}
+    if LEGACY_DATA_PATH.exists():
+        legacy = json.loads(LEGACY_DATA_PATH.read_text(encoding="utf-8"))
+        merge_legacy_artists(data, legacy)
     process(data, archive=not args.no_archive)
     DATA_PATH.parent.mkdir(parents=True, exist_ok=True)
     DATA_PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

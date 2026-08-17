@@ -18,14 +18,17 @@ XやPixivで気に入った作者を管理するツールです。
 - ログインや X Developer API を使わない公開プロフィールの定期確認
 - `active` / `unavailable` の状態変化と時刻・理由の履歴記録
 - 通信失敗・レート制限を `unknown` とし、明示的な未検出が 3 回連続するまで状態を変えない保守的な判定
+- `data/archives.json` の既存作者を、X アカウント名または ID で重複判定しながら `data/artists.json` へ互換移行
 
 ### 制約・未実装
 
 - はてなブックマークへの最終登録は、生成された確認リンクを開いて利用者が行います。ログイン情報や
   OAuth 認証をリポジトリに要求しないため、無人での登録は行いません。
 - archive.md や X の公開エンドポイント側の仕様変更・アクセス制限時は、次回の定期実行で再試行します。
-- `data/archives.json` は過去のコミットで作られたデータとして保持しています。既存データを消さないため
-  自動移行・削除はせず、現在の正規データは従来どおり `data/artists.json` です。
+- `unavailable` は公開プロフィールを取得できない状態です。現時点では凍結と削除を区別できないため、
+  `suspended` / `deleted` と断定して記録・表示しません。
+- `data/archives.json` は削除・変更せず保持します。定期処理の開始時に既存作者を正規データである
+  `data/artists.json` へ安全かつ冪等に取り込みます。
 
 ### 調査時点で壊れていた部分と修正
 
@@ -34,6 +37,20 @@ XやPixivで気に入った作者を管理するツールです。
 - 取得後も `fetch_status` が `pending` のままでした。成功時 `done`、失敗時 `error` を保存します。
 - 新規作者を GitHub に保存する前に Actions を起動していたため、Actions 側で作者を見つけられませんでした。
   保存成功後にプロフィール取得を依頼する順序へ修正しました。
+
+## archive.md の実ネットワーク手動検証
+
+GitHub Actions の **Archive and monitor X accounts** は `workflow_dispatch` を維持しているため、Actions
+画面から手動実行できます。ローカルで保存応答だけを検証する場合は、公開してよいアカウント名を指定します。
+
+```bash
+python scripts/monitor_accounts.py --verify-archive example
+```
+
+このコマンドは archive.md へ実際に保存リクエストを送るため、対象 URL のスナップショットが作られる可能性が
+ありますが、JSON ファイルは変更しません。HTTPS の既知 archive ホストにあるスナップショット URL へ正常に
+遷移した場合だけ URL を出力します。CAPTCHA、保存受付ページのままの HTML 応答、HTTP エラー、未知ホストへの
+リダイレクトでは非ゼロ終了します。通常処理では同じ検証エラーを `saved` とせず `retry_pending` として記録します。
 
 ## セットアップ
 

@@ -489,7 +489,7 @@ function renderList() {
       <div class="artist-body" id="body_${esc(a.id)}">
         ${a.archive && a.archive.url ? `<div class="archive-links">
           <a href="${esc(a.archive.url)}" target="_blank" rel="noopener"><button class="small">archive.md を表示</button></a>
-          <a href="${esc(a.archive.hatena_add_url||'')}" target="_blank" rel="noopener"><button class="small">はてなブックマークに追加</button></a>
+          <a href="${esc(a.archive.hatena_add_url||'')}" target="_blank" rel="noopener"><button class="small">はてブ追加画面を開く（手動）</button></a>
         </div>` : ''}
         <div class="note-row">
           <input type="text" placeholder="メモ..." value="${esc(a.note||'')}" onchange="updateNote('${esc(a.id)}', this.value)" />

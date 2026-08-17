@@ -65,6 +65,9 @@
   .fetch-status.pending { background: #fff8e1; color: #9a6700; border: 0.5px solid #ffe082; }
   .fetch-status.done { background: #e8f5e9; color: #2e7d32; border: 0.5px solid #a5d6a7; }
   .fetch-status.error { background: #fcebeb; color: #a32d2d; border: 0.5px solid #f09595; }
+  .fetch-status.active { background: #e8f5e9; color: #2e7d32; border: 0.5px solid #a5d6a7; }
+  .fetch-status.unavailable { background: #fcebeb; color: #a32d2d; border: 0.5px solid #f09595; }
+  .archive-links { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
   .chevron { font-size: 12px; color: #aaa; transition: transform 0.15s; }
   .chevron.open { transform: rotate(180deg); }
 
@@ -269,7 +272,7 @@ async function getFileSha(apiUrl, token) {
 
 async function syncToGitHub() {
   const cfg = getConfig();
-  if (!cfg.token || !cfg.owner || !cfg.repo) { openConfig(); showToast('まずGitHub設定を入力してください'); return; }
+  if (!cfg.token || !cfg.owner || !cfg.repo) { openConfig(); showToast('まずGitHub設定を入力してください'); return false; }
   const btn = document.getElementById('syncBtn');
   btn.textContent = '保存中...'; btn.disabled = true;
   try {
@@ -284,8 +287,11 @@ async function syncToGitHub() {
       body: JSON.stringify(body),
     });
     showToast(res.ok ? 'GitHubに保存しました' : 'エラー: ' + res.status);
-  } catch(e) { showToast('エラー: ' + e.message); }
-  btn.textContent = 'GitHubに保存'; btn.disabled = false;
+    return res.ok;
+  } catch(e) { showToast('エラー: ' + e.message); return false; }
+  finally {
+    btn.textContent = 'GitHubに保存'; btn.disabled = false;
+  }
 }
 
 async function loadFromGitHub() {
@@ -352,7 +358,16 @@ async function saveArtist() {
 
   // Xアカウントがある場合はGitHub Actionsをトリガー
   if (xAccount) {
-    showToast('追加しました。プロフィール取得をリクエスト中...');
+    showToast('追加しました。GitHubへ保存中...');
+    const synced = await syncToGitHub();
+    if (!synced) {
+      artist.fetch_status = 'error';
+      saveLocal(); renderList();
+      showToast('先にGitHubへ保存できませんでした。設定を確認してください。');
+      btn.disabled = false;
+      return;
+    }
+    showToast('プロフィール取得をリクエスト中...');
     const ok = await triggerFetch(artist.id, xAccount);
     if (ok) {
       showToast('✓ GitHub Actionsにプロフィール取得を依頼しました。数分後に「GitHubから読込」してください。');
@@ -424,6 +439,13 @@ function fetchStatusBadge(a) {
   return '';
 }
 
+function monitoringBadge(a) {
+  const status = a.monitoring && a.monitoring.status;
+  if (status === 'active') return '<span class="fetch-status active">X 公開中</span>';
+  if (status === 'unavailable') return '<span class="fetch-status unavailable">X 利用不可</span>';
+  return '';
+}
+
 function updateStats() {
   document.getElementById('statArtists').textContent = artists.length;
   document.getElementById('statWorks').textContent   = artists.reduce((s,a) => s + (a.works||[]).length, 0);
@@ -459,11 +481,16 @@ function renderList() {
         </div>
         <div class="artist-meta">
           ${fetchStatusBadge(a)}
+          ${monitoringBadge(a)}
           <span class="work-count">${works.length}件</span>
           <span class="chevron" id="chev_${esc(a.id)}">▾</span>
         </div>
       </div>
       <div class="artist-body" id="body_${esc(a.id)}">
+        ${a.archive && a.archive.url ? `<div class="archive-links">
+          <a href="${esc(a.archive.url)}" target="_blank" rel="noopener"><button class="small">archive.md を表示</button></a>
+          <a href="${esc(a.archive.hatena_add_url||'')}" target="_blank" rel="noopener"><button class="small">はてブ追加画面を開く（手動）</button></a>
+        </div>` : ''}
         <div class="note-row">
           <input type="text" placeholder="メモ..." value="${esc(a.note||'')}" onchange="updateNote('${esc(a.id)}', this.value)" />
         </div>

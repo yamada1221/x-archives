@@ -28,23 +28,7 @@ def save_artists(data: dict):
 
 
 async def fetch_x_profile(username: str) -> dict | None:
-    """twscrape のゲストセッションでプロフィールを取得する"""
-    try:
-        from twscrape import API
-        api = API()
-        # ゲストセッション（アカウント不要）
-        await api.pool.add_account("guest", "guest", "guest@guest.com", "guest")
-        await api.pool.login_all()
-        user = await api.user_by_login(username)
-        if user:
-            return {
-                "display_name": user.displayname,
-                "avatar_url": user.profileImageUrl.replace("_normal", "_400x400"),
-            }
-    except Exception as e:
-        print(f"[twscrape] error: {e}", file=sys.stderr)
-
-    # フォールバック: nitter 風の公開エンドポイント
+    """ログイン不要の公開エンドポイントからプロフィールを取得する。"""
     return await fetch_x_profile_fallback(username)
 
 
@@ -93,8 +77,10 @@ def main():
         artist["name"] = profile["display_name"]
         artist["avatar_url"] = profile["avatar_url"]
         artist["profile_fetched_at"] = __import__("datetime").date.today().isoformat()
+        artist["fetch_status"] = "done"
         print(f"Updated: {artist['name']} / {artist['avatar_url']}")
     else:
+        artist["fetch_status"] = "error"
         print("Could not fetch profile, keeping existing data", file=sys.stderr)
 
     save_artists(data)

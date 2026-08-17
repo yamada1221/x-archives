@@ -18,9 +18,6 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
-        run: pip install twscrape requests
-
       - name: Fetch artist profile
         env:
           ARTIST_ID: ${{ github.event.client_payload.artist_id }}

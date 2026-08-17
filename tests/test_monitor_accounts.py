@@ -66,13 +66,15 @@ class MonitorTests(unittest.TestCase):
 
             def __enter__(self): return self
             def __exit__(self, *args): return None
-            def read(self): return b"<html>challenge page</html>"
+            def geturl(self): return "https://x.com/example"
+            def read(self, _limit=None): return b"<html>challenge page</html>"
 
         with patch.object(monitor, "request", return_value=Response()):
             result, detail = monitor.probe_account("example")
         self.assertEqual(result, "unknown")
         self.assertIn("text/html", detail)
         self.assertIn("challenge page", detail)
+        self.assertIn("profile page HTTP 200", detail)
 
     def test_http_error_detail_captures_status_content_type_and_body(self):
         headers = Message()

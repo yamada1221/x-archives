@@ -10,17 +10,26 @@
       "added_at": "2026-06-30",
       "fetch_status": "pending",
       "monitoring": {
-        "status": "unknown",
-        "last_checked_at": "2026-08-17T10:11:51+00:00",
-        "last_result": "unknown",
-        "last_detail": "temporary probe failure: JSONDecodeError",
+        "status": "active",
+        "last_checked_at": "2026-08-17T10:15:11+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tawakenai_marou; contains_username=True; suspended_marker=False; missing_marker=False; bytes=236114; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"fb15343158641eb8e0d705f5f88eae57f348865f\"><head><meta charSet=\"utf-8\" nonce=\"KVHN'",
         "consecutive_unavailable": 0
       },
       "archive": {
         "status": "retry_pending",
-        "last_attempt_at": "2026-08-17T10:11:52+00:00",
-        "last_error": "HTTPError"
-      }
+        "last_attempt_at": "2026-08-17T10:15:13+00:00",
+        "last_error": "ValueError",
+        "last_error_detail": "archive service returned HTTP 429; content-type=text/html; body='<!DOCTYPE html> <html> <head> <meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\" /> <meta content=\"width=device-width, initial-scale=1, minimal-'"
+      },
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-08-17T10:15:11+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tawakenai_marou; contains_username=True; suspended_marker=False; missing_marker=False; bytes=236114; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"fb15343158641eb8e0d705f5f88eae57f348865f\"><head><meta charSet=\"utf-8\" nonce=\"KVHN'"
+        }
+      ]
     }
   ]
 }

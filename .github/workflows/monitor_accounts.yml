@@ -1,4 +1,4 @@
-name: Archive and monitor X accounts
+name: Monitor X accounts
 
 on:
   schedule:
@@ -19,8 +19,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Archive and check accounts
-        run: python scripts/monitor_accounts.py
+      - name: Check X accounts
+        # archive.md returns HTTP 429 from GitHub-hosted runners.
+        # Archiving is intentionally handled from the user's browser instead.
+        run: python scripts/monitor_accounts.py --no-archive
       - name: Commit state changes
         run: |
           git config user.name "github-actions[bot]"

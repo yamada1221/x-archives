@@ -21,6 +21,7 @@ DATA_PATH = Path(os.environ.get("ARTISTS_PATH", "data/artists.json"))
 LEGACY_DATA_PATH = Path(os.environ.get("ARCHIVES_PATH", "data/archives.json"))
 ARCHIVE_SUBMIT_URL = "https://archive.md/submit/"
 SYNDICATION_URL = "https://cdn.syndication.twimg.com/widgets/followbutton/info.json"
+PROFILE_URL_TEMPLATE = "https://x.com/{username}"
 UNAVAILABLE_THRESHOLD = 3
 USER_AGENT = "x-archives/1.0 (+https://github.com/yamada1221/x-archives)"
 ARCHIVE_HOSTS = {"archive.md", "archive.ph", "archive.is", "archive.today"}
@@ -64,6 +65,25 @@ def http_error_detail(prefix: str, exc: urllib.error.HTTPError) -> str:
     return f"{prefix} HTTP {exc.code}; content-type={content_type}; body={preview!r}"
 
 
+def probe_profile_page(username: str) -> str:
+    """Return diagnostics for the public X profile page without classifying it."""
+    url = PROFILE_URL_TEMPLATE.format(username=urllib.parse.quote(username, safe=""))
+    try:
+        with request(url) as response:
+            status = getattr(response, "status", 200)
+            content_type = response_content_type(response)
+            final_url = response.geturl()
+            raw = response.read(DIAGNOSTIC_BODY_LIMIT)
+        return (
+            f"profile page HTTP {status}; content-type={content_type}; "
+            f"final_url={final_url}; body={safe_preview(raw)!r}"
+        )
+    except urllib.error.HTTPError as exc:
+        return http_error_detail("profile page returned", exc)
+    except OSError as exc:
+        return f"profile page failure: {type(exc).__name__}: {exc}"
+
+
 def merge_legacy_artists(current: dict, legacy: dict) -> int:
     """Merge legacy archive entries without overwriting or duplicating artists."""
     artists = current.setdefault("artists", [])
@@ -103,10 +123,11 @@ def probe_account(username: str) -> tuple[str, str]:
         try:
             payload = json.loads(raw)
         except json.JSONDecodeError:
+            fallback = probe_profile_page(username)
             return (
                 "unknown",
                 f"non-JSON public response; HTTP {status}; content-type={content_type}; "
-                f"body={safe_preview(raw)!r}",
+                f"body={safe_preview(raw)!r}; {fallback}",
             )
         if payload and payload[0].get("screen_name", "").lower() == username.lower():
             return "active", "public profile returned"

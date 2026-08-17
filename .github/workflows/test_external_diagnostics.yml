@@ -1,6 +1,11 @@
 name: Test external diagnostics
 
 on:
+  pull_request:
+    paths:
+      - "scripts/monitor_accounts.py"
+      - "tests/test_monitor_accounts.py"
+      - ".github/workflows/test_external_diagnostics.yml"
   workflow_dispatch:
 
 jobs:

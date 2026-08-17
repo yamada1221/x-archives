@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>作者トラッカー</title>
+<title>Xアカウントトラッカー</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: system-ui, sans-serif; background: #f5f5f3; color: #1a1a18; min-height: 100vh; }
   .app { max-width: 900px; margin: 0 auto; padding: 1.5rem 1rem; }
 
   .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.75rem; }
-  .header h1 { font-size: 20px; font-weight: 500; }
+  .header h1 { font-size: 20px; font-weight: 600; }
   .header-actions { display: flex; gap: 0.5rem; align-items: center; }
 
   .config-bar { background: #fff; border: 0.5px solid rgba(0,0,0,0.12); border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; display: none; }
-  .config-bar h2 { font-size: 12px; font-weight: 500; color: #888; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .config-bar h2 { font-size: 12px; font-weight: 600; color: #888; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
   .config-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; }
   .config-grid input, .config-path { width: 100%; padding: 7px 10px; border: 0.5px solid rgba(0,0,0,0.2); border-radius: 8px; font-size: 13px; background: #fafaf8; color: #1a1a18; }
   .config-grid input:focus, .config-path:focus { outline: none; border-color: #378add; }
@@ -24,14 +24,13 @@
   .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1.25rem; }
   .stat-card { background: #fff; border-radius: 8px; padding: 0.875rem 1rem; border: 0.5px solid rgba(0,0,0,0.08); }
   .stat-card .label { font-size: 12px; color: #999; margin-bottom: 4px; }
-  .stat-card .value { font-size: 22px; font-weight: 500; }
+  .stat-card .value { font-size: 22px; font-weight: 600; }
 
   .search-add-row { display: flex; gap: 0.75rem; margin-bottom: 1rem; }
   .search-input { flex: 1; padding: 8px 12px; border: 0.5px solid rgba(0,0,0,0.2); border-radius: 8px; font-size: 14px; background: #fff; color: #1a1a18; }
   .search-input:focus { outline: none; border-color: #378add; }
-  .search-input::placeholder { color: #aaa; }
 
-  button { cursor: pointer; font-family: inherit; font-size: 13px; padding: 7px 14px; border-radius: 8px; border: 0.5px solid rgba(0,0,0,0.2); background: transparent; color: #1a1a18; transition: background 0.12s; }
+  button { cursor: pointer; font-family: inherit; font-size: 13px; padding: 7px 14px; border-radius: 8px; border: 0.5px solid rgba(0,0,0,0.2); background: transparent; color: #1a1a18; }
   button:hover { background: #f0f0ee; }
   button:active { transform: scale(0.98); }
   button:disabled { opacity: 0.5; cursor: default; transform: none; }
@@ -43,95 +42,80 @@
   button.icon-btn { padding: 6px 8px; font-size: 16px; }
 
   .artist-list { display: flex; flex-direction: column; gap: 0.75rem; }
-
   .artist-card { background: #fff; border: 0.5px solid rgba(0,0,0,0.12); border-radius: 12px; overflow: hidden; }
   .artist-header { display: flex; align-items: center; gap: 12px; padding: 1rem 1.25rem; cursor: pointer; user-select: none; }
   .artist-header:hover { background: #fafaf8; }
 
-  .artist-avatar { width: 44px; height: 44px; border-radius: 50%; background: #e6f1fb; display: flex; align-items: center; justify-content: center; font-weight: 500; font-size: 15px; color: #185fa5; flex-shrink: 0; overflow: hidden; }
+  .artist-avatar { width: 44px; height: 44px; border-radius: 50%; background: #e6f1fb; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 15px; color: #185fa5; flex-shrink: 0; overflow: hidden; }
   .artist-avatar img { width: 100%; height: 100%; object-fit: cover; }
-  .avatar-pending { background: #f0f0ee; color: #bbb; font-size: 20px; }
+  .avatar-pending { background: #f0f0ee; color: #bbb; }
 
   .artist-info { flex: 1; min-width: 0; }
-  .artist-name { font-weight: 500; font-size: 15px; }
-  .artist-accounts { display: flex; gap: 0.5rem; margin-top: 3px; flex-wrap: wrap; }
-  .account-tag { font-size: 11px; padding: 2px 8px; border-radius: 100px; background: #f5f5f3; color: #666; border: 0.5px solid rgba(0,0,0,0.1); display: flex; align-items: center; gap: 4px; }
-  .account-tag .dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
-  .account-tag.pixiv-tag { color: #0060c4; }
+  .artist-name { font-weight: 600; font-size: 15px; }
+  .artist-accounts { display: flex; gap: 0.4rem; margin-top: 4px; flex-wrap: wrap; }
+  .account-tag, .mode-tag, .status-tag { font-size: 11px; padding: 2px 8px; border-radius: 100px; border: 0.5px solid rgba(0,0,0,0.1); white-space: nowrap; }
+  .account-tag { background: #f5f5f3; color: #666; }
+  .mode-tag.monitor { background: #e6f1fb; color: #185fa5; }
+  .mode-tag.record { background: #fff3e6; color: #9a4d00; }
+  .status-tag.active { background: #e8f5e9; color: #2e7d32; }
+  .status-tag.unavailable, .status-tag.error { background: #fcebeb; color: #a32d2d; }
+  .status-tag.pending { background: #fff8e1; color: #9a6700; }
 
-  .artist-meta { display: flex; align-items: center; gap: 0.75rem; }
-  .work-count { font-size: 12px; color: #999; white-space: nowrap; }
-  .fetch-status { font-size: 11px; padding: 2px 8px; border-radius: 100px; white-space: nowrap; }
-  .fetch-status.pending { background: #fff8e1; color: #9a6700; border: 0.5px solid #ffe082; }
-  .fetch-status.done { background: #e8f5e9; color: #2e7d32; border: 0.5px solid #a5d6a7; }
-  .fetch-status.error { background: #fcebeb; color: #a32d2d; border: 0.5px solid #f09595; }
-  .fetch-status.active { background: #e8f5e9; color: #2e7d32; border: 0.5px solid #a5d6a7; }
-  .fetch-status.unavailable { background: #fcebeb; color: #a32d2d; border: 0.5px solid #f09595; }
-  .archive-links { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+  .artist-meta { display: flex; align-items: center; gap: 0.45rem; flex-wrap: wrap; justify-content: flex-end; }
   .chevron { font-size: 12px; color: #aaa; transition: transform 0.15s; }
   .chevron.open { transform: rotate(180deg); }
 
   .artist-body { border-top: 0.5px solid rgba(0,0,0,0.1); padding: 1rem 1.25rem; display: none; }
   .artist-body.open { display: block; }
+  .record-box { background: #fff8ef; border: 1px solid #f0d8ba; border-radius: 8px; padding: 10px; margin-bottom: 0.75rem; }
+  .record-box p { font-size: 12px; color: #75522b; margin-bottom: 8px; line-height: 1.5; }
+  .row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 
   .note-row { margin-bottom: 0.75rem; }
-  .note-row input { width: 100%; padding: 6px 10px; border: 0.5px solid rgba(0,0,0,0.1); border-radius: 8px; font-size: 13px; color: #666; background: transparent; }
-  .note-row input:focus { outline: none; border-color: #378add; }
+  .note-row input { width: 100%; padding: 6px 10px; border: 0.5px solid rgba(0,0,0,0.1); border-radius: 8px; font-size: 13px; background: transparent; }
 
   .add-work-row { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; }
-  .add-work-row input { flex: 1; padding: 7px 10px; border: 0.5px solid rgba(0,0,0,0.1); border-radius: 8px; font-size: 13px; color: #1a1a18; background: #fafaf8; }
-  .add-work-row input:focus { outline: none; border-color: #378add; }
-  .add-work-row input::placeholder { color: #aaa; }
-  .memo-input-inline { max-width: 140px; padding: 7px 10px; border: 0.5px solid rgba(0,0,0,0.1); border-radius: 8px; font-size: 13px; color: #1a1a18; background: #fafaf8; }
-  .memo-input-inline::placeholder { color: #aaa; }
-  .memo-input-inline:focus { outline: none; border-color: #378add; }
+  .add-work-row input { flex: 1; padding: 7px 10px; border: 0.5px solid rgba(0,0,0,0.1); border-radius: 8px; font-size: 13px; background: #fafaf8; }
+  .memo-input-inline { max-width: 140px; }
 
   .works-list { display: flex; flex-direction: column; gap: 4px; }
   .work-item { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 8px; background: #fafaf8; }
-  .work-type-badge { font-size: 10px; padding: 2px 6px; border-radius: 100px; flex-shrink: 0; font-weight: 500; }
-  .badge-x { background: #e8e8e8; color: #333; }
-  .badge-pixiv { background: #e6f4ff; color: #0060c4; }
-  .badge-other { background: #f0f0ee; color: #666; }
+  .work-type-badge { font-size: 10px; padding: 2px 6px; border-radius: 100px; flex-shrink: 0; font-weight: 600; background: #eee; }
   .work-url { flex: 1; color: #185fa5; text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; }
-  .work-url:hover { text-decoration: underline; }
-  .work-memo { font-size: 11px; color: #999; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 120px; }
-  .work-date { font-size: 11px; color: #bbb; white-space: nowrap; }
+  .work-memo, .work-date { font-size: 11px; color: #999; white-space: nowrap; }
 
   .artist-actions { display: flex; gap: 0.5rem; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 0.5px solid rgba(0,0,0,0.08); flex-wrap: wrap; }
   .refetch-btn { margin-left: auto; }
 
   .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; z-index: 100; padding: 1rem; }
-  .modal { background: #fff; border-radius: 12px; padding: 1.5rem; width: 100%; max-width: 460px; border: 0.5px solid rgba(0,0,0,0.12); }
-  .modal h2 { font-size: 17px; font-weight: 500; margin-bottom: 0.5rem; }
-  .modal-hint { font-size: 12px; color: #888; margin-bottom: 1rem; }
+  .modal { background: #fff; border-radius: 12px; padding: 1.5rem; width: 100%; max-width: 480px; border: 0.5px solid rgba(0,0,0,0.12); }
+  .modal h2 { font-size: 17px; margin-bottom: 0.5rem; }
+  .modal-hint { font-size: 12px; color: #888; margin-bottom: 1rem; line-height: 1.5; }
   .modal-field { margin-bottom: 0.875rem; }
   .modal-field label { display: block; font-size: 12px; color: #666; margin-bottom: 4px; }
-  .modal-field input { width: 100%; padding: 8px 10px; border: 0.5px solid rgba(0,0,0,0.2); border-radius: 8px; font-size: 14px; color: #1a1a18; background: #fafaf8; }
-  .modal-field input:focus { outline: none; border-color: #378add; }
-  .modal-field input::placeholder { color: #aaa; }
+  .modal-field input, .modal-field select { width: 100%; padding: 8px 10px; border: 0.5px solid rgba(0,0,0,0.2); border-radius: 8px; font-size: 14px; color: #1a1a18; background: #fafaf8; }
+  .modal-field input:focus, .modal-field select:focus { outline: none; border-color: #378add; }
   .modal-actions { display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 1.25rem; }
 
-  .fetch-note { font-size: 12px; color: #888; background: #f5f5f3; border-radius: 8px; padding: 8px 10px; margin-top: 0.75rem; }
-  .fetch-note b { color: #555; }
-
   .empty-state { text-align: center; padding: 3rem 1rem; color: #aaa; }
-  .empty-state p { font-size: 15px; }
-  .empty-state small { font-size: 13px; margin-top: 0.25rem; display: block; }
-
-  .toast { position: fixed; bottom: 1.5rem; right: 1.5rem; background: #1a1a18; color: #fff; padding: 10px 16px; border-radius: 8px; font-size: 13px; opacity: 0; transform: translateY(8px); transition: all 0.2s; pointer-events: none; z-index: 200; max-width: 280px; }
+  .toast { position: fixed; bottom: 1.5rem; right: 1.5rem; background: #1a1a18; color: #fff; padding: 10px 16px; border-radius: 8px; font-size: 13px; opacity: 0; transform: translateY(8px); transition: all 0.2s; pointer-events: none; z-index: 200; max-width: 320px; }
   .toast.show { opacity: 1; transform: translateY(0); }
 
   @media (max-width: 600px) {
     .config-grid { grid-template-columns: 1fr; }
     .stats-row { grid-template-columns: 1fr 1fr; }
     .search-add-row { flex-direction: column; }
+    .artist-header { align-items: flex-start; }
+    .artist-meta { max-width: 180px; }
+    .add-work-row { flex-direction: column; }
+    .memo-input-inline { max-width: none; }
   }
 </style>
 </head>
 <body>
 <div class="app">
   <div class="header">
-    <h1>作者トラッカー</h1>
+    <h1>Xアカウントトラッカー</h1>
     <div class="header-actions">
       <button onclick="openConfig()" class="icon-btn" title="設定">⚙</button>
       <button onclick="syncToGitHub()" id="syncBtn">GitHubに保存</button>
@@ -142,44 +126,41 @@
   <div class="config-bar" id="configBar">
     <h2>GitHub設定</h2>
     <div class="config-grid">
-      <input id="cfgToken" type="password" placeholder="Personal Access Token" />
-      <input id="cfgOwner" type="text" placeholder="owner（ユーザー名）" />
-      <input id="cfgRepo" type="text" placeholder="リポジトリ名" />
+      <input id="cfgToken" type="password" placeholder="Personal Access Token">
+      <input id="cfgOwner" type="text" placeholder="owner（ユーザー名）">
+      <input id="cfgRepo" type="text" placeholder="リポジトリ名">
     </div>
     <div class="config-save">
-      <input id="cfgPath" class="config-path" type="text" placeholder="ファイルパス（例: data/artists.json）" style="flex:1" />
+      <input id="cfgPath" class="config-path" type="text" placeholder="data/artists.json" style="flex:1">
       <button onclick="saveConfig()" class="primary">保存</button>
       <span class="config-status" id="configStatus"></span>
     </div>
   </div>
 
   <div class="stats-row">
-    <div class="stat-card"><div class="label">登録作者</div><div class="value" id="statArtists">0</div></div>
-    <div class="stat-card"><div class="label">保存作品URL</div><div class="value" id="statWorks">0</div></div>
-    <div class="stat-card"><div class="label">取得済みプロフィール</div><div class="value" id="statFetched">0</div></div>
+    <div class="stat-card"><div class="label">登録アカウント</div><div class="value" id="statAccounts">0</div></div>
+    <div class="stat-card"><div class="label">記録対象</div><div class="value" id="statRecord">0</div></div>
+    <div class="stat-card"><div class="label">X 公開中</div><div class="value" id="statActive">0</div></div>
   </div>
 
   <div class="search-add-row">
-    <input type="text" class="search-input" id="searchInput" placeholder="作者名・アカウント名で検索..." oninput="renderList()" />
-    <button onclick="openAddModal()" class="primary">＋ 作者を追加</button>
+    <input type="text" class="search-input" id="searchInput" placeholder="名前・Xアカウントで検索..." oninput="renderList()">
+    <button onclick="openAddModal()" class="primary">＋ アカウントを追加</button>
   </div>
 
   <div class="artist-list" id="artistList"></div>
 </div>
 
-<!-- 作者追加・編集モーダル -->
 <div class="modal-backdrop" id="addModal" style="display:none" onclick="if(event.target===this)closeModal()">
   <div class="modal">
-    <h2 id="modalTitle">作者を追加</h2>
-    <p class="modal-hint">XアカウントまたはPixivユーザーIDを入力すると、追加後に自動でプロフィールを取得します。</p>
-    <div class="modal-field"><label>Xアカウント（@なしでもOK）</label><input id="fX" placeholder="例: hiyoritsuki" /></div>
-    <div class="modal-field"><label>Pixivユーザー名またはID</label><input id="fPixiv" placeholder="例: 12345678" /></div>
-    <div class="modal-field"><label>作者名（仮）<span style="color:#aaa;font-size:11px;margin-left:6px">自動取得後に上書きされます</span></label><input id="fName" placeholder="例: ひよりつき" /></div>
-    <div class="modal-field"><label>メモ</label><input id="fNote" placeholder="例: 好きな絵柄・ジャンルなど" /></div>
-    <div class="modal-actions">
-      <button onclick="closeModal()">キャンセル</button>
-      <button onclick="saveArtist()" class="primary" id="modalSaveBtn">追加してプロフィール取得</button>
-    </div>
+    <h2 id="modalTitle">アカウントを追加</h2>
+    <p class="modal-hint">「監視のみ」は死活監視だけを行います。「記録対象」は死活監視に加え、ブラウザから archive.md 保存とはてなブックマーク登録を行うための導線を表示します。</p>
+    <div class="modal-field"><label>Xアカウント（@なしでもOK）</label><input id="fX" placeholder="例: example_user"></div>
+    <div class="modal-field"><label>表示名（仮）</label><input id="fName" placeholder="空欄ならXアカウント名を使用"></div>
+    <div class="modal-field"><label>監視種別</label><select id="fMode"><option value="monitor_only">監視のみ</option><option value="record">記録対象（archive.md + はてブ）</option></select></div>
+    <div class="modal-field"><label>Pixivユーザー名またはID（任意）</label><input id="fPixiv" placeholder="任意"></div>
+    <div class="modal-field"><label>メモ</label><input id="fNote" placeholder="分類理由やメモなど"></div>
+    <div class="modal-actions"><button onclick="closeModal()">キャンセル</button><button onclick="saveArtist()" class="primary" id="modalSaveBtn">追加してプロフィール取得</button></div>
   </div>
 </div>
 
@@ -192,163 +173,229 @@ let editingId = null;
 const STORAGE_KEY = 'artist_tracker_v1';
 const CONFIG_KEY = 'artist_tracker_config';
 
-// ── ローカルストレージ ──────────────────────────────────
-function loadLocal() {
-  try { const r = localStorage.getItem(STORAGE_KEY); if (r) artists = JSON.parse(r); } catch(e) {}
-  try {
-    const c = JSON.parse(localStorage.getItem(CONFIG_KEY) || '{}');
-    if (c.token) document.getElementById('cfgToken').value = c.token;
-    if (c.owner) document.getElementById('cfgOwner').value = c.owner;
-    if (c.repo)  document.getElementById('cfgRepo').value  = c.repo;
-    if (c.path)  document.getElementById('cfgPath').value  = c.path;
-  } catch(e) {}
+function normalizeArtist(artist) {
+  if (!artist.tracking_mode) artist.tracking_mode = 'monitor_only';
+  if (!Array.isArray(artist.works)) artist.works = [];
+  return artist;
 }
-function saveLocal() { localStorage.setItem(STORAGE_KEY, JSON.stringify(artists)); }
 
-// ── 設定 ───────────────────────────────────────────────
+function loadLocal() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) artists = JSON.parse(raw).map(normalizeArtist);
+  } catch (e) {}
+
+  try {
+    const config = JSON.parse(localStorage.getItem(CONFIG_KEY) || '{}');
+    if (config.token) document.getElementById('cfgToken').value = config.token;
+    if (config.owner) document.getElementById('cfgOwner').value = config.owner;
+    if (config.repo) document.getElementById('cfgRepo').value = config.repo;
+    if (config.path) document.getElementById('cfgPath').value = config.path;
+  } catch (e) {}
+}
+
+function saveLocal() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(artists));
+}
+
 function getConfig() {
   return {
     token: document.getElementById('cfgToken').value.trim(),
     owner: document.getElementById('cfgOwner').value.trim(),
-    repo:  document.getElementById('cfgRepo').value.trim(),
-    path:  document.getElementById('cfgPath').value.trim() || 'data/artists.json',
+    repo: document.getElementById('cfgRepo').value.trim(),
+    path: document.getElementById('cfgPath').value.trim() || 'data/artists.json',
   };
 }
+
 function saveConfig() {
   localStorage.setItem(CONFIG_KEY, JSON.stringify(getConfig()));
-  document.getElementById('configStatus').textContent = '保存しました';
-  setTimeout(() => document.getElementById('configStatus').textContent = '', 2000);
+  const status = document.getElementById('configStatus');
+  status.textContent = '保存しました';
+  setTimeout(() => status.textContent = '', 2000);
 }
+
 function openConfig() {
   const bar = document.getElementById('configBar');
   bar.style.display = bar.style.display === 'none' ? 'block' : 'none';
 }
 
-// ── ユーティリティ ─────────────────────────────────────
-function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2,6); }
-function today() { return new Date().toISOString().slice(0,10); }
-function esc(s) {
-  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+function uid() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
 }
+
+function today() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function esc(value) {
+  return String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
 function detectUrlType(url) {
   if (!url) return 'other';
   if (url.includes('x.com') || url.includes('twitter.com')) return 'x_post';
   if (url.includes('pixiv.net')) return 'pixiv';
   return 'other';
 }
-function typeLabel(t) { return t === 'x_post' ? 'X' : t === 'pixiv' ? 'Pixiv' : t || '?'; }
-function badgeClass(t) { return t === 'x_post' ? 'badge-x' : t === 'pixiv' ? 'badge-pixiv' : 'badge-other'; }
 
-// ── プロフィール取得（repository_dispatch） ────────────
+function typeLabel(type) {
+  if (type === 'x_post') return 'X';
+  if (type === 'pixiv') return 'Pixiv';
+  return 'URL';
+}
+
 async function triggerFetch(artistId, xAccount) {
   const cfg = getConfig();
   if (!cfg.token || !cfg.owner || !cfg.repo) return false;
-  const res = await fetch(
-    `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/dispatches`,
-    {
-      method: 'POST',
-      headers: {
-        Authorization: `token ${cfg.token}`,
-        Accept: 'application/vnd.github.v3+json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        event_type: 'fetch_artist',
-        client_payload: { artist_id: artistId, x_account: xAccount },
-      }),
-    }
-  );
-  return res.status === 204;
+
+  const response = await fetch(`https://api.github.com/repos/${cfg.owner}/${cfg.repo}/dispatches`, {
+    method: 'POST',
+    headers: {
+      Authorization: `token ${cfg.token}`,
+      Accept: 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ event_type: 'fetch_artist', client_payload: { artist_id: artistId, x_account: xAccount } }),
+  });
+
+  return response.status === 204;
 }
 
-// ── GitHub読み書き ─────────────────────────────────────
 async function getFileSha(apiUrl, token) {
   try {
-    const r = await fetch(apiUrl, { headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' } });
-    if (r.ok) { const d = await r.json(); return d.sha; }
-  } catch(e) {}
+    const response = await fetch(apiUrl, { headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' } });
+    if (response.ok) return (await response.json()).sha;
+  } catch (e) {}
   return null;
 }
 
 async function syncToGitHub() {
   const cfg = getConfig();
-  if (!cfg.token || !cfg.owner || !cfg.repo) { openConfig(); showToast('まずGitHub設定を入力してください'); return false; }
-  const btn = document.getElementById('syncBtn');
-  btn.textContent = '保存中...'; btn.disabled = true;
+  if (!cfg.token || !cfg.owner || !cfg.repo) {
+    openConfig();
+    showToast('まずGitHub設定を入力してください');
+    return false;
+  }
+
+  const button = document.getElementById('syncBtn');
+  button.textContent = '保存中...';
+  button.disabled = true;
+
   try {
     const apiUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${cfg.path}`;
     const sha = await getFileSha(apiUrl, cfg.token);
     const content = btoa(unescape(encodeURIComponent(JSON.stringify({ artists }, null, 2))));
     const body = { message: `chore: update artists.json [${today()}]`, content };
     if (sha) body.sha = sha;
-    const res = await fetch(apiUrl, {
+
+    const response = await fetch(apiUrl, {
       method: 'PUT',
       headers: { Authorization: `token ${cfg.token}`, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     });
-    showToast(res.ok ? 'GitHubに保存しました' : 'エラー: ' + res.status);
-    return res.ok;
-  } catch(e) { showToast('エラー: ' + e.message); return false; }
-  finally {
-    btn.textContent = 'GitHubに保存'; btn.disabled = false;
+
+    showToast(response.ok ? 'GitHubに保存しました' : `エラー: ${response.status}`);
+    return response.ok;
+  } catch (e) {
+    showToast(`エラー: ${e.message}`);
+    return false;
+  } finally {
+    button.textContent = 'GitHubに保存';
+    button.disabled = false;
   }
 }
 
 async function loadFromGitHub() {
   const cfg = getConfig();
-  if (!cfg.token || !cfg.owner || !cfg.repo) { openConfig(); showToast('まずGitHub設定を入力してください'); return; }
-  const btn = document.getElementById('loadBtn');
-  btn.textContent = '読込中...'; btn.disabled = true;
+  if (!cfg.token || !cfg.owner || !cfg.repo) {
+    openConfig();
+    showToast('まずGitHub設定を入力してください');
+    return;
+  }
+
+  const button = document.getElementById('loadBtn');
+  button.textContent = '読込中...';
+  button.disabled = true;
+
   try {
     const apiUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${cfg.path}`;
-    const res = await fetch(apiUrl, { headers: { Authorization: `token ${cfg.token}`, Accept: 'application/vnd.github.v3+json' } });
-    if (!res.ok) { showToast('ファイルが見つかりません'); return; }
-    const d = await res.json();
-    const json = JSON.parse(decodeURIComponent(escape(atob(d.content.replace(/\n/g,'')))));
-    if (json.artists) { artists = json.artists; saveLocal(); renderList(); showToast('読み込みました'); }
-  } catch(e) { showToast('エラー: ' + e.message); }
-  btn.textContent = 'GitHubから読込'; btn.disabled = false;
+    const response = await fetch(apiUrl, { headers: { Authorization: `token ${cfg.token}`, Accept: 'application/vnd.github.v3+json' } });
+    if (!response.ok) {
+      showToast('ファイルが見つかりません');
+      return;
+    }
+
+    const data = await response.json();
+    const json = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g, '')))));
+    if (json.artists) {
+      artists = json.artists.map(normalizeArtist);
+      saveLocal();
+      renderList();
+      showToast('読み込みました');
+    }
+  } catch (e) {
+    showToast(`エラー: ${e.message}`);
+  } finally {
+    button.textContent = 'GitHubから読込';
+    button.disabled = false;
+  }
 }
 
-// ── モーダル ───────────────────────────────────────────
 function openAddModal() {
   editingId = null;
-  document.getElementById('modalTitle').textContent = '作者を追加';
+  document.getElementById('modalTitle').textContent = 'アカウントを追加';
   document.getElementById('modalSaveBtn').textContent = '追加してプロフィール取得';
-  ['fName','fX','fPixiv','fNote'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('fX').value = '';
+  document.getElementById('fName').value = '';
+  document.getElementById('fPixiv').value = '';
+  document.getElementById('fNote').value = '';
+  document.getElementById('fMode').value = 'monitor_only';
   document.getElementById('addModal').style.display = 'flex';
   setTimeout(() => document.getElementById('fX').focus(), 50);
 }
+
 function openEditModal(id) {
-  const a = artists.find(x => x.id === id); if (!a) return;
+  const artist = artists.find(item => item.id === id);
+  if (!artist) return;
+
   editingId = id;
-  document.getElementById('modalTitle').textContent = '作者を編集';
-  document.getElementById('modalSaveBtn').textContent = 'プロフィール再取得して更新';
-  document.getElementById('fName').value   = a.name        || '';
-  document.getElementById('fX').value      = a.x_account   || '';
-  document.getElementById('fPixiv').value  = a.pixiv_user  || '';
-  document.getElementById('fNote').value   = a.note        || '';
+  document.getElementById('modalTitle').textContent = 'アカウントを編集';
+  document.getElementById('modalSaveBtn').textContent = '更新してプロフィール再取得';
+  document.getElementById('fX').value = artist.x_account || '';
+  document.getElementById('fName').value = artist.name || '';
+  document.getElementById('fPixiv').value = artist.pixiv_user || '';
+  document.getElementById('fNote').value = artist.note || '';
+  document.getElementById('fMode').value = artist.tracking_mode || 'monitor_only';
   document.getElementById('addModal').style.display = 'flex';
 }
-function closeModal() { document.getElementById('addModal').style.display = 'none'; editingId = null; }
+
+function closeModal() {
+  document.getElementById('addModal').style.display = 'none';
+  editingId = null;
+}
 
 async function saveArtist() {
-  const xAccount   = document.getElementById('fX').value.trim().replace(/^@/,'');
-  const pixivUser  = document.getElementById('fPixiv').value.trim();
-  const name       = document.getElementById('fName').value.trim() || xAccount || pixivUser || '（未設定）';
-  const note       = document.getElementById('fNote').value.trim();
+  const xAccount = document.getElementById('fX').value.trim().replace(/^@/, '');
+  const pixivUser = document.getElementById('fPixiv').value.trim();
+  const name = document.getElementById('fName').value.trim() || xAccount || pixivUser || '（未設定）';
+  const note = document.getElementById('fNote').value.trim();
+  const trackingMode = document.getElementById('fMode').value;
 
-  if (!xAccount && !pixivUser) { alert('XアカウントかPixivユーザーを入力してください'); return; }
+  if (!xAccount && !pixivUser) {
+    alert('XアカウントかPixivユーザーを入力してください');
+    return;
+  }
 
-  const btn = document.getElementById('modalSaveBtn');
-  btn.disabled = true; btn.textContent = '処理中...';
+  const button = document.getElementById('modalSaveBtn');
+  button.disabled = true;
+  button.textContent = '処理中...';
 
   let artist;
   if (editingId) {
-    artist = artists.find(x => x.id === editingId);
-    if (artist) Object.assign(artist, { name, x_account: xAccount, pixiv_user: pixivUser, note, fetch_status: xAccount ? 'pending' : artist.fetch_status });
+    artist = artists.find(item => item.id === editingId);
+    if (artist) Object.assign(artist, { name, x_account: xAccount, pixiv_user: pixivUser, note, tracking_mode: trackingMode, fetch_status: xAccount ? 'pending' : artist.fetch_status });
   } else {
-    artist = { id: uid(), name, x_account: xAccount, pixiv_user: pixivUser, note, works: [], added_at: today(), fetch_status: xAccount ? 'pending' : 'none' };
+    artist = { id: uid(), name, x_account: xAccount, pixiv_user: pixivUser, note, tracking_mode: trackingMode, works: [], added_at: today(), fetch_status: xAccount ? 'pending' : 'none' };
     artists.push(artist);
   }
 
@@ -356,184 +403,225 @@ async function saveArtist() {
   closeModal();
   renderList();
 
-  // Xアカウントがある場合はGitHub Actionsをトリガー
   if (xAccount) {
-    showToast('追加しました。GitHubへ保存中...');
+    showToast('GitHubへ保存中...');
     const synced = await syncToGitHub();
     if (!synced) {
       artist.fetch_status = 'error';
-      saveLocal(); renderList();
-      showToast('先にGitHubへ保存できませんでした。設定を確認してください。');
-      btn.disabled = false;
+      saveLocal();
+      renderList();
+      button.disabled = false;
       return;
     }
-    showToast('プロフィール取得をリクエスト中...');
+
     const ok = await triggerFetch(artist.id, xAccount);
     if (ok) {
-      showToast('✓ GitHub Actionsにプロフィール取得を依頼しました。数分後に「GitHubから読込」してください。');
+      showToast('プロフィール取得を依頼しました。数分後にGitHubから読込してください。');
     } else {
       artist.fetch_status = 'error';
-      saveLocal(); renderList();
-      showToast('GitHub Actionsのトリガーに失敗しました。GitHub設定を確認してください。');
+      saveLocal();
+      renderList();
+      showToast('プロフィール取得の開始に失敗しました');
     }
-  } else {
-    showToast(editingId ? '更新しました' : '追加しました');
   }
 
-  btn.disabled = false;
+  button.disabled = false;
 }
 
-// ── 作品URL ────────────────────────────────────────────
 function addWorkInline(id) {
-  const urlEl  = document.getElementById('wInline_' + id);
-  const memoEl = document.getElementById('wMemoInline_' + id);
-  const url    = urlEl  ? urlEl.value.trim()  : '';
+  const urlInput = document.getElementById(`wInline_${id}`);
+  const memoInput = document.getElementById(`wMemoInline_${id}`);
+  const url = urlInput ? urlInput.value.trim() : '';
   if (!url) return;
-  const memo   = memoEl ? memoEl.value.trim() : '';
-  const a = artists.find(x => x.id === id); if (!a) return;
-  if (!a.works) a.works = [];
-  a.works.push({ url, type: detectUrlType(url), memo, saved_at: today() });
+
+  const artist = artists.find(item => item.id === id);
+  if (!artist) return;
+
+  artist.works = artist.works || [];
+  artist.works.push({ url, type: detectUrlType(url), memo: memoInput ? memoInput.value.trim() : '', saved_at: today() });
   saveLocal();
-  if (urlEl)  urlEl.value  = '';
-  if (memoEl) memoEl.value = '';
   renderList();
-  setTimeout(() => { const b = document.getElementById('body_'+id); if(b && !b.classList.contains('open')) toggleCard(id); }, 30);
-  showToast('作品URLを追加しました');
-}
-function removeWork(artistId, idx) {
-  const a = artists.find(x => x.id === artistId); if (!a) return;
-  a.works.splice(idx, 1); saveLocal(); renderList();
-  setTimeout(() => { const b = document.getElementById('body_'+artistId); if(b && !b.classList.contains('open')) toggleCard(artistId); }, 30);
-}
-function removeArtist(id) {
-  if (!confirm('この作者を削除しますか？')) return;
-  artists = artists.filter(a => a.id !== id); saveLocal(); renderList(); showToast('削除しました');
-}
-function updateNote(id, val) {
-  const a = artists.find(x => x.id === id); if (a) { a.note = val; saveLocal(); }
+  setTimeout(() => {
+    const body = document.getElementById(`body_${id}`);
+    if (body && !body.classList.contains('open')) toggleCard(id);
+  }, 30);
+  showToast('URLを追加しました');
 }
 
-// ── UI ─────────────────────────────────────────────────
+function removeWork(id, index) {
+  const artist = artists.find(item => item.id === id);
+  if (!artist) return;
+  artist.works.splice(index, 1);
+  saveLocal();
+  renderList();
+}
+
+function removeArtist(id) {
+  if (!confirm('このアカウントを削除しますか？')) return;
+  artists = artists.filter(item => item.id !== id);
+  saveLocal();
+  renderList();
+  showToast('削除しました');
+}
+
+function updateNote(id, value) {
+  const artist = artists.find(item => item.id === id);
+  if (artist) {
+    artist.note = value;
+    saveLocal();
+  }
+}
+
 function toggleCard(id) {
-  const body = document.getElementById('body_'+id);
-  const chev = document.getElementById('chev_'+id);
+  const body = document.getElementById(`body_${id}`);
+  const chevron = document.getElementById(`chev_${id}`);
   if (!body) return;
   body.classList.toggle('open');
-  if (chev) chev.classList.toggle('open');
+  if (chevron) chevron.classList.toggle('open');
 }
 
-function avatarHTML(a) {
-  if (a.avatar_url) {
-    return `<img src="${esc(a.avatar_url)}" alt="" onerror="this.parentNode.innerHTML='${esc(initials(a.name))}'">`;
-  }
-  if (a.fetch_status === 'pending') return '<span title="取得待ち">⏳</span>';
-  return initials(a.name);
+function initials(name) {
+  return String(name || '??').slice(0, 2);
 }
-function initials(name) { return String(name||'??').slice(0,2); }
 
-function fetchStatusBadge(a) {
-  if (!a.x_account) return '';
-  if (a.fetch_status === 'pending') return '<span class="fetch-status pending">取得待ち</span>';
-  if (a.fetch_status === 'error')   return '<span class="fetch-status error">取得失敗</span>';
-  if (a.fetch_status === 'done' || a.avatar_url) return '<span class="fetch-status done">取得済</span>';
+function avatarHTML(artist) {
+  if (artist.avatar_url) return `<img src="${esc(artist.avatar_url)}" alt="" onerror="this.parentNode.innerHTML='${esc(initials(artist.name))}'">`;
+  if (artist.fetch_status === 'pending') return '…';
+  return initials(artist.name);
+}
+
+function fetchBadge(artist) {
+  if (!artist.x_account) return '';
+  if (artist.fetch_status === 'pending') return '<span class="status-tag pending">取得待ち</span>';
+  if (artist.fetch_status === 'error') return '<span class="status-tag error">取得失敗</span>';
   return '';
 }
 
-function monitoringBadge(a) {
-  const status = a.monitoring && a.monitoring.status;
-  if (status === 'active') return '<span class="fetch-status active">X 公開中</span>';
-  if (status === 'unavailable') return '<span class="fetch-status unavailable">X 利用不可</span>';
+function monitorBadge(artist) {
+  const status = artist.monitoring && artist.monitoring.status;
+  if (status === 'active') return '<span class="status-tag active">X 公開中</span>';
+  if (status === 'unavailable') return '<span class="status-tag unavailable">X 利用不可</span>';
   return '';
+}
+
+function modeBadge(artist) {
+  return artist.tracking_mode === 'record'
+    ? '<span class="mode-tag record">記録対象</span>'
+    : '<span class="mode-tag monitor">監視のみ</span>';
+}
+
+function archiveHelperUrl(artist) {
+  return `archive_helper.html?x=${encodeURIComponent(artist.x_account || '')}`;
 }
 
 function updateStats() {
-  document.getElementById('statArtists').textContent = artists.length;
-  document.getElementById('statWorks').textContent   = artists.reduce((s,a) => s + (a.works||[]).length, 0);
-  document.getElementById('statFetched').textContent = artists.filter(a => a.avatar_url).length;
+  document.getElementById('statAccounts').textContent = artists.length;
+  document.getElementById('statRecord').textContent = artists.filter(item => item.tracking_mode === 'record').length;
+  document.getElementById('statActive').textContent = artists.filter(item => item.monitoring && item.monitoring.status === 'active').length;
 }
 
 function renderList() {
-  const q    = document.getElementById('searchInput').value.toLowerCase();
+  const query = document.getElementById('searchInput').value.toLowerCase();
   const list = document.getElementById('artistList');
-  const filtered = artists.filter(a =>
-    !q || a.name.toLowerCase().includes(q) ||
-    (a.x_account||'').toLowerCase().includes(q) ||
-    (a.pixiv_user||'').toLowerCase().includes(q)
+  const filtered = artists.filter(artist =>
+    !query ||
+    (artist.name || '').toLowerCase().includes(query) ||
+    (artist.x_account || '').toLowerCase().includes(query) ||
+    (artist.note || '').toLowerCase().includes(query)
   );
 
   if (!filtered.length) {
-    list.innerHTML = `<div class="empty-state"><p>${q ? '検索結果がありません' : '作者がまだ登録されていません'}</p><small>${q ? '' : '「＋ 作者を追加」から始めましょう'}</small></div>`;
-    updateStats(); return;
+    list.innerHTML = `<div class="empty-state">${query ? '検索結果がありません' : 'アカウントがまだ登録されていません'}</div>`;
+    updateStats();
+    return;
   }
 
-  list.innerHTML = filtered.map(a => {
-    const works = a.works || [];
+  list.innerHTML = filtered.map(artist => {
+    const works = artist.works || [];
+    const recordTarget = artist.tracking_mode === 'record' && artist.x_account;
+
     return `
-    <div class="artist-card" data-id="${esc(a.id)}">
-      <div class="artist-header" onclick="toggleCard('${esc(a.id)}')">
-        <div class="artist-avatar${a.fetch_status==='pending'&&!a.avatar_url?' avatar-pending':''}">${avatarHTML(a)}</div>
+    <div class="artist-card">
+      <div class="artist-header" onclick="toggleCard('${esc(artist.id)}')">
+        <div class="artist-avatar${artist.fetch_status === 'pending' && !artist.avatar_url ? ' avatar-pending' : ''}">${avatarHTML(artist)}</div>
         <div class="artist-info">
-          <div class="artist-name">${esc(a.name)}</div>
+          <div class="artist-name">${esc(artist.name)}</div>
           <div class="artist-accounts">
-            ${a.x_account  ? `<span class="account-tag">${esc('@'+a.x_account)}</span>` : ''}
-            ${a.pixiv_user ? `<span class="account-tag pixiv-tag"><span class="dot"></span>pixiv: ${esc(a.pixiv_user)}</span>` : ''}
+            ${artist.x_account ? `<span class="account-tag">@${esc(artist.x_account)}</span>` : ''}
+            ${artist.pixiv_user ? `<span class="account-tag">pixiv: ${esc(artist.pixiv_user)}</span>` : ''}
+            ${modeBadge(artist)}
           </div>
         </div>
         <div class="artist-meta">
-          ${fetchStatusBadge(a)}
-          ${monitoringBadge(a)}
-          <span class="work-count">${works.length}件</span>
-          <span class="chevron" id="chev_${esc(a.id)}">▾</span>
+          ${fetchBadge(artist)}
+          ${monitorBadge(artist)}
+          <span class="chevron" id="chev_${esc(artist.id)}">▾</span>
         </div>
       </div>
-      <div class="artist-body" id="body_${esc(a.id)}">
-        ${a.archive && a.archive.url ? `<div class="archive-links">
-          <a href="${esc(a.archive.url)}" target="_blank" rel="noopener"><button class="small">archive.md を表示</button></a>
-          <a href="${esc(a.archive.hatena_add_url||'')}" target="_blank" rel="noopener"><button class="small">はてブ追加画面を開く（手動）</button></a>
-        </div>` : ''}
-        <div class="note-row">
-          <input type="text" placeholder="メモ..." value="${esc(a.note||'')}" onchange="updateNote('${esc(a.id)}', this.value)" />
-        </div>
+
+      <div class="artist-body" id="body_${esc(artist.id)}">
+        ${recordTarget ? `
+          <div class="record-box">
+            <p>このアカウントは「記録対象」です。archive.mdは通常プロフィールが既定値で、必要な場合だけリプライ欄へ切り替えられます。はてブは通常プロフィールを対象にします。</p>
+            <div class="row">
+              <a href="${archiveHelperUrl(artist)}"><button class="small primary">アーカイブ・はてブ</button></a>
+              <a href="https://x.com/${encodeURIComponent(artist.x_account)}" target="_blank" rel="noopener"><button class="small">Xプロフィールを開く</button></a>
+            </div>
+          </div>` : ''}
+
+        ${artist.archive && artist.archive.url ? `
+          <div class="row" style="margin-bottom:.75rem">
+            <a href="${esc(artist.archive.url)}" target="_blank" rel="noopener"><button class="small">保存済みarchiveを見る</button></a>
+          </div>` : ''}
+
+        <div class="note-row"><input type="text" placeholder="メモ..." value="${esc(artist.note || '')}" onchange="updateNote('${esc(artist.id)}', this.value)"></div>
+
         <div class="add-work-row">
-          <input type="text" id="wInline_${esc(a.id)}" placeholder="作品URLを貼り付け（Enter で追加）" onkeydown="if(event.key==='Enter')addWorkInline('${esc(a.id)}')" />
-          <input type="text" class="memo-input-inline" id="wMemoInline_${esc(a.id)}" placeholder="メモ（任意）" onkeydown="if(event.key==='Enter')addWorkInline('${esc(a.id)}')" />
-          <button onclick="addWorkInline('${esc(a.id)}')" class="small">追加</button>
+          <input id="wInline_${esc(artist.id)}" placeholder="関連URLを貼り付け" onkeydown="if(event.key==='Enter')addWorkInline('${esc(artist.id)}')">
+          <input class="memo-input-inline" id="wMemoInline_${esc(artist.id)}" placeholder="メモ">
+          <button class="small" onclick="addWorkInline('${esc(artist.id)}')">追加</button>
         </div>
+
         <div class="works-list">
-          ${!works.length
-            ? '<div style="font-size:13px;color:#aaa;padding:4px 0">作品URLなし</div>'
-            : works.map((w,i) => `
-              <div class="work-item">
-                <span class="work-type-badge ${badgeClass(w.type)}">${esc(typeLabel(w.type))}</span>
-                <a class="work-url" href="${esc(w.url)}" target="_blank" rel="noopener">${esc(w.url)}</a>
-                ${w.memo ? `<span class="work-memo" title="${esc(w.memo)}">${esc(w.memo)}</span>` : ''}
-                <span class="work-date">${esc(w.saved_at||'')}</span>
-                <button class="small danger" onclick="removeWork('${esc(a.id)}',${i})">✕</button>
-              </div>`).join('')}
+          ${works.map((work, index) => `
+            <div class="work-item">
+              <span class="work-type-badge">${typeLabel(work.type)}</span>
+              <a class="work-url" href="${esc(work.url)}" target="_blank" rel="noopener">${esc(work.url)}</a>
+              ${work.memo ? `<span class="work-memo">${esc(work.memo)}</span>` : ''}
+              <span class="work-date">${esc(work.saved_at || '')}</span>
+              <button class="small danger" onclick="removeWork('${esc(artist.id)}', ${index})">×</button>
+            </div>`).join('')}
         </div>
+
         <div class="artist-actions">
-          <button class="small" onclick="openEditModal('${esc(a.id)}')">編集</button>
-          <button class="small danger" onclick="removeArtist('${esc(a.id)}')">削除</button>
-          ${a.x_account ? `<button class="small refetch-btn" onclick="refetchProfile('${esc(a.id)}')">🔄 プロフィール再取得</button>` : ''}
+          <button class="small" onclick="openEditModal('${esc(artist.id)}')">編集</button>
+          <button class="small danger" onclick="removeArtist('${esc(artist.id)}')">削除</button>
+          ${artist.x_account ? `<button class="small refetch-btn" onclick="refetchProfile('${esc(artist.id)}')">プロフィール再取得</button>` : ''}
         </div>
       </div>
     </div>`;
   }).join('');
+
   updateStats();
 }
 
 async function refetchProfile(id) {
-  const a = artists.find(x => x.id === id); if (!a || !a.x_account) return;
-  a.fetch_status = 'pending'; saveLocal(); renderList();
-  const ok = await triggerFetch(a.id, a.x_account);
-  showToast(ok ? '再取得をリクエストしました。数分後に「GitHubから読込」してください。' : 'トリガーに失敗しました。GitHub設定を確認してください。');
-  setTimeout(() => { const b = document.getElementById('body_'+id); if(b && !b.classList.contains('open')) toggleCard(id); }, 30);
+  const artist = artists.find(item => item.id === id);
+  if (!artist || !artist.x_account) return;
+
+  artist.fetch_status = 'pending';
+  saveLocal();
+  renderList();
+
+  const ok = await triggerFetch(artist.id, artist.x_account);
+  showToast(ok ? '再取得を依頼しました' : 'トリガーに失敗しました');
 }
 
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3000);
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3000);
 }
 
 loadLocal();

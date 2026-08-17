@@ -1,35 +1,26 @@
 {
   "artists": [
     {
-      "id": "mr027y86q388",
-      "name": "tawakenai_marou",
-      "x_account": "tawakenai_marou",
+      "id": "msx5xlsd4u56",
+      "name": "fie3011",
+      "x_account": "fie3011",
       "pixiv_user": "",
       "note": "",
       "works": [],
-      "added_at": "2026-06-30",
-      "fetch_status": "pending",
-      "monitoring": {
-        "status": "active",
-        "last_checked_at": "2026-08-17T10:57:29+00:00",
-        "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tawakenai_marou; contains_username=True; suspended_marker=False; missing_marker=False; bytes=216599; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"fb15343158641eb8e0d705f5f88eae57f348865f\"><head><meta charSet=\"utf-8\" nonce=\"97nT'",
-        "consecutive_unavailable": 0
-      },
-      "archive": {
-        "status": "retry_pending",
-        "last_attempt_at": "2026-08-17T10:57:30+00:00",
-        "last_error": "ValueError",
-        "last_error_detail": "archive service returned HTTP 429; content-type=text/html; body='<!DOCTYPE html> <html> <head> <meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\" /> <meta content=\"width=device-width, initial-scale=1, minimal-'"
-      },
-      "status_history": [
-        {
-          "from": "unknown",
-          "to": "active",
-          "at": "2026-08-17T10:15:11+00:00",
-          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tawakenai_marou; contains_username=True; suspended_marker=False; missing_marker=False; bytes=236114; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"fb15343158641eb8e0d705f5f88eae57f348865f\"><head><meta charSet=\"utf-8\" nonce=\"KVHN'"
-        }
-      ]
+      "added_at": "2026-08-17",
+      "fetch_status": "error",
+      "tracking_mode": "record"
+    },
+    {
+      "id": "msx7mqzwhxxu",
+      "name": "i_ceey53",
+      "x_account": "i_ceey53",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-08-17",
+      "fetch_status": "error"
     }
   ]
 }

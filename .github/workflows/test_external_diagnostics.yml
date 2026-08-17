@@ -22,3 +22,5 @@ jobs:
         run: python -m py_compile scripts/*.py
       - name: Probe X without archive write
         run: python scripts/monitor_accounts.py --no-archive
+      - name: Compare clearly nonexistent X profile
+        run: python scripts/monitor_accounts.py --diagnose-profile x_archives_nonexistent_9876543210

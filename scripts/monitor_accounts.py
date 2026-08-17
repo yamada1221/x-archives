@@ -66,8 +66,8 @@ def http_error_detail(prefix: str, exc: urllib.error.HTTPError) -> str:
     return f"{prefix} HTTP {exc.code}; content-type={content_type}; body={preview!r}"
 
 
-def probe_profile_page(username: str) -> str:
-    """Return diagnostics for the public X profile page without classifying it."""
+def probe_profile_page_status(username: str) -> tuple[str, str]:
+    """Conservatively classify the public X profile page and return diagnostics."""
     url = PROFILE_URL_TEMPLATE.format(username=urllib.parse.quote(username, safe=""))
     try:
         with request(url) as response:
@@ -79,15 +79,25 @@ def probe_profile_page(username: str) -> str:
         user_marker = username.lower().encode("utf-8") in lower
         suspended_marker = b"account suspended" in lower
         missing_marker = b"this account doesn" in lower and b"exist" in lower
-        return (
+        detail = (
             f"profile page HTTP {status}; content-type={content_type}; final_url={final_url}; "
             f"contains_username={user_marker}; suspended_marker={suspended_marker}; "
             f"missing_marker={missing_marker}; bytes={len(raw)}; body={safe_preview(raw)!r}"
         )
+        if suspended_marker or missing_marker:
+            return "unavailable", detail
+        if status == 200 and user_marker:
+            return "active", detail
+        return "unknown", detail
     except urllib.error.HTTPError as exc:
-        return http_error_detail("profile page returned", exc)
+        return "unknown", http_error_detail("profile page returned", exc)
     except OSError as exc:
-        return f"profile page failure: {type(exc).__name__}: {exc}"
+        return "unknown", f"profile page failure: {type(exc).__name__}: {exc}"
+
+
+def probe_profile_page(username: str) -> str:
+    """Return diagnostics for the public X profile page without exposing headers."""
+    return probe_profile_page_status(username)[1]
 
 
 def merge_legacy_artists(current: dict, legacy: dict) -> int:
@@ -129,9 +139,9 @@ def probe_account(username: str) -> tuple[str, str]:
         try:
             payload = json.loads(raw)
         except json.JSONDecodeError:
-            fallback = probe_profile_page(username)
+            fallback_result, fallback = probe_profile_page_status(username)
             return (
-                "unknown",
+                fallback_result,
                 f"non-JSON public response; HTTP {status}; content-type={content_type}; "
                 f"body={safe_preview(raw)!r}; {fallback}",
             )
@@ -261,7 +271,8 @@ def main() -> None:
         return
     if args.diagnose_profile:
         username = args.diagnose_profile.strip().lstrip("@")
-        print(f"Profile diagnostic @{username}: {probe_profile_page(username)}")
+        result, detail = probe_profile_page_status(username)
+        print(f"Profile diagnostic @{username}: {result} — {detail}")
         return
     data = json.loads(DATA_PATH.read_text(encoding="utf-8")) if DATA_PATH.exists() else {"artists": []}
     if LEGACY_DATA_PATH.exists():

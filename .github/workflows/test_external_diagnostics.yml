@@ -5,6 +5,8 @@ on:
     paths:
       - "scripts/monitor_accounts.py"
       - "tests/test_monitor_accounts.py"
+      - "scripts/fetch_artist.py"
+      - "tests/test_fetch_artist.py"
       - ".github/workflows/test_external_diagnostics.yml"
   workflow_dispatch:
 

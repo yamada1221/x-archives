@@ -1,17 +1,59 @@
 """
 fetch_artist.py
 - 環境変数 ARTIST_ID, X_ACCOUNT を受け取る
-- twscrape でXプロフィール（表示名・アイコンURL）を取得
-- data/artists.json の該当作者を更新する
+- 公開エンドポイントを使ってXプロフィール（表示名・アイコンURL）を取得
+- syndication API が失敗した場合は通常のXプロフィールHTMLをフォールバックに使う
+- data/artists.json の該当アカウントを更新する
 """
 
+from __future__ import annotations
+
 import asyncio
+import datetime as dt
+import html
+from html.parser import HTMLParser
 import json
 import os
-import sys
 from pathlib import Path
+import re
+import sys
+import urllib.error
+import urllib.parse
+import urllib.request
 
 DATA_PATH = Path("data/artists.json")
+PROFILE_BODY_LIMIT = 1024 * 1024
+USER_AGENT = "Mozilla/5.0 (compatible; x-archives/1.0; +https://github.com/yamada1221/x-archives)"
+
+
+class ProfileMetaParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.meta: dict[str, str] = {}
+        self.in_title = False
+        self.title_parts: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        attrs_dict = {k.lower(): (v or "") for k, v in attrs}
+        if tag.lower() == "meta":
+            key = (attrs_dict.get("property") or attrs_dict.get("name") or "").lower()
+            content = attrs_dict.get("content", "")
+            if key and content:
+                self.meta[key] = content
+        elif tag.lower() == "title":
+            self.in_title = True
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag.lower() == "title":
+            self.in_title = False
+
+    def handle_data(self, data: str) -> None:
+        if self.in_title:
+            self.title_parts.append(data)
+
+    @property
+    def title(self) -> str:
+        return "".join(self.title_parts).strip()
 
 
 def load_artists() -> dict:
@@ -21,40 +63,187 @@ def load_artists() -> dict:
     return {"artists": []}
 
 
-def save_artists(data: dict):
+def save_artists(data: dict) -> None:
     DATA_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(DATA_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 
-async def fetch_x_profile(username: str) -> dict | None:
-    """ログイン不要の公開エンドポイントからプロフィールを取得する。"""
-    return await fetch_x_profile_fallback(username)
+def request(url: str, timeout: int = 15):
+    req = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": USER_AGENT,
+            "Accept": "application/json,text/html;q=0.9,*/*;q=0.8",
+            "Accept-Language": "ja,en-US;q=0.8,en;q=0.6",
+        },
+    )
+    return urllib.request.urlopen(req, timeout=timeout)
 
 
-async def fetch_x_profile_fallback(username: str) -> dict | None:
-    """twscrape が失敗した場合の代替取得"""
-    import urllib.request, urllib.error
+def normalize_avatar(url: str) -> str:
+    return (
+        url.replace("_normal.", "_400x400.")
+        .replace("_normal", "_400x400")
+        .replace("\\/", "/")
+    )
 
-    # syndication API（非公式・ゲスト向け）
-    url = f"https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names={username}"
+
+def clean_display_name(value: str, username: str) -> str:
+    value = html.unescape(value).strip()
+    suffixes = [
+        f" (@{username}) / X",
+        f" (@{username}) on X",
+        f" (@{username}) / Twitter",
+    ]
+    for suffix in suffixes:
+        if value.lower().endswith(suffix.lower()):
+            value = value[: -len(suffix)].strip()
+            break
+    return value or username
+
+
+def extract_profile_from_html(raw: bytes, username: str) -> dict | None:
+    """Extract a display name and avatar from the logged-out X profile HTML."""
+    text = raw.decode("utf-8", errors="replace")
+    decoded = html.unescape(text)
+
+    parser = ProfileMetaParser()
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-        with urllib.request.urlopen(req, timeout=10) as r:
-            data = json.loads(r.read())
-            if data:
-                user = data[0]
-                return {
-                    "display_name": user.get("name", username),
-                    "avatar_url": user.get("profile_image_url_https", "").replace("_normal", "_400x400"),
-                }
-    except Exception as e:
-        print(f"[fallback] error: {e}", file=sys.stderr)
+        parser.feed(text)
+    except Exception:
+        pass
 
+    name_candidates = [
+        parser.meta.get("og:title", ""),
+        parser.meta.get("twitter:title", ""),
+        parser.title,
+    ]
+    image_candidates = [
+        parser.meta.get("og:image", ""),
+        parser.meta.get("twitter:image", ""),
+    ]
+
+    # XのHTMLにはユーザー情報がJSONとして埋め込まれることがある。
+    # screen_name の近傍だけを見ることで、別ユーザーの情報を拾うのを避ける。
+    marker_patterns = [
+        re.compile(r'"screen_name"\s*:\s*"' + re.escape(username) + r'"', re.I),
+        re.compile(r'\\"screen_name\\"\s*:\s*\\"' + re.escape(username) + r'\\"', re.I),
+    ]
+    for source in (text, decoded):
+        for marker_pattern in marker_patterns:
+            match = marker_pattern.search(source)
+            if not match:
+                continue
+            start = max(0, match.start() - 10000)
+            end = min(len(source), match.end() + 10000)
+            window = source[start:end].replace("\\/", "/")
+
+            name_match = re.search(r'"name"\s*:\s*"((?:\\.|[^"\\])*)"', window)
+            if name_match:
+                try:
+                    name_candidates.append(json.loads('"' + name_match.group(1) + '"'))
+                except Exception:
+                    name_candidates.append(name_match.group(1))
+
+            image_match = re.search(
+                r'"profile_image_url_https"\s*:\s*"((?:\\.|[^"\\])*)"', window
+            )
+            if image_match:
+                try:
+                    image_candidates.append(json.loads('"' + image_match.group(1) + '"'))
+                except Exception:
+                    image_candidates.append(image_match.group(1))
+            break
+
+    # HTML全体にプロフィール画像URLが一つだけ明確にある場合の補助フォールバック。
+    if not any(image_candidates):
+        image_match = re.search(
+            r'https://pbs\.twimg\.com/profile_images/[^"\'<>\\ ]+', decoded
+        )
+        if image_match:
+            image_candidates.append(image_match.group(0))
+
+    display_name = next(
+        (
+            clean_display_name(candidate, username)
+            for candidate in name_candidates
+            if candidate and username.lower() in candidate.lower()
+        ),
+        "",
+    )
+    if not display_name:
+        # 埋め込みJSONの name はユーザー名を含まないことが普通なので、第2候補として許可する。
+        display_name = next(
+            (clean_display_name(candidate, username) for candidate in name_candidates if candidate),
+            username,
+        )
+
+    avatar_url = next(
+        (
+            normalize_avatar(candidate)
+            for candidate in image_candidates
+            if candidate and "pbs.twimg.com/profile_images/" in candidate
+        ),
+        "",
+    )
+
+    if avatar_url:
+        return {"display_name": display_name, "avatar_url": avatar_url}
     return None
 
 
-def main():
+async def fetch_x_profile(username: str) -> dict | None:
+    """Try the lightweight public endpoint first, then the profile page HTML."""
+    profile = await fetch_x_profile_syndication(username)
+    if profile:
+        return profile
+    return await fetch_x_profile_html(username)
+
+
+async def fetch_x_profile_syndication(username: str) -> dict | None:
+    url = "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?" + urllib.parse.urlencode(
+        {"screen_names": username}
+    )
+    try:
+        with request(url, timeout=10) as response:
+            raw = response.read()
+        data = json.loads(raw)
+        if data:
+            user = data[0]
+            return {
+                "display_name": user.get("name", username),
+                "avatar_url": normalize_avatar(user.get("profile_image_url_https", "")),
+            }
+    except Exception as exc:
+        print(f"[syndication] error: {type(exc).__name__}: {exc}", file=sys.stderr)
+    return None
+
+
+async def fetch_x_profile_html(username: str) -> dict | None:
+    url = f"https://x.com/{urllib.parse.quote(username, safe='')}"
+    try:
+        with request(url, timeout=15) as response:
+            status = getattr(response, "status", 200)
+            raw = response.read(PROFILE_BODY_LIMIT)
+        print(f"[html] HTTP {status}; bytes={len(raw)}", file=sys.stderr)
+        if status == 200:
+            profile = extract_profile_from_html(raw, username)
+            if profile:
+                print(
+                    f"[html] extracted display_name={profile['display_name']!r}; "
+                    f"avatar={'yes' if profile['avatar_url'] else 'no'}",
+                    file=sys.stderr,
+                )
+                return profile
+    except urllib.error.HTTPError as exc:
+        print(f"[html] HTTPError {exc.code}", file=sys.stderr)
+    except Exception as exc:
+        print(f"[html] error: {type(exc).__name__}: {exc}", file=sys.stderr)
+    return None
+
+
+def main() -> None:
     artist_id = os.environ.get("ARTIST_ID", "").strip()
     x_account = os.environ.get("X_ACCOUNT", "").strip().lstrip("@")
 
@@ -63,12 +252,10 @@ def main():
         sys.exit(1)
 
     print(f"Fetching profile for @{x_account} (id={artist_id})")
-
     profile = asyncio.run(fetch_x_profile(x_account))
 
     data = load_artists()
     artist = next((a for a in data["artists"] if a["id"] == artist_id), None)
-
     if artist is None:
         print(f"Artist {artist_id} not found in artists.json", file=sys.stderr)
         sys.exit(1)
@@ -76,7 +263,7 @@ def main():
     if profile:
         artist["name"] = profile["display_name"]
         artist["avatar_url"] = profile["avatar_url"]
-        artist["profile_fetched_at"] = __import__("datetime").date.today().isoformat()
+        artist["profile_fetched_at"] = dt.date.today().isoformat()
         artist["fetch_status"] = "done"
         print(f"Updated: {artist['name']} / {artist['avatar_url']}")
     else:

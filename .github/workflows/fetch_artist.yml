@@ -34,6 +34,12 @@ jobs:
           X_ACCOUNT: ${{ github.event.client_payload.x_account || inputs.x_account }}
         run: python scripts/fetch_artist.py
 
+      - name: Save profile fetch diagnostics
+        env:
+          ARTIST_ID: ${{ github.event.client_payload.artist_id || inputs.artist_id }}
+          X_ACCOUNT: ${{ github.event.client_payload.x_account || inputs.x_account }}
+        run: python scripts/profile_fetch_diagnostics.py
+
       - name: Commit updated artists.json
         env:
           X_ACCOUNT: ${{ github.event.client_payload.x_account || inputs.x_account }}

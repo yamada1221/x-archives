@@ -3,6 +3,16 @@ name: Fetch Artist Profile
 on:
   repository_dispatch:
     types: [fetch_artist]
+  workflow_dispatch:
+    inputs:
+      artist_id:
+        description: "Artist ID in data/artists.json"
+        required: true
+        type: string
+      x_account:
+        description: "X account name without @"
+        required: true
+        type: string
 
 jobs:
   fetch:
@@ -20,14 +30,16 @@ jobs:
 
       - name: Fetch artist profile
         env:
-          ARTIST_ID: ${{ github.event.client_payload.artist_id }}
-          X_ACCOUNT: ${{ github.event.client_payload.x_account }}
+          ARTIST_ID: ${{ github.event.client_payload.artist_id || inputs.artist_id }}
+          X_ACCOUNT: ${{ github.event.client_payload.x_account || inputs.x_account }}
         run: python scripts/fetch_artist.py
 
       - name: Commit updated artists.json
+        env:
+          X_ACCOUNT: ${{ github.event.client_payload.x_account || inputs.x_account }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/artists.json
-          git diff --cached --quiet || git commit -m "chore: update artist profile [${{ github.event.client_payload.x_account }}]"
+          git diff --cached --quiet || git commit -m "chore: update artist profile [$X_ACCOUNT]"
           git push

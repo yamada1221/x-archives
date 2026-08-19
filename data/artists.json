@@ -63,14 +63,14 @@
     },
     {
       "id": "msx7mqzwhxxu",
-      "name": "i_ceey53",
+      "name": "I C E E Y",
       "x_account": "i_ceey53",
       "pixiv_user": "",
       "note": "",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-08-17",
-      "fetch_status": "error",
+      "fetch_status": "done",
       "monitoring": {
         "status": "active",
         "last_checked_at": "2026-08-18T04:56:17+00:00",
@@ -85,17 +85,19 @@
           "at": "2026-08-17T17:09:43+00:00",
           "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/i_ceey53; contains_username=True; suspended_marker=False; missing_marker=False; bytes=218940; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"fb15343158641eb8e0d705f5f88eae57f348865f\"><head><meta charSet=\"utf-8\" nonce=\"7n/n'"
         }
-      ]
+      ],
+      "avatar_url": "https://pbs.twimg.com/profile_images/2075144325457985536/oR6l5ElF_200x200.jpg",
+      "profile_fetched_at": "2026-08-19"
     },
     {
       "id": "mr027y86q388",
-      "name": "tawakenai_marou",
+      "name": "マロヴェロアは戯けない",
       "x_account": "tawakenai_marou",
       "pixiv_user": "",
       "note": "",
       "works": [],
       "added_at": "2026-06-30",
-      "fetch_status": "pending",
+      "fetch_status": "done",
       "monitoring": {
         "status": "active",
         "last_checked_at": "2026-08-18T04:56:17+00:00",
@@ -110,7 +112,9 @@
           "at": "2026-08-17T17:09:43+00:00",
           "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tawakenai_marou; contains_username=True; suspended_marker=False; missing_marker=False; bytes=232618; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"fb15343158641eb8e0d705f5f88eae57f348865f\"><head><meta charSet=\"utf-8\" nonce=\"2Vxn'"
         }
-      ]
+      ],
+      "avatar_url": "https://pbs.twimg.com/profile_images/1957207812779790336/ViMaK8J0_200x200.jpg",
+      "profile_fetched_at": "2026-08-19"
     }
   ]
 }

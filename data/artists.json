@@ -2,18 +2,20 @@
   "artists": [
     {
       "id": "mr027y86q388",
-      "name": "tawakenai_marou",
+      "name": "マロヴェロアは戯けない",
       "x_account": "tawakenai_marou",
       "pixiv_user": "",
       "note": "",
       "works": [],
       "added_at": "2026-06-30",
-      "fetch_status": "pending",
-      "tracking_mode": "monitor_only"
+      "fetch_status": "done",
+      "tracking_mode": "monitor_only",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1957207812779790336/ViMaK8J0_200x200.jpg",
+      "profile_fetched_at": "2026-08-19"
     },
     {
       "id": "msy7loana8uh",
-      "name": "motiko3230",
+      "name": "餅粉",
       "x_account": "motiko3230",
       "pixiv_user": "",
       "note": "",
@@ -27,11 +29,13 @@
         }
       ],
       "added_at": "2026-08-18",
-      "fetch_status": "error"
+      "fetch_status": "done",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2082552492769083392/nqf-L3Cw_200x200.jpg",
+      "profile_fetched_at": "2026-08-19"
     },
     {
       "id": "msyq387tntmk",
-      "name": "aryuha_0_0",
+      "name": "あるは",
       "x_account": "aryuha_0_0",
       "pixiv_user": "",
       "note": "",
@@ -45,11 +49,13 @@
         }
       ],
       "added_at": "2026-08-18",
-      "fetch_status": "error"
+      "fetch_status": "done",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1948180102023626752/0D5KJ5St_200x200.jpg",
+      "profile_fetched_at": "2026-08-19"
     },
     {
       "id": "msyqwk8aso1y",
-      "name": "tussn612",
+      "name": "すずを",
       "x_account": "tussn612",
       "pixiv_user": "",
       "note": "創作実話",
@@ -63,29 +69,35 @@
         }
       ],
       "added_at": "2026-08-18",
-      "fetch_status": "error"
+      "fetch_status": "done",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1579270061625319424/UBKnZgP0_200x200.jpg",
+      "profile_fetched_at": "2026-08-19"
     },
     {
       "id": "mszu7ykn6klg",
-      "name": "fie3011",
+      "name": "ふう",
       "x_account": "fie3011",
       "pixiv_user": "",
       "note": "",
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-08-19",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2048253424710688768/WxJkQKRJ_200x200.jpg",
+      "profile_fetched_at": "2026-08-19"
     },
     {
       "id": "mszz8c59m7zs",
-      "name": "fie3011",
+      "name": "ふう",
       "x_account": "fie3011",
       "pixiv_user": "",
       "note": "",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-08-19",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2048253424710688768/WxJkQKRJ_200x200.jpg",
+      "profile_fetched_at": "2026-08-19"
     }
   ]
 }

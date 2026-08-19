@@ -1,6 +1,9 @@
 name: Fetch All X Profiles
 
 on:
+  push:
+    paths:
+      - 'data/artists.json'
   workflow_dispatch:
     inputs:
       mode:
@@ -14,6 +17,7 @@ on:
 
 jobs:
   fetch-all:
+    if: github.event_name != 'push' || github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -28,13 +32,13 @@ jobs:
 
       - name: Fetch profiles
         env:
-          FETCH_MODE: ${{ inputs.mode }}
+          FETCH_MODE: ${{ github.event_name == 'push' && 'missing_only' || inputs.mode }}
           FETCH_DELAY_SECONDS: "3"
         run: python scripts/fetch_all_profiles.py
 
       - name: Commit updated artists.json
         env:
-          FETCH_MODE: ${{ inputs.mode }}
+          FETCH_MODE: ${{ github.event_name == 'push' && 'missing_only' || inputs.mode }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

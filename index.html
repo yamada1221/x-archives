@@ -386,6 +386,18 @@ async function saveArtist() {
     return;
   }
 
+  if (xAccount) {
+    const normalizedX = xAccount.toLowerCase();
+    const duplicate = artists.find(item =>
+      item.id !== editingId &&
+      String(item.x_account || '').trim().replace(/^@/, '').toLowerCase() === normalizedX
+    );
+    if (duplicate) {
+      alert(`@${xAccount} はすでに登録されています`);
+      return;
+    }
+  }
+
   const button = document.getElementById('modalSaveBtn');
   button.disabled = true;
   button.textContent = '処理中...';

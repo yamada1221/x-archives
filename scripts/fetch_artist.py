@@ -69,6 +69,25 @@ def save_artists(data: dict) -> None:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 
+def find_artist(data: dict, artist_id: str, x_account: str) -> tuple[dict | None, str]:
+    """Find by stable UI id first, then recover from stale ids using X account."""
+    artists = data.get("artists", [])
+    artist = next((a for a in artists if str(a.get("id", "")) == artist_id), None)
+    if artist is not None:
+        return artist, "id"
+
+    normalized = x_account.strip().lstrip("@").lower()
+    artist = next(
+        (
+            a
+            for a in artists
+            if str(a.get("x_account", "")).strip().lstrip("@").lower() == normalized
+        ),
+        None,
+    )
+    return (artist, "x_account") if artist is not None else (None, "none")
+
+
 def request(url: str, timeout: int = 15):
     req = urllib.request.Request(
         url,
@@ -82,19 +101,11 @@ def request(url: str, timeout: int = 15):
 
 
 def normalize_avatar(url: str) -> str:
-    return (
-        url.replace("_normal.", "_400x400.")
-        .replace("_normal", "_400x400")
-        .replace("\\/", "/")
-    )
+    return url.replace("_normal.", "_400x400.").replace("_normal", "_400x400").replace("\\/", "/")
 
 
 def clean_display_name(value: str, username: str) -> str:
     value = html.unescape(value).strip()
-
-    # Logged-out X pages can localize their OG title. In Japanese this may look like:
-    #   Xユーザーのふう（@fie3011）さん
-    # Strip the X-generated wrapper while preserving the user's actual display name.
     localized_patterns = [
         rf"^Xユーザーの(?P<name>.+?)（@{re.escape(username)}）さん$",
         rf"^Xユーザーの(?P<name>.+?)\s*\(@{re.escape(username)}\)さん$",
@@ -104,13 +115,7 @@ def clean_display_name(value: str, username: str) -> str:
         if match:
             cleaned = match.group("name").strip()
             return cleaned or username
-
-    suffixes = [
-        f" (@{username}) / X",
-        f" (@{username}) on X",
-        f" (@{username}) / Twitter",
-    ]
-    for suffix in suffixes:
+    for suffix in [f" (@{username}) / X", f" (@{username}) on X", f" (@{username}) / Twitter"]:
         if value.lower().endswith(suffix.lower()):
             value = value[: -len(suffix)].strip()
             break
@@ -118,26 +123,15 @@ def clean_display_name(value: str, username: str) -> str:
 
 
 def extract_profile_from_html(raw: bytes, username: str) -> dict | None:
-    """Extract a display name and avatar from the logged-out X profile HTML."""
     text = raw.decode("utf-8", errors="replace")
     decoded = html.unescape(text)
-
     parser = ProfileMetaParser()
     try:
         parser.feed(text)
     except Exception:
         pass
-
-    name_candidates = [
-        parser.meta.get("og:title", ""),
-        parser.meta.get("twitter:title", ""),
-        parser.title,
-    ]
-    image_candidates = [
-        parser.meta.get("og:image", ""),
-        parser.meta.get("twitter:image", ""),
-    ]
-
+    name_candidates = [parser.meta.get("og:title", ""), parser.meta.get("twitter:title", ""), parser.title]
+    image_candidates = [parser.meta.get("og:image", ""), parser.meta.get("twitter:image", "")]
     marker_patterns = [
         re.compile(r'"screen_name"\s*:\s*"' + re.escape(username) + r'"', re.I),
         re.compile(r'\\"screen_name\\"\s*:\s*\\"' + re.escape(username) + r'\\"', re.I),
@@ -147,64 +141,34 @@ def extract_profile_from_html(raw: bytes, username: str) -> dict | None:
             match = marker_pattern.search(source)
             if not match:
                 continue
-            start = max(0, match.start() - 10000)
-            end = min(len(source), match.end() + 10000)
-            window = source[start:end].replace("\\/", "/")
-
+            window = source[max(0, match.start() - 10000):min(len(source), match.end() + 10000)].replace("\\/", "/")
             name_match = re.search(r'"name"\s*:\s*"((?:\\.|[^"\\])*)"', window)
             if name_match:
                 try:
                     name_candidates.append(json.loads('"' + name_match.group(1) + '"'))
                 except Exception:
                     name_candidates.append(name_match.group(1))
-
-            image_match = re.search(
-                r'"profile_image_url_https"\s*:\s*"((?:\\.|[^"\\])*)"', window
-            )
+            image_match = re.search(r'"profile_image_url_https"\s*:\s*"((?:\\.|[^"\\])*)"', window)
             if image_match:
                 try:
                     image_candidates.append(json.loads('"' + image_match.group(1) + '"'))
                 except Exception:
                     image_candidates.append(image_match.group(1))
             break
-
     if not any(image_candidates):
-        image_match = re.search(
-            r'https://pbs\.twimg\.com/profile_images/[^"\'<>\\ ]+', decoded
-        )
+        image_match = re.search(r'https://pbs\.twimg\.com/profile_images/[^"\'<>\\ ]+', decoded)
         if image_match:
             image_candidates.append(image_match.group(0))
-
-    display_name = next(
-        (
-            clean_display_name(candidate, username)
-            for candidate in name_candidates
-            if candidate and username.lower() in candidate.lower()
-        ),
-        "",
-    )
+    display_name = next((clean_display_name(c, username) for c in name_candidates if c and username.lower() in c.lower()), "")
     if not display_name:
-        display_name = next(
-            (clean_display_name(candidate, username) for candidate in name_candidates if candidate),
-            username,
-        )
-
-    avatar_url = next(
-        (
-            normalize_avatar(candidate)
-            for candidate in image_candidates
-            if candidate and "pbs.twimg.com/profile_images/" in candidate
-        ),
-        "",
-    )
-
+        display_name = next((clean_display_name(c, username) for c in name_candidates if c), username)
+    avatar_url = next((normalize_avatar(c) for c in image_candidates if c and "pbs.twimg.com/profile_images/" in c), "")
     if avatar_url:
         return {"display_name": display_name, "avatar_url": avatar_url}
     return None
 
 
 async def fetch_x_profile(username: str) -> dict | None:
-    """Try the lightweight public endpoint first, then the profile page HTML."""
     profile = await fetch_x_profile_syndication(username)
     if profile:
         return profile
@@ -212,19 +176,14 @@ async def fetch_x_profile(username: str) -> dict | None:
 
 
 async def fetch_x_profile_syndication(username: str) -> dict | None:
-    url = "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?" + urllib.parse.urlencode(
-        {"screen_names": username}
-    )
+    url = "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?" + urllib.parse.urlencode({"screen_names": username})
     try:
         with request(url, timeout=10) as response:
             raw = response.read()
         data = json.loads(raw)
         if data:
             user = data[0]
-            return {
-                "display_name": user.get("name", username),
-                "avatar_url": normalize_avatar(user.get("profile_image_url_https", "")),
-            }
+            return {"display_name": user.get("name", username), "avatar_url": normalize_avatar(user.get("profile_image_url_https", ""))}
     except Exception as exc:
         print(f"[syndication] error: {type(exc).__name__}: {exc}", file=sys.stderr)
     return None
@@ -240,11 +199,7 @@ async def fetch_x_profile_html(username: str) -> dict | None:
         if status == 200:
             profile = extract_profile_from_html(raw, username)
             if profile:
-                print(
-                    f"[html] extracted display_name={profile['display_name']!r}; "
-                    f"avatar={'yes' if profile['avatar_url'] else 'no'}",
-                    file=sys.stderr,
-                )
+                print(f"[html] extracted display_name={profile['display_name']!r}; avatar={'yes' if profile['avatar_url'] else 'no'}", file=sys.stderr)
                 return profile
     except urllib.error.HTTPError as exc:
         print(f"[html] HTTPError {exc.code}", file=sys.stderr)
@@ -256,20 +211,18 @@ async def fetch_x_profile_html(username: str) -> dict | None:
 def main() -> None:
     artist_id = os.environ.get("ARTIST_ID", "").strip()
     x_account = os.environ.get("X_ACCOUNT", "").strip().lstrip("@")
-
     if not artist_id or not x_account:
         print("ERROR: ARTIST_ID and X_ACCOUNT are required", file=sys.stderr)
         sys.exit(1)
-
     print(f"Fetching profile for @{x_account} (id={artist_id})")
     profile = asyncio.run(fetch_x_profile(x_account))
-
     data = load_artists()
-    artist = next((a for a in data["artists"] if a["id"] == artist_id), None)
+    artist, matched_by = find_artist(data, artist_id, x_account)
     if artist is None:
-        print(f"Artist {artist_id} not found in artists.json", file=sys.stderr)
+        print(f"Artist {artist_id} / @{x_account} not found in artists.json", file=sys.stderr)
         sys.exit(1)
-
+    if matched_by == "x_account":
+        print(f"Artist id {artist_id} was stale; matched @{x_account} by x_account", file=sys.stderr)
     if profile:
         artist["name"] = profile["display_name"]
         artist["avatar_url"] = profile["avatar_url"]
@@ -279,7 +232,6 @@ def main() -> None:
     else:
         artist["fetch_status"] = "error"
         print("Could not fetch profile, keeping existing data", file=sys.stderr)
-
     save_artists(data)
     print("artists.json saved.")
 

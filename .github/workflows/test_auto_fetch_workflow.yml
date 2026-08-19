@@ -19,5 +19,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Install pytest
+        run: python -m pip install pytest
       - name: Run tests
         run: python -m pytest -q tests/test_auto_fetch_workflow.py

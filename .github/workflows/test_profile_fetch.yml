@@ -1,0 +1,23 @@
+name: Test profile fetch
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/fetch_artist.py'
+      - 'tests/test_fetch_artist.py'
+      - '.github/workflows/test_profile_fetch.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run profile fetch tests
+        run: python -m unittest -v tests.test_fetch_artist

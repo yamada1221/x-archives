@@ -1,120 +1,69 @@
 {
   "artists": [
     {
-      "id": "msx5xlsd4u56",
-      "name": "ふう",
-      "x_account": "fie3011",
-      "pixiv_user": "",
-      "note": "",
-      "works": [],
-      "added_at": "2026-08-17",
-      "fetch_status": "done",
-      "tracking_mode": "record",
-      "monitoring": {
-        "status": "active",
-        "last_checked_at": "2026-08-18T04:56:17+00:00",
-        "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/fie3011; contains_username=True; suspended_marker=False; missing_marker=False; bytes=264064; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"fb15343158641eb8e0d705f5f88eae57f348865f\"><head><meta charSet=\"utf-8\" nonce=\"xnib'",
-        "consecutive_unavailable": 0
-      },
-      "status_history": [
-        {
-          "from": "unknown",
-          "to": "active",
-          "at": "2026-08-17T17:09:43+00:00",
-          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/fie3011; contains_username=True; suspended_marker=False; missing_marker=False; bytes=265305; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"fb15343158641eb8e0d705f5f88eae57f348865f\"><head><meta charSet=\"utf-8\" nonce=\"l9m7'"
-        }
-      ],
-      "avatar_url": "https://pbs.twimg.com/profile_images/2048253424710688768/WxJkQKRJ_200x200.jpg",
-      "profile_fetched_at": "2026-08-19",
-      "profile_fetch_diagnostic": {
-        "checked_at": "2026-08-19T00:11:44+00:00",
-        "x_account": "fie3011",
-        "fetch_status_after_attempt": "done",
-        "syndication": {
-          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=fie3011",
-          "http_status": 200,
-          "content_type": "unknown",
-          "bytes": 0,
-          "json_ok": false,
-          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
-        },
-        "html": {
-          "url": "https://x.com/fie3011",
-          "http_status": 200,
-          "content_type": "text/html; charset=UTF-8",
-          "final_url": "https://x.com/fie3011",
-          "bytes": 257320,
-          "contains_username": true,
-          "screen_name_marker": false,
-          "profile_image_url_count": 83,
-          "meta_keys": [
-            "og:image",
-            "og:title",
-            "twitter:image",
-            "twitter:title"
-          ],
-          "og_title_present": true,
-          "og_image_present": true,
-          "twitter_title_present": true,
-          "twitter_image_present": true
-        }
-      }
-    },
-    {
-      "id": "msx7mqzwhxxu",
-      "name": "I C E E Y",
-      "x_account": "i_ceey53",
-      "pixiv_user": "",
-      "note": "",
-      "tracking_mode": "monitor_only",
-      "works": [],
-      "added_at": "2026-08-17",
-      "fetch_status": "done",
-      "monitoring": {
-        "status": "active",
-        "last_checked_at": "2026-08-18T04:56:17+00:00",
-        "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/i_ceey53; contains_username=True; suspended_marker=False; missing_marker=False; bytes=218941; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"fb15343158641eb8e0d705f5f88eae57f348865f\"><head><meta charSet=\"utf-8\" nonce=\"7Tts'",
-        "consecutive_unavailable": 0
-      },
-      "status_history": [
-        {
-          "from": "unknown",
-          "to": "active",
-          "at": "2026-08-17T17:09:43+00:00",
-          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/i_ceey53; contains_username=True; suspended_marker=False; missing_marker=False; bytes=218940; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"fb15343158641eb8e0d705f5f88eae57f348865f\"><head><meta charSet=\"utf-8\" nonce=\"7n/n'"
-        }
-      ],
-      "avatar_url": "https://pbs.twimg.com/profile_images/2075144325457985536/oR6l5ElF_200x200.jpg",
-      "profile_fetched_at": "2026-08-19"
-    },
-    {
       "id": "mr027y86q388",
-      "name": "マロヴェロアは戯けない",
+      "name": "tawakenai_marou",
       "x_account": "tawakenai_marou",
       "pixiv_user": "",
       "note": "",
       "works": [],
       "added_at": "2026-06-30",
-      "fetch_status": "done",
-      "monitoring": {
-        "status": "active",
-        "last_checked_at": "2026-08-18T04:56:17+00:00",
-        "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tawakenai_marou; contains_username=True; suspended_marker=False; missing_marker=False; bytes=233041; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"fb15343158641eb8e0d705f5f88eae57f348865f\"><head><meta charSet=\"utf-8\" nonce=\"CNr2'",
-        "consecutive_unavailable": 0
-      },
-      "status_history": [
+      "fetch_status": "pending",
+      "tracking_mode": "monitor_only"
+    },
+    {
+      "id": "msy7loana8uh",
+      "name": "motiko3230",
+      "x_account": "motiko3230",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "monitor_only",
+      "works": [
         {
-          "from": "unknown",
-          "to": "active",
-          "at": "2026-08-17T17:09:43+00:00",
-          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tawakenai_marou; contains_username=True; suspended_marker=False; missing_marker=False; bytes=232618; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"fb15343158641eb8e0d705f5f88eae57f348865f\"><head><meta charSet=\"utf-8\" nonce=\"2Vxn'"
+          "url": "https://x.com/motiko3230/status/2089532914434515422?s=46",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-08-18"
         }
       ],
-      "avatar_url": "https://pbs.twimg.com/profile_images/1957207812779790336/ViMaK8J0_200x200.jpg",
-      "profile_fetched_at": "2026-08-19"
+      "added_at": "2026-08-18",
+      "fetch_status": "error"
+    },
+    {
+      "id": "msyq387tntmk",
+      "name": "aryuha_0_0",
+      "x_account": "aryuha_0_0",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "monitor_only",
+      "works": [
+        {
+          "url": "https://x.com/aryuha_0_0/status/2089298462877892645?s=46",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-08-18"
+        }
+      ],
+      "added_at": "2026-08-18",
+      "fetch_status": "error"
+    },
+    {
+      "id": "msyqwk8aso1y",
+      "name": "tussn612",
+      "x_account": "tussn612",
+      "pixiv_user": "",
+      "note": "創作実話",
+      "tracking_mode": "monitor_only",
+      "works": [
+        {
+          "url": "https://x.com/tussn612/status/2089318620325396782?s=46",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-08-18"
+        }
+      ],
+      "added_at": "2026-08-18",
+      "fetch_status": "error"
     }
   ]
 }

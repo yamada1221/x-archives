@@ -22,6 +22,58 @@ def save_data(data: dict) -> None:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 
+def normalize_x_account(value: object) -> str:
+    return str(value or "").strip().lstrip("@").lower()
+
+
+def merge_duplicate_artist(target: dict, duplicate: dict) -> None:
+    if target.get("tracking_mode") != "record" and duplicate.get("tracking_mode") == "record":
+        target["tracking_mode"] = "record"
+
+    existing_works = target.setdefault("works", [])
+    seen = {(item.get("url"), item.get("saved_at"), item.get("memo")) for item in existing_works if isinstance(item, dict)}
+    for work in duplicate.get("works", []) or []:
+        if not isinstance(work, dict):
+            continue
+        key = (work.get("url"), work.get("saved_at"), work.get("memo"))
+        if key not in seen:
+            existing_works.append(work)
+            seen.add(key)
+
+    for field in ("note", "pixiv_user", "avatar_url", "profile_fetched_at"):
+        if not target.get(field) and duplicate.get(field):
+            target[field] = duplicate[field]
+
+    if target.get("fetch_status") != "done" and duplicate.get("fetch_status") == "done":
+        target["fetch_status"] = "done"
+        if duplicate.get("name"):
+            target["name"] = duplicate["name"]
+
+
+def deduplicate_artists(artists: list[dict]) -> tuple[list[dict], int]:
+    result: list[dict] = []
+    by_x: dict[str, dict] = {}
+    removed = 0
+
+    for artist in artists:
+        username = normalize_x_account(artist.get("x_account"))
+        if not username:
+            result.append(artist)
+            continue
+
+        existing = by_x.get(username)
+        if existing is None:
+            by_x[username] = artist
+            result.append(artist)
+            continue
+
+        merge_duplicate_artist(existing, artist)
+        removed += 1
+        print(f"dedupe: merged duplicate @{username} (kept id={existing.get('id')})")
+
+    return result, removed
+
+
 def already_fetched(artist: dict) -> bool:
     return (
         artist.get("fetch_status") == "done"
@@ -42,8 +94,12 @@ def main() -> None:
     failed = 0
     skipped = 0
 
-    artists = data.get("artists", [])
-    print(f"Bulk profile fetch: mode={mode}; artists={len(artists)}")
+    artists, duplicates_removed = deduplicate_artists(data.get("artists", []))
+    data["artists"] = artists
+    if duplicates_removed:
+        save_data(data)
+
+    print(f"Bulk profile fetch: mode={mode}; artists={len(artists)}; duplicates_removed={duplicates_removed}")
 
     for index, artist in enumerate(artists, start=1):
         username = str(artist.get("x_account", "")).strip().lstrip("@")
@@ -81,7 +137,10 @@ def main() -> None:
         if index < len(artists) and delay_seconds > 0:
             time.sleep(delay_seconds)
 
-    print(f"Summary: success={success}; failed={failed}; skipped={skipped}")
+    print(
+        f"Summary: success={success}; failed={failed}; skipped={skipped}; "
+        f"duplicates_removed={duplicates_removed}"
+    )
     save_data(data)
 
 

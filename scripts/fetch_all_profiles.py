@@ -7,7 +7,7 @@ import os
 import time
 from pathlib import Path
 
-from scripts.fetch_artist import fetch_x_profile
+from fetch_artist import fetch_x_profile
 
 DATA_PATH = Path("data/artists.json")
 
@@ -72,7 +72,6 @@ def main() -> None:
             success += 1
             print(f"  done: {artist['name']}")
         else:
-            # Keep the existing name/avatar when a refresh fails.
             artist["fetch_status"] = "error"
             failed += 1
             print("  failed: keeping existing profile data")

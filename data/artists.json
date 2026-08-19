@@ -85,19 +85,6 @@
       "fetch_status": "done",
       "avatar_url": "https://pbs.twimg.com/profile_images/2048253424710688768/WxJkQKRJ_200x200.jpg",
       "profile_fetched_at": "2026-08-19"
-    },
-    {
-      "id": "mszz8c59m7zs",
-      "name": "ふう",
-      "x_account": "fie3011",
-      "pixiv_user": "",
-      "note": "",
-      "tracking_mode": "monitor_only",
-      "works": [],
-      "added_at": "2026-08-19",
-      "fetch_status": "done",
-      "avatar_url": "https://pbs.twimg.com/profile_images/2048253424710688768/WxJkQKRJ_200x200.jpg",
-      "profile_fetched_at": "2026-08-19"
     }
   ]
 }

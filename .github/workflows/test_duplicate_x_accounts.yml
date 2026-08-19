@@ -1,0 +1,23 @@
+name: Test duplicate X accounts
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/fetch_all_profiles.py'
+      - 'tests/test_duplicate_x_accounts.py'
+      - '.github/workflows/test_duplicate_x_accounts.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run duplicate account tests
+        run: python -m pytest -q tests/test_duplicate_x_accounts.py

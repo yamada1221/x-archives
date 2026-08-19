@@ -2,7 +2,7 @@
   "artists": [
     {
       "id": "msx5xlsd4u56",
-      "name": "Xユーザーのふう（@fie3011）さん",
+      "name": "ふう",
       "x_account": "fie3011",
       "pixiv_user": "",
       "note": "",
@@ -28,7 +28,7 @@
       "avatar_url": "https://pbs.twimg.com/profile_images/2048253424710688768/WxJkQKRJ_200x200.jpg",
       "profile_fetched_at": "2026-08-19",
       "profile_fetch_diagnostic": {
-        "checked_at": "2026-08-19T00:04:38+00:00",
+        "checked_at": "2026-08-19T00:11:44+00:00",
         "x_account": "fie3011",
         "fetch_status_after_attempt": "done",
         "syndication": {

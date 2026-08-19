@@ -1,0 +1,54 @@
+name: Apply UI duplicate guard
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/apply_ui_duplicate_guard.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.head_ref == 'fix/ui-duplicate-x-warning'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/ui-duplicate-x-warning
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Patch UI and test
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          index = Path('index.html')
+          text = index.read_text(encoding='utf-8')
+          needle = """  if (!xAccount && !pixivUser) {\n    alert('XアカウントかPixivユーザーを入力してください');\n    return;\n  }\n\n  const button = document.getElementById('modalSaveBtn');"""
+          replacement = """  if (!xAccount && !pixivUser) {\n    alert('XアカウントかPixivユーザーを入力してください');\n    return;\n  }\n\n  if (xAccount) {\n    const normalizedX = xAccount.toLowerCase();\n    const duplicate = artists.find(item =>\n      item.id !== editingId &&\n      String(item.x_account || '').trim().replace(/^@/, '').toLowerCase() === normalizedX\n    );\n    if (duplicate) {\n      alert(`@${xAccount} はすでに登録されています`);\n      return;\n    }\n  }\n\n  const button = document.getElementById('modalSaveBtn');"""
+          if needle not in text:
+              raise SystemExit('saveArtist insertion point not found')
+          index.write_text(text.replace(needle, replacement, 1), encoding='utf-8')
+
+          test = Path('tests/test_index_tracking_modes.py')
+          t = test.read_text(encoding='utf-8')
+          addition = '''\n\ndef test_duplicate_x_account_is_rejected_in_ui():\n    assert "const normalizedX = xAccount.toLowerCase();" in HTML\n    assert "item.id !== editingId" in HTML\n    assert "String(item.x_account || '').trim().replace(/^@/, '').toLowerCase() === normalizedX" in HTML\n    assert "@${xAccount} はすでに登録されています" in HTML\n'''
+          if 'test_duplicate_x_account_is_rejected_in_ui' not in t:
+              test.write_text(t.rstrip() + addition + '\n', encoding='utf-8')
+
+          Path('.github/workflows/apply_ui_duplicate_guard.yml').unlink()
+          PY
+      - name: Install pytest
+        run: python -m pip install pytest
+      - name: Run tests
+        run: python -m pytest -q tests/test_index_tracking_modes.py
+      - name: Commit patch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html tests/test_index_tracking_modes.py .github/workflows/apply_ui_duplicate_guard.yml
+          git commit -m "fix: warn on duplicate X account in UI"
+          git push origin HEAD:fix/ui-duplicate-x-warning

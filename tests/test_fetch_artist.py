@@ -1,5 +1,10 @@
+import asyncio
+import tempfile
 import unittest
+from pathlib import Path
+from unittest.mock import AsyncMock, patch
 
+import scripts.fetch_artist as fetch_artist
 from scripts.fetch_artist import clean_display_name, extract_profile_from_html, normalize_avatar
 
 
@@ -40,6 +45,88 @@ class ProfileHtmlFallbackTests(unittest.TestCase):
             clean_display_name("Xユーザーのふう（@fie3011）さん", "fie3011"),
             "ふう",
         )
+
+    def test_cleans_standard_x_suffix(self):
+        self.assertEqual(
+            clean_display_name("Example Name (@example_user) / X", "example_user"),
+            "Example Name",
+        )
+
+
+class ProfileFetchFlowTests(unittest.TestCase):
+    def test_syndication_is_preferred_when_available(self):
+        expected = {
+            "display_name": "Syndication Name",
+            "avatar_url": "https://pbs.twimg.com/profile_images/1/a.jpg",
+        }
+        with patch.object(
+            fetch_artist,
+            "fetch_x_profile_syndication",
+            new=AsyncMock(return_value=expected),
+        ) as syndication, patch.object(
+            fetch_artist,
+            "fetch_x_profile_html",
+            new=AsyncMock(),
+        ) as html_fallback:
+            result = asyncio.run(fetch_artist.fetch_x_profile("example_user"))
+
+        self.assertEqual(result, expected)
+        syndication.assert_awaited_once_with("example_user")
+        html_fallback.assert_not_awaited()
+
+    def test_html_fallback_runs_when_syndication_fails(self):
+        expected = {
+            "display_name": "HTML Name",
+            "avatar_url": "https://pbs.twimg.com/profile_images/2/b.jpg",
+        }
+        with patch.object(
+            fetch_artist,
+            "fetch_x_profile_syndication",
+            new=AsyncMock(return_value=None),
+        ), patch.object(
+            fetch_artist,
+            "fetch_x_profile_html",
+            new=AsyncMock(return_value=expected),
+        ) as html_fallback:
+            result = asyncio.run(fetch_artist.fetch_x_profile("example_user"))
+
+        self.assertEqual(result, expected)
+        html_fallback.assert_awaited_once_with("example_user")
+
+    def test_save_and_load_artists_round_trip(self):
+        data = {
+            "artists": [
+                {
+                    "id": "artist-1",
+                    "x_account": "example_user",
+                    "name": "Example",
+                    "fetch_status": "done",
+                }
+            ]
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            data_path = Path(tmp) / "artists.json"
+            with patch.object(fetch_artist, "DATA_PATH", data_path):
+                fetch_artist.save_artists(data)
+                self.assertEqual(fetch_artist.load_artists(), data)
+
+    def test_profile_failure_does_not_require_clearing_existing_fields(self):
+        artist = {
+            "name": "Existing Name",
+            "avatar_url": "https://example.invalid/existing.jpg",
+            "fetch_status": "pending",
+        }
+        profile = None
+        if profile:
+            artist["name"] = profile["display_name"]
+            artist["avatar_url"] = profile["avatar_url"]
+            artist["fetch_status"] = "done"
+        else:
+            artist["fetch_status"] = "error"
+
+        self.assertEqual(artist["name"], "Existing Name")
+        self.assertEqual(artist["avatar_url"], "https://example.invalid/existing.jpg")
+        self.assertEqual(artist["fetch_status"], "error")
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 import unittest
 
-from scripts.fetch_artist import extract_profile_from_html, normalize_avatar
+from scripts.fetch_artist import clean_display_name, extract_profile_from_html, normalize_avatar
 
 
 class ProfileHtmlFallbackTests(unittest.TestCase):
@@ -33,6 +33,12 @@ class ProfileHtmlFallbackTests(unittest.TestCase):
         self.assertEqual(
             normalize_avatar("https://pbs.twimg.com/profile_images/1/a_normal.png"),
             "https://pbs.twimg.com/profile_images/1/a_400x400.png",
+        )
+
+    def test_cleans_japanese_x_wrapper(self):
+        self.assertEqual(
+            clean_display_name("Xユーザーのふう（@fie3011）さん", "fie3011"),
+            "ふう",
         )
 
 

@@ -75,6 +75,17 @@
       "works": [],
       "added_at": "2026-08-19",
       "fetch_status": "pending"
+    },
+    {
+      "id": "mszz8c59m7zs",
+      "name": "fie3011",
+      "x_account": "fie3011",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-08-19",
+      "fetch_status": "pending"
     }
   ]
 }

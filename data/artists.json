@@ -2,14 +2,49 @@
   "artists": [
     {
       "id": "mr027y86q388",
-      "name": "tawakenai_marou",
+      "name": "マロヴェロアは戯けない",
       "x_account": "tawakenai_marou",
       "pixiv_user": "",
       "note": "",
       "works": [],
       "added_at": "2026-06-30",
-      "fetch_status": "pending",
-      "tracking_mode": "monitor_only"
+      "fetch_status": "done",
+      "tracking_mode": "monitor_only",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1957207812779790336/ViMaK8J0_200x200.jpg",
+      "profile_fetched_at": "2026-08-19",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-08-19T08:31:44+00:00",
+        "x_account": "tawakenai_marou",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=tawakenai_marou",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/tawakenai_marou",
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "final_url": "https://x.com/tawakenai_marou",
+          "bytes": 188010,
+          "contains_username": true,
+          "screen_name_marker": false,
+          "profile_image_url_count": 53,
+          "meta_keys": [
+            "og:image",
+            "og:title",
+            "twitter:image",
+            "twitter:title"
+          ],
+          "og_title_present": true,
+          "og_image_present": true,
+          "twitter_title_present": true,
+          "twitter_image_present": true
+        }
+      }
     },
     {
       "id": "msy7loana8uh",

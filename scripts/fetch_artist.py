@@ -91,6 +91,20 @@ def normalize_avatar(url: str) -> str:
 
 def clean_display_name(value: str, username: str) -> str:
     value = html.unescape(value).strip()
+
+    # Logged-out X pages can localize their OG title. In Japanese this may look like:
+    #   Xユーザーのふう（@fie3011）さん
+    # Strip the X-generated wrapper while preserving the user's actual display name.
+    localized_patterns = [
+        rf"^Xユーザーの(?P<name>.+?)（@{re.escape(username)}）さん$",
+        rf"^Xユーザーの(?P<name>.+?)\s*\(@{re.escape(username)}\)さん$",
+    ]
+    for pattern in localized_patterns:
+        match = re.match(pattern, value, flags=re.I)
+        if match:
+            cleaned = match.group("name").strip()
+            return cleaned or username
+
     suffixes = [
         f" (@{username}) / X",
         f" (@{username}) on X",
@@ -124,8 +138,6 @@ def extract_profile_from_html(raw: bytes, username: str) -> dict | None:
         parser.meta.get("twitter:image", ""),
     ]
 
-    # XのHTMLにはユーザー情報がJSONとして埋め込まれることがある。
-    # screen_name の近傍だけを見ることで、別ユーザーの情報を拾うのを避ける。
     marker_patterns = [
         re.compile(r'"screen_name"\s*:\s*"' + re.escape(username) + r'"', re.I),
         re.compile(r'\\"screen_name\\"\s*:\s*\\"' + re.escape(username) + r'\\"', re.I),
@@ -156,7 +168,6 @@ def extract_profile_from_html(raw: bytes, username: str) -> dict | None:
                     image_candidates.append(image_match.group(1))
             break
 
-    # HTML全体にプロフィール画像URLが一つだけ明確にある場合の補助フォールバック。
     if not any(image_candidates):
         image_match = re.search(
             r'https://pbs\.twimg\.com/profile_images/[^"\'<>\\ ]+', decoded
@@ -173,7 +184,6 @@ def extract_profile_from_html(raw: bytes, username: str) -> dict | None:
         "",
     )
     if not display_name:
-        # 埋め込みJSONの name はユーザー名を含まないことが普通なので、第2候補として許可する。
         display_name = next(
             (clean_display_name(candidate, username) for candidate in name_candidates if candidate),
             username,

@@ -40,11 +40,38 @@ class MonitorTests(unittest.TestCase):
         self.assertEqual(artist["monitoring"]["status"], "unavailable")
         self.assertEqual(len(artist["status_history"]), 1)
 
+    def test_one_or_two_unavailable_results_do_not_flip_active_status(self):
+        artist = {"monitoring": {"status": "active", "consecutive_unavailable": 0}}
+        monitor.record_check(artist, "unavailable", "miss 1", "2026-01-01")
+        self.assertEqual(artist["monitoring"]["status"], "active")
+        self.assertEqual(artist["monitoring"]["consecutive_unavailable"], 1)
+        self.assertNotIn("status_history", artist)
+        monitor.record_check(artist, "unavailable", "miss 2", "2026-01-02")
+        self.assertEqual(artist["monitoring"]["status"], "active")
+        self.assertEqual(artist["monitoring"]["consecutive_unavailable"], 2)
+        self.assertNotIn("status_history", artist)
+
     def test_active_resets_failure_count_and_records_change(self):
         artist = {"monitoring": {"status": "unavailable", "consecutive_unavailable": 3}}
         monitor.record_check(artist, "active", "profile", "2026-01-04")
         self.assertEqual(artist["monitoring"]["consecutive_unavailable"], 0)
         self.assertEqual(artist["status_history"][0]["to"], "active")
+
+    def test_active_after_two_misses_breaks_consecutive_sequence(self):
+        artist = {"monitoring": {"status": "active", "consecutive_unavailable": 0}}
+        monitor.record_check(artist, "unavailable", "miss 1", "2026-01-01")
+        monitor.record_check(artist, "unavailable", "miss 2", "2026-01-02")
+        monitor.record_check(artist, "active", "found", "2026-01-03")
+        self.assertEqual(artist["monitoring"]["status"], "active")
+        self.assertEqual(artist["monitoring"]["consecutive_unavailable"], 0)
+
+    def test_unknown_preserves_status_and_failure_count(self):
+        artist = {"monitoring": {"status": "active", "consecutive_unavailable": 2}}
+        monitor.record_check(artist, "unknown", "rate limit", "2026-01-03")
+        self.assertEqual(artist["monitoring"]["status"], "active")
+        self.assertEqual(artist["monitoring"]["consecutive_unavailable"], 2)
+        self.assertEqual(artist["monitoring"]["last_result"], "unknown")
+        self.assertNotIn("status_history", artist)
 
     def test_archive_metadata_includes_hatena_registration_link(self):
         artist = {"x_account": "example"}
@@ -121,6 +148,33 @@ class MonitorTests(unittest.TestCase):
         with patch.object(monitor, "request", return_value=Response()):
             with self.assertRaisesRegex(ValueError, "did not redirect"):
                 monitor.submit_archive("example")
+
+    def test_process_checks_both_tracking_modes_without_archiving_when_disabled(self):
+        data = {
+            "artists": [
+                {"id": "m", "x_account": "monitor_user", "tracking_mode": "monitor_only"},
+                {"id": "r", "x_account": "record_user", "tracking_mode": "record"},
+            ]
+        }
+        probed = []
+        archived = []
+
+        def fake_probe(username):
+            probed.append(username)
+            return "active", "ok"
+
+        with patch.object(monitor, "probe_account", side_effect=fake_probe), patch.object(
+            monitor, "ensure_archive", side_effect=lambda artist: archived.append(artist["x_account"])
+        ):
+            monitor.process(data, archive=False)
+
+        self.assertEqual(probed, ["monitor_user", "record_user"])
+        self.assertEqual(archived, [])
+        self.assertTrue(all(a["monitoring"]["status"] == "active" for a in data["artists"]))
+
+    def test_scheduled_workflow_explicitly_disables_server_side_archiving(self):
+        workflow = Path(".github/workflows/monitor_accounts.yml").read_text(encoding="utf-8")
+        self.assertIn("python scripts/monitor_accounts.py --no-archive", workflow)
 
 
 if __name__ == "__main__":

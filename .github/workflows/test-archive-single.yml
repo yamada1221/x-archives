@@ -1,0 +1,24 @@
+name: Test single archive runner
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/archive_single.py'
+      - 'tests/test_archive_single.py'
+      - '.github/workflows/archive-single.yml'
+      - '.github/workflows/test-archive-single.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pytest
+        run: python -m pip install pytest
+      - name: Run tests
+        env:
+          PYTHONPATH: scripts
+        run: python -m pytest -q tests/test_archive_single.py

@@ -149,7 +149,10 @@
           "at": "2026-08-20T04:58:25+00:00",
           "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/fie3011; contains_username=True; suspended_marker=False; missing_marker=False; bytes=212374; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d854503e5e9be613e466911a09b22372b122d26f\"><head><meta charSet=\"utf-8\" nonce=\"zQ2D'"
         }
-      ]
+      ],
+      "archive_status": "error",
+      "archive_checked_at": "2026-08-20T07:14:56.371364+00:00",
+      "archive_error": "HTTP Error 429: Too Many Requests"
     },
     {
       "id": "mszz8c59m7zs",

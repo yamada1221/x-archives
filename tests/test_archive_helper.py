@@ -52,8 +52,24 @@ def test_helper_source_keeps_hatena_and_archive_targets_separate():
 
 def test_archive_url_bookmark_is_explicitly_optional():
     assert "archive URL自体をはてブ（任意）" in HTML
-    assert "通常はarchive URL自体をはてブする必要はありません" in HTML
 
 
 def test_default_archive_target_is_profile():
     assert re.search(r"if\(!archiveTarget\.dataset\.edited\)archiveTarget\.value=u\.profile", HTML)
+
+
+def test_browser_flow_is_declared():
+    assert "archive.mdへの保存はGitHub Actionsではなく、このブラウザから行います" in HTML
+
+
+def test_archive_result_can_be_written_back_to_github():
+    assert "function saveArchiveResultToGitHub()" in HTML
+    assert "保存結果をGitHubへ記録" in HTML
+    assert "artist.archive_status='done'" in HTML
+    assert "artist.archive_url=archive" in HTML
+    assert "artist.tracking_mode!=='record'" in HTML
+
+
+def test_helper_reuses_tracker_github_config():
+    assert "const CONFIG_KEY='artist_tracker_config';" in HTML
+    assert "localStorage.getItem(CONFIG_KEY)" in HTML

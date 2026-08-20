@@ -9,7 +9,22 @@
       "works": [],
       "added_at": "2026-06-30",
       "fetch_status": "pending",
-      "tracking_mode": "monitor_only"
+      "tracking_mode": "monitor_only",
+      "monitoring": {
+        "status": "active",
+        "last_checked_at": "2026-08-20T04:58:25+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tawakenai_marou; contains_username=True; suspended_marker=False; missing_marker=False; bytes=192793; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d854503e5e9be613e466911a09b22372b122d26f\"><head><meta charSet=\"utf-8\" nonce=\"QFnl'",
+        "consecutive_unavailable": 0
+      },
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-08-20T04:58:25+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tawakenai_marou; contains_username=True; suspended_marker=False; missing_marker=False; bytes=192793; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d854503e5e9be613e466911a09b22372b122d26f\"><head><meta charSet=\"utf-8\" nonce=\"QFnl'"
+        }
+      ]
     },
     {
       "id": "msy7loana8uh",
@@ -27,7 +42,22 @@
         }
       ],
       "added_at": "2026-08-18",
-      "fetch_status": "error"
+      "fetch_status": "error",
+      "monitoring": {
+        "status": "active",
+        "last_checked_at": "2026-08-20T04:58:25+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/motiko3230; contains_username=True; suspended_marker=False; missing_marker=False; bytes=185867; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d854503e5e9be613e466911a09b22372b122d26f\"><head><meta charSet=\"utf-8\" nonce=\"Yf3N'",
+        "consecutive_unavailable": 0
+      },
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-08-20T04:58:25+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/motiko3230; contains_username=True; suspended_marker=False; missing_marker=False; bytes=185867; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d854503e5e9be613e466911a09b22372b122d26f\"><head><meta charSet=\"utf-8\" nonce=\"Yf3N'"
+        }
+      ]
     },
     {
       "id": "msyq387tntmk",
@@ -45,7 +75,22 @@
         }
       ],
       "added_at": "2026-08-18",
-      "fetch_status": "error"
+      "fetch_status": "error",
+      "monitoring": {
+        "status": "active",
+        "last_checked_at": "2026-08-20T04:58:25+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/aryuha_0_0; contains_username=True; suspended_marker=False; missing_marker=False; bytes=208602; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d854503e5e9be613e466911a09b22372b122d26f\"><head><meta charSet=\"utf-8\" nonce=\"fJ17'",
+        "consecutive_unavailable": 0
+      },
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-08-20T04:58:25+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/aryuha_0_0; contains_username=True; suspended_marker=False; missing_marker=False; bytes=208602; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d854503e5e9be613e466911a09b22372b122d26f\"><head><meta charSet=\"utf-8\" nonce=\"fJ17'"
+        }
+      ]
     },
     {
       "id": "msyqwk8aso1y",
@@ -63,7 +108,22 @@
         }
       ],
       "added_at": "2026-08-18",
-      "fetch_status": "error"
+      "fetch_status": "error",
+      "monitoring": {
+        "status": "active",
+        "last_checked_at": "2026-08-20T04:58:25+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tussn612; contains_username=True; suspended_marker=False; missing_marker=False; bytes=199535; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d854503e5e9be613e466911a09b22372b122d26f\"><head><meta charSet=\"utf-8\" nonce=\"yWaz'",
+        "consecutive_unavailable": 0
+      },
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-08-20T04:58:25+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tussn612; contains_username=True; suspended_marker=False; missing_marker=False; bytes=199535; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d854503e5e9be613e466911a09b22372b122d26f\"><head><meta charSet=\"utf-8\" nonce=\"yWaz'"
+        }
+      ]
     },
     {
       "id": "mszu7ykn6klg",
@@ -74,7 +134,22 @@
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-08-19",
-      "fetch_status": "pending"
+      "fetch_status": "pending",
+      "monitoring": {
+        "status": "active",
+        "last_checked_at": "2026-08-20T04:58:25+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/fie3011; contains_username=True; suspended_marker=False; missing_marker=False; bytes=212374; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d854503e5e9be613e466911a09b22372b122d26f\"><head><meta charSet=\"utf-8\" nonce=\"zQ2D'",
+        "consecutive_unavailable": 0
+      },
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-08-20T04:58:25+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/fie3011; contains_username=True; suspended_marker=False; missing_marker=False; bytes=212374; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d854503e5e9be613e466911a09b22372b122d26f\"><head><meta charSet=\"utf-8\" nonce=\"zQ2D'"
+        }
+      ]
     },
     {
       "id": "mszz8c59m7zs",
@@ -85,7 +160,22 @@
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-08-19",
-      "fetch_status": "pending"
+      "fetch_status": "pending",
+      "monitoring": {
+        "status": "active",
+        "last_checked_at": "2026-08-20T04:58:25+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/fie3011; contains_username=True; suspended_marker=False; missing_marker=False; bytes=212374; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d854503e5e9be613e466911a09b22372b122d26f\"><head><meta charSet=\"utf-8\" nonce=\"GM1Q'",
+        "consecutive_unavailable": 0
+      },
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-08-20T04:58:25+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/fie3011; contains_username=True; suspended_marker=False; missing_marker=False; bytes=212374; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d854503e5e9be613e466911a09b22372b122d26f\"><head><meta charSet=\"utf-8\" nonce=\"GM1Q'"
+        }
+      ]
     },
     {
       "id": "mt0oz3jdtdp4",
@@ -130,7 +220,22 @@
           "twitter_title_present": true,
           "twitter_image_present": false
         }
-      }
+      },
+      "monitoring": {
+        "status": "active",
+        "last_checked_at": "2026-08-20T04:58:25+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tayuido; contains_username=True; suspended_marker=False; missing_marker=False; bytes=200233; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d854503e5e9be613e466911a09b22372b122d26f\"><head><meta charSet=\"utf-8\" nonce=\"bCao'",
+        "consecutive_unavailable": 0
+      },
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-08-20T04:58:25+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tayuido; contains_username=True; suspended_marker=False; missing_marker=False; bytes=200233; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d854503e5e9be613e466911a09b22372b122d26f\"><head><meta charSet=\"utf-8\" nonce=\"bCao'"
+        }
+      ]
     }
   ]
 }

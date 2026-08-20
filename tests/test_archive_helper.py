@@ -65,7 +65,6 @@ def test_browser_flow_is_declared():
 def test_archive_result_can_be_written_back_to_github():
     assert "function saveArchiveResultToGitHub()" in HTML
     assert "保存結果をGitHubへ記録" in HTML
-    assert "artist.archive_status='done'" in HTML
     assert "artist.archive_url=archive" in HTML
     assert "artist.tracking_mode!=='record'" in HTML
 
@@ -73,3 +72,15 @@ def test_archive_result_can_be_written_back_to_github():
 def test_helper_reuses_tracker_github_config():
     assert "const CONFIG_KEY='artist_tracker_config';" in HTML
     assert "localStorage.getItem(CONFIG_KEY)" in HTML
+
+
+def test_wip_archive_is_pending_not_done():
+    assert "function isWipArchiveUrl(v)" in HTML
+    assert "new URL(v).pathname.startsWith('/wip/')" in HTML
+    assert "artist.archive_status=wip?'pending':'done'" in HTML
+    assert "/wip/ のURLは処理中として pending で記録します" in HTML
+
+
+def test_final_archive_url_can_replace_wip():
+    assert "完成URLが出たら再度更新してください" in HTML
+    assert "artist.archive_url=archive" in HTML

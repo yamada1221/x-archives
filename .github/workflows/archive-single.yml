@@ -1,0 +1,41 @@
+name: Archive single X profile
+
+on:
+  workflow_dispatch:
+    inputs:
+      artist_id:
+        description: 'Artist ID (preferred)'
+        required: false
+        type: string
+      x_account:
+        description: 'X account fallback (without @ is fine)'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Archive one profile
+        env:
+          ARTIST_ID: ${{ inputs.artist_id }}
+          X_ACCOUNT: ${{ inputs.x_account }}
+        run: python scripts/archive_single.py
+      - name: Commit archive state
+        if: always()
+        env:
+          ARTIST_ID: ${{ inputs.artist_id }}
+          X_ACCOUNT: ${{ inputs.x_account }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/artists.json
+          git diff --cached --quiet || git commit -m "chore: update archive state [${ARTIST_ID:-${X_ACCOUNT:-manual}}]"
+          git push

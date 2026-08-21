@@ -60,6 +60,8 @@
   .status-tag.active { background: #e8f5e9; color: #2e7d32; }
   .status-tag.unavailable, .status-tag.error { background: #fcebeb; color: #a32d2d; }
   .status-tag.pending { background: #fff8e1; color: #9a6700; }
+  .status-tag.archive-missing { background: #f5f5f3; color: #666; }
+  .status-tag.archive-done { background: #e8f5e9; color: #2e7d32; }
 
   .artist-meta { display: flex; align-items: center; gap: 0.45rem; flex-wrap: wrap; justify-content: flex-end; }
   .chevron { font-size: 12px; color: #aaa; transition: transform 0.15s; }
@@ -526,6 +528,13 @@ function archiveHelperUrl(artist) {
   return `archive_helper.html?x=${encodeURIComponent(artist.x_account || '')}`;
 }
 
+function archiveBadge(artist) {
+  if (artist.tracking_mode !== 'record') return '';
+  if (artist.archive_status === 'done' && artist.archive_url) return '<span class="status-tag archive-done">保存済み</span>';
+  if (artist.archive_status === 'pending') return '<span class="status-tag pending">処理中</span>';
+  return '<span class="status-tag archive-missing">未保存</span>';
+}
+
 function updateStats() {
   document.getElementById('statAccounts').textContent = artists.length;
   document.getElementById('statRecord').textContent = artists.filter(item => item.tracking_mode === 'record').length;
@@ -567,6 +576,7 @@ function renderList() {
         <div class="artist-meta">
           ${fetchBadge(artist)}
           ${monitorBadge(artist)}
+          ${archiveBadge(artist)}
           <span class="chevron" id="chev_${esc(artist.id)}">▾</span>
         </div>
       </div>
@@ -581,9 +591,9 @@ function renderList() {
             </div>
           </div>` : ''}
 
-        ${artist.archive && artist.archive.url ? `
+        ${artist.archive_status === 'done' && artist.archive_url ? `
           <div class="row" style="margin-bottom:.75rem">
-            <a href="${esc(artist.archive.url)}" target="_blank" rel="noopener"><button class="small">保存済みarchiveを見る</button></a>
+            <a href="${esc(artist.archive_url)}" target="_blank" rel="noopener"><button class="small">保存済みarchiveを見る</button></a>
           </div>` : ''}
 
         <div class="note-row"><input type="text" placeholder="メモ..." value="${esc(artist.note || '')}" onchange="updateNote('${esc(artist.id)}', this.value)"></div>

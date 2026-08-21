@@ -36,11 +36,13 @@ def test_record_mode_description_matches_spec():
 def test_monitor_only_is_not_counted_as_record():
     assert "artists.filter(item => item.tracking_mode === 'record').length" in HTML
 
+
 def test_duplicate_x_account_is_rejected_in_ui():
     assert "const normalizedX = xAccount.toLowerCase();" in HTML
     assert "item.id !== editingId" in HTML
     assert "String(item.x_account || '').trim().replace(/^@/, '').toLowerCase() === normalizedX" in HTML
     assert "@${xAccount} はすでに登録されています" in HTML
+
 
 def test_record_archive_status_badges_are_rendered():
     assert "function archiveBadge(artist)" in HTML
@@ -55,3 +57,8 @@ def test_saved_archive_link_uses_current_archive_fields():
     assert "href=\"${esc(artist.archive_url)}\"" in HTML
     assert "artist.archive && artist.archive.url" not in HTML
 
+
+def test_startup_loads_github_when_saved_config_is_complete():
+    assert "const startupConfig = getConfig();" in HTML
+    assert "startupConfig.token && startupConfig.owner && startupConfig.repo" in HTML
+    assert "loadFromGitHub();" in HTML

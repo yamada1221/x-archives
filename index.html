@@ -648,6 +648,10 @@ function showToast(message) {
 
 loadLocal();
 renderList();
+const startupConfig = getConfig();
+if (startupConfig.token && startupConfig.owner && startupConfig.repo) {
+  loadFromGitHub();
+}
 </script>
 </body>
 </html>

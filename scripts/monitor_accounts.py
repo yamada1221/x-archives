@@ -1,4 +1,4 @@
-"""Archive and conservatively monitor the X accounts in ``data/artists.json``.
+"""Conservatively monitor the X accounts in ``data/artists.json``.
 
 The job deliberately uses public, logged-out endpoints. An account is never
 marked unavailable because of an exception, timeout, rate limit, or a single
@@ -15,17 +15,13 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
-from typing import Callable
 
 DATA_PATH = Path(os.environ.get("ARTISTS_PATH", "data/artists.json"))
 LEGACY_DATA_PATH = Path(os.environ.get("ARCHIVES_PATH", "data/archives.json"))
-ARCHIVE_SUBMIT_URL = "https://archive.md/submit/"
 SYNDICATION_URL = "https://cdn.syndication.twimg.com/widgets/followbutton/info.json"
 PROFILE_URL_TEMPLATE = "https://x.com/{username}"
 UNAVAILABLE_THRESHOLD = 3
 USER_AGENT = "x-archives/1.0 (+https://github.com/yamada1221/x-archives)"
-ARCHIVE_HOSTS = {"archive.md", "archive.ph", "archive.is", "archive.today"}
-CAPTCHA_MARKERS = (b"captcha", b"cf-chl-captcha", b"g-recaptcha", b"hcaptcha")
 DIAGNOSTIC_BODY_LIMIT = 160
 PROFILE_BODY_LIMIT = 512 * 1024
 
@@ -101,7 +97,7 @@ def probe_profile_page(username: str) -> str:
 
 
 def merge_legacy_artists(current: dict, legacy: dict) -> int:
-    """Merge legacy archive entries without overwriting or duplicating artists."""
+    """Merge legacy entries without overwriting or duplicating artists."""
     artists = current.setdefault("artists", [])
 
     def keys(artist: dict) -> set[tuple[str, str]]:
@@ -182,62 +178,7 @@ def record_check(artist: dict, result: str, detail: str, checked_at: str) -> Non
         )
 
 
-def submit_archive(username: str) -> str:
-    target = f"https://x.com/{username}"
-    body = urllib.parse.urlencode({"url": target}).encode()
-    try:
-        with request(ARCHIVE_SUBMIT_URL, data=body, timeout=90) as response:
-            final_url = response.geturl()
-            status = getattr(response, "status", 200)
-            content_type = response_content_type(response)
-            response_body = response.read(512 * 1024).lower()
-    except urllib.error.HTTPError as exc:
-        raise ValueError(http_error_detail("archive service returned", exc)) from exc
-
-    parsed = urllib.parse.urlparse(final_url)
-    snapshot_id = parsed.path.strip("/").split("/", 1)[0]
-    if status != 200:
-        raise ValueError(f"archive service returned HTTP {status}; content-type={content_type}")
-    if parsed.scheme != "https" or parsed.hostname not in ARCHIVE_HOSTS:
-        raise ValueError(f"archive service returned unexpected URL: {final_url}")
-    if not snapshot_id or snapshot_id in {"submit", "wip"}:
-        raise ValueError(
-            f"archive service did not redirect to a snapshot; final_url={final_url}; "
-            f"content-type={content_type}; body={safe_preview(response_body)!r}"
-        )
-    if any(marker in response_body for marker in CAPTCHA_MARKERS):
-        raise ValueError(
-            f"archive service returned a CAPTCHA; final_url={final_url}; content-type={content_type}"
-        )
-    return final_url
-
-
-def ensure_archive(artist: dict, submitter: Callable[[str], str] = submit_archive) -> None:
-    if artist.get("archive", {}).get("url") or not artist.get("x_account"):
-        return
-    archive = artist.setdefault("archive", {})
-    try:
-        archive_url = submitter(artist["x_account"])
-        archive.update(
-            status="saved",
-            url=archive_url,
-            saved_at=now(),
-            hatena_add_url="https://b.hatena.ne.jp/add?" + urllib.parse.urlencode(
-                {"mode": "confirm", "url": archive_url}
-            ),
-        )
-        archive.pop("last_error", None)
-        archive.pop("last_error_detail", None)
-    except Exception as exc:
-        archive.update(
-            status="retry_pending",
-            last_attempt_at=now(),
-            last_error=type(exc).__name__,
-            last_error_detail=str(exc)[:500],
-        )
-
-
-def process(data: dict, *, archive: bool = True) -> dict:
+def process(data: dict) -> dict:
     checked_at = now()
     for artist in data.get("artists", []):
         username = str(artist.get("x_account", "")).strip().lstrip("@")
@@ -247,28 +188,17 @@ def process(data: dict, *, archive: bool = True) -> dict:
         result, detail = probe_account(username)
         print(f"X probe @{username}: {result} — {detail}", flush=True)
         record_check(artist, result, detail, checked_at)
-        if archive:
-            ensure_archive(artist)
     return data
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--no-archive", action="store_true", help="only check account state")
-    parser.add_argument(
-        "--verify-archive",
-        metavar="X_ACCOUNT",
-        help="submit one public X URL and print the verified archive URL without changing data",
-    )
     parser.add_argument(
         "--diagnose-profile",
         metavar="X_ACCOUNT",
         help="print public X profile-page diagnostics without changing data",
     )
     args = parser.parse_args()
-    if args.verify_archive:
-        print(submit_archive(args.verify_archive.strip().lstrip("@")))
-        return
     if args.diagnose_profile:
         username = args.diagnose_profile.strip().lstrip("@")
         result, detail = probe_profile_page_status(username)
@@ -278,7 +208,7 @@ def main() -> None:
     if LEGACY_DATA_PATH.exists():
         legacy = json.loads(LEGACY_DATA_PATH.read_text(encoding="utf-8"))
         merge_legacy_artists(data, legacy)
-    process(data, archive=not args.no_archive)
+    process(data)
     DATA_PATH.parent.mkdir(parents=True, exist_ok=True)
     DATA_PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 

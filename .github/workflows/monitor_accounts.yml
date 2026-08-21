@@ -20,9 +20,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Check X accounts
-        # archive.md returns HTTP 429 from GitHub-hosted runners.
-        # Archiving is intentionally handled from the user's browser instead.
-        run: python scripts/monitor_accounts.py --no-archive
+        run: python scripts/monitor_accounts.py
       - name: Commit state changes
         run: |
           git config user.name "github-actions[bot]"

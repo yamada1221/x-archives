@@ -73,19 +73,6 @@ class MonitorTests(unittest.TestCase):
         self.assertEqual(artist["monitoring"]["last_result"], "unknown")
         self.assertNotIn("status_history", artist)
 
-    def test_archive_metadata_includes_hatena_registration_link(self):
-        artist = {"x_account": "example"}
-        monitor.ensure_archive(artist, lambda _: "https://archive.md/abc12")
-        self.assertEqual(artist["archive"]["status"], "saved")
-        self.assertIn("b.hatena.ne.jp/add", artist["archive"]["hatena_add_url"])
-
-    def test_archive_failure_is_retryable_and_keeps_detail(self):
-        artist = {"x_account": "example"}
-        monitor.ensure_archive(artist, lambda _: (_ for _ in ()).throw(ValueError("HTTP 429 blocked")))
-        self.assertEqual(artist["archive"]["status"], "retry_pending")
-        self.assertEqual(artist["archive"]["last_error"], "ValueError")
-        self.assertIn("HTTP 429", artist["archive"]["last_error_detail"])
-
     def test_non_json_probe_returns_unknown_with_safe_diagnostics(self):
         class Response:
             status = 200
@@ -118,38 +105,7 @@ class MonitorTests(unittest.TestCase):
         self.assertIn("text/html", detail)
         self.assertIn("Access denied", detail)
 
-    def test_archive_captcha_is_rejected_and_retryable(self):
-        class Response:
-            status = 200
-            headers = {"Content-Type": "text/html"}
-
-            def __enter__(self): return self
-            def __exit__(self, *args): return None
-            def geturl(self): return "https://archive.md/abc12"
-            def read(self, _limit): return b'<div class="g-recaptcha">verify</div>'
-
-        artist = {"x_account": "example"}
-        with patch.object(monitor, "request", return_value=Response()):
-            monitor.ensure_archive(artist)
-        self.assertEqual(artist["archive"]["status"], "retry_pending")
-        self.assertNotIn("url", artist["archive"])
-        self.assertIn("CAPTCHA", artist["archive"]["last_error_detail"])
-
-    def test_archive_submit_html_without_snapshot_redirect_is_rejected(self):
-        class Response:
-            status = 200
-            headers = {"Content-Type": "text/html"}
-
-            def __enter__(self): return self
-            def __exit__(self, *args): return None
-            def geturl(self): return "https://archive.md/submit/"
-            def read(self, _limit): return b"<html>please wait</html>"
-
-        with patch.object(monitor, "request", return_value=Response()):
-            with self.assertRaisesRegex(ValueError, "did not redirect"):
-                monitor.submit_archive("example")
-
-    def test_process_checks_both_tracking_modes_without_archiving_when_disabled(self):
+    def test_process_checks_both_tracking_modes(self):
         data = {
             "artists": [
                 {"id": "m", "x_account": "monitor_user", "tracking_mode": "monitor_only"},
@@ -157,24 +113,22 @@ class MonitorTests(unittest.TestCase):
             ]
         }
         probed = []
-        archived = []
 
         def fake_probe(username):
             probed.append(username)
             return "active", "ok"
 
-        with patch.object(monitor, "probe_account", side_effect=fake_probe), patch.object(
-            monitor, "ensure_archive", side_effect=lambda artist: archived.append(artist["x_account"])
-        ):
-            monitor.process(data, archive=False)
+        with patch.object(monitor, "probe_account", side_effect=fake_probe):
+            monitor.process(data)
 
         self.assertEqual(probed, ["monitor_user", "record_user"])
-        self.assertEqual(archived, [])
         self.assertTrue(all(a["monitoring"]["status"] == "active" for a in data["artists"]))
 
-    def test_scheduled_workflow_explicitly_disables_server_side_archiving(self):
+    def test_scheduled_workflow_runs_monitor_without_archive_flags(self):
         workflow = Path(".github/workflows/monitor_accounts.yml").read_text(encoding="utf-8")
-        self.assertIn("python scripts/monitor_accounts.py --no-archive", workflow)
+        self.assertIn("python scripts/monitor_accounts.py", workflow)
+        self.assertNotIn("--no-archive", workflow)
+        self.assertNotIn("--verify-archive", workflow)
 
 
 if __name__ == "__main__":

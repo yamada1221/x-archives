@@ -42,3 +42,16 @@ def test_duplicate_x_account_is_rejected_in_ui():
     assert "String(item.x_account || '').trim().replace(/^@/, '').toLowerCase() === normalizedX" in HTML
     assert "@${xAccount} はすでに登録されています" in HTML
 
+def test_record_archive_status_badges_are_rendered():
+    assert "function archiveBadge(artist)" in HTML
+    assert "保存済み" in HTML
+    assert "処理中" in HTML
+    assert "未保存" in HTML
+    assert "${archiveBadge(artist)}" in HTML
+
+
+def test_saved_archive_link_uses_current_archive_fields():
+    assert "artist.archive_status === 'done' && artist.archive_url" in HTML
+    assert "href=\"${esc(artist.archive_url)}\"" in HTML
+    assert "artist.archive && artist.archive.url" not in HTML
+

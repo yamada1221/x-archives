@@ -7,7 +7,10 @@ import os
 import time
 from pathlib import Path
 
-from fetch_artist import fetch_x_profile
+try:
+    from fetch_artist import fetch_x_profile
+except ModuleNotFoundError:
+    from scripts.fetch_artist import fetch_x_profile
 
 DATA_PATH = Path("data/artists.json")
 

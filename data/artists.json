@@ -227,14 +227,16 @@
     },
     {
       "id": "mt2uy9t39eve",
-      "name": "Aaac8t6",
+      "name": "ド正論を言ってるだけ爆笑爆笑",
       "x_account": "Aaac8t6",
       "pixiv_user": "",
       "note": "汚言",
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-08-21",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2090259454357073920/Nsm7Oio9_200x200.jpg",
+      "profile_fetched_at": "2026-08-21"
     }
   ]
 }

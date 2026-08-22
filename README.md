@@ -18,6 +18,8 @@ Xアカウントを「監視のみ」と「記録対象」に分けて管理す�
 - 通信失敗・レート制限を `unknown` とし、明示的な未検出が3回連続するまで状態を変えない保守的な判定
 - `tracking_mode` による「監視のみ」「記録対象」の分離
 - 記録対象だけに `archive_helper.html` への導線を表示
+- archive保存済み状態を `data/artists.json` に記録し、一覧で「保存済み」と表示
+- 保存済みのGitHub設定がある場合、ページ起動時に最新の `data/artists.json` を自動読込
 
 ## archive.md・はてなブックマークの仕様
 
@@ -38,11 +40,13 @@ archive_helper.html?x=tawakenai_marou
 
 ブラウザ側からarchive.mdへ自動POSTはせず、利用者の通常ブラウザ操作で保存します。これはGitHub Actionsの共有IPからレート制限を受け続けることを避けるためです。
 
+保存後は `archive_helper.html` から保存済み状態をGitHubへ反映できます。一度保存済みになれば完了扱いとし、定期的な再保存は要求しません。
+
 ## 制約
 
 - はてなブックマークへの最終登録は利用者が行います。ログイン情報やOAuth認証をリポジトリに要求しません。
 - `unavailable` は公開プロフィールを取得できない状態です。現時点では凍結と削除を完全には区別できないため、`suspended` / `deleted` と断定して記録しません。
-- `archive_helper.html` で作成したarchive URLを `data/artists.json` に自動反映する処理は未実装です。
+- GitHub設定はブラウザのlocalStorageに保存されるため、PCとスマホでは別々に設定が必要です。
 
 ## セットアップ
 
@@ -59,18 +63,19 @@ Fine-grained PATを使用します。
 - **Contents**: Read and write
 - **Actions**: Read and write
 
-`index.html` の設定画面にPAT、owner、repo、`data/artists.json` を入力します。設定はブラウザのlocalStorageに保存されるため、PCとスマホでは別々に設定が必要です。
+`index.html` の設定画面にPAT、owner、repo、`data/artists.json` を入力します。設定はブラウザのlocalStorageに保存されます。
 
 ## 使い方
 
 1. 「＋ アカウントを追加」からXアカウントを登録
 2. `監視のみ` または `記録対象` を選択
 3. GitHubへ保存し、プロフィール取得を実行
-4. 「GitHubから読込」で表示名・アイコンを反映
+4. 保存済みのGitHub設定があれば、次回以降はページ起動時に最新データを自動読込
 5. 記録対象の場合は「アーカイブ・はてブ」を開く
 6. 通常プロフィール、または必要に応じてリプライ欄をarchive.mdへ保存
-7. はてブは通常プロフィールURLを対象に登録
-8. `Monitor X accounts` が定期的に死活監視
+7. 保存完了後、保存済み状態をGitHubへ反映
+8. はてブは通常プロフィールURLを対象に登録
+9. `Monitor X accounts` が定期的に死活監視
 
 ## artists.json の主要スキーマ
 
@@ -87,6 +92,7 @@ Fine-grained PATを使用します。
       "added_at": "2026-08-19",
       "fetch_status": "pending | done | error | none",
       "profile_fetched_at": "2026-08-19",
+      "archive_status": "done",
       "monitoring": {
         "status": "unknown | active | unavailable",
         "last_checked_at": "2026-08-19T00:00:00+00:00",

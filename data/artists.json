@@ -252,6 +252,17 @@
           "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/Aaac8t6; contains_username=True; suspended_marker=False; missing_marker=False; bytes=230672; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"a64c718177522107d14789eaee43010730649fb5\"><head><meta charSet=\"utf-8\" nonce=\"S70O'"
         }
       ]
+    },
+    {
+      "id": "mt54xdzdrvti",
+      "name": "fqztmnqgqlmdus",
+      "x_account": "fqztmnqgqlmdus",
+      "pixiv_user": "",
+      "note": "スパム",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-08-23",
+      "fetch_status": "pending"
     }
   ]
 }

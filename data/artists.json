@@ -289,14 +289,16 @@
     },
     {
       "id": "mt5hmmjn5mfv",
-      "name": "gWiwbeanMc38660",
+      "name": "名前",
       "x_account": "gWiwbeanMc38660",
       "pixiv_user": "",
       "note": "",
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-08-23",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2013173125052022784/RVYTY_fy_200x200.jpg",
+      "profile_fetched_at": "2026-08-23"
     }
   ]
 }

@@ -360,6 +360,17 @@
           "twitter_image_present": true
         }
       }
+    },
+    {
+      "id": "mt5ojcs36bvb",
+      "name": "Onki_pnki",
+      "x_account": "Onki_pnki",
+      "pixiv_user": "",
+      "note": "汚言",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-08-23",
+      "fetch_status": "pending"
     }
   ]
 }

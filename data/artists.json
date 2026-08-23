@@ -306,14 +306,16 @@
     },
     {
       "id": "mt5i2grdcatv",
-      "name": "_kenitter_",
+      "name": "けにキン😎",
       "x_account": "_kenitter_",
       "pixiv_user": "",
       "note": "クソリプ",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-08-23",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1987898700887412737/0Q_XUOYa_200x200.jpg",
+      "profile_fetched_at": "2026-08-23"
     }
   ]
 }

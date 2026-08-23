@@ -251,7 +251,11 @@
           "at": "2026-08-22T04:54:40+00:00",
           "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/Aaac8t6; contains_username=True; suspended_marker=False; missing_marker=False; bytes=230672; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"a64c718177522107d14789eaee43010730649fb5\"><head><meta charSet=\"utf-8\" nonce=\"S70O'"
         }
-      ]
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.md/JZThZ",
+      "archive_target_url": "https://x.com/Aaac8t6/with_replies",
+      "archive_checked_at": "2026-08-23T01:40:19.388Z"
     },
     {
       "id": "mt54xdzdrvti",

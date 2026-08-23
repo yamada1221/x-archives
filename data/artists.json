@@ -303,6 +303,17 @@
       "archive_url": "https://archive.md/EH5Se",
       "archive_target_url": "https://x.com/gWiwbeanMc38660",
       "archive_checked_at": "2026-08-23T07:42:31.482Z"
+    },
+    {
+      "id": "mt5i2grdcatv",
+      "name": "_kenitter_",
+      "x_account": "_kenitter_",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-08-23",
+      "fetch_status": "pending"
     }
   ]
 }

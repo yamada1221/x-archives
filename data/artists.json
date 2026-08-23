@@ -269,6 +269,17 @@
       "fetch_status": "done",
       "avatar_url": "https://pbs.twimg.com/profile_images/2091130131100110848/LG2eC_XI_200x200.jpg",
       "profile_fetched_at": "2026-08-23"
+    },
+    {
+      "id": "mt56ohjl0dub",
+      "name": "fakeriderV3",
+      "x_account": "fakeriderV3",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "record",
+      "works": [],
+      "added_at": "2026-08-23",
+      "fetch_status": "pending"
     }
   ]
 }

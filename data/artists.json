@@ -496,6 +496,17 @@
           "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/Onki_pnki; contains_username=True; suspended_marker=False; missing_marker=False; bytes=183762; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"57ac8cca770bac326e9688163194e10d33b4b36d\"><head><meta charSet=\"utf-8\" nonce=\"9X7q'"
         }
       ]
+    },
+    {
+      "id": "mt85e82nflsy",
+      "name": "canary777so",
+      "x_account": "canary777so",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "record",
+      "works": [],
+      "added_at": "2026-08-25",
+      "fetch_status": "pending"
     }
   ]
 }

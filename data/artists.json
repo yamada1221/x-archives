@@ -510,7 +510,11 @@
       "added_at": "2026-08-25",
       "fetch_status": "done",
       "avatar_url": "https://pbs.twimg.com/profile_images/2078102288204476418/GgiqH0Ob_200x200.jpg",
-      "profile_fetched_at": "2026-08-25"
+      "profile_fetched_at": "2026-08-25",
+      "archive_status": "done",
+      "archive_url": "https://archive.md/SoPES",
+      "archive_target_url": "https://x.com/canary777so/with_replies",
+      "archive_checked_at": "2026-08-25T04:16:01.021Z"
     }
   ]
 }

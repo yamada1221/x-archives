@@ -533,14 +533,49 @@
     },
     {
       "id": "mt8yvfee0772",
-      "name": "gameInfom_1",
+      "name": "ななか",
       "x_account": "gameInfom_1",
       "pixiv_user": "",
       "note": "tiktok誘導",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-08-25",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2085077591996960768/1A1gj2cO_200x200.jpg",
+      "profile_fetched_at": "2026-08-25",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-08-25T17:56:51+00:00",
+        "x_account": "gameInfom_1",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=gameInfom_1",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/gameInfom_1",
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "final_url": "https://x.com/gameInfom_1",
+          "bytes": 256701,
+          "contains_username": true,
+          "screen_name_marker": false,
+          "profile_image_url_count": 63,
+          "meta_keys": [
+            "og:image",
+            "og:title",
+            "twitter:image",
+            "twitter:title"
+          ],
+          "og_title_present": true,
+          "og_image_present": true,
+          "twitter_title_present": true,
+          "twitter_image_present": true
+        }
+      }
     }
   ]
 }

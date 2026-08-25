@@ -351,14 +351,14 @@
     },
     {
       "id": "mt5i2grdcatv",
-      "name": "_kenitter_",
+      "name": "けにキン😎",
       "x_account": "_kenitter_",
       "pixiv_user": "",
       "note": "クソリプ",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-08-23",
-      "fetch_status": "pending",
+      "fetch_status": "done",
       "monitoring": {
         "status": "active",
         "last_checked_at": "2026-08-24T05:06:13+00:00",
@@ -373,7 +373,9 @@
           "at": "2026-08-24T05:06:13+00:00",
           "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/_kenitter_; contains_username=True; suspended_marker=False; missing_marker=False; bytes=195033; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"57ac8cca770bac326e9688163194e10d33b4b36d\"><head><meta charSet=\"utf-8\" nonce=\"l6gH'"
         }
-      ]
+      ],
+      "avatar_url": "https://pbs.twimg.com/profile_images/1987898700887412737/0Q_XUOYa_200x200.jpg",
+      "profile_fetched_at": "2026-08-25"
     },
     {
       "id": "mt5i3ccgdzfz",
@@ -499,14 +501,16 @@
     },
     {
       "id": "mt85e82nflsy",
-      "name": "canary777so",
+      "name": "TCR3",
       "x_account": "canary777so",
       "pixiv_user": "",
       "note": "",
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-08-25",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2078102288204476418/GgiqH0Ob_200x200.jpg",
+      "profile_fetched_at": "2026-08-25"
     }
   ]
 }

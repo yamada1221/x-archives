@@ -530,6 +530,17 @@
           "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/canary777so; contains_username=True; suspended_marker=False; missing_marker=False; bytes=181060; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"64528ad7e17cf2833f95512da539479c2f99ea67\"><head><meta charSet=\"utf-8\" nonce=\"4KW0'"
         }
       ]
+    },
+    {
+      "id": "mt8yvfee0772",
+      "name": "gameInfom_1",
+      "x_account": "gameInfom_1",
+      "pixiv_user": "",
+      "note": "tiktok誘導",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-08-25",
+      "fetch_status": "pending"
     }
   ]
 }

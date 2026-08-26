@@ -683,6 +683,17 @@
           "twitter_image_present": true
         }
       }
+    },
+    {
+      "id": "mtaak6urssun",
+      "name": "seitai_official",
+      "x_account": "seitai_official",
+      "pixiv_user": "",
+      "note": "汚言 クソリプ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-08-26",
+      "fetch_status": "pending"
     }
   ]
 }

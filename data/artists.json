@@ -686,14 +686,16 @@
     },
     {
       "id": "mtaak6urssun",
-      "name": "seitai_official",
+      "name": "嶋田（治療家・癒し研究家）",
       "x_account": "seitai_official",
       "pixiv_user": "",
       "note": "汚言 クソリプ",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-08-26",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1690631096927768577/MKkOIy69_200x200.jpg",
+      "profile_fetched_at": "2026-08-26"
     }
   ]
 }

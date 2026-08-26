@@ -640,14 +640,49 @@
     },
     {
       "id": "mt9tg8dpo6ud",
-      "name": "by_the_window26",
+      "name": "チルペリー",
       "x_account": "by_the_window26",
       "pixiv_user": "",
       "note": "",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-08-26",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2082649675551875072/CMHYoD5g_200x200.jpg",
+      "profile_fetched_at": "2026-08-26",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-08-26T08:12:51+00:00",
+        "x_account": "by_the_window26",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=by_the_window26",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/by_the_window26",
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "final_url": "https://x.com/by_the_window26",
+          "bytes": 201226,
+          "contains_username": true,
+          "screen_name_marker": false,
+          "profile_image_url_count": 54,
+          "meta_keys": [
+            "og:image",
+            "og:title",
+            "twitter:image",
+            "twitter:title"
+          ],
+          "og_title_present": true,
+          "og_image_present": true,
+          "twitter_title_present": true,
+          "twitter_image_present": true
+        }
+      }
     }
   ]
 }

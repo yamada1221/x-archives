@@ -591,6 +591,17 @@
           "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/gameInfom_1; contains_username=True; suspended_marker=False; missing_marker=False; bytes=242860; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"61277714dcf2a908f6b3b6b7dee6b141966a49de\"><head><meta charSet=\"utf-8\" nonce=\"b2pZ'"
         }
       ]
+    },
+    {
+      "id": "mt9so0isq310",
+      "name": "aya_rebuild",
+      "x_account": "aya_rebuild",
+      "pixiv_user": "",
+      "note": "インプレゾンビ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-08-26",
+      "fetch_status": "pending"
     }
   ]
 }

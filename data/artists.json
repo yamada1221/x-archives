@@ -637,6 +637,17 @@
           "twitter_image_present": true
         }
       }
+    },
+    {
+      "id": "mt9tg8dpo6ud",
+      "name": "by_the_window26",
+      "x_account": "by_the_window26",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-08-26",
+      "fetch_status": "pending"
     }
   ]
 }

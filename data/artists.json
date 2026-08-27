@@ -731,16 +731,14 @@
     },
     {
       "id": "mtbgo0c83ri9",
-      "name": "りく",
+      "name": "ririkukurikuku",
       "x_account": "ririkukurikuku",
       "pixiv_user": "",
       "note": "",
-      "tracking_mode": "monitor_only",
+      "tracking_mode": "record",
       "works": [],
       "added_at": "2026-08-27",
-      "fetch_status": "done",
-      "avatar_url": "https://pbs.twimg.com/profile_images/1933667162759311367/N32Bf7i7_200x200.jpg",
-      "profile_fetched_at": "2026-08-27"
+      "fetch_status": "pending"
     }
   ]
 }

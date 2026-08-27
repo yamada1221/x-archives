@@ -772,7 +772,11 @@
           "twitter_title_present": true,
           "twitter_image_present": false
         }
-      }
+      },
+      "archive_status": "done",
+      "archive_url": "https://archive.md/l5Yw3",
+      "archive_target_url": "https://x.com/ririkukurikuku/with_replies",
+      "archive_checked_at": "2026-08-27T11:56:52.869Z"
     }
   ]
 }

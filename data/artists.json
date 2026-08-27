@@ -731,14 +731,48 @@
     },
     {
       "id": "mtbgo0c83ri9",
-      "name": "ririkukurikuku",
+      "name": "りく",
       "x_account": "ririkukurikuku",
       "pixiv_user": "",
       "note": "",
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-08-27",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1933667162759311367/N32Bf7i7_200x200.jpg",
+      "profile_fetched_at": "2026-08-27",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-08-27T11:51:07+00:00",
+        "x_account": "ririkukurikuku",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=ririkukurikuku",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/ririkukurikuku",
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "final_url": "https://x.com/ririkukurikuku",
+          "bytes": 60010,
+          "contains_username": true,
+          "screen_name_marker": false,
+          "profile_image_url_count": 8,
+          "meta_keys": [
+            "og:image",
+            "og:title",
+            "twitter:title"
+          ],
+          "og_title_present": true,
+          "og_image_present": true,
+          "twitter_title_present": true,
+          "twitter_image_present": false
+        }
+      }
     }
   ]
 }

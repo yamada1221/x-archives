@@ -728,6 +728,17 @@
           "twitter_image_present": false
         }
       }
+    },
+    {
+      "id": "mtbgo0c83ri9",
+      "name": "ririkukurikuku",
+      "x_account": "ririkukurikuku",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-08-27",
+      "fetch_status": "pending"
     }
   ]
 }

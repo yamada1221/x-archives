@@ -846,16 +846,14 @@
     },
     {
       "id": "mtd6u1578r2j",
-      "name": "ニー投資家（氷河期世代FIREした45歳）",
+      "name": "bumneetan",
       "x_account": "bumneetan",
       "pixiv_user": "",
-      "note": "",
-      "tracking_mode": "monitor_only",
+      "note": "ネトウヨ",
+      "tracking_mode": "record",
       "works": [],
       "added_at": "2026-08-28",
-      "fetch_status": "done",
-      "avatar_url": "https://pbs.twimg.com/profile_images/2093331310073036800/f3JXyn9z_200x200.jpg",
-      "profile_fetched_at": "2026-08-28"
+      "fetch_status": "pending"
     }
   ]
 }

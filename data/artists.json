@@ -843,6 +843,17 @@
           "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/ririkukurikuku; contains_username=True; suspended_marker=False; missing_marker=False; bytes=59522; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"f42dd8ee057b8b0c9b2f5c7a7e7b78c12c756d9a\"><head><meta charSet=\"utf-8\" nonce=\"iEU+'"
         }
       ]
+    },
+    {
+      "id": "mtd6u1578r2j",
+      "name": "bumneetan",
+      "x_account": "bumneetan",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-08-28",
+      "fetch_status": "pending"
     }
   ]
 }

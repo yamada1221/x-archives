@@ -855,7 +855,11 @@
       "added_at": "2026-08-28",
       "fetch_status": "done",
       "avatar_url": "https://pbs.twimg.com/profile_images/2093331310073036800/f3JXyn9z_200x200.jpg",
-      "profile_fetched_at": "2026-08-28"
+      "profile_fetched_at": "2026-08-28",
+      "archive_status": "done",
+      "archive_url": "https://archive.md/2026.08.28-165158/https://x.com/bumneetan/with_replies",
+      "archive_target_url": "https://x.com/bumneetan/with_replies",
+      "archive_checked_at": "2026-08-28T17:01:57.244Z"
     }
   ]
 }

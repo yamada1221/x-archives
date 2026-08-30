@@ -908,14 +908,16 @@
     },
     {
       "id": "mtfcea6qcykc",
-      "name": "ringa_hakuchi",
+      "name": "托卵奇行ノ米",
       "x_account": "ringa_hakuchi",
       "pixiv_user": "",
       "note": "クソリプ",
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-08-30",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2061048962648616960/qRfkixPf_200x200.jpg",
+      "profile_fetched_at": "2026-08-30"
     }
   ]
 }

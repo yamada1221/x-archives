@@ -875,6 +875,17 @@
           "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/bumneetan; contains_username=True; suspended_marker=False; missing_marker=False; bytes=263563; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"5da1742cc5e65203a65ed0979340bfa9db3f68cc\"><head><meta charSet=\"utf-8\" nonce=\"uVuD'"
         }
       ]
+    },
+    {
+      "id": "mtf1ri9wd8nr",
+      "name": "tUfqn1mKwK62778",
+      "x_account": "tUfqn1mKwK62778",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "added_at": "2026-08-30",
+      "fetch_status": "pending"
     }
   ]
 }

@@ -905,6 +905,17 @@
       "fetch_status": "done",
       "avatar_url": "https://pbs.twimg.com/profile_images/2031737855366811649/xKa5XHtx_200x200.jpg",
       "profile_fetched_at": "2026-08-30"
+    },
+    {
+      "id": "mtfcea6qcykc",
+      "name": "ringa_hakuchi",
+      "x_account": "ringa_hakuchi",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "added_at": "2026-08-30",
+      "fetch_status": "pending"
     }
   ]
 }

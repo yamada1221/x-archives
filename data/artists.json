@@ -922,6 +922,17 @@
       "archive_url": "https://archive.md/wip/Rr2BD",
       "archive_target_url": "https://x.com/ringa_hakuchi/with_replies",
       "archive_checked_at": "2026-08-30T05:02:54.627Z"
+    },
+    {
+      "id": "mtfdoz5e8ks2",
+      "name": "_coooa",
+      "x_account": "_coooa",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-08-30",
+      "fetch_status": "pending"
     }
   ]
 }

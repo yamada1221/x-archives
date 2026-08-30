@@ -938,14 +938,16 @@
     },
     {
       "id": "mtfl9fk3oyef",
-      "name": "j1238317120",
+      "name": "Ω",
       "x_account": "j1238317120",
       "pixiv_user": "",
       "note": "",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-08-30",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2019013708039794688/rxONPvHw_200x200.jpg",
+      "profile_fetched_at": "2026-08-30"
     }
   ]
 }

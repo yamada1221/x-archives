@@ -878,14 +878,16 @@
     },
     {
       "id": "mtf1ri9wd8nr",
-      "name": "tUfqn1mKwK62778",
+      "name": "残念無念",
       "x_account": "tUfqn1mKwK62778",
       "pixiv_user": "",
       "note": "クソリプ",
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-08-30",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2050681717925756928/48cKufHP_200x200.jpg",
+      "profile_fetched_at": "2026-08-30"
     }
   ]
 }

@@ -887,7 +887,11 @@
       "added_at": "2026-08-30",
       "fetch_status": "done",
       "avatar_url": "https://pbs.twimg.com/profile_images/2050681717925756928/48cKufHP_200x200.jpg",
-      "profile_fetched_at": "2026-08-30"
+      "profile_fetched_at": "2026-08-30",
+      "archive_status": "pending",
+      "archive_url": "https://archive.md/wip/Y3lhc",
+      "archive_target_url": "https://x.com/tUfqn1mKwK62778/with_replies",
+      "archive_checked_at": "2026-08-30T00:11:38.252Z"
     }
   ]
 }

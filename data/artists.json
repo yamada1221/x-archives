@@ -935,6 +935,17 @@
       "fetch_status": "done",
       "avatar_url": "https://pbs.twimg.com/profile_images/2001993975423754240/FYs_BDJB_200x200.jpg",
       "profile_fetched_at": "2026-08-30"
+    },
+    {
+      "id": "mtfl9fk3oyef",
+      "name": "j1238317120",
+      "x_account": "j1238317120",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-08-30",
+      "fetch_status": "pending"
     }
   ]
 }

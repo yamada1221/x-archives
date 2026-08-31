@@ -1080,7 +1080,11 @@
           "at": "2026-08-31T10:57:46+00:00",
           "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/6PZdotrH824Ortv; contains_username=True; suspended_marker=False; missing_marker=False; bytes=186816; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"83b6fe1196dec82be98f0430f66221c1adadfb31\"><head><meta charSet=\"utf-8\" nonce=\"gw8F'"
         }
-      ]
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.md/2026.08.31-111628/https://x.com/6PZdotrH824Ortv/with_replies",
+      "archive_target_url": "https://x.com/6PZdotrH824Ortv/with_replies",
+      "archive_checked_at": "2026-08-31T11:20:03.264Z"
     }
   ]
 }

@@ -1133,14 +1133,49 @@
     },
     {
       "id": "mtifhy2v34hn",
-      "name": "b_t_hide",
+      "name": "びとさんbot（𝕏-RATED）",
       "x_account": "b_t_hide",
       "pixiv_user": "",
       "note": "クソリプ",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-09-01",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1073578101710368768/ncGHWE2q_200x200.jpg",
+      "profile_fetched_at": "2026-09-01",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-09-01T08:52:13+00:00",
+        "x_account": "b_t_hide",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=b_t_hide",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/b_t_hide",
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "final_url": "https://x.com/b_t_hide",
+          "bytes": 232477,
+          "contains_username": true,
+          "screen_name_marker": false,
+          "profile_image_url_count": 92,
+          "meta_keys": [
+            "og:image",
+            "og:title",
+            "twitter:image",
+            "twitter:title"
+          ],
+          "og_title_present": true,
+          "og_image_present": true,
+          "twitter_title_present": true,
+          "twitter_image_present": true
+        }
+      }
     }
   ]
 }

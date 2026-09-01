@@ -1085,6 +1085,17 @@
       "archive_url": "https://archive.md/2026.08.31-111628/https://x.com/6PZdotrH824Ortv/with_replies",
       "archive_target_url": "https://x.com/6PZdotrH824Ortv/with_replies",
       "archive_checked_at": "2026-08-31T11:20:03.264Z"
+    },
+    {
+      "id": "mti8xis7qeno",
+      "name": "_sukisugicha",
+      "x_account": "_sukisugicha",
+      "pixiv_user": "",
+      "note": "スパム",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-09-01",
+      "fetch_status": "pending"
     }
   ]
 }

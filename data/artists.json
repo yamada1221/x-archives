@@ -1088,14 +1088,48 @@
     },
     {
       "id": "mti8xis7qeno",
-      "name": "_sukisugicha",
+      "name": "⚡️今日ピチュいるじゃん⚡️",
       "x_account": "_sukisugicha",
       "pixiv_user": "",
       "note": "スパム",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-09-01",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2090323430600224768/WV--X6s7_200x200.jpg",
+      "profile_fetched_at": "2026-09-01",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-09-01T05:48:22+00:00",
+        "x_account": "_sukisugicha",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=_sukisugicha",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/_sukisugicha",
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "final_url": "https://x.com/_sukisugicha",
+          "bytes": 190900,
+          "contains_username": true,
+          "screen_name_marker": false,
+          "profile_image_url_count": 83,
+          "meta_keys": [
+            "og:image",
+            "og:title",
+            "twitter:title"
+          ],
+          "og_title_present": true,
+          "og_image_present": true,
+          "twitter_title_present": true,
+          "twitter_image_present": false
+        }
+      }
     }
   ]
 }

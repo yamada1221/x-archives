@@ -1035,7 +1035,7 @@
       "added_at": "2026-08-31",
       "fetch_status": "error",
       "profile_fetch_diagnostic": {
-        "checked_at": "2026-08-31T05:11:57+00:00",
+        "checked_at": "2026-09-01T05:48:49+00:00",
         "x_account": "6PZdotrH824Ortv",
         "fetch_status_after_attempt": "error",
         "syndication": {
@@ -1051,7 +1051,7 @@
           "http_status": 200,
           "content_type": "text/html; charset=UTF-8",
           "final_url": "https://x.com/6PZdotrH824Ortv",
-          "bytes": 187681,
+          "bytes": 160143,
           "contains_username": true,
           "screen_name_marker": false,
           "profile_image_url_count": 9,

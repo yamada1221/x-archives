@@ -1130,6 +1130,17 @@
           "twitter_image_present": false
         }
       }
+    },
+    {
+      "id": "mtifhy2v34hn",
+      "name": "b_t_hide",
+      "x_account": "b_t_hide",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-09-01",
+      "fetch_status": "pending"
     }
   ]
 }

@@ -1274,7 +1274,11 @@
       "added_at": "2026-09-03",
       "fetch_status": "done",
       "avatar_url": "https://pbs.twimg.com/profile_images/2090976196804907008/wmRblq4h_200x200.jpg",
-      "profile_fetched_at": "2026-09-03"
+      "profile_fetched_at": "2026-09-03",
+      "archive_status": "done",
+      "archive_url": "https://archive.md/2026.09.03-091550/https://x.com/syokusukesuke/with_replies",
+      "archive_target_url": "https://x.com/syokusukesuke/with_replies",
+      "archive_checked_at": "2026-09-03T09:23:51.617Z"
     }
   ]
 }

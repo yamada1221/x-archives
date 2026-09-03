@@ -124,7 +124,7 @@ def clean_display_name(value: str, username: str) -> str:
 
 def extract_profile_from_html(raw: bytes, username: str) -> dict | None:
     text = raw.decode("utf-8", errors="replace")
-    decoded = html.unescape(text)
+    decoded = html.unescape(text).replace("\\/", "/")
     parser = ProfileMetaParser()
     try:
         parser.feed(text)

@@ -1033,9 +1033,9 @@
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-08-31",
-      "fetch_status": "error",
+      "fetch_status": "pending",
       "profile_fetch_diagnostic": {
-        "checked_at": "2026-09-03T08:48:37+00:00",
+        "checked_at": "2026-09-01T05:48:49+00:00",
         "x_account": "6PZdotrH824Ortv",
         "fetch_status_after_attempt": "error",
         "syndication": {
@@ -1051,10 +1051,10 @@
           "http_status": 200,
           "content_type": "text/html; charset=UTF-8",
           "final_url": "https://x.com/6PZdotrH824Ortv",
-          "bytes": 178876,
+          "bytes": 160143,
           "contains_username": true,
           "screen_name_marker": false,
-          "profile_image_url_count": 17,
+          "profile_image_url_count": 9,
           "meta_keys": [
             "og:image",
             "og:title",
@@ -1219,6 +1219,17 @@
       "fetch_status": "done",
       "avatar_url": "https://pbs.twimg.com/profile_images/2083344349451177984/sFbF8dWj_200x200.jpg",
       "profile_fetched_at": "2026-09-03"
+    },
+    {
+      "id": "mtlahiti6xds",
+      "name": "munevveralks",
+      "x_account": "munevveralks",
+      "pixiv_user": "",
+      "note": "パクツイ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-09-03",
+      "fetch_status": "pending"
     }
   ]
 }

@@ -1033,7 +1033,7 @@
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-08-31",
-      "fetch_status": "pending",
+      "fetch_status": "error",
       "profile_fetch_diagnostic": {
         "checked_at": "2026-09-01T05:48:49+00:00",
         "x_account": "6PZdotrH824Ortv",
@@ -1222,14 +1222,16 @@
     },
     {
       "id": "mtlahiti6xds",
-      "name": "munevveralks",
+      "name": "ピックアップ🔍",
       "x_account": "munevveralks",
       "pixiv_user": "",
       "note": "パクツイ",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-09-03",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2093344189056774144/Emr5Eg92_200x200.jpg",
+      "profile_fetched_at": "2026-09-03"
     }
   ]
 }

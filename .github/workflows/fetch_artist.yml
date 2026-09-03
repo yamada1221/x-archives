@@ -32,25 +32,36 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Fetch artist profile
+      - name: Fetch, diagnose, commit, and push artist profile
         env:
           ARTIST_ID: ${{ github.event.client_payload.artist_id || inputs.artist_id }}
-          X_ACCOUNT: ${{ github.event.client_payload.x_account || inputs.x_account }}
-        run: python scripts/fetch_artist.py
-
-      - name: Save profile fetch diagnostics
-        env:
-          ARTIST_ID: ${{ github.event.client_payload.artist_id || inputs.artist_id }}
-          X_ACCOUNT: ${{ github.event.client_payload.x_account || inputs.x_account }}
-        run: python scripts/profile_fetch_diagnostics.py
-
-      - name: Commit updated artists.json
-        env:
           X_ACCOUNT: ${{ github.event.client_payload.x_account || inputs.x_account }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/artists.json
-          git diff --cached --quiet || git commit -m "chore: update artist profile [$X_ACCOUNT]"
-          git pull --rebase origin main
-          git push
+
+          for attempt in 1 2 3; do
+            echo "Attempt $attempt: sync with latest main"
+            git fetch origin main
+            git reset --hard origin/main
+
+            python scripts/fetch_artist.py
+            python scripts/profile_fetch_diagnostics.py
+
+            git add data/artists.json
+            if git diff --cached --quiet; then
+              echo "No artist profile changes to commit."
+              exit 0
+            fi
+
+            git commit -m "chore: update artist profile [$X_ACCOUNT]"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+
+            echo "Push raced with another update; retrying from latest main."
+            sleep $((attempt * 2))
+          done
+
+          echo "Failed to push artist profile after 3 attempts."
+          exit 1

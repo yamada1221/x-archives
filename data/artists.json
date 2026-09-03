@@ -1206,6 +1206,17 @@
           "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/b_t_hide; contains_username=True; suspended_marker=False; missing_marker=False; bytes=221432; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"c4210ff5fa02939e5b8c8a00e578f5201a9266bd\"><head><meta charSet=\"utf-8\" nonce=\"qQx8'"
         }
       ]
+    },
+    {
+      "id": "mtl9o11anl9o",
+      "name": "pzftar",
+      "x_account": "pzftar",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "added_at": "2026-09-03",
+      "fetch_status": "pending"
     }
   ]
 }

@@ -34,19 +34,35 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Fetch profiles
+      - name: Fetch, commit, and push profiles
         env:
           FETCH_MODE: ${{ github.event_name == 'push' && 'missing_only' || inputs.mode }}
           FETCH_DELAY_SECONDS: "3"
-        run: python scripts/fetch_all_profiles.py
-
-      - name: Commit updated artists.json
-        env:
-          FETCH_MODE: ${{ github.event_name == 'push' && 'missing_only' || inputs.mode }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/artists.json
-          git diff --cached --quiet || git commit -m "chore: bulk update X profiles [$FETCH_MODE]"
-          git pull --rebase origin main
-          git push
+
+          for attempt in 1 2 3; do
+            echo "Attempt $attempt: sync with latest main"
+            git fetch origin main
+            git reset --hard origin/main
+
+            python scripts/fetch_all_profiles.py
+
+            git add data/artists.json
+            if git diff --cached --quiet; then
+              echo "No profile changes to commit."
+              exit 0
+            fi
+
+            git commit -m "chore: bulk update X profiles [$FETCH_MODE]"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+
+            echo "Push raced with another update; retrying from latest main."
+            sleep $((attempt * 2))
+          done
+
+          echo "Failed to push profile updates after 3 attempts."
+          exit 1

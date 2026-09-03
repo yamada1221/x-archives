@@ -1262,6 +1262,17 @@
           "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/munevveralks; contains_username=True; suspended_marker=False; missing_marker=False; bytes=194232; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"SAVK'"
         }
       ]
+    },
+    {
+      "id": "mtlb64f7r530",
+      "name": "syokusukesuke",
+      "x_account": "syokusukesuke",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-09-03",
+      "fetch_status": "pending"
     }
   ]
 }

@@ -46,6 +46,12 @@ class ProfileHtmlFallbackTests(unittest.TestCase):
         self.assertEqual(profile["display_name"], "Embedded Name")
         self.assertEqual(profile["avatar_url"], "https://pbs.twimg.com/profile_images/456/photo_400x400.jpg")
 
+    def test_extracts_escaped_avatar_without_screen_name_marker(self):
+        raw = b'''<html><head><title>Example User</title></head><body><script>window.__data={"avatar":"https:\\/\\/pbs.twimg.com\\/profile_images\\/789\\/fallback_normal.jpg"}</script></body></html>'''
+        profile = extract_profile_from_html(raw, "example_user")
+        self.assertEqual(profile["display_name"], "Example User")
+        self.assertEqual(profile["avatar_url"], "https://pbs.twimg.com/profile_images/789/fallback_400x400.jpg")
+
     def test_requires_profile_image(self):
         self.assertIsNone(extract_profile_from_html(b'<html><head><title>X</title></head><body>example_user</body></html>', "example_user"))
 

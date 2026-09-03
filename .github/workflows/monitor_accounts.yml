@@ -19,13 +19,32 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Check X accounts
-        run: python scripts/monitor_accounts.py
-      - name: Commit state changes
+      - name: Check, commit, and push account states
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/artists.json
-          git diff --cached --quiet || git commit -m "chore: record X account checks"
-          git pull --rebase origin main
-          git push
+
+          for attempt in 1 2 3; do
+            echo "Attempt $attempt: sync with latest main"
+            git fetch origin main
+            git reset --hard origin/main
+
+            python scripts/monitor_accounts.py
+
+            git add data/artists.json
+            if git diff --cached --quiet; then
+              echo "No account state changes to commit."
+              exit 0
+            fi
+
+            git commit -m "chore: record X account checks"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+
+            echo "Push raced with another update; retrying from latest main."
+            sleep $((attempt * 2))
+          done
+
+          echo "Failed to push account state updates after 3 attempts."
+          exit 1

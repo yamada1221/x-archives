@@ -1209,14 +1209,16 @@
     },
     {
       "id": "mtl9o11anl9o",
-      "name": "pzftar",
+      "name": "🫵🤩🫵🤩🫵🤩🫵🤩🫵🤩🫵🤩🫵🤩",
       "x_account": "pzftar",
       "pixiv_user": "",
       "note": "クソリプ",
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-09-03",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2083344349451177984/sFbF8dWj_200x200.jpg",
+      "profile_fetched_at": "2026-09-03"
     }
   ]
 }

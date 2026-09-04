@@ -1026,18 +1026,18 @@
     },
     {
       "id": "mtgs6v5ut1nz",
-      "name": "6PZdotrH824Ortv",
+      "name": "めだか",
       "x_account": "6PZdotrH824Ortv",
       "pixiv_user": "",
       "note": "クソリプ",
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-08-31",
-      "fetch_status": "error",
+      "fetch_status": "done",
       "profile_fetch_diagnostic": {
-        "checked_at": "2026-09-04T10:32:38+00:00",
+        "checked_at": "2026-09-04T10:57:45+00:00",
         "x_account": "6PZdotrH824Ortv",
-        "fetch_status_after_attempt": "error",
+        "fetch_status_after_attempt": "done",
         "syndication": {
           "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=6PZdotrH824Ortv",
           "http_status": 200,
@@ -1097,7 +1097,9 @@
       "archive_status": "done",
       "archive_url": "https://archive.md/2026.08.31-111628/https://x.com/6PZdotrH824Ortv/with_replies",
       "archive_target_url": "https://x.com/6PZdotrH824Ortv/with_replies",
-      "archive_checked_at": "2026-08-31T11:20:03.264Z"
+      "archive_checked_at": "2026-08-31T11:20:03.264Z",
+      "avatar_url": "https://abs.twimg.com/sticky/default_profile_images/default_profile_200x200.png",
+      "profile_fetched_at": "2026-09-04"
     },
     {
       "id": "mti8xis7qeno",

@@ -93,9 +93,11 @@ def html_diag(username: str) -> dict:
         result["screen_name_marker"] = bool(
             re.search(r'"screen_name"\s*:\s*"' + re.escape(username) + r'"', decoded, re.I)
         )
-        result["profile_image_url_count"] = len(
-            re.findall(r"https://pbs\.twimg\.com/profile_images/", decoded)
-        )
+        image_candidates = list(dict.fromkeys(
+            re.findall(r"https://pbs\.twimg\.com/profile_images/[^\"'<>\\ ]+", decoded)
+        ))
+        result["profile_image_url_count"] = len(image_candidates)
+        result["profile_image_candidates"] = image_candidates[:20]
         result["meta_keys"] = sorted(
             key for key in parser.meta if key in {"og:title", "og:image", "twitter:title", "twitter:image"}
         )
@@ -103,6 +105,10 @@ def html_diag(username: str) -> dict:
         result["og_image_present"] = bool(parser.meta.get("og:image"))
         result["twitter_title_present"] = bool(parser.meta.get("twitter:title"))
         result["twitter_image_present"] = bool(parser.meta.get("twitter:image"))
+        result["og_title"] = parser.meta.get("og:title", "")
+        result["og_image"] = parser.meta.get("og:image", "")
+        result["twitter_title"] = parser.meta.get("twitter:title", "")
+        result["twitter_image"] = parser.meta.get("twitter:image", "")
     except urllib.error.HTTPError as exc:
         result["error"] = f"HTTPError {exc.code}"
     except Exception as exc:

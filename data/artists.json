@@ -1035,7 +1035,7 @@
       "added_at": "2026-08-31",
       "fetch_status": "error",
       "profile_fetch_diagnostic": {
-        "checked_at": "2026-09-04T10:29:34+00:00",
+        "checked_at": "2026-09-04T10:32:38+00:00",
         "x_account": "6PZdotrH824Ortv",
         "fetch_status_after_attempt": "error",
         "syndication": {

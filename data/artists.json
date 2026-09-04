@@ -12,9 +12,9 @@
       "tracking_mode": "monitor_only",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tawakenai_marou; contains_username=True; suspended_marker=False; missing_marker=False; bytes=200835; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"9Abp'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tawakenai_marou; contains_username=True; suspended_marker=False; missing_marker=False; bytes=176420; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"U62k'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -47,9 +47,9 @@
       "fetch_status": "done",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/motiko3230; contains_username=True; suspended_marker=False; missing_marker=False; bytes=176978; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"QRMl'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/motiko3230; contains_username=True; suspended_marker=False; missing_marker=False; bytes=177080; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"OZkW'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -82,10 +82,10 @@
       "fetch_status": "done",
       "monitoring": {
         "status": "unavailable",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "unavailable",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/aryuha_0_0; contains_username=True; suspended_marker=True; missing_marker=False; bytes=30397; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"3pdC'",
-        "consecutive_unavailable": 9
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/aryuha_0_0; contains_username=True; suspended_marker=True; missing_marker=False; bytes=30500; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"/t74'",
+        "consecutive_unavailable": 10
       },
       "status_history": [
         {
@@ -123,9 +123,9 @@
       "fetch_status": "done",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tussn612; contains_username=True; suspended_marker=False; missing_marker=False; bytes=213534; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"99y1'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tussn612; contains_username=True; suspended_marker=False; missing_marker=False; bytes=217549; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"GiQj'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -151,9 +151,9 @@
       "fetch_status": "done",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/fie3011; contains_username=True; suspended_marker=False; missing_marker=False; bytes=224941; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"+b1i'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/fie3011; contains_username=True; suspended_marker=False; missing_marker=False; bytes=209445; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"w6nf'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -217,9 +217,9 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tayuido; contains_username=True; suspended_marker=False; missing_marker=False; bytes=199096; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"PI3G'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tayuido; contains_username=True; suspended_marker=False; missing_marker=False; bytes=200212; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"H6eC'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -245,9 +245,9 @@
       "profile_fetched_at": "2026-08-21",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/Aaac8t6; contains_username=True; suspended_marker=False; missing_marker=False; bytes=218200; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"Avkv'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/Aaac8t6; contains_username=True; suspended_marker=False; missing_marker=False; bytes=218302; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"MQ2e'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -277,9 +277,9 @@
       "profile_fetched_at": "2026-08-23",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/fqztmnqgqlmdus; contains_username=True; suspended_marker=False; missing_marker=False; bytes=101767; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"MQBE'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/fqztmnqgqlmdus; contains_username=True; suspended_marker=False; missing_marker=False; bytes=101871; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"znjM'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -309,9 +309,9 @@
       "archive_checked_at": "2026-08-23T03:04:24.596Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/fakeriderV3; contains_username=True; suspended_marker=False; missing_marker=False; bytes=185788; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"liMv'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/fakeriderV3; contains_username=True; suspended_marker=False; missing_marker=False; bytes=231533; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"Pcd+'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -341,9 +341,9 @@
       "archive_checked_at": "2026-08-23T07:42:31.482Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/gWiwbeanMc38660; contains_username=True; suspended_marker=False; missing_marker=False; bytes=203830; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"kcQ/'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/gWiwbeanMc38660; contains_username=True; suspended_marker=False; missing_marker=False; bytes=192678; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"0xI6'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -367,9 +367,9 @@
       "fetch_status": "done",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/_kenitter_; contains_username=True; suspended_marker=False; missing_marker=False; bytes=185762; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"dRZo'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/_kenitter_; contains_username=True; suspended_marker=False; missing_marker=False; bytes=185866; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"yNmc'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -430,9 +430,9 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/Inazuma11_Endo; contains_username=True; suspended_marker=False; missing_marker=False; bytes=169527; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"carn'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/Inazuma11_Endo; contains_username=True; suspended_marker=False; missing_marker=False; bytes=169630; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"HGb6'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -491,9 +491,9 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/Onki_pnki; contains_username=True; suspended_marker=False; missing_marker=False; bytes=197049; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"YK//'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/Onki_pnki; contains_username=True; suspended_marker=False; missing_marker=False; bytes=197151; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"Gvgv'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -523,9 +523,9 @@
       "archive_checked_at": "2026-08-25T04:16:01.021Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/canary777so; contains_username=True; suspended_marker=False; missing_marker=False; bytes=169290; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"+ikt'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/canary777so; contains_username=True; suspended_marker=False; missing_marker=False; bytes=179552; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"MHI6'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -584,9 +584,9 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/gameInfom_1; contains_username=True; suspended_marker=False; missing_marker=False; bytes=228152; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"TRMv'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/gameInfom_1; contains_username=True; suspended_marker=False; missing_marker=False; bytes=228257; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"oyEs'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -645,9 +645,9 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/aya_rebuild; contains_username=True; suspended_marker=False; missing_marker=False; bytes=248115; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"u6Q+'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/aya_rebuild; contains_username=True; suspended_marker=False; missing_marker=False; bytes=256276; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"17GN'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -706,9 +706,9 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/by_the_window26; contains_username=True; suspended_marker=False; missing_marker=False; bytes=180300; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"Kcum'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/by_the_window26; contains_username=True; suspended_marker=False; missing_marker=False; bytes=180145; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"7xck'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -766,9 +766,9 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/seitai_official; contains_username=True; suspended_marker=False; missing_marker=False; bytes=200384; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"E9yu'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/seitai_official; contains_username=True; suspended_marker=False; missing_marker=False; bytes=200487; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"R3vh'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -830,9 +830,9 @@
       "archive_checked_at": "2026-08-27T11:56:52.869Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/ririkukurikuku; contains_username=True; suspended_marker=False; missing_marker=False; bytes=93342; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"dyng'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/ririkukurikuku; contains_username=True; suspended_marker=False; missing_marker=False; bytes=93445; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"G3uI'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -862,9 +862,9 @@
       "archive_checked_at": "2026-08-28T17:01:57.244Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/bumneetan; contains_username=True; suspended_marker=False; missing_marker=False; bytes=232468; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"z0YC'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/bumneetan; contains_username=True; suspended_marker=False; missing_marker=False; bytes=245546; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"q1lw'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -894,9 +894,9 @@
       "archive_checked_at": "2026-08-30T05:40:44.926Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tUfqn1mKwK62778; contains_username=True; suspended_marker=False; missing_marker=False; bytes=234158; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"Sfdg'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tUfqn1mKwK62778; contains_username=True; suspended_marker=False; missing_marker=False; bytes=223023; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"nWDg'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -922,9 +922,9 @@
       "profile_fetched_at": "2026-08-30",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/mokahomo93; contains_username=True; suspended_marker=False; missing_marker=False; bytes=178754; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"yWBv'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/mokahomo93; contains_username=True; suspended_marker=False; missing_marker=False; bytes=178859; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"3NJ4'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -954,9 +954,9 @@
       "archive_checked_at": "2026-08-30T05:41:48.451Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/ringa_hakuchi; contains_username=True; suspended_marker=False; missing_marker=False; bytes=198642; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"JSCE'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/ringa_hakuchi; contains_username=True; suspended_marker=False; missing_marker=False; bytes=199051; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"CiPC'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -982,9 +982,9 @@
       "profile_fetched_at": "2026-08-30",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/_coooa; contains_username=True; suspended_marker=False; missing_marker=False; bytes=164171; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"JkGk'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/_coooa; contains_username=True; suspended_marker=False; missing_marker=False; bytes=164273; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"ByCz'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -1010,9 +1010,9 @@
       "profile_fetched_at": "2026-08-30",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/j1238317120; contains_username=True; suspended_marker=False; missing_marker=False; bytes=238647; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"xDzV'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/j1238317120; contains_username=True; suspended_marker=False; missing_marker=False; bytes=238748; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"wuNE'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -1068,9 +1068,9 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/6PZdotrH824Ortv; contains_username=True; suspended_marker=False; missing_marker=False; bytes=178228; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"hHsu'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/6PZdotrH824Ortv; contains_username=True; suspended_marker=False; missing_marker=False; bytes=178332; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"8twA'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -1132,9 +1132,9 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/_sukisugicha; contains_username=True; suspended_marker=False; missing_marker=False; bytes=210031; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"eQDS'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/_sukisugicha; contains_username=True; suspended_marker=False; missing_marker=False; bytes=238421; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"pxtF'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -1193,9 +1193,9 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/b_t_hide; contains_username=True; suspended_marker=False; missing_marker=False; bytes=210988; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"0W0D'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/b_t_hide; contains_username=True; suspended_marker=False; missing_marker=False; bytes=219055; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"1kcD'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -1221,9 +1221,9 @@
       "profile_fetched_at": "2026-09-03",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/pzftar; contains_username=True; suspended_marker=False; missing_marker=False; bytes=83438; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"5mNd'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/pzftar; contains_username=True; suspended_marker=False; missing_marker=False; bytes=83542; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"hrfe'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -1249,9 +1249,9 @@
       "profile_fetched_at": "2026-09-03",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-03T09:00:41+00:00",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
         "last_result": "active",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/munevveralks; contains_username=True; suspended_marker=False; missing_marker=False; bytes=194232; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"SAVK'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/munevveralks; contains_username=True; suspended_marker=False; missing_marker=False; bytes=192979; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"jcfG'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -1278,7 +1278,22 @@
       "archive_status": "done",
       "archive_url": "https://archive.md/2026.09.03-091550/https://x.com/syokusukesuke/with_replies",
       "archive_target_url": "https://x.com/syokusukesuke/with_replies",
-      "archive_checked_at": "2026-09-03T09:23:51.617Z"
+      "archive_checked_at": "2026-09-03T09:23:51.617Z",
+      "monitoring": {
+        "status": "active",
+        "last_checked_at": "2026-09-04T08:54:36+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/syokusukesuke; contains_username=True; suspended_marker=False; missing_marker=False; bytes=106111; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"VjMB'",
+        "consecutive_unavailable": 0
+      },
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-09-04T08:54:36+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/syokusukesuke; contains_username=True; suspended_marker=False; missing_marker=False; bytes=106111; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"34bd8e5a2f7b9c1b5fddf83769da47b5492c42a2\"><head><meta charSet=\"utf-8\" nonce=\"VjMB'"
+        }
+      ]
     }
   ]
 }

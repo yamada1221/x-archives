@@ -52,6 +52,16 @@ class ProfileHtmlFallbackTests(unittest.TestCase):
         self.assertEqual(profile["display_name"], "Example User")
         self.assertEqual(profile["avatar_url"], "https://pbs.twimg.com/profile_images/789/fallback_400x400.jpg")
 
+    def test_accepts_default_avatar_when_title_verifies_username(self):
+        raw = '''<!doctype html><html><head><meta property="og:title" content="Xユーザーのめだか（@6PZdotrH824Ortv）さん"><meta property="og:image" content="https://abs.twimg.com/sticky/default_profile_images/default_profile_200x200.png"></head></html>'''.encode()
+        profile = extract_profile_from_html(raw, "6PZdotrH824Ortv")
+        self.assertEqual(profile["display_name"], "めだか")
+        self.assertEqual(profile["avatar_url"], "https://abs.twimg.com/sticky/default_profile_images/default_profile_200x200.png")
+
+    def test_rejects_default_avatar_without_verified_username(self):
+        raw = b'''<html><head><title>X</title><meta property="og:image" content="https://abs.twimg.com/sticky/default_profile_images/default_profile_200x200.png"></head></html>'''
+        self.assertIsNone(extract_profile_from_html(raw, "example_user"))
+
     def test_requires_profile_image(self):
         self.assertIsNone(extract_profile_from_html(b'<html><head><title>X</title></head><body>example_user</body></html>', "example_user"))
 

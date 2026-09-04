@@ -122,6 +122,15 @@ def clean_display_name(value: str, username: str) -> str:
     return value or username
 
 
+def is_profile_avatar(url: str, verified_title: bool) -> bool:
+    normalized = normalize_avatar(url)
+    if "pbs.twimg.com/profile_images/" in normalized:
+        return True
+    if verified_title and "abs.twimg.com/sticky/default_profile_images/" in normalized:
+        return True
+    return False
+
+
 def extract_profile_from_html(raw: bytes, username: str) -> dict | None:
     text = raw.decode("utf-8", errors="replace")
     decoded = html.unescape(text).replace("\\/", "/")
@@ -159,10 +168,11 @@ def extract_profile_from_html(raw: bytes, username: str) -> dict | None:
         image_match = re.search(r'https://pbs\.twimg\.com/profile_images/[^"\'<>\\ ]+', decoded)
         if image_match:
             image_candidates.append(image_match.group(0))
-    display_name = next((clean_display_name(c, username) for c in name_candidates if c and username.lower() in c.lower()), "")
+    verified_name = next((c for c in name_candidates if c and username.lower() in c.lower()), "")
+    display_name = clean_display_name(verified_name, username) if verified_name else ""
     if not display_name:
         display_name = next((clean_display_name(c, username) for c in name_candidates if c), username)
-    avatar_url = next((normalize_avatar(c) for c in image_candidates if c and "pbs.twimg.com/profile_images/" in c), "")
+    avatar_url = next((normalize_avatar(c) for c in image_candidates if c and is_profile_avatar(c, bool(verified_name))), "")
     if avatar_url:
         return {"display_name": display_name, "avatar_url": avatar_url}
     return None

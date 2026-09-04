@@ -1035,7 +1035,7 @@
       "added_at": "2026-08-31",
       "fetch_status": "error",
       "profile_fetch_diagnostic": {
-        "checked_at": "2026-09-04T10:26:42+00:00",
+        "checked_at": "2026-09-04T10:29:34+00:00",
         "x_account": "6PZdotrH824Ortv",
         "fetch_status_after_attempt": "error",
         "syndication": {
@@ -1054,7 +1054,16 @@
           "bytes": 178978,
           "contains_username": true,
           "screen_name_marker": false,
-          "profile_image_url_count": 17,
+          "profile_image_url_count": 7,
+          "profile_image_candidates": [
+            "https://pbs.twimg.com/profile_images/1970365378045120512/yAzk7Lyx_normal.jpg",
+            "https://pbs.twimg.com/profile_images/1970365378045120512/yAzk7Lyx_mini.jpg",
+            "https://pbs.twimg.com/profile_images/1970365378045120512/yAzk7Lyx_bigger.jpg",
+            "https://pbs.twimg.com/profile_images/1970365378045120512/yAzk7Lyx_x96.jpg",
+            "https://pbs.twimg.com/profile_images/1970365378045120512/yAzk7Lyx_reasonably_small.jpg",
+            "https://pbs.twimg.com/profile_images/1970365378045120512/yAzk7Lyx_200x200.jpg",
+            "https://pbs.twimg.com/profile_images/1970365378045120512/yAzk7Lyx_400x400.jpg"
+          ],
           "meta_keys": [
             "og:image",
             "og:title",
@@ -1063,7 +1072,11 @@
           "og_title_present": true,
           "og_image_present": true,
           "twitter_title_present": true,
-          "twitter_image_present": false
+          "twitter_image_present": false,
+          "og_title": "Xユーザーのめだか（@6PZdotrH824Ortv）さん",
+          "og_image": "https://abs.twimg.com/sticky/default_profile_images/default_profile_200x200.png",
+          "twitter_title": "Xユーザーのめだか（@6PZdotrH824Ortv）さん",
+          "twitter_image": ""
         }
       },
       "monitoring": {

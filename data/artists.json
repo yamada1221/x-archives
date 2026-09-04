@@ -1379,7 +1379,11 @@
           "twitter_title": "Xユーザーの㎏（@b721882353447）さん",
           "twitter_image": ""
         }
-      }
+      },
+      "archive_status": "pending",
+      "archive_url": "https://archive.md/wip/1vY6g",
+      "archive_target_url": "https://x.com/b721882353447/with_replies",
+      "archive_checked_at": "2026-09-04T16:33:43.573Z"
     }
   ]
 }

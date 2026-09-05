@@ -1458,6 +1458,17 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mto5utkgpjh4",
+      "name": "yvkhjb2",
+      "x_account": "yvkhjb2",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-09-05",
+      "fetch_status": "pending"
     }
   ]
 }

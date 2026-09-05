@@ -1513,7 +1513,11 @@
           "url": "https://x.com/Lizzy1997",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archive_status": "done",
+      "archive_url": "https://archive.md/2026.09.05-181419/https://x.com/Lizzy1997/with_replies",
+      "archive_target_url": "https://x.com/Lizzy1997/with_replies",
+      "archive_checked_at": "2026-09-05T18:18:42.031Z"
     }
   ]
 }

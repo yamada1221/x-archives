@@ -1384,6 +1384,17 @@
       "archive_url": "https://archive.md/1vY6g",
       "archive_target_url": "https://x.com/b721882353447",
       "archive_checked_at": "2026-09-04T16:39:26.957Z"
+    },
+    {
+      "id": "mtns9xvug2ff",
+      "name": "marun0uchi_man",
+      "x_account": "marun0uchi_man",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "record",
+      "works": [],
+      "added_at": "2026-09-05",
+      "fetch_status": "pending"
     }
   ]
 }

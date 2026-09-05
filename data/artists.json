@@ -1425,7 +1425,11 @@
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
-      }
+      },
+      "archive_status": "done",
+      "archive_url": "https://archive.md/xwalf",
+      "archive_target_url": "https://x.com/marun0uchi_man",
+      "archive_checked_at": "2026-09-05T08:44:28.046Z"
     },
     {
       "id": "mto4x6e0thb7",

@@ -1468,7 +1468,24 @@
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-09-05",
-      "fetch_status": "error"
+      "fetch_status": "error",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-09-05T09:09:08+00:00",
+        "x_account": "yvkhjb2",
+        "fetch_status_after_attempt": "error",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=yvkhjb2",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/yvkhjb2",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ]
 }

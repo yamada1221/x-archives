@@ -1486,6 +1486,17 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mtopbkhgtfkj",
+      "name": "Lizzy1997",
+      "x_account": "Lizzy1997",
+      "pixiv_user": "",
+      "note": "bot",
+      "tracking_mode": "record",
+      "works": [],
+      "added_at": "2026-09-05",
+      "fetch_status": "pending"
     }
   ]
 }

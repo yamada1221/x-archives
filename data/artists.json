@@ -1731,6 +1731,17 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mtqegsjq7shr",
+      "name": "hOsKR1Pn2W90427",
+      "x_account": "hOsKR1Pn2W90427",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "added_at": "2026-09-06",
+      "fetch_status": "pending"
     }
   ]
 }

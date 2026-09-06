@@ -21,7 +21,7 @@
   .config-save { margin-top: 0.75rem; display: flex; gap: 0.5rem; align-items: center; }
   .config-status { font-size: 12px; color: #999; }
 
-  .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1.25rem; }
+  .stats-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.75rem; margin-bottom: 1.25rem; }
   .stat-card { background: #fff; border-radius: 8px; padding: 0.875rem 1rem; border: 0.5px solid rgba(0,0,0,0.08); }
   .stat-card .label { font-size: 12px; color: #999; margin-bottom: 4px; }
   .stat-card .value { font-size: 22px; font-weight: 600; }
@@ -59,6 +59,7 @@
   .mode-tag.record { background: #fff3e6; color: #9a4d00; }
   .status-tag.active { background: #e8f5e9; color: #2e7d32; }
   .status-tag.unavailable, .status-tag.error { background: #fcebeb; color: #a32d2d; }
+  .status-tag.unknown { background: #f5f5f3; color: #666; }
   .status-tag.pending { background: #fff8e1; color: #9a6700; }
   .status-tag.archive-missing { background: #f5f5f3; color: #666; }
   .status-tag.archive-done { background: #e8f5e9; color: #2e7d32; }
@@ -143,6 +144,8 @@
     <div class="stat-card"><div class="label">登録アカウント</div><div class="value" id="statAccounts">0</div></div>
     <div class="stat-card"><div class="label">記録対象</div><div class="value" id="statRecord">0</div></div>
     <div class="stat-card"><div class="label">X 公開中</div><div class="value" id="statActive">0</div></div>
+    <div class="stat-card"><div class="label">判定不能</div><div class="value" id="statUnknown">0</div></div>
+    <div class="stat-card"><div class="label">利用不可</div><div class="value" id="statUnavailable">0</div></div>
   </div>
 
   <div class="search-add-row">
@@ -511,10 +514,19 @@ function fetchBadge(artist) {
   return '';
 }
 
+function latestMonitorResult(artist) {
+  const monitoring = artist.monitoring;
+  if (!monitoring) return '';
+  if (['active', 'unavailable', 'unknown'].includes(monitoring.last_result)) return monitoring.last_result;
+  if (['active', 'unavailable'].includes(monitoring.status)) return monitoring.status;
+  return '';
+}
+
 function monitorBadge(artist) {
-  const status = artist.monitoring && artist.monitoring.status;
-  if (status === 'active') return '<span class="status-tag active">X 公開中</span>';
-  if (status === 'unavailable') return '<span class="status-tag unavailable">X 利用不可</span>';
+  const result = latestMonitorResult(artist);
+  if (result === 'active') return '<span class="status-tag active">X 公開中</span>';
+  if (result === 'unavailable') return '<span class="status-tag unavailable">X 利用不可</span>';
+  if (result === 'unknown') return '<span class="status-tag unknown">X 判定不能</span>';
   return '';
 }
 
@@ -538,7 +550,9 @@ function archiveBadge(artist) {
 function updateStats() {
   document.getElementById('statAccounts').textContent = artists.length;
   document.getElementById('statRecord').textContent = artists.filter(item => item.tracking_mode === 'record').length;
-  document.getElementById('statActive').textContent = artists.filter(item => item.monitoring && item.monitoring.status === 'active').length;
+  document.getElementById('statActive').textContent = artists.filter(item => latestMonitorResult(item) === 'active').length;
+  document.getElementById('statUnknown').textContent = artists.filter(item => latestMonitorResult(item) === 'unknown').length;
+  document.getElementById('statUnavailable').textContent = artists.filter(item => latestMonitorResult(item) === 'unavailable').length;
 }
 
 function renderList() {

@@ -1401,11 +1401,11 @@
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-09-05",
-      "fetch_status": "error",
+      "fetch_status": "done",
       "profile_fetch_diagnostic": {
-        "checked_at": "2026-09-06T02:04:13+00:00",
+        "checked_at": "2026-09-06T03:22:01+00:00",
         "x_account": "marun0uchi_man",
-        "fetch_status_after_attempt": "error",
+        "fetch_status_after_attempt": "done",
         "syndication": {
           "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=marun0uchi_man",
           "http_status": 200,
@@ -1429,7 +1429,10 @@
       "archive_status": "done",
       "archive_url": "https://archive.md/xwalf",
       "archive_target_url": "https://x.com/marun0uchi_man",
-      "archive_checked_at": "2026-09-05T08:44:28.046Z"
+      "archive_checked_at": "2026-09-05T08:44:28.046Z",
+      "avatar_url": "https://unavatar.io/x/marun0uchi_man?fallback=false",
+      "profile_fetched_at": "2026-09-06",
+      "profile_source": "unavatar"
     },
     {
       "id": "mto4x6e0thb7",

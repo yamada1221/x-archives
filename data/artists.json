@@ -1403,7 +1403,7 @@
       "added_at": "2026-09-05",
       "fetch_status": "error",
       "profile_fetch_diagnostic": {
-        "checked_at": "2026-09-05T08:45:19+00:00",
+        "checked_at": "2026-09-06T02:04:13+00:00",
         "x_account": "marun0uchi_man",
         "fetch_status_after_attempt": "error",
         "syndication": {

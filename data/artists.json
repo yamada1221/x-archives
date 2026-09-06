@@ -1401,7 +1401,7 @@
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-09-05",
-      "fetch_status": "pending",
+      "fetch_status": "error",
       "profile_fetch_diagnostic": {
         "checked_at": "2026-09-05T08:45:19+00:00",
         "x_account": "marun0uchi_man",

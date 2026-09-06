@@ -1442,7 +1442,7 @@
       "added_at": "2026-09-05",
       "fetch_status": "error",
       "profile_fetch_diagnostic": {
-        "checked_at": "2026-09-05T08:45:29+00:00",
+        "checked_at": "2026-09-06T02:09:11+00:00",
         "x_account": "3nenagumibot",
         "fetch_status_after_attempt": "error",
         "syndication": {

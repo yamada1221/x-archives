@@ -1436,11 +1436,11 @@
       "name": "3nenagumibot",
       "x_account": "3nenagumibot",
       "pixiv_user": "",
-      "note": "",
+      "note": "スパム",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-09-05",
-      "fetch_status": "error",
+      "fetch_status": "pending",
       "profile_fetch_diagnostic": {
         "checked_at": "2026-09-06T02:09:11+00:00",
         "x_account": "3nenagumibot",

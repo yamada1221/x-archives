@@ -1712,7 +1712,25 @@
       "added_at": "2026-09-06",
       "fetch_status": "done",
       "avatar_url": "https://unavatar.io/x/mKcjkSDIwOvKQRY?fallback=false",
-      "profile_fetched_at": "2026-09-06"
+      "profile_fetched_at": "2026-09-06",
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-09-06T14:31:09+00:00",
+        "x_account": "mKcjkSDIwOvKQRY",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=mKcjkSDIwOvKQRY",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/mKcjkSDIwOvKQRY",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ]
 }

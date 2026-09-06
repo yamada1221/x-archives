@@ -1741,7 +1741,7 @@
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-09-06",
-      "fetch_status": "pending"
+      "fetch_status": "error"
     }
   ]
 }

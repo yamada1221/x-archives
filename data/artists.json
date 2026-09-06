@@ -1443,11 +1443,11 @@
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-09-05",
-      "fetch_status": "error",
+      "fetch_status": "done",
       "profile_fetch_diagnostic": {
-        "checked_at": "2026-09-06T02:11:13+00:00",
+        "checked_at": "2026-09-06T03:26:24+00:00",
         "x_account": "3nenagumibot",
-        "fetch_status_after_attempt": "error",
+        "fetch_status_after_attempt": "done",
         "syndication": {
           "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=3nenagumibot",
           "http_status": 200,
@@ -1460,7 +1460,10 @@
           "url": "https://x.com/3nenagumibot",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "avatar_url": "https://unavatar.io/x/3nenagumibot?fallback=false",
+      "profile_fetched_at": "2026-09-06",
+      "profile_source": "unavatar"
     },
     {
       "id": "mto5utkgpjh4",

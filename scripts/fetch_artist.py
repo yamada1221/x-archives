@@ -2,7 +2,7 @@
 fetch_artist.py
 - 環境変数 ARTIST_ID, X_ACCOUNT を受け取る
 - 公開エンドポイントを使ってXプロフィール（表示名・アイコンURL）を取得
-- syndication API が失敗した場合は通常のXプロフィールHTMLをフォールバックに使う
+- syndication API → XプロフィールHTML → Unavatar の順にフォールバックする
 - data/artists.json の該当アカウントを更新する
 """
 
@@ -174,7 +174,7 @@ def extract_profile_from_html(raw: bytes, username: str) -> dict | None:
         display_name = next((clean_display_name(c, username) for c in name_candidates if c), username)
     avatar_url = next((normalize_avatar(c) for c in image_candidates if c and is_profile_avatar(c, bool(verified_name))), "")
     if avatar_url:
-        return {"display_name": display_name, "avatar_url": avatar_url}
+        return {"display_name": display_name, "avatar_url": avatar_url, "source": "x_html"}
     return None
 
 
@@ -182,7 +182,10 @@ async def fetch_x_profile(username: str) -> dict | None:
     profile = await fetch_x_profile_syndication(username)
     if profile:
         return profile
-    return await fetch_x_profile_html(username)
+    profile = await fetch_x_profile_html(username)
+    if profile:
+        return profile
+    return await fetch_x_profile_unavatar(username)
 
 
 async def fetch_x_profile_syndication(username: str) -> dict | None:
@@ -193,7 +196,11 @@ async def fetch_x_profile_syndication(username: str) -> dict | None:
         data = json.loads(raw)
         if data:
             user = data[0]
-            return {"display_name": user.get("name", username), "avatar_url": normalize_avatar(user.get("profile_image_url_https", ""))}
+            return {
+                "display_name": user.get("name", username),
+                "avatar_url": normalize_avatar(user.get("profile_image_url_https", "")),
+                "source": "syndication",
+            }
     except Exception as exc:
         print(f"[syndication] error: {type(exc).__name__}: {exc}", file=sys.stderr)
     return None
@@ -218,6 +225,32 @@ async def fetch_x_profile_html(username: str) -> dict | None:
     return None
 
 
+async def fetch_x_profile_unavatar(username: str) -> dict | None:
+    """Resolve an X avatar through Unavatar without accepting its generic fallback image."""
+    encoded_username = urllib.parse.quote(username, safe="")
+    url = f"https://unavatar.io/x/{encoded_username}?fallback=false"
+    try:
+        req = urllib.request.Request(
+            url,
+            headers={
+                "User-Agent": USER_AGENT,
+                "Accept": "image/*,*/*;q=0.8",
+            },
+        )
+        with urllib.request.urlopen(req, timeout=15) as response:
+            status = getattr(response, "status", 200)
+            content_type = (response.headers.get("Content-Type") or "").lower()
+            if status == 200 and content_type.startswith("image/"):
+                print(f"[unavatar] resolved avatar for @{username}; content-type={content_type}", file=sys.stderr)
+                return {"display_name": None, "avatar_url": url, "source": "unavatar"}
+            print(f"[unavatar] unexpected response: HTTP {status}; content-type={content_type}", file=sys.stderr)
+    except urllib.error.HTTPError as exc:
+        print(f"[unavatar] HTTPError {exc.code}", file=sys.stderr)
+    except Exception as exc:
+        print(f"[unavatar] error: {type(exc).__name__}: {exc}", file=sys.stderr)
+    return None
+
+
 def main() -> None:
     artist_id = os.environ.get("ARTIST_ID", "").strip()
     x_account = os.environ.get("X_ACCOUNT", "").strip().lstrip("@")
@@ -234,11 +267,13 @@ def main() -> None:
     if matched_by == "x_account":
         print(f"Artist id {artist_id} was stale; matched @{x_account} by x_account", file=sys.stderr)
     if profile:
-        artist["name"] = profile["display_name"]
+        if profile.get("display_name"):
+            artist["name"] = profile["display_name"]
         artist["avatar_url"] = profile["avatar_url"]
         artist["profile_fetched_at"] = dt.date.today().isoformat()
         artist["fetch_status"] = "done"
-        print(f"Updated: {artist['name']} / {artist['avatar_url']}")
+        artist["profile_source"] = profile.get("source", "unknown")
+        print(f"Updated: {artist['name']} / {artist['avatar_url']} ({artist['profile_source']})")
     else:
         artist["fetch_status"] = "error"
         print("Could not fetch profile, keeping existing data", file=sys.stderr)

@@ -2,7 +2,7 @@ import asyncio
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import AsyncMock, patch
+from unittest.mock import AsyncMock, MagicMock, patch
 
 import scripts.fetch_artist as fetch_artist
 from scripts.fetch_artist import clean_display_name, extract_profile_from_html, find_artist, normalize_avatar
@@ -78,18 +78,47 @@ class ProfileHtmlFallbackTests(unittest.TestCase):
 class ProfileFetchFlowTests(unittest.TestCase):
     def test_syndication_is_preferred_when_available(self):
         expected = {"display_name": "Syndication Name", "avatar_url": "https://pbs.twimg.com/profile_images/1/a.jpg"}
-        with patch.object(fetch_artist, "fetch_x_profile_syndication", new=AsyncMock(return_value=expected)) as syndication, patch.object(fetch_artist, "fetch_x_profile_html", new=AsyncMock()) as html_fallback:
+        with patch.object(fetch_artist, "fetch_x_profile_syndication", new=AsyncMock(return_value=expected)) as syndication, patch.object(fetch_artist, "fetch_x_profile_html", new=AsyncMock()) as html_fallback, patch.object(fetch_artist, "fetch_x_profile_unavatar", new=AsyncMock()) as unavatar_fallback:
             result = asyncio.run(fetch_artist.fetch_x_profile("example_user"))
         self.assertEqual(result, expected)
         syndication.assert_awaited_once_with("example_user")
         html_fallback.assert_not_awaited()
+        unavatar_fallback.assert_not_awaited()
 
     def test_html_fallback_runs_when_syndication_fails(self):
         expected = {"display_name": "HTML Name", "avatar_url": "https://pbs.twimg.com/profile_images/2/b.jpg"}
-        with patch.object(fetch_artist, "fetch_x_profile_syndication", new=AsyncMock(return_value=None)), patch.object(fetch_artist, "fetch_x_profile_html", new=AsyncMock(return_value=expected)) as html_fallback:
+        with patch.object(fetch_artist, "fetch_x_profile_syndication", new=AsyncMock(return_value=None)), patch.object(fetch_artist, "fetch_x_profile_html", new=AsyncMock(return_value=expected)) as html_fallback, patch.object(fetch_artist, "fetch_x_profile_unavatar", new=AsyncMock()) as unavatar_fallback:
             result = asyncio.run(fetch_artist.fetch_x_profile("example_user"))
         self.assertEqual(result, expected)
         html_fallback.assert_awaited_once_with("example_user")
+        unavatar_fallback.assert_not_awaited()
+
+    def test_unavatar_fallback_runs_when_x_sources_fail(self):
+        expected = {"display_name": None, "avatar_url": "https://unavatar.io/x/example_user?fallback=false", "source": "unavatar"}
+        with patch.object(fetch_artist, "fetch_x_profile_syndication", new=AsyncMock(return_value=None)), patch.object(fetch_artist, "fetch_x_profile_html", new=AsyncMock(return_value=None)), patch.object(fetch_artist, "fetch_x_profile_unavatar", new=AsyncMock(return_value=expected)) as unavatar_fallback:
+            result = asyncio.run(fetch_artist.fetch_x_profile("example_user"))
+        self.assertEqual(result, expected)
+        unavatar_fallback.assert_awaited_once_with("example_user")
+
+    def test_unavatar_accepts_only_image_response(self):
+        response = MagicMock()
+        response.status = 200
+        response.headers = {"Content-Type": "image/png"}
+        response.__enter__.return_value = response
+        response.__exit__.return_value = False
+        with patch.object(fetch_artist.urllib.request, "urlopen", return_value=response):
+            profile = asyncio.run(fetch_artist.fetch_x_profile_unavatar("example_user"))
+        self.assertEqual(profile["display_name"], None)
+        self.assertEqual(profile["avatar_url"], "https://unavatar.io/x/example_user?fallback=false")
+        self.assertEqual(profile["source"], "unavatar")
+
+    def test_unavatar_returns_none_on_404(self):
+        error = fetch_artist.urllib.error.HTTPError(
+            "https://unavatar.io/x/missing?fallback=false", 404, "Not Found", {}, None
+        )
+        with patch.object(fetch_artist.urllib.request, "urlopen", side_effect=error):
+            profile = asyncio.run(fetch_artist.fetch_x_profile_unavatar("missing"))
+        self.assertIsNone(profile)
 
     def test_save_and_load_artists_round_trip(self):
         data = {"artists": [{"id": "artist-1", "x_account": "example_user", "name": "Example", "fetch_status": "done"}]}

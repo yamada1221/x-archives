@@ -1539,7 +1539,24 @@
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-09-06",
-      "fetch_status": "error"
+      "fetch_status": "error",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-09-06T02:00:34+00:00",
+        "x_account": "99sLEHWL2e0Al2e",
+        "fetch_status_after_attempt": "error",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=99sLEHWL2e0Al2e",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/99sLEHWL2e0Al2e",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ]
 }

@@ -1703,14 +1703,16 @@
     },
     {
       "id": "mtpwsv29itj8",
-      "name": "mKcjkSDIwOvKQRY",
+      "name": null,
       "x_account": "mKcjkSDIwOvKQRY",
       "pixiv_user": "",
       "note": "クソリプ",
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-09-06",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://unavatar.io/x/mKcjkSDIwOvKQRY?fallback=false",
+      "profile_fetched_at": "2026-09-06"
     }
   ]
 }

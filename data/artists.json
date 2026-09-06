@@ -1656,7 +1656,11 @@
       "added_at": "2026-09-06",
       "fetch_status": "done",
       "avatar_url": "https://unavatar.io/x/tyuntap?fallback=false",
-      "profile_fetched_at": "2026-09-06"
+      "profile_fetched_at": "2026-09-06",
+      "archive_status": "done",
+      "archive_url": "https://archive.md/2026.09.06-090141/https://x.com/tyuntap/with_replies",
+      "archive_target_url": "https://x.com/tyuntap/with_replies",
+      "archive_checked_at": "2026-09-06T09:06:48.207Z"
     },
     {
       "id": "mtpl0nj1m4p9",

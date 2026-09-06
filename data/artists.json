@@ -1669,7 +1669,25 @@
       "added_at": "2026-09-06",
       "fetch_status": "done",
       "avatar_url": "https://unavatar.io/x/hakidashi_te?fallback=false",
-      "profile_fetched_at": "2026-09-06"
+      "profile_fetched_at": "2026-09-06",
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-09-06T09:01:35+00:00",
+        "x_account": "hakidashi_te",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=hakidashi_te",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/hakidashi_te",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ]
 }

@@ -1512,14 +1512,14 @@
     },
     {
       "id": "mtopbkhgtfkj",
-      "name": "Lizzy1997",
+      "name": null,
       "x_account": "Lizzy1997",
       "pixiv_user": "",
       "note": "bot",
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-09-05",
-      "fetch_status": "error",
+      "fetch_status": "done",
       "profile_fetch_diagnostic": {
         "checked_at": "2026-09-05T18:14:07+00:00",
         "x_account": "Lizzy1997",
@@ -1547,36 +1547,40 @@
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
-      }
+      },
+      "avatar_url": "https://unavatar.io/x/Lizzy1997?fallback=false",
+      "profile_fetched_at": "2026-09-06"
     },
     {
       "id": "mtp5slc5vbdc",
-      "name": "maya_priprin",
+      "name": null,
       "x_account": "maya_priprin",
       "pixiv_user": "",
       "note": "スパム",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-09-06",
-      "fetch_status": "error",
+      "fetch_status": "done",
       "monitoring": {
         "status": "unknown",
         "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
-      }
+      },
+      "avatar_url": "https://unavatar.io/x/maya_priprin?fallback=false",
+      "profile_fetched_at": "2026-09-06"
     },
     {
       "id": "mtp5yhnuyorb",
-      "name": "99sLEHWL2e0Al2e",
+      "name": null,
       "x_account": "99sLEHWL2e0Al2e",
       "pixiv_user": "",
       "note": "クソリプ",
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-09-06",
-      "fetch_status": "error",
+      "fetch_status": "done",
       "profile_fetch_diagnostic": {
         "checked_at": "2026-09-06T02:00:34+00:00",
         "x_account": "99sLEHWL2e0Al2e",
@@ -1600,18 +1604,20 @@
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
-      }
+      },
+      "avatar_url": "https://unavatar.io/x/99sLEHWL2e0Al2e?fallback=false",
+      "profile_fetched_at": "2026-09-06"
     },
     {
       "id": "mtp8purbkfnt",
-      "name": "nikiettlobiyu",
+      "name": null,
       "x_account": "nikiettlobiyu",
       "pixiv_user": "",
       "note": "スパム 乗っ取り",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-09-06",
-      "fetch_status": "error",
+      "fetch_status": "done",
       "profile_fetch_diagnostic": {
         "checked_at": "2026-09-06T03:17:14+00:00",
         "x_account": "nikiettlobiyu",
@@ -1635,29 +1641,35 @@
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
-      }
+      },
+      "avatar_url": "https://unavatar.io/x/nikiettlobiyu?fallback=false",
+      "profile_fetched_at": "2026-09-06"
     },
     {
       "id": "mtpkzy9ba15z",
-      "name": "tyuntap",
+      "name": null,
       "x_account": "tyuntap",
       "pixiv_user": "",
       "note": "クソリプ",
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-09-06",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://unavatar.io/x/tyuntap?fallback=false",
+      "profile_fetched_at": "2026-09-06"
     },
     {
       "id": "mtpl0nj1m4p9",
-      "name": "hakidashi_te",
+      "name": null,
       "x_account": "hakidashi_te",
       "pixiv_user": "",
       "note": "クソリプ",
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-09-06",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://unavatar.io/x/hakidashi_te?fallback=false",
+      "profile_fetched_at": "2026-09-06"
     }
   ]
 }

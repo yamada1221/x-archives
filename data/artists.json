@@ -1741,7 +1741,27 @@
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-09-06",
-      "fetch_status": "error"
+      "fetch_status": "done",
+      "avatar_url": "https://unavatar.io/x/hOsKR1Pn2W90427?fallback=false",
+      "profile_fetched_at": "2026-09-06",
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-09-06T22:45:37+00:00",
+        "x_account": "hOsKR1Pn2W90427",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=hOsKR1Pn2W90427",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/hOsKR1Pn2W90427",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ]
 }

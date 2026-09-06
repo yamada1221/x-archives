@@ -1636,6 +1636,17 @@
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
       }
+    },
+    {
+      "id": "mtpkzy9ba15z",
+      "name": "tyuntap",
+      "x_account": "tyuntap",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "added_at": "2026-09-06",
+      "fetch_status": "pending"
     }
   ]
 }

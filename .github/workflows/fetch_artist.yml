@@ -45,7 +45,32 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
 
-            python scripts/fetch_artist.py
+            if ! python scripts/fetch_artist.py; then
+              if python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          artist_id = os.environ.get("ARTIST_ID", "").strip()
+          x_account = os.environ.get("X_ACCOUNT", "").strip().lstrip("@").lower()
+          data = json.loads(Path("data/artists.json").read_text(encoding="utf-8"))
+          artists = data.get("artists", [])
+          exists = any(
+              str(artist.get("id", "")) == artist_id
+              or str(artist.get("x_account", "")).strip().lstrip("@").lower() == x_account
+              for artist in artists
+          )
+          raise SystemExit(0 if exists else 1)
+          PY
+              then
+                echo "Artist still exists; fetch failure is actionable."
+                exit 1
+              else
+                echo "Artist no longer exists in artists.json; treating this as a stale dispatch and skipping it."
+                exit 0
+              fi
+            fi
+
             python scripts/profile_fetch_diagnostics.py
 
             git add data/artists.json

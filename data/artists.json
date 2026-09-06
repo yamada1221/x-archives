@@ -1397,11 +1397,11 @@
       "name": "marun0uchi_man",
       "x_account": "marun0uchi_man",
       "pixiv_user": "",
-      "note": "",
+      "note": "インプレ稼ぎ",
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-09-05",
-      "fetch_status": "error",
+      "fetch_status": "pending",
       "profile_fetch_diagnostic": {
         "checked_at": "2026-09-05T08:45:19+00:00",
         "x_account": "marun0uchi_man",

@@ -1606,7 +1606,11 @@
         "consecutive_unavailable": 0
       },
       "avatar_url": "https://unavatar.io/x/99sLEHWL2e0Al2e?fallback=false",
-      "profile_fetched_at": "2026-09-06"
+      "profile_fetched_at": "2026-09-06",
+      "archive_status": "done",
+      "archive_url": "https://archive.md/2026.09.06-092742/https://x.com/99sLEHWL2e0Al2e/with_replies",
+      "archive_target_url": "https://x.com/99sLEHWL2e0Al2e/with_replies",
+      "archive_checked_at": "2026-09-06T09:30:17.653Z"
     },
     {
       "id": "mtp8purbkfnt",

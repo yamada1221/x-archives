@@ -1528,24 +1528,18 @@
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-09-06",
-      "fetch_status": "error",
-      "profile_fetch_diagnostic": {
-        "checked_at": "2026-09-06T01:54:55+00:00",
-        "x_account": "maya_priprin",
-        "fetch_status_after_attempt": "error",
-        "syndication": {
-          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=maya_priprin",
-          "http_status": 200,
-          "content_type": "unknown",
-          "bytes": 0,
-          "json_ok": false,
-          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
-        },
-        "html": {
-          "url": "https://x.com/maya_priprin",
-          "error": "HTTPError 403"
-        }
-      }
+      "fetch_status": "pending"
+    },
+    {
+      "id": "mtp5yhnuyorb",
+      "name": "99sLEHWL2e0Al2e",
+      "x_account": "99sLEHWL2e0Al2e",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "added_at": "2026-09-06",
+      "fetch_status": "pending"
     }
   ]
 }

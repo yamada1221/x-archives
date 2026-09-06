@@ -62,3 +62,24 @@ def test_startup_loads_github_when_saved_config_is_complete():
     assert "const startupConfig = getConfig();" in HTML
     assert "startupConfig.token && startupConfig.owner && startupConfig.repo" in HTML
     assert "loadFromGitHub();" in HTML
+
+
+def test_latest_monitor_result_prefers_last_result():
+    assert "function latestMonitorResult(artist)" in HTML
+    assert "monitoring.last_result" in HTML
+    assert "return monitoring.last_result;" in HTML
+
+
+def test_monitor_badge_shows_latest_unknown_result():
+    assert "const result = latestMonitorResult(artist);" in HTML
+    assert "X 判定不能" in HTML
+    assert 'status-tag unknown' in HTML
+
+
+def test_stats_split_latest_monitor_results():
+    assert 'id="statActive"' in HTML
+    assert 'id="statUnknown"' in HTML
+    assert 'id="statUnavailable"' in HTML
+    assert "latestMonitorResult(item) === 'active'" in HTML
+    assert "latestMonitorResult(item) === 'unknown'" in HTML
+    assert "latestMonitorResult(item) === 'unavailable'" in HTML

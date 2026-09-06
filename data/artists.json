@@ -12,7 +12,7 @@
       "tracking_mode": "monitor_only",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -47,7 +47,7 @@
       "fetch_status": "done",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -82,7 +82,7 @@
       "fetch_status": "done",
       "monitoring": {
         "status": "unavailable",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 10
@@ -123,7 +123,7 @@
       "fetch_status": "done",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -151,7 +151,7 @@
       "fetch_status": "done",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -217,7 +217,7 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -245,7 +245,7 @@
       "profile_fetched_at": "2026-08-21",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -277,7 +277,7 @@
       "profile_fetched_at": "2026-08-23",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -309,7 +309,7 @@
       "archive_checked_at": "2026-08-23T03:04:24.596Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -341,7 +341,7 @@
       "archive_checked_at": "2026-08-23T07:42:31.482Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -367,7 +367,7 @@
       "fetch_status": "done",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -430,7 +430,7 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -491,7 +491,7 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -523,7 +523,7 @@
       "archive_checked_at": "2026-08-25T04:16:01.021Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -584,7 +584,7 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -645,7 +645,7 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -706,7 +706,7 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -766,7 +766,7 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -830,7 +830,7 @@
       "archive_checked_at": "2026-08-27T11:56:52.869Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -862,7 +862,7 @@
       "archive_checked_at": "2026-08-28T17:01:57.244Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -894,7 +894,7 @@
       "archive_checked_at": "2026-08-30T05:40:44.926Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -922,7 +922,7 @@
       "profile_fetched_at": "2026-08-30",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -954,7 +954,7 @@
       "archive_checked_at": "2026-08-30T05:41:48.451Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -982,7 +982,7 @@
       "profile_fetched_at": "2026-08-30",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -1010,7 +1010,7 @@
       "profile_fetched_at": "2026-08-30",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -1081,7 +1081,7 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -1147,7 +1147,7 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -1208,7 +1208,7 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -1236,7 +1236,7 @@
       "profile_fetched_at": "2026-09-03",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -1264,7 +1264,7 @@
       "profile_fetched_at": "2026-09-03",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -1296,7 +1296,7 @@
       "archive_checked_at": "2026-09-03T09:23:51.617Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -1386,7 +1386,7 @@
       "archive_checked_at": "2026-09-04T16:39:26.957Z",
       "monitoring": {
         "status": "unknown",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -1421,7 +1421,7 @@
       },
       "monitoring": {
         "status": "unknown",
-        "last_checked_at": "2026-09-05T08:25:08+00:00",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
         "last_result": "unknown",
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
@@ -1463,7 +1463,14 @@
       },
       "avatar_url": "https://unavatar.io/x/3nenagumibot?fallback=false",
       "profile_fetched_at": "2026-09-06",
-      "profile_source": "unavatar"
+      "profile_source": "unavatar",
+      "monitoring": {
+        "status": "unknown",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
+        "last_result": "unknown",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "consecutive_unavailable": 0
+      }
     },
     {
       "id": "mto5utkgpjh4",
@@ -1494,7 +1501,14 @@
       },
       "avatar_url": "https://unavatar.io/x/yvkhjb2?fallback=false",
       "profile_fetched_at": "2026-09-06",
-      "profile_source": "unavatar"
+      "profile_source": "unavatar",
+      "monitoring": {
+        "status": "unknown",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
+        "last_result": "unknown",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "consecutive_unavailable": 0
+      }
     },
     {
       "id": "mtopbkhgtfkj",
@@ -1526,7 +1540,14 @@
       "archive_status": "done",
       "archive_url": "https://archive.md/2026.09.05-181419/https://x.com/Lizzy1997/with_replies",
       "archive_target_url": "https://x.com/Lizzy1997/with_replies",
-      "archive_checked_at": "2026-09-06T01:04:29.385Z"
+      "archive_checked_at": "2026-09-06T01:04:29.385Z",
+      "monitoring": {
+        "status": "unknown",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
+        "last_result": "unknown",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "consecutive_unavailable": 0
+      }
     },
     {
       "id": "mtp5slc5vbdc",
@@ -1537,7 +1558,14 @@
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-09-06",
-      "fetch_status": "error"
+      "fetch_status": "error",
+      "monitoring": {
+        "status": "unknown",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
+        "last_result": "unknown",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "consecutive_unavailable": 0
+      }
     },
     {
       "id": "mtp5yhnuyorb",
@@ -1565,6 +1593,13 @@
           "url": "https://x.com/99sLEHWL2e0Al2e",
           "error": "HTTPError 403"
         }
+      },
+      "monitoring": {
+        "status": "unknown",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
+        "last_result": "unknown",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "consecutive_unavailable": 0
       }
     },
     {
@@ -1593,6 +1628,13 @@
           "url": "https://x.com/nikiettlobiyu",
           "error": "HTTPError 403"
         }
+      },
+      "monitoring": {
+        "status": "unknown",
+        "last_checked_at": "2026-09-06T08:43:52+00:00",
+        "last_result": "unknown",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "consecutive_unavailable": 0
       }
     }
   ]

@@ -1691,7 +1691,11 @@
           "url": "https://x.com/hakidashi_te",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archive_status": "done",
+      "archive_url": "https://archive.md/2026.09.06-090751/https://x.com/hakidashi_te/with_replies",
+      "archive_target_url": "https://x.com/hakidashi_te/with_replies",
+      "archive_checked_at": "2026-09-06T09:10:23.242Z"
     }
   ]
 }

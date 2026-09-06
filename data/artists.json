@@ -1646,27 +1646,18 @@
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-09-06",
-      "fetch_status": "done",
-      "avatar_url": "https://unavatar.io/x/tyuntap?fallback=false",
-      "profile_fetched_at": "2026-09-06",
-      "profile_source": "unavatar",
-      "profile_fetch_diagnostic": {
-        "checked_at": "2026-09-06T09:00:33+00:00",
-        "x_account": "tyuntap",
-        "fetch_status_after_attempt": "done",
-        "syndication": {
-          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=tyuntap",
-          "http_status": 200,
-          "content_type": "unknown",
-          "bytes": 0,
-          "json_ok": false,
-          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
-        },
-        "html": {
-          "url": "https://x.com/tyuntap",
-          "error": "HTTPError 403"
-        }
-      }
+      "fetch_status": "pending"
+    },
+    {
+      "id": "mtpl0nj1m4p9",
+      "name": "hakidashi_te",
+      "x_account": "hakidashi_te",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "added_at": "2026-09-06",
+      "fetch_status": "pending"
     }
   ]
 }

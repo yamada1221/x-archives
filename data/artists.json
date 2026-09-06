@@ -1518,6 +1518,17 @@
       "archive_url": "https://archive.md/2026.09.05-181419/https://x.com/Lizzy1997/with_replies",
       "archive_target_url": "https://x.com/Lizzy1997/with_replies",
       "archive_checked_at": "2026-09-06T01:04:29.385Z"
+    },
+    {
+      "id": "mtp5slc5vbdc",
+      "name": "maya_priprin",
+      "x_account": "maya_priprin",
+      "pixiv_user": "",
+      "note": "スパム",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-09-06",
+      "fetch_status": "pending"
     }
   ]
 }

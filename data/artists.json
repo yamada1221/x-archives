@@ -1958,14 +1958,16 @@
     },
     {
       "id": "mttq00yuezaj",
-      "name": "nanase2958",
+      "name": null,
       "x_account": "nanase2958",
       "pixiv_user": "",
       "note": "ツイフェミ",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-09-09",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://unavatar.io/x/nanase2958?fallback=false",
+      "profile_fetched_at": "2026-09-09"
     }
   ]
 }

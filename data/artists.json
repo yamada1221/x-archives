@@ -1806,14 +1806,16 @@
     },
     {
       "id": "mtti4jlc20sz",
-      "name": "shishitakamari",
+      "name": "TSKM・tkmr＊シネ",
       "x_account": "shishitakamari",
       "pixiv_user": "",
       "note": "クソリプ",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-09-09",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2089149621558034432/XoC9qBP1_200x200.jpg",
+      "profile_fetched_at": "2026-09-09"
     }
   ]
 }

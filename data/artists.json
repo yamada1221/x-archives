@@ -2135,6 +2135,17 @@
       "archive_url": "https://archive.md/2026.09.09-170815/https://x.com/hensinsimasen",
       "archive_target_url": "https://x.com/hensinsimasen/with_replies",
       "archive_checked_at": "2026-09-09T17:12:31.315Z"
+    },
+    {
+      "id": "mtudj7edxeiv",
+      "name": "1m_55cm",
+      "x_account": "1m_55cm",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "added_at": "2026-09-09",
+      "fetch_status": "pending"
     }
   ]
 }

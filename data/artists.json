@@ -1521,9 +1521,9 @@
       "added_at": "2026-09-05",
       "fetch_status": "done",
       "profile_fetch_diagnostic": {
-        "checked_at": "2026-09-05T18:14:07+00:00",
+        "checked_at": "2026-09-09T12:24:16+00:00",
         "x_account": "Lizzy1997",
-        "fetch_status_after_attempt": "error",
+        "fetch_status_after_attempt": "done",
         "syndication": {
           "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=Lizzy1997",
           "http_status": 200,
@@ -1549,7 +1549,8 @@
         "consecutive_unavailable": 0
       },
       "avatar_url": "https://unavatar.io/x/Lizzy1997?fallback=false",
-      "profile_fetched_at": "2026-09-06"
+      "profile_fetched_at": "2026-09-09",
+      "profile_source": "unavatar"
     },
     {
       "id": "mtp5slc5vbdc",

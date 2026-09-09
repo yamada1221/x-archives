@@ -2016,7 +2016,11 @@
           "url": "https://x.com/heeeeeentttt",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archive_status": "done",
+      "archive_url": "https://archive.md/2026.09.09-065303/https://x.com/heeeeeentttt",
+      "archive_target_url": "https://x.com/heeeeeentttt",
+      "archive_checked_at": "2026-09-09T07:03:16.721Z"
     }
   ]
 }

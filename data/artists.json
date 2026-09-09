@@ -2165,7 +2165,11 @@
           "url": "https://x.com/1m_55cm",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archive_status": "done",
+      "archive_url": "https://archive.md/2026.09.09-173046/https://x.com/1m_55cm/with_replies",
+      "archive_target_url": "https://x.com/1m_55cm/with_replies",
+      "archive_checked_at": "2026-09-09T17:33:55.715Z"
     }
   ]
 }

@@ -2067,7 +2067,7 @@
     },
     {
       "id": "mtucpojm8czc",
-      "name": null,
+      "name": ".",
       "x_account": "hensinsimasen",
       "pixiv_user": "",
       "note": "クソリプ",
@@ -2075,8 +2075,62 @@
       "works": [],
       "added_at": "2026-09-09",
       "fetch_status": "done",
-      "avatar_url": "https://unavatar.io/x/hensinsimasen?fallback=false",
-      "profile_fetched_at": "2026-09-09"
+      "avatar_url": "https://pbs.twimg.com/profile_images/2058503320969596928/X3nxOzWF_200x200.jpg",
+      "profile_fetched_at": "2026-09-09",
+      "profile_source": "x_html",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-09-09T17:07:42+00:00",
+        "x_account": "hensinsimasen",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=hensinsimasen",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/hensinsimasen",
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "final_url": "https://x.com/hensinsimasen",
+          "bytes": 183200,
+          "contains_username": true,
+          "screen_name_marker": false,
+          "profile_image_url_count": 14,
+          "profile_image_candidates": [
+            "https://pbs.twimg.com/profile_images/2058503320969596928/X3nxOzWF_400x400.jpg",
+            "https://pbs.twimg.com/profile_images/2058503320969596928/X3nxOzWF_200x200.jpg",
+            "https://pbs.twimg.com/profile_images/2058503320969596928/X3nxOzWF_normal.jpg",
+            "https://pbs.twimg.com/profile_images/2072717100800720896/NNdsQkcQ_normal.jpg",
+            "https://pbs.twimg.com/profile_images/2058503320969596928/X3nxOzWF_mini.jpg",
+            "https://pbs.twimg.com/profile_images/2058503320969596928/X3nxOzWF_bigger.jpg",
+            "https://pbs.twimg.com/profile_images/2058503320969596928/X3nxOzWF_x96.jpg",
+            "https://pbs.twimg.com/profile_images/2058503320969596928/X3nxOzWF_reasonably_small.jpg",
+            "https://pbs.twimg.com/profile_images/2072717100800720896/NNdsQkcQ_mini.jpg",
+            "https://pbs.twimg.com/profile_images/2072717100800720896/NNdsQkcQ_bigger.jpg",
+            "https://pbs.twimg.com/profile_images/2072717100800720896/NNdsQkcQ_x96.jpg",
+            "https://pbs.twimg.com/profile_images/2072717100800720896/NNdsQkcQ_reasonably_small.jpg",
+            "https://pbs.twimg.com/profile_images/2072717100800720896/NNdsQkcQ_200x200.jpg",
+            "https://pbs.twimg.com/profile_images/2072717100800720896/NNdsQkcQ_400x400.jpg"
+          ],
+          "meta_keys": [
+            "og:image",
+            "og:title",
+            "twitter:image",
+            "twitter:title"
+          ],
+          "og_title_present": true,
+          "og_image_present": true,
+          "twitter_title_present": true,
+          "twitter_image_present": true,
+          "og_title": "Xユーザーの.（@hensinsimasen）さん",
+          "og_image": "https://pbs.twimg.com/profile_images/2058503320969596928/X3nxOzWF_200x200.jpg",
+          "twitter_title": "Xユーザーの.（@hensinsimasen）さん",
+          "twitter_image": "https://pbs.twimg.com/profile_banners/1932010345704706048/1765702781"
+        }
+      }
     }
   ]
 }

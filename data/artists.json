@@ -1924,6 +1924,17 @@
           "twitter_image": ""
         }
       }
+    },
+    {
+      "id": "mttjru0l7nph",
+      "name": "Ub1Bu",
+      "x_account": "Ub1Bu",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "added_at": "2026-09-09",
+      "fetch_status": "pending"
     }
   ]
 }

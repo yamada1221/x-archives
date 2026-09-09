@@ -2130,7 +2130,11 @@
           "twitter_title": "Xユーザーの.（@hensinsimasen）さん",
           "twitter_image": "https://pbs.twimg.com/profile_banners/1932010345704706048/1765702781"
         }
-      }
+      },
+      "archive_status": "done",
+      "archive_url": "https://archive.md/2026.09.09-170815/https://x.com/hensinsimasen",
+      "archive_target_url": "https://x.com/hensinsimasen/with_replies",
+      "archive_checked_at": "2026-09-09T17:12:31.315Z"
     }
   ]
 }

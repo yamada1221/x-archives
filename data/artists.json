@@ -1834,6 +1834,17 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mttirl9xav9n",
+      "name": "tukutuku1042",
+      "x_account": "tukutuku1042",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "added_at": "2026-09-09",
+      "fetch_status": "pending"
     }
   ]
 }

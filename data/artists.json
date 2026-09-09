@@ -1814,8 +1814,26 @@
       "works": [],
       "added_at": "2026-09-09",
       "fetch_status": "done",
-      "avatar_url": "https://pbs.twimg.com/profile_images/2089149621558034432/XoC9qBP1_200x200.jpg",
-      "profile_fetched_at": "2026-09-09"
+      "avatar_url": "https://unavatar.io/x/shishitakamari?fallback=false",
+      "profile_fetched_at": "2026-09-09",
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-09-09T02:51:28+00:00",
+        "x_account": "shishitakamari",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=shishitakamari",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/shishitakamari",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ]
 }

@@ -12,9 +12,9 @@
       "tracking_mode": "monitor_only",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tawakenai_marou; contains_username=True; suspended_marker=False; missing_marker=False; bytes=177106; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"vQYz'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -47,9 +47,9 @@
       "fetch_status": "done",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/motiko3230; contains_username=True; suspended_marker=False; missing_marker=False; bytes=176948; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"Es3x'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -82,10 +82,10 @@
       "fetch_status": "done",
       "monitoring": {
         "status": "unavailable",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
-        "consecutive_unavailable": 10
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "unavailable",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/aryuha_0_0; contains_username=True; suspended_marker=True; missing_marker=False; bytes=30280; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"v9kW'",
+        "consecutive_unavailable": 11
       },
       "status_history": [
         {
@@ -123,9 +123,9 @@
       "fetch_status": "done",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tussn612; contains_username=True; suspended_marker=False; missing_marker=False; bytes=206942; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"+LU6'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -151,9 +151,9 @@
       "fetch_status": "done",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/fie3011; contains_username=True; suspended_marker=False; missing_marker=False; bytes=194307; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"oOZb'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -217,9 +217,9 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tayuido; contains_username=True; suspended_marker=False; missing_marker=False; bytes=200020; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"G5W8'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -245,9 +245,9 @@
       "profile_fetched_at": "2026-08-21",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/Aaac8t6; contains_username=True; suspended_marker=False; missing_marker=False; bytes=217848; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"vrbl'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -277,9 +277,9 @@
       "profile_fetched_at": "2026-08-23",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/fqztmnqgqlmdus; contains_username=True; suspended_marker=False; missing_marker=False; bytes=101335; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"QxaY'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -309,9 +309,9 @@
       "archive_checked_at": "2026-08-23T03:04:24.596Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/fakeriderV3; contains_username=True; suspended_marker=False; missing_marker=False; bytes=219926; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"OKUT'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -341,9 +341,9 @@
       "archive_checked_at": "2026-08-23T07:42:31.482Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/gWiwbeanMc38660; contains_username=True; suspended_marker=False; missing_marker=False; bytes=179079; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"I9jO'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -367,9 +367,9 @@
       "fetch_status": "done",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/_kenitter_; contains_username=True; suspended_marker=False; missing_marker=False; bytes=210632; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"ZDmq'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -430,9 +430,9 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/Inazuma11_Endo; contains_username=True; suspended_marker=False; missing_marker=False; bytes=168995; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"zdMZ'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -491,9 +491,9 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/Onki_pnki; contains_username=True; suspended_marker=False; missing_marker=False; bytes=172675; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"RmX8'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -523,9 +523,9 @@
       "archive_checked_at": "2026-08-25T04:16:01.021Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/canary777so; contains_username=True; suspended_marker=False; missing_marker=False; bytes=178892; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"jpRq'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -584,9 +584,9 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/gameInfom_1; contains_username=True; suspended_marker=False; missing_marker=False; bytes=227174; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"iJ4H'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -645,9 +645,9 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/aya_rebuild; contains_username=True; suspended_marker=False; missing_marker=False; bytes=231968; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"BqKD'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -706,9 +706,9 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/by_the_window26; contains_username=True; suspended_marker=False; missing_marker=False; bytes=175845; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"k42z'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -766,9 +766,9 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/seitai_official; contains_username=True; suspended_marker=False; missing_marker=False; bytes=199306; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"HyuU'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -830,9 +830,9 @@
       "archive_checked_at": "2026-08-27T11:56:52.869Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/ririkukurikuku; contains_username=True; suspended_marker=False; missing_marker=False; bytes=187723; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"zZKE'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -862,9 +862,9 @@
       "archive_checked_at": "2026-08-28T17:01:57.244Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/bumneetan; contains_username=True; suspended_marker=False; missing_marker=False; bytes=241629; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"+Blk'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -894,9 +894,9 @@
       "archive_checked_at": "2026-08-30T05:40:44.926Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tUfqn1mKwK62778; contains_username=True; suspended_marker=False; missing_marker=False; bytes=224138; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"uHF3'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -922,9 +922,9 @@
       "profile_fetched_at": "2026-08-30",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/mokahomo93; contains_username=True; suspended_marker=False; missing_marker=False; bytes=179478; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"OdTj'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -954,9 +954,9 @@
       "archive_checked_at": "2026-08-30T05:41:48.451Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/ringa_hakuchi; contains_username=True; suspended_marker=False; missing_marker=False; bytes=198466; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"M+ta'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -982,9 +982,9 @@
       "profile_fetched_at": "2026-08-30",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/_coooa; contains_username=True; suspended_marker=False; missing_marker=False; bytes=163134; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"m4zh'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -1010,9 +1010,9 @@
       "profile_fetched_at": "2026-08-30",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/j1238317120; contains_username=True; suspended_marker=False; missing_marker=False; bytes=242292; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"uOKt'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -1081,9 +1081,9 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/6PZdotrH824Ortv; contains_username=True; suspended_marker=False; missing_marker=False; bytes=177172; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"mxyY'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -1147,9 +1147,9 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
         "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 404; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"H2Ji'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -1208,9 +1208,9 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/b_t_hide; contains_username=True; suspended_marker=False; missing_marker=False; bytes=194819; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"VXvQ'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -1236,9 +1236,9 @@
       "profile_fetched_at": "2026-09-03",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/pzftar; contains_username=True; suspended_marker=False; missing_marker=False; bytes=83210; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"8+A0'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -1264,9 +1264,9 @@
       "profile_fetched_at": "2026-09-03",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/munevveralks; contains_username=True; suspended_marker=False; missing_marker=False; bytes=196682; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"+ilj'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -1296,9 +1296,9 @@
       "archive_checked_at": "2026-09-03T09:23:51.617Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/syokusukesuke; contains_username=True; suspended_marker=False; missing_marker=False; bytes=140006; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"B8S/'",
         "consecutive_unavailable": 0
       },
       "status_history": [
@@ -1385,12 +1385,20 @@
       "archive_target_url": "https://x.com/b721882353447",
       "archive_checked_at": "2026-09-04T16:39:26.957Z",
       "monitoring": {
-        "status": "unknown",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "status": "active",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/b721882353447; contains_username=True; suspended_marker=False; missing_marker=False; bytes=187969; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"iEMj'",
         "consecutive_unavailable": 0
-      }
+      },
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-09-10T09:00:23+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/b721882353447; contains_username=True; suspended_marker=False; missing_marker=False; bytes=187969; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"iEMj'"
+        }
+      ]
     },
     {
       "id": "mtns9xvug2ff",
@@ -1420,10 +1428,10 @@
         }
       },
       "monitoring": {
-        "status": "unknown",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "status": "active",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/marun0uchi_man; contains_username=True; suspended_marker=False; missing_marker=False; bytes=235932; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"krHc'",
         "consecutive_unavailable": 0
       },
       "archive_status": "done",
@@ -1432,7 +1440,15 @@
       "archive_checked_at": "2026-09-05T08:44:28.046Z",
       "avatar_url": "https://unavatar.io/x/marun0uchi_man?fallback=false",
       "profile_fetched_at": "2026-09-06",
-      "profile_source": "unavatar"
+      "profile_source": "unavatar",
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-09-10T09:00:23+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/marun0uchi_man; contains_username=True; suspended_marker=False; missing_marker=False; bytes=235932; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"krHc'"
+        }
+      ]
     },
     {
       "id": "mto4x6e0thb7",
@@ -1465,12 +1481,20 @@
       "profile_fetched_at": "2026-09-06",
       "profile_source": "unavatar",
       "monitoring": {
-        "status": "unknown",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "status": "active",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/3nenagumibot; contains_username=True; suspended_marker=False; missing_marker=False; bytes=238555; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"ynNr'",
         "consecutive_unavailable": 0
-      }
+      },
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-09-10T09:00:23+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/3nenagumibot; contains_username=True; suspended_marker=False; missing_marker=False; bytes=238555; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"ynNr'"
+        }
+      ]
     },
     {
       "id": "mto5utkgpjh4",
@@ -1503,12 +1527,20 @@
       "profile_fetched_at": "2026-09-06",
       "profile_source": "unavatar",
       "monitoring": {
-        "status": "unknown",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "status": "active",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/yvkhjb2; contains_username=True; suspended_marker=False; missing_marker=False; bytes=209955; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"jGd/'",
         "consecutive_unavailable": 0
-      }
+      },
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-09-10T09:00:23+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/yvkhjb2; contains_username=True; suspended_marker=False; missing_marker=False; bytes=209955; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"jGd/'"
+        }
+      ]
     },
     {
       "id": "mtopbkhgtfkj",
@@ -1542,15 +1574,23 @@
       "archive_target_url": "https://x.com/Lizzy1997/with_replies",
       "archive_checked_at": "2026-09-06T01:04:29.385Z",
       "monitoring": {
-        "status": "unknown",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "status": "active",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/Lizzy1997; contains_username=True; suspended_marker=False; missing_marker=False; bytes=217957; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"FMBj'",
         "consecutive_unavailable": 0
       },
       "avatar_url": "https://unavatar.io/x/Lizzy1997?fallback=false",
       "profile_fetched_at": "2026-09-09",
-      "profile_source": "unavatar"
+      "profile_source": "unavatar",
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-09-10T09:00:23+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/Lizzy1997; contains_username=True; suspended_marker=False; missing_marker=False; bytes=217957; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"FMBj'"
+        }
+      ]
     },
     {
       "id": "mtp5slc5vbdc",
@@ -1564,9 +1604,9 @@
       "fetch_status": "done",
       "monitoring": {
         "status": "unknown",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
         "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 404; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"Bedv'",
         "consecutive_unavailable": 0
       },
       "avatar_url": "https://unavatar.io/x/maya_priprin?fallback=false",
@@ -1600,10 +1640,10 @@
         }
       },
       "monitoring": {
-        "status": "unknown",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "status": "active",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/99sLEHWL2e0Al2e; contains_username=True; suspended_marker=False; missing_marker=False; bytes=155246; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"NCeR'",
         "consecutive_unavailable": 0
       },
       "avatar_url": "https://unavatar.io/x/99sLEHWL2e0Al2e?fallback=false",
@@ -1611,7 +1651,15 @@
       "archive_status": "done",
       "archive_url": "https://archive.md/2026.09.06-092742/https://x.com/99sLEHWL2e0Al2e/with_replies",
       "archive_target_url": "https://x.com/99sLEHWL2e0Al2e/with_replies",
-      "archive_checked_at": "2026-09-06T09:30:17.653Z"
+      "archive_checked_at": "2026-09-06T09:30:17.653Z",
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-09-10T09:00:23+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/99sLEHWL2e0Al2e; contains_username=True; suspended_marker=False; missing_marker=False; bytes=155246; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"NCeR'"
+        }
+      ]
     },
     {
       "id": "mtp8purbkfnt",
@@ -1641,14 +1689,22 @@
         }
       },
       "monitoring": {
-        "status": "unknown",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "status": "active",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/nikiettlobiyu; contains_username=True; suspended_marker=False; missing_marker=False; bytes=223756; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"BOWG'",
         "consecutive_unavailable": 0
       },
       "avatar_url": "https://unavatar.io/x/nikiettlobiyu?fallback=false",
-      "profile_fetched_at": "2026-09-06"
+      "profile_fetched_at": "2026-09-06",
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-09-10T09:00:23+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/nikiettlobiyu; contains_username=True; suspended_marker=False; missing_marker=False; bytes=223756; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"BOWG'"
+        }
+      ]
     },
     {
       "id": "mtpkzy9ba15z",
@@ -1667,12 +1723,20 @@
       "archive_target_url": "https://x.com/tyuntap/with_replies",
       "archive_checked_at": "2026-09-06T09:06:48.207Z",
       "monitoring": {
-        "status": "unknown",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "status": "active",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tyuntap; contains_username=True; suspended_marker=False; missing_marker=False; bytes=160432; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"PERy'",
         "consecutive_unavailable": 0
-      }
+      },
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-09-10T09:00:23+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tyuntap; contains_username=True; suspended_marker=False; missing_marker=False; bytes=160432; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"PERy'"
+        }
+      ]
     },
     {
       "id": "mtpl0nj1m4p9",
@@ -1709,12 +1773,20 @@
       "archive_target_url": "https://x.com/hakidashi_te/with_replies",
       "archive_checked_at": "2026-09-06T09:10:23.242Z",
       "monitoring": {
-        "status": "unknown",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "status": "active",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/hakidashi_te; contains_username=True; suspended_marker=False; missing_marker=False; bytes=189379; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"6L82'",
         "consecutive_unavailable": 0
-      }
+      },
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-09-10T09:00:23+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/hakidashi_te; contains_username=True; suspended_marker=False; missing_marker=False; bytes=189379; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"6L82'"
+        }
+      ]
     },
     {
       "id": "mtpwsv29itj8",
@@ -1747,12 +1819,20 @@
         }
       },
       "monitoring": {
-        "status": "unknown",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "status": "active",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/mKcjkSDIwOvKQRY; contains_username=True; suspended_marker=False; missing_marker=False; bytes=116978; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"fERQ'",
         "consecutive_unavailable": 0
-      }
+      },
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-09-10T09:00:23+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/mKcjkSDIwOvKQRY; contains_username=True; suspended_marker=False; missing_marker=False; bytes=116978; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"fERQ'"
+        }
+      ]
     },
     {
       "id": "mtqegsjq7shr",
@@ -1785,12 +1865,20 @@
         }
       },
       "monitoring": {
-        "status": "unknown",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "status": "active",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/hOsKR1Pn2W90427; contains_username=True; suspended_marker=False; missing_marker=False; bytes=168774; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"vVYv'",
         "consecutive_unavailable": 0
-      }
+      },
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-09-10T09:00:23+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/hOsKR1Pn2W90427; contains_username=True; suspended_marker=False; missing_marker=False; bytes=168774; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"vVYv'"
+        }
+      ]
     },
     {
       "id": "mtthsbb7nx1c",
@@ -1823,12 +1911,20 @@
         }
       },
       "monitoring": {
-        "status": "unknown",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "status": "active",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/Marldr0y; contains_username=True; suspended_marker=False; missing_marker=False; bytes=163417; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"nV97'",
         "consecutive_unavailable": 0
-      }
+      },
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-09-10T09:00:23+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/Marldr0y; contains_username=True; suspended_marker=False; missing_marker=False; bytes=163417; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"nV97'"
+        }
+      ]
     },
     {
       "id": "mtti4jlc20sz",
@@ -1861,12 +1957,20 @@
         }
       },
       "monitoring": {
-        "status": "unknown",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "status": "active",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/shishitakamari; contains_username=True; suspended_marker=False; missing_marker=False; bytes=189843; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"OYRP'",
         "consecutive_unavailable": 0
-      }
+      },
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-09-10T09:00:23+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/shishitakamari; contains_username=True; suspended_marker=False; missing_marker=False; bytes=189843; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"OYRP'"
+        }
+      ]
     },
     {
       "id": "mttirl9xav9n",
@@ -1940,12 +2044,20 @@
         }
       },
       "monitoring": {
-        "status": "unknown",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "status": "active",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tukutuku1042; contains_username=True; suspended_marker=False; missing_marker=False; bytes=277072; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"zHts'",
         "consecutive_unavailable": 0
-      }
+      },
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-09-10T09:00:23+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/tukutuku1042; contains_username=True; suspended_marker=False; missing_marker=False; bytes=277072; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"zHts'"
+        }
+      ]
     },
     {
       "id": "mttjru0l7nph",
@@ -1978,12 +2090,20 @@
         }
       },
       "monitoring": {
-        "status": "unknown",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "status": "active",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/Ub1Bu; contains_username=True; suspended_marker=False; missing_marker=False; bytes=205535; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"avPS'",
         "consecutive_unavailable": 0
-      }
+      },
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-09-10T09:00:23+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/Ub1Bu; contains_username=True; suspended_marker=False; missing_marker=False; bytes=205535; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"avPS'"
+        }
+      ]
     },
     {
       "id": "mttq00yuezaj",
@@ -2016,12 +2136,20 @@
         }
       },
       "monitoring": {
-        "status": "unknown",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "status": "active",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/nanase2958; contains_username=True; suspended_marker=False; missing_marker=False; bytes=186910; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"clyw'",
         "consecutive_unavailable": 0
-      }
+      },
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-09-10T09:00:23+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/nanase2958; contains_username=True; suspended_marker=False; missing_marker=False; bytes=186910; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"clyw'"
+        }
+      ]
     },
     {
       "id": "mttq7lxkqsb3",
@@ -2058,12 +2186,20 @@
       "archive_target_url": "https://x.com/heeeeeentttt",
       "archive_checked_at": "2026-09-09T07:03:16.721Z",
       "monitoring": {
-        "status": "unknown",
-        "last_checked_at": "2026-09-09T09:01:44+00:00",
-        "last_result": "unknown",
-        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "status": "active",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/heeeeeentttt; contains_username=True; suspended_marker=False; missing_marker=False; bytes=101123; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"jr3q'",
         "consecutive_unavailable": 0
-      }
+      },
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-09-10T09:00:23+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/heeeeeentttt; contains_username=True; suspended_marker=False; missing_marker=False; bytes=101123; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"jr3q'"
+        }
+      ]
     },
     {
       "id": "mtucpojm8czc",
@@ -2134,7 +2270,22 @@
       "archive_status": "done",
       "archive_url": "https://archive.md/2026.09.09-170815/https://x.com/hensinsimasen",
       "archive_target_url": "https://x.com/hensinsimasen/with_replies",
-      "archive_checked_at": "2026-09-09T17:12:31.315Z"
+      "archive_checked_at": "2026-09-09T17:12:31.315Z",
+      "monitoring": {
+        "status": "active",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/hensinsimasen; contains_username=True; suspended_marker=False; missing_marker=False; bytes=182284; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"PN6Q'",
+        "consecutive_unavailable": 0
+      },
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-09-10T09:00:23+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/hensinsimasen; contains_username=True; suspended_marker=False; missing_marker=False; bytes=182284; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"PN6Q'"
+        }
+      ]
     },
     {
       "id": "mtudj7edxeiv",
@@ -2169,7 +2320,22 @@
       "archive_status": "done",
       "archive_url": "https://archive.md/2026.09.09-173046/https://x.com/1m_55cm/with_replies",
       "archive_target_url": "https://x.com/1m_55cm/with_replies",
-      "archive_checked_at": "2026-09-09T17:33:55.715Z"
+      "archive_checked_at": "2026-09-09T17:33:55.715Z",
+      "monitoring": {
+        "status": "active",
+        "last_checked_at": "2026-09-10T09:00:23+00:00",
+        "last_result": "active",
+        "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/1m_55cm; contains_username=True; suspended_marker=False; missing_marker=False; bytes=190033; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"aYtV'",
+        "consecutive_unavailable": 0
+      },
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-09-10T09:00:23+00:00",
+          "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/1m_55cm; contains_username=True; suspended_marker=False; missing_marker=False; bytes=190033; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"aYtV'"
+        }
+      ]
     }
   ]
 }

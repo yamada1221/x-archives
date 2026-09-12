@@ -2339,14 +2339,16 @@
     },
     {
       "id": "mtyn62e9749u",
-      "name": "TIGokn4UZX61490",
+      "name": null,
       "x_account": "TIGokn4UZX61490",
       "pixiv_user": "",
       "note": "クソリプ",
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-09-12",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://unavatar.io/x/TIGokn4UZX61490?fallback=false",
+      "profile_fetched_at": "2026-09-12"
     }
   ]
 }

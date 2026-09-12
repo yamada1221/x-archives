@@ -2336,6 +2336,17 @@
           "reason": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/1m_55cm; contains_username=True; suspended_marker=False; missing_marker=False; bytes=190033; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"d15dfe1387906cd0d69b4594fa96a03817d408e3\"><head><meta charSet=\"utf-8\" nonce=\"aYtV'"
         }
       ]
+    },
+    {
+      "id": "mtyn62e9749u",
+      "name": "TIGokn4UZX61490",
+      "x_account": "TIGokn4UZX61490",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "added_at": "2026-09-12",
+      "fetch_status": "pending"
     }
   ]
 }

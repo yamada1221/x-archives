@@ -2374,14 +2374,16 @@
     },
     {
       "id": "mtyoqy09dsim",
-      "name": "zPDUoiHH9J52MyV",
+      "name": null,
       "x_account": "zPDUoiHH9J52MyV",
       "pixiv_user": "",
       "note": "クソリプ",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-09-12",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://unavatar.io/x/zPDUoiHH9J52MyV?fallback=false",
+      "profile_fetched_at": "2026-09-12"
     }
   ]
 }

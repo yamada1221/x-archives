@@ -2427,8 +2427,26 @@
       "works": [],
       "added_at": "2026-09-17",
       "fetch_status": "done",
-      "avatar_url": "https://pbs.twimg.com/profile_images/1370206903180009473/WDteiSNT_200x200.jpg",
-      "profile_fetched_at": "2026-09-17"
+      "avatar_url": "https://unavatar.io/x/mjun46?fallback=false",
+      "profile_fetched_at": "2026-09-17",
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-09-17T05:10:05+00:00",
+        "x_account": "mjun46",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=mjun46",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/mjun46",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ]
 }

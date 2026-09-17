@@ -2419,14 +2419,16 @@
     },
     {
       "id": "mu52loodh55n",
-      "name": "mjun46",
+      "name": "しゃん@7.9→9.6→8.4→9.2→8.7→8.4→8.5→9.8→7.0→6.6→6.5",
       "x_account": "mjun46",
       "pixiv_user": "",
       "note": "",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-09-17",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1370206903180009473/WDteiSNT_200x200.jpg",
+      "profile_fetched_at": "2026-09-17"
     }
   ]
 }

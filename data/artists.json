@@ -2416,6 +2416,17 @@
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
       }
+    },
+    {
+      "id": "mu52loodh55n",
+      "name": "mjun46",
+      "x_account": "mjun46",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-09-17",
+      "fetch_status": "pending"
     }
   ]
 }

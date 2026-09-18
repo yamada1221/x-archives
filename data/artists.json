@@ -2454,6 +2454,17 @@
         "last_detail": "non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0
       }
+    },
+    {
+      "id": "mu6ztj8doiov",
+      "name": "rlt4_",
+      "x_account": "rlt4_",
+      "pixiv_user": "",
+      "note": "イラスト",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-09-18",
+      "fetch_status": "pending"
     }
   ]
 }

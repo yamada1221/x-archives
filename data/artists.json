@@ -2457,14 +2457,16 @@
     },
     {
       "id": "mu6ztj8doiov",
-      "name": "rlt4_",
+      "name": null,
       "x_account": "rlt4_",
       "pixiv_user": "",
       "note": "イラスト",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-09-18",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://unavatar.io/x/rlt4_?fallback=false",
+      "profile_fetched_at": "2026-09-18"
     }
   ]
 }

@@ -1,11 +1,11 @@
 # X アーカイブ・アカウントトラッカー
 
-Xアカウントを「監視のみ」と「記録対象」に分けて管理するツールです。GitHub Actionsでプロフィール取得と死活監視を行い、記録対象についてはブラウザからarchive.md保存とはてなブックマーク登録を行います。
+Xアカウントを「監視のみ」と「記録対象」に分けて管理するツールです。GitHub Actionsでプロフィール取得と死活監視を行い、記録対象についてはブラウザからarchive.md / archive.li保存とはてなブックマーク登録を行います。
 
 ## 運用区分
 
-- **監視のみ (`monitor_only`)**: 定期的な死活監視のみ。archive.md保存・はてブは行いません。
-- **記録対象 (`record`)**: 死活監視に加えて、archive.md保存とはてなブックマーク用の導線を表示します。
+- **監視のみ (`monitor_only`)**: 定期的な死活監視のみ。Archive保存・はてブは行いません。
+- **記録対象 (`record`)**: 死活監視に加えて、archive.md / archive.li保存とはてなブックマーク用の導線を表示します。
 
 ## 完成済み
 
@@ -21,16 +21,16 @@ Xアカウントを「監視のみ」と「記録対象」に分けて管理す�
 - archive保存済み状態を `data/artists.json` に記録し、一覧で「保存済み」と表示
 - 保存済みのGitHub設定がある場合、ページ起動時に最新の `data/artists.json` を自動読込
 
-## archive.md・はてなブックマークの仕様
+## archive.md / archive.li・はてなブックマークの仕様
 
-GitHub-hosted Actionsからarchive.mdへ保存するとHTTP 429になったため、archive.md保存は通常ブラウザから行います。
+GitHub-hosted ActionsからArchive系サービスへ保存すると制限を受ける場合があるため、archive.md / archive.li保存は通常ブラウザから行います。
 
-- **archive.mdの既定対象**: `https://x.com/<ユーザー名>` の通常プロフィール
-- **archive.mdの任意対象**: 必要な場合だけ `https://x.com/<ユーザー名>/with_replies` へ切り替え可能
+- **Archiveの既定対象**: `https://x.com/<ユーザー名>` の通常プロフィール
+- **Archiveの任意対象**: 必要な場合だけ `https://x.com/<ユーザー名>/with_replies` へ切り替え可能
 - **はてなブックマークの既定対象**: 常に `https://x.com/<ユーザー名>` の通常プロフィール
 - **archive URLのはてブ**: 通常は行わず、必要な場合だけ任意で利用
 
-`archive_helper.html?x=<Xアカウント名>` を使うと、通常プロフィールのはてブ、archive対象URLの切替、archive.md起動を1画面で行えます。
+`archive_helper.html?x=<Xアカウント名>` を使うと、通常プロフィールのはてブ、archive対象URLの切替、archive.md / archive.li起動を1画面で行えます。
 
 例:
 
@@ -38,7 +38,7 @@ GitHub-hosted Actionsからarchive.mdへ保存するとHTTP 429になったた�
 archive_helper.html?x=tawakenai_marou
 ```
 
-ブラウザ側からarchive.mdへ自動POSTはせず、利用者の通常ブラウザ操作で保存します。これはGitHub Actionsの共有IPからレート制限を受け続けることを避けるためです。
+ブラウザ側からArchive系サービスへ自動POSTはせず、利用者の通常ブラウザ操作で保存します。これはGitHub Actionsの共有IPからレート制限を受け続けることを避けるためです。
 
 保存後は `archive_helper.html` から保存済み状態をGitHubへ反映できます。一度保存済みになれば完了扱いとし、定期的な再保存は要求しません。
 
@@ -72,7 +72,7 @@ Fine-grained PATを使用します。
 3. GitHubへ保存し、プロフィール取得を実行
 4. 保存済みのGitHub設定があれば、次回以降はページ起動時に最新データを自動読込
 5. 記録対象の場合は「アーカイブ・はてブ」を開く
-6. 通常プロフィール、または必要に応じてリプライ欄をarchive.mdへ保存
+6. 通常プロフィール、または必要に応じてリプライ欄をarchive.mdまたはarchive.liへ保存
 7. 保存完了後、保存済み状態をGitHubへ反映
 8. はてブは通常プロフィールURLを対象に登録
 9. `Monitor X accounts` が定期的に死活監視

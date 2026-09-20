@@ -2545,8 +2545,26 @@
       "works": [],
       "added_at": "2026-09-20",
       "fetch_status": "done",
-      "avatar_url": "https://abs.twimg.com/sticky/default_profile_images/default_profile_200x200.png",
-      "profile_fetched_at": "2026-09-20"
+      "avatar_url": "https://unavatar.io/x/talmein?fallback=false",
+      "profile_fetched_at": "2026-09-20",
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-09-20T10:00:48+00:00",
+        "x_account": "talmein",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=talmein",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/talmein",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ]
 }

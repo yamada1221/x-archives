@@ -59,7 +59,7 @@ def test_default_archive_target_is_profile():
 
 
 def test_browser_flow_is_declared():
-    assert "archive.mdへの保存はGitHub Actionsではなく、このブラウザから行います" in HTML
+    assert "archive.md / archive.liへの保存はGitHub Actionsではなく、このブラウザから行います" in HTML
 
 
 def test_archive_result_can_be_written_back_to_github():
@@ -84,3 +84,13 @@ def test_wip_archive_is_pending_not_done():
 def test_final_archive_url_can_replace_wip():
     assert "完成URLが出たら再度更新してください" in HTML
     assert "artist.archive_url=archive" in HTML
+
+
+def test_archive_li_can_be_opened_from_helper():
+    assert "openArchive('archive.li')" in HTML
+    assert "archive.liを開く" in HTML
+
+
+def test_archive_li_result_url_is_accepted():
+    assert "'archive.li'" in HTML
+    assert "['archive.md','archive.li','archive.ph','archive.is','archive.today']" in HTML

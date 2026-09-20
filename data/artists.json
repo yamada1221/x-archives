@@ -2522,7 +2522,11 @@
           "url": "https://x.com/yuto01236",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.09.20-044008/https://x.com/yuto01236/with_replies",
+      "archive_target_url": "https://x.com/yuto01236",
+      "archive_checked_at": "2026-09-20T04:51:41.641Z"
     }
   ]
 }

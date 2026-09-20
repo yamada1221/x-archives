@@ -2495,14 +2495,16 @@
     },
     {
       "id": "mu9bu7c86ccc",
-      "name": "yuto01236",
+      "name": null,
       "x_account": "yuto01236",
       "pixiv_user": "",
       "note": "クソリプ",
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-09-20",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://unavatar.io/x/yuto01236?fallback=false",
+      "profile_fetched_at": "2026-09-20"
     }
   ]
 }

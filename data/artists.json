@@ -2564,7 +2564,11 @@
           "url": "https://x.com/talmein",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.09.20-100108/https://x.com/talmein/with_replies",
+      "archive_target_url": "https://x.com/talmein/with_replies",
+      "archive_checked_at": "2026-09-20T10:04:15.022Z"
     }
   ]
 }

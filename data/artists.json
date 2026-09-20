@@ -2537,14 +2537,16 @@
     },
     {
       "id": "mu9nb1hjfws2",
-      "name": "talmein",
+      "name": "@",
       "x_account": "talmein",
       "pixiv_user": "",
       "note": "クソリプ",
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-09-20",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://abs.twimg.com/sticky/default_profile_images/default_profile_200x200.png",
+      "profile_fetched_at": "2026-09-20"
     }
   ]
 }

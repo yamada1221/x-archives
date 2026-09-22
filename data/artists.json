@@ -2668,7 +2668,25 @@
       "added_at": "2026-09-22",
       "fetch_status": "done",
       "avatar_url": "https://unavatar.io/x/bbnbbb000?fallback=false",
-      "profile_fetched_at": "2026-09-22"
+      "profile_fetched_at": "2026-09-22",
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-09-22T17:16:20+00:00",
+        "x_account": "bbnbbb000",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=bbnbbb000",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/bbnbbb000",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ]
 }

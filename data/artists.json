@@ -2659,14 +2659,16 @@
     },
     {
       "id": "mucxqtmlj1cb",
-      "name": "bbnbbb000",
+      "name": null,
       "x_account": "bbnbbb000",
       "pixiv_user": "",
       "note": "クソリプ",
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-09-22",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://unavatar.io/x/bbnbbb000?fallback=false",
+      "profile_fetched_at": "2026-09-22"
     }
   ]
 }

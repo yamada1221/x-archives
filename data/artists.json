@@ -2637,7 +2637,11 @@
           "url": "https://x.com/vwvwvwvqpqpqpqp",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.09.22-060330/https://x.com/vwvwvwvqpqpqpqp/with_replies",
+      "archive_target_url": "https://x.com/vwvwvwvqpqpqpqp/with_replies",
+      "archive_checked_at": "2026-09-22T06:15:18.672Z"
     }
   ]
 }

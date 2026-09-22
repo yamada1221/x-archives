@@ -2610,14 +2610,16 @@
     },
     {
       "id": "muc9pg32ewmd",
-      "name": "vwvwvwvqpqpqpqp",
+      "name": null,
       "x_account": "vwvwvwvqpqpqpqp",
       "pixiv_user": "",
       "note": "クソリプ",
       "tracking_mode": "record",
       "works": [],
       "added_at": "2026-09-22",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://unavatar.io/x/vwvwvwvqpqpqpqp?fallback=false",
+      "profile_fetched_at": "2026-09-22"
     }
   ]
 }

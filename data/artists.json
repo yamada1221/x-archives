@@ -2686,7 +2686,11 @@
           "url": "https://x.com/bbnbbb000",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.09.22-172614/https://x.com/bbnbbb000/with_replies",
+      "archive_target_url": "https://x.com/bbnbbb000/with_replies",
+      "archive_checked_at": "2026-09-22T17:35:37.163Z"
     }
   ]
 }

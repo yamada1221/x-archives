@@ -1,0 +1,29 @@
+name: Test FxTwitter monitoring
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/fxtwitter.py'
+      - 'scripts/diagnose_fxtwitter.py'
+      - 'scripts/monitor_accounts.py'
+      - 'tests/test_fxtwitter.py'
+      - 'tests/test_monitor_accounts.py'
+      - '.github/workflows/test_fxtwitter.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Unit tests
+        run: python -m unittest discover -v
+      - name: Read-only live FxTwitter check
+        run: python scripts/diagnose_fxtwitter.py

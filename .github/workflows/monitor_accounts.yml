@@ -1,6 +1,12 @@
 name: Monitor X accounts
 
 on:
+  push:
+    branches: ['main']
+    paths:
+      - 'scripts/monitor_accounts.py'
+      - 'scripts/fxtwitter.py'
+      - '.github/workflows/monitor_accounts.yml'
   schedule:
     - cron: "23 4 * * *"
   workflow_dispatch:
@@ -34,11 +40,13 @@ jobs:
             git add data/artists.json
             if git diff --cached --quiet; then
               echo "No account state changes to commit."
+              python scripts/monitor_accounts.py --check-health
               exit 0
             fi
 
             git commit -m "chore: record X account checks"
             if git push origin HEAD:main; then
+              python scripts/monitor_accounts.py --check-health
               exit 0
             fi
 

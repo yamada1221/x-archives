@@ -114,11 +114,11 @@ class MonitorTests(unittest.TestCase):
         }
         probed = []
 
-        def fake_probe(username):
-            probed.append(username)
-            return "active", "ok"
+        def fake_probe(artist, fx_healthy):
+            probed.append(artist["x_account"])
+            return {"status": "active", "detail": "ok", "reason": "", "source": "fxtwitter"}
 
-        with patch.object(monitor, "probe_account", side_effect=fake_probe):
+        with patch.object(monitor, "probe_artist", side_effect=fake_probe), patch.object(monitor, "probe_fxtwitter", return_value={"status": "active"}), patch.object(monitor.time, "sleep"):
             monitor.process(data)
 
         self.assertEqual(probed, ["monitor_user", "record_user"])

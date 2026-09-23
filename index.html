@@ -143,9 +143,9 @@
   <div class="stats-row">
     <div class="stat-card"><div class="label">登録アカウント</div><div class="value" id="statAccounts">0</div></div>
     <div class="stat-card"><div class="label">記録対象</div><div class="value" id="statRecord">0</div></div>
-    <div class="stat-card"><div class="label">X 公開中</div><div class="value" id="statActive">0</div></div>
+    <div class="stat-card"><div class="label">X 存在確認</div><div class="value" id="statActive">0</div></div>
     <div class="stat-card"><div class="label">判定不能</div><div class="value" id="statUnknown">0</div></div>
-    <div class="stat-card"><div class="label">利用不可</div><div class="value" id="statUnavailable">0</div></div>
+    <div class="stat-card"><div class="label">利用不可・疑い</div><div class="value" id="statUnavailable">0</div></div>
   </div>
 
   <div class="search-add-row">
@@ -379,6 +379,21 @@ function closeModal() {
   editingId = null;
 }
 
+function resetMonitoringForAccountEdit(artist, newAccount) {
+  const next = newAccount.toLowerCase();
+  const previous = (artist.x_account || '').toLowerCase();
+  const observed = (artist.monitoring?.observed_username || '').toLowerCase();
+  if (next === previous || (next && next === observed)) return;
+  if (artist.monitoring) {
+    (artist.status_history ||= []).push({
+      from: artist.monitoring.status || 'unknown', to: 'unknown',
+      at: new Date().toISOString(), reason: `監視対象を @${artist.x_account || ''} から @${newAccount} へ変更`,
+    });
+  }
+  delete artist.x_user_id;
+  delete artist.monitoring;
+}
+
 async function saveArtist() {
   const xAccount = document.getElementById('fX').value.trim().replace(/^@/, '');
   const pixivUser = document.getElementById('fPixiv').value.trim();
@@ -410,6 +425,7 @@ async function saveArtist() {
   let artist;
   if (editingId) {
     artist = artists.find(item => item.id === editingId);
+    if (artist) resetMonitoringForAccountEdit(artist, xAccount);
     if (artist) Object.assign(artist, { name, x_account: xAccount, pixiv_user: pixivUser, note, tracking_mode: trackingMode, fetch_status: xAccount ? 'pending' : artist.fetch_status });
   } else {
     artist = { id: uid(), name, x_account: xAccount, pixiv_user: pixivUser, note, tracking_mode: trackingMode, works: [], added_at: today(), fetch_status: xAccount ? 'pending' : 'none' };
@@ -524,8 +540,22 @@ function latestMonitorResult(artist) {
 
 function monitorBadge(artist) {
   const result = latestMonitorResult(artist);
-  if (result === 'active') return '<span class="status-tag active">X 公開中</span>';
-  if (result === 'unavailable') return '<span class="status-tag unavailable">X 利用不可</span>';
+  const monitoring = artist.monitoring || {};
+  if (result === 'active') {
+    const renamed = monitoring.observed_username && monitoring.observed_username.toLowerCase() !== (artist.x_account || '').toLowerCase();
+    const label = renamed ? 'X ユーザー名変更' : monitoring.protected ? 'X 非公開・存在確認' : 'X 存在確認';
+    const detail = renamed ? `現在のユーザー名: @${monitoring.observed_username}` : '';
+    return `<span class="status-tag active" title="${esc(detail)}">${label}</span>`;
+  }
+  if (result === 'unavailable') {
+    const confirmed = monitoring.status === 'unavailable' && monitoring.confirmed_reason === monitoring.last_reason;
+    const label = monitoring.last_reason === 'suspended'
+      ? (confirmed ? 'X 凍結' : 'X 凍結の疑い')
+      : monitoring.last_reason === 'not_found'
+        ? (confirmed ? 'X 見つからない' : 'X 消失の疑い')
+        : (monitoring.status === 'unavailable' ? 'X 利用不可' : 'X 利用不可の疑い');
+    return `<span class="status-tag unavailable">${label}</span>`;
+  }
   if (result === 'unknown') return '<span class="status-tag unknown">X 判定不能</span>';
   return '';
 }

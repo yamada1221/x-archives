@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import http.client
 import json
 import re
 import urllib.error
@@ -80,5 +81,5 @@ def probe_profile(username: str, user_id: str = "") -> dict:
         except (ValueError, UnicodeError):
             return unknown(f"FxTwitter HTTP {status}; non-JSON response")
         return classify(payload, status, username, user_id)
-    except (OSError, ValueError) as exc:
+    except (OSError, ValueError, http.client.HTTPException) as exc:
         return unknown(f"FxTwitter temporary failure: {type(exc).__name__}")

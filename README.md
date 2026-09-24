@@ -21,6 +21,22 @@ Xアカウントを「監視のみ」と「記録対象」に分けて管理す�
 - archive保存済み状態を `data/artists.json` に記録し、一覧で「保存済み」と表示
 - 保存済みのGitHub設定がある場合、ページ起動時に最新の `data/artists.json` を自動読込
 
+## Xアカウント監視の取得経路
+
+FxTwitterの公開プロフィールAPI (`https://api.fxtwitter.com/2/profile/{handle}`) を優先します。Xのログイン、X Developer APIトークン、PCの常時起動は不要です。取得はGitHub Actionsから行います。
+
+- プロフィールのユーザー名・数値IDが照会対象と一致した場合だけ存在確認として扱います。非公開アカウントも存在確認に含みます。
+- 初回取得時に `x_user_id` を保存し、次回から数値IDで同じアカウントを追跡します。ユーザー名が変わった場合は一覧に表示し、`monitoring.observed_username` に現在の名前を記録します。登録名や過去のアーカイブURLは自動変更しません。
+- 明示的な `reason: suspended` は凍結の根拠、`User not found` は未検出の根拠として別々に記録します。未検出だけで削除とは断定しません。
+- 同じ理由の利用不可が3回蓄積するまで確定しません。途中で存在確認できた場合、または理由が変わった場合はカウントをリセットします。通信失敗・取得制限は `unknown` として保留します。
+- 最初の1〜2回は「凍結の疑い」「消失の疑い」、確定後は「凍結」「見つからない」を表示します。現在の運用は日次監視なので確定まで数日かかる場合があります。
+- 毎回、既知の正常アカウントを数値IDで確認し、取得経路全体の異常を検出します。FxTwitterで判定できず、まだ数値IDがない場合だけ従来のX公開エンドポイントへフォールバックします。ID取得後は別人に再利用されたユーザー名へ追従しません。
+- 全件判定不能の場合も記録を保存し、その後Actionsを失敗にします。件数と取得経路の確認結果はActionsの実行サマリーで確認できます。
+
+2026-09-23のGitHub Actions実測で、正常・凍結・未検出と数値ID照会を確認しました。外部サービスの仕様変更やキャッシュによる遅延はあり得るため、各記録に最終試行日時と最終確定日時を保持します。
+
+今回の変更は監視結果の記録・一覧表示までです。メール等への状態変化通知と短い間隔での再確認は未実装です。
+
 ## archive.md / archive.li・はてなブックマークの仕様
 
 GitHub-hosted ActionsからArchive系サービスへ保存すると制限を受ける場合があるため、archive.md / archive.li保存は通常ブラウザから行います。
@@ -45,7 +61,7 @@ archive_helper.html?x=tawakenai_marou
 ## 制約
 
 - はてなブックマークへの最終登録は利用者が行います。ログイン情報やOAuth認証をリポジトリに要求しません。
-- `unavailable` は公開プロフィールを取得できない状態です。現時点では凍結と削除を完全には区別できないため、`suspended` / `deleted` と断定して記録しません。
+- `unavailable` の詳細は `monitoring.last_reason` / `confirmed_reason` に記録します。明示的な凍結と未検出を区別しますが、削除・一時停止などを未検出だけで断定しません。
 - GitHub設定はブラウザのlocalStorageに保存されるため、PCとスマホでは別々に設定が必要です。
 
 ## セットアップ
@@ -86,6 +102,7 @@ Fine-grained PATを使用します。
       "id": "一意ID",
       "name": "表示名",
       "x_account": "Xアカウント名（@なし）",
+      "x_user_id": "数値ユーザーID（文字列、取得後に追加）",
       "tracking_mode": "monitor_only | record",
       "avatar_url": "プロフィール画像URL",
       "note": "メモ",
@@ -97,6 +114,10 @@ Fine-grained PATを使用します。
         "status": "unknown | active | unavailable",
         "last_checked_at": "2026-08-19T00:00:00+00:00",
         "last_result": "active | unavailable | unknown",
+        "last_source": "fxtwitter | x_public",
+        "last_reason": "suspended | not_found | 空文字列",
+        "confirmed_reason": "suspended | not_found | 空文字列",
+        "last_confirmed_at": "2026-08-19T00:00:00+00:00",
         "consecutive_unavailable": 0
       },
       "status_history": [],

@@ -3342,14 +3342,17 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=4750835548; screen_name=vextrand"
         }
       ]
+    },
+    {
+      "id": "mufur6ga5u2m",
+      "name": "k_maru_dau_baby",
+      "x_account": "k_maru_dau_baby",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-09-24",
+      "fetch_status": "pending"
     }
-  ],
-  "monitoring_summary": {
-    "checked_at": "2026-09-24T09:22:59+00:00",
-    "checked": 62,
-    "fxtwitter_healthy": true,
-    "active": 57,
-    "unavailable": 5,
-    "unknown": 0
-  }
+  ]
 }

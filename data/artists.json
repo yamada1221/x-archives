@@ -2743,14 +2743,16 @@
     },
     {
       "id": "muexgsmxwexx",
-      "name": "vextrand",
+      "name": null,
       "x_account": "vextrand",
       "pixiv_user": "",
       "note": "インプレゾンビ",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-09-24",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://unavatar.io/x/vextrand?fallback=false",
+      "profile_fetched_at": "2026-09-24"
     }
   ]
 }

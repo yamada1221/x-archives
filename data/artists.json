@@ -3345,14 +3345,16 @@
     },
     {
       "id": "mufur6ga5u2m",
-      "name": "k_maru_dau_baby",
+      "name": null,
       "x_account": "k_maru_dau_baby",
       "pixiv_user": "",
       "note": "",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-09-24",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://unavatar.io/x/k_maru_dau_baby?fallback=false",
+      "profile_fetched_at": "2026-09-24"
     }
   ]
 }

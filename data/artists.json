@@ -3385,7 +3385,25 @@
       "added_at": "2026-09-25",
       "fetch_status": "done",
       "avatar_url": "https://unavatar.io/x/ando85996775?fallback=false",
-      "profile_fetched_at": "2026-09-25"
+      "profile_fetched_at": "2026-09-25",
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-09-25T03:11:23+00:00",
+        "x_account": "ando85996775",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=ando85996775",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/ando85996775",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ]
 }

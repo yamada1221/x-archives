@@ -3466,6 +3466,17 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mugifnafv9dm",
+      "name": "kaz197752",
+      "x_account": "kaz197752",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-09-25",
+      "fetch_status": "pending"
     }
   ]
 }

@@ -3373,6 +3373,17 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mugdvscdd2xn",
+      "name": "ando85996775",
+      "x_account": "ando85996775",
+      "pixiv_user": "",
+      "note": "togetter クソリプ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-09-25",
+      "fetch_status": "pending"
     }
   ]
 }

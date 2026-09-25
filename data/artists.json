@@ -3435,6 +3435,17 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mughr73dj4p5",
+      "name": "soj1196455",
+      "x_account": "soj1196455",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-09-25",
+      "fetch_status": "pending"
     }
   ]
 }

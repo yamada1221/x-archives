@@ -3376,14 +3376,16 @@
     },
     {
       "id": "mugdvscdd2xn",
-      "name": "ando85996775",
+      "name": null,
       "x_account": "ando85996775",
       "pixiv_user": "",
       "note": "togetter クソリプ",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-09-25",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://unavatar.io/x/ando85996775?fallback=false",
+      "profile_fetched_at": "2026-09-25"
     }
   ]
 }

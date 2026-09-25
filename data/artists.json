@@ -3407,14 +3407,16 @@
     },
     {
       "id": "mugersx7u21y",
-      "name": "luloguti_lulo",
+      "name": null,
       "x_account": "luloguti_lulo",
       "pixiv_user": "",
       "note": "スパム 2026/07/21から活動開始 2012年までスペイン語ツイートだった",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-09-25",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://unavatar.io/x/luloguti_lulo?fallback=false",
+      "profile_fetched_at": "2026-09-25"
     }
   ]
 }

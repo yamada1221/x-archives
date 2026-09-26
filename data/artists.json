@@ -3643,14 +3643,16 @@
     },
     {
       "id": "muhzfvoqox8b",
-      "name": "Ggfdjjnvt",
+      "name": null,
       "x_account": "Ggfdjjnvt",
       "pixiv_user": "",
       "note": "クソリプ",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-09-26",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://unavatar.io/x/Ggfdjjnvt?fallback=false",
+      "profile_fetched_at": "2026-09-26"
     }
   ]
 }

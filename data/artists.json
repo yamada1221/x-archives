@@ -3640,14 +3640,17 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1486636924890542081; screen_name=kaz197752"
         }
       ]
+    },
+    {
+      "id": "muhzfvoqox8b",
+      "name": "Ggfdjjnvt",
+      "x_account": "Ggfdjjnvt",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-09-26",
+      "fetch_status": "pending"
     }
-  ],
-  "monitoring_summary": {
-    "checked_at": "2026-09-25T09:40:44+00:00",
-    "checked": 67,
-    "fxtwitter_healthy": true,
-    "active": 62,
-    "unavailable": 5,
-    "unknown": 0
-  }
+  ]
 }

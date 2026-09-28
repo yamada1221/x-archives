@@ -54,6 +54,7 @@ class ThreadsHtmlTests(unittest.TestCase):
                     "id": "3",
                     "username": "f00744",
                     "text": "reply text",
+                    "permalink": "https://www.threads.com/@f00744/post/reply3",
                     "is_reply": True,
                 },
             ]

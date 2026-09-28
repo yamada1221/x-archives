@@ -3700,6 +3700,27 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=2034526101398335488; screen_name=Ggfdjjnvt"
         }
       ]
+    },
+    {
+      "id": "threads-f00744",
+      "name": "f00744",
+      "x_account": "",
+      "threads_account": "f00744",
+      "pixiv_user": "",
+      "note": "Threadsプロフィールから追加",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://www.threads.com/share/BAeGfI7t6P/",
+          "type": "threads",
+          "memo": "共有リンク",
+          "saved_at": "2026-09-28"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-09-28",
+      "fetch_status": "none",
+      "threads_fetch_status": "pending"
     }
   ],
   "monitoring_summary": {
@@ -3710,4 +3731,4 @@
     "unavailable": 6,
     "unknown": 0
   }
-}
+}\n

@@ -1,6 +1,9 @@
 name: Test Threads profile fetch
 
 on:
+  push:
+    branches:
+      - 'feature/threads-profile-support'
   pull_request:
     paths:
       - 'scripts/fetch_threads.py'

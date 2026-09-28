@@ -188,6 +188,9 @@ def _timestamp_to_iso(value) -> str:
 
 
 def _post_from_threads_object(post: dict, expected_username: str, force_reply: bool = False) -> dict | None:
+    if not any(post.get(key) for key in ("pk", "id", "code", "permalink", "url")):
+        return None
+
     user = post.get("user") if isinstance(post.get("user"), dict) else {}
     raw_username = str(user.get("username") or post.get("username") or "").lstrip("@")
     if raw_username and raw_username.lower() != expected_username.lower():

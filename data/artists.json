@@ -4201,7 +4201,7 @@
     },
     {
       "id": "mul65ifuqcb5",
-      "name": "NoctiferImagine",
+      "name": "橋本ひかる🍰",
       "x_account": "NoctiferImagine",
       "threads_account": "",
       "threads_share_url": "",
@@ -4211,8 +4211,10 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-09-28",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2094869325337575424/DRY5hodG_200x200.jpg",
+      "profile_fetched_at": "2026-09-28"
     }
   ]
 }

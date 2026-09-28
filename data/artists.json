@@ -4213,8 +4213,26 @@
       "added_at": "2026-09-28",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://pbs.twimg.com/profile_images/2094869325337575424/DRY5hodG_200x200.jpg",
-      "profile_fetched_at": "2026-09-28"
+      "avatar_url": "https://unavatar.io/x/NoctiferImagine?fallback=false",
+      "profile_fetched_at": "2026-09-28",
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-09-28T11:33:48+00:00",
+        "x_account": "NoctiferImagine",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=NoctiferImagine",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/NoctiferImagine",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ]
 }

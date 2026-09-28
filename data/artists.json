@@ -4198,14 +4198,21 @@
       "added_at": "2026-09-28",
       "fetch_status": "none",
       "threads_fetch_status": "none"
+    },
+    {
+      "id": "mul65ifuqcb5",
+      "name": "NoctiferImagine",
+      "x_account": "NoctiferImagine",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "スパム",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-09-28",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
-  ],
-  "monitoring_summary": {
-    "checked_at": "2026-09-28T11:02:59+00:00",
-    "checked": 69,
-    "fxtwitter_healthy": true,
-    "active": 63,
-    "unavailable": 6,
-    "unknown": 0
-  }
+  ]
 }

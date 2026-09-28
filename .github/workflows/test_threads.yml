@@ -3,7 +3,12 @@ name: Test Threads profile fetch
 on:
   push:
     branches:
-      - 'feature/threads-profile-support'
+      - 'feature/**'
+    paths:
+      - 'scripts/fetch_threads.py'
+      - 'tests/test_fetch_threads.py'
+      - 'index.html'
+      - '.github/workflows/test_threads.yml'
   pull_request:
     paths:
       - 'scripts/fetch_threads.py'

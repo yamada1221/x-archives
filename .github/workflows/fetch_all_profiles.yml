@@ -2,6 +2,7 @@ name: Fetch All X Profiles
 
 on:
   push:
+    branches: ['main']
     paths:
       - 'data/artists.json'
   workflow_dispatch:

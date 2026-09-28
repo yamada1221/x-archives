@@ -3,8 +3,9 @@ from pathlib import Path
 WORKFLOW = Path('.github/workflows/fetch_all_profiles.yml').read_text(encoding='utf-8')
 
 
-def test_runs_when_artists_json_is_pushed():
+def test_runs_when_artists_json_is_pushed_to_main():
     assert 'push:' in WORKFLOW
+    assert "branches: ['main']" in WORKFLOW
     assert "- 'data/artists.json'" in WORKFLOW
 
 

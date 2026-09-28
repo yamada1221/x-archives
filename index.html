@@ -441,6 +441,32 @@ function resetMonitoringForAccountEdit(artist, newAccount) {
   delete artist.monitoring;
 }
 
+function resetThreadsForEdit(artist, newAccount, newShareUrl) {
+  const previousAccount = String(artist.threads_account || '').toLowerCase();
+  const nextAccount = String(newAccount || '').toLowerCase();
+  const previousShare = String(artist.threads_share_url || '');
+  const nextShare = String(newShareUrl || '');
+  if (previousAccount === nextAccount && previousShare === nextShare) return;
+
+  for (const key of [
+    'threads_name',
+    'threads_bio',
+    'threads_avatar_url',
+    'threads_profile_url',
+    'threads_profile_fetched_at',
+    'threads_profile_source',
+    'threads_follower_count',
+    'threads_is_verified',
+    'threads_posts',
+    'threads_posts_fetched_at',
+    'threads_posts_last_fetch_count',
+    'threads_last_error',
+  ]) {
+    delete artist[key];
+  }
+  artist.threads_fetch_status = newAccount ? 'pending' : 'none';
+}
+
 async function saveArtist() {
   const xAccount = document.getElementById('fX').value.trim().replace(/^@/, '');
   const threadsInput = document.getElementById('fThreads').value.trim();
@@ -499,6 +525,7 @@ async function saveArtist() {
   if (editingId) {
     artist = artists.find(item => item.id === editingId);
     if (artist) resetMonitoringForAccountEdit(artist, xAccount);
+    if (artist) resetThreadsForEdit(artist, threadsAccount, threadsShareUrl);
     if (artist) Object.assign(artist, {
       name,
       x_account: xAccount,
@@ -533,7 +560,7 @@ async function saveArtist() {
   closeModal();
   renderList();
 
-  if (xAccount || threadsAccount) {
+  if (xAccount || threadsAccount || threadsShareUrl) {
     showToast('GitHubへ保存中...');
     const synced = await syncToGitHub();
     if (!synced) {
@@ -555,9 +582,13 @@ async function saveArtist() {
     saveLocal();
     renderList();
 
-    showToast(results.every(Boolean)
-      ? 'プロフィール取得を依頼しました。数分後にGitHubから読込してください。'
-      : '一部のプロフィール取得の開始に失敗しました');
+    if (!results.length) {
+      showToast('Threads共有URLをGitHubに保存しました');
+    } else {
+      showToast(results.every(Boolean)
+        ? 'プロフィール取得を依頼しました。数分後にGitHubから読込してください。'
+        : '一部のプロフィール取得の開始に失敗しました');
+    }
   }
 
   button.disabled = false;

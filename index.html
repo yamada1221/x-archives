@@ -163,6 +163,7 @@
     <div class="modal-field"><label>Xアカウント（@なしでもOK）</label><input id="fX" placeholder="例: example_user"></div>
     <div class="modal-field"><label>表示名（仮）</label><input id="fName" placeholder="空欄ならXアカウント名を使用"></div>
     <div class="modal-field"><label>監視種別</label><select id="fMode"><option value="monitor_only">監視のみ</option><option value="record">記録対象（archive.md + はてブ）</option></select></div>
+    <div class="modal-field"><label>ThreadsアカウントまたはプロフィールURL（任意）</label><input id="fThreads" placeholder="例: f00744 または https://www.threads.com/@f00744"></div>
     <div class="modal-field"><label>Pixivユーザー名またはID（任意）</label><input id="fPixiv" placeholder="任意"></div>
     <div class="modal-field"><label>メモ</label><input id="fNote" placeholder="分類理由やメモなど"></div>
     <div class="modal-actions"><button onclick="closeModal()">キャンセル</button><button onclick="saveArtist()" class="primary" id="modalSaveBtn">追加してプロフィール取得</button></div>
@@ -181,7 +182,20 @@ const CONFIG_KEY = 'artist_tracker_config';
 function normalizeArtist(artist) {
   if (!artist.tracking_mode) artist.tracking_mode = 'monitor_only';
   if (!Array.isArray(artist.works)) artist.works = [];
+  if (!Array.isArray(artist.threads_posts)) artist.threads_posts = [];
   return artist;
+}
+
+function normalizeThreadsAccountInput(value) {
+  const raw = String(value || '').trim();
+  if (!raw) return '';
+  const match = raw.match(/threads\.(?:com|net)\/@([^/?#]+)/i);
+  const account = match ? match[1] : raw.replace(/^@/, '');
+  try {
+    return decodeURIComponent(account).trim().replace(/^@/, '');
+  } catch (e) {
+    return account.trim().replace(/^@/, '');
+  }
 }
 
 function loadLocal() {
@@ -239,12 +253,14 @@ function esc(value) {
 function detectUrlType(url) {
   if (!url) return 'other';
   if (url.includes('x.com') || url.includes('twitter.com')) return 'x_post';
+  if (url.includes('threads.com') || url.includes('threads.net')) return 'threads';
   if (url.includes('pixiv.net')) return 'pixiv';
   return 'other';
 }
 
 function typeLabel(type) {
   if (type === 'x_post') return 'X';
+  if (type === 'threads') return 'Threads';
   if (type === 'pixiv') return 'Pixiv';
   return 'URL';
 }
@@ -261,6 +277,23 @@ async function triggerFetch(artistId, xAccount) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ event_type: 'fetch_artist', client_payload: { artist_id: artistId, x_account: xAccount } }),
+  });
+
+  return response.status === 204;
+}
+
+async function triggerThreadsFetch(artistId, threadsAccount) {
+  const cfg = getConfig();
+  if (!cfg.token || !cfg.owner || !cfg.repo) return false;
+
+  const response = await fetch(`https://api.github.com/repos/${cfg.owner}/${cfg.repo}/dispatches`, {
+    method: 'POST',
+    headers: {
+      Authorization: `token ${cfg.token}`,
+      Accept: 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ event_type: 'fetch_threads', client_payload: { artist_id: artistId, threads_account: threadsAccount } }),
   });
 
   return response.status === 204;
@@ -352,6 +385,7 @@ function openAddModal() {
   document.getElementById('modalSaveBtn').textContent = '追加してプロフィール取得';
   document.getElementById('fX').value = '';
   document.getElementById('fName').value = '';
+  document.getElementById('fThreads').value = '';
   document.getElementById('fPixiv').value = '';
   document.getElementById('fNote').value = '';
   document.getElementById('fMode').value = 'monitor_only';
@@ -368,6 +402,7 @@ function openEditModal(id) {
   document.getElementById('modalSaveBtn').textContent = '更新してプロフィール再取得';
   document.getElementById('fX').value = artist.x_account || '';
   document.getElementById('fName').value = artist.name || '';
+  document.getElementById('fThreads').value = artist.threads_account || '';
   document.getElementById('fPixiv').value = artist.pixiv_user || '';
   document.getElementById('fNote').value = artist.note || '';
   document.getElementById('fMode').value = artist.tracking_mode || 'monitor_only';
@@ -396,13 +431,14 @@ function resetMonitoringForAccountEdit(artist, newAccount) {
 
 async function saveArtist() {
   const xAccount = document.getElementById('fX').value.trim().replace(/^@/, '');
+  const threadsAccount = normalizeThreadsAccountInput(document.getElementById('fThreads').value);
   const pixivUser = document.getElementById('fPixiv').value.trim();
-  const name = document.getElementById('fName').value.trim() || xAccount || pixivUser || '（未設定）';
+  const name = document.getElementById('fName').value.trim() || xAccount || threadsAccount || pixivUser || '（未設定）';
   const note = document.getElementById('fNote').value.trim();
   const trackingMode = document.getElementById('fMode').value;
 
-  if (!xAccount && !pixivUser) {
-    alert('XアカウントかPixivユーザーを入力してください');
+  if (!xAccount && !threadsAccount && !pixivUser) {
+    alert('X、Threads、Pixivのいずれかを入力してください');
     return;
   }
 
@@ -418,6 +454,18 @@ async function saveArtist() {
     }
   }
 
+  if (threadsAccount) {
+    const normalizedThreads = threadsAccount.toLowerCase();
+    const duplicate = artists.find(item =>
+      item.id !== editingId &&
+      String(item.threads_account || '').trim().replace(/^@/, '').toLowerCase() === normalizedThreads
+    );
+    if (duplicate) {
+      alert(`Threads @${threadsAccount} はすでに登録されています`);
+      return;
+    }
+  }
+
   const button = document.getElementById('modalSaveBtn');
   button.disabled = true;
   button.textContent = '処理中...';
@@ -426,9 +474,31 @@ async function saveArtist() {
   if (editingId) {
     artist = artists.find(item => item.id === editingId);
     if (artist) resetMonitoringForAccountEdit(artist, xAccount);
-    if (artist) Object.assign(artist, { name, x_account: xAccount, pixiv_user: pixivUser, note, tracking_mode: trackingMode, fetch_status: xAccount ? 'pending' : artist.fetch_status });
+    if (artist) Object.assign(artist, {
+      name,
+      x_account: xAccount,
+      threads_account: threadsAccount,
+      pixiv_user: pixivUser,
+      note,
+      tracking_mode: trackingMode,
+      fetch_status: xAccount ? 'pending' : artist.fetch_status,
+      threads_fetch_status: threadsAccount ? 'pending' : (artist.threads_fetch_status || 'none'),
+    });
   } else {
-    artist = { id: uid(), name, x_account: xAccount, pixiv_user: pixivUser, note, tracking_mode: trackingMode, works: [], added_at: today(), fetch_status: xAccount ? 'pending' : 'none' };
+    artist = {
+      id: uid(),
+      name,
+      x_account: xAccount,
+      threads_account: threadsAccount,
+      pixiv_user: pixivUser,
+      note,
+      tracking_mode: trackingMode,
+      works: [],
+      threads_posts: [],
+      added_at: today(),
+      fetch_status: xAccount ? 'pending' : 'none',
+      threads_fetch_status: threadsAccount ? 'pending' : 'none',
+    };
     artists.push(artist);
   }
 
@@ -436,26 +506,31 @@ async function saveArtist() {
   closeModal();
   renderList();
 
-  if (xAccount) {
+  if (xAccount || threadsAccount) {
     showToast('GitHubへ保存中...');
     const synced = await syncToGitHub();
     if (!synced) {
-      artist.fetch_status = 'error';
+      if (xAccount) artist.fetch_status = 'error';
+      if (threadsAccount) artist.threads_fetch_status = 'error';
       saveLocal();
       renderList();
       button.disabled = false;
       return;
     }
 
-    const ok = await triggerFetch(artist.id, xAccount);
-    if (ok) {
-      showToast('プロフィール取得を依頼しました。数分後にGitHubから読込してください。');
-    } else {
-      artist.fetch_status = 'error';
-      saveLocal();
-      renderList();
-      showToast('プロフィール取得の開始に失敗しました');
-    }
+    const results = [];
+    if (xAccount) results.push(await triggerFetch(artist.id, xAccount));
+    if (threadsAccount) results.push(await triggerThreadsFetch(artist.id, threadsAccount));
+
+    if (xAccount && results[0] === false) artist.fetch_status = 'error';
+    const threadsResultIndex = xAccount ? 1 : 0;
+    if (threadsAccount && results[threadsResultIndex] === false) artist.threads_fetch_status = 'error';
+    saveLocal();
+    renderList();
+
+    showToast(results.every(Boolean)
+      ? 'プロフィール取得を依頼しました。数分後にGitHubから読込してください。'
+      : '一部のプロフィール取得の開始に失敗しました');
   }
 
   button.disabled = false;
@@ -518,16 +593,19 @@ function initials(name) {
 }
 
 function avatarHTML(artist) {
-  if (artist.avatar_url) return `<img src="${esc(artist.avatar_url)}" alt="" onerror="this.parentNode.innerHTML='${esc(initials(artist.name))}'">`;
-  if (artist.fetch_status === 'pending') return '…';
+  const avatar = artist.avatar_url || artist.threads_avatar_url;
+  if (avatar) return `<img src="${esc(avatar)}" alt="" onerror="this.parentNode.innerHTML='${esc(initials(artist.name))}'">`;
+  if (artist.fetch_status === 'pending' || artist.threads_fetch_status === 'pending') return '…';
   return initials(artist.name);
 }
 
 function fetchBadge(artist) {
-  if (!artist.x_account) return '';
-  if (artist.fetch_status === 'pending') return '<span class="status-tag pending">取得待ち</span>';
-  if (artist.fetch_status === 'error') return '<span class="status-tag error">取得失敗</span>';
-  return '';
+  const badges = [];
+  if (artist.x_account && artist.fetch_status === 'pending') badges.push('<span class="status-tag pending">X 取得待ち</span>');
+  if (artist.x_account && artist.fetch_status === 'error') badges.push('<span class="status-tag error">X 取得失敗</span>');
+  if (artist.threads_account && artist.threads_fetch_status === 'pending') badges.push('<span class="status-tag pending">Threads 取得待ち</span>');
+  if (artist.threads_account && artist.threads_fetch_status === 'error') badges.push('<span class="status-tag error">Threads 取得失敗</span>');
+  return badges.join('');
 }
 
 function latestMonitorResult(artist) {
@@ -592,6 +670,9 @@ function renderList() {
     !query ||
     (artist.name || '').toLowerCase().includes(query) ||
     (artist.x_account || '').toLowerCase().includes(query) ||
+    (artist.threads_account || '').toLowerCase().includes(query) ||
+    (artist.threads_bio || '').toLowerCase().includes(query) ||
+    (artist.threads_posts || []).some(post => (post.text || '').toLowerCase().includes(query)) ||
     (artist.note || '').toLowerCase().includes(query)
   );
 
@@ -612,7 +693,8 @@ function renderList() {
         <div class="artist-info">
           <div class="artist-name">${esc(artist.name)}</div>
           <div class="artist-accounts">
-            ${artist.x_account ? `<span class="account-tag">@${esc(artist.x_account)}</span>` : ''}
+            ${artist.x_account ? `<span class="account-tag">X @${esc(artist.x_account)}</span>` : ''}
+            ${artist.threads_account ? `<span class="account-tag">Threads @${esc(artist.threads_account)}</span>` : ''}
             ${artist.pixiv_user ? `<span class="account-tag">pixiv: ${esc(artist.pixiv_user)}</span>` : ''}
             ${modeBadge(artist)}
           </div>
@@ -640,6 +722,27 @@ function renderList() {
             <a href="${esc(artist.archive_url)}" target="_blank" rel="noopener"><button class="small">保存済みarchiveを見る</button></a>
           </div>` : ''}
 
+        ${artist.threads_account ? `
+          <div class="record-box">
+            <p><strong>Threads</strong> @${esc(artist.threads_account)}
+              ${artist.threads_bio ? `<br>${esc(artist.threads_bio)}` : ''}
+              ${artist.threads_profile_fetched_at ? `<br>最終取得: ${esc(artist.threads_profile_fetched_at)}` : ''}
+            </p>
+            <div class="row" style="margin-bottom:.5rem">
+              <a href="https://www.threads.com/@${encodeURIComponent(artist.threads_account)}" target="_blank" rel="noopener"><button class="small">Threadsプロフィールを開く</button></a>
+              <button class="small" onclick="refetchThreadsProfile('${esc(artist.id)}')">Threads再取得</button>
+            </div>
+            ${(artist.threads_posts || []).length ? `
+              <div class="works-list">
+                ${(artist.threads_posts || []).slice(0, 10).map(post => `
+                  <div class="work-item">
+                    <span class="work-type-badge">${post.is_reply ? '返信' : '投稿'}</span>
+                    <a class="work-url" href="${esc(post.permalink || ('https://www.threads.com/@' + artist.threads_account))}" target="_blank" rel="noopener">${esc(post.text || '本文なし')}</a>
+                    <span class="work-date">${esc((post.timestamp || '').replace('T', ' ').slice(0, 16))}</span>
+                  </div>`).join('')}
+              </div>` : '<p>取得済みの投稿・返信はまだありません。</p>'}
+          </div>` : ''}
+
         <div class="note-row"><input type="text" placeholder="メモ..." value="${esc(artist.note || '')}" onchange="updateNote('${esc(artist.id)}', this.value)"></div>
 
         <div class="add-work-row">
@@ -662,7 +765,7 @@ function renderList() {
         <div class="artist-actions">
           <button class="small" onclick="openEditModal('${esc(artist.id)}')">編集</button>
           <button class="small danger" onclick="removeArtist('${esc(artist.id)}')">削除</button>
-          ${artist.x_account ? `<button class="small refetch-btn" onclick="refetchProfile('${esc(artist.id)}')">プロフィール再取得</button>` : ''}
+          ${artist.x_account ? `<button class="small refetch-btn" onclick="refetchProfile('${esc(artist.id)}')">Xプロフィール再取得</button>` : ''}
         </div>
       </div>
     </div>`;
@@ -680,7 +783,19 @@ async function refetchProfile(id) {
   renderList();
 
   const ok = await triggerFetch(artist.id, artist.x_account);
-  showToast(ok ? '再取得を依頼しました' : 'トリガーに失敗しました');
+  showToast(ok ? 'Xプロフィール再取得を依頼しました' : 'トリガーに失敗しました');
+}
+
+async function refetchThreadsProfile(id) {
+  const artist = artists.find(item => item.id === id);
+  if (!artist || !artist.threads_account) return;
+
+  artist.threads_fetch_status = 'pending';
+  saveLocal();
+  renderList();
+
+  const ok = await triggerThreadsFetch(artist.id, artist.threads_account);
+  showToast(ok ? 'Threads再取得を依頼しました' : 'Threadsトリガーに失敗しました');
 }
 
 function showToast(message) {

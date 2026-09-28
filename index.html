@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Xアカウントトラッカー</title>
+<title>X・Threadsアカウントトラッカー</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: system-ui, sans-serif; background: #f5f5f3; color: #1a1a18; min-height: 100vh; }
@@ -118,7 +118,7 @@
 <body>
 <div class="app">
   <div class="header">
-    <h1>Xアカウントトラッカー</h1>
+    <h1>X・Threadsアカウントトラッカー</h1>
     <div class="header-actions">
       <button onclick="openConfig()" class="icon-btn" title="設定">⚙</button>
       <button onclick="syncToGitHub()" id="syncBtn">GitHubに保存</button>
@@ -149,7 +149,7 @@
   </div>
 
   <div class="search-add-row">
-    <input type="text" class="search-input" id="searchInput" placeholder="名前・Xアカウントで検索..." oninput="renderList()">
+    <input type="text" class="search-input" id="searchInput" placeholder="名前・X・Threadsアカウントで検索..." oninput="renderList()">
     <button onclick="openAddModal()" class="primary">＋ アカウントを追加</button>
   </div>
 
@@ -727,6 +727,7 @@ function renderList() {
             <p><strong>Threads</strong> @${esc(artist.threads_account)}
               ${artist.threads_bio ? `<br>${esc(artist.threads_bio)}` : ''}
               ${artist.threads_profile_fetched_at ? `<br>最終取得: ${esc(artist.threads_profile_fetched_at)}` : ''}
+              ${artist.threads_posts_last_fetch_count !== undefined ? `<br>今回取得: ${esc(artist.threads_posts_last_fetch_count)}件 / 保存: ${esc((artist.threads_posts || []).length)}件` : ''}
             </p>
             <div class="row" style="margin-bottom:.5rem">
               <a href="https://www.threads.com/@${encodeURIComponent(artist.threads_account)}" target="_blank" rel="noopener"><button class="small">Threadsプロフィールを開く</button></a>

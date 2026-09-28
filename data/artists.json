@@ -4201,7 +4201,7 @@
     },
     {
       "id": "mul65ifuqcb5",
-      "name": "橋本ひかる🍰",
+      "name": "NoctiferImagine",
       "x_account": "NoctiferImagine",
       "threads_account": "",
       "threads_share_url": "",
@@ -4211,28 +4211,23 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-09-28",
-      "fetch_status": "done",
-      "threads_fetch_status": "none",
-      "avatar_url": "https://unavatar.io/x/NoctiferImagine?fallback=false",
-      "profile_fetched_at": "2026-09-28",
-      "profile_source": "unavatar",
-      "profile_fetch_diagnostic": {
-        "checked_at": "2026-09-28T11:33:48+00:00",
-        "x_account": "NoctiferImagine",
-        "fetch_status_after_attempt": "done",
-        "syndication": {
-          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=NoctiferImagine",
-          "http_status": 200,
-          "content_type": "unknown",
-          "bytes": 0,
-          "json_ok": false,
-          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
-        },
-        "html": {
-          "url": "https://x.com/NoctiferImagine",
-          "error": "HTTPError 403"
-        }
-      }
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
+    },
+    {
+      "id": "mul671zhrh6z",
+      "name": "HiJevi",
+      "x_account": "HiJevi",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "スパム",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-09-28",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ]
 }

@@ -5,6 +5,7 @@ from scripts.fetch_threads import (
     extract_posts_from_html,
     extract_profile_from_html,
     find_artist,
+    merge_post_history,
     merge_posts,
     normalize_username,
 )
@@ -138,6 +139,13 @@ class ThreadsHtmlTests(unittest.TestCase):
         second = [{"id": "2", "text": "b"}, {"id": "3", "text": "c", "is_reply": True}]
         merged = merge_posts(first, second)
         self.assertEqual([post["id"] for post in merged], ["1", "2", "3"])
+
+    def test_merge_post_history_keeps_newest_first_and_deduplicates(self):
+        existing = [{"id": "old", "text": "old"}, {"id": "same", "text": "old same"}]
+        fetched = [{"id": "new", "text": "new"}, {"id": "same", "text": "new same"}]
+        merged = merge_post_history(existing, fetched)
+        self.assertEqual([post["id"] for post in merged], ["new", "same", "old"])
+        self.assertEqual(merged[1]["text"], "new same")
 
 
 class ArtistLookupTests(unittest.TestCase):

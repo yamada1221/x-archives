@@ -3703,14 +3703,16 @@
     },
     {
       "id": "mukrsbiskt2i",
-      "name": "nikonikonie_",
+      "name": null,
       "x_account": "nikonikonie_",
       "pixiv_user": "",
       "note": "クソリプ",
       "tracking_mode": "monitor_only",
       "works": [],
       "added_at": "2026-09-28",
-      "fetch_status": "pending"
+      "fetch_status": "done",
+      "avatar_url": "https://unavatar.io/x/nikonikonie_?fallback=false",
+      "profile_fetched_at": "2026-09-28"
     }
   ]
 }

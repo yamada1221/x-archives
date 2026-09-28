@@ -9,7 +9,7 @@ Xアカウントを「監視のみ」と「記録対象」に分けて管理す�
 
 ## 完成済み
 
-- ブラウザ上でのXアカウント追加・編集・削除、関連URLとメモの管理
+- ブラウザ上でのX / Threadsアカウント追加・編集・削除、関連URLとメモの管理\n- Threads公開プロフィールの表示名・自己紹介・アイコンと、取得可能な公開投稿・返信の保存
 - `data/artists.json` の GitHub Contents API 経由での読み書き
 - 個別プロフィール取得と一括プロフィール取得
 - 一括取得の `missing_only`（取得済みはスキップ）/ `all` モード
@@ -20,6 +20,19 @@ Xアカウントを「監視のみ」と「記録対象」に分けて管理す�
 - 記録対象だけに `archive_helper.html` への導線を表示
 - archive保存済み状態を `data/artists.json` に記録し、一覧で「保存済み」と表示
 - 保存済みのGitHub設定がある場合、ページ起動時に最新の `data/artists.json` を自動読込
+
+## Threadsプロフィール・投稿の取得
+
+Threadsアカウントはユーザー名または `https://www.threads.com/@<ユーザー名>` のプロフィールURLで登録できます。
+
+- GitHub Actionsの `Fetch Threads Profile` が公開プロフィールを取得します。
+- `THREADS_ACCESS_TOKEN` が設定され、トークンに `threads_profile_discovery` 権限がある場合は、Threads公式APIの公開プロフィール検索と公開プロフィール投稿取得を使います。
+- トークンがない場合は公開プロフィールHTMLから表示名・自己紹介・アイコンを取得し、HTML内に公開投稿データが埋め込まれている場合だけ投稿・返信も保守的に抽出します。
+- 取得した投稿・返信は `threads_posts` に最大50件保存し、画面では最新10件を表示します。
+- HTML側の仕様変更やアクセス制限で本文が取れない場合があります。その場合でもプロフィールURL自体は管理できます。
+- Xアカウントを併記している場合、Threads取得結果でX側の表示名・アイコンは上書きしません。
+
+公式APIで他ユーザーの公開プロフィール・投稿を取得するには、Meta側でThreads APIを利用できるアプリと `threads_profile_discovery` 権限が必要です。
 
 ## Xアカウント監視の取得経路
 
@@ -70,6 +83,10 @@ archive_helper.html?x=tawakenai_marou
 
 Settings → Pages → Branch: `main` / root
 
+### Threads API（任意）
+
+公開プロフィールHTMLだけでなく、公式APIから公開投稿を安定して取得したい場合は、リポジトリのActions secretに `THREADS_ACCESS_TOKEN` を追加します。トークンには `threads_profile_discovery` 権限が必要です。未設定でもHTMLフォールバックは動作します。
+
 ### Personal Access Token
 
 Fine-grained PATを使用します。
@@ -101,7 +118,7 @@ Fine-grained PATを使用します。
     {
       "id": "一意ID",
       "name": "表示名",
-      "x_account": "Xアカウント名（@なし）",
+      "x_account": "Xアカウント名（@なし）",\n      "threads_account": "Threadsアカウント名（@なし）",\n      "threads_bio": "Threads自己紹介",\n      "threads_avatar_url": "Threadsプロフィール画像URL",\n      "threads_fetch_status": "pending | done | error | none",\n      "threads_posts": [{"id": "投稿ID", "text": "本文", "timestamp": "日時", "permalink": "URL", "is_reply": false}],
       "x_user_id": "数値ユーザーID（文字列、取得後に追加）",
       "tracking_mode": "monitor_only | record",
       "avatar_url": "プロフィール画像URL",

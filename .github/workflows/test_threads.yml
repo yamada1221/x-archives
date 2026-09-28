@@ -47,19 +47,49 @@ jobs:
           Path("/tmp/x-archives-index.js").write_text(script, encoding="utf-8")
           PY
           node --check /tmp/x-archives-index.js
-      - name: Probe Threads share resolver
+      - name: Probe Threads share URL directly
         run: |
+          set +e
           python - <<'PY'
-          import json
+          import re
           import urllib.request
-          url = "https://fx.akitsuki.me/api/share/BAeGfI7t6P"
-          req = urllib.request.Request(url, headers={"User-Agent": "x-archives/1.0"})
-          with urllib.request.urlopen(req, timeout=30) as response:
-              payload = json.loads(response.read())
-          print(json.dumps({
-              "author": payload.get("author"),
-              "id": payload.get("id"),
-              "url": payload.get("url"),
-              "content": (payload.get("content") or "")[:120],
-          }, ensure_ascii=False))
+          url = "https://www.threads.com/share/BAeGfI7t6P/"
+          req = urllib.request.Request(
+              url,
+              headers={"User-Agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"},
+          )
+          try:
+              with urllib.request.urlopen(req, timeout=30) as response:
+                  raw = response.read(2 * 1024 * 1024).decode("utf-8", "replace")
+                  print("urllib_status=", response.status)
+                  print("urllib_final=", response.geturl())
+                  for pattern in [
+                      r'<link[^>]+rel="canonical"[^>]+href="([^"]+)"',
+                      r'<meta[^>]+property="og:url"[^>]+content="([^"]+)"',
+                      r'https://www\.threads\.com/@[A-Za-z0-9._]+/post/[A-Za-z0-9_-]+',
+                  ]:
+                      match = re.search(pattern, raw, re.I)
+                      print("urllib_match=", match.group(1) if match and match.lastindex else (match.group(0) if match else ""))
+          except Exception as exc:
+              print("urllib_error=", type(exc).__name__, str(exc))
           PY
+
+          command -v google-chrome || command -v chromium || command -v chromium-browser
+          CHROME="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          if [ -n "$CHROME" ]; then
+            "$CHROME" --headless=new --no-sandbox --disable-gpu --virtual-time-budget=8000 --dump-dom               "https://www.threads.com/share/BAeGfI7t6P/" > /tmp/threads-share.html 2>/tmp/chrome.err
+            python - <<'PY'
+          import re
+          from pathlib import Path
+          raw = Path("/tmp/threads-share.html").read_text(encoding="utf-8", errors="replace")
+          print("chrome_bytes=", len(raw))
+          for pattern in [
+              r'<link[^>]+rel="canonical"[^>]+href="([^"]+)"',
+              r'<meta[^>]+property="og:url"[^>]+content="([^"]+)"',
+              r'https://www\.threads\.com/@[A-Za-z0-9._]+/post/[A-Za-z0-9_-]+',
+          ]:
+              match = re.search(pattern, raw, re.I)
+              print("chrome_match=", match.group(1) if match and match.lastindex else (match.group(0) if match else ""))
+          PY
+          fi
+          exit 0

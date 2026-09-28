@@ -43,3 +43,21 @@ jobs:
           Path("/tmp/x-archives-index.js").write_text(script, encoding="utf-8")
           PY
           node --check /tmp/x-archives-index.js
+      - name: Probe @f00744 through public Threads HTML
+        env:
+          ARTIST_ID: threads-f00744
+          THREADS_ACCOUNT: f00744
+          THREADS_ACCESS_TOKEN: ""
+        run: |
+          python scripts/fetch_threads.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path("data/artists.json").read_text(encoding="utf-8"))
+          artist = next(a for a in data["artists"] if a.get("id") == "threads-f00744")
+          print("threads_fetch_status=" + str(artist.get("threads_fetch_status")))
+          print("threads_profile_source=" + str(artist.get("threads_profile_source")))
+          print("threads_name=" + str(artist.get("threads_name")))
+          print("threads_posts_count=" + str(len(artist.get("threads_posts") or [])))
+          print("threads_bio_present=" + str(bool(artist.get("threads_bio"))))
+          PY

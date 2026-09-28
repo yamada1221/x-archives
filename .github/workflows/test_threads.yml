@@ -43,4 +43,30 @@ jobs:
           Path("/tmp/x-archives-index.js").write_text(script, encoding="utf-8")
           PY
           node --check /tmp/x-archives-index.js
+      - name: Live probe public Threads posts and replies
+        env:
+          ARTIST_ID: threads-f00744
+          THREADS_ACCOUNT: f00744
+          THREADS_ACCESS_TOKEN: ""
+        run: |
+          python scripts/fetch_threads.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path("data/artists.json").read_text(encoding="utf-8"))
+          artist = next(a for a in data["artists"] if a.get("id") == "threads-f00744")
+          posts = artist.get("threads_posts") or []
+          print("threads_fetch_status=" + str(artist.get("threads_fetch_status")))
+          print("threads_profile_source=" + str(artist.get("threads_profile_source")))
+          print("threads_name=" + str(artist.get("threads_name")))
+          print("threads_posts_count=" + str(len(posts)))
+          print("threads_replies_count=" + str(sum(1 for post in posts if post.get("is_reply"))))
+          for post in posts[:3]:
+              print("sample=" + str({
+                  "id": post.get("id"),
+                  "is_reply": post.get("is_reply"),
+                  "text": (post.get("text") or "")[:80],
+                  "permalink": post.get("permalink"),
+              }))
+          PY
 

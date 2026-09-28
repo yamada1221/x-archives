@@ -163,7 +163,7 @@
     <div class="modal-field"><label>Xアカウント（@なしでもOK）</label><input id="fX" placeholder="例: example_user"></div>
     <div class="modal-field"><label>表示名（仮）</label><input id="fName" placeholder="空欄ならXアカウント名を使用"></div>
     <div class="modal-field"><label>監視種別</label><select id="fMode"><option value="monitor_only">監視のみ</option><option value="record">記録対象（archive.md + はてブ）</option></select></div>
-    <div class="modal-field"><label>ThreadsアカウントまたはプロフィールURL（任意）</label><input id="fThreads" placeholder="例: f00744 または https://www.threads.com/@f00744"></div>
+    <div class="modal-field"><label>Threadsアカウント・プロフィールURL・共有URL（任意）</label><input id="fThreads" placeholder="例: f00744 / https://www.threads.com/@f00744 / https://www.threads.com/share/..."></div>
     <div class="modal-field"><label>Pixivユーザー名またはID（任意）</label><input id="fPixiv" placeholder="任意"></div>
     <div class="modal-field"><label>メモ</label><input id="fNote" placeholder="分類理由やメモなど"></div>
     <div class="modal-actions"><button onclick="closeModal()">キャンセル</button><button onclick="saveArtist()" class="primary" id="modalSaveBtn">追加してプロフィール取得</button></div>
@@ -186,9 +186,21 @@ function normalizeArtist(artist) {
   return artist;
 }
 
+function normalizeThreadsShareInput(value) {
+  const raw = String(value || '').trim();
+  if (!raw || !/threads\.(?:com|net)\/share\//i.test(raw)) return '';
+  try {
+    const url = new URL(raw);
+    const match = url.pathname.match(/^\/share\/([^/]+)/i);
+    return match ? `https://www.threads.com/share/${encodeURIComponent(decodeURIComponent(match[1]))}/` : '';
+  } catch (e) {
+    return '';
+  }
+}
+
 function normalizeThreadsAccountInput(value) {
   const raw = String(value || '').trim();
-  if (!raw) return '';
+  if (!raw || normalizeThreadsShareInput(raw)) return '';
   const match = raw.match(/threads\.(?:com|net)\/@([^/?#]+)/i);
   const account = match ? match[1] : raw.replace(/^@/, '');
   try {
@@ -402,7 +414,7 @@ function openEditModal(id) {
   document.getElementById('modalSaveBtn').textContent = '更新してプロフィール再取得';
   document.getElementById('fX').value = artist.x_account || '';
   document.getElementById('fName').value = artist.name || '';
-  document.getElementById('fThreads').value = artist.threads_account || '';
+  document.getElementById('fThreads').value = artist.threads_account || artist.threads_share_url || '';
   document.getElementById('fPixiv').value = artist.pixiv_user || '';
   document.getElementById('fNote').value = artist.note || '';
   document.getElementById('fMode').value = artist.tracking_mode || 'monitor_only';
@@ -431,14 +443,16 @@ function resetMonitoringForAccountEdit(artist, newAccount) {
 
 async function saveArtist() {
   const xAccount = document.getElementById('fX').value.trim().replace(/^@/, '');
-  const threadsAccount = normalizeThreadsAccountInput(document.getElementById('fThreads').value);
+  const threadsInput = document.getElementById('fThreads').value.trim();
+  const threadsShareUrl = normalizeThreadsShareInput(threadsInput);
+  const threadsAccount = normalizeThreadsAccountInput(threadsInput);
   const pixivUser = document.getElementById('fPixiv').value.trim();
-  const name = document.getElementById('fName').value.trim() || xAccount || threadsAccount || pixivUser || '（未設定）';
+  const name = document.getElementById('fName').value.trim() || xAccount || threadsAccount || (threadsShareUrl ? 'Threads共有リンク' : '') || pixivUser || '（未設定）';
   const note = document.getElementById('fNote').value.trim();
   const trackingMode = document.getElementById('fMode').value;
 
-  if (!xAccount && !threadsAccount && !pixivUser) {
-    alert('X、Threads、Pixivのいずれかを入力してください');
+  if (!xAccount && !threadsAccount && !threadsShareUrl && !pixivUser) {
+    alert('X、Threads、Threads共有URL、Pixivのいずれかを入力してください');
     return;
   }
 
@@ -466,6 +480,17 @@ async function saveArtist() {
     }
   }
 
+  if (threadsShareUrl) {
+    const duplicate = artists.find(item =>
+      item.id !== editingId &&
+      String(item.threads_share_url || '') === threadsShareUrl
+    );
+    if (duplicate) {
+      alert('このThreads共有URLはすでに登録されています');
+      return;
+    }
+  }
+
   const button = document.getElementById('modalSaveBtn');
   button.disabled = true;
   button.textContent = '処理中...';
@@ -478,6 +503,7 @@ async function saveArtist() {
       name,
       x_account: xAccount,
       threads_account: threadsAccount,
+      threads_share_url: threadsShareUrl,
       pixiv_user: pixivUser,
       note,
       tracking_mode: trackingMode,
@@ -490,6 +516,7 @@ async function saveArtist() {
       name,
       x_account: xAccount,
       threads_account: threadsAccount,
+      threads_share_url: threadsShareUrl,
       pixiv_user: pixivUser,
       note,
       tracking_mode: trackingMode,
@@ -671,6 +698,7 @@ function renderList() {
     (artist.name || '').toLowerCase().includes(query) ||
     (artist.x_account || '').toLowerCase().includes(query) ||
     (artist.threads_account || '').toLowerCase().includes(query) ||
+    (artist.threads_share_url || '').toLowerCase().includes(query) ||
     (artist.threads_bio || '').toLowerCase().includes(query) ||
     (artist.threads_posts || []).some(post => (post.text || '').toLowerCase().includes(query)) ||
     (artist.note || '').toLowerCase().includes(query)
@@ -695,6 +723,7 @@ function renderList() {
           <div class="artist-accounts">
             ${artist.x_account ? `<span class="account-tag">X @${esc(artist.x_account)}</span>` : ''}
             ${artist.threads_account ? `<span class="account-tag">Threads @${esc(artist.threads_account)}</span>` : ''}
+            ${artist.threads_share_url ? '<span class="account-tag">Threads共有</span>' : ''}
             ${artist.pixiv_user ? `<span class="account-tag">pixiv: ${esc(artist.pixiv_user)}</span>` : ''}
             ${modeBadge(artist)}
           </div>
@@ -720,6 +749,14 @@ function renderList() {
         ${artist.archive_status === 'done' && artist.archive_url ? `
           <div class="row" style="margin-bottom:.75rem">
             <a href="${esc(artist.archive_url)}" target="_blank" rel="noopener"><button class="small">保存済みarchiveを見る</button></a>
+          </div>` : ''}
+
+        ${artist.threads_share_url ? `
+          <div class="record-box">
+            <p><strong>Threads共有リンク</strong><br>${esc(artist.threads_share_url)}</p>
+            <div class="row">
+              <a href="${esc(artist.threads_share_url)}" target="_blank" rel="noopener"><button class="small">共有リンクを開く</button></a>
+            </div>
           </div>` : ''}
 
         ${artist.threads_account ? `

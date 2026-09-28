@@ -34,6 +34,8 @@ def test_profile_fetch_uses_repository_dispatch():
     assert "repos/${cfg.owner}/${cfg.repo}/dispatches" in HTML
     assert "event_type: 'fetch_artist'" in HTML
     assert "client_payload: { artist_id: artistId, x_account: xAccount }" in HTML
+    assert "event_type: 'fetch_threads'" in HTML
+    assert "client_payload: { artist_id: artistId, threads_account: threadsAccount }" in HTML
 
 
 def test_sync_reports_http_status_on_failure():
@@ -42,5 +44,7 @@ def test_sync_reports_http_status_on_failure():
 
 def test_save_artist_syncs_before_triggering_profile_fetch():
     sync_pos = HTML.index("const synced = await syncToGitHub();")
-    trigger_pos = HTML.index("const ok = await triggerFetch(artist.id, xAccount);")
-    assert sync_pos < trigger_pos
+    x_trigger_pos = HTML.index("results.push(await triggerFetch(artist.id, xAccount));")
+    threads_trigger_pos = HTML.index("results.push(await triggerThreadsFetch(artist.id, threadsAccount));")
+    assert sync_pos < x_trigger_pos
+    assert sync_pos < threads_trigger_pos

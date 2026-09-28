@@ -3731,6 +3731,35 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "threads-f00744",
+      "name": "f00744",
+      "x_account": "",
+      "threads_account": "f00744",
+      "pixiv_user": "",
+      "note": "Threadsプロフィールから追加（共有リンク BAeGfI7t6P とは別ユーザー）",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-09-28",
+      "fetch_status": "none",
+      "threads_fetch_status": "pending"
+    },
+    {
+      "id": "threads-share-BAeGfI7t6P",
+      "name": "Threads共有リンク",
+      "x_account": "",
+      "threads_account": "",
+      "threads_share_url": "https://www.threads.com/share/BAeGfI7t6P/",
+      "pixiv_user": "",
+      "note": "@f00744 とは別ユーザーの共有リンク",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-09-28",
+      "fetch_status": "none",
+      "threads_fetch_status": "none"
     }
   ]
 }

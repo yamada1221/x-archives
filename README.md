@@ -1,6 +1,6 @@
 # X アーカイブ・アカウントトラッカー
 
-Xアカウントを「監視のみ」と「記録対象」に分けて管理するツールです。GitHub Actionsでプロフィール取得と死活監視を行い、記録対象についてはブラウザからarchive.md / archive.li保存とはてなブックマーク登録を行います。
+Xアカウントの死活監視・アーカイブと、Threadsプロフィールの投稿/返信収集、Threads共有URLの保存をまとめて管理するツールです。Xの記録対象についてはブラウザからarchive.md / archive.li保存とはてなブックマーク登録を行います。
 
 ## 運用区分
 
@@ -9,7 +9,7 @@ Xアカウントを「監視のみ」と「記録対象」に分けて管理す�
 
 ## 完成済み
 
-- ブラウザ上でのXアカウント追加・編集・削除、関連URLとメモの管理
+- ブラウザ上でのX / Threadsアカウント追加・編集・削除、関連URLとメモの管理\n- Threads公開プロフィールの表示名・自己紹介・アイコンと、取得可能な公開投稿・返信の保存
 - `data/artists.json` の GitHub Contents API 経由での読み書き
 - 個別プロフィール取得と一括プロフィール取得
 - 一括取得の `missing_only`（取得済みはスキップ）/ `all` モード
@@ -20,6 +20,21 @@ Xアカウントを「監視のみ」と「記録対象」に分けて管理す�
 - 記録対象だけに `archive_helper.html` への導線を表示
 - archive保存済み状態を `data/artists.json` に記録し、一覧で「保存済み」と表示
 - 保存済みのGitHub設定がある場合、ページ起動時に最新の `data/artists.json` を自動読込
+
+## Threadsプロフィール・投稿・返信の取得
+
+Threadsアカウントはユーザー名または `https://www.threads.com/@<ユーザー名>` のプロフィールURLで登録できます。さらに `https://www.threads.com/share/<共有ID>/` はプロフィールと関連付けず、共有URL単独のレコードとして保存できます。
+
+- 公開プロフィールを検索エンジン向けのサーバー描画ページとして取得し、表示名・自己紹介・アイコンと、埋め込みJSONに含まれる直近の投稿を抽出します。ログインやAPIキーは必須ではありません。
+- `/@<ユーザー名>/replies` も取得して、そのユーザー自身が書いた返信を `is_reply: true` として保存します。
+- 手動の `Fetch Threads Profile` に加え、`Refresh Threads profiles` が毎日更新します。
+- 新しく取得した投稿・返信は既存履歴へ追加し、重複を除いて最大200件を保持します。画面では新しいものから10件を表示します。
+- 2026-09-28のGitHub Actions実測では `@f00744` から30件（通常投稿15件・返信15件）を無認証で取得できました。
+- `THREADS_ACCESS_TOKEN` と `threads_profile_discovery` 権限がある場合は、公式Threads APIの公開プロフィール検索・公開プロフィール投稿取得も優先的に利用できます。
+- HTML側の仕様変更、非公開アカウント、アクセス制限では本文を取得できない場合があります。失敗時に過去の `threads_posts` は削除しません。
+- Xアカウントを併記している場合、Threads取得結果でX側の表示名・アイコンは上書きしません。
+
+公式APIは取得経路を補強する任意設定で、現在の公開プロフィール・直近投稿・返信取得はトークンなしでも動作します。
 
 ## Xアカウント監視の取得経路
 
@@ -63,12 +78,17 @@ archive_helper.html?x=tawakenai_marou
 - はてなブックマークへの最終登録は利用者が行います。ログイン情報やOAuth認証をリポジトリに要求しません。
 - `unavailable` の詳細は `monitoring.last_reason` / `confirmed_reason` に記録します。明示的な凍結と未検出を区別しますが、削除・一時停止などを未検出だけで断定しません。
 - GitHub設定はブラウザのlocalStorageに保存されるため、PCとスマホでは別々に設定が必要です。
+- Threadsの無認証取得は公開Webページの構造に依存するため、Threads側の変更で一時的に取得不能になる可能性があります。
 
 ## セットアップ
 
 ### GitHub Pages
 
 Settings → Pages → Branch: `main` / root
+
+### Threads API（任意）
+
+公開プロフィールHTMLだけでなく、公式APIから公開投稿を安定して取得したい場合は、リポジトリのActions secretに `THREADS_ACCESS_TOKEN` を追加します。トークンには `threads_profile_discovery` 権限が必要です。未設定でもHTMLフォールバックは動作します。
 
 ### Personal Access Token
 
@@ -83,15 +103,15 @@ Fine-grained PATを使用します。
 
 ## 使い方
 
-1. 「＋ アカウントを追加」からXアカウントを登録
-2. `監視のみ` または `記録対象` を選択
-3. GitHubへ保存し、プロフィール取得を実行
+1. 「＋ アカウントを追加」からX、Threadsプロフィール、またはThreads共有URLを登録
+2. Xでは必要に応じて `監視のみ` または `記録対象` を選択
+3. GitHubへ保存し、X/Threadsプロフィールがある場合はプロフィール取得を実行
 4. 保存済みのGitHub設定があれば、次回以降はページ起動時に最新データを自動読込
-5. 記録対象の場合は「アーカイブ・はてブ」を開く
+5. Xの記録対象の場合は「アーカイブ・はてブ」を開く
 6. 通常プロフィール、または必要に応じてリプライ欄をarchive.mdまたはarchive.liへ保存
 7. 保存完了後、保存済み状態をGitHubへ反映
 8. はてブは通常プロフィールURLを対象に登録
-9. `Monitor X accounts` が定期的に死活監視
+9. `Monitor X accounts` がXを日次監視し、`Refresh Threads profiles` がThreadsの投稿・返信を日次更新
 
 ## artists.json の主要スキーマ
 
@@ -101,7 +121,7 @@ Fine-grained PATを使用します。
     {
       "id": "一意ID",
       "name": "表示名",
-      "x_account": "Xアカウント名（@なし）",
+      "x_account": "Xアカウント名（@なし）",\n      "threads_account": "Threadsアカウント名（@なし）",\n      "threads_bio": "Threads自己紹介",\n      "threads_avatar_url": "Threadsプロフィール画像URL",\n      "threads_fetch_status": "pending | done | error | none",\n      "threads_posts": [{"id": "投稿ID", "text": "本文", "timestamp": "日時", "permalink": "URL", "is_reply": false}],
       "x_user_id": "数値ユーザーID（文字列、取得後に追加）",
       "tracking_mode": "monitor_only | record",
       "avatar_url": "プロフィール画像URL",

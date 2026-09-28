@@ -1,63 +1,56 @@
-name: Fetch All X Profiles
+name: Refresh Threads profiles
 
 on:
   push:
     branches: ['main']
     paths:
-      - 'data/artists.json'
+      - 'scripts/fetch_threads.py'
+      - 'scripts/refresh_threads_profiles.py'
+      - '.github/workflows/refresh_threads_profiles.yml'
+  schedule:
+    - cron: "53 4 * * *"
   workflow_dispatch:
-    inputs:
-      mode:
-        description: "更新モード"
-        required: true
-        default: "missing_only"
-        type: choice
-        options:
-          - missing_only
-          - all
 
 concurrency:
   group: x-archives-data-writes
   cancel-in-progress: false
 
 jobs:
-  fetch-all:
-    if: github.event_name != 'push' || github.actor != 'github-actions[bot]'
+  refresh:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-
     steps:
       - uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Fetch, commit, and push profiles
+      - name: Fetch, commit, and push Threads profiles
         env:
-          FETCH_MODE: ${{ github.event_name == 'push' && 'missing_only' || inputs.mode }}
-          FETCH_DELAY_SECONDS: "3"
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          THREADS_FETCH_DELAY_SECONDS: "3"
         run: |
           git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           for attempt in 1 2 3; do
             echo "Attempt $attempt: sync with latest main"
             git fetch origin main
             git reset --hard origin/main
 
-            python scripts/fetch_all_profiles.py
+            python scripts/refresh_threads_profiles.py
 
             git add data/artists.json
             if git diff --cached --quiet; then
-              echo "No profile changes to commit."
+              echo "No Threads profile changes to commit."
+              python scripts/refresh_threads_profiles.py --check-health
               exit 0
             fi
 
-            git commit -m "chore: bulk update X profiles [$FETCH_MODE]"
+            git commit -m "chore: refresh Threads profiles"
             if git push origin HEAD:main; then
+              python scripts/refresh_threads_profiles.py --check-health
               exit 0
             fi
 
@@ -65,5 +58,5 @@ jobs:
             sleep $((attempt * 2))
           done
 
-          echo "Failed to push profile updates after 3 attempts."
+          echo "Failed to push Threads refresh after 3 attempts."
           exit 1

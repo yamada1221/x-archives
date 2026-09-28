@@ -1,0 +1,90 @@
+name: Fetch Threads Profile
+
+on:
+  repository_dispatch:
+    types: [fetch_threads]
+  workflow_dispatch:
+    inputs:
+      artist_id:
+        description: "Artist ID in data/artists.json"
+        required: true
+        type: string
+      threads_account:
+        description: "Threads account name without @"
+        required: true
+        type: string
+
+concurrency:
+  group: x-archives-data-writes
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Fetch and save Threads profile
+        env:
+          ARTIST_ID: ${{ github.event.client_payload.artist_id || inputs.artist_id }}
+          THREADS_ACCOUNT: ${{ github.event.client_payload.threads_account || inputs.threads_account }}
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          for attempt in 1 2 3; do
+            echo "Attempt $attempt: sync with latest main"
+            git fetch origin main
+            git reset --hard origin/main
+
+            if ! python scripts/fetch_threads.py; then
+              if python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          artist_id = os.environ.get("ARTIST_ID", "").strip()
+          account = os.environ.get("THREADS_ACCOUNT", "").strip().lstrip("@").lower()
+          data = json.loads(Path("data/artists.json").read_text(encoding="utf-8"))
+          exists = any(
+              str(artist.get("id", "")) == artist_id
+              or str(artist.get("threads_account", "")).strip().lstrip("@").lower() == account
+              for artist in data.get("artists", [])
+          )
+          raise SystemExit(0 if exists else 1)
+          PY
+              then
+                echo "Artist still exists; Threads fetch failure is actionable."
+                exit 1
+              else
+                echo "Artist no longer exists; stale dispatch skipped."
+                exit 0
+              fi
+            fi
+
+            git add data/artists.json
+            if git diff --cached --quiet; then
+              echo "No Threads profile changes to commit."
+              exit 0
+            fi
+
+            git commit -m "chore: update Threads profile [$THREADS_ACCOUNT]"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+
+            echo "Push raced with another update; retrying."
+            sleep $((attempt * 2))
+          done
+
+          echo "Failed to push Threads profile after 3 attempts."
+          exit 1

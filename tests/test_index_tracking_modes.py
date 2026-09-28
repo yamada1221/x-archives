@@ -83,3 +83,16 @@ def test_stats_split_latest_monitor_results():
     assert "latestMonitorResult(item) === 'active'" in HTML
     assert "latestMonitorResult(item) === 'unknown'" in HTML
     assert "latestMonitorResult(item) === 'unavailable'" in HTML
+
+
+def test_threads_share_url_can_be_stored_without_profile_account():
+    assert "function normalizeThreadsShareInput(value)" in HTML
+    assert "threads_share_url: threadsShareUrl" in HTML
+    assert "if (xAccount || threadsAccount || threadsShareUrl)" in HTML
+    assert "Threads共有URLをGitHubに保存しました" in HTML
+    assert "Threads共有リンクを開く" in HTML
+
+
+def test_threads_account_edit_clears_stale_threads_identity_data():
+    assert "function resetThreadsForEdit(artist, newAccount, newShareUrl)" in HTML
+    assert "resetThreadsForEdit(artist, threadsAccount, threadsShareUrl);" in HTML

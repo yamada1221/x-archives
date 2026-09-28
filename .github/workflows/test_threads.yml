@@ -23,5 +23,18 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Install UI test dependency
+        run: python -m pip install --upgrade pytest
       - name: Run Threads profile tests
         run: python -m unittest -v tests.test_fetch_threads
+      - name: Run existing index tests
+        run: python -m pytest -q tests/test_index_tracking_modes.py
+      - name: Check index JavaScript syntax
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          html = Path("index.html").read_text(encoding="utf-8")
+          script = html.split("<script>", 1)[1].rsplit("</script>", 1)[0]
+          Path("/tmp/x-archives-index.js").write_text(script, encoding="utf-8")
+          PY
+          node --check /tmp/x-archives-index.js

@@ -26,7 +26,7 @@ DATA_PATH = Path("data/artists.json")
 THREADS_WEB = "https://www.threads.com/@{username}"
 THREADS_GRAPH = "https://graph.threads.net/v1.0"
 BODY_LIMIT = 2 * 1024 * 1024
-USER_AGENT = "Mozilla/5.0 (compatible; x-archives/1.0; +https://github.com/yamada1221/x-archives)"
+USER_AGENT = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
 MAX_POSTS = 50
 
 
@@ -170,43 +170,111 @@ def extract_profile_from_html(raw: bytes, username: str) -> dict | None:
     return profile
 
 
-def _walk_json_for_posts(value, username: str, output: list[dict], seen: set[str]) -> None:
-    if len(output) >= MAX_POSTS:
+def _timestamp_to_iso(value) -> str:
+    if value in (None, ""):
+        return ""
+    if isinstance(value, (int, float)):
+        try:
+            return dt.datetime.fromtimestamp(float(value), tz=dt.timezone.utc).isoformat()
+        except (OverflowError, OSError, ValueError):
+            return str(value)
+    raw = str(value).strip()
+    if raw.isdigit():
+        try:
+            return dt.datetime.fromtimestamp(int(raw), tz=dt.timezone.utc).isoformat()
+        except (OverflowError, OSError, ValueError):
+            pass
+    return raw
+
+
+def _post_from_threads_object(post: dict, expected_username: str, force_reply: bool = False) -> dict | None:
+    user = post.get("user") if isinstance(post.get("user"), dict) else {}
+    raw_username = str(user.get("username") or post.get("username") or "").lstrip("@")
+    if raw_username and raw_username.lower() != expected_username.lower():
+        return None
+
+    caption = post.get("caption") if isinstance(post.get("caption"), dict) else {}
+    text = caption.get("text") if isinstance(caption.get("text"), str) else post.get("text")
+    if not isinstance(text, str) or not text.strip():
+        return None
+
+    post_id = str(post.get("pk") or post.get("id") or "")
+    shortcode = str(post.get("code") or post.get("shortcode") or "")
+    permalink = str(post.get("permalink") or post.get("url") or "")
+    if not permalink and shortcode and raw_username:
+        permalink = f"https://www.threads.com/@{raw_username}/post/{shortcode}"
+
+    app_info = post.get("text_post_app_info") if isinstance(post.get("text_post_app_info"), dict) else {}
+    reply_to_author = app_info.get("reply_to_author")
+    is_reply = force_reply or bool(post.get("is_reply")) or reply_to_author is not None
+
+    return {
+        "id": post_id,
+        "text": html.unescape(text).strip(),
+        "timestamp": _timestamp_to_iso(post.get("timestamp") or post.get("taken_at")),
+        "permalink": permalink,
+        "is_reply": is_reply,
+        "like_count": int(post.get("like_count") or 0),
+        "reply_count": int(app_info.get("direct_reply_count") or post.get("reply_count") or 0),
+        "repost_count": int(app_info.get("repost_count") or post.get("repost_count") or 0),
+        "quote_count": int(app_info.get("quote_count") or post.get("quote_count") or 0),
+    }
+
+
+def _walk_json_for_posts(
+    value,
+    username: str,
+    output: list[dict],
+    seen: set[str],
+    force_reply: bool = False,
+    depth: int = 0,
+) -> None:
+    if len(output) >= MAX_POSTS or depth > 30:
         return
+
     if isinstance(value, dict):
-        raw_username = str(value.get("username") or value.get("user_name") or "").lstrip("@")
-        text = value.get("text")
-        if raw_username.lower() == username.lower() and isinstance(text, str) and text.strip():
-            permalink = str(value.get("permalink") or value.get("url") or "")
-            post_id = str(value.get("id") or value.get("pk") or permalink or text)
-            if post_id not in seen:
-                seen.add(post_id)
-                output.append(
-                    {
-                        "id": str(value.get("id") or value.get("pk") or ""),
-                        "text": html.unescape(text).strip(),
-                        "timestamp": str(value.get("timestamp") or value.get("taken_at") or ""),
-                        "permalink": permalink,
-                        "is_reply": bool(value.get("is_reply")),
-                    }
-                )
+        thread_items = value.get("thread_items")
+        if isinstance(thread_items, list):
+            for item in thread_items:
+                if not isinstance(item, dict) or not isinstance(item.get("post"), dict):
+                    continue
+                parsed = _post_from_threads_object(item["post"], username, force_reply=force_reply)
+                if not parsed:
+                    continue
+                dedupe_key = parsed["id"] or parsed["permalink"] or parsed["text"]
+                if dedupe_key in seen:
+                    continue
+                seen.add(dedupe_key)
+                output.append(parsed)
+                if len(output) >= MAX_POSTS:
+                    return
+
+        parsed_direct = _post_from_threads_object(value, username, force_reply=force_reply)
+        if parsed_direct:
+            dedupe_key = parsed_direct["id"] or parsed_direct["permalink"] or parsed_direct["text"]
+            if dedupe_key not in seen:
+                seen.add(dedupe_key)
+                output.append(parsed_direct)
+                if len(output) >= MAX_POSTS:
+                    return
+
         for child in value.values():
-            _walk_json_for_posts(child, username, output, seen)
+            _walk_json_for_posts(child, username, output, seen, force_reply, depth + 1)
     elif isinstance(value, list):
         for child in value:
-            _walk_json_for_posts(child, username, output, seen)
+            _walk_json_for_posts(child, username, output, seen, force_reply, depth + 1)
 
 
-def extract_posts_from_html(raw: bytes, username: str) -> list[dict]:
+def extract_posts_from_html(raw: bytes, username: str, force_reply: bool = False) -> list[dict]:
     parser = parse_page(raw)
     posts: list[dict] = []
     seen: set[str] = set()
     for script in parser.json_scripts:
         try:
-            payload = json.loads(script)
+            payload = json.loads(html.unescape(script))
         except json.JSONDecodeError:
             continue
-        _walk_json_for_posts(payload, username, posts, seen)
+        _walk_json_for_posts(payload, username, posts, seen, force_reply=force_reply)
         if len(posts) >= MAX_POSTS:
             break
     return posts
@@ -257,20 +325,45 @@ def fetch_from_api(username: str, token: str) -> tuple[dict | None, list[dict]]:
     return None, []
 
 
-def fetch_from_html(username: str) -> tuple[dict | None, list[dict]]:
-    url = THREADS_WEB.format(username=urllib.parse.quote(username, safe=""))
+def fetch_threads_html_page(url: str, label: str) -> bytes | None:
     try:
         with request(url, timeout=20) as response:
             status = getattr(response, "status", 200)
             raw = response.read(BODY_LIMIT)
-        print(f"[threads_html] HTTP {status}; bytes={len(raw)}", file=sys.stderr)
-        if status == 200:
-            return extract_profile_from_html(raw, username), extract_posts_from_html(raw, username)
+        print(f"[{label}] HTTP {status}; bytes={len(raw)}", file=sys.stderr)
+        return raw if status == 200 else None
     except urllib.error.HTTPError as exc:
-        print(f"[threads_html] HTTPError {exc.code}", file=sys.stderr)
+        print(f"[{label}] HTTPError {exc.code}", file=sys.stderr)
     except Exception as exc:
-        print(f"[threads_html] error: {type(exc).__name__}: {exc}", file=sys.stderr)
-    return None, []
+        print(f"[{label}] error: {type(exc).__name__}: {exc}", file=sys.stderr)
+    return None
+
+
+def merge_posts(*groups: list[dict]) -> list[dict]:
+    merged: list[dict] = []
+    seen: set[str] = set()
+    for group in groups:
+        for post in group:
+            key = str(post.get("id") or post.get("permalink") or post.get("text") or "")
+            if not key or key in seen:
+                continue
+            seen.add(key)
+            merged.append(post)
+            if len(merged) >= MAX_POSTS:
+                return merged
+    return merged
+
+
+def fetch_from_html(username: str) -> tuple[dict | None, list[dict]]:
+    encoded = urllib.parse.quote(username, safe="")
+    profile_url = THREADS_WEB.format(username=encoded)
+    profile_raw = fetch_threads_html_page(profile_url, "threads_html")
+    replies_raw = fetch_threads_html_page(profile_url + "/replies", "threads_replies_html")
+
+    profile = extract_profile_from_html(profile_raw, username) if profile_raw else None
+    posts = extract_posts_from_html(profile_raw, username) if profile_raw else []
+    replies = extract_posts_from_html(replies_raw, username, force_reply=True) if replies_raw else []
+    return profile, merge_posts(posts, replies)
 
 
 def fetch_threads(username: str, token: str) -> tuple[dict | None, list[dict], str]:

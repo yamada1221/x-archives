@@ -3700,14 +3700,17 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=2034526101398335488; screen_name=Ggfdjjnvt"
         }
       ]
+    },
+    {
+      "id": "mukrsbiskt2i",
+      "name": "nikonikonie_",
+      "x_account": "nikonikonie_",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-09-28",
+      "fetch_status": "pending"
     }
-  ],
-  "monitoring_summary": {
-    "checked_at": "2026-09-27T10:04:50+00:00",
-    "checked": 68,
-    "fxtwitter_healthy": true,
-    "active": 62,
-    "unavailable": 6,
-    "unknown": 0
-  }
+  ]
 }

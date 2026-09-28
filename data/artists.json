@@ -3707,16 +3707,9 @@
       "x_account": "",
       "threads_account": "f00744",
       "pixiv_user": "",
-      "note": "Threadsプロフィールから追加",
+      "note": "Threadsプロフィールから追加（共有リンク BAeGfI7t6P とは別ユーザー）",
       "tracking_mode": "record",
-      "works": [
-        {
-          "url": "https://www.threads.com/share/BAeGfI7t6P/",
-          "type": "threads",
-          "memo": "共有リンク",
-          "saved_at": "2026-09-28"
-        }
-      ],
+      "works": [],
       "threads_posts": [],
       "added_at": "2026-09-28",
       "fetch_status": "none",

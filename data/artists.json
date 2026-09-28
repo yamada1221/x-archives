@@ -3702,6 +3702,37 @@
       ]
     },
     {
+      "id": "mukrsbiskt2i",
+      "name": null,
+      "x_account": "nikonikonie_",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "added_at": "2026-09-28",
+      "fetch_status": "done",
+      "avatar_url": "https://unavatar.io/x/nikonikonie_?fallback=false",
+      "profile_fetched_at": "2026-09-28",
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-09-28T04:51:35+00:00",
+        "x_account": "nikonikonie_",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=nikonikonie_",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/nikonikonie_",
+          "error": "HTTPError 403"
+        }
+      }
+    },
+    {
       "id": "threads-f00744",
       "name": "f00744",
       "x_account": "",
@@ -3730,13 +3761,5 @@
       "fetch_status": "none",
       "threads_fetch_status": "none"
     }
-  ],
-  "monitoring_summary": {
-    "checked_at": "2026-09-27T10:04:50+00:00",
-    "checked": 68,
-    "fxtwitter_healthy": true,
-    "active": 62,
-    "unavailable": 6,
-    "unknown": 0
-  }
+  ]
 }

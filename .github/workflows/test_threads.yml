@@ -61,3 +61,5 @@ jobs:
           print("threads_posts_count=" + str(len(artist.get("threads_posts") or [])))
           print("threads_bio_present=" + str(bool(artist.get("threads_bio"))))
           PY
+
+# live probe retry after data fix

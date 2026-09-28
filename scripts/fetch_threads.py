@@ -28,6 +28,7 @@ THREADS_GRAPH = "https://graph.threads.net/v1.0"
 BODY_LIMIT = 2 * 1024 * 1024
 USER_AGENT = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
 MAX_POSTS = 50
+MAX_STORED_POSTS = 200
 
 
 class ThreadsPageParser(HTMLParser):
@@ -357,6 +358,74 @@ def merge_posts(*groups: list[dict]) -> list[dict]:
     return merged
 
 
+def merge_post_history(existing: list[dict], fetched: list[dict], limit: int = MAX_STORED_POSTS) -> list[dict]:
+    merged: list[dict] = []
+    seen: set[str] = set()
+    for group in (fetched, existing):
+        for post in group or []:
+            if not isinstance(post, dict):
+                continue
+            key = str(post.get("id") or post.get("permalink") or post.get("text") or "")
+            if not key or key in seen:
+                continue
+            seen.add(key)
+            merged.append(post)
+            if len(merged) >= limit:
+                return merged
+    return merged
+
+
+def update_artist_from_threads(
+    artist: dict,
+    username: str,
+    profile: dict | None,
+    posts: list[dict],
+    source: str,
+) -> None:
+    fetched_at = dt.datetime.now(dt.timezone.utc).isoformat()
+    artist["threads_account"] = username
+    artist["threads_profile_url"] = THREADS_WEB.format(username=username)
+    artist["threads_profile_fetched_at"] = fetched_at
+    artist["threads_profile_source"] = source
+    artist["threads_posts_fetched_at"] = fetched_at
+    artist["threads_posts_last_fetch_count"] = len(posts)
+
+    if profile:
+        artist["threads_name"] = (
+            profile.get("name")
+            or profile.get("display_name")
+            or profile.get("username")
+            or username
+        )
+        artist["threads_bio"] = (
+            profile.get("biography")
+            or profile.get("threads_biography")
+            or ""
+        )
+        artist["threads_avatar_url"] = (
+            profile.get("profile_picture_url")
+            or profile.get("threads_profile_picture_url")
+            or ""
+        )
+        if profile.get("follower_count") is not None:
+            artist["threads_follower_count"] = profile.get("follower_count")
+        if profile.get("is_verified") is not None:
+            artist["threads_is_verified"] = bool(profile.get("is_verified"))
+
+    if posts:
+        artist["threads_posts"] = merge_post_history(artist.get("threads_posts", []), posts)
+
+    if profile or posts:
+        artist["threads_fetch_status"] = "done"
+        if not artist.get("x_account"):
+            if profile and artist.get("threads_name"):
+                artist["name"] = artist["threads_name"]
+            if not artist.get("avatar_url") and artist.get("threads_avatar_url"):
+                artist["avatar_url"] = artist["threads_avatar_url"]
+    else:
+        artist["threads_fetch_status"] = "error"
+
+
 def fetch_from_html(username: str) -> tuple[dict | None, list[dict]]:
     encoded = urllib.parse.quote(username, safe="")
     profile_url = THREADS_WEB.format(username=encoded)
@@ -397,45 +466,7 @@ def main() -> None:
         print(f"Artist id {artist_id} was stale; matched Threads @{threads_account}", file=sys.stderr)
 
     profile, posts, source = fetch_threads(threads_account, token)
-    artist["threads_account"] = threads_account
-    artist["threads_profile_url"] = THREADS_WEB.format(username=threads_account)
-    artist["threads_profile_fetched_at"] = dt.datetime.now(dt.timezone.utc).isoformat()
-    artist["threads_profile_source"] = source
-
-    if profile:
-        artist["threads_name"] = (
-            profile.get("name")
-            or profile.get("display_name")
-            or profile.get("username")
-            or threads_account
-        )
-        artist["threads_bio"] = (
-            profile.get("biography")
-            or profile.get("threads_biography")
-            or ""
-        )
-        artist["threads_avatar_url"] = (
-            profile.get("profile_picture_url")
-            or profile.get("threads_profile_picture_url")
-            or ""
-        )
-        if profile.get("follower_count") is not None:
-            artist["threads_follower_count"] = profile.get("follower_count")
-        if profile.get("is_verified") is not None:
-            artist["threads_is_verified"] = bool(profile.get("is_verified"))
-
-    if posts:
-        artist["threads_posts"] = posts[:MAX_POSTS]
-
-    if profile or posts:
-        artist["threads_fetch_status"] = "done"
-        if not artist.get("x_account"):
-            if profile and artist.get("threads_name"):
-                artist["name"] = artist["threads_name"]
-            if not artist.get("avatar_url") and artist.get("threads_avatar_url"):
-                artist["avatar_url"] = artist["threads_avatar_url"]
-    else:
-        artist["threads_fetch_status"] = "error"
+    update_artist_from_threads(artist, threads_account, profile, posts, source)
 
     save_artists(data)
     print(

@@ -47,3 +47,19 @@ jobs:
           Path("/tmp/x-archives-index.js").write_text(script, encoding="utf-8")
           PY
           node --check /tmp/x-archives-index.js
+      - name: Probe Threads share resolver
+        run: |
+          python - <<'PY'
+          import json
+          import urllib.request
+          url = "https://fx.akitsuki.me/api/share/BAeGfI7t6P"
+          req = urllib.request.Request(url, headers={"User-Agent": "x-archives/1.0"})
+          with urllib.request.urlopen(req, timeout=30) as response:
+              payload = json.loads(response.read())
+          print(json.dumps({
+              "author": payload.get("author"),
+              "id": payload.get("id"),
+              "url": payload.get("url"),
+              "content": (payload.get("content") or "")[:120],
+          }, ensure_ascii=False))
+          PY

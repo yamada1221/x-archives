@@ -4496,6 +4496,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mumo62vcs538",
+      "name": "oyadani7799",
+      "x_account": "oyadani7799",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "虚言 デマ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-09-29",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ]
 }

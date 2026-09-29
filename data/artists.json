@@ -4461,20 +4461,21 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=627188987; screen_name=HiJevi"
         }
       ]
+    },
+    {
+      "id": "mummcrhptf78",
+      "name": "HawaianDogs",
+      "x_account": "HawaianDogs",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-09-29",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
-  ],
-  "monitoring_summary": {
-    "checked_at": "2026-09-29T10:46:44+00:00",
-    "checked": 71,
-    "fxtwitter_healthy": true,
-    "active": 65,
-    "unavailable": 6,
-    "unknown": 0
-  },
-  "threads_refresh_summary": {
-    "checked_at": "2026-09-29T10:55:56.351693+00:00",
-    "checked": 1,
-    "success": 1,
-    "failed": 0
-  }
+  ]
 }

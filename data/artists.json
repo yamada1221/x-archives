@@ -4499,7 +4499,7 @@
     },
     {
       "id": "mumo62vcs538",
-      "name": "oyadani7799",
+      "name": null,
       "x_account": "oyadani7799",
       "threads_account": "",
       "threads_share_url": "",
@@ -4509,8 +4509,10 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-09-29",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://unavatar.io/x/oyadani7799?fallback=false",
+      "profile_fetched_at": "2026-09-29"
     }
   ]
 }

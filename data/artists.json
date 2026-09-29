@@ -4464,7 +4464,7 @@
     },
     {
       "id": "mummcrhptf78",
-      "name": "HawaianDogs",
+      "name": null,
       "x_account": "HawaianDogs",
       "threads_account": "",
       "threads_share_url": "",
@@ -4474,8 +4474,10 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-09-29",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://unavatar.io/x/HawaianDogs?fallback=false",
+      "profile_fetched_at": "2026-09-29"
     }
   ]
 }

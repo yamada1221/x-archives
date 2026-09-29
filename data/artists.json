@@ -4499,38 +4499,40 @@
     },
     {
       "id": "mumo62vcs538",
-      "name": null,
+      "name": "oyadani7799",
       "x_account": "oyadani7799",
       "threads_account": "",
       "threads_share_url": "",
       "pixiv_user": "",
       "note": "虚言 デマ",
       "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/oyadani7799/status/2104703185860640903",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-09-29"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-09-29",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
+    },
+    {
+      "id": "mumocc27qr8h",
+      "name": "yoro497110",
+      "x_account": "yoro497110",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "monitor_only",
       "works": [],
       "threads_posts": [],
       "added_at": "2026-09-29",
-      "fetch_status": "done",
-      "threads_fetch_status": "none",
-      "avatar_url": "https://unavatar.io/x/oyadani7799?fallback=false",
-      "profile_fetched_at": "2026-09-29",
-      "profile_source": "unavatar",
-      "profile_fetch_diagnostic": {
-        "checked_at": "2026-09-29T12:45:55+00:00",
-        "x_account": "oyadani7799",
-        "fetch_status_after_attempt": "done",
-        "syndication": {
-          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=oyadani7799",
-          "http_status": 200,
-          "content_type": "unknown",
-          "bytes": 0,
-          "json_ok": false,
-          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
-        },
-        "html": {
-          "url": "https://x.com/oyadani7799",
-          "error": "HTTPError 403"
-        }
-      }
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ]
 }

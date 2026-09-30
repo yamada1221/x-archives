@@ -4792,7 +4792,7 @@
     },
     {
       "id": "muo58kq4jghz",
-      "name": "torisugari207",
+      "name": null,
       "x_account": "torisugari207",
       "threads_account": "",
       "threads_share_url": "",
@@ -4802,8 +4802,10 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-09-30",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://unavatar.io/x/torisugari207?fallback=false",
+      "profile_fetched_at": "2026-09-30"
     }
   ]
 }

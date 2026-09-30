@@ -4789,20 +4789,21 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1540832400636125185; screen_name=yoro497110"
         }
       ]
+    },
+    {
+      "id": "muo58kq4jghz",
+      "name": "torisugari207",
+      "x_account": "torisugari207",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-09-30",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
-  ],
-  "monitoring_summary": {
-    "checked_at": "2026-09-30T10:34:21+00:00",
-    "checked": 74,
-    "fxtwitter_healthy": true,
-    "active": 68,
-    "unavailable": 6,
-    "unknown": 0
-  },
-  "threads_refresh_summary": {
-    "checked_at": "2026-09-30T10:46:25.192004+00:00",
-    "checked": 1,
-    "success": 1,
-    "failed": 0
-  }
+  ]
 }

@@ -4838,9 +4838,14 @@
       "threads_posts": [],
       "added_at": "2026-09-30",
       "fetch_status": "done",
-      "threads_fetch_status": "pending",
+      "threads_fetch_status": "error",
       "avatar_url": "https://unavatar.io/x/sukisukihot004?fallback=false",
-      "profile_fetched_at": "2026-09-30"
+      "profile_fetched_at": "2026-09-30",
+      "threads_profile_url": "https://www.threads.com/@https://x.com/sukisukihot004/status/2105331793633370459?s=20",
+      "threads_profile_fetched_at": "2026-09-30T18:26:22.146181+00:00",
+      "threads_profile_source": "threads_html",
+      "threads_posts_fetched_at": "2026-09-30T18:26:22.146181+00:00",
+      "threads_posts_last_fetch_count": 0
     }
   ]
 }

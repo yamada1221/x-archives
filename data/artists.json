@@ -4824,6 +4824,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "muofrqcwm6h8",
+      "name": "sukisukihot004",
+      "x_account": "sukisukihot004",
+      "threads_account": "https://x.com/sukisukihot004/status/2105331793633370459?s=20",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-09-30",
+      "fetch_status": "pending",
+      "threads_fetch_status": "pending"
     }
   ]
 }

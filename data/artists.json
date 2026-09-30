@@ -4827,7 +4827,7 @@
     },
     {
       "id": "muofrqcwm6h8",
-      "name": "sukisukihot004",
+      "name": null,
       "x_account": "sukisukihot004",
       "threads_account": "https://x.com/sukisukihot004/status/2105331793633370459?s=20",
       "threads_share_url": "",
@@ -4837,8 +4837,10 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-09-30",
-      "fetch_status": "pending",
-      "threads_fetch_status": "pending"
+      "fetch_status": "done",
+      "threads_fetch_status": "pending",
+      "avatar_url": "https://unavatar.io/x/sukisukihot004?fallback=false",
+      "profile_fetched_at": "2026-09-30"
     }
   ]
 }

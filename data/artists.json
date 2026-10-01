@@ -4857,7 +4857,23 @@
           "url": "https://x.com/sukisukihot004",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "threads_posts": []
+    },
+    {
+      "id": "muoymfykxcbv",
+      "name": "RAKU_mental",
+      "x_account": "RAKU_mental",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-01",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ]
 }

@@ -5293,20 +5293,21 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1530799905622532097; screen_name=RAKU_mental"
         }
       ]
+    },
+    {
+      "id": "mur6goi2x0zv",
+      "name": "W6lqBmmZ8U40298",
+      "x_account": "W6lqBmmZ8U40298",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-02",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
-  ],
-  "monitoring_summary": {
-    "checked_at": "2026-10-02T10:35:11+00:00",
-    "checked": 77,
-    "fxtwitter_healthy": true,
-    "active": 70,
-    "unavailable": 7,
-    "unknown": 0
-  },
-  "threads_refresh_summary": {
-    "checked_at": "2026-10-02T10:45:22.753439+00:00",
-    "checked": 1,
-    "success": 1,
-    "failed": 0
-  }
+  ]
 }

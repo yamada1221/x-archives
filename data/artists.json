@@ -5327,7 +5327,11 @@
           "url": "https://x.com/W6lqBmmZ8U40298",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archive_status": "done",
+      "archive_url": "https://archive.li/kOCE6",
+      "archive_target_url": "https://x.com/W6lqBmmZ8U40298/with_replies",
+      "archive_checked_at": "2026-10-02T16:38:40.295Z"
     }
   ]
 }

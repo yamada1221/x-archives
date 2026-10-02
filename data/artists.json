@@ -5296,7 +5296,7 @@
     },
     {
       "id": "mur6goi2x0zv",
-      "name": "W6lqBmmZ8U40298",
+      "name": null,
       "x_account": "W6lqBmmZ8U40298",
       "threads_account": "",
       "threads_share_url": "",
@@ -5306,8 +5306,10 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-02",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://unavatar.io/x/W6lqBmmZ8U40298?fallback=false",
+      "profile_fetched_at": "2026-10-02"
     }
   ]
 }

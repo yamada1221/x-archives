@@ -5348,7 +5348,25 @@
       "fetch_status": "done",
       "threads_fetch_status": "none",
       "avatar_url": "https://unavatar.io/x/rKK0kyWj8U20721?fallback=false",
-      "profile_fetched_at": "2026-10-02"
+      "profile_fetched_at": "2026-10-02",
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-02T16:40:10+00:00",
+        "x_account": "rKK0kyWj8U20721",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=rKK0kyWj8U20721",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/rKK0kyWj8U20721",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ]
 }

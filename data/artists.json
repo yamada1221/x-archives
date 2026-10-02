@@ -5332,6 +5332,21 @@
       "archive_url": "https://archive.li/kOCE6",
       "archive_target_url": "https://x.com/W6lqBmmZ8U40298/with_replies",
       "archive_checked_at": "2026-10-02T16:38:40.295Z"
+    },
+    {
+      "id": "mur6uvwzkbqh",
+      "name": "rKK0kyWj8U20721",
+      "x_account": "rKK0kyWj8U20721",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-02",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ]
 }

@@ -5563,20 +5563,21 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1061089752626081792; screen_name=UtahaMio"
         }
       ]
+    },
+    {
+      "id": "muskeihqxqfw",
+      "name": "gvlottQvWR6qq15",
+      "x_account": "gvlottQvWR6qq15",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "ネトウヨ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-03",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
-  ],
-  "monitoring_summary": {
-    "checked_at": "2026-10-03T09:56:12+00:00",
-    "checked": 80,
-    "fxtwitter_healthy": true,
-    "active": 71,
-    "unavailable": 9,
-    "unknown": 0
-  },
-  "threads_refresh_summary": {
-    "checked_at": "2026-10-03T10:05:23.742819+00:00",
-    "checked": 1,
-    "success": 1,
-    "failed": 0
-  }
+  ]
 }

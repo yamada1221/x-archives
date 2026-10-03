@@ -5367,6 +5367,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mus2lpl7mcd4",
+      "name": "UtahaMio",
+      "x_account": "UtahaMio",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "インプ稼ぎ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-03",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ]
 }

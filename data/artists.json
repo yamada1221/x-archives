@@ -5566,7 +5566,7 @@
     },
     {
       "id": "muskeihqxqfw",
-      "name": null,
+      "name": "gvlottQvWR6qq15",
       "x_account": "gvlottQvWR6qq15",
       "threads_account": "",
       "threads_share_url": "",
@@ -5576,28 +5576,23 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-03",
-      "fetch_status": "done",
-      "threads_fetch_status": "none",
-      "avatar_url": "https://unavatar.io/x/gvlottQvWR6qq15?fallback=false",
-      "profile_fetched_at": "2026-10-03",
-      "profile_source": "unavatar",
-      "profile_fetch_diagnostic": {
-        "checked_at": "2026-10-03T15:47:06+00:00",
-        "x_account": "gvlottQvWR6qq15",
-        "fetch_status_after_attempt": "done",
-        "syndication": {
-          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=gvlottQvWR6qq15",
-          "http_status": 200,
-          "content_type": "unknown",
-          "bytes": 0,
-          "json_ok": false,
-          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
-        },
-        "html": {
-          "url": "https://x.com/gvlottQvWR6qq15",
-          "error": "HTTPError 403"
-        }
-      }
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
+    },
+    {
+      "id": "muslllrdhy2f",
+      "name": "bot164736",
+      "x_account": "bot164736",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-03",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ]
 }

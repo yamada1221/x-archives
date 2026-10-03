@@ -5614,7 +5614,11 @@
           "url": "https://x.com/bot164736",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.10.03-162045/https://x.com/bot164736/with_replies",
+      "archive_target_url": "https://x.com/bot164736/with_replies",
+      "archive_checked_at": "2026-10-03T16:23:30.806Z"
     }
   ]
 }

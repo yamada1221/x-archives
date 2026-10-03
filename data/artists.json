@@ -5566,7 +5566,7 @@
     },
     {
       "id": "muskeihqxqfw",
-      "name": "gvlottQvWR6qq15",
+      "name": null,
       "x_account": "gvlottQvWR6qq15",
       "threads_account": "",
       "threads_share_url": "",
@@ -5576,12 +5576,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-03",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://unavatar.io/x/gvlottQvWR6qq15?fallback=false",
+      "profile_fetched_at": "2026-10-03"
     },
     {
       "id": "muslllrdhy2f",
-      "name": "bot164736",
+      "name": null,
       "x_account": "bot164736",
       "threads_account": "",
       "threads_share_url": "",
@@ -5591,8 +5593,10 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-03",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://unavatar.io/x/bot164736?fallback=false",
+      "profile_fetched_at": "2026-10-03"
     }
   ]
 }

@@ -6347,20 +6347,21 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=2000774354469281792; screen_name=fZdRDATduM20752"
         }
       ]
+    },
+    {
+      "id": "muykqbp25n3z",
+      "name": "m23uma",
+      "x_account": "m23uma",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-07",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
-  ],
-  "monitoring_summary": {
-    "checked_at": "2026-10-07T11:10:11+00:00",
-    "checked": 83,
-    "fxtwitter_healthy": true,
-    "active": 73,
-    "unavailable": 10,
-    "unknown": 0
-  },
-  "threads_refresh_summary": {
-    "checked_at": "2026-10-07T11:23:04.705791+00:00",
-    "checked": 1,
-    "success": 1,
-    "failed": 0
-  }
+  ]
 }

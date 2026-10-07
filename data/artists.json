@@ -6360,8 +6360,28 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-07",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://unavatar.io/x/m23uma?fallback=false",
+      "profile_fetched_at": "2026-10-07",
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-07T20:42:43+00:00",
+        "x_account": "m23uma",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=m23uma",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/m23uma",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ]
 }

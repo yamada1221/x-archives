@@ -1,16 +1,15 @@
 from __future__ import annotations
 
 import asyncio
-import datetime as dt
 import json
 import os
 import time
 from pathlib import Path
 
 try:
-    from fetch_artist import fetch_x_profile
+    from fetch_artist import fetch_x_profile, update_artist_from_profile
 except ModuleNotFoundError:
-    from scripts.fetch_artist import fetch_x_profile
+    from scripts.fetch_artist import fetch_x_profile, update_artist_from_profile
 
 DATA_PATH = Path("data/artists.json")
 
@@ -123,15 +122,10 @@ def main() -> None:
             profile = None
             print(f"  error: {type(exc).__name__}: {exc}")
 
-        if profile:
-            artist["name"] = profile["display_name"]
-            artist["avatar_url"] = profile["avatar_url"]
-            artist["profile_fetched_at"] = dt.date.today().isoformat()
-            artist["fetch_status"] = "done"
+        if update_artist_from_profile(artist, profile):
             success += 1
-            print(f"  done: {artist['name']}")
+            print(f"  done: {artist.get('name', username)}")
         else:
-            artist["fetch_status"] = "error"
             failed += 1
             print("  failed: keeping existing profile data")
 

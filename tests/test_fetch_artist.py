@@ -128,19 +128,6 @@ class ProfileFetchFlowTests(unittest.TestCase):
                 fetch_artist.save_artists(data)
                 self.assertEqual(fetch_artist.load_artists(), data)
 
-    def test_profile_failure_does_not_require_clearing_existing_fields(self):
-        artist = {"name": "Existing Name", "avatar_url": "https://example.invalid/existing.jpg", "fetch_status": "pending"}
-        profile = None
-        if profile:
-            artist["name"] = profile["display_name"]
-            artist["avatar_url"] = profile["avatar_url"]
-            artist["fetch_status"] = "done"
-        else:
-            artist["fetch_status"] = "error"
-        self.assertEqual(artist["name"], "Existing Name")
-        self.assertEqual(artist["avatar_url"], "https://example.invalid/existing.jpg")
-        self.assertEqual(artist["fetch_status"], "error")
-
 
 if __name__ == "__main__":
     unittest.main()

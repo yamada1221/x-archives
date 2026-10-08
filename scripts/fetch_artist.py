@@ -251,6 +251,24 @@ async def fetch_x_profile_unavatar(username: str) -> dict | None:
     return None
 
 
+def update_artist_from_profile(artist: dict, profile: dict | None) -> bool:
+    """Apply only fetched fields; partial/failed responses must not erase data."""
+    display_name = profile.get("display_name") if profile else None
+    avatar_url = profile.get("avatar_url") if profile else None
+    if not display_name and not avatar_url:
+        artist["fetch_status"] = "error"
+        return False
+
+    if display_name:
+        artist["name"] = display_name
+    if avatar_url:
+        artist["avatar_url"] = avatar_url
+    artist["profile_fetched_at"] = dt.date.today().isoformat()
+    artist["fetch_status"] = "done"
+    artist["profile_source"] = profile.get("source", "unknown")
+    return True
+
+
 def main() -> None:
     artist_id = os.environ.get("ARTIST_ID", "").strip()
     x_account = os.environ.get("X_ACCOUNT", "").strip().lstrip("@")
@@ -266,16 +284,9 @@ def main() -> None:
         sys.exit(1)
     if matched_by == "x_account":
         print(f"Artist id {artist_id} was stale; matched @{x_account} by x_account", file=sys.stderr)
-    if profile:
-        if profile.get("display_name"):
-            artist["name"] = profile["display_name"]
-        artist["avatar_url"] = profile["avatar_url"]
-        artist["profile_fetched_at"] = dt.date.today().isoformat()
-        artist["fetch_status"] = "done"
-        artist["profile_source"] = profile.get("source", "unknown")
-        print(f"Updated: {artist['name']} / {artist['avatar_url']} ({artist['profile_source']})")
+    if update_artist_from_profile(artist, profile):
+        print(f"Updated: {artist.get('name', x_account)} / {artist.get('avatar_url', '')} ({artist['profile_source']})")
     else:
-        artist["fetch_status"] = "error"
         print("Could not fetch profile, keeping existing data", file=sys.stderr)
     save_artists(data)
     print("artists.json saved.")

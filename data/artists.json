@@ -6385,7 +6385,7 @@
     },
     {
       "id": "muz57l9i2a6i",
-      "name": "Eo3BEg1pfmcdrfm",
+      "name": null,
       "x_account": "Eo3BEg1pfmcdrfm",
       "threads_account": "",
       "threads_share_url": "",
@@ -6395,8 +6395,10 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-08",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://unavatar.io/x/Eo3BEg1pfmcdrfm?fallback=false",
+      "profile_fetched_at": "2026-10-08"
     }
   ]
 }

@@ -6416,7 +6416,11 @@
           "url": "https://x.com/Eo3BEg1pfmcdrfm",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.10.08-061639/https://x.com/Eo3BEg1pfmcdrfm/with_replies",
+      "archive_target_url": "https://x.com/Eo3BEg1pfmcdrfm/with_replies",
+      "archive_checked_at": "2026-10-08T06:25:19.925Z"
     }
   ]
 }

@@ -6455,7 +6455,11 @@
           "url": "https://x.com/shantian468433",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.10.08-080607/https://x.com/shantian468433/with_replies",
+      "archive_target_url": "https://x.com/shantian468433/with_replies",
+      "archive_checked_at": "2026-10-08T08:09:40.868Z"
     }
   ]
 }

@@ -6437,7 +6437,25 @@
       "fetch_status": "done",
       "threads_fetch_status": "none",
       "avatar_url": "https://unavatar.io/x/shantian468433?fallback=false",
-      "profile_fetched_at": "2026-10-08"
+      "profile_fetched_at": "2026-10-08",
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-08T08:04:47+00:00",
+        "x_account": "shantian468433",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=shantian468433",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/shantian468433",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ]
 }

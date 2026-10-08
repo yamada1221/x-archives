@@ -6557,20 +6557,21 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1694313460472098816; screen_name=shantian468433"
         }
       ]
+    },
+    {
+      "id": "muzl7zbxu5vd",
+      "name": "tebasaki_lab",
+      "x_account": "tebasaki_lab",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "驚き屋？",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-08",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
-  ],
-  "monitoring_summary": {
-    "checked_at": "2026-10-08T11:27:56+00:00",
-    "checked": 86,
-    "fxtwitter_healthy": true,
-    "active": 76,
-    "unavailable": 10,
-    "unknown": 0
-  },
-  "threads_refresh_summary": {
-    "checked_at": "2026-10-08T11:38:40.262626+00:00",
-    "checked": 1,
-    "success": 1,
-    "failed": 0
-  }
+  ]
 }

@@ -4,7 +4,9 @@ on:
   pull_request:
     paths:
       - 'scripts/fetch_artist.py'
+      - 'scripts/fetch_all_profiles.py'
       - 'tests/test_fetch_artist.py'
+      - 'tests/test_profile_updates.py'
       - '.github/workflows/test_profile_fetch.yml'
   workflow_dispatch:
 
@@ -20,4 +22,4 @@ jobs:
         with:
           python-version: '3.12'
       - name: Run profile fetch tests
-        run: python -m unittest -v tests.test_fetch_artist
+        run: python -m unittest -v tests.test_fetch_artist tests.test_profile_updates

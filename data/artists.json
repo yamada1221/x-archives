@@ -6731,20 +6731,21 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1609047745142353920; screen_name=Tebasaki_lab"
         }
       ]
+    },
+    {
+      "id": "mv193q3p8gy7",
+      "name": "Carbonara_soup",
+      "x_account": "Carbonara_soup",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-09",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
-  ],
-  "threads_refresh_summary": {
-    "checked_at": "2026-10-09T11:32:05.555590+00:00",
-    "checked": 1,
-    "success": 1,
-    "failed": 0
-  },
-  "monitoring_summary": {
-    "checked_at": "2026-10-09T11:23:55+00:00",
-    "checked": 87,
-    "fxtwitter_healthy": true,
-    "active": 77,
-    "unavailable": 10,
-    "unknown": 0
-  }
+  ]
 }

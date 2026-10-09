@@ -12,8 +12,8 @@ class ArtistLookupTests(unittest.TestCase):
     def setUp(self):
         self.data = {"artists": [{"id": "current-id", "x_account": "fie3011", "name": "Existing"}]}
 
-    def test_prefers_artist_id(self):
-        artist, matched_by = find_artist(self.data, "current-id", "other")
+    def test_matches_artist_id_and_normalized_account(self):
+        artist, matched_by = find_artist(self.data, "current-id", "@FIE3011")
         self.assertEqual(artist["x_account"], "fie3011")
         self.assertEqual(matched_by, "id")
 

@@ -110,10 +110,12 @@ def save_artists(data: dict) -> None:
 
 
 def find_artist(data: dict, artist_id: str, threads_account: str) -> tuple[dict | None, str]:
+    normalized = normalize_username(threads_account).lower()
     artist = next((a for a in data.get("artists", []) if str(a.get("id", "")) == artist_id), None)
     if artist is not None:
+        if normalize_username(str(artist.get("threads_account", ""))).lower() != normalized:
+            return None, "account_changed"
         return artist, "id"
-    normalized = normalize_username(threads_account).lower()
     artist = next(
         (
             a for a in data.get("artists", [])
@@ -460,8 +462,8 @@ def main() -> None:
     data = load_artists()
     artist, matched_by = find_artist(data, artist_id, threads_account)
     if artist is None:
-        print(f"Artist {artist_id} / Threads @{threads_account} not found", file=sys.stderr)
-        raise SystemExit(1)
+        print(f"Skipping stale Threads request for {artist_id} / @{threads_account}: {matched_by}")
+        return
     if matched_by == "threads_account":
         print(f"Artist id {artist_id} was stale; matched Threads @{threads_account}", file=sys.stderr)
 

@@ -11,6 +11,11 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
+try:
+    from fetch_artist import find_artist
+except ModuleNotFoundError:
+    from scripts.fetch_artist import find_artist
+
 DATA_PATH = Path("data/artists.json")
 USER_AGENT = "Mozilla/5.0 (compatible; x-archives/1.0; +https://github.com/yamada1221/x-archives)"
 PROFILE_BODY_LIMIT = 1024 * 1024
@@ -124,9 +129,10 @@ def main() -> None:
 
     with DATA_PATH.open(encoding="utf-8") as f:
         data = json.load(f)
-    artist = next((a for a in data.get("artists", []) if a.get("id") == artist_id), None)
+    artist, matched_by = find_artist(data, artist_id, username)
     if artist is None:
-        raise SystemExit(f"artist not found: {artist_id}")
+        print(f"Skipping stale profile diagnostic for {artist_id} / @{username}: {matched_by}")
+        return
 
     artist["profile_fetch_diagnostic"] = {
         "checked_at": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat(),

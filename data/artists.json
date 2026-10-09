@@ -6765,7 +6765,11 @@
           "url": "https://x.com/Carbonara_soup",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archive_status": "pending",
+      "archive_url": "https://archive.li/wip/1HLTB",
+      "archive_target_url": "https://x.com/Carbonara_soup/with_replies",
+      "archive_checked_at": "2026-10-09T17:45:18.442Z"
     }
   ]
 }

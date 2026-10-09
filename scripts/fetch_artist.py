@@ -70,13 +70,15 @@ def save_artists(data: dict) -> None:
 
 
 def find_artist(data: dict, artist_id: str, x_account: str) -> tuple[dict | None, str]:
-    """Find by stable UI id first, then recover from stale ids using X account."""
+    """Match the requested account as well as its ID; reject edited records."""
     artists = data.get("artists", [])
+    normalized = x_account.strip().lstrip("@").lower()
     artist = next((a for a in artists if str(a.get("id", "")) == artist_id), None)
     if artist is not None:
+        if str(artist.get("x_account", "")).strip().lstrip("@").lower() != normalized:
+            return None, "account_changed"
         return artist, "id"
 
-    normalized = x_account.strip().lstrip("@").lower()
     artist = next(
         (
             a
@@ -275,15 +277,15 @@ def main() -> None:
     if not artist_id or not x_account:
         print("ERROR: ARTIST_ID and X_ACCOUNT are required", file=sys.stderr)
         sys.exit(1)
-    print(f"Fetching profile for @{x_account} (id={artist_id})")
-    profile = asyncio.run(fetch_x_profile(x_account))
     data = load_artists()
     artist, matched_by = find_artist(data, artist_id, x_account)
     if artist is None:
-        print(f"Artist {artist_id} / @{x_account} not found in artists.json", file=sys.stderr)
-        sys.exit(1)
+        print(f"Skipping stale profile request for {artist_id} / @{x_account}: {matched_by}")
+        return
     if matched_by == "x_account":
         print(f"Artist id {artist_id} was stale; matched @{x_account} by x_account", file=sys.stderr)
+    print(f"Fetching profile for @{x_account} (id={artist['id']})")
+    profile = asyncio.run(fetch_x_profile(x_account))
     if update_artist_from_profile(artist, profile):
         print(f"Updated: {artist.get('name', x_account)} / {artist.get('avatar_url', '')} ({artist['profile_source']})")
     else:

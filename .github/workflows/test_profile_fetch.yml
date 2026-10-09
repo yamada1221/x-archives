@@ -5,8 +5,11 @@ on:
     paths:
       - 'scripts/fetch_artist.py'
       - 'scripts/fetch_all_profiles.py'
+      - 'scripts/fetch_threads.py'
+      - 'scripts/profile_fetch_diagnostics.py'
       - 'tests/test_fetch_artist.py'
       - 'tests/test_profile_updates.py'
+      - 'tests/test_stale_profile_dispatch.py'
       - '.github/workflows/test_profile_fetch.yml'
   workflow_dispatch:
 
@@ -22,4 +25,4 @@ jobs:
         with:
           python-version: '3.12'
       - name: Run profile fetch tests
-        run: python -m unittest -v tests.test_fetch_artist tests.test_profile_updates
+        run: python -m unittest -v tests.test_fetch_artist tests.test_profile_updates tests.test_stale_profile_dispatch

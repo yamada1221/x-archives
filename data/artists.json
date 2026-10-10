@@ -6804,7 +6804,11 @@
           "url": "https://x.com/hh__1020",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.10.10-074846/https://x.com/hh__1020/with_replies",
+      "archive_target_url": "https://x.com/hh__1020/with_replies",
+      "archive_checked_at": "2026-10-10T07:50:45.952Z"
     }
   ]
 }

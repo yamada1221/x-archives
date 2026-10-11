@@ -3981,7 +3981,7 @@
           "is_reply": false,
           "like_count": 14323,
           "reply_count": 505,
-          "repost_count": 490,
+          "repost_count": 489,
           "quote_count": 11
         },
         {
@@ -4014,6 +4014,28 @@
           "is_reply": false,
           "like_count": 4,
           "reply_count": 1,
+          "repost_count": 0,
+          "quote_count": 0
+        },
+        {
+          "id": "4005403571352885507",
+          "text": "世界一古い株式会社",
+          "timestamp": "2026-10-11T06:48:55+00:00",
+          "permalink": "https://www.threads.com/@f00744/post/DeWDVOckdkD",
+          "is_reply": true,
+          "like_count": 0,
+          "reply_count": 0,
+          "repost_count": 0,
+          "quote_count": 0
+        },
+        {
+          "id": "4005186729862751982",
+          "text": "値崩れ前に放流成功しました。\n機構的にチープなのは我慢しましたが、やっぱり音が軽自動車だったのが手放した理由です。",
+          "timestamp": "2026-10-10T23:38:06+00:00",
+          "permalink": "https://www.threads.com/@f00744/post/DeVSBxEk-bu",
+          "is_reply": true,
+          "like_count": 0,
+          "reply_count": 0,
           "repost_count": 0,
           "quote_count": 0
         },
@@ -4078,7 +4100,7 @@
           "timestamp": "2026-10-09T21:16:58+00:00",
           "permalink": "https://www.threads.com/@f00744/post/DeSdFQcE8Qq",
           "is_reply": true,
-          "like_count": 69,
+          "like_count": 97,
           "reply_count": 0,
           "repost_count": 0,
           "quote_count": 0
@@ -5749,13 +5771,13 @@
       "fetch_status": "none",
       "threads_fetch_status": "done",
       "threads_profile_url": "https://www.threads.com/@f00744",
-      "threads_profile_fetched_at": "2026-10-10T10:50:08.384870+00:00",
+      "threads_profile_fetched_at": "2026-10-11T11:02:59.431392+00:00",
       "threads_profile_source": "threads_html",
-      "threads_posts_fetched_at": "2026-10-10T10:50:08.384870+00:00",
+      "threads_posts_fetched_at": "2026-10-11T11:02:59.431392+00:00",
       "threads_posts_last_fetch_count": 30,
       "threads_name": "Kazu-O",
       "threads_bio": "フォロワー251人・スレッド25 件・特定したがる人が多いので、プロフ写真を含め、投稿や画像、FBリンクは他所からテキトーに持ってきた画像や内容を適当に貼り付けてます。\nよって記載内容については一切責任を負いません。\nもし「オレの画像使うな！」と仰る方は、オリジナルデータをご提示の上で、直コメントください。\n至急差し替えます。@f00744の最新の会話をチェック。",
-      "threads_avatar_url": "https://scontent-iad6-1.cdninstagram.com/v/t51.2885-19/475873240_601588116160535_7189372063427919980_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=102&ccb=7-5&_nc_sid=b3fa00&_nc_ohc=YPapHtWkmv0Q7kNvwGDHhwb&_nc_oc=AdpUCJNNAjkPwJY1BlTVECNufjK37EhRWHzzVILdMu6sUftvwGVXEHNBGEGg-obgpwk&_nc_zt=24&_nc_ht=scontent-iad6-1.cdninstagram.com&_nc_ss=78100&oh=00_AQMAzaiWRjBP9ceQGAjwn7YvYtsFxY1uWHahvKpWyLzMxg&oe=6ACFE635",
+      "threads_avatar_url": "https://scontent-sjc6-1.cdninstagram.com/v/t51.2885-19/475873240_601588116160535_7189372063427919980_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=102&ccb=7-5&_nc_sid=b3fa00&_nc_ohc=YPapHtWkmv0Q7kNvwHTO07z&_nc_oc=Adqt14XYx9t27MjPwfv5VD9_XE81ADQPtakWG5IgjZDWlylkdp8yjKRPW7J-TxctmKc&_nc_zt=24&_nc_ht=scontent-sjc6-1.cdninstagram.com&_nc_ss=78100&oh=00_AQNQttQ4DQUweJ1GBK5COsKJKwTSRjHN64cPKcRXpIj8uQ&oe=6AD137B5",
       "avatar_url": "https://scontent-iad6-1.cdninstagram.com/v/t51.2885-19/475873240_601588116160535_7189372063427919980_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=102&ccb=7-5&_nc_sid=b3fa00&_nc_ohc=h-R4_sm-vGUQ7kNvwHQIMXh&_nc_oc=AdrbyRTsb3LRxLn94z86gBAWfJowPswjCiziR64yARWn2JySdXC-1VlFEOoz_QnYVD8&_nc_zt=24&_nc_ht=scontent-iad6-1.cdninstagram.com&_nc_ss=78100&oh=00_AQMpDD_5kTlH8QSFYpbkDJStZZ45iEZnrMaL0Id91EzDwA&oe=6ABFDBF5"
     },
     {
@@ -6992,5 +7014,11 @@
     "active": 80,
     "unavailable": 10,
     "unknown": 0
+  },
+  "threads_refresh_summary": {
+    "checked_at": "2026-10-11T11:02:59.438671+00:00",
+    "checked": 1,
+    "success": 1,
+    "failed": 0
   }
 }

@@ -7053,28 +7053,23 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-11",
-      "fetch_status": "done",
-      "threads_fetch_status": "none",
-      "avatar_url": "https://unavatar.io/x/cheesygeekSKK?fallback=false",
-      "profile_fetched_at": "2026-10-11",
-      "profile_source": "unavatar",
-      "profile_fetch_diagnostic": {
-        "checked_at": "2026-10-11T22:59:51+00:00",
-        "x_account": "cheesygeekSKK",
-        "fetch_status_after_attempt": "done",
-        "syndication": {
-          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=cheesygeekSKK",
-          "http_status": 200,
-          "content_type": "unknown",
-          "bytes": 0,
-          "json_ok": false,
-          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
-        },
-        "html": {
-          "url": "https://x.com/cheesygeekSKK",
-          "error": "HTTPError 403"
-        }
-      }
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
+    },
+    {
+      "id": "mv4g9untsp4g",
+      "name": "toriatamaxp",
+      "x_account": "toriatamaxp",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-11",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ]
 }

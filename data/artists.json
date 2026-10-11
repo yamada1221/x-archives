@@ -7040,6 +7040,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mv4fduihwdac",
+      "name": "cheesygeekSKK",
+      "x_account": "cheesygeekSKK",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-11",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ]
 }

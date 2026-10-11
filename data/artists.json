@@ -6978,7 +6978,11 @@
           "url": "https://x.com/kabuheiwy",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.10.11-105542/https://x.com/kabuheiwy/with_replies",
+      "archive_target_url": "https://x.com/kabuheiwy/with_replies",
+      "archive_checked_at": "2026-10-11T10:58:52.003Z"
     }
   ],
   "monitoring_summary": {

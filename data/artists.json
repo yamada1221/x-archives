@@ -7005,20 +7005,21 @@
       "archive_url": "https://archive.li/2026.10.11-105542/https://x.com/kabuheiwy/with_replies",
       "archive_target_url": "https://x.com/kabuheiwy/with_replies",
       "archive_checked_at": "2026-10-11T10:58:52.003Z"
+    },
+    {
+      "id": "mv3vewnis3r9",
+      "name": "pasapasari",
+      "x_account": "pasapasari",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-11",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
-  ],
-  "monitoring_summary": {
-    "checked_at": "2026-10-11T10:55:56+00:00",
-    "checked": 90,
-    "fxtwitter_healthy": true,
-    "active": 80,
-    "unavailable": 10,
-    "unknown": 0
-  },
-  "threads_refresh_summary": {
-    "checked_at": "2026-10-11T11:02:59.438671+00:00",
-    "checked": 1,
-    "success": 1,
-    "failed": 0
-  }
+  ]
 }

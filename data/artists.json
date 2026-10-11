@@ -6921,20 +6921,21 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1255051467796262915; screen_name=HH__1020"
         }
       ]
+    },
+    {
+      "id": "mv3phym4dyv0",
+      "name": "kabuheiwy",
+      "x_account": "kabuheiwy",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-11",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
-  ],
-  "monitoring_summary": {
-    "checked_at": "2026-10-10T10:41:21+00:00",
-    "checked": 89,
-    "fxtwitter_healthy": true,
-    "active": 79,
-    "unavailable": 10,
-    "unknown": 0
-  },
-  "threads_refresh_summary": {
-    "checked_at": "2026-10-10T10:50:08.389395+00:00",
-    "checked": 1,
-    "success": 1,
-    "failed": 0
-  }
+  ]
 }

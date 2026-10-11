@@ -6934,7 +6934,7 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-11",
-      "fetch_status": "pending",
+      "fetch_status": "done",
       "threads_fetch_status": "none",
       "monitoring": {
         "status": "active",
@@ -6958,7 +6958,27 @@
           "at": "2026-10-11T10:55:56+00:00",
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=2057192587740766208; screen_name=kabuheiwy"
         }
-      ]
+      ],
+      "avatar_url": "https://unavatar.io/x/kabuheiwy?fallback=false",
+      "profile_fetched_at": "2026-10-11",
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-11T10:57:52+00:00",
+        "x_account": "kabuheiwy",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=kabuheiwy",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/kabuheiwy",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

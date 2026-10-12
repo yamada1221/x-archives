@@ -27,5 +27,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - name: Verify delayed reads and storage failures
+      - name: Verify delayed reads, save conflicts and storage failures
         run: node --test tests/test_github_load.cjs

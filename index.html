@@ -176,6 +176,8 @@
 let artists = [];
 let editingId = null;
 let githubLoadRequest = 0;
+let githubRevision = null;
+let githubSyncInProgress = false;
 
 const STORAGE_KEY = 'artist_tracker_v1';
 const CONFIG_KEY = 'artist_tracker_config';
@@ -313,14 +315,16 @@ async function triggerThreadsFetch(artistId, threadsAccount) {
 }
 
 async function getFileSha(apiUrl, token) {
-  try {
-    const response = await fetch(apiUrl, { headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' } });
-    if (response.ok) return (await response.json()).sha;
-  } catch (e) {}
-  return null;
+  const response = await fetch(apiUrl, { headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' } });
+  if (response.status === 404) return null;
+  if (!response.ok) throw new Error(`GitHubの版確認に失敗しました: ${response.status}`);
+  const data = await response.json();
+  if (typeof data.sha !== 'string' || !data.sha) throw new Error('GitHubの版番号を取得できませんでした');
+  return data.sha;
 }
 
 async function syncToGitHub() {
+  if (githubSyncInProgress) return false;
   const cfg = getConfig();
   if (!cfg.token || !cfg.owner || !cfg.repo) {
     openConfig();
@@ -331,10 +335,25 @@ async function syncToGitHub() {
   const button = document.getElementById('syncBtn');
   button.textContent = '保存中...';
   button.disabled = true;
+  githubSyncInProgress = true;
+  // A read that started before this save must not later replace its local source.
+  ++githubLoadRequest;
+  document.getElementById('loadBtn').textContent = 'GitHubから読込';
+  document.getElementById('loadBtn').disabled = false;
 
   try {
     const apiUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${cfg.path}`;
+    const revision = githubRevision?.apiUrl === apiUrl ? githubRevision : null;
+    const before = JSON.stringify(artists);
     const sha = await getFileSha(apiUrl, cfg.token);
+    if ((sha && (!revision || revision.sha !== sha)) || (!sha && revision)) {
+      showToast('GitHub側の変更、または未読込のファイルを検出したため保存を中止しました。手元の編集は残っています。必要な編集内容を控えてから、GitHubから読み込み直してください');
+      return false;
+    }
+    if (JSON.stringify(getConfig()) !== JSON.stringify(cfg) || JSON.stringify(artists) !== before) {
+      showToast('保存準備中に編集または接続先が変わりました。内容を確認して再度保存してください');
+      return false;
+    }
     const content = btoa(unescape(encodeURIComponent(JSON.stringify({ artists }, null, 2))));
     const body = { message: `chore: update artists.json [${today()}]`, content };
     if (sha) body.sha = sha;
@@ -345,12 +364,24 @@ async function syncToGitHub() {
       body: JSON.stringify(body),
     });
 
-    showToast(response.ok ? 'GitHubに保存しました' : `エラー: ${response.status}`);
-    return response.ok;
+    if (!response.ok) {
+      showToast(response.status === 409 || response.status === 422
+        ? '保存中にGitHub側の変更を検出しました。手元の編集は残っています。必要な内容を控えてから読み込み直してください'
+        : `エラー: ${response.status}`);
+      return false;
+    }
+    const saved = await response.json();
+    if (typeof saved.content?.sha !== 'string' || !saved.content.sha) {
+      throw new Error('保存後の版番号を確認できません。再保存の前にGitHubの内容を確認してください');
+    }
+    githubRevision = { apiUrl, sha: saved.content.sha };
+    showToast('GitHubに保存しました');
+    return true;
   } catch (e) {
     showToast(`エラー: ${e.message}`);
     return false;
   } finally {
+    githubSyncInProgress = false;
     button.textContent = 'GitHubに保存';
     button.disabled = false;
   }
@@ -391,6 +422,10 @@ function validateImportedArtists(value) {
 }
 
 async function loadFromGitHub() {
+  if (githubSyncInProgress) {
+    showToast('GitHubへの保存が完了してから読み込んでください');
+    return;
+  }
   const cfg = getConfig();
   if (!cfg.token || !cfg.owner || !cfg.repo) {
     openConfig();
@@ -415,6 +450,7 @@ async function loadFromGitHub() {
     }
 
     const data = await response.json();
+    if (typeof data.sha !== 'string' || !data.sha) throw new Error('GitHubの版番号を取得できませんでした');
     const json = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g, '')))));
     const imported = validateImportedArtists(json?.artists);
     if (requestId !== githubLoadRequest) return;
@@ -426,6 +462,7 @@ async function loadFromGitHub() {
     // Persist first so a quota/storage error cannot replace the in-memory list.
     localStorage.setItem(STORAGE_KEY, JSON.stringify(imported));
     artists = imported;
+    githubRevision = { apiUrl, sha: data.sha };
     renderList();
     showToast('読み込みました');
   } catch (e) {

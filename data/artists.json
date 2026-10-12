@@ -7167,6 +7167,21 @@
       "archive_url": "https://archive.li/2026.10.12-040046/https://x.com/Wp6Block/with_replies",
       "archive_target_url": "https://x.com/Wp6Block/with_replies",
       "archive_checked_at": "2026-10-12T04:08:41.744Z"
+    },
+    {
+      "id": "mv4uimrc8bd0",
+      "name": "mytsuckidtvui",
+      "x_account": "mytsuckidtvui",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-12",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ]
 }

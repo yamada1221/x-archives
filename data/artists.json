@@ -7236,7 +7236,11 @@
           "url": "https://x.com/heartcakra7",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.10.12-093319/https://x.com/heartcakra7/with_replies",
+      "archive_target_url": "https://x.com/heartcakra7/with_replies",
+      "archive_checked_at": "2026-10-12T09:36:09.665Z"
     }
   ]
 }

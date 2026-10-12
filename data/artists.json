@@ -7162,7 +7162,11 @@
           "url": "https://x.com/Wp6Block",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.10.12-040046/https://x.com/Wp6Block/with_replies",
+      "archive_target_url": "https://x.com/Wp6Block/with_replies",
+      "archive_checked_at": "2026-10-12T04:08:41.744Z"
     }
   ]
 }

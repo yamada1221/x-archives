@@ -26,8 +26,7 @@ def test_sync_serializes_artists_json():
 
 def test_load_reads_same_configured_path():
     assert "contents/${cfg.path}" in HTML
-    assert "if (json.artists)" in HTML
-    assert "json.artists.map(normalizeArtist)" in HTML
+    assert "validateImportedArtists(json?.artists)" in HTML
 
 
 def test_profile_fetch_uses_repository_dispatch():

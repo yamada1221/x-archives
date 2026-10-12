@@ -175,6 +175,7 @@
 <script>
 let artists = [];
 let editingId = null;
+let githubLoadRequest = 0;
 
 const STORAGE_KEY = 'artist_tracker_v1';
 const CONFIG_KEY = 'artist_tracker_config';
@@ -355,6 +356,40 @@ async function syncToGitHub() {
   }
 }
 
+function validateImportedArtists(value) {
+  if (!Array.isArray(value)) throw new Error('アカウント一覧の形式が正しくありません');
+  const ids = new Set();
+  for (const artist of value) {
+    if (!artist || typeof artist !== 'object' || Array.isArray(artist) ||
+        typeof artist.id !== 'string' || !artist.id.trim() || ids.has(artist.id)) {
+      throw new Error('アカウントIDが空・重複、またはデータの形式が不正です');
+    }
+    ids.add(artist.id);
+    for (const key of ['name', 'x_account', 'threads_account', 'threads_share_url', 'threads_bio', 'note']) {
+      if (artist[key] != null && typeof artist[key] !== 'string') {
+        throw new Error(`アカウントの ${key} の形式が正しくありません`);
+      }
+    }
+    for (const key of ['works', 'threads_posts']) {
+      if (artist[key] != null && (!Array.isArray(artist[key]) ||
+          artist[key].some(item => !item || typeof item !== 'object' || Array.isArray(item)))) {
+        throw new Error(`アカウントの ${key} の形式が正しくありません`);
+      }
+    }
+    for (const post of artist.threads_posts || []) {
+      for (const key of ['text', 'timestamp']) {
+        if (post[key] != null && typeof post[key] !== 'string') {
+          throw new Error(`Threads投稿の ${key} の形式が正しくありません`);
+        }
+      }
+    }
+    if (artist.monitoring?.observed_username != null && typeof artist.monitoring.observed_username !== 'string') {
+      throw new Error('監視結果のユーザー名の形式が正しくありません');
+    }
+  }
+  return value.map(normalizeArtist);
+}
+
 async function loadFromGitHub() {
   const cfg = getConfig();
   if (!cfg.token || !cfg.owner || !cfg.repo) {
@@ -363,13 +398,17 @@ async function loadFromGitHub() {
     return;
   }
 
+  const requestId = ++githubLoadRequest;
   const button = document.getElementById('loadBtn');
   button.textContent = '読込中...';
   button.disabled = true;
 
   try {
+    const before = JSON.stringify(artists);
+    const savedBefore = localStorage.getItem(STORAGE_KEY);
     const apiUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${cfg.path}`;
     const response = await fetch(apiUrl, { headers: { Authorization: `token ${cfg.token}`, Accept: 'application/vnd.github.v3+json' } });
+    if (requestId !== githubLoadRequest) return;
     if (!response.ok) {
       showToast('ファイルが見つかりません');
       return;
@@ -377,17 +416,25 @@ async function loadFromGitHub() {
 
     const data = await response.json();
     const json = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g, '')))));
-    if (json.artists) {
-      artists = json.artists.map(normalizeArtist);
-      saveLocal();
-      renderList();
-      showToast('読み込みました');
+    const imported = validateImportedArtists(json?.artists);
+    if (requestId !== githubLoadRequest) return;
+    if (JSON.stringify(getConfig()) !== JSON.stringify(cfg) || JSON.stringify(artists) !== before ||
+        localStorage.getItem(STORAGE_KEY) !== savedBefore) {
+      showToast('読み込み中にデータまたは接続先が変更されたため、読み込みを中止しました');
+      return;
     }
+    // Persist first so a quota/storage error cannot replace the in-memory list.
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(imported));
+    artists = imported;
+    renderList();
+    showToast('読み込みました');
   } catch (e) {
-    showToast(`エラー: ${e.message}`);
+    if (requestId === githubLoadRequest) showToast(`エラー: ${e.message}`);
   } finally {
-    button.textContent = 'GitHubから読込';
-    button.disabled = false;
+    if (requestId === githubLoadRequest) {
+      button.textContent = 'GitHubから読込';
+      button.disabled = false;
+    }
   }
 }
 

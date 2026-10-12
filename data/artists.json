@@ -7128,6 +7128,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mv4pwtlefzla",
+      "name": "Wp6Block",
+      "x_account": "Wp6Block",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-12",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ]
 }

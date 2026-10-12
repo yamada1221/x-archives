@@ -7219,7 +7219,24 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://unavatar.io/x/heartcakra7?fallback=false",
       "profile_fetched_at": "2026-10-12",
-      "profile_source": "unavatar"
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-12T09:33:08+00:00",
+        "x_account": "heartcakra7",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=heartcakra7",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/heartcakra7",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ]
 }

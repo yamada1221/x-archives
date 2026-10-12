@@ -7093,6 +7093,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mv4ofw8h4qd2",
+      "name": "murakumo9800",
+      "x_account": "murakumo9800",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-12",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ]
 }

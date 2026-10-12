@@ -7202,6 +7202,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mv5201nw6fop",
+      "name": "heartcakra7",
+      "x_account": "heartcakra7",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-12",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ]
 }

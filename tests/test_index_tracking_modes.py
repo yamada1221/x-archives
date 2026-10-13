@@ -40,7 +40,7 @@ def test_monitor_only_is_not_counted_as_record():
 def test_duplicate_x_account_is_rejected_in_ui():
     assert "const normalizedX = xAccount.toLowerCase();" in HTML
     assert "item.id !== editingId" in HTML
-    assert "String(item.x_account || '').trim().replace(/^@/, '').toLowerCase() === normalizedX" in HTML
+    assert "TrackerUtils.parseXInput(item.x_account || '').account.toLowerCase() === normalizedX" in HTML
     assert "@${xAccount} はすでに登録されています" in HTML
 
 

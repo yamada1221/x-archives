@@ -682,10 +682,14 @@ async function saveArtist() {
 
   if (xAccount) {
     const normalizedX = xAccount.toLowerCase();
-    const duplicate = artists.find(item =>
-      item.id !== editingId &&
-      String(item.x_account || '').trim().replace(/^@/, '').toLowerCase() === normalizedX
-    );
+    const duplicate = artists.find(item => {
+      if (item.id === editingId) return false;
+      try {
+        return TrackerUtils.parseXInput(item.x_account || '').account.toLowerCase() === normalizedX;
+      } catch {
+        return false;
+      }
+    });
     if (duplicate) {
       alert(`@${xAccount} はすでに登録されています`);
       return;

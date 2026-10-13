@@ -75,6 +75,15 @@ test('URL add dispatches only handle and retains canonical post; duplicate URLs 
   h.field('fX','https://x.com/example'); await h.ctx.saveArtist();
   assert.equal(h.get().length,1); assert.match(h.alerts.at(-1),/すでに登録/);
 });
+test('legacy URL accounts prevent duplicates while malformed entries remain tolerated', async()=>{
+  const h=formHarness();
+  vm.runInContext("artists=[{id:'invalid',x_account:'https://example.org/Foo'},{id:'legacy',x_account:'https://twitter.com/Foo/status/123?s=20'}];",h.ctx);
+  h.field('fX','https://x.com/foo'); await h.ctx.saveArtist();
+  assert.equal(h.get().length,2); assert.match(h.alerts.at(-1),/すでに登録/);
+  assert.equal(h.fetched.length,0);
+  h.field('fX','Bar'); await h.ctx.saveArtist();
+  assert.equal(h.get().length,3); assert.deepEqual(h.fetched,['Bar']);
+});
 test('invalid URL leaves existing records and dispatches untouched', async()=>{
   const h=formHarness();h.field('fX','https://x.com/i/status/123');await h.ctx.saveArtist();assert.equal(h.get().length,0);assert.equal(h.fetched.length,0);
 });

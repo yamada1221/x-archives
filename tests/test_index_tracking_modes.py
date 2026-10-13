@@ -10,7 +10,7 @@ def test_default_tracking_mode_is_monitor_only():
 
 def test_mode_selector_has_monitor_and_record_options():
     assert '<option value="monitor_only">監視のみ</option>' in HTML
-    assert '<option value="record">記録対象（archive.md + はてブ）</option>' in HTML
+    assert '<option value="record">記録対象（アーカイブ + はてブ）</option>' in HTML
 
 
 def test_record_target_requires_record_mode_and_x_account():
@@ -28,7 +28,7 @@ def test_archive_helper_receives_x_account():
 
 
 def test_record_mode_description_matches_spec():
-    assert "archive.mdは通常プロフィールが既定値" in HTML
+    assert "アーカイブは通常プロフィールが既定値" in HTML
     assert "必要な場合だけリプライ欄へ切り替えられます" in HTML
     assert "はてブは通常プロフィールを対象にします" in HTML
 
@@ -40,7 +40,7 @@ def test_monitor_only_is_not_counted_as_record():
 def test_duplicate_x_account_is_rejected_in_ui():
     assert "const normalizedX = xAccount.toLowerCase();" in HTML
     assert "item.id !== editingId" in HTML
-    assert "String(item.x_account || '').trim().replace(/^@/, '').toLowerCase() === normalizedX" in HTML
+    assert "TrackerUtils.parseXInput(item.x_account || '').account.toLowerCase() === normalizedX" in HTML
     assert "@${xAccount} はすでに登録されています" in HTML
 
 
@@ -54,7 +54,7 @@ def test_record_archive_status_badges_are_rendered():
 
 def test_saved_archive_link_uses_current_archive_fields():
     assert "artist.archive_status === 'done' && artist.archive_url" in HTML
-    assert "href=\"${esc(artist.archive_url)}\"" in HTML
+    assert "href=\"${esc(entry.url)}\"" in HTML
     assert "artist.archive && artist.archive.url" not in HTML
 
 

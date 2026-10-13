@@ -3,6 +3,7 @@ import re
 from urllib.parse import urlencode
 
 HTML = Path("archive_helper.html").read_text(encoding="utf-8")
+UTILS = Path("tracker-utils.js").read_text(encoding="utf-8")
 
 
 def clean_account(value):
@@ -47,7 +48,7 @@ def test_helper_source_keeps_hatena_and_archive_targets_separate():
     assert "function openHatenaProfile()" in HTML
     assert "window.open(hatenaUrl(profileUrl.value)" in HTML
     assert "function useReplies()" in HTML
-    assert "archiveTarget.value=urls().replies" in HTML
+    assert "archiveTarget.value = urls().replies" in HTML
 
 
 def test_archive_url_bookmark_is_explicitly_optional():
@@ -55,42 +56,41 @@ def test_archive_url_bookmark_is_explicitly_optional():
 
 
 def test_default_archive_target_is_profile():
-    assert re.search(r"if\(!archiveTarget\.dataset\.edited\)archiveTarget\.value=u\.profile", HTML)
+    assert "if (!archiveTarget.dataset.edited) archiveTarget.value = u.profile" in HTML
 
 
 def test_browser_flow_is_declared():
-    assert "archive.md / archive.liへの保存はGitHub Actionsではなく、このブラウザから行います" in HTML
+    assert "保存先を選び、このブラウザから保存します" in HTML
 
 
 def test_archive_result_can_be_written_back_to_github():
     assert "function saveArchiveResultToGitHub()" in HTML
     assert "保存結果をGitHubへ記録" in HTML
-    assert "artist.archive_url=archive" in HTML
-    assert "artist.tracking_mode!=='record'" in HTML
+    assert "TrackerUtils.recordArchive(artist, archive, target" in HTML
+    assert "artist.tracking_mode !== 'record'" in HTML
 
 
 def test_helper_reuses_tracker_github_config():
-    assert "const CONFIG_KEY='artist_tracker_config';" in HTML
+    assert "const CONFIG_KEY = 'artist_tracker_config';" in HTML
     assert "localStorage.getItem(CONFIG_KEY)" in HTML
 
 
 def test_wip_archive_is_pending_not_done():
-    assert "function isWipArchiveUrl(v)" in HTML
-    assert "new URL(v).pathname.startsWith('/wip/')" in HTML
-    assert "artist.archive_status=wip?'pending':'done'" in HTML
-    assert "/wip/ のURLは処理中として pending で記録します" in HTML
+    assert "function isWipArchiveUrl(value)" in HTML
+    assert "TrackerUtils.archiveResult(value)?.status === 'pending'" in HTML
+    assert "/wip/ は処理中として記録します" in HTML
 
 
 def test_final_archive_url_can_replace_wip():
     assert "完成URLが出たら再度更新してください" in HTML
-    assert "artist.archive_url=archive" in HTML
+    assert "TrackerUtils.recordArchive(artist, archive, target" in HTML
 
 
 def test_archive_li_can_be_opened_from_helper():
-    assert "openArchive('archive.li')" in HTML
-    assert "archive.liを開く" in HTML
+    assert '<option value="archive.li">archive.li（同系列）</option>' in HTML
+    assert "window.open(provider.home" in HTML
 
 
 def test_archive_li_result_url_is_accepted():
-    assert "'archive.li'" in HTML
-    assert "['archive.md','archive.li','archive.ph','archive.is','archive.today']" in HTML
+    assert "'archive.li'" in UTILS
+    assert "TrackerUtils.archiveResult(value)" in HTML

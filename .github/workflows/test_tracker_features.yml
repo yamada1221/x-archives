@@ -1,0 +1,40 @@
+name: Test tracker URL, presets and archive providers
+
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'archive_helper.html'
+      - 'tracker-utils.js'
+      - 'tests/test_tracker_features.cjs'
+      - 'tests/browser_tracker.js'
+      - '.github/workflows/test_tracker_features.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify URL inputs, notes and archive result retention
+        run: node --test tests/test_tracker_features.cjs
+      - name: Install browser test tools
+        run: |
+          npm install --no-save --package-lock=false playwright@1.51.1
+          npx playwright install --with-deps chromium
+      - name: Verify the mobile and desktop browser flows
+        run: |
+          python -m http.server 8765 --bind 127.0.0.1 > /tmp/tracker-http.log 2>&1 &
+          node tests/browser_tracker.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tracker-browser-screenshots
+          path: test-output/
+          if-no-files-found: ignore

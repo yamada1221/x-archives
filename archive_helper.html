@@ -1,43 +1,182 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>X Archive Helper</title>
-<style>body{font-family:system-ui,sans-serif;background:#f5f5f3;color:#1a1a18;margin:0;padding:24px}.card{max-width:680px;margin:0 auto;background:#fff;border:1px solid #ddd;border-radius:12px;padding:20px}h1{font-size:20px;margin:0 0 8px}p{color:#666;font-size:14px;line-height:1.6}label{display:block;font-size:12px;color:#666;margin:14px 0 5px}input{width:100%;box-sizing:border-box;padding:9px 10px;border:1px solid #ccc;border-radius:8px;font-size:14px}button{cursor:pointer;padding:8px 12px;border:1px solid #bbb;border-radius:8px;background:#fff;font-size:13px}.primary{background:#1a1a18;color:#fff;border-color:#1a1a18}.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.step{margin-top:20px;padding-top:16px;border-top:1px solid #eee}.note{font-size:12px;background:#f5f5f3;padding:10px;border-radius:8px;color:#666}.ok{color:#2e7d32}</style></head>
-<body><div class="card"><h1>X Archive 保存ヘルパー</h1><p>archive.md / archive.liへの保存はGitHub Actionsではなく、このブラウザから行います。通常はXのユーザーページをArchiveとはてなブックマークの両方の対象にします。必要な場合だけ、Archive側をリプライ欄など別URLへ切り替えられます。</p>
-<div class="step"><strong>1. Xアカウント</strong><label for="account">Xアカウント名（@なし）</label><input id="account" placeholder="例: tawakenai_marou" autocomplete="off"><label for="profileUrl">はてブ対象（通常ユーザーページ）</label><input id="profileUrl" readonly><div class="row"><button class="primary" onclick="openHatenaProfile()">通常ユーザーページをはてブ</button></div><p class="note">はてブ対象は常に https://x.com/ユーザー名 の通常プロフィールです。</p></div>
-<div class="step"><strong>2. Archiveへ保存</strong><label for="archiveTarget">archive対象URL</label><input id="archiveTarget" placeholder="https://x.com/example"><div class="row"><button onclick="useProfile()">通常ページ</button><button onclick="useReplies()">リプライ欄に切替</button><button onclick="copyArchiveTarget()">archive対象URLをコピー</button><button class="primary" onclick="openArchive('archive.md')">archive.mdを開く</button><button class="primary" onclick="openArchive('archive.li')">archive.liを開く</button></div><p id="status" class="note">archive対象URLをコピーして、archive.md または archive.li を開きます。保存後、表示された保存結果URLを下へ貼り付けてください。</p></div>
-<div class="step"><strong>3. 保存結果</strong><label for="archiveUrl">保存されたArchive URL</label><input id="archiveUrl" placeholder="https://archive.md/... または https://archive.li/..."><div class="row"><button onclick="copyArchiveUrl()">archive URLをコピー</button><button onclick="openHatenaArchive()">archive URL自体をはてブ（任意）</button><button class="primary" id="saveResultBtn" onclick="saveArchiveResultToGitHub()">保存結果をGitHubへ記録</button></div><p class="note">/wip/ のURLは処理中として pending で記録します。Archive側で完成URLが表示されたら、そのURLへ置き換えて同じボタンを押すと done に更新されます。</p></div><div class="step"><a href="index.html">Xアカウントトラッカーへ戻る</a></div></div>
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>X Archive 保存ヘルパー</title>
+<style>
+body{font-family:system-ui,sans-serif;background:#f5f5f3;color:#1a1a18;margin:0;padding:24px}
+.card{max-width:680px;margin:0 auto;background:#fff;border:1px solid #ddd;border-radius:12px;padding:20px}
+h1{font-size:20px;margin:0 0 8px}p{color:#666;font-size:14px;line-height:1.6}
+label{display:block;font-size:12px;color:#666;margin:14px 0 5px}
+input,select{width:100%;box-sizing:border-box;padding:9px 10px;border:1px solid #ccc;border-radius:8px;font-size:14px;background:#fff}
+button{cursor:pointer;padding:9px 12px;border:1px solid #bbb;border-radius:8px;background:#fff;font-size:13px}
+button:disabled{opacity:.5;cursor:default}.primary{background:#1a1a18;color:#fff;border-color:#1a1a18}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.step{margin-top:20px;padding-top:16px;border-top:1px solid #eee}
+.note{font-size:12px;background:#f5f5f3;padding:10px;border-radius:8px;color:#666}.ok{color:#2e7d32}
+@media(max-width:600px){body{padding:12px}.card{padding:16px}}
+</style>
+</head>
+<body><div class="card">
+<h1>X Archive 保存ヘルパー</h1>
+<p>保存先を選び、このブラウザから保存します。通常はXのユーザーページをArchiveとはてなブックマークの両方の対象にします。必要に応じて、Archive側だけリプライ欄・投稿URLへ切り替えられます。</p>
+<div class="step">
+  <strong>1. Xアカウント</strong>
+  <label for="account">Xユーザー名・プロフィールURL・投稿URL</label><input id="account" placeholder="@example / https://x.com/example" autocomplete="off" autocapitalize="none" spellcheck="false">
+  <label for="profileUrl">はてブ対象（通常ユーザーページ）</label><input id="profileUrl" readonly>
+  <div class="row"><button class="primary" onclick="openHatenaProfile()">通常ユーザーページをはてブ</button></div>
+  <p class="note">はてブ対象は常に https://x.com/ユーザー名 の通常プロフィールです。</p>
+</div>
+<div class="step">
+  <strong>2. 保存先を選ぶ</strong>
+  <label for="archiveTarget">アーカイブ対象URL</label><input id="archiveTarget" placeholder="https://x.com/example">
+  <div class="row"><button onclick="useProfile()">通常ページ</button><button onclick="useReplies()">リプライ欄に切替</button><button onclick="copyArchiveTarget()">対象URLをコピー</button></div>
+  <label for="archiveProvider">保存先</label>
+  <select id="archiveProvider" onchange="updateProvider(true)">
+    <option value="archive.md">archive.md</option><option value="archive.li">archive.li（同系列）</option>
+    <option value="ghostarchive">Ghostarchive</option><option value="wayback">Wayback Machine</option><option value="perma">Perma.cc</option>
+  </select>
+  <p id="providerHint" class="note"></p>
+  <div class="row"><button class="primary" id="openArchiveBtn" onclick="openArchive()">URLをコピーして保存先を開く</button><button onclick="findWayback()">過去の保存を探す（Wayback）</button></div>
+  <p class="note">保存先を開いただけでは保存済みになりません。Xのログイン画面やエラーだけが保存されていないか確認し、結果URLを下へ貼り付けてください。</p>
+</div>
+<div class="step">
+  <strong>3. 保存結果を残す</strong>
+  <label for="archiveUrl">保存されたArchive URL</label><input id="archiveUrl" placeholder="https://ghostarchive.org/archive/... など">
+  <div class="row"><button onclick="copyArchiveUrl()">結果URLをコピー</button><button onclick="openHatenaArchive()">archive URL自体をはてブ（任意）</button><button class="primary" id="saveResultBtn" onclick="saveArchiveResultToGitHub()">保存結果をGitHubへ記録</button></div>
+  <p class="note">複数のサービス・保存時点の結果を残せます。archive.today系の /wip/ は処理中として記録します。完成URLが出たら再度記録してください。</p>
+  <p id="status" class="note" role="status" aria-live="polite">保存後の結果URLを記録すると、トラッカーの一覧から開けます。</p>
+</div>
+<div class="step"><a href="index.html">Xアカウントトラッカーへ戻る</a> / <a href="https://github.com/yamada1221/x-archives/blob/main/docs/archive-providers.md" target="_blank" rel="noopener">保存先・APIの調査結果</a></div>
+</div>
+<script src="tracker-utils.js"></script>
 <script>
-const account=document.getElementById('account'),profileUrl=document.getElementById('profileUrl'),archiveTarget=document.getElementById('archiveTarget'),archiveUrl=document.getElementById('archiveUrl'),statusEl=document.getElementById('status');
-const CONFIG_KEY='artist_tracker_config';
-function cleanAccount(v){return String(v||'').trim().replace(/^@/,'');}function urls(){const a=cleanAccount(account.value);if(!a)return{profile:'',replies:''};const base=`https://x.com/${encodeURIComponent(a)}`;return{profile:base,replies:base+'/with_replies'};}function updateAccount(){const u=urls();profileUrl.value=u.profile;if(!archiveTarget.dataset.edited)archiveTarget.value=u.profile;}account.addEventListener('input',()=>{archiveTarget.dataset.edited='';updateAccount();});archiveTarget.addEventListener('input',()=>archiveTarget.dataset.edited='1');
-const params=new URLSearchParams(location.search);if(params.get('x')){account.value=cleanAccount(params.get('x'));updateAccount();}if(params.get('target')){archiveTarget.value=params.get('target');archiveTarget.dataset.edited='1';}if(params.get('archive'))archiveUrl.value=params.get('archive');
-async function copyText(text){if(!text)return false;try{await navigator.clipboard.writeText(text);return true;}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();const ok=document.execCommand('copy');ta.remove();return ok;}}function requireAccount(){updateAccount();if(!profileUrl.value){alert('Xアカウント名を入力してください');return false;}return true;}function useProfile(){if(!requireAccount())return;archiveTarget.value=urls().profile;archiveTarget.dataset.edited='1';}function useReplies(){if(!requireAccount())return;archiveTarget.value=urls().replies;archiveTarget.dataset.edited='1';}async function copyArchiveTarget(){const ok=await copyText(archiveTarget.value.trim());statusEl.textContent=ok?'archive対象URLをコピーしました。':'コピーできませんでした。';}function openArchive(host='archive.md'){if(!archiveTarget.value.trim()){if(!requireAccount())return;useProfile();}const allowedHosts=['archive.md','archive.li'];const archiveHost=allowedHosts.includes(host)?host:'archive.md';window.open(`https://${archiveHost}/`,'_blank','noopener');copyArchiveTarget();statusEl.textContent=`archive対象URLをコピーして ${archiveHost} を開きました。保存後のURLを下へ貼り付けてください。`; }function hatenaUrl(u){return'https://b.hatena.ne.jp/add?'+new URLSearchParams({mode:'confirm',url:u}).toString();}function openHatenaProfile(){if(!requireAccount())return;window.open(hatenaUrl(profileUrl.value),'_blank','noopener');statusEl.textContent='通常のXユーザーページをはてなブックマーク追加画面で開きました。';statusEl.classList.add('ok');}function validArchiveUrl(v){try{const u=new URL(v);return u.protocol==='https:'&&['archive.md','archive.li','archive.ph','archive.is','archive.today'].includes(u.hostname);}catch(e){return false;}}function isWipArchiveUrl(v){try{return new URL(v).pathname.startsWith('/wip/');}catch(e){return false;}}async function copyArchiveUrl(){const ok=await copyText(archiveUrl.value.trim());statusEl.textContent=ok?'archive URLをコピーしました。':'コピーできませんでした。';}function openHatenaArchive(){const u=archiveUrl.value.trim();if(!validArchiveUrl(u)){alert('有効な Archive 系URLを入力してください');return;}window.open(hatenaUrl(u),'_blank','noopener');statusEl.textContent='archive URLのはてブ追加画面を開きました。';}
-function getConfig(){try{return JSON.parse(localStorage.getItem(CONFIG_KEY)||'{}');}catch(e){return{};}}
-function decodeGitHubContent(content){return JSON.parse(decodeURIComponent(escape(atob(String(content||'').replace(/\n/g,'')))));}
-function encodeGitHubContent(value){return btoa(unescape(encodeURIComponent(JSON.stringify(value,null,2))));}
-async function saveArchiveResultToGitHub(){
-  const archive=archiveUrl.value.trim();
-  const x=cleanAccount(account.value);
-  if(!x){alert('Xアカウント名を入力してください');return;}
-  if(!validArchiveUrl(archive)){alert('有効な Archive 系URLを入力してください');return;}
-  const cfg=getConfig();
-  if(!cfg.token||!cfg.owner||!cfg.repo){alert('先にトラッカー画面でGitHub設定を保存してください');return;}
-  const button=document.getElementById('saveResultBtn');button.disabled=true;button.textContent='記録中...';
-  try{
-    const path=cfg.path||'data/artists.json';
-    const api=`https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${path}`;
-    const headers={Authorization:`token ${cfg.token}`,Accept:'application/vnd.github.v3+json','Content-Type':'application/json'};
-    const current=await fetch(api,{headers});if(!current.ok)throw new Error(`GitHub読込 ${current.status}`);
-    const file=await current.json();const data=decodeGitHubContent(file.content);const artists=Array.isArray(data.artists)?data.artists:[];
-    const artist=artists.find(item=>cleanAccount(item.x_account).toLowerCase()===x.toLowerCase());if(!artist)throw new Error(`@${x} がartists.jsonにありません`);
-    if(artist.tracking_mode!=='record')throw new Error(`@${x} は記録対象ではありません`);
-    const wip=isWipArchiveUrl(archive);
-    artist.archive_status=wip?'pending':'done';artist.archive_url=archive;artist.archive_target_url=archiveTarget.value.trim()||profileUrl.value;artist.archive_checked_at=new Date().toISOString();delete artist.archive_error;
-    const response=await fetch(api,{method:'PUT',headers,body:JSON.stringify({message:`chore: record browser archive [${x}]`,content:encodeGitHubContent(data),sha:file.sha})});
-    if(!response.ok)throw new Error(`GitHub保存 ${response.status}`);
-    statusEl.textContent=wip?`@${x} のarchiveは処理中としてGitHubへ記録しました。完成URLが出たら再度更新してください。`:`@${x} のarchive保存結果をGitHubへ記録しました。`;statusEl.classList.add('ok');
-  }catch(e){statusEl.textContent=`記録に失敗しました: ${e.message}`;statusEl.classList.remove('ok');}
-  finally{button.disabled=false;button.textContent='保存結果をGitHubへ記録';}
+const account = document.getElementById('account'), profileUrl = document.getElementById('profileUrl'),
+  archiveTarget = document.getElementById('archiveTarget'), archiveUrl = document.getElementById('archiveUrl'), statusEl = document.getElementById('status');
+const CONFIG_KEY = 'artist_tracker_config';
+const PROVIDER_KEY = 'artist_tracker_archive_provider';
+function cleanAccount(value) { return TrackerUtils.parseXInput(value).account; }
+function urls() {
+  const a = cleanAccount(account.value);
+  const base = a ? `https://x.com/${encodeURIComponent(a)}` : '';
+  return { profile: base, replies: base ? base + '/with_replies' : '' };
 }
-if(!account.value)updateAccount();
+function updateAccount() {
+  try {
+    const u = urls(); profileUrl.value = u.profile;
+    if (!archiveTarget.dataset.edited) archiveTarget.value = u.profile;
+  } catch (_) { profileUrl.value = ''; if (!archiveTarget.dataset.edited) archiveTarget.value = ''; }
+}
+account.addEventListener('input', () => { archiveTarget.dataset.edited = ''; updateAccount(); });
+archiveTarget.addEventListener('input', () => archiveTarget.dataset.edited = '1');
+const params = new URLSearchParams(location.search);
+if (params.get('x')) account.value = params.get('x');
+updateAccount();
+if (params.get('target')) { archiveTarget.value = params.get('target'); archiveTarget.dataset.edited = '1'; }
+if (params.get('archive')) archiveUrl.value = params.get('archive');
+try {
+  const saved = localStorage.getItem(PROVIDER_KEY);
+  if (Object.hasOwn(TrackerUtils.providers, saved)) document.getElementById('archiveProvider').value = saved;
+} catch (_) {}
+function updateProvider(persist = false) {
+  const key = document.getElementById('archiveProvider').value;
+  const provider = TrackerUtils.providers[key];
+  document.getElementById('providerHint').textContent = provider.hint;
+  document.getElementById('openArchiveBtn').textContent = `URLをコピーして${provider.label}を開く`;
+  if (persist) { try { localStorage.setItem(PROVIDER_KEY, key); } catch (_) {} }
+}
+updateProvider();
+async function copyText(text) {
+  if (!text) return false;
+  try { await navigator.clipboard.writeText(text); return true; }
+  catch (_) {
+    const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+    try { return document.execCommand('copy'); } catch (_) { return false; } finally { ta.remove(); }
+  }
+}
+function requireAccount() {
+  updateAccount();
+  if (!profileUrl.value) { alert('有効なXユーザー名またはプロフィールURLを入力してください'); return false; }
+  return true;
+}
+function useProfile() { if (!requireAccount()) return; archiveTarget.value = urls().profile; archiveTarget.dataset.edited = '1'; }
+function useReplies() { if (!requireAccount()) return; archiveTarget.value = urls().replies; archiveTarget.dataset.edited = '1'; }
+function targetUrl() {
+  if (!archiveTarget.value.trim()) { if (!requireAccount()) return ''; useProfile(); }
+  try {
+    const target = new URL(archiveTarget.value.trim());
+    if (!['http:', 'https:'].includes(target.protocol) || target.username || target.password) throw new Error();
+    return target.href;
+  } catch (_) { alert('アーカイブ対象には http(s) のURLを入力してください'); return ''; }
+}
+async function copyArchiveTarget() {
+  const target = targetUrl(); if (!target) return;
+  const ok = await copyText(target);
+  statusEl.textContent = ok ? 'アーカイブ対象URLをコピーしました。' : 'コピーできませんでした。対象URLを手動でコピーしてください。';
+}
+async function openArchive() {
+  const target = targetUrl(); if (!target) return;
+  const provider = TrackerUtils.providers[document.getElementById('archiveProvider').value];
+  // Open synchronously in the click handler so mobile browsers retain user activation.
+  window.open(provider.home, '_blank', 'noopener');
+  const copied = await copyText(target);
+  statusEl.classList.remove('ok');
+  statusEl.textContent = copied ? `対象URLをコピーしました。${provider.label}の保存欄へ貼り付けてください。` : `コピーできませんでした。対象URLを手動でコピーして${provider.label}へ貼り付けてください。`;
+}
+function findWayback() {
+  const target = targetUrl(); if (!target) return;
+  window.open('https://web.archive.org/web/*/' + target, '_blank', 'noopener');
+}
+function hatenaUrl(u) { return 'https://b.hatena.ne.jp/add?' + new URLSearchParams({ mode: 'confirm', url: u }).toString(); }
+function openHatenaProfile() {
+  if (!requireAccount()) return;
+  window.open(hatenaUrl(profileUrl.value), '_blank', 'noopener');
+}
+function validArchiveUrl(value) { return Boolean(TrackerUtils.archiveResult(value)); }
+function isWipArchiveUrl(value) { return TrackerUtils.archiveResult(value)?.status === 'pending'; }
+async function copyArchiveUrl() {
+  const ok = await copyText(archiveUrl.value.trim());
+  statusEl.textContent = ok ? '結果URLをコピーしました。' : 'コピーできませんでした。';
+}
+function openHatenaArchive() {
+  const u = archiveUrl.value.trim();
+  if (!validArchiveUrl(u)) { alert('保存結果のURLを入力してください'); return; }
+  window.open(hatenaUrl(u), '_blank', 'noopener');
+}
+function getConfig() { try { return JSON.parse(localStorage.getItem(CONFIG_KEY) || '{}'); } catch (_) { return {}; } }
+function decodeGitHubContent(content) { return JSON.parse(decodeURIComponent(escape(atob(String(content || '').replace(/\n/g, ''))))); }
+function encodeGitHubContent(value) { return btoa(unescape(encodeURIComponent(JSON.stringify(value, null, 2)))); }
+let savingResult = false;
+async function saveArchiveResultToGitHub() {
+  if (savingResult || !requireAccount()) return;
+  const archive = archiveUrl.value.trim(), x = cleanAccount(account.value), target = targetUrl();
+  if (!target) return;
+  if (!validArchiveUrl(archive)) { alert('保存結果のURLを入力してください。トップ・検索・保存画面のURLは登録できません。'); return; }
+  const cfg = getConfig();
+  if (!cfg.token || !cfg.owner || !cfg.repo) { alert('先にトラッカー画面でGitHub設定を保存してください'); return; }
+  const button = document.getElementById('saveResultBtn');
+  savingResult = true; button.disabled = true; button.textContent = '記録中...';
+  try {
+    const path = cfg.path || 'data/artists.json';
+    const api = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${path}`;
+    const headers = { Authorization: `token ${cfg.token}`, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' };
+    const current = await fetch(api, { headers });
+    if (!current.ok) throw new Error(`GitHub読込 ${current.status}`);
+    const file = await current.json();
+    if (!file.sha) throw new Error('保存先の版を確認できません');
+    const data = decodeGitHubContent(file.content);
+    if (!Array.isArray(data.artists)) throw new Error('保存先の形式が不正です');
+    const matches = data.artists.filter(item => {
+      try { return cleanAccount(item.x_account).toLowerCase() === x.toLowerCase(); } catch (_) { return false; }
+    });
+    if (matches.length !== 1) throw new Error(`@${x} の登録を一意に確認できません`);
+    const artist = matches[0];
+    if (artist.tracking_mode !== 'record') throw new Error(`@${x} は記録対象ではありません`);
+    const result = TrackerUtils.recordArchive(artist, archive, target, new Date().toISOString());
+    const response = await fetch(api, { method: 'PUT', headers, body: JSON.stringify({ message: `chore: record browser archive [${x}]`, content: encodeGitHubContent(data), sha: file.sha }) });
+    if (!response.ok) throw new Error(`GitHub保存 ${response.status}${response.status === 409 ? '（別の更新がありました。再度記録してください）' : ''}`);
+    statusEl.textContent = result.status === 'pending' ? `@${x} のarchiveは処理中として記録しました。完成URLが出たら再度更新してください。` : `@${x} の保存結果を記録しました。トラッカーで「GitHubから読込」を押すと反映されます。`;
+    statusEl.classList.add('ok');
+  } catch (error) { statusEl.textContent = `記録に失敗しました: ${error.message}`; statusEl.classList.remove('ok'); }
+  finally { savingResult = false; button.disabled = false; button.textContent = '保存結果をGitHubへ記録'; }
+}
 </script></body></html>

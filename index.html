@@ -11,7 +11,7 @@
 
   .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.75rem; }
   .header h1 { font-size: 20px; font-weight: 600; }
-  .header-actions { display: flex; gap: 0.5rem; align-items: center; }
+  .header-actions { flex-wrap: wrap; display: flex; gap: 0.5rem; align-items: center; }
 
   .config-bar { background: #fff; border: 0.5px solid rgba(0,0,0,0.12); border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; display: none; }
   .config-bar h2 { font-size: 12px; font-weight: 600; color: #888; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
@@ -74,6 +74,12 @@
   .record-box p { font-size: 12px; color: #75522b; margin-bottom: 8px; line-height: 1.5; }
   .row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 
+  .field-hint { font-size: 12px; color: #666; line-height: 1.5; margin-top: 6px; }
+  .field-hint.invalid { color: #a32d2d; }
+  .note-presets { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 7px; }
+  .note-presets button { min-height: 34px; max-width: 100%; white-space: normal; overflow-wrap: anywhere; text-align: left; }
+  .note-settings { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee; }
+  .note-settings textarea { width: 100%; min-height: 130px; padding: 8px; border: 1px solid #ccc; border-radius: 8px; font: inherit; font-size: 13px; }
   .note-row { margin-bottom: 0.75rem; }
   .note-row input { width: 100%; padding: 6px 10px; border: 0.5px solid rgba(0,0,0,0.1); border-radius: 8px; font-size: 13px; background: transparent; }
 
@@ -91,7 +97,7 @@
   .refetch-btn { margin-left: auto; }
 
   .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; z-index: 100; padding: 1rem; }
-  .modal { background: #fff; border-radius: 12px; padding: 1.5rem; width: 100%; max-width: 480px; border: 0.5px solid rgba(0,0,0,0.12); }
+  .modal { background: #fff; border-radius: 12px; padding: 1.5rem; width: 100%; max-width: 480px; max-height: calc(100dvh - 2rem); overflow-y: auto; border: 0.5px solid rgba(0,0,0,0.12); }
   .modal h2 { font-size: 17px; margin-bottom: 0.5rem; }
   .modal-hint { font-size: 12px; color: #888; margin-bottom: 1rem; line-height: 1.5; }
   .modal-field { margin-bottom: 0.875rem; }
@@ -138,6 +144,7 @@
       <button onclick="saveConfig()" class="primary">保存</button>
       <span class="config-status" id="configStatus"></span>
     </div>
+    <div class="note-settings"><button onclick="openNoteSettings()">メモの定型文を編集</button></div>
   </div>
 
   <div class="stats-row">
@@ -159,19 +166,32 @@
 <div class="modal-backdrop" id="addModal" style="display:none" onclick="if(event.target===this)closeModal()">
   <div class="modal">
     <h2 id="modalTitle">アカウントを追加</h2>
-    <p class="modal-hint">「監視のみ」は死活監視だけを行います。「記録対象」は死活監視に加え、ブラウザから archive.md 保存とはてなブックマーク登録を行うための導線を表示します。</p>
-    <div class="modal-field"><label>Xアカウント（@なしでもOK）</label><input id="fX" placeholder="例: example_user"></div>
+    <p class="modal-hint">「監視のみ」は死活監視だけを行います。「記録対象」は死活監視に加え、ブラウザからアーカイブ保存とはてなブックマーク登録を行うための導線を表示します。</p>
+    <div class="modal-field"><label for="fX">Xユーザー名・プロフィールURL・投稿URL</label><input id="fX" placeholder="@example / https://x.com/example/status/..." oninput="previewXInput()" autocapitalize="none" spellcheck="false"><p id="xInputHint" class="field-hint" aria-live="polite">x.com・twitter.comに対応。投稿URLは関連URLにも残します。</p></div>
     <div class="modal-field"><label>表示名（仮）</label><input id="fName" placeholder="空欄ならXアカウント名を使用"></div>
-    <div class="modal-field"><label>監視種別</label><select id="fMode"><option value="monitor_only">監視のみ</option><option value="record">記録対象（archive.md + はてブ）</option></select></div>
+    <div class="modal-field"><label>監視種別</label><select id="fMode"><option value="monitor_only">監視のみ</option><option value="record">記録対象（アーカイブ + はてブ）</option></select></div>
     <div class="modal-field"><label>Threadsアカウント・プロフィールURL・共有URL（任意）</label><input id="fThreads" placeholder="例: f00744 / https://www.threads.com/@f00744 / https://www.threads.com/share/..."></div>
     <div class="modal-field"><label>Pixivユーザー名またはID（任意）</label><input id="fPixiv" placeholder="任意"></div>
-    <div class="modal-field"><label>メモ</label><input id="fNote" placeholder="分類理由やメモなど"></div>
+    <div class="modal-field"><label for="fNote">メモ</label><input id="fNote" placeholder="分類理由やメモなど"><div id="modalNotePresets"></div></div>
     <div class="modal-actions"><button onclick="closeModal()">キャンセル</button><button onclick="saveArtist()" class="primary" id="modalSaveBtn">追加してプロフィール取得</button></div>
   </div>
 </div>
 
+<div class="modal-backdrop" id="noteSettingsModal" style="display:none;z-index:110" onclick="if(event.target===this)closeNoteSettings()">
+  <div class="modal" role="dialog" aria-modal="true" aria-label="メモの定型文">
+    <div class="note-settings">
+      <h2>メモの定型文</h2>
+      <label for="notePhraseSettings" class="field-hint">1行に1つ、最大20件・各160文字。空欄で保存すると文言ボタンを非表示にできます。</label>
+      <textarea id="notePhraseSettings"></textarea>
+      <div class="row"><button onclick="saveNotePhrases()" class="primary">定型文を保存</button><button onclick="resetNotePhrases()">よく使うメモから候補を作る</button></div>
+      <p class="field-hint">定型文の設定はこのブラウザに保存します。入力したメモは「GitHubに保存」で同期できます。</p>
+    </div>
+    <div class="modal-actions"><button onclick="closeNoteSettings()">閉じる</button></div>
+  </div>
+</div>
 <div class="toast" id="toast"></div>
 
+<script src="tracker-utils.js"></script>
 <script>
 let artists = [];
 let editingId = null;
@@ -181,6 +201,7 @@ let githubSyncInProgress = false;
 
 const STORAGE_KEY = 'artist_tracker_v1';
 const CONFIG_KEY = 'artist_tracker_config';
+const NOTE_PHRASES_KEY = 'artist_tracker_note_phrases_v1';
 
 function normalizeArtist(artist) {
   if (!artist.tracking_mode) artist.tracking_mode = 'monitor_only';
@@ -249,8 +270,9 @@ function saveConfig() {
 }
 
 function openConfig() {
+  document.getElementById('notePhraseSettings').value = getNotePhrases().join('\n');
   const bar = document.getElementById('configBar');
-  bar.style.display = bar.style.display === 'none' ? 'block' : 'none';
+  bar.style.display = bar.style.display === 'block' ? 'none' : 'block';
 }
 
 function uid() {
@@ -475,6 +497,91 @@ async function loadFromGitHub() {
   }
 }
 
+function previewXInput() {
+  const hint = document.getElementById('xInputHint');
+  try {
+    const parsed = TrackerUtils.parseXInput(document.getElementById('fX').value);
+    hint.textContent = parsed.account ? `登録するアカウント: @${parsed.account}${parsed.postUrl ? '（投稿URLも関連URLへ保存）' : ''}` : 'x.com・twitter.comに対応。投稿URLは関連URLにも残します。';
+    hint.classList.remove('invalid');
+  } catch (error) {
+    hint.textContent = error.message;
+    hint.classList.add('invalid');
+  }
+}
+
+function getNotePhrases() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(NOTE_PHRASES_KEY));
+    if (Array.isArray(saved)) return TrackerUtils.normalizePhrases(saved);
+  } catch (_) {}
+  return TrackerUtils.suggestPhrases(artists);
+}
+
+function notePresetsHTML(target, artistId = '') {
+  return `<div class="note-presets" data-note-target="${esc(target)}" data-note-artist="${esc(artistId)}">
+    ${getNotePhrases().map(phrase => `<button type="button" class="small" data-target="${esc(target)}" data-artist="${esc(artistId)}" data-phrase="${esc(phrase)}" onclick="applyNotePhrase(this)">${esc(phrase)}</button>`).join('')}
+    <button type="button" class="small" data-target="${esc(target)}" onclick="registerNotePhrase(this)">このメモを定型文に登録</button>
+    <button type="button" class="small" onclick="openNoteSettings()">定型文を編集</button>
+  </div>`;
+}
+
+function refreshNotePresets() {
+  document.querySelectorAll('[data-note-target]').forEach(element => {
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = notePresetsHTML(element.dataset.noteTarget, element.dataset.noteArtist);
+    element.replaceWith(wrapper.firstElementChild);
+  });
+}
+
+function applyNotePhrase(button) {
+  const input = document.getElementById(button.dataset.target);
+  if (!input) return;
+  input.value = TrackerUtils.appendPhrase(input.value, button.dataset.phrase);
+  if (button.dataset.artist) updateNote(button.dataset.artist, input.value);
+  input.focus();
+}
+
+function registerNotePhrase(button) {
+  const phrase = document.getElementById(button.dataset.target)?.value.trim();
+  if (!phrase) return showToast('メモを入力してから登録してください');
+  if (phrase.length > 160) return showToast('定型文は160文字以内で登録してください');
+  const phrases = getNotePhrases();
+  if (phrases.includes(phrase)) return showToast('この定型文は登録済みです');
+  if (phrases.length >= 20) return showToast('定型文は最大20件です。設定で整理してください');
+  persistNotePhrases([...phrases, phrase]);
+}
+
+function persistNotePhrases(phrases) {
+  try { localStorage.setItem(NOTE_PHRASES_KEY, JSON.stringify(phrases)); }
+  catch (_) { showToast('定型文を保存できませんでした'); return; }
+  document.getElementById('notePhraseSettings').value = phrases.join('\n');
+  refreshNotePresets();
+  showToast('定型文を保存しました');
+}
+
+function saveNotePhrases() {
+  const lines = document.getElementById('notePhraseSettings').value.split(/\r?\n/).map(v => v.trim()).filter(Boolean);
+  if (lines.some(v => v.length > 160) || new Set(lines).size > 20) return showToast('最大20件・各160文字以内にしてください');
+  persistNotePhrases(TrackerUtils.normalizePhrases(lines));
+}
+
+function resetNotePhrases() {
+  // Preview only: do not replace custom phrases until the user presses Save.
+  document.getElementById('notePhraseSettings').value = TrackerUtils.suggestPhrases(artists).join('\n');
+}
+
+function closeNoteSettings() {
+  document.getElementById('noteSettingsModal').style.display = 'none';
+}
+
+function openNoteSettings() {
+  document.getElementById('noteSettingsModal').style.display = 'flex';
+  const field = document.getElementById('notePhraseSettings');
+  field.value = getNotePhrases().join('\n');
+  field.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  field.focus();
+}
+
 function openAddModal() {
   editingId = null;
   document.getElementById('modalTitle').textContent = 'アカウントを追加';
@@ -485,6 +592,8 @@ function openAddModal() {
   document.getElementById('fPixiv').value = '';
   document.getElementById('fNote').value = '';
   document.getElementById('fMode').value = 'monitor_only';
+  previewXInput();
+  document.getElementById('modalNotePresets').innerHTML = notePresetsHTML('fNote');
   document.getElementById('addModal').style.display = 'flex';
   setTimeout(() => document.getElementById('fX').focus(), 50);
 }
@@ -502,6 +611,8 @@ function openEditModal(id) {
   document.getElementById('fPixiv').value = artist.pixiv_user || '';
   document.getElementById('fNote').value = artist.note || '';
   document.getElementById('fMode').value = artist.tracking_mode || 'monitor_only';
+  previewXInput();
+  document.getElementById('modalNotePresets').innerHTML = notePresetsHTML('fNote');
   document.getElementById('addModal').style.display = 'flex';
 }
 
@@ -552,7 +663,10 @@ function resetThreadsForEdit(artist, newAccount, newShareUrl) {
 }
 
 async function saveArtist() {
-  const xAccount = document.getElementById('fX').value.trim().replace(/^@/, '');
+  let parsedX;
+  try { parsedX = TrackerUtils.parseXInput(document.getElementById('fX').value); }
+  catch (error) { alert(error.message); return; }
+  const xAccount = parsedX.account;
   const threadsInput = document.getElementById('fThreads').value.trim();
   const threadsShareUrl = normalizeThreadsShareInput(threadsInput);
   const threadsAccount = normalizeThreadsAccountInput(threadsInput);
@@ -568,10 +682,14 @@ async function saveArtist() {
 
   if (xAccount) {
     const normalizedX = xAccount.toLowerCase();
-    const duplicate = artists.find(item =>
-      item.id !== editingId &&
-      String(item.x_account || '').trim().replace(/^@/, '').toLowerCase() === normalizedX
-    );
+    const duplicate = artists.find(item => {
+      if (item.id === editingId) return false;
+      try {
+        return TrackerUtils.parseXInput(item.x_account || '').account.toLowerCase() === normalizedX;
+      } catch {
+        return false;
+      }
+    });
     if (duplicate) {
       alert(`@${xAccount} はすでに登録されています`);
       return;
@@ -640,6 +758,10 @@ async function saveArtist() {
     artists.push(artist);
   }
 
+  if (!artist) { button.disabled = false; showToast('編集対象がありません'); return; }
+  if (parsedX.postUrl && !artist.works.some(work => String(work.url || '').toLowerCase() === parsedX.postUrl.toLowerCase())) {
+    artist.works.push({ url: parsedX.postUrl, type: 'x_post', memo: '', saved_at: today() });
+  }
   saveLocal();
   closeModal();
   renderList();
@@ -854,16 +976,16 @@ function renderList() {
       <div class="artist-body" id="body_${esc(artist.id)}">
         ${recordTarget ? `
           <div class="record-box">
-            <p>このアカウントは「記録対象」です。archive.mdは通常プロフィールが既定値で、必要な場合だけリプライ欄へ切り替えられます。はてブは通常プロフィールを対象にします。</p>
+            <p>このアカウントは「記録対象」です。アーカイブは通常プロフィールが既定値で、保存先を選択できます。必要な場合だけリプライ欄へ切り替えられます。はてブは通常プロフィールを対象にします。</p>
             <div class="row">
               <a href="${archiveHelperUrl(artist)}"><button class="small primary">アーカイブ・はてブ</button></a>
               <a href="https://x.com/${encodeURIComponent(artist.x_account)}" target="_blank" rel="noopener"><button class="small">Xプロフィールを開く</button></a>
             </div>
           </div>` : ''}
 
-        ${artist.archive_status === 'done' && artist.archive_url ? `
+        ${TrackerUtils.archiveResults(artist).length ? `
           <div class="row" style="margin-bottom:.75rem">
-            <a href="${esc(artist.archive_url)}" target="_blank" rel="noopener"><button class="small">保存済みarchiveを見る</button></a>
+            ${TrackerUtils.archiveResults(artist).map(entry => `<a href="${esc(entry.url)}" target="_blank" rel="noopener"><button class="small">${esc(TrackerUtils.archiveLabel(entry.provider))} ${entry.status === 'done' ? '保存済み' : '処理中'}</button></a>`).join('')}
           </div>` : ''}
 
         ${artist.threads_share_url ? `
@@ -896,7 +1018,7 @@ function renderList() {
               </div>` : '<p>取得済みの投稿・返信はまだありません。</p>'}
           </div>` : ''}
 
-        <div class="note-row"><input type="text" placeholder="メモ..." value="${esc(artist.note || '')}" onchange="updateNote('${esc(artist.id)}', this.value)"></div>
+        <div class="note-row"><input id="note_${esc(artist.id)}" aria-label="アカウントのメモ" type="text" placeholder="メモ..." value="${esc(artist.note || '')}" onchange="updateNote('${esc(artist.id)}', this.value)">${notePresetsHTML(`note_${artist.id}`, artist.id)}</div>
 
         <div class="add-work-row">
           <input id="wInline_${esc(artist.id)}" placeholder="関連URLを貼り付け" onkeydown="if(event.key==='Enter')addWorkInline('${esc(artist.id)}')">
@@ -904,7 +1026,8 @@ function renderList() {
           <button class="small" onclick="addWorkInline('${esc(artist.id)}')">追加</button>
         </div>
 
-        <div class="works-list">
+        ${notePresetsHTML(`wMemoInline_${artist.id}`)}
+        <div class="works-list" style="margin-top:.75rem">
           ${works.map((work, index) => `
             <div class="work-item">
               <span class="work-type-badge">${typeLabel(work.type)}</span>

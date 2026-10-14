@@ -7748,20 +7748,21 @@
         "last_source": "fxtwitter",
         "last_reason": "not_found"
       }
+    },
+    {
+      "id": "mv83awukiga3",
+      "name": "HzAtXDAvaJ60910",
+      "x_account": "HzAtXDAvaJ60910",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-14",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
-  ],
-  "monitoring_summary": {
-    "checked_at": "2026-10-14T09:35:50+00:00",
-    "checked": 99,
-    "fxtwitter_healthy": true,
-    "active": 87,
-    "unavailable": 12,
-    "unknown": 0
-  },
-  "threads_refresh_summary": {
-    "checked_at": "2026-10-14T09:47:51.247639+00:00",
-    "checked": 1,
-    "success": 1,
-    "failed": 0
-  }
+  ]
 }

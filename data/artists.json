@@ -8049,6 +8049,21 @@
       "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/pGR2MB4YjU8459/with_replies",
       "archive_checked_at": "2026-10-14T20:56:34.282Z"
+    },
+    {
+      "id": "mv8mzmraa359",
+      "name": "kei_name7",
+      "x_account": "kei_name7",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-14",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ]
 }

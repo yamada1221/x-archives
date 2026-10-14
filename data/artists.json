@@ -7532,20 +7532,21 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=2071163595015241728; screen_name=suu00331199"
         }
       ]
+    },
+    {
+      "id": "mv7sibyjm91s",
+      "name": "UntiBuriBuri889",
+      "x_account": "UntiBuriBuri889",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-14",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
-  ],
-  "monitoring_summary": {
-    "checked_at": "2026-10-13T11:56:16+00:00",
-    "checked": 98,
-    "fxtwitter_healthy": true,
-    "active": 88,
-    "unavailable": 10,
-    "unknown": 0
-  },
-  "threads_refresh_summary": {
-    "checked_at": "2026-10-13T12:13:54.733376+00:00",
-    "checked": 1,
-    "success": 1,
-    "failed": 0
-  }
+  ]
 }

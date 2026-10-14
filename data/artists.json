@@ -7783,6 +7783,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mv83nfvtjb0h",
+      "name": "pkwmap49413",
+      "x_account": "pkwmap49413",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-14",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ]
 }

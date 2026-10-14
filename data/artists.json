@@ -7835,7 +7835,24 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://unavatar.io/x/shinjukuacc?fallback=false",
       "profile_fetched_at": "2026-10-14",
-      "profile_source": "unavatar"
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-14T12:43:42+00:00",
+        "x_account": "shinjukuacc",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=shinjukuacc",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/shinjukuacc",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ]
 }

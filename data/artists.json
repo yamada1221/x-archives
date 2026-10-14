@@ -7853,6 +7853,28 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mv84504ydvyy",
+      "name": "djke0pun3939wxw",
+      "x_account": "djke0pun3939wxw",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/djke0pun3939wxw/status/2109796016673489211",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-10-14"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-10-14",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ]
 }

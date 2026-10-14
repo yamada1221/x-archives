@@ -7818,6 +7818,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mv83p1d2t879",
+      "name": "shinjukuacc",
+      "x_account": "shinjukuacc",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-14",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ]
 }

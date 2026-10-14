@@ -9,7 +9,7 @@ def test_sync_requires_config():
 
 
 def test_sync_fetches_existing_sha_before_put():
-    assert "const sha = await getFileSha(apiUrl, cfg.token);" in HTML
+    assert "const file = await getGitHubFile(apiUrl, cfg.token);" in HTML
     assert "if (sha) body.sha = sha;" in HTML
 
 
@@ -20,7 +20,7 @@ def test_sync_puts_to_contents_api_with_auth():
 
 
 def test_sync_serializes_artists_json():
-    assert "JSON.stringify({ artists }, null, 2)" in HTML
+    assert "JSON.stringify({ ...documentData, artists: outgoing }, null, 2)" in HTML
     assert "chore: update artists.json" in HTML
 
 

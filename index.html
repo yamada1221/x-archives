@@ -336,13 +336,45 @@ async function triggerThreadsFetch(artistId, threadsAccount) {
   return response.status === 204;
 }
 
-async function getFileSha(apiUrl, token) {
-  const response = await fetch(apiUrl, { headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' } });
+async function getGitHubFile(apiUrl, token) {
+  const response = await fetch(apiUrl, { cache: 'no-store', headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' } });
   if (response.status === 404) return null;
   if (!response.ok) throw new Error(`GitHubの版確認に失敗しました: ${response.status}`);
   const data = await response.json();
   if (typeof data.sha !== 'string' || !data.sha) throw new Error('GitHubの版番号を取得できませんでした');
-  return data.sha;
+  return data;
+}
+
+// Merge only independently changed fields. Arrays are atomic to avoid guessing
+// about deletions or reordered posts. Missing records retain deletion semantics.
+function mergeArtistChanges(base, local, remote) {
+  const equal = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+  const maps = [base, local, remote].map(list => new Map(list.map(a => [a.id, a])));
+  const result = [];
+  for (const id of new Set([...maps[2].keys(), ...maps[1].keys()])) {
+    const [b, l, r] = maps.map(m => m.get(id));
+    let value;
+    if (equal(l, b)) value = r;
+    else if (equal(r, b) || equal(l, r)) value = l;
+    else {
+      if (!b || !l || !r) throw new Error(`同じアカウントの追加・削除が競合しています (${id})。手元の編集は残っています`);
+      for (const key of ['x_account', 'threads_account', 'threads_share_url', 'pixiv_user']) {
+        if (!equal(l[key], b[key]) || !equal(r[key], b[key])) {
+          throw new Error(`アカウントの変更が競合しています (${id})。手元の編集は残っています`);
+        }
+      }
+      value = {};
+      for (const key of new Set([...Object.keys(b), ...Object.keys(l), ...Object.keys(r)])) {
+        let field;
+        if (equal(l[key], b[key])) field = r[key];
+        else if (equal(r[key], b[key]) || equal(l[key], r[key])) field = l[key];
+        else throw new Error(`「${l.name || l.x_account || id}」の ${key} が競合しています。手元の編集は残っています`);
+        if (field !== undefined) value[key] = field;
+      }
+    }
+    if (value !== undefined) result.push(value);
+  }
+  return validateImportedArtists(JSON.parse(JSON.stringify(result)));
 }
 
 async function syncToGitHub() {
@@ -367,8 +399,9 @@ async function syncToGitHub() {
     const apiUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${cfg.path}`;
     const revision = githubRevision?.apiUrl === apiUrl ? githubRevision : null;
     const before = JSON.stringify(artists);
-    const sha = await getFileSha(apiUrl, cfg.token);
-    if ((sha && (!revision || revision.sha !== sha)) || (!sha && revision)) {
+    const file = await getGitHubFile(apiUrl, cfg.token);
+    const sha = file?.sha;
+    if ((sha && !revision) || (!sha && revision)) {
       showToast('GitHub側の変更、または未読込のファイルを検出したため保存を中止しました。手元の編集は残っています。必要な編集内容を控えてから、GitHubから読み込み直してください');
       return false;
     }
@@ -376,7 +409,15 @@ async function syncToGitHub() {
       showToast('保存準備中に編集または接続先が変わりました。内容を確認して再度保存してください');
       return false;
     }
-    const content = btoa(unescape(encodeURIComponent(JSON.stringify({ artists }, null, 2))));
+    const local = JSON.parse(before);
+    let outgoing = local;
+    let documentData = revision?.documentData || {};
+    if (sha && revision.sha !== sha) {
+      documentData = JSON.parse(decodeURIComponent(escape(atob(file.content.replace(/\n/g, '')))));
+      const remote = validateImportedArtists(documentData?.artists);
+      outgoing = mergeArtistChanges(revision.artists, local, remote);
+    }
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify({ ...documentData, artists: outgoing }, null, 2))));
     const body = { message: `chore: update artists.json [${today()}]`, content };
     if (sha) body.sha = sha;
 
@@ -388,7 +429,7 @@ async function syncToGitHub() {
 
     if (!response.ok) {
       showToast(response.status === 409 || response.status === 422
-        ? '保存中にGitHub側の変更を検出しました。手元の編集は残っています。必要な内容を控えてから読み込み直してください'
+        ? '保存中にGitHub側の更新が入りました。手元の編集は残っています。「GitHubに保存」をもう一度押してください'
         : `エラー: ${response.status}`);
       return false;
     }
@@ -396,7 +437,14 @@ async function syncToGitHub() {
     if (typeof saved.content?.sha !== 'string' || !saved.content.sha) {
       throw new Error('保存後の版番号を確認できません。再保存の前にGitHubの内容を確認してください');
     }
-    githubRevision = { apiUrl, sha: saved.content.sha };
+    // Rebase edits made while the PUT was in flight onto the saved snapshot.
+    if (JSON.stringify(getConfig()) === JSON.stringify(cfg)) {
+      const merged = mergeArtistChanges(local, artists, outgoing);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
+      artists = merged;
+      renderList();
+    }
+    githubRevision = { apiUrl, sha: saved.content.sha, artists: outgoing, documentData };
     showToast('GitHubに保存しました');
     return true;
   } catch (e) {
@@ -484,7 +532,7 @@ async function loadFromGitHub() {
     // Persist first so a quota/storage error cannot replace the in-memory list.
     localStorage.setItem(STORAGE_KEY, JSON.stringify(imported));
     artists = imported;
-    githubRevision = { apiUrl, sha: data.sha };
+    githubRevision = { apiUrl, sha: data.sha, artists: JSON.parse(JSON.stringify(imported)), documentData: json };
     renderList();
     showToast('読み込みました');
   } catch (e) {

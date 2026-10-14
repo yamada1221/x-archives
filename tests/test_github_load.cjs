@@ -88,6 +88,38 @@ test('valid records retain extra profile data and get legacy defaults', async ()
 });
 
 const turn = () => new Promise(resolve => setImmediate(resolve));
+test('monitoring updates merge with notes and keep edits made during upload', async () => {
+  const h = await loaded(), save = h.ctx.syncToGitHub();
+  const latest = { version: 2, artists: [{ ...remote.artists[0], monitoring: { last_result: 'active' } }] };
+  h.reply(1, 200, { sha: 'new', content: Buffer.from(JSON.stringify(latest)).toString('base64') });
+  await turn();
+  const body = JSON.parse(h.calls[2].body);
+  const sent = JSON.parse(Buffer.from(body.content, 'base64').toString());
+  assert.equal(body.sha, 'new'); assert.equal(sent.version, 2);
+  assert.equal(sent.artists[0].note, 'ローカルの編集');
+  assert.equal(sent.artists[0].monitoring.last_result, 'active');
+  vm.runInContext("artists[0].note = '次の編集'; saveLocal();", h.ctx);
+  h.reply(2, 200, { content: { sha: 'saved' } });
+  assert.equal(await save, true);
+  assert.equal(h.get()[0].note, '次の編集');
+  assert.equal(h.get()[0].monitoring.last_result, 'active');
+});
+test('concurrent edits of the same note do not write or discard local data', async () => {
+  const h = await loaded(), save = h.ctx.syncToGitHub();
+  h.reply(1, 200, { sha: 'new', content: Buffer.from(JSON.stringify({ artists: [{ ...remote.artists[0], note: '別の端末' }] })).toString('base64') });
+  assert.equal(await save, false); assert.equal(h.calls.length, 2);
+  assert.equal(h.get()[0].note, 'ローカルの編集');
+  assert.match(h.messages.at(-1), /note.*競合/);
+});
+test('record merging preserves additions and deletions and rejects delete/edit conflicts', () => {
+  const h = harness();
+  const a = { id: 'a', note: 'base' }, b = { id: 'b' }, c = { id: 'c' };
+  const merge = (base, local, remote) => JSON.parse(JSON.stringify(h.ctx.mergeArtistChanges(base, local, remote)));
+  assert.deepEqual(merge([a], [a,b], [a,c]).map(x=>x.id), ['a','c','b']);
+  assert.deepEqual(merge([a,b], [b], [a,b]).map(x=>x.id), ['b']);
+  assert.throws(()=>merge([a], [], [{ ...a, note: 'changed' }]), /競合/);
+  assert.throws(()=>merge([a], [{ ...a, note: 'changed' }], []), /競合/);
+});
 async function loaded() {
   const h = harness(), read = h.ctx.loadFromGitHub();
   h.respond(0, remote); await read;

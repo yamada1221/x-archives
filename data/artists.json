@@ -8472,6 +8472,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mv9nb85901xy",
+      "name": "ユカ",
+      "x_account": "NBenmaran85901",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "料理・自炊投稿（「30歳独身女が作るやけくそ○○」など）。外部検索で投稿活動を確認。X本体は直接取得制限あり。",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-15",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

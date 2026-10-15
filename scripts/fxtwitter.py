@@ -32,7 +32,9 @@ def classify(payload: object, http_status: int, username: str, user_id: str = ""
         if reason == "suspended":
             return {"status": "unavailable", "reason": "suspended", "source": "fxtwitter", "detail": detail}
         if not reason and message == "User not found":
-            return {"status": "unavailable", "reason": "not_found", "source": "fxtwitter", "detail": detail}
+            # A provider miss is not proof of deletion (lookup failures and
+            # renames can produce the same response for existing accounts).
+            return {"status": "unknown", "reason": "not_found", "source": "fxtwitter", "detail": detail}
         return unknown(detail)
     if http_status != 200 or code != 200 or payload.get("reason"):
         return unknown(detail)

@@ -923,6 +923,10 @@ function fetchBadge(artist) {
 function latestMonitorResult(artist) {
   const monitoring = artist.monitoring;
   if (!monitoring) return '';
+  // Older stored misses must not continue to appear as account loss while
+  // waiting for the next scheduled check.
+  if (monitoring.last_result === 'unavailable' && monitoring.last_reason !== 'suspended') return 'unknown';
+  if (!monitoring.last_result && monitoring.status === 'unavailable' && monitoring.confirmed_reason !== 'suspended') return 'unknown';
   if (['active', 'unavailable', 'unknown'].includes(monitoring.last_result)) return monitoring.last_result;
   if (['active', 'unavailable'].includes(monitoring.status)) return monitoring.status;
   return '';

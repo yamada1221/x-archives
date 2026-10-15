@@ -32,7 +32,8 @@ test('a different last negative reason does not inherit a previous confirmation'
 
 test('missing account is not described as definitely deleted', () => {
   const artist = { monitoring: { status: 'unavailable', last_result: 'unavailable', last_reason: 'not_found', confirmed_reason: 'not_found' } };
-  assert.match(context.monitorBadge(artist), /見つからない/);
+  assert.match(context.monitorBadge(artist), /判定不能/);
+  assert.equal(context.latestMonitorResult(artist), 'unknown');
   assert.doesNotMatch(context.monitorBadge(artist), /削除/);
 });
 

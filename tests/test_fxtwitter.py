@@ -38,7 +38,7 @@ class FxTwitterTests(unittest.TestCase):
                 result = fx.classify({"code": 404, "message": "User is suspended", "reason": "suspended"}, http, "example")
                 self.assertEqual((result["status"], result["reason"]), ("unavailable", "suspended"))
                 result = fx.classify({"code": 404, "message": "User not found"}, http, "example")
-                self.assertEqual((result["status"], result["reason"]), ("unavailable", "not_found"))
+                self.assertEqual((result["status"], result["reason"]), ("unknown", "not_found"))
 
     def test_generic_errors_and_other_unavailability_never_become_account_loss(self):
         cases = [
@@ -76,6 +76,31 @@ class FxTwitterTests(unittest.TestCase):
 
 
 class MonitorIntegrationTests(unittest.TestCase):
+    def test_id_lookup_failure_recovers_only_with_matching_handle_identity(self):
+        for status in [fx.unknown("timeout"), fx.classify({"code": 404, "message": "User not found"}, 404, "example")]:
+            for resolved, expected in [("123", "active"), ("456", "unknown")]:
+                active = fx.classify(profile("example", resolved), 200, "example")
+                with self.subTest(resolved=resolved, status=status), patch.object(monitor, "probe_fxtwitter", side_effect=[status, active]), patch.object(monitor, "probe_account") as legacy:
+                    result = monitor.probe_artist({"x_account": "example", "x_user_id": "123"})
+                    self.assertEqual(result["status"], expected)
+                    legacy.assert_not_called()
+
+    def test_repeated_provider_misses_retract_old_absence_without_claiming_active(self):
+        artist = {"monitoring": {"status": "unavailable", "confirmed_reason": "not_found",
+                  "last_confirmed_at": "old", "consecutive_unavailable": 22}}
+        missing = fx.classify({"code": 404, "message": "User not found"}, 404, "example")
+        for day in range(5):
+            monitor.record_check(artist, missing["status"], missing["detail"], str(day), missing)
+        self.assertEqual(artist["monitoring"]["status"], "unknown")
+        self.assertEqual(artist["monitoring"]["consecutive_unavailable"], 0)
+        self.assertNotIn("last_confirmed_at", artist["monitoring"])
+        self.assertEqual(len(artist["status_history"]), 1)
+
+    def test_legacy_negative_evidence_cannot_confirm_a_provider_miss(self):
+        missing = fx.classify({"code": 404, "message": "User not found"}, 404, "example")
+        with patch.object(monitor, "probe_fxtwitter", return_value=missing), patch.object(monitor, "probe_account", return_value=("unavailable", "public page missing")):
+            self.assertEqual(monitor.probe_artist({"x_account": "example"})["status"], "unknown")
+
     def test_saved_all_unknown_run_fails_health_check_without_altering_data(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "artists.json"

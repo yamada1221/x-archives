@@ -9003,6 +9003,21 @@
       "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/Minami_Eiko_42/with_replies",
       "archive_checked_at": "2026-10-15T15:06:32.565Z"
+    },
+    {
+      "id": "mv9oaciiged9",
+      "name": "Toonee8008",
+      "x_account": "Toonee8008",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "スパム",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-15",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

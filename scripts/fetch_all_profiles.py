@@ -117,7 +117,7 @@ def main() -> None:
 
         print(f"[{index}/{len(artists)}] fetch @{username}")
         try:
-            profile = asyncio.run(fetch_x_profile(username))
+            profile = asyncio.run(fetch_x_profile(username, artist["x_user_id"]) if artist.get("x_user_id") else fetch_x_profile(username))
         except Exception as exc:
             profile = None
             print(f"  error: {type(exc).__name__}: {exc}")

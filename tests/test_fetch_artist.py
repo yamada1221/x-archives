@@ -76,6 +76,23 @@ class ProfileHtmlFallbackTests(unittest.TestCase):
 
 
 class ProfileFetchFlowTests(unittest.TestCase):
+    def setUp(self):
+        patcher = patch.object(fetch_artist, "probe_profile", return_value={"status": "unknown"})
+        self.fx_probe = patcher.start()
+        self.addCleanup(patcher.stop)
+
+    def test_verified_fx_profile_includes_bio_and_empty_bio(self):
+        for bio in ["日本語の自己紹介\n二行目 <script>", ""]:
+            self.fx_probe.return_value = {"status": "active", "bio": bio, "source": "fxtwitter"}
+            result = asyncio.run(fetch_artist.fetch_x_profile("example_user"))
+            self.assertEqual(result["bio"], bio)
+
+    def test_known_identity_failure_never_uses_unverified_fallback(self):
+        with patch.object(fetch_artist, "fetch_x_profile_syndication", new=AsyncMock()) as fallback:
+            self.assertIsNone(asyncio.run(fetch_artist.fetch_x_profile("example_user", "123")))
+            self.fx_probe.assert_called_once_with("example_user", "123")
+            fallback.assert_not_awaited()
+
     def test_syndication_is_preferred_when_available(self):
         expected = {"display_name": "Syndication Name", "avatar_url": "https://pbs.twimg.com/profile_images/1/a.jpg"}
         with patch.object(fetch_artist, "fetch_x_profile_syndication", new=AsyncMock(return_value=expected)) as syndication, patch.object(fetch_artist, "fetch_x_profile_html", new=AsyncMock()) as html_fallback, patch.object(fetch_artist, "fetch_x_profile_unavatar", new=AsyncMock()) as unavatar_fallback:

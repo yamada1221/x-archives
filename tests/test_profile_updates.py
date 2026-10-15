@@ -15,6 +15,17 @@ from scripts import fetch_all_profiles, fetch_artist
 
 
 class SavedProfileTests(unittest.TestCase):
+    def test_bio_only_empty_and_failed_fetch_preserve_memo(self):
+        for bio in ["自己紹介\n二行目", ""]:
+            artist = {"note": "手入力", "x_bio": "旧文"}
+            self.assertTrue(fetch_artist.update_artist_from_profile(artist, {"bio": bio, "source": "fxtwitter"}))
+            self.assertEqual(artist["x_bio"], bio)
+            self.assertEqual(artist["note"], "手入力")
+            fetched_at = artist["x_bio_fetched_at"]
+            fetch_artist.update_artist_from_profile(artist, None)
+            self.assertEqual(artist["x_bio"], bio)
+            self.assertEqual(artist["x_bio_fetched_at"], fetched_at)
+
     def setUp(self):
         self.artist = {
             "id": "artist-1",

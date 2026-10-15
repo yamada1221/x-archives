@@ -233,6 +233,10 @@ def record_check(artist: dict, result: str, detail: str, checked_at: str, eviden
             artist["x_user_id"] = evidence["user_id"]
             monitoring["observed_username"] = evidence["username"]
             monitoring["protected"] = evidence["protected"]
+            if isinstance(evidence.get("bio"), str):
+                artist["x_bio"] = evidence["bio"]
+                artist["x_bio_fetched_at"] = checked_at
+                artist["x_bio_source"] = evidence["source"]
     if new_status != old_status:
         artist.setdefault("status_history", []).append(
             {"from": old_status, "to": new_status, "at": checked_at, "reason": detail}

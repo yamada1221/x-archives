@@ -15,6 +15,30 @@ def profile(handle="example", user_id="123", protected=False):
 
 
 class FxTwitterTests(unittest.TestCase):
+    def test_bio_requires_matching_identity_and_valid_text(self):
+        for bio in ["自己紹介\nhttps://example.com", "", None, {}]:
+            payload = profile()
+            payload["user"]["description"] = bio
+            result = fx.classify(payload, 200, "example")
+            self.assertEqual("bio" in result, isinstance(bio, str))
+            if isinstance(bio, str):
+                self.assertEqual(result["bio"], bio)
+            self.assertNotIn("bio", fx.classify(payload, 200, "different"))
+
+    def test_monitor_updates_bio_without_erasing_it_on_failure(self):
+        artist = {"x_bio": "前回"}
+        for bio in ["更新\n二行目", ""]:
+            payload = profile()
+            payload["user"]["description"] = bio
+            result = fx.classify(payload, 200, "example")
+            monitor.record_check(artist, "active", "ok", "today", result)
+            self.assertEqual(artist["x_bio"], bio)
+            self.assertEqual(artist["x_bio_fetched_at"], "today")
+        artist["x_bio"] = "保持"
+        for result in [fx.unknown("timeout"), fx.classify(profile(), 200, "example")]:
+            monitor.record_check(artist, result["status"], "check", "later", result)
+            self.assertEqual(artist["x_bio"], "保持")
+
     def test_active_requires_matching_identity_and_preserves_numeric_id_as_text(self):
         evidence = fx.classify(profile("EXAMPLE", "1234567890123456789"), 200, "example")
         self.assertEqual(evidence["status"], "active")

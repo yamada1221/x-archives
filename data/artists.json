@@ -8951,6 +8951,21 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1709236907773988864; screen_name=iYzZgEBPrQ95837"
         }
       ]
+    },
+    {
+      "id": "mv9o0ijlkg2k",
+      "name": "Minami_Eiko_42",
+      "x_account": "Minami_Eiko_42",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "スパム",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-15",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

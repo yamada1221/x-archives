@@ -7747,7 +7747,21 @@
         "consecutive_reason": "not_found",
         "last_source": "fxtwitter",
         "last_reason": "not_found"
-      }
+      },
+      "archives": [
+        {
+          "url": "https://archive.li/lRwrO",
+          "provider": "archive.today",
+          "status": "done",
+          "target_url": "https://x.com/UntiBuriBuri889",
+          "saved_at": "2026-10-15T05:50:10.812Z"
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/lRwrO",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/UntiBuriBuri889",
+      "archive_checked_at": "2026-10-15T05:50:10.812Z"
     },
     {
       "id": "mv83awukiga3",

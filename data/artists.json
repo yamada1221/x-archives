@@ -8402,6 +8402,21 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1483235837932601344; screen_name=kei_name7"
         }
       ]
+    },
+    {
+      "id": "mv9ctosp2u3l",
+      "name": "adsshogun",
+      "x_account": "adsshogun",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "青バッチ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-15",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

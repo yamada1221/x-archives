@@ -8454,7 +8454,24 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://unavatar.io/x/Shaty333?fallback=false",
       "profile_fetched_at": "2026-10-15",
-      "profile_source": "unavatar"
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-15T10:32:59+00:00",
+        "x_account": "Shaty333",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=Shaty333",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/Shaty333",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

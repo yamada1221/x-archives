@@ -8541,7 +8541,21 @@
           "url": "https://x.com/iYzZgEBPrQ95837",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archives": [
+        {
+          "url": "https://archive.li/2026.10.15-143142/https://x.com/iYzZgEBPrQ95837/with_replies",
+          "provider": "archive.today",
+          "status": "done",
+          "target_url": "https://x.com/iYzZgEBPrQ95837",
+          "saved_at": "2026-10-15T14:34:59.877Z"
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.10.15-143142/https://x.com/iYzZgEBPrQ95837/with_replies",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/iYzZgEBPrQ95837",
+      "archive_checked_at": "2026-10-15T14:34:59.877Z"
     }
   ],
   "monitoring_summary": {

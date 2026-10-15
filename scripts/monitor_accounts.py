@@ -153,10 +153,10 @@ def probe_account(username: str) -> tuple[str, str]:
             return "active", "public profile returned"
         if payload:
             return "unknown", "public endpoint returned a different account"
-        return "unavailable", "public endpoint returned no matching profile"
+        return "unknown", "public endpoint returned no matching profile; absence is unconfirmed"
     except urllib.error.HTTPError as exc:
         if exc.code in (404, 410):
-            return "unavailable", http_error_detail("public endpoint returned", exc)
+            return "unknown", http_error_detail("public endpoint returned", exc)
         return "unknown", http_error_detail("public endpoint returned", exc)
     except OSError as exc:
         return "unknown", f"temporary probe failure: {type(exc).__name__}: {exc}"
@@ -169,12 +169,20 @@ def probe_artist(artist: dict, fx_healthy: bool = True) -> dict:
         "status": "unknown", "reason": "", "source": "fxtwitter",
         "detail": "FxTwitter positive control failed; account result withheld",
     }
+    if user_id and fx_healthy and evidence["status"] != "active":
+        # A successful handle lookup is useful only if the numeric identity
+        # matches. Never adopt a replacement account using a recycled handle.
+        by_handle = probe_fxtwitter(username)
+        if by_handle["status"] == "active":
+            if by_handle.get("user_id") == user_id:
+                return by_handle
+            return {"status": "unknown", "reason": "identity_mismatch", "source": "fxtwitter",
+                    "detail": evidence["detail"] + "; handle belongs to a different numeric ID"}
     if evidence["status"] != "unknown" or user_id:
-        # Once identity is known, never fall back to a possibly reassigned handle.
         return evidence
     result, detail = probe_account(username)
     return {
-        "status": result, "reason": "", "source": "x_public",
+        "status": result if result == "active" else "unknown", "reason": "", "source": "x_public",
         "detail": evidence["detail"] + "; fallback: " + detail,
     }
 
@@ -184,6 +192,17 @@ def record_check(artist: dict, result: str, detail: str, checked_at: str, eviden
     old_status = monitoring.get("status", "unknown")
     failures = int(monitoring.get("consecutive_unavailable", 0))
     reason = (evidence or {}).get("reason", "")
+    # Retract old provider-miss confirmations without claiming existence.
+    if result != "active" and old_status == "unavailable" and monitoring.get("confirmed_reason") != "suspended":
+        monitoring["status"] = "unknown"
+        monitoring["confirmed_reason"] = ""
+        monitoring.pop("last_confirmed_at", None)
+        failures = 0
+        artist.setdefault("status_history", []).append(
+            {"from": old_status, "to": "unknown", "at": checked_at,
+             "reason": "Retracted absence inference: provider miss is not proof of account loss"}
+        )
+        old_status = "unknown"
     if result == "unavailable" and reason != monitoring.get("consecutive_reason", ""):
         failures = 0
 

@@ -14,7 +14,7 @@ def main():
         ("X", "783214", "active", ""),
         ("tawakenai_marou", "", "active", ""),
         ("aryuha_0_0", "", "unavailable", "suspended"),
-        ("zzxarch9q7k2v5", "", "unavailable", "not_found"),
+        ("zzxarch9q7k2v5", "", "unknown", "not_found"),
     ]
     rows = []
     failed = False

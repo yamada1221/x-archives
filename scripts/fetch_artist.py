@@ -21,6 +21,11 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
+try:
+    from fxtwitter import probe_profile
+except ModuleNotFoundError:
+    from scripts.fxtwitter import probe_profile
+
 DATA_PATH = Path("data/artists.json")
 PROFILE_BODY_LIMIT = 1024 * 1024
 USER_AGENT = "Mozilla/5.0 (compatible; x-archives/1.0; +https://github.com/yamada1221/x-archives)"
@@ -180,7 +185,12 @@ def extract_profile_from_html(raw: bytes, username: str) -> dict | None:
     return None
 
 
-async def fetch_x_profile(username: str) -> dict | None:
+async def fetch_x_profile(username: str, user_id: str = "") -> dict | None:
+    evidence = await asyncio.to_thread(probe_profile, username, user_id) if user_id else await asyncio.to_thread(probe_profile, username)
+    if evidence["status"] == "active" and any(key in evidence for key in ("bio", "display_name", "avatar_url")):
+        return {key: evidence[key] for key in ("bio", "display_name", "avatar_url", "source") if key in evidence}
+    if user_id:
+        return None  # Do not copy another account's profile from a reused handle.
     profile = await fetch_x_profile_syndication(username)
     if profile:
         return profile
@@ -257,7 +267,8 @@ def update_artist_from_profile(artist: dict, profile: dict | None) -> bool:
     """Apply only fetched fields; partial/failed responses must not erase data."""
     display_name = profile.get("display_name") if profile else None
     avatar_url = profile.get("avatar_url") if profile else None
-    if not display_name and not avatar_url:
+    bio = profile.get("bio") if profile else None
+    if not display_name and not avatar_url and not isinstance(bio, str):
         artist["fetch_status"] = "error"
         return False
 
@@ -265,6 +276,10 @@ def update_artist_from_profile(artist: dict, profile: dict | None) -> bool:
         artist["name"] = display_name
     if avatar_url:
         artist["avatar_url"] = avatar_url
+    if isinstance(bio, str):
+        artist["x_bio"] = bio
+        artist["x_bio_fetched_at"] = dt.datetime.now(dt.timezone.utc).isoformat()
+        artist["x_bio_source"] = profile.get("source", "unknown")
     artist["profile_fetched_at"] = dt.date.today().isoformat()
     artist["fetch_status"] = "done"
     artist["profile_source"] = profile.get("source", "unknown")
@@ -285,7 +300,7 @@ def main() -> None:
     if matched_by == "x_account":
         print(f"Artist id {artist_id} was stale; matched @{x_account} by x_account", file=sys.stderr)
     print(f"Fetching profile for @{x_account} (id={artist['id']})")
-    profile = asyncio.run(fetch_x_profile(x_account))
+    profile = asyncio.run(fetch_x_profile(x_account, artist["x_user_id"]) if artist.get("x_user_id") else fetch_x_profile(x_account))
     if update_artist_from_profile(artist, profile):
         print(f"Updated: {artist.get('name', x_account)} / {artist.get('avatar_url', '')} ({artist['profile_source']})")
     else:

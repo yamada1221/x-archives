@@ -49,12 +49,16 @@ def classify(payload: object, http_status: int, username: str, user_id: str = ""
         return unknown(detail + "; missing or invalid username")
     if (user_id and resolved_id != user_id) or (not user_id and handle.lower() != username.lower()):
         return unknown(detail + "; profile identity mismatch")
-    return {
+    evidence = {
         "status": "active", "reason": "", "source": "fxtwitter",
         "detail": detail + f"; user_id={resolved_id}; screen_name={handle}",
         "user_id": resolved_id, "username": handle,
         "protected": user.get("protected") is True,
     }
+    for source, target in [("description", "bio"), ("name", "display_name"), ("avatar_url", "avatar_url")]:
+        if isinstance(user.get(source), str):
+            evidence[target] = user[source]
+    return evidence
 
 
 def probe_profile(username: str, user_id: str = "") -> dict:

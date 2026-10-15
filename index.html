@@ -466,7 +466,7 @@ function validateImportedArtists(value) {
       throw new Error('アカウントIDが空・重複、またはデータの形式が不正です');
     }
     ids.add(artist.id);
-    for (const key of ['name', 'x_account', 'threads_account', 'threads_share_url', 'threads_bio', 'note']) {
+    for (const key of ['name', 'x_account', 'x_bio', 'x_bio_fetched_at', 'threads_account', 'threads_share_url', 'threads_bio', 'note']) {
       if (artist[key] != null && typeof artist[key] !== 'string') {
         throw new Error(`アカウントの ${key} の形式が正しくありません`);
       }
@@ -682,6 +682,9 @@ function resetMonitoringForAccountEdit(artist, newAccount) {
   }
   delete artist.x_user_id;
   delete artist.monitoring;
+  delete artist.x_bio;
+  delete artist.x_bio_fetched_at;
+  delete artist.x_bio_source;
 }
 
 function resetThreadsForEdit(artist, newAccount, newShareUrl) {
@@ -989,6 +992,7 @@ function renderList() {
     (artist.threads_account || '').toLowerCase().includes(query) ||
     (artist.threads_share_url || '').toLowerCase().includes(query) ||
     (artist.threads_bio || '').toLowerCase().includes(query) ||
+    (artist.x_bio || '').toLowerCase().includes(query) ||
     (artist.threads_posts || []).some(post => (post.text || '').toLowerCase().includes(query)) ||
     (artist.note || '').toLowerCase().includes(query)
   );
@@ -1026,6 +1030,10 @@ function renderList() {
       </div>
 
       <div class="artist-body" id="body_${esc(artist.id)}">
+        ${artist.x_account ? `<div class="record-box"><strong>Xプロフィール・自己紹介</strong>
+          <p style="white-space:pre-wrap;overflow-wrap:anywhere">${typeof artist.x_bio === 'string' ? esc(artist.x_bio || '自己紹介文は空欄です') : '未取得です。プロフィール取得または次回の監視で更新します。'}</p>
+          ${artist.x_bio_fetched_at ? `<small>最終取得: ${esc(artist.x_bio_fetched_at)}（取得できなかった場合は前回の文章を表示）</small>` : ''}
+        </div>` : ''}
         ${recordTarget ? `
           <div class="record-box">
             <p>このアカウントは「記録対象」です。アーカイブは通常プロフィールが既定値で、保存先を選択できます。必要な場合だけリプライ欄へ切り替えられます。はてブは通常プロフィールを対象にします。</p>

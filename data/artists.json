@@ -8988,7 +8988,21 @@
           "url": "https://x.com/Minami_Eiko_42",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archives": [
+        {
+          "url": "https://archive.li/2026.10.15-150106/https://x.com/Minami_Eiko_42/with_replies",
+          "provider": "archive.today",
+          "status": "done",
+          "target_url": "https://x.com/Minami_Eiko_42/with_replies",
+          "saved_at": "2026-10-15T15:06:32.565Z"
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.10.15-150106/https://x.com/Minami_Eiko_42/with_replies",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/Minami_Eiko_42/with_replies",
+      "archive_checked_at": "2026-10-15T15:06:32.565Z"
     }
   ],
   "monitoring_summary": {

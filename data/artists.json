@@ -8968,10 +8968,27 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/2078940248697122816/Drc8y1bC_normal.jpg",
       "x_bio": "明治42年生まれの南栄子が大好きです。\n\n聖書の神だけが本物の神です。仏教と神道と他の全ての偶像崇拝と同性愛は罪です。\n\nただ一人の真の神であるキリストが道であり、真理であり、命なのです。キリスト無しでは天国は無しです。\n\nキリストは全ての罪人たちを愛しています。どうかキリストを信じて下さい。",
-      "x_bio_fetched_at": "2026-10-15T15:00:05.424371+00:00",
+      "x_bio_fetched_at": "2026-10-15T15:00:18.368533+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-15",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-15T15:00:18+00:00",
+        "x_account": "Minami_Eiko_42",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=Minami_Eiko_42",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/Minami_Eiko_42",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

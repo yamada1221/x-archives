@@ -8437,6 +8437,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mv9ego1hrdwi",
+      "name": "Shaty333",
+      "x_account": "Shaty333",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "スパム",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-15",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

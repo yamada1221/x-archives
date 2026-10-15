@@ -8083,7 +8083,21 @@
           "url": "https://x.com/kei_name7",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archives": [
+        {
+          "url": "https://archive.li/2026.10.14-214402/https://x.com/kei_name7/with_replies",
+          "provider": "archive.today",
+          "status": "done",
+          "target_url": "https://x.com/kei_name7/with_replies",
+          "saved_at": "2026-10-15T02:30:13.633Z"
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.10.14-214402/https://x.com/kei_name7/with_replies",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/kei_name7/with_replies",
+      "archive_checked_at": "2026-10-15T02:30:13.633Z"
     }
   ]
 }

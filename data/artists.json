@@ -9124,7 +9124,21 @@
           "url": "https://x.com/zoomertrek1",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archives": [
+        {
+          "url": "https://archive.li/2026.10.16-181551/https://x.com/zoomertrek1/with_replies",
+          "provider": "archive.today",
+          "status": "done",
+          "target_url": "https://x.com/zoomertrek1/with_replies",
+          "saved_at": "2026-10-16T18:19:11.545Z"
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.10.16-181551/https://x.com/zoomertrek1/with_replies",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/zoomertrek1/with_replies",
+      "archive_checked_at": "2026-10-16T18:19:11.545Z"
     },
     {
       "id": "mvargdapsula",

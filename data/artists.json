@@ -9102,12 +9102,29 @@
       "added_at": "2026-10-16",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://pbs.twimg.com/profile_images/2102328432868945920/d4puLO4E_normal.jpg",
+      "avatar_url": "https://unavatar.io/x/zoomertrek1?fallback=false",
       "x_bio": "世の中に正論を物申す 38歳 \nJ1兵庫県民\n免停離職中 タク二種持 私立工高卒\nプロ失業保険受給者\n\n三井住友OliveGOLD\nミスチル ヒゲダン King Gnu 生涯ファン会員\n半年年収278万\nりそな年利13.1%\n\nジャニ反社公務員が大嫌い\n\n闇金ウシジマくん→全巻持\n\n借入11.5 貯金50万＝NVAN",
       "x_bio_fetched_at": "2026-10-16T09:19:58.676028+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-16",
-      "profile_source": "fxtwitter"
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-16T09:20:13+00:00",
+        "x_account": "zoomertrek1",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=zoomertrek1",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/zoomertrek1",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

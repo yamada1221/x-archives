@@ -9128,7 +9128,7 @@
     },
     {
       "id": "mvargdapsula",
-      "name": "XQw5BadE491706",
+      "name": "多田晃",
       "x_account": "XQw5BadE491706",
       "threads_account": "",
       "threads_share_url": "",
@@ -9138,8 +9138,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-16",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1833706695853514752/pVHAK4RQ_normal.png",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-10-16T09:24:07.627944+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-10-16",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

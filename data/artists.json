@@ -9294,7 +9294,7 @@
     },
     {
       "id": "mvbvja7d97dw",
-      "name": "akari__ura__aka",
+      "name": "現役AV女優",
       "x_account": "akari__ura__aka",
       "threads_account": "",
       "threads_share_url": "",
@@ -9304,8 +9304,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-17",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1724276290818338817/jJZx6yye_normal.jpg",
+      "x_bio": "借金を抱え現役A○女優になりました。日記。",
+      "x_bio_fetched_at": "2026-10-17T04:06:09.372261+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-10-17",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

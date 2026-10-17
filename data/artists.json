@@ -9484,10 +9484,27 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/2002572006223720448/9RVyp-al_normal.jpg",
       "x_bio": "おもしろきこともなき世をおもしろく。提督になりたい軍曹。泥酔してヤフオクで40年前のレトロ船ポチる→痛船にして痛車ウィーク2026に参戦→九十九島でエンジン燃えて遭難→新品のエンジン買う←ｲﾏｺｺ",
-      "x_bio_fetched_at": "2026-10-17T12:41:19.096132+00:00",
+      "x_bio_fetched_at": "2026-10-17T12:41:28.115072+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-17",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-17T12:41:28+00:00",
+        "x_account": "wagatumakaitai",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=wagatumakaitai",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/wagatumakaitai",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

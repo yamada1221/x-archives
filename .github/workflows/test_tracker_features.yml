@@ -6,6 +6,9 @@ on:
       - 'index.html'
       - 'archive_helper.html'
       - 'tracker-utils.js'
+      - 'scripts/verify_gyotaku.py'
+      - 'tests/test_verify_gyotaku.py'
+      - '.github/workflows/verify_gyotaku.yml'
       - 'tests/test_tracker_features.cjs'
       - 'tests/browser_tracker.js'
       - '.github/workflows/test_tracker_features.yml'
@@ -24,6 +27,8 @@ jobs:
           node-version: '24'
       - name: Verify URL inputs, notes and archive result retention
         run: node --test tests/test_tracker_features.cjs
+      - name: Verify conservative archived-body checks
+        run: python -m unittest tests/test_verify_gyotaku.py
       - name: Install browser test tools
         run: |
           npm install --no-save --package-lock=false playwright@1.51.1

@@ -88,7 +88,7 @@ def test_final_archive_url_can_replace_wip():
 
 def test_archive_li_can_be_opened_from_helper():
     assert '<option value="archive.li">archive.li（同系列）</option>' in HTML
-    assert "window.open(provider.home" in HTML
+    assert "provider.home, '_blank', 'noopener'" in HTML
 
 
 def test_archive_li_result_url_is_accepted():

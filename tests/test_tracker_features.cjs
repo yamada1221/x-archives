@@ -102,3 +102,24 @@ test('a completed result clears only the same provider and target pending entry'
   assert.equal(artist.archives[0].target_url,'https://x.com/other');
   assert.equal(artist.archive_status,'done');
 });
+
+const fishUrl = 'https://megalodon.jp/2026-1017-0547-37/https://x.com:443/X';
+test('gyotaku URL starts unverified and can be confirmed without duplication', () => {
+  assert.equal(u.archiveResult(fishUrl).status, 'pending');
+  const artist = {archive_url:'https://archive.md/Abc12', archive_status:'done', note:'keep'};
+  u.recordArchive(artist, fishUrl, 'https://x.com/X', 'first');
+  assert.equal(artist.archive_url, 'https://archive.md/Abc12');
+  assert.equal(u.archiveResults(artist).find(e=>e.provider==='gyotaku').status, 'pending');
+  u.recordArchive(artist, fishUrl, 'https://x.com/X', 'confirmed', true);
+  assert.equal(artist.archive_url, fishUrl);
+  assert.equal(artist.archives.length, 2);
+  const restored = JSON.parse(JSON.stringify(artist));
+  assert.equal(u.archiveResults(restored).find(e=>e.provider==='gyotaku').status, 'done');
+  u.recordArchive(restored, fishUrl, 'https://x.com/X', 'again');
+  assert.equal(restored.archive_status, 'done');
+  assert.equal(restored.archives.find(e=>e.provider==='gyotaku').content_verified_at, 'confirmed');
+  assert.equal(restored.note, 'keep');
+});
+for (const url of ['https://megalodon.jp/', 'https://megalodon.jp/pc/main?url=https://x.com/X', 'https://megalodon.jp.evil.test/2026-1017-0547-37/https://x.com/X', 'https://megalodon.jp/2026-1017-0547-37/javascript:alert(1)', 'https://megalodon.jp/2026-1017-0547-37/https://user:pass@x.com/X']) {
+  test(`rejects invalid fish result: ${url}`,()=>assert.equal(u.archiveResult(url),null));
+}

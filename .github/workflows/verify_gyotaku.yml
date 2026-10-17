@@ -1,0 +1,36 @@
+name: Verify saved Gyotaku profiles
+on:
+  push:
+    branches: [main]
+    paths: ['data/artists.json', 'scripts/verify_gyotaku.py', '.github/workflows/verify_gyotaku.yml']
+  schedule:
+    - cron: '43 */6 * * *'
+  workflow_dispatch:
+concurrency:
+  group: x-archives-data-writes
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify pending archive bodies and save without overwriting concurrent edits
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            python scripts/verify_gyotaku.py
+            git add data/artists.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m 'chore: verify saved Gyotaku profiles'
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          exit 1

@@ -1045,7 +1045,7 @@ function renderList() {
 
         ${TrackerUtils.archiveResults(artist).length ? `
           <div class="row" style="margin-bottom:.75rem">
-            ${TrackerUtils.archiveResults(artist).map(entry => `<a href="${esc(entry.url)}" target="_blank" rel="noopener"><button class="small">${esc(TrackerUtils.archiveLabel(entry.provider))} ${entry.status === 'done' ? '保存済み' : '処理中'}</button></a>`).join('')}
+            ${TrackerUtils.archiveResults(artist).map(entry => `<a href="${esc(entry.url)}" target="_blank" rel="noopener"><button class="small">${esc(TrackerUtils.archiveLabel(entry.provider))} ${entry.status === 'done' ? '保存済み' : entry.provider === 'gyotaku' ? '内容未確認' : '処理中'}</button></a>`).join('')}
           </div>` : ''}
 
         ${artist.threads_share_url ? `

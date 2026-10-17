@@ -49,6 +49,7 @@
 
   const archiveHosts = ['archive.md','archive.li','archive.ph','archive.is','archive.today','archive.vn','archive.fo'];
   const providers = {
+    gyotaku: { label: 'ウェブ魚拓', home: 'https://megalodon.jp/', hint: '対象URLを入力済みの取得画面を開きます。人間確認後に「取得」を押してください。取得開始後は画面を閉じても続行されます。結果URLを登録するとプロフィール本文を自動確認します。' },
     'archive.md': { label: 'archive.md', home: 'https://archive.md/', hint: 'archive.today系の保存サービスです。コピーしたURLを保存欄へ貼り付けてください。' },
     'archive.li': { label: 'archive.li', home: 'https://archive.li/', hint: 'archive.mdと同じarchive.today系です。別系統の保存先には下のサービスを選べます。' },
     ghostarchive: { label: 'Ghostarchive', home: 'https://ghostarchive.org/', hint: '無料・アカウント不要。コピーしたURLを保存欄へ貼り付けます。Xの本文まで保存できたか結果を確認してください。' },
@@ -69,7 +70,15 @@
       } else if (['ghostarchive.org', 'www.ghostarchive.org'].includes(url.hostname) && /^\/archive\/[a-zA-Z0-9]+\/?$/.test(path)) provider = 'ghostarchive';
       else if (url.hostname === 'web.archive.org' && /^\/web\/\d{14}(?:[a-z]+_)?\/https?:\/\/.+/.test(path)) provider = 'wayback';
       else if (['perma.cc', 'www.perma.cc'].includes(url.hostname) && /^\/[A-Z0-9]{4}-[A-Z0-9]{4}\/?$/i.test(path)) provider = 'perma';
-      else return null;
+      else if (url.hostname === 'megalodon.jp') {
+        const match = path.match(/^\/\d{4}-\d{4}-\d{4}-\d{2}\/(https?:\/\/.+)$/);
+        if (!match) return null;
+        const original = new URL(match[1]);
+        if (!original.hostname || original.username || original.password) return null;
+        provider = 'gyotaku';
+        // The same URL is issued before capture finishes; a URL is not proof of success.
+        status = 'pending';
+      } else return null;
       return { url: url.href, provider, status };
     } catch (_) { return null; }
   }
@@ -82,15 +91,20 @@
     for (const entry of [...entries, { url: artist.archive_url, target_url: artist.archive_target_url, saved_at: artist.archive_checked_at }]) {
       const parsed = entry && archiveResult(entry.url);
       if (!parsed || seen.has(parsed.url)) continue;
-      results.push({ ...entry, ...parsed });
+      results.push({ ...entry, ...parsed, ...(parsed.provider === 'gyotaku' && entry.status === 'done' && entry.content_verified_at ? { status: 'done' } : {}) });
       seen.add(parsed.url);
     }
     return results;
   }
-  function recordArchive(artist, url, target, now) {
+  function recordArchive(artist, url, target, now, contentVerified = false) {
     const parsed = archiveResult(url);
     if (!parsed) throw new Error('保存結果のURLを入力してください（サービスのトップ・検索・保存画面は登録できません）');
-    const results = archiveResults(artist).filter(entry => entry.url !== parsed.url &&
+    const existing = archiveResults(artist);
+    if (parsed.provider === 'gyotaku' && (contentVerified || existing.some(entry => entry.url === parsed.url && entry.status === 'done'))) {
+      parsed.status = 'done';
+      parsed.content_verified_at = existing.find(entry => entry.url === parsed.url)?.content_verified_at || now;
+    }
+    const results = existing.filter(entry => entry.url !== parsed.url &&
       !(parsed.status === 'done' && entry.status === 'pending' && entry.provider === parsed.provider && entry.target_url === target));
     results.push({ ...parsed, target_url: target, saved_at: now });
     artist.archives = results;

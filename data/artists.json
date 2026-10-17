@@ -9467,6 +9467,21 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1569564412666851329; screen_name=akari__ura__aka"
         }
       ]
+    },
+    {
+      "id": "mvcdxsk3j3sp",
+      "name": "wagatumakaitai",
+      "x_account": "wagatumakaitai",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-17",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

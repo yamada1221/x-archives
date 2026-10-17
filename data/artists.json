@@ -9470,7 +9470,7 @@
     },
     {
       "id": "mvcdxsk3j3sp",
-      "name": "wagatumakaitai",
+      "name": "でぶねこ提督🔰（遭難者）🪼",
       "x_account": "wagatumakaitai",
       "threads_account": "",
       "threads_share_url": "",
@@ -9480,8 +9480,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-17",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2002572006223720448/9RVyp-al_normal.jpg",
+      "x_bio": "おもしろきこともなき世をおもしろく。提督になりたい軍曹。泥酔してヤフオクで40年前のレトロ船ポチる→痛船にして痛車ウィーク2026に参戦→九十九島でエンジン燃えて遭難→新品のエンジン買う←ｲﾏｺｺ",
+      "x_bio_fetched_at": "2026-10-17T12:41:19.096132+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-10-17",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

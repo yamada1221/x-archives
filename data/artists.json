@@ -9884,6 +9884,21 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1572078358833532928; screen_name=5vVba77P0tjsDKS"
         }
       ]
+    },
+    {
+      "id": "mveh0ro4cjzq",
+      "name": "kurfaraway",
+      "x_account": "kurfaraway",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "汚言 クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-18",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

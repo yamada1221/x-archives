@@ -9822,7 +9822,21 @@
           "at": "2026-10-18T08:55:29+00:00",
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1319630625981173760; screen_name=wagatumakaitai"
         }
-      ]
+      ],
+      "archives": [
+        {
+          "url": "https://megalodon.jp/2026-1019-0843-54/https://x.com:443/wagatumakaitai/with_replies",
+          "provider": "gyotaku",
+          "status": "pending",
+          "target_url": "https://x.com/wagatumakaitai/with_replies",
+          "saved_at": "2026-10-18T23:44:21.455Z"
+        }
+      ],
+      "archive_status": "pending",
+      "archive_url": "https://megalodon.jp/2026-1019-0843-54/https://x.com:443/wagatumakaitai/with_replies",
+      "archive_provider": "gyotaku",
+      "archive_target_url": "https://x.com/wagatumakaitai/with_replies",
+      "archive_checked_at": "2026-10-18T23:44:21.455Z"
     },
     {
       "id": "mvdbbj6xh34j",

@@ -9829,7 +9829,9 @@
           "provider": "gyotaku",
           "status": "pending",
           "target_url": "https://x.com/wagatumakaitai/with_replies",
-          "saved_at": "2026-10-18T23:44:21.455Z"
+          "saved_at": "2026-10-18T23:44:21.455Z",
+          "verification_checked_at": "2026-10-18T23:44:31+00:00",
+          "verification_result": "target_unconfirmed"
         }
       ],
       "archive_status": "pending",

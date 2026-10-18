@@ -9505,6 +9505,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mvdbbj6xh34j",
+      "name": "5vVba77P0tjsDKS",
+      "x_account": "5vVba77P0tjsDKS",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "青バッチ / インプ稼ぎ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-18",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

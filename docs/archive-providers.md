@@ -9,7 +9,8 @@
 - ウェブ魚拓: 2026-10-17 05:47取得。人間確認後に保存が完了し、自己紹介文、アイコン、フォロー数・フォロワー数、直近5件の投稿本文を結果画面で確認。全投稿・動画の保存は未検証。
   - 結果: https://megalodon.jp/2026-1017-0547-37/https://x.com:443/X
 - Wayback Machine: Save Page Nowでサイトの保存制限を示す画面となり失敗。原因の詳細は表示されず。
-- Ghostarchive: 結果URLは発行されたが、後日の再確認でも処理中。本文保存の成功は未確認。
+- Ghostarchive: 当初は結果URL発行後も処理中だったが、2026-10-17の再確認でX公式プロフィールと投稿本文の表示を確認し、成功に訂正。ページのアーカイブ日時は2026-10-17 08:30:34（日本時間）。正確な処理所要時間は不明。
+  - 結果: https://ghostarchive.org/archive/gckha
 
 魚拓を半自動保存先として追加。対象URLを入力済みの取得確認画面へ移動し、人間確認・取得操作は利用者が行います。取得開始後はタブを閉じても魚拓側で継続します。結果URLは処理中でも同じなので、本文確認チェックなしでは「内容未確認」、チェックありで「保存済み」と記録します。登録後の本文検証はGitHub Actionsで自動実行します。保存開始の人間確認・取得操作は手動です。
 
@@ -66,3 +67,25 @@ Perma.cc公式ガイドは、一般利用者には10件の試用、その後は�
 - 空の自己紹介、個別投稿、リプライ欄、HTML構造変更、取得制限、タイムアウトは自動成功判定できません。「内容未確認」のままにし、任意の手動確認を残します。全投稿・画像・動画の完全保存を保証する判定ではありません。
 - 成功時は `content_verified_at` / `verification_method`、試行時は `verification_checked_at` / `verification_result` を記録します。既存の完成アーカイブやアカウント監視状態を未確認結果で上書きしません。
 - 2026-10-17取得のX公式プロフィールについて、実際の保存HTMLで `profile_body_confirmed` を確認しました。
+
+## 2026-10-17 記録対象17件の保存結果
+
+承認済みの未保存Xプロフィール17件をウェブ魚拓で取得し、結果画面内のプロフィールをブラウザで確認。2026-10-18にトラッカーへ登録しました。14件は投稿本文も確認。3件はプロフィールを確認できましたが、投稿一覧が「ポストしていません」と表示されたため、投稿本文の保存は未確認です。全投稿・画像・動画の完全保存を意味しません。
+
+- [@mKcjkSDIwOvKQRY](https://megalodon.jp/2026-1017-1503-05/https://x.com:443/mKcjkSDIwOvKQRY): プロフィールと投稿本文を確認
+- [@hOsKR1Pn2W90427](https://megalodon.jp/2026-1017-2028-03/https://x.com:443/hOsKR1Pn2W90427): プロフィールと投稿本文を確認
+- [@Marldr0y](https://megalodon.jp/2026-1017-2028-55/https://x.com:443/Marldr0y): プロフィールと投稿本文を確認
+- [@tukutuku1042](https://megalodon.jp/2026-1017-2029-45/https://x.com:443/tukutuku1042): プロフィールと投稿本文を確認
+- [@Ub1Bu](https://megalodon.jp/2026-1017-2030-28/https://x.com:443/Ub1Bu): プロフィールと投稿本文を確認
+- [@oyadani7799](https://megalodon.jp/2026-1017-2031-18/https://x.com:443/oyadani7799): プロフィールと投稿本文を確認
+- [@rKK0kyWj8U20721](https://megalodon.jp/2026-1017-2032-05/https://x.com:443/rKK0kyWj8U20721): プロフィール確認・投稿本文未確認
+- [@fZdRDATduM20752](https://megalodon.jp/2026-1017-2032-53/https://x.com:443/fZdRDATduM20752): プロフィールと投稿本文を確認
+- [@HzAtXDAvaJ60910](https://megalodon.jp/2026-1017-2033-41/https://x.com:443/HzAtXDAvaJ60910): プロフィールと投稿本文を確認
+- [@pkwmap49413](https://megalodon.jp/2026-1017-2034-28/https://x.com:443/pkwmap49413): プロフィールと投稿本文を確認
+- [@shinjukuacc](https://megalodon.jp/2026-1017-2035-16/https://x.com:443/shinjukuacc): プロフィールと投稿本文を確認
+- [@djke0pun3939wxw](https://megalodon.jp/2026-1017-2036-08/https://x.com:443/djke0pun3939wxw): プロフィールと投稿本文を確認
+- [@XQw5BadE491706](https://megalodon.jp/2026-1017-2036-56/https://x.com:443/XQw5BadE491706): プロフィール確認・投稿本文未確認
+- [@NoYsc1024](https://megalodon.jp/2026-1017-2037-44/https://x.com:443/NoYsc1024): プロフィール確認・投稿本文未確認
+- [@gb46ui](https://megalodon.jp/2026-1017-2038-38/https://x.com:443/gb46ui): プロフィールと投稿本文を確認
+- [@PTtigusa](https://megalodon.jp/2026-1017-2039-29/https://x.com:443/PTtigusa): プロフィールと投稿本文を確認
+- [@akari__ura__aka](https://megalodon.jp/2026-1017-2040-16/https://x.com:443/akari__ura__aka): プロフィールと投稿本文を確認

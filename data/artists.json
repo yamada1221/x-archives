@@ -9508,7 +9508,7 @@
     },
     {
       "id": "mvdbbj6xh34j",
-      "name": "5vVba77P0tjsDKS",
+      "name": "あ",
       "x_account": "5vVba77P0tjsDKS",
       "threads_account": "",
       "threads_share_url": "",
@@ -9518,8 +9518,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-18",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2091145210764083200/YQReEgqu_normal.jpg",
+      "x_bio": "本質のみを呟きます。誰かに届け。人間科学・心理学・雑学・文学・理論思考・哲学・読書・自動車・AI・IT",
+      "x_bio_fetched_at": "2026-10-18T04:15:48.244195+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-10-18",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

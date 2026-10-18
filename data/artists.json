@@ -9937,7 +9937,21 @@
           "url": "https://x.com/kurfaraway",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archives": [
+        {
+          "url": "https://megalodon.jp/2026-1019-0845-32/https://x.com:443/kurfaraway/with_replies",
+          "provider": "gyotaku",
+          "status": "pending",
+          "target_url": "https://x.com/kurfaraway/with_replies",
+          "saved_at": "2026-10-18T23:45:47.764Z"
+        }
+      ],
+      "archive_status": "pending",
+      "archive_url": "https://megalodon.jp/2026-1019-0845-32/https://x.com:443/kurfaraway/with_replies",
+      "archive_provider": "gyotaku",
+      "archive_target_url": "https://x.com/kurfaraway/with_replies",
+      "archive_checked_at": "2026-10-18T23:45:47.764Z"
     }
   ],
   "monitoring_summary": {

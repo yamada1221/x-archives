@@ -9522,10 +9522,27 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/2091145210764083200/YQReEgqu_normal.jpg",
       "x_bio": "本質のみを呟きます。誰かに届け。人間科学・心理学・雑学・文学・理論思考・哲学・読書・自動車・AI・IT",
-      "x_bio_fetched_at": "2026-10-18T04:15:48.244195+00:00",
+      "x_bio_fetched_at": "2026-10-18T04:15:58.464155+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-18",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-18T04:15:58+00:00",
+        "x_account": "5vVba77P0tjsDKS",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=5vVba77P0tjsDKS",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/5vVba77P0tjsDKS",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

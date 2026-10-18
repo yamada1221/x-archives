@@ -9901,10 +9901,27 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/2053329137532895232/VH4nmCFD_normal.jpg",
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-18T23:43:10.105451+00:00",
+      "x_bio_fetched_at": "2026-10-18T23:43:19.919177+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-18",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-18T23:43:20+00:00",
+        "x_account": "kurfaraway",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=kurfaraway",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/kurfaraway",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

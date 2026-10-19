@@ -10052,7 +10052,21 @@
           "url": "https://x.com/tamykzz",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archives": [
+        {
+          "url": "https://archive.li/2026.10.19-170238/https://x.com/tamykzz/with_replies",
+          "provider": "archive.today",
+          "status": "done",
+          "target_url": "https://x.com/tamykzz/with_replies",
+          "saved_at": "2026-10-19T17:10:06.657Z"
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.10.19-170238/https://x.com/tamykzz/with_replies",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/tamykzz/with_replies",
+      "archive_checked_at": "2026-10-19T17:10:06.657Z"
     }
   ],
   "monitoring_summary": {

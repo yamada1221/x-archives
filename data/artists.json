@@ -9832,13 +9832,20 @@
           "saved_at": "2026-10-18T23:44:21.455Z",
           "verification_checked_at": "2026-10-20T22:46:36+00:00",
           "verification_result": "target_unconfirmed"
+        },
+        {
+          "url": "https://archive.li/2026.10.20-224952/https://x.com/wagatumakaitai/with_replies",
+          "provider": "archive.today",
+          "status": "done",
+          "target_url": "https://x.com/wagatumakaitai/with_replies",
+          "saved_at": "2026-10-20T22:53:27.912Z"
         }
       ],
-      "archive_status": "pending",
-      "archive_url": "https://megalodon.jp/2026-1019-0843-54/https://x.com:443/wagatumakaitai/with_replies",
-      "archive_provider": "gyotaku",
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.10.20-224952/https://x.com/wagatumakaitai/with_replies",
+      "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/wagatumakaitai/with_replies",
-      "archive_checked_at": "2026-10-18T23:44:21.455Z"
+      "archive_checked_at": "2026-10-20T22:53:27.912Z"
     },
     {
       "id": "mvdbbj6xh34j",

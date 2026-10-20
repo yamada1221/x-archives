@@ -10085,6 +10085,28 @@
         "last_source": "x_public",
         "last_reason": ""
       }
+    },
+    {
+      "id": "mvgis20msryt",
+      "name": "socialwelfare5",
+      "x_account": "socialwelfare5",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "青バッチ / インプ稼ぎ",
+      "tracking_mode": "monitor_only",
+      "works": [
+        {
+          "url": "https://x.com/socialwelfare5/status/2112297918560653753",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-10-20"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-10-20",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

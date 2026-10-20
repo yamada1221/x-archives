@@ -10045,13 +10045,20 @@
           "status": "pending",
           "target_url": "https://x.com/IyXNTgoAgk45598",
           "saved_at": "2026-10-20T16:31:20.880Z"
+        },
+        {
+          "url": "https://archive.li/g7iSa",
+          "provider": "archive.today",
+          "status": "done",
+          "target_url": "https://x.com/IyXNTgoAgk45598/with_replies",
+          "saved_at": "2026-10-20T23:44:34.295Z"
         }
       ],
-      "archive_status": "pending",
-      "archive_url": "https://archive.li/wip/sZWbd",
+      "archive_status": "done",
+      "archive_url": "https://archive.li/g7iSa",
       "archive_provider": "archive.today",
-      "archive_target_url": "https://x.com/IyXNTgoAgk45598",
-      "archive_checked_at": "2026-10-20T16:31:20.880Z"
+      "archive_target_url": "https://x.com/IyXNTgoAgk45598/with_replies",
+      "archive_checked_at": "2026-10-20T23:44:34.295Z"
     },
     {
       "id": "mvfi0ymr5y4h",

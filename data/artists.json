@@ -10088,7 +10088,7 @@
     },
     {
       "id": "mvgis20msryt",
-      "name": "socialwelfare5",
+      "name": "幸福投資委員長",
       "x_account": "socialwelfare5",
       "threads_account": "",
       "threads_share_url": "",
@@ -10105,8 +10105,14 @@
       ],
       "threads_posts": [],
       "added_at": "2026-10-20",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1938955150263308288/AHhwb0PW_normal.jpg",
+      "x_bio": "I'm a Japanese investor｜どん底だった投資家の人生逆転劇｜ど田舎出身者の上京投資物語｜株式投資で大損経験あり。",
+      "x_bio_fetched_at": "2026-10-20T10:07:56.594720+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-10-20",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

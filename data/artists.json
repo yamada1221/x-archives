@@ -10147,7 +10147,7 @@
     },
     {
       "id": "mvh9pmsgy712",
-      "name": "pdgFaa1kvO33844",
+      "name": "明日晴太郎",
       "x_account": "pdgFaa1kvO33844",
       "threads_account": "",
       "threads_share_url": "",
@@ -10157,8 +10157,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-20",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1909890341823717376/FBenXPMW_normal.jpg",
+      "x_bio": "何もしてないのに\n何かしていると思う\n隠居暮らしの今日このごろか",
+      "x_bio_fetched_at": "2026-10-20T22:41:51.641078+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-10-20",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

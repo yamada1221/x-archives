@@ -9954,13 +9954,20 @@
           "saved_at": "2026-10-18T23:45:47.764Z",
           "verification_checked_at": "2026-10-20T22:46:36+00:00",
           "verification_result": "target_unconfirmed"
+        },
+        {
+          "url": "https://archive.li/2026.10.20-231356/https://x.com/kurfaraway/status/2111901664617865432",
+          "provider": "archive.today",
+          "status": "done",
+          "target_url": "https://x.com/kurfaraway/status/2111901664617865432",
+          "saved_at": "2026-10-20T23:16:03.402Z"
         }
       ],
-      "archive_status": "pending",
-      "archive_url": "https://megalodon.jp/2026-1019-0845-32/https://x.com:443/kurfaraway/with_replies",
-      "archive_provider": "gyotaku",
-      "archive_target_url": "https://x.com/kurfaraway/with_replies",
-      "archive_checked_at": "2026-10-18T23:45:47.764Z",
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.10.20-231356/https://x.com/kurfaraway/status/2111901664617865432",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/kurfaraway/status/2111901664617865432",
+      "archive_checked_at": "2026-10-20T23:16:03.402Z",
       "monitoring": {
         "status": "active",
         "last_checked_at": "2026-10-20T09:30:27+00:00",

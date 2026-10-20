@@ -10109,10 +10109,27 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/1938955150263308288/AHhwb0PW_normal.jpg",
       "x_bio": "I'm a Japanese investor｜どん底だった投資家の人生逆転劇｜ど田舎出身者の上京投資物語｜株式投資で大損経験あり。",
-      "x_bio_fetched_at": "2026-10-20T10:07:56.594720+00:00",
+      "x_bio_fetched_at": "2026-10-20T10:08:08.119935+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-20",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-20T10:08:08+00:00",
+        "x_account": "socialwelfare5",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=socialwelfare5",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/socialwelfare5",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

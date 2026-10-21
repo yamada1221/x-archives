@@ -12,12 +12,12 @@
       "tracking_mode": "monitor_only",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1281524018781097984; screen_name=tawakenai_marou",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -37,7 +37,7 @@
       "x_user_id": "1281524018781097984",
       "threads_posts": [],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -59,12 +59,12 @@
       "fetch_status": "done",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=2082549171551371264; screen_name=motiko3230",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -84,7 +84,7 @@
       "x_user_id": "2082549171551371264",
       "threads_posts": [],
       "x_bio": "無修正.png\n本体 @motiko3323",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -106,13 +106,13 @@
       "fetch_status": "done",
       "monitoring": {
         "status": "unavailable",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
-        "last_result": "unavailable",
-        "last_detail": "FxTwitter HTTP 404; code=404; message=User is suspended",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
+        "last_result": "unknown",
+        "last_detail": "FxTwitter HTTP 404; code=404; message=User not found; fallback: non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 15,
         "consecutive_reason": "suspended",
-        "last_source": "fxtwitter",
-        "last_reason": "suspended",
+        "last_source": "x_public",
+        "last_reason": "",
         "last_confirmed_at": "2026-10-20T09:30:27+00:00",
         "confirmed_reason": "suspended"
       },
@@ -153,12 +153,12 @@
       "fetch_status": "done",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=2762136612; screen_name=tussn612",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -178,7 +178,7 @@
       "x_user_id": "2762136612",
       "threads_posts": [],
       "x_bio": "血液型とMBTIを答えるだけで最も女に警戒される男｜恋愛過学習でぴえん｜AWS弱者｜仕事・恋愛・人生のバグを分析中。そして繰り返す本番インシデント",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -193,12 +193,12 @@
       "fetch_status": "done",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1920329777720012802; screen_name=fie3011",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -222,7 +222,7 @@
       "x_user_id": "1920329777720012802",
       "threads_posts": [],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -271,12 +271,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=2008808659812569088; screen_name=tayuido",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -294,7 +294,7 @@
       "x_user_id": "2008808659812569088",
       "threads_posts": [],
       "x_bio": "絵を描く店です。\nエヴァなど版権中心／たまにオリジナル\n週2-4枚 更新中｜Anime illustrations\nR18 → pixiv\nhttp://pixiv.net/users/128227287\n\n※イラストの無断転載・無断使用禁止※",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -311,14 +311,14 @@
       "profile_fetched_at": "2026-08-21",
       "monitoring": {
         "status": "unavailable",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "unavailable",
         "last_detail": "FxTwitter HTTP 404; code=404; message=User is suspended",
-        "consecutive_unavailable": 10,
+        "consecutive_unavailable": 11,
         "consecutive_reason": "suspended",
         "last_source": "fxtwitter",
         "last_reason": "suspended",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "suspended"
       },
       "status_history": [
@@ -355,12 +355,12 @@
       "profile_fetched_at": "2026-08-23",
       "monitoring": {
         "status": "unavailable",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "unavailable",
         "last_detail": "FxTwitter HTTP 404; code=404; message=User is suspended",
-        "consecutive_unavailable": 11,
+        "consecutive_unavailable": 12,
         "consecutive_reason": "suspended",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "suspended",
         "last_source": "fxtwitter",
         "last_reason": "suspended",
@@ -402,12 +402,12 @@
       "archive_checked_at": "2026-08-23T03:04:24.596Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1973937537166229504; screen_name=fakeriderV3",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -425,7 +425,7 @@
       "x_user_id": "1973937537166229504",
       "threads_posts": [],
       "x_bio": "合わなければ、遠慮なく遮断する。\n\n誰も数えない段差を記録する。\n成功の前夜と失敗の翌朝について書く。\n朝令暮改。経歴非公開。ない袖は振れぬ。",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -446,12 +446,12 @@
       "archive_checked_at": "2026-08-23T07:42:31.482Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=2013156963761410048; screen_name=gWiwbeanMc38660",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -469,7 +469,7 @@
       "x_user_id": "2013156963761410048",
       "threads_posts": [],
       "x_bio": "私がリプライをしてないアカウントから毎回必ず横からリプライが来るのですが、床シミ予備軍キャバクラ中毒知的障害のストーカーという認識をしてください。",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -484,12 +484,12 @@
       "fetch_status": "done",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1700678000340312064; screen_name=_kenitter_",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -509,7 +509,7 @@
       "x_user_id": "1700678000340312064",
       "threads_posts": [],
       "x_bio": "'09",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -559,12 +559,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1214555575477927940; screen_name=Inazuma11_Endo",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -582,7 +582,7 @@
       "x_user_id": "1214555575477927940",
       "threads_posts": [],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -632,12 +632,12 @@
       },
       "monitoring": {
         "status": "unavailable",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "unavailable",
         "last_detail": "FxTwitter HTTP 404; code=404; message=User is suspended",
-        "consecutive_unavailable": 22,
+        "consecutive_unavailable": 23,
         "consecutive_reason": "suspended",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "suspended",
         "last_source": "fxtwitter",
         "last_reason": "suspended",
@@ -679,12 +679,12 @@
       "archive_checked_at": "2026-08-25T04:16:01.021Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=2804681816; screen_name=canary777so",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -702,7 +702,7 @@
       "x_user_id": "2804681816",
       "threads_posts": [],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -752,12 +752,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=2011135837938073604; screen_name=gameInfom_1",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -775,7 +775,7 @@
       "x_user_id": "2011135837938073604",
       "threads_posts": [],
       "x_bio": "えっどいやつ",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -825,12 +825,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1730511580486590464; screen_name=aya_rebuild",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -848,7 +848,7 @@
       "x_user_id": "1730511580486590464",
       "threads_posts": [],
       "x_bio": "「なんでいつもバズってる投稿にいるの？」\nって聞かれる人です😭\n種明かしはnoteでこっそり教えてるよん💛\n\n(あやぴはAmazonアソシエイトにも参加しています)",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -898,12 +898,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=2052553149509148672; screen_name=by_the_Window26",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -921,7 +921,7 @@
       "x_user_id": "2052553149509148672",
       "threads_posts": [],
       "x_bio": "人生の指針",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -970,12 +970,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1415657917340995596; screen_name=seitai_official",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -993,7 +993,7 @@
       "x_user_id": "1415657917340995596",
       "threads_posts": [],
       "x_bio": "整体師・癒し研究家。一般企業に総合職として勤務後、独立。修行期間を経て整体院を開業し、１年目から経営を軌道に乗せる。現在はグローバル治療家・癒し研究家として、かつ複数店舗を運営する会社経営者として、多忙な日々を送っている。 ※通知オフ",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -1046,12 +1046,12 @@
       "archive_checked_at": "2026-08-27T11:56:52.869Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1867113668594503680; screen_name=ririkukurikuku",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -1069,7 +1069,7 @@
       "x_user_id": "1867113668594503680",
       "threads_posts": [],
       "x_bio": "農学校",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -1090,12 +1090,12 @@
       "archive_checked_at": "2026-08-28T17:01:57.244Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1690276671608467456; screen_name=bumneetan",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -1125,7 +1125,7 @@
       "x_user_id": "1690276671608467456",
       "threads_posts": [],
       "x_bio": "氷河期世代FIRE投資家。2026年1月に貯金1200万円から投資スタート→現在の資産はアーキテクツで7倍とFIGで3〜4倍当たって2500万円(2026.9)。#投資 #新NISA #NISA #暗号資産 #仮想通貨 #株",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -1146,12 +1146,12 @@
       "archive_checked_at": "2026-08-30T05:40:44.926Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1943395209729187840; screen_name=tUfqn1mKwK62778",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -1169,7 +1169,7 @@
       "x_user_id": "1943395209729187840",
       "threads_posts": [],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -1186,12 +1186,12 @@
       "profile_fetched_at": "2026-08-30",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=2031645068734693376; screen_name=mokahomo93",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -1209,7 +1209,7 @@
       "x_user_id": "2031645068734693376",
       "threads_posts": [],
       "x_bio": "もかの女装垢です",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -1230,12 +1230,12 @@
       "archive_checked_at": "2026-08-30T05:41:48.451Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1189464155670994944; screen_name=ringa_hakuchi",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -1253,7 +1253,7 @@
       "x_user_id": "1189464155670994944",
       "threads_posts": [],
       "x_bio": "アイコンはい異常 い異常と霜月はいい加減働け\n亀正会 常任右幹事 世論担当官\n (元非常任左幹事)",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -1270,12 +1270,12 @@
       "profile_fetched_at": "2026-08-30",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1351083031617011713; screen_name=_Coooa",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -1293,7 +1293,7 @@
       "x_user_id": "1351083031617011713",
       "threads_posts": [],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -1310,12 +1310,12 @@
       "profile_fetched_at": "2026-08-30",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1031139726072274944; screen_name=J1238317120",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -1333,7 +1333,7 @@
       "x_user_id": "1031139726072274944",
       "threads_posts": [],
       "x_bio": "東京・銀座三越で買ったスイスのブランド時計Ω（OMEGA）を普段使い愛用⌚️、精巧なミニカーのコレクター🚗、映画やアイドルのBlu-ray観賞📺..が主な趣味です😄☝️その他に🌍や🇯🇵の政治経済にも関心が有ります❗️",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -1393,12 +1393,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1216506043766673408; screen_name=6PZdotrH824Ortv",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -1422,7 +1422,7 @@
       "x_user_id": "1216506043766673408",
       "threads_posts": [],
       "x_bio": "効きフォローは受け付けておりません笑",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -1471,7 +1471,7 @@
       },
       "monitoring": {
         "status": "unknown",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "unknown",
         "last_detail": "FxTwitter HTTP 404; code=404; message=User not found; fallback: non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0,
@@ -1549,12 +1549,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=237140901; screen_name=b_t_hide",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -1572,7 +1572,7 @@
       "x_user_id": "237140901",
       "threads_posts": [],
       "x_bio": "びとさんの思考を分析しAI化したbot垢です。\nびとさんがつぶやきそうなタイミングで、びとさんがつぶやきそうなゲスいことをつぶやきます。\n18歳未満の方のフォローには適さない可能性があります。",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -1589,12 +1589,12 @@
       "profile_fetched_at": "2026-09-03",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=2083344089781833728; screen_name=pzftar",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -1612,7 +1612,7 @@
       "x_user_id": "2083344089781833728",
       "threads_posts": [],
       "x_bio": "ブロックしないでください",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -1629,12 +1629,12 @@
       "profile_fetched_at": "2026-09-03",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1316079401012989952; screen_name=munevveralks",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -1652,7 +1652,7 @@
       "x_user_id": "1316079401012989952",
       "threads_posts": [],
       "x_bio": "話題の投稿をピックアップしていきます！！",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -1673,12 +1673,12 @@
       "archive_checked_at": "2026-09-03T09:23:51.617Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1768247491689066496; screen_name=syokusukesuke",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -1696,7 +1696,7 @@
       "x_user_id": "1768247491689066496",
       "threads_posts": [],
       "x_bio": "世界クソリプ五輪で日本一になるために毎日膨大な実践クソリプを投げつけてます。見た人が思わず苦笑いしたりニヤツキながらつい上から目線でリプしたくなるようなクソリプを心掛けてます。※誹謗中傷や人が傷つくようなクソリプはしないように心掛けてます。目指せクソリプで世界平和。",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -1775,12 +1775,12 @@
       "archive_checked_at": "2026-09-04T16:39:26.957Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1876837739259420672; screen_name=b721882353447",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -1798,7 +1798,7 @@
       "x_user_id": "1876837739259420672",
       "threads_posts": [],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -1830,12 +1830,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1556232975788158977; screen_name=MARUN0UCHI_MAN",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -1860,7 +1860,7 @@
       "x_user_id": "1556232975788158977",
       "threads_posts": [],
       "x_bio": "丸の内のエリサラ兼投資家🦋／準富裕層／フォローすると学校では教えてもらえないことが学べ、QOLがアップします／デイトナ愛好家／美食家／料理人／銀座まで約5分の45階以上のタワマン居住／丸の内マンは3人で運営してます／当アカウントの投稿は全て本人たちの責任であり所属企業は無関係です。",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -1895,12 +1895,12 @@
       "profile_source": "unavatar",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1860030260617850880; screen_name=3nenAgumibot",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -1918,7 +1918,7 @@
       "x_user_id": "1860030260617850880",
       "threads_posts": [],
       "x_bio": "ねむい",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -1953,12 +1953,12 @@
       "profile_source": "unavatar",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1257553904469807104; screen_name=yvkhjb2",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -1976,7 +1976,7 @@
       "x_user_id": "1257553904469807104",
       "threads_posts": [],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -2012,12 +2012,12 @@
       "archive_checked_at": "2026-09-06T01:04:29.385Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=37669574; screen_name=Lizzy1997",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -2038,7 +2038,7 @@
       "x_user_id": "37669574",
       "threads_posts": [],
       "x_bio": "毎日朝霞台をとおる会社員。花嫁→普通の結婚がしたい33歳",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -2053,7 +2053,7 @@
       "fetch_status": "done",
       "monitoring": {
         "status": "unknown",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "unknown",
         "last_detail": "FxTwitter HTTP 404; code=404; message=User not found; fallback: non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
         "consecutive_unavailable": 0,
@@ -2109,12 +2109,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=3681637711; screen_name=99sLEHWL2e0Al2e",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -2138,7 +2138,7 @@
       "x_user_id": "3681637711",
       "threads_posts": [],
       "x_bio": "世直しします\n反論できなくなったらブロックするの敗北宣言だからね笑\n訴訟4件係争中",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -2170,12 +2170,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=2486759369; screen_name=nikiettlobiyu",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -2195,7 +2195,7 @@
       "x_user_id": "2486759369",
       "threads_posts": [],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -2216,12 +2216,12 @@
       "archive_checked_at": "2026-09-06T09:06:48.207Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1929912716577386496; screen_name=tyuntap",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -2239,7 +2239,7 @@
       "x_user_id": "1929912716577386496",
       "threads_posts": [],
       "x_bio": "あーだこーだ言うけど、絡んでくるやつは許さん",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -2278,12 +2278,12 @@
       "archive_checked_at": "2026-09-06T09:10:23.242Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1936744121403850753; screen_name=hakidashi_te",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -2301,7 +2301,7 @@
       "x_user_id": "1936744121403850753",
       "threads_posts": [],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -2336,12 +2336,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1544123581763690496; screen_name=mKcjkSDIwOvKQRY",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -2359,7 +2359,7 @@
       "x_user_id": "1544123581763690496",
       "threads_posts": [],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "archives": [
         {
@@ -2411,12 +2411,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1688573337176592385; screen_name=hOsKR1Pn2W90427",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -2434,7 +2434,7 @@
       "x_user_id": "1688573337176592385",
       "threads_posts": [],
       "x_bio": "果肉たっぷり",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "archives": [
         {
@@ -2486,12 +2486,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=2018838132414930944; screen_name=Marldr0y",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -2509,7 +2509,7 @@
       "x_user_id": "2018838132414930944",
       "threads_posts": [],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "archives": [
         {
@@ -2561,12 +2561,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=2089148424973402112; screen_name=shishitakamari",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -2584,7 +2584,7 @@
       "x_user_id": "2089148424973402112",
       "threads_posts": [],
       "x_bio": "夜職崇めてる女と飲食店で勝手に皿まとめだして良い気なってる女と同性愛者と防大卒一般就職した奴らは全員消滅して",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -2660,12 +2660,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1277047055324602368; screen_name=tukutuku1042",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -2683,7 +2683,7 @@
       "x_user_id": "1277047055324602368",
       "threads_posts": [],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "archives": [
         {
@@ -2735,12 +2735,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1964267010889777152; screen_name=Ub1Bu",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -2758,7 +2758,7 @@
       "x_user_id": "1964267010889777152",
       "threads_posts": [],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "archives": [
         {
@@ -2810,12 +2810,12 @@
       },
       "monitoring": {
         "status": "unavailable",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "unavailable",
         "last_detail": "FxTwitter HTTP 404; code=404; message=User is suspended",
-        "consecutive_unavailable": 29,
+        "consecutive_unavailable": 30,
         "consecutive_reason": "suspended",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "suspended",
         "last_source": "fxtwitter",
         "last_reason": "suspended",
@@ -2875,12 +2875,12 @@
       "archive_checked_at": "2026-09-09T07:03:16.721Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1730983811310305280; screen_name=heeeeeentttt",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -2898,7 +2898,7 @@
       "x_user_id": "1730983811310305280",
       "threads_posts": [],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -2973,12 +2973,12 @@
       "archive_checked_at": "2026-09-09T17:12:31.315Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1932010345704706048; screen_name=hensinsimasen",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -2996,7 +2996,7 @@
       "x_user_id": "1932010345704706048",
       "threads_posts": [],
       "x_bio": "- 旧帝卒上場大手持家50坪\n- 話し合えば分かり合えると思う事が1番の時間の無駄\n- 常に誰かを攻撃や否定しないと気が済まない人ネタにマジレスする人はPDまたはASD傾向があるといわれてます\n- 故に返信する価値のあるリプは少ない",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -3035,12 +3035,12 @@
       "archive_checked_at": "2026-09-09T17:33:55.715Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1623263466076405761; screen_name=1m_55cm",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -3058,7 +3058,7 @@
       "x_user_id": "1623263466076405761",
       "threads_posts": [],
       "x_bio": "【確かにこの身体だと不自由な事は沢山ある。 だけど不自由である事と不幸である事はイコールじゃない】",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -3097,7 +3097,7 @@
       "archive_checked_at": "2026-09-12T17:38:10.414Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "unknown",
         "last_detail": "FxTwitter HTTP 404; code=404; message=User not found",
         "consecutive_unavailable": 0,
@@ -3155,7 +3155,7 @@
       },
       "monitoring": {
         "status": "unknown",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "unknown",
         "last_detail": "FxTwitter HTTP 404; code=404; message=User not found",
         "consecutive_unavailable": 0,
@@ -3221,12 +3221,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=806670734323896320; screen_name=mjun46",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -3244,7 +3244,7 @@
       ],
       "threads_posts": [],
       "x_bio": "二郎→関内、新橋、三田、亀戸、松戸、上野毛、神保町、荻窪、小金井、歌舞伎町、西台、目黒、中山、大久保、相模大野、蒲田、一之江、小滝橋、小岩、桜台、越谷、川越、品川、新新代田、千葉、ひばりヶ丘、池袋、藤沢、一ツ橋、府中、野猿、京都\n\n中本→西＆東池袋、新宿、川崎、目黒、渋谷、高田馬場、品川、御徒町、千葉",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -3279,12 +3279,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1931317438999900160; screen_name=rlt4_",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -3302,7 +3302,7 @@
       ],
       "threads_posts": [],
       "x_bio": "Illustrator/ocBL✏男の娘/🐰ぽて♂1y/AI学習、無断使用禁止\n🎮 @_lt26 🔞@ritaomochi 【skeb】https://skeb.jp/@rlt4_\n【portfolio】https://xfolio.jp/portfolio/lt26_\n2027年2月〜のお仕事募集中(企業様)",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -3341,12 +3341,12 @@
       "archive_checked_at": "2026-09-20T04:51:41.641Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=2053407018787246080; screen_name=yuto01236",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -3364,7 +3364,7 @@
       ],
       "threads_posts": [],
       "x_bio": "自衛隊、警察好き。オタクチギュです\n\nなんでプロフ見たの？プロフ見ないと批判するネタないもんねえ？？？😅wwwwwww",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -3403,12 +3403,12 @@
       "archive_checked_at": "2026-09-20T10:04:15.022Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1499658391060643843; screen_name=talmein",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -3426,7 +3426,7 @@
       ],
       "threads_posts": [],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -3461,12 +3461,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=2949230520; screen_name=fuma_ten",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -3484,7 +3484,7 @@
       ],
       "threads_posts": [],
       "x_bio": "暇な時間、全部いただきます。\n思わず見ちゃう動画を毎日投稿📱",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -3523,17 +3523,17 @@
       "archive_checked_at": "2026-09-22T06:15:18.672Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1738625906242191360; screen_name=vwvwvwvqpqpqpqp",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
         "observed_username": "vwvwvwvqpqpqpqp",
-        "protected": false
+        "protected": true
       },
       "x_user_id": "1738625906242191360",
       "status_history": [
@@ -3546,7 +3546,7 @@
       ],
       "threads_posts": [],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -3585,12 +3585,12 @@
       "archive_checked_at": "2026-09-22T17:35:37.163Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1705957280448184320; screen_name=bbnbbb000",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -3608,7 +3608,7 @@
       ],
       "threads_posts": [],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -3647,12 +3647,12 @@
       "archive_checked_at": "2026-09-23T06:41:13.288Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1330702675877380098; screen_name=SsXXOjj9ccQ0Y2m",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -3670,7 +3670,7 @@
       ],
       "threads_posts": [],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -3705,12 +3705,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=4750835548; screen_name=vextrand",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -3728,7 +3728,7 @@
       ],
       "threads_posts": [],
       "x_bio": "漫画家・ストーリーテラー 🖋️✨\nアイデアを生き生きとしたページに変え、独自のキャラクターと世界観を描き出します。\n📌 オリジナルマンガ制作の旅をシェア中。",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -3763,12 +3763,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1378314712220246017; screen_name=k_maru_dau_baby",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -3786,7 +3786,7 @@
       ],
       "threads_posts": [],
       "x_bio": "DM仕様変更により DM送信後にmondで「 DM送りました！」と送信お願いします。返信がなくても全部見てます🦑 その他SNS(インスタ､TikTok)👉🏻https://lit.link/k_maru_dau_baby",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -3821,12 +3821,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1329934022068244481; screen_name=ando85996775",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -3844,7 +3844,7 @@
       ],
       "threads_posts": [],
       "x_bio": "とりあえず作成",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -3879,12 +3879,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=860520764; screen_name=luloguti_lulo",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -3902,7 +3902,7 @@
       ],
       "threads_posts": [],
       "x_bio": "Apexはプレイ(初心者)したり配信者様、ALGS競技を観るのも好き。本当はゆらりまん様にアカウント名似せたかったけど、おそれおおいので、ちーまんにしました。ピース様らぶ",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -3937,12 +3937,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1963967810474045440; screen_name=soj1196455",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -3960,7 +3960,7 @@
       ],
       "threads_posts": [],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -3995,12 +3995,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1486636924890542081; screen_name=kaz197752",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -4018,7 +4018,7 @@
       ],
       "threads_posts": [],
       "x_bio": "山手生まれ/氷河期世代/セミリタイア/FIRE /911とG/自由/サーフィン/サウナ/温泉/グルメ/ 空手/筋トレ/オーガニック/日本が好き/いじめ撲滅/\n三礼三拍手一礼",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -4053,12 +4053,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=2034526101398335488; screen_name=Ggfdjjnvt",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -4076,7 +4076,7 @@
       ],
       "threads_posts": [],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -4112,12 +4112,12 @@
       "threads_posts": [],
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1405054516068720641; screen_name=nikonikonie_",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -4134,7 +4134,7 @@
         }
       ],
       "x_bio": "更生します",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -6394,12 +6394,12 @@
       "profile_fetched_at": "2026-09-28",
       "monitoring": {
         "status": "unavailable",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "unavailable",
         "last_detail": "FxTwitter HTTP 404; code=404; message=User is suspended",
-        "consecutive_unavailable": 16,
+        "consecutive_unavailable": 17,
         "consecutive_reason": "suspended",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "suspended",
         "last_source": "fxtwitter",
         "last_reason": "suspended",
@@ -6458,12 +6458,12 @@
       },
       "monitoring": {
         "status": "unavailable",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "unavailable",
         "last_detail": "FxTwitter HTTP 404; code=404; message=User is suspended",
-        "consecutive_unavailable": 20,
+        "consecutive_unavailable": 21,
         "consecutive_reason": "suspended",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "suspended",
         "last_source": "fxtwitter",
         "last_reason": "suspended",
@@ -6522,12 +6522,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1308413698512498689; screen_name=HawaianDogs",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -6544,7 +6544,7 @@
         }
       ],
       "x_bio": "とある都内の私大職員 得意分野は理事会関係、個人情報、データガバナンス、知財、規程作り等",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -6572,12 +6572,12 @@
       "profile_fetched_at": "2026-09-29",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1831315632069206016; screen_name=oyadani7799",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -6594,7 +6594,7 @@
         }
       ],
       "x_bio": "超大手米系上場オルタナファームのジャパンヘッド。年収5億円。青森のド田舎の貧困家庭出身 → 青森高校（偏差値71） →  偏差値44の青森の公立大学  →  野村アセット（新卒採用でトップ通過）→  GSAM（5年連続トップ5%評価） →  米系オルタナファーム社長。都内私立M大学非常勤講師。",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "archives": [
         {
@@ -6650,12 +6650,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1540832400636125185; screen_name=yoro497110",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -6672,7 +6672,7 @@
         }
       ],
       "x_bio": "Fuck globalist",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -6711,12 +6711,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1653677040728702976; screen_name=torisugari207",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -6733,7 +6733,7 @@
         }
       ],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -6772,12 +6772,12 @@
       "threads_posts": [],
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1937865966819631104; screen_name=sukisukihot004",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -6794,7 +6794,7 @@
         }
       ],
       "x_bio": "大阪府在住 メインのアカウントを創価学会にブロックされました。その間はこのサブアカウントを使いたいと思います 。メインのアカウントは、tobetobeten004",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -6833,12 +6833,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1530799905622532097; screen_name=RAKU_mental",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -6855,7 +6855,7 @@
         }
       ],
       "x_bio": "お↑ん↓な↓います",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -6898,14 +6898,14 @@
       "archive_checked_at": "2026-10-02T16:38:40.295Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1803077479370006528; screen_name=W6lqBmmZ8U40298",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "observed_username": "W6lqBmmZ8U40298",
         "protected": false
@@ -6920,7 +6920,7 @@
         }
       ],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -6959,12 +6959,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1776986518290350080; screen_name=rKK0kyWj8U20721",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -6981,7 +6981,7 @@
         }
       ],
       "x_bio": "口どけの良い毒をつぶやきます",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "archives": [
         {
@@ -7037,12 +7037,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1061089752626081792; screen_name=UtahaMio",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -7059,7 +7059,7 @@
         }
       ],
       "x_bio": "好きなことや為になる、面白いメディアを独自の編集を加えてお届けしています。無断転載、パクツイ禁止🙅‍♀️ 07〜20",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -7080,12 +7080,12 @@
       "profile_fetched_at": "2026-10-03",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1213095448774201344; screen_name=gvlottQvWR6qq15",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -7102,7 +7102,7 @@
         }
       ],
       "x_bio": "土木道路管理をしています。面倒な絡みには返信しませんし、普通にブロックします。 「インフラ整備重視派、建設業応援」というキャラクター設定です。",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -7145,7 +7145,7 @@
       "archive_checked_at": "2026-10-03T16:23:30.806Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "unknown",
         "last_detail": "FxTwitter HTTP 404; code=404; message=User not found",
         "consecutive_unavailable": 1,
@@ -7203,12 +7203,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=2000774354469281792; screen_name=fZdRDATduM20752",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -7225,7 +7225,7 @@
         }
       ],
       "x_bio": "基本こちらから喧嘩仕掛ける喧嘩師\nおらにからんできた場合、相手がまいった(ブロック)するまで執拗にからむからね",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "archives": [
         {
@@ -7281,12 +7281,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1760036395685683200; screen_name=m23uma",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -7303,7 +7303,7 @@
         }
       ],
       "x_bio": "殆ど働かないず生きてる人\n\n金が無い訳ではない。ある",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -7346,12 +7346,12 @@
       "archive_checked_at": "2026-10-08T06:25:19.925Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1272142935866261504; screen_name=Eo3BEg1pfmcdrfm",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -7368,7 +7368,7 @@
         }
       ],
       "x_bio": "殴っても傷まない透明な拳👊👊👊",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -7411,12 +7411,12 @@
       "archive_checked_at": "2026-10-08T08:09:40.868Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1694313460472098816; screen_name=shantian468433",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -7433,7 +7433,7 @@
         }
       ],
       "x_bio": "ブラジリアンイタリアンジャポネーゼ隣人愛革命家詩は読まれないという風潮に逆らった本物の詩人井筒俊彦河島英昭角田柳作斎藤喜博関根正雄中村元田中美知太郎先生ブラジル音楽ロシア文学HIPHOPBEATLESSPURSWEMBYこども赤子の魂を愛するドパガキ作曲家レジ三浪ニートうつ病ぬい活古代哲学宗教39歳",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -7472,12 +7472,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1609047745142353920; screen_name=Tebasaki_lab",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -7494,7 +7494,7 @@
         }
       ],
       "x_bio": "国産LLM氏｜新技術でAIを作る尖ったエンジニア｜MagicDelta株式会社 CEO｜AP法, 微分可能論理回路NNの開発者\n\n未踏IT'26←ZEN大学特待生←TGCA'25←SecHack365'24←福岡未踏'23 Pro\n\nお仕事のご依頼：http://magicdelta.ai/contact/",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -7537,12 +7537,12 @@
       "archive_checked_at": "2026-10-09T21:16:42.881Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=2022368008212271104; screen_name=Carbonara_soup",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -7559,7 +7559,7 @@
         }
       ],
       "x_bio": "とあるサブ垢\n外資IT戦士/1児のパパ\nMCPサーバー作成中→完成 08/16\n機能拡張中",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -7602,12 +7602,12 @@
       "archive_checked_at": "2026-10-10T07:50:45.952Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1255051467796262915; screen_name=HH__1020",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -7624,7 +7624,7 @@
         }
       ],
       "x_bio": "@_Ayakaking",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -7643,12 +7643,12 @@
       "threads_fetch_status": "none",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=2057192587740766208; screen_name=kabuheiwy",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -7689,7 +7689,7 @@
       "archive_target_url": "https://x.com/kabuheiwy/with_replies",
       "archive_checked_at": "2026-10-11T10:58:52.003Z",
       "x_bio": "万国の労働者よ、団結せよ",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -7728,12 +7728,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1818898797638135808; screen_name=pasapasari",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -7750,7 +7750,7 @@
         }
       ],
       "x_bio": "ゆるゆるOL | コスメ | カフェ | スイーツ | 雑貨 | 音楽 | ゲーム(アーケード含) | 他趣味いろいろ✧︎*。| 素敵なご縁がありますように✧̣̥̇",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -7772,12 +7772,12 @@
       "profile_source": "unavatar",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1893977794964779008; screen_name=cheesygeekSKK",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -7794,7 +7794,7 @@
         }
       ],
       "x_bio": "アニメや漫画やゲームのレビューをしています",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -7833,14 +7833,14 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=89360186; screen_name=toriatamaxp",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "observed_username": "toriatamaxp",
         "protected": false
@@ -7855,7 +7855,7 @@
         }
       ],
       "x_bio": "お仕事のご相談嬉しいです。ESSEオンラインで「アラ還夫婦、食べて歩いてご自愛ライフ」連載中。既刊「ゆる走りスロージョギング」「子どもをネットにさらすのは罪ですか？」「母親を陰謀論で失った」「実家が放してくれません(毒親)」「オトナ女子の謎不調、ほんとに更年期？」他。",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -7894,12 +7894,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=4906410619; screen_name=murakumo9800",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -7916,7 +7916,7 @@
         }
       ],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -7959,12 +7959,12 @@
       "archive_checked_at": "2026-10-12T04:08:41.744Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1957001430403076096; screen_name=Wp6Block",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -7981,7 +7981,7 @@
         }
       ],
       "x_bio": "ジャンルレスでおはよとおつかれを不定期で",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -8020,12 +8020,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1452540857744183297; screen_name=Mytsuckidtvui",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -8042,7 +8042,7 @@
         }
       ],
       "x_bio": "山○○○○さんに貰われました。ダウンタウンさん千鳥さん大好き。他の芸人さんもある程度大好き。最近はR藤本さん大好き。ちなみにせんたっきじゃなくてせんたくきです。",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -8085,14 +8085,14 @@
       "archive_checked_at": "2026-10-12T09:36:09.665Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=957308479303073792; screen_name=heartcakra7",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "observed_username": "heartcakra7",
         "protected": false
@@ -8107,7 +8107,7 @@
         }
       ],
       "x_bio": "てきとうに生きてます\n右金玉しかないです\nユーモアユーモア",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -8146,12 +8146,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=2071163595015241728; screen_name=suu00331199",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -8168,7 +8168,7 @@
         }
       ],
       "x_bio": "@sumaho0319←凍結しちゃったよ〜\n@taburetto0319←縮小\n@pasokon0319←縮小\nLJK 09 無言フォロー",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -8207,14 +8207,14 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1983451062867722240; screen_name=UntiBuriBuri889",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "observed_username": "UntiBuriBuri889",
         "protected": false
@@ -8243,7 +8243,7 @@
         }
       ],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -8282,12 +8282,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1908291885522968576; screen_name=HzAtXDAvaJ60910",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -8304,7 +8304,7 @@
         }
       ],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "archives": [
         {
@@ -8360,12 +8360,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=2037748786689146880; screen_name=pkwmap49413",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -8382,7 +8382,7 @@
         }
       ],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "archives": [
         {
@@ -8438,12 +8438,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=753391768356335616; screen_name=shinjukuacc",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -8460,7 +8460,7 @@
         }
       ],
       "x_bio": "金融評論家。フォロー自由。雑誌等の執筆依頼も受けています。\n【必読】https://shinjukuacc.com にて政治経済評論を毎日掲載中。\nAmazon アソシエイトとして適格販売により収入を得ています。\n著書①https://amzn.to/3V2pNJN\n著書②https://amzn.to/4mFcNpg",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "archives": [
         {
@@ -8523,12 +8523,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1350832720256016386; screen_name=sekaijosei",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -8545,7 +8545,7 @@
         }
       ],
       "x_bio": "世界情勢。どんな理由でさえ、人の命を無差別に奪うなど許せない。🇺🇦応援。軍事や世界情勢関するニュースや思った事など。AIは確実に危険。悪用拡大を懸念。規制すべき。規制できないなら全面禁止すべき。悪いものは悪いと言う。",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "archives": [
         {
@@ -8601,12 +8601,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1366194671504875521; screen_name=Rachel_hkz",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -8623,7 +8623,7 @@
         }
       ],
       "x_bio": "Web制作出身のAI・業務改善開発者\n営業 / SNS / 社内マニュアル / MEOを\n「AIに仕事として任せる仕組み」へ。\nブラック企業→うつ→フリーランスとして自立\nAIエージェント / Webアプリ開発｜相談・開発はDM📩",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -8662,12 +8662,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1433782272; screen_name=AndreBenoit1622",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -8684,7 +8684,7 @@
         }
       ],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -8723,12 +8723,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1568179429142298624; screen_name=XuxcVbqvZhHGk7G",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -8745,7 +8745,7 @@
         }
       ],
       "x_bio": "反フェレリ 反なりすまし ポストにAIイラスト表記してる方は尊重する姿勢 。\n4000麻婆君に限りスクショ等の使用を禁じます。罰金は彼の主張する価格の100倍で請求します",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -8798,12 +8798,12 @@
       "archive_checked_at": "2026-10-14T20:56:34.282Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=2012908023946391552; screen_name=pGR2MB4YjU8459",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -8820,7 +8820,7 @@
         }
       ],
       "x_bio": "つれづれなるまゝに",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -8873,12 +8873,12 @@
       "archive_checked_at": "2026-10-15T02:30:13.633Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1483235837932601344; screen_name=kei_name7",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -8895,7 +8895,7 @@
         }
       ],
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter"
     },
     {
@@ -8934,12 +8934,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1852883323825324032; screen_name=AdsShogun",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -8948,7 +8948,7 @@
       },
       "x_user_id": "1852883323825324032",
       "x_bio": "広告将軍卒｜法政多摩キャン卒｜『アドラボ』運営｜㍿ヨノラボ代表",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "status_history": [
         {
@@ -8995,12 +8995,12 @@
       },
       "monitoring": {
         "status": "unavailable",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "unavailable",
         "last_detail": "FxTwitter HTTP 404; code=404; message=User is suspended",
-        "consecutive_unavailable": 5,
+        "consecutive_unavailable": 6,
         "consecutive_reason": "suspended",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "suspended",
         "last_source": "fxtwitter",
         "last_reason": "suspended",
@@ -9062,12 +9062,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1997668405810532353; screen_name=NBenmaran85901",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -9076,7 +9076,7 @@
       },
       "x_user_id": "1997668405810532353",
       "x_bio": "うまうまぷー！",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "status_history": [
         {
@@ -9137,12 +9137,12 @@
       "archive_checked_at": "2026-10-15T14:34:59.877Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1709236907773988864; screen_name=iYzZgEBPrQ95837",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -9151,7 +9151,7 @@
       },
       "x_user_id": "1709236907773988864",
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "status_history": [
         {
@@ -9178,7 +9178,7 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/2078940248697122816/Drc8y1bC_normal.jpg",
       "x_bio": "明治42年生まれの南栄子が大好きです。\n\n聖書の神だけが本物の神です。仏教と神道と他の全ての偶像崇拝と同性愛は罪です。\n\nただ一人の真の神であるキリストが道であり、真理であり、命なのです。キリスト無しでは天国は無しです。\n\nキリストは全ての罪人たちを愛しています。どうかキリストを信じて下さい。",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-15",
       "profile_source": "fxtwitter",
@@ -9215,12 +9215,12 @@
       "archive_checked_at": "2026-10-15T15:06:32.565Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=2078939688707248128; screen_name=Minami_Eiko_42",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -9253,7 +9253,7 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/1626863045074128897/6gBsPD2Y_normal.jpg",
       "x_bio": "เรียนรู้อดีตเพื่อจัดการปัจจุบันและก้าวไปสู่อนาคต สนใจประเด็นสังคมและข่าวสาร ชอบแลกเปลี่ยนความคิดเห็น และมีความสุขกับการดูแลแมว 🏡🐈",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-15",
       "profile_source": "fxtwitter",
@@ -9276,12 +9276,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1484886645505925122; screen_name=Toonee8008",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -9313,8 +9313,8 @@
       "fetch_status": "done",
       "threads_fetch_status": "none",
       "avatar_url": "https://unavatar.io/x/zoomertrek1?fallback=false",
-      "x_bio": "世の中に正論を物申す 38歳 \nJ1兵庫県民\n免停離職中 タク二種持 私立工高卒\nプロ失業保険受給者\n\n三井住友OliveGOLD\nミスチル ヒゲダン King Gnu 生涯ファン会員\n半年年収278万\nりそな年利13.1%\n\nジャニ反社公務員が大嫌い\n\n闇金ウシジマくん→全巻持\n\n借入11.5 貯金50万＝NVAN",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio": "世の中に正論を物申す 38歳 \nJ1兵庫県民\n免停離職中 タク二種持 私立工高卒\nトランプ支持 反政府\n\n三井住友OliveGOLD\nミスチル ヒゲダン King Gnu 生涯ファン会員\n半年年収278万\nりそな年利13.1%\n\nジャニ反社公務員が大嫌い\n\n闇金ウシジマくん→全巻持\n\n借入11.5 貯金50万＝NVAN",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-16",
       "profile_source": "unavatar",
@@ -9351,12 +9351,12 @@
       "archive_checked_at": "2026-10-16T18:19:11.545Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=149419437; screen_name=zoomertrek1",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -9389,7 +9389,7 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/1833706695853514752/pVHAK4RQ_normal.png",
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-16",
       "profile_source": "fxtwitter",
@@ -9412,12 +9412,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1833706614303649792; screen_name=XQw5BadE491706",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -9467,7 +9467,7 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/2096928047148744704/9Y5B1VlK_normal.jpg",
       "x_bio": "社畜かつ健脚",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-16",
       "profile_source": "fxtwitter",
@@ -9490,12 +9490,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1660286722230599681; screen_name=NoYsc1024",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -9545,7 +9545,7 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/2021393732394942467/Hzr0oz4z_normal.jpg",
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-16",
       "profile_source": "fxtwitter",
@@ -9568,12 +9568,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1666075865791475716; screen_name=gb46ui",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -9623,7 +9623,7 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/1810384021802848256/wM53jMK0_normal.png",
       "x_bio": "演出企画制作、インテリア・ファッションスタイリスト【担当別なし全体バランス】 新宿伊勢丹〜西武百貨店〜PARCO、TV番組『Ryu'sBar』『ワーズワースの庭で』  温故知新、音楽を感じる、素材の声を聞く〜1996瀕死の地球に気づく、体質改善のためベジタリアンに・冷暖房ナシ医者要らずになる",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-16",
       "profile_source": "fxtwitter",
@@ -9646,12 +9646,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1810383838167838723; screen_name=PTtigusa",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -9701,7 +9701,7 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/1724276290818338817/jJZx6yye_normal.jpg",
       "x_bio": "借金を抱え現役A○女優になりました。日記。",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-17",
       "profile_source": "fxtwitter",
@@ -9724,12 +9724,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1569564412666851329; screen_name=akari__ura__aka",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -9779,7 +9779,7 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/2002572006223720448/9RVyp-al_normal.jpg",
       "x_bio": "おもしろきこともなき世をおもしろく。提督になりたい軍曹。泥酔してヤフオクで40年前のレトロ船ポチる→痛船にして痛車ウィーク2026に参戦→九十九島でエンジン燃えて遭難→新品のエンジン買う←ｲﾏｺｺ",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-17",
       "profile_source": "fxtwitter",
@@ -9802,12 +9802,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1319630625981173760; screen_name=wagatumakaitai",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -9863,7 +9863,7 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/2091145210764083200/YQReEgqu_normal.jpg",
       "x_bio": "本質のみを呟きます。誰かに届け。人間科学・心理学・雑学・文学・理論思考・哲学・読書・自動車・AI・IT",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-18",
       "profile_source": "fxtwitter",
@@ -9886,12 +9886,12 @@
       },
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1572078358833532928; screen_name=5vVba77P0tjsDKS",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -9924,7 +9924,7 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/2053329137532895232/VH4nmCFD_normal.jpg",
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-20T09:30:27+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-18",
       "profile_source": "fxtwitter",
@@ -9970,12 +9970,12 @@
       "archive_checked_at": "2026-10-20T23:16:03.402Z",
       "monitoring": {
         "status": "active",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
         "last_result": "active",
         "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=2046064802733465600; screen_name=kurfaraway",
         "consecutive_unavailable": 0,
         "consecutive_reason": "",
-        "last_confirmed_at": "2026-10-20T09:30:27+00:00",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
         "confirmed_reason": "",
         "last_source": "fxtwitter",
         "last_reason": "",
@@ -10008,7 +10008,7 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png",
       "x_bio": "",
-      "x_bio_fetched_at": "2026-10-19T16:57:17.663130+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-19",
       "profile_source": "fxtwitter",
@@ -10030,13 +10030,18 @@
         }
       },
       "monitoring": {
-        "status": "unknown",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
-        "last_result": "unknown",
-        "last_detail": "FxTwitter HTTP 404; code=404; message=User not found; fallback: non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
+        "status": "active",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
+        "last_result": "active",
+        "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1813812160172302336; screen_name=IyXNTgoAgk45598",
         "consecutive_unavailable": 0,
-        "last_source": "x_public",
-        "last_reason": ""
+        "last_source": "fxtwitter",
+        "last_reason": "",
+        "consecutive_reason": "",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
+        "confirmed_reason": "",
+        "observed_username": "IyXNTgoAgk45598",
+        "protected": false
       },
       "archives": [
         {
@@ -10058,7 +10063,16 @@
       "archive_url": "https://archive.li/g7iSa",
       "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/IyXNTgoAgk45598/with_replies",
-      "archive_checked_at": "2026-10-20T23:44:34.295Z"
+      "archive_checked_at": "2026-10-20T23:44:34.295Z",
+      "x_user_id": "1813812160172302336",
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-10-21T09:26:22+00:00",
+          "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1813812160172302336; screen_name=IyXNTgoAgk45598"
+        }
+      ]
     },
     {
       "id": "mvfi0ymr5y4h",
@@ -10113,12 +10127,13 @@
       "archive_checked_at": "2026-10-19T17:10:06.657Z",
       "monitoring": {
         "status": "unknown",
-        "last_checked_at": "2026-10-20T09:30:27+00:00",
-        "last_result": "unknown",
-        "last_detail": "FxTwitter HTTP 404; code=404; message=User not found; fallback: non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page returned HTTP 403; content-type=text/html; charset=UTF-8; body='<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA'",
-        "consecutive_unavailable": 0,
-        "last_source": "x_public",
-        "last_reason": ""
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
+        "last_result": "unavailable",
+        "last_detail": "FxTwitter HTTP 404; code=404; message=User is suspended",
+        "consecutive_unavailable": 1,
+        "last_source": "fxtwitter",
+        "last_reason": "suspended",
+        "consecutive_reason": "suspended"
       }
     },
     {
@@ -10144,7 +10159,7 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/1938955150263308288/AHhwb0PW_normal.jpg",
       "x_bio": "I'm a Japanese investor｜どん底だった投資家の人生逆転劇｜ど田舎出身者の上京投資物語｜株式投資で大損経験あり。",
-      "x_bio_fetched_at": "2026-10-20T10:08:08.119935+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-20",
       "profile_source": "fxtwitter",
@@ -10164,7 +10179,30 @@
           "url": "https://x.com/socialwelfare5",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "monitoring": {
+        "status": "active",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
+        "last_result": "active",
+        "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=2862256152; screen_name=SocialWelfare5",
+        "consecutive_unavailable": 0,
+        "consecutive_reason": "",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
+        "confirmed_reason": "",
+        "last_source": "fxtwitter",
+        "last_reason": "",
+        "observed_username": "SocialWelfare5",
+        "protected": false
+      },
+      "x_user_id": "2862256152",
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-10-21T09:26:22+00:00",
+          "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=2862256152; screen_name=SocialWelfare5"
+        }
+      ]
     },
     {
       "id": "mvh9pmsgy712",
@@ -10182,7 +10220,7 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://unavatar.io/x/pdgFaa1kvO33844?fallback=false",
       "x_bio": "何もしてないのに\n何かしていると思う\n隠居暮らしの今日このごろか",
-      "x_bio_fetched_at": "2026-10-20T22:41:51.641078+00:00",
+      "x_bio_fetched_at": "2026-10-21T09:26:22+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-20",
       "profile_source": "unavatar",
@@ -10216,16 +10254,39 @@
       "archive_url": "https://archive.li/2026.10.20-224223/https://x.com/pdgFaa1kvO33844/with_replies",
       "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/pdgFaa1kvO33844/with_replies",
-      "archive_checked_at": "2026-10-20T22:46:15.146Z"
+      "archive_checked_at": "2026-10-20T22:46:15.146Z",
+      "monitoring": {
+        "status": "active",
+        "last_checked_at": "2026-10-21T09:26:22+00:00",
+        "last_result": "active",
+        "last_detail": "FxTwitter HTTP 200; code=200; message=OK; user_id=1909881178976624640; screen_name=pdgFaa1kvO33844",
+        "consecutive_unavailable": 0,
+        "consecutive_reason": "",
+        "last_confirmed_at": "2026-10-21T09:26:22+00:00",
+        "confirmed_reason": "",
+        "last_source": "fxtwitter",
+        "last_reason": "",
+        "observed_username": "pdgFaa1kvO33844",
+        "protected": false
+      },
+      "x_user_id": "1909881178976624640",
+      "status_history": [
+        {
+          "from": "unknown",
+          "to": "active",
+          "at": "2026-10-21T09:26:22+00:00",
+          "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1909881178976624640; screen_name=pdgFaa1kvO33844"
+        }
+      ]
     }
   ],
   "monitoring_summary": {
-    "checked_at": "2026-10-20T09:30:27+00:00",
-    "checked": 125,
+    "checked_at": "2026-10-21T09:26:22+00:00",
+    "checked": 127,
     "fxtwitter_healthy": true,
-    "active": 110,
+    "active": 113,
     "unavailable": 8,
-    "unknown": 7
+    "unknown": 6
   },
   "threads_refresh_summary": {
     "checked_at": "2026-10-20T09:40:40.536961+00:00",

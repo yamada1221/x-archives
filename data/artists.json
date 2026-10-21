@@ -10474,7 +10474,21 @@
           "url": "https://x.com/_watta_me",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archives": [
+        {
+          "url": "https://archive.li/2026.10.21-160826/https://x.com/_watta_me/with_replies",
+          "provider": "archive.today",
+          "status": "done",
+          "target_url": "https://x.com/_watta_me/with_replies",
+          "saved_at": "2026-10-21T23:31:50.955Z"
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.10.21-160826/https://x.com/_watta_me/with_replies",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/_watta_me/with_replies",
+      "archive_checked_at": "2026-10-21T23:31:50.955Z"
     }
   ],
   "monitoring_summary": {

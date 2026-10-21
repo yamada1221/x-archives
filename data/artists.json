@@ -10278,6 +10278,21 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1909881178976624640; screen_name=pdgFaa1kvO33844"
         }
       ]
+    },
+    {
+      "id": "mvhxs4nxzyba",
+      "name": "Tanosimi3500",
+      "x_account": "Tanosimi3500",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "インプレゾンビ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-21",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

@@ -10440,6 +10440,21 @@
       "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/rorynyko/status/2111746255307075796",
       "archive_checked_at": "2026-10-21T10:15:59.058Z"
+    },
+    {
+      "id": "mviaxw1fw66r",
+      "name": "_watta_me",
+      "x_account": "_watta_me",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "スパム",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-21",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

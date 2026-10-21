@@ -10357,7 +10357,7 @@
     },
     {
       "id": "mvhydnqjt74g",
-      "name": "rorynyko",
+      "name": "みっちょ",
       "x_account": "rorynyko",
       "threads_account": "",
       "threads_share_url": "",
@@ -10374,8 +10374,31 @@
       ],
       "threads_posts": [],
       "added_at": "2026-10-21",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2059783211866075137/-QicDyYR_normal.jpg",
+      "x_bio": "ラーメン二郎が生きがい",
+      "x_bio_fetched_at": "2026-10-21T10:12:39.404753+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-10-21",
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-21T10:12:39+00:00",
+        "x_account": "rorynyko",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=rorynyko",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/rorynyko",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

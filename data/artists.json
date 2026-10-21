@@ -10378,12 +10378,12 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/2059783211866075137/-QicDyYR_normal.jpg",
       "x_bio": "ラーメン二郎が生きがい",
-      "x_bio_fetched_at": "2026-10-21T10:12:39.404753+00:00",
+      "x_bio_fetched_at": "2026-10-21T10:13:36.935385+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-21",
       "profile_source": "fxtwitter",
       "profile_fetch_diagnostic": {
-        "checked_at": "2026-10-21T10:12:39+00:00",
+        "checked_at": "2026-10-21T10:13:37+00:00",
         "x_account": "rorynyko",
         "fetch_status_after_attempt": "done",
         "syndication": {
@@ -10396,7 +10396,34 @@
         },
         "html": {
           "url": "https://x.com/rorynyko",
-          "error": "HTTPError 403"
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "final_url": "https://x.com/rorynyko",
+          "bytes": 138738,
+          "contains_username": true,
+          "screen_name_marker": false,
+          "profile_image_url_count": 5,
+          "profile_image_candidates": [
+            "https://pbs.twimg.com/profile_images/2059783211866075137/-QicDyYR_400x400.jpg",
+            "https://pbs.twimg.com/profile_images/2059783211866075137/-QicDyYR_200x200.jpg",
+            "https://pbs.twimg.com/profile_images/2059783211866075137/-QicDyYR_normal.jpg",
+            "https://pbs.twimg.com/profile_images/2059783211866075137/-QicDyYR_x96.jpg",
+            "https://pbs.twimg.com/profile_images/2059783211866075137/-QicDyYR_reasonably_small.jpg"
+          ],
+          "meta_keys": [
+            "og:image",
+            "og:title",
+            "twitter:image",
+            "twitter:title"
+          ],
+          "og_title_present": true,
+          "og_image_present": true,
+          "twitter_title_present": true,
+          "twitter_image_present": true,
+          "og_title": "Xユーザーのみっちょ（@RoryNyko）さん",
+          "og_image": "https://pbs.twimg.com/profile_images/2059783211866075137/-QicDyYR_200x200.jpg",
+          "twitter_title": "Xユーザーのみっちょ（@RoryNyko）さん",
+          "twitter_image": "https://pbs.twimg.com/profile_banners/367007671/1777297173"
         }
       }
     }

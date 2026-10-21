@@ -10354,6 +10354,28 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mvhydnqjt74g",
+      "name": "rorynyko",
+      "x_account": "rorynyko",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "インプ稼ぎ",
+      "tracking_mode": "monitor_only",
+      "works": [
+        {
+          "url": "https://x.com/rorynyko/status/2111746255307075796",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-10-21"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-10-21",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

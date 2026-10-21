@@ -10425,7 +10425,21 @@
           "twitter_title": "Xユーザーのみっちょ（@RoryNyko）さん",
           "twitter_image": "https://pbs.twimg.com/profile_banners/367007671/1777297173"
         }
-      }
+      },
+      "archives": [
+        {
+          "url": "https://archive.li/2026.10.21-101351/https://x.com/RoryNyko/status/2111746255307075796",
+          "provider": "archive.today",
+          "status": "done",
+          "target_url": "https://x.com/rorynyko/status/2111746255307075796",
+          "saved_at": "2026-10-21T10:15:59.058Z"
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.10.21-101351/https://x.com/RoryNyko/status/2111746255307075796",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/rorynyko/status/2111746255307075796",
+      "archive_checked_at": "2026-10-21T10:15:59.058Z"
     }
   ],
   "monitoring_summary": {

@@ -10319,7 +10319,7 @@
     },
     {
       "id": "mvhy93qo3dad",
-      "name": "townkoh",
+      "name": "復活のこうこう",
       "x_account": "townkoh",
       "threads_account": "",
       "threads_share_url": "",
@@ -10329,8 +10329,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-21",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2108449229199052800/5N1NBGmb_normal.jpg",
+      "x_bio": "雑談アカです",
+      "x_bio_fetched_at": "2026-10-21T10:08:50.747565+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-10-21",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

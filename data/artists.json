@@ -10666,6 +10666,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mvjmxwhhk3mq",
+      "name": "Oketa_Kanata",
+      "x_account": "Oketa_Kanata",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "インプ稼ぎ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-22",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

@@ -10628,6 +10628,21 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1915811667382030336; screen_name=expokun"
         }
       ]
+    },
+    {
+      "id": "mvje2eo2g4uu",
+      "name": "Jxbajxus1133jx",
+      "x_account": "Jxbajxus1133jx",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "インプ稼ぎ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-22",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

@@ -10681,12 +10681,29 @@
       "added_at": "2026-10-22",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://pbs.twimg.com/profile_images/1896007879339220992/7JWt70dQ_normal.jpg",
+      "avatar_url": "https://unavatar.io/x/Oketa_Kanata?fallback=false",
       "x_bio": "🗻🦅🦅🍆🍆🍆\n棚から牡丹餅 人間万事塞翁馬\n😱人生終了は突然やってくる🫥☠️\n👩は今を生き、👨は過去と未来に生きる",
       "x_bio_fetched_at": "2026-10-22T14:27:48.888756+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-22",
-      "profile_source": "fxtwitter"
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-22T14:27:59+00:00",
+        "x_account": "Oketa_Kanata",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=Oketa_Kanata",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/Oketa_Kanata",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

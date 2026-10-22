@@ -10489,6 +10489,21 @@
       "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/_watta_me/with_replies",
       "archive_checked_at": "2026-10-21T23:31:50.955Z"
+    },
+    {
+      "id": "mvis2njgnhqm",
+      "name": "expokun",
+      "x_account": "expokun",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "青バッチ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-22",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

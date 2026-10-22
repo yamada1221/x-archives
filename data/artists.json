@@ -10631,7 +10631,7 @@
     },
     {
       "id": "mvje2eo2g4uu",
-      "name": "Jxbajxus1133jx",
+      "name": "pinkrokia",
       "x_account": "Jxbajxus1133jx",
       "threads_account": "",
       "threads_share_url": "",
@@ -10641,8 +10641,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-22",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2101653589446057984/kwi4_hBu_normal.jpg",
+      "x_bio": "中華好き",
+      "x_bio_fetched_at": "2026-10-22T10:19:19.489017+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-10-22",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

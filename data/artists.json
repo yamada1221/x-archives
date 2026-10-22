@@ -10669,7 +10669,7 @@
     },
     {
       "id": "mvjmxwhhk3mq",
-      "name": "Oketa_Kanata",
+      "name": "桶足 哉太 (OKETA, Kanata)",
       "x_account": "Oketa_Kanata",
       "threads_account": "",
       "threads_share_url": "",
@@ -10679,8 +10679,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-22",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1896007879339220992/7JWt70dQ_normal.jpg",
+      "x_bio": "🗻🦅🦅🍆🍆🍆\n棚から牡丹餅 人間万事塞翁馬\n😱人生終了は突然やってくる🫥☠️\n👩は今を生き、👨は過去と未来に生きる",
+      "x_bio_fetched_at": "2026-10-22T14:27:48.888756+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-10-22",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

@@ -10645,10 +10645,27 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/2101653589446057984/kwi4_hBu_normal.jpg",
       "x_bio": "中華好き",
-      "x_bio_fetched_at": "2026-10-22T10:19:19.489017+00:00",
+      "x_bio_fetched_at": "2026-10-22T10:19:29.638351+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-22",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-22T10:19:29+00:00",
+        "x_account": "Jxbajxus1133jx",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=Jxbajxus1133jx",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/Jxbajxus1133jx",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

@@ -10721,10 +10721,27 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/1392971712979881985/HIiu6LJ0_normal.jpg",
       "x_bio": "Full time #CyberSecurity Researcher & Developer. \n\n- https://github.com/J4ck3LSyN-Gen2 \n- http://jackalsyn.com\n\nCA: Cbkg5w7V7W2J2sUmecnyN825CbvwvXwasfhduVtNpump",
-      "x_bio_fetched_at": "2026-10-23T03:22:38.372869+00:00",
+      "x_bio_fetched_at": "2026-10-23T03:22:46.904052+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-23",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-23T03:22:47+00:00",
+        "x_account": "J4ck3LSyN",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=J4ck3LSyN",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/J4ck3LSyN",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

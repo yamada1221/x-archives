@@ -10713,7 +10713,7 @@
       "threads_share_url": "",
       "pixiv_user": "",
       "note": "PHP脆弱性を全公開した人",
-      "tracking_mode": "monitor_only",
+      "tracking_mode": "record",
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-23",

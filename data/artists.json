@@ -10943,7 +10943,21 @@
           "url": "https://x.com/aurantiol",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archives": [
+        {
+          "url": "https://archive.li/2026.10.23-191352/https://x.com/aurantiol",
+          "provider": "archive.today",
+          "status": "done",
+          "target_url": "https://x.com/aurantiol",
+          "saved_at": "2026-10-23T21:07:22.798Z"
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.10.23-191352/https://x.com/aurantiol",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/aurantiol",
+      "archive_checked_at": "2026-10-23T21:07:22.798Z"
     }
   ],
   "monitoring_summary": {

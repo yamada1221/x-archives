@@ -10923,10 +10923,27 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/2904733688/e6bb3e3ed881e577c64530652855b13e_normal.png",
       "x_bio": "イツユビナマケモノ🦥\nアントラニル酸メチル万歳\n\n虹や虹色というものは本来は夢・憧れ・美など、それこそ多様な想いや事象を象徴するものだった。特定のイデオロギーを示すものではない。",
-      "x_bio_fetched_at": "2026-10-23T19:12:25.398675+00:00",
+      "x_bio_fetched_at": "2026-10-23T19:12:36.056150+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-23",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-23T19:12:36+00:00",
+        "x_account": "aurantiol",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=aurantiol",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/aurantiol",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

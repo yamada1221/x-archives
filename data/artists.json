@@ -10793,7 +10793,21 @@
           "url": "https://x.com/soccer07011e",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archives": [
+        {
+          "url": "https://archive.li/2026.10.23-051928/https://x.com/soccer07011e/with_replies",
+          "provider": "archive.today",
+          "status": "done",
+          "target_url": "https://x.com/soccer07011e/with_replies",
+          "saved_at": "2026-10-23T05:22:33.910Z"
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.10.23-051928/https://x.com/soccer07011e/with_replies",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/soccer07011e/with_replies",
+      "archive_checked_at": "2026-10-23T05:22:33.910Z"
     }
   ],
   "monitoring_summary": {

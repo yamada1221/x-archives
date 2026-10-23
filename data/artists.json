@@ -10704,6 +10704,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mvkemfmhqcdb",
+      "name": "J4ck3LSyN",
+      "x_account": "J4ck3LSyN",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "PHP脆弱性を全公開した人",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-23",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

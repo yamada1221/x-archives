@@ -10899,6 +10899,28 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1397197799566069768; screen_name=soccer07011e"
         }
       ]
+    },
+    {
+      "id": "mvlcjsgmmjt3",
+      "name": "aurantiol",
+      "x_account": "aurantiol",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/aurantiol/status/2113050359178682568",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-10-23"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-10-23",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

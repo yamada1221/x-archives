@@ -11208,7 +11208,21 @@
           "url": "https://x.com/pokehanhi",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archives": [
+        {
+          "url": "https://archive.li/RPTHd",
+          "provider": "archive.today",
+          "status": "done",
+          "target_url": "https://x.com/pokehanhi/with_replies",
+          "saved_at": "2026-10-24T11:54:33.709Z"
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/RPTHd",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/pokehanhi/with_replies",
+      "archive_checked_at": "2026-10-24T11:54:33.709Z"
     }
   ],
   "monitoring_summary": {

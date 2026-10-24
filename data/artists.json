@@ -11084,6 +11084,21 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=630016998; screen_name=marines_swimmer"
         }
       ]
+    },
+    {
+      "id": "mvm7win1lvky",
+      "name": "916jfa",
+      "x_account": "916jfa",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-24",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

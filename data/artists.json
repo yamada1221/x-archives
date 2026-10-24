@@ -11121,7 +11121,21 @@
           "url": "https://x.com/916jfa",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archives": [
+        {
+          "url": "https://archive.li/2026.10.24-095041/https://x.com/916jfa/with_replies",
+          "provider": "archive.today",
+          "status": "done",
+          "target_url": "https://x.com/916jfa/with_replies",
+          "saved_at": "2026-10-24T09:54:07.727Z"
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.10.24-095041/https://x.com/916jfa/with_replies",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/916jfa/with_replies",
+      "archive_checked_at": "2026-10-24T09:54:07.727Z"
     }
   ],
   "monitoring_summary": {

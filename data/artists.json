@@ -11136,6 +11136,21 @@
       "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/916jfa/with_replies",
       "archive_checked_at": "2026-10-24T09:54:07.727Z"
+    },
+    {
+      "id": "mvmb41skta0z",
+      "name": "shiro55770",
+      "x_account": "shiro55770",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "スピリチュアル",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-24",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

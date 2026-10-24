@@ -10995,7 +10995,21 @@
           "url": "https://x.com/marines_swimmer",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archives": [
+        {
+          "url": "https://archive.li/2026.10.24-040915/https://x.com/marines_swimmer/with_replies",
+          "provider": "archive.today",
+          "status": "done",
+          "target_url": "https://x.com/marines_swimmer/with_replies",
+          "saved_at": "2026-10-24T04:11:56.066Z"
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.10.24-040915/https://x.com/marines_swimmer/with_replies",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/marines_swimmer/with_replies",
+      "archive_checked_at": "2026-10-24T04:11:56.066Z"
     }
   ],
   "monitoring_summary": {

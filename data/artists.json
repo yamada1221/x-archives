@@ -10961,7 +10961,7 @@
     },
     {
       "id": "mvlvphbtqix3",
-      "name": "marines_swimmer",
+      "name": "ْ",
       "x_account": "marines_swimmer",
       "threads_account": "",
       "threads_share_url": "",
@@ -10973,9 +10973,29 @@
       "added_at": "2026-10-24",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://unavatar.io/x/marines_swimmer?fallback=false",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1494337725897797635/c1aQQphN_normal.jpg",
       "profile_fetched_at": "2026-10-24",
-      "profile_source": "unavatar"
+      "profile_source": "fxtwitter",
+      "x_bio": "テイルズ/AKB48/武藤小麟/千葉ロッテマリーンズ など",
+      "x_bio_fetched_at": "2026-10-24T04:09:02.190698+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-24T04:09:02+00:00",
+        "x_account": "marines_swimmer",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=marines_swimmer",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/marines_swimmer",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

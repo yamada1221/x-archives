@@ -11223,6 +11223,21 @@
       "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/pokehanhi/with_replies",
       "archive_checked_at": "2026-10-24T11:54:33.709Z"
+    },
+    {
+      "id": "mvmcm2ze2h72",
+      "name": "gvahBzBIhQo3QX4",
+      "x_account": "gvahBzBIhQo3QX4",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-24",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

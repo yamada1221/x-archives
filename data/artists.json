@@ -11151,12 +11151,29 @@
       "added_at": "2026-10-24",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://pbs.twimg.com/profile_images/2113883220207165441/6ju0EVi5_normal.jpg",
+      "avatar_url": "https://unavatar.io/x/shiro55770?fallback=false",
       "x_bio": "🖱️oracle lenormand / sunlit summer moonlit spring 〜 ether ennui grace cool feminine romantic 🐚🐋🪷🧄🦕🥝🧘🏻‍♀️🍪 🥿🫜🐈‍⬛🍍⛲️ 🦢🎐🫎🌫️🍠🥣🐕",
       "x_bio_fetched_at": "2026-10-24T11:19:55.348792+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-24",
-      "profile_source": "fxtwitter"
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-24T11:20:11+00:00",
+        "x_account": "shiro55770",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=shiro55770",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/shiro55770",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

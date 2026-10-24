@@ -11139,7 +11139,7 @@
     },
     {
       "id": "mvmb41skta0z",
-      "name": "shiro55770",
+      "name": "梨",
       "x_account": "shiro55770",
       "threads_account": "",
       "threads_share_url": "",
@@ -11149,8 +11149,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-24",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2113883220207165441/6ju0EVi5_normal.jpg",
+      "x_bio": "🖱️oracle lenormand / sunlit summer moonlit spring 〜 ether ennui grace cool feminine romantic 🐚🐋🪷🧄🦕🥝🧘🏻‍♀️🍪 🥿🫜🐈‍⬛🍍⛲️ 🦢🎐🫎🌫️🍠🥣🐕",
+      "x_bio_fetched_at": "2026-10-24T11:19:55.348792+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-10-24",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

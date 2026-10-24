@@ -10958,6 +10958,21 @@
       "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/aurantiol",
       "archive_checked_at": "2026-10-23T21:07:22.798Z"
+    },
+    {
+      "id": "mvlvphbtqix3",
+      "name": "marines_swimmer",
+      "x_account": "marines_swimmer",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-24",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

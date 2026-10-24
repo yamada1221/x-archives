@@ -11226,7 +11226,7 @@
     },
     {
       "id": "mvmcm2ze2h72",
-      "name": "gvahBzBIhQo3QX4",
+      "name": "世界平和",
       "x_account": "gvahBzBIhQo3QX4",
       "threads_account": "",
       "threads_share_url": "",
@@ -11236,8 +11236,31 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-24",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png",
+      "x_bio": "50よりの男で\n徳島県の新ホールは文化センター跡地で",
+      "x_bio_fetched_at": "2026-10-24T12:02:11.038706+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-10-24",
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-24T12:02:11+00:00",
+        "x_account": "gvahBzBIhQo3QX4",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=gvahBzBIhQo3QX4",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/gvahBzBIhQo3QX4",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

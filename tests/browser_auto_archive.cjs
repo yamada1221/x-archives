@@ -65,7 +65,7 @@ async function fakeNetwork(){
     const extensionId=new URL(worker.url()).hostname,page=await context.newPage();
     await page.goto('chrome-extension://'+extensionId+'/auto-options.html');
     await page.locator('#token').fill('fixture-token');await page.locator('#connection button').click();
-    await page.waitForFunction(()=>document.getElementById('summary').textContent.includes('接続テストが必要'));
+    await page.locator('#summary').filter({hasText:'接続テストが必要'}).waitFor();
     await page.locator('#test').click();
     const ghostPage=await context.waitForEvent('page', {predicate:p=>p.url().includes('ghostarchive.org')||p.url()==='about:blank',timeout:5000}).catch(()=>context.pages().find(p=>p.url()==='https://ghostarchive.org/'));
     const due=async()=>{
@@ -99,7 +99,7 @@ async function fakeNetwork(){
     const api=await worker.evaluate(async()=>(await chrome.storage.local.get('fixtureAPI')).fixtureAPI);
     const saved=api.docs['data/artists.json'];assert.equal(saved.artists[0].archive_status,'done');assert.equal(saved.artists[0].note,'手元のメモ');assert.equal(saved.artists[0].threads_posts[0].text,'残す');
     assert.equal(saved.artists[0].archives[0].posts_verification,'confirmed');assert.equal(saved.artists[1].archive_status,undefined);assert.equal(saved.artists[2].archive_url,'https://archive.md/Abc12');
-    await page.reload();await page.waitForFunction(()=>document.getElementById('summary').textContent.includes('有効'));
+    await page.reload();await page.locator('#summary').filter({hasText:'有効'}).waitFor();
     fs.mkdirSync(path.join(root,'test-output'),{recursive:true});await page.screenshot({path:path.join(root,'test-output/auto-archive-options.png'),fullPage:true});
     assert.deepEqual(errors,[]);
     console.log('Native auto-archive checks passed: permissions, settings, gate, real form POST, archived iframe body, numeric ID, posts, actual worker restart, IndexedDB persistence, GitHub CAS and legacy exclusions.');

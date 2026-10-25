@@ -11778,12 +11778,29 @@
       "added_at": "2026-10-25",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://pbs.twimg.com/profile_images/1861940627837276160/BUFLJ1JY_normal.jpg",
+      "avatar_url": "https://unavatar.io/x/LOVE18483081?fallback=false",
       "x_bio": "嘘や憶測、いい加減が嫌いです。\n反ワク男女、メンヘラ男女、フェミの方、フェミ支持者、極端に片寄ってしまった思考をされる方、妄想が過ぎる方はご遠慮願います。\nメンバー全員、メンバー全員に関係するすべてのスタッフの方々と関係者の方々を応援しています❤",
       "x_bio_fetched_at": "2026-10-25T13:33:36.443574+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-25",
-      "profile_source": "fxtwitter"
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-25T13:33:47+00:00",
+        "x_account": "LOVE18483081",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=LOVE18483081",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/LOVE18483081",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

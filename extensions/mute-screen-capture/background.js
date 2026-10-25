@@ -1,4 +1,5 @@
 'use strict';
+if (typeof importScripts === 'function') importScripts('auto-core.js', 'auto-storage.js', 'auto-github.js', 'auto-ghost.js', 'auto-engine.js', 'auto-runtime.js');
 const TRACKER = 'https://yamada1221.github.io/x-archives/';
 const PENDING = 'pendingMuteScreen';
 let capturing = false;
@@ -131,6 +132,7 @@ async function startDaily(source) {
 }
 async function handle(message, sender) {
   if (sender.id !== chrome.runtime.id) throw new Error('送信元を確認できません');
+  if (message?.type?.startsWith('AUTO_')) return AutoArchiveRuntime.handle(message, sender);
   if (['CAPTURE_MUTE_SCREEN', 'START_DAILY_MUTE', 'STOP_DAILY_MUTE', 'GET_DAILY_STATUS'].includes(message?.type)) {
     if (sender.tab || sender.url !== chrome.runtime.getURL('popup.html')) throw new Error('拡張機能のボタンから操作してください');
     if (message.type === 'GET_DAILY_STATUS') {

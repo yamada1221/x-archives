@@ -1,0 +1,31 @@
+name: Test automatic archive extension
+on:
+  pull_request:
+    paths:
+      - 'extensions/mute-screen-capture/**'
+      - 'auto-archive-ui.js'
+      - 'index.html'
+      - 'tracker-utils.js'
+      - 'tests/*auto_archive*'
+      - '.github/workflows/test_auto_archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: node --test tests/test_auto_archive.cjs tests/test_mute_extension.cjs tests/test_github_load.cjs tests/test_tracker_features.cjs
+      - run: npm install --no-save --package-lock=false playwright@1.51.1
+      - run: npx playwright install --with-deps chromium
+      - run: node tests/browser_auto_archive.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: automatic-archive-browser-checks
+          path: test-output/
+          if-no-files-found: ignore

@@ -1,4 +1,10 @@
 'use strict';
+document.getElementById('archiveSettings').addEventListener('click', () => chrome.runtime.openOptionsPage());
+chrome.runtime.sendMessage({ type: 'AUTO_STATUS' }).then(s => {
+  document.getElementById('archiveStatus').textContent = !s?.configured ? '自動保存は未設定です。' :
+    `自動保存: ${s.enabled ? '有効' : '停止中'}\n${s.ready ? '保存先の接続テスト済み' : '接続テストが必要です'}` +
+    (s.jobs?.some(j => j.sync_pending) ? '\nGitHub同期待ちの結果があります' : '') + (s.error ? '\n' + s.error : '');
+}).catch(() => { document.getElementById('archiveStatus').textContent = '拡張機能を再読み込みしてください。'; });
 const captureButton = document.getElementById('capture');
 const message = document.getElementById('status');
 const source = document.getElementById('source');

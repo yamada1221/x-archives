@@ -61,7 +61,7 @@ const assert=require('node:assert/strict');
  });
  await page.locator('#archiveUrl').fill('https://ghostarchive.org/archive/Ab123');
  await page.locator('#saveResultBtn').click();
- await page.waitForFunction(()=>document.getElementById('status').textContent.includes('保存結果を記録しました'));
+ await page.waitForFunction(()=>document.getElementById('status').textContent.includes('内容未確認として記録'));
  const saved=JSON.parse(Buffer.from(put.content,'base64').toString('utf8')).artists[0];
  assert.equal(put.sha,'original');assert.equal(saved.note,'維持');assert.equal(saved.archives.length,2);
  await page.setViewportSize({width:390,height:844});
@@ -86,7 +86,7 @@ const assert=require('node:assert/strict');
  await page.screenshot({path:'test-output/tracker-gyotaku-mobile.png',fullPage:true});
  await page.locator('#archiveUrl').fill('https://ghostarchive.org/archive/Ab123');
  assert.equal(await page.locator('#contentVerified').isChecked(),false);
- assert.equal(await page.locator('#gyotakuConfirmation').isVisible(),false);
+ assert.equal(await page.locator('#gyotakuConfirmation').isVisible(),true);
  await page.reload();assert.equal(await page.locator('#archiveProvider').inputValue(),'gyotaku');
 
  assert.deepEqual(errors,[]);console.log('Browser smoke passed: URL add, preset insertion/persistence/draft preservation, archive navigation/multi-result GitHub save, mobile layout; no console errors.');

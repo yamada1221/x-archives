@@ -1,16 +1,19 @@
 {
   "manifest_version": 3,
-  "name": "Xトラッカー ミュート画面取り込み",
-  "version": "1.1.0",
+  "name": "Xトラッカー 自動アーカイブ・ミュート取り込み",
+  "version": "1.2.0",
   "minimum_chrome_version": "112",
-  "description": "ミュート一覧の表示中の1画面を手動または24時間ごとに撮影します。実行できない場合は通知します。",
+  "description": "記録対象のXプロフィールを自動アーカイブし、本文確認後にGitHubへ同期。ミュート一覧の1画面取り込みにも対応。",
   "permissions": ["activeTab", "storage", "alarms", "notifications"],
+  "optional_permissions": ["scripting"],
+  "optional_host_permissions": ["https://api.github.com/*", "https://api.fxtwitter.com/*", "https://ghostarchive.org/*"],
+  "options_page": "auto-options.html",
   "icons": { "128": "icon128.png" },
-  "action": { "default_popup": "popup.html", "default_title": "ミュート一覧を1画面取り込む" },
+  "action": { "default_popup": "popup.html", "default_title": "Xトラッカー：自動保存・ミュート取り込み" },
   "background": { "service_worker": "background.js" },
   "content_scripts": [{
     "matches": ["https://yamada1221.github.io/x-archives/*"],
-    "js": ["bridge.js"],
+    "js": ["bridge.js", "archive-bridge.js"],
     "run_at": "document_idle"
   }]
 }

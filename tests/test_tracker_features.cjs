@@ -29,13 +29,13 @@ test('custom presets deduplicate without interpreting HTML and permit empty sett
   assert.deepEqual(u.normalizePhrases([]), []);
 });
 for (const [url, provider, status] of [
-  ['https://archive.md/Abc12', 'archive.today', 'done'],
-  ['https://archive.li/2026.10.12-093319/https://x.com/example', 'archive.today', 'done'],
+  ['https://archive.md/Abc12', 'archive.today', 'pending'],
+  ['https://archive.li/2026.10.12-093319/https://x.com/example', 'archive.today', 'pending'],
   ['https://archive.li/wip/Abc12', 'archive.today', 'pending'],
   ['https://archive.ph/wip/2026.10.12-093319/https://x.com/example', 'archive.today', 'pending'],
-  ['https://ghostarchive.org/archive/Ab123', 'ghostarchive', 'done'],
-  ['https://web.archive.org/web/20261012090000/https://x.com/example', 'wayback', 'done'],
-  ['https://perma.cc/ABCD-1234', 'perma', 'done'],
+  ['https://ghostarchive.org/archive/Ab123', 'ghostarchive', 'pending'],
+  ['https://web.archive.org/web/20261012090000/https://x.com/example', 'wayback', 'pending'],
+  ['https://perma.cc/ABCD-1234', 'perma', 'pending'],
 ]) test(`recognizes saved result ${url}`, () => assert.deepEqual(u.archiveResult(url), { url, provider, status }));
 for (const url of ['https://archive.md/', 'https://archive.md/submit', 'https://archive.md/about', 'https://archive.md/newest/https://x.com/example', 'https://ghostarchive.org/', 'https://ghostarchive.org/search?term=example', 'https://web.archive.org/save/https://x.com/example', 'https://web.archive.org/web/*/https://x.com/example', 'https://perma.cc/docs', 'javascript:alert(1)', 'https://ghostarchive.org.evil.test/archive/Ab123', 'https://user:pass@perma.cc/ABCD-1234']) {
   test(`does not treat form/search/unsafe URL as a saved result: ${url}`, () => assert.equal(u.archiveResult(url), null));
@@ -45,7 +45,7 @@ test('all existing archive links remain visible without migrating user data', ()
 });
 test('multiple providers preserve existing data; pending cannot downgrade completed captures', () => {
   const artist = { archive_url: 'https://archive.md/Abc12', archive_status: 'done', note: 'keep', monitoring: {last_result:'active'}, works: [{url:'https://example.com'}] };
-  u.recordArchive(artist, 'https://ghostarchive.org/archive/Ab123', 'https://x.com/example', '2026-10-13');
+  u.recordArchive(artist, 'https://ghostarchive.org/archive/Ab123', 'https://x.com/example', '2026-10-13', true);
   u.recordArchive(artist, 'https://archive.li/wip/Bcd23', 'https://x.com/example', '2026-10-13');
   assert.equal(artist.archive_status, 'done');
   assert.equal(artist.archive_url, 'https://ghostarchive.org/archive/Ab123');
@@ -97,7 +97,7 @@ test('a completed result clears only the same provider and target pending entry'
   const artist = {};
   u.recordArchive(artist,'https://archive.md/wip/Abc12','https://x.com/example','now');
   u.recordArchive(artist,'https://archive.md/wip/Bcd23','https://x.com/other','now');
-  u.recordArchive(artist,'https://archive.li/Cde34','https://x.com/example','later');
+  u.recordArchive(artist,'https://archive.li/Cde34','https://x.com/example','later', true);
   assert.equal(artist.archives.length,2);
   assert.equal(artist.archives[0].target_url,'https://x.com/other');
   assert.equal(artist.archive_status,'done');

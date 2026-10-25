@@ -11818,10 +11818,27 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/1765307184097923072/1wFbIdBw_normal.jpg",
       "x_bio": "札幌在住。個人アプリ開発で年商1億円&資産1億円💰のFIRE目指してます。主な収入源はサブスク課金とadmob広告です。0.2BTC₿。副業でSES企業の会社員もやってます（⚠️SESの毒吐きします）。FIREできるなら手段は問わず！ RISS情報処理安全確保支援士（士業）です。",
-      "x_bio_fetched_at": "2026-10-25T14:30:55.646869+00:00",
+      "x_bio_fetched_at": "2026-10-25T14:31:05.933907+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-25",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-25T14:31:06+00:00",
+        "x_account": "enkazashimo",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=enkazashimo",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/enkazashimo",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

@@ -11763,6 +11763,21 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=2067585961232625664; screen_name=nomal_user_a"
         }
       ]
+    },
+    {
+      "id": "mvnvbtdjorpx",
+      "name": "LOVE18483081",
+      "x_account": "LOVE18483081",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "ネトウヨ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-25",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

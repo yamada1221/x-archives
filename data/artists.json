@@ -11506,7 +11506,7 @@
     },
     {
       "id": "mvnks5s8431e",
-      "name": "nomal_user_a",
+      "name": "一般人A",
       "x_account": "nomal_user_a",
       "threads_account": "",
       "threads_share_url": "",
@@ -11516,8 +11516,31 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-25",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2067600978367692800/F05kZPhN_normal.jpg",
+      "x_bio": "ニュースやSNSで気になったことをメモ。\nみんなが思った「それな」と「いや、なんでだよ」を拾います。",
+      "x_bio_fetched_at": "2026-10-25T08:38:38.848441+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-10-25",
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-25T08:38:38+00:00",
+        "x_account": "nomal_user_a",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=nomal_user_a",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/nomal_user_a",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

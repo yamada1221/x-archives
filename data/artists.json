@@ -12008,7 +12008,7 @@
     },
     {
       "id": "mvo6lck134v5",
-      "name": "arjunsinghnwj81",
+      "name": "晒す!!【拡散】",
       "x_account": "arjunsinghnwj81",
       "threads_account": "",
       "threads_share_url": "",
@@ -12025,8 +12025,31 @@
       ],
       "threads_posts": [],
       "added_at": "2026-10-25",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2113580485163315200/N3XGEYC4_normal.jpg",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-10-25T18:49:11.672951+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-10-25",
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-25T18:49:11+00:00",
+        "x_account": "arjunsinghnwj81",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=arjunsinghnwj81",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/arjunsinghnwj81",
+          "error": "HTTPError 403"
+        }
+      }
     },
     {
       "id": "mvo6ltsrplpv",

@@ -129,6 +129,7 @@
       <button onclick="openConfig()" class="icon-btn" title="設定">⚙</button>
       <button onclick="syncToGitHub()" id="syncBtn">GitHubに保存</button>
       <button onclick="loadFromGitHub()" id="loadBtn">GitHubから読込</button>
+      <button onclick="openMuteImport()">ミュート画像を取り込む</button>
     </div>
   </div>
 
@@ -191,7 +192,28 @@
 </div>
 <div class="toast" id="toast"></div>
 
+<div class="modal-backdrop" id="muteImportModal" style="display:none">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="muteImportTitle" style="max-width:640px">
+    <h2 id="muteImportTitle">ミュート一覧の画像を取り込む</h2>
+    <p class="modal-hint">Xのミュート一覧を自分で開いてください。共有対象を選択すると、表示中の1画面を1回だけ取得して画面共有を終了します。保存画像は端末内で解析し、外部へ送信しません。初回の認識データ取得にはインターネット接続が必要です。</p>
+    <p><a href="https://x.com/settings/muted/all" target="_blank" rel="noopener noreferrer">Xのミュート一覧を開く</a></p>
+    <div class="row" style="margin:12px 0"><button id="muteCapture">表示中の1画面を取得</button><label>保存済み画像を選択 <input id="muteFile" type="file" accept="image/png,image/jpeg,image/webp" style="max-width:100%"></label></div>
+    <p class="field-hint" id="muteCaptureHint">共有対象にはXのミュート一覧のタブを選択してください。iPhoneなどでは画像ファイルの選択をご利用ください。</p>
+    <p id="muteStatus" role="status" aria-live="polite" class="field-hint" style="white-space:pre-wrap;margin:12px 0"></p>
+    <img id="mutePreview" alt="取り込んだ画像。候補のユーザー名を照合してください" hidden style="max-width:100%;max-height:280px;object-fit:contain">
+    <div class="modal-field"><label for="muteSourceAccount">ミュートした自分のXユーザー名（必須）</label><input id="muteSourceAccount" placeholder="@自分のアカウント" autocapitalize="none" spellcheck="false"></div>
+    <div class="modal-field"><label for="muteCandidates">画像と照合したユーザー名（1行に1件・編集可能）</label><textarea id="muteCandidates" rows="6" spellcheck="false" autocapitalize="none" style="width:100%;padding:8px;font:inherit"></textarea></div>
+    <details><summary>読み取り原文（候補に出なかった行の確認）</summary><pre id="muteRawText" style="white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px"></pre></details>
+    <label class="field-hint"><input id="muteConfirmed" type="checkbox"> 自分のミュート一覧の画像であることと、候補のユーザー名を確認しました</label>
+    <p class="field-hint">数値ユーザーIDや一覧全体は画像だけでは確認できません。画面外のユーザーのフラグは変更せず、プロフィール取得も自動実行しません。</p>
+    <div class="modal-actions"><button onclick="closeMuteImport()">閉じる</button><button id="muteRegister" class="primary">確認した候補を登録</button></div>
+  </div>
+</div>
+
 <script src="tracker-utils.js"></script>
+<script src="mute-import-utils.js"></script>
+<script src="vendor/tesseract/tesseract.min.js"></script>
+<script src="mute-import.js"></script>
 <script>
 let artists = [];
 let editingId = null;
@@ -681,6 +703,8 @@ function resetMonitoringForAccountEdit(artist, newAccount) {
     });
   }
   delete artist.x_user_id;
+  delete artist.x_muted;
+  delete artist.x_mute_observations;
   delete artist.monitoring;
   delete artist.x_bio;
   delete artist.x_bio_fetched_at;
@@ -1025,6 +1049,7 @@ function renderList() {
           ${fetchBadge(artist)}
           ${monitorBadge(artist)}
           ${archiveBadge(artist)}
+          ${artist.x_muted ? '<span class="status-tag pending">Xミュート確認</span>' : ''}
           <span class="chevron" id="chev_${esc(artist.id)}">▾</span>
         </div>
       </div>

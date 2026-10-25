@@ -55,6 +55,7 @@ async function fakeNetwork(){
       await route.fulfill({contentType:'text/html',body:'<!doctype html><title>Ghostarchive</title><form action="/archive2" method="POST"><label for="archive">Website to be archived:</label><input id="archive" name="archive"><button>Submit for archival</button></form>'});
     });
     let worker=context.serviceWorkers()[0]||await context.waitForEvent('serviceworker');
+    await require('./native_extension_startup.cjs')(worker);
     await worker.evaluate(async()=>{
       await chrome.storage.local.set({fixtureAPI:{versions:{'data/artists.json':1},docs:{'data/artists.json':{artists:[
         {id:'one',x_account:'Example',x_user_id:'1234567890123456789',tracking_mode:'record',note:'手元のメモ',threads_posts:[{id:'t',text:'残す'}]},

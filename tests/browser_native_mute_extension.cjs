@@ -12,6 +12,7 @@ const assert = require('node:assert/strict');
     let worker = context.serviceWorkers()[0];
     if (!worker) worker = await context.waitForEvent('serviceworker',{timeout:15000});
     assert.ok(worker.url().startsWith('chrome-extension://'));
+    await require('./native_extension_startup.cjs')(worker);
     const errors=[];
     context.on('page', page=>page.on('pageerror', error=>errors.push(error.message)));
     await context.route('https://yamada1221.github.io/x-archives/**',async route=>{

@@ -12005,6 +12005,28 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mvo6lck134v5",
+      "name": "arjunsinghnwj81",
+      "x_account": "arjunsinghnwj81",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "スパム",
+      "tracking_mode": "monitor_only",
+      "works": [
+        {
+          "url": "https://x.com/arjunsinghnwj81/status/2114087769375150578",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-10-25"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-10-25",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

@@ -11719,12 +11719,12 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/2067600978367692800/F05kZPhN_normal.jpg",
       "x_bio": "ニュースやSNSで気になったことをメモ。\nみんなが思った「それな」と「いや、なんでだよ」を拾います。",
-      "x_bio_fetched_at": "2026-10-25T14:32:52.412408+00:00",
+      "x_bio_fetched_at": "2026-10-25T14:33:04.742243+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-25",
       "profile_source": "fxtwitter",
       "profile_fetch_diagnostic": {
-        "checked_at": "2026-10-25T08:38:38+00:00",
+        "checked_at": "2026-10-25T14:33:04+00:00",
         "x_account": "nomal_user_a",
         "fetch_status_after_attempt": "done",
         "syndication": {

@@ -41,7 +41,7 @@
       const u = new URL(value);
       if (u.protocol !== 'https:' || u.username || u.password || u.port) return '';
       if (u.hostname === 'ghostarchive.org' && /^\/archive\/[A-Za-z0-9]+\/?$/.test(u.pathname)) return u.origin + u.pathname.replace(/\/$/, '');
-      if (ARCHIVE_HOSTS.includes(u.hostname) && (/^\/[A-Za-z0-9]{5}\/?$/.test(u.pathname) && u.pathname !== '/about' ||
+      if (ARCHIVE_HOSTS.includes(u.hostname) && (/^\/[A-Za-z0-9]{5}\/?$/.test(u.pathname) && u.pathname.replace(/\/$/, '') !== '/about' ||
           /^\/wip\/(?:[A-Za-z0-9]+|\d{4}\.\d{2}\.\d{2}-\d{6}(?:\/https?:\/\/.+)?)\/?$/.test(u.pathname) ||
           /^\/(?:\d{8,14}|\d{4}\.\d{2}\.\d{2}-\d{6})\/https?:\/\/.+/.test(u.pathname))) return u.origin + u.pathname.replace(/\/$/, '');
       return '';

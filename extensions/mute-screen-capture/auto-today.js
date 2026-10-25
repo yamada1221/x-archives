@@ -12,7 +12,7 @@
     const text = (document.body?.innerText || '').slice(0, 16000);
     const challenge = Boolean(document.querySelector('iframe[src*="challenges.cloudflare.com"],iframe[src*="recaptcha"],iframe[src*="hcaptcha"],input[name="cf-turnstile-response"],.g-recaptcha,.h-captcha,#challenge-form')) ||
       !content && /verify (?:that )?you are human|checking your browser|just a moment|captcha|unusual traffic|too many requests|access denied/i.test(document.title + '\n' + text);
-    const receiptPath = /^\/[A-Za-z0-9]{5}\/?$/.test(url.pathname) && url.pathname !== '/about' ||
+    const receiptPath = /^\/[A-Za-z0-9]{5}\/?$/.test(url.pathname) && url.pathname.replace(/\/$/, '') !== '/about' ||
       /^\/wip\/(?:[A-Za-z0-9]+|\d{4}\.\d{2}\.\d{2}-\d{6}(?:\/https?:\/\/.+)?)\/?$/.test(url.pathname) ||
       /^\/(?:\d{8,14}|\d{4}\.\d{2}\.\d{2}-\d{6})\/https?:\/\/.+/.test(url.pathname);
     const receipt = receiptPath ? url.origin + url.pathname.replace(/\/$/, '') : '';

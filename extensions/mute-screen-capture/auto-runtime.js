@@ -17,7 +17,9 @@
     // page's origin and cannot read this credential, including on browsers
     // which do not implement StorageArea.setAccessLevel.
     if (value.token) { await saveSettings(value); delete value.token; }
-    return { ...value, provider: C.provider(value.provider), token: await store.get('credential:' + C.scope(value), '') };
+    const provider = C.provider(value.provider);
+    return { ...value, provider, enabled: value.enabled === true && value.providerReady === C.adapterVersion(provider),
+      token: await store.get('credential:' + C.scope(value), '') };
   }
   async function device() {
     let id = (await chrome.storage.local.get(DEVICE))[DEVICE];
@@ -56,7 +58,7 @@
       if (!await chrome.alarms.get(SCAN)) await chrome.alarms.create(SCAN, { when: Math.max(Date.now() + 1000, state.nextScanAt || Date.now()), periodInMinutes: 360 });
     } else await chrome.alarms.clear(SCAN);
     const pending = state.jobs.some(j => !C.TERMINAL.has(j.state) &&
-      (cfg.enabled || j.submission_started_at || j.kind === 'connection_test')) || state.jobs.some(j => j.dirty || j.state === 'succeeded' && !j.applied);
+      (cfg.enabled || j.submission_started_at || j.receipt || j.kind === 'connection_test')) || state.jobs.some(j => j.dirty || j.state === 'succeeded' && !j.applied);
     if (pending) {
       if (!await chrome.alarms.get(STEP)) await chrome.alarms.create(STEP, { delayInMinutes: 1, periodInMinutes: 1 });
     } else await chrome.alarms.clear(STEP);

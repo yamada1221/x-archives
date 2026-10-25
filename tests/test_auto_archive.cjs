@@ -177,6 +177,8 @@ test('credential isolation survives browsers without StorageArea.setAccessLevel'
   assert.equal(result.configured,true);assert.equal(Object.hasOwn(local.autoArchiveSettings,'token'),false);
   assert.equal(await db.get('credential:yamada1221/x-archives:data/artists.json'),'private-fixture-token');
   assert.equal(JSON.stringify(result).includes('private-fixture-token'),false);
+  delete local.autoArchiveSettings.provider;local.autoArchiveSettings.enabled=true;local.autoArchiveSettings.providerReady='ghostarchive-dom-1';
+  const upgraded=await ctx.AutoArchiveRuntime.status(true);assert.equal(upgraded.provider,'archive.today');assert.equal(upgraded.ready,false);assert.equal(upgraded.enabled,false);
   await ctx.AutoArchiveRuntime.handle({type:'AUTO_SAVE',config:{token:'',provider:'ghostarchive'}},{id:'mine',url:'chrome-extension://mine/auto-options.html'});
   assert.equal(local.autoArchiveSettings.provider,'ghostarchive');
   assert.equal(await db.get('credential:yamada1221/x-archives:data/artists.json'),'private-fixture-token');
@@ -186,7 +188,7 @@ test('new and upgraded settings default to archive.li and cannot reuse Ghostarch
   assert.equal(config.provider,'archive.today');assert.equal(C.homeURL(config.provider),'https://archive.li/');
   assert.notEqual(config.providerReady,C.adapterVersion(config.provider));
   assert.equal(C.config({token:'fixture',provider:'archive.li'}).provider,'archive.today');
-  assert.throws(()=>C.config({token:'fixture',provider:'unknown'}));
+  for(const provider of ['unknown','toString','__proto__'])assert.throws(()=>C.config({token:'fixture',provider}));
   assert.equal(C.eligible({...artist(),auto_archive:{provider:'archive.li'}},config.provider),true);
   assert.equal(C.eligible({...artist(),auto_archive:{provider:'ghostarchive'}},config.provider),false);
 });
@@ -194,7 +196,7 @@ test('archive.today receipts accept only known HTTPS hosts and capture paths',()
   for(const url of ['https://archive.li/Ab123','https://archive.ph/wip/Ab123','https://archive.li/2026.10.26-012345/https://x.com/Example']) {
     assert.equal(C.resultURL(url),url);assert.equal(C.resultProvider(url),'archive.today');
   }
-  for(const url of ['https://archive.li.evil/Ab123','https://archive.li/submit?url=https://x.com/Example','https://archive.li/about','https://user:pw@archive.li/Ab123','http://archive.li/Ab123','https://archive.li:444/Ab123','https://archive.li/https://x.com/Example'])assert.equal(C.resultURL(url),'');
+  for(const url of ['https://archive.li.evil/Ab123','https://archive.li/submit?url=https://x.com/Example','https://archive.li/about','https://archive.li/about/','https://user:pw@archive.li/Ab123','http://archive.li/Ab123','https://archive.li:444/Ab123','https://archive.li/https://x.com/Example'])assert.equal(C.resultURL(url),'');
   assert.throws(()=>C.ledger({version:1,jobs:[{job_id:'bad',state:'processing',provider:'archive.today',receipt:'https://ghostarchive.org/archive/Ab123'}],reservations:[],provider:{}}));
 });
 test('archive.li transitions from WIP to a verified capture without another submission',async()=>{

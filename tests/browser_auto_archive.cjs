@@ -97,9 +97,16 @@ async function fakeNetwork(){
     assert.equal((await state()).jobs.find(j=>j.artist_id==='one').state,'processing');
     // Stop the actual MV3 worker. IndexedDB and the shared receipt must survive;
     // waking it must not cause the form POST to run a second time.
-    const cdp=await context.newCDPSession(page);await cdp.send('ServiceWorker.enable');await cdp.send('ServiceWorker.stopAllWorkers');
+    // Close the extension worker's target, as in Chrome's termination testing
+    // guide. stopAllWorkers can reuse the CDP target and leave Playwright 1.51
+    // waiting for a new worker event which Chrome never emits.
+    const cdp=await context.newCDPSession(page), {targetInfos}=await cdp.send('Target.getTargets');
+    const target=targetInfos.find(t=>t.type==='service_worker'&&t.url===worker.url());assert.ok(target);
+    await worker.evaluate(()=>{globalThis.fixtureBeforeRestart=true;});
     const nextWorker=context.waitForEvent('serviceworker');
-    await page.evaluate(()=>chrome.runtime.sendMessage({type:'AUTO_STATUS'}));worker=await nextWorker;await worker.evaluate(fakeNetwork);
+    const stopped=await cdp.send('Target.closeTarget',{targetId:target.targetId});assert.equal(stopped.success,true);
+    await page.evaluate(()=>chrome.runtime.sendMessage({type:'AUTO_STATUS'}));worker=await nextWorker;
+    assert.equal(await worker.evaluate(()=>typeof fixtureBeforeRestart),'undefined');await worker.evaluate(fakeNetwork);
     captures.get('Fixture2').ready=true;await second.reload();await second.frameLocator('iframe').locator('[data-testid="UserName"]').waitFor();
     await due();assert.equal(posts,2);
     const final=await state();assert.equal(final.jobs.find(j=>j.artist_id==='one').state,'succeeded');

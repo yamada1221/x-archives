@@ -10926,7 +10926,15 @@
           "at": "2026-10-23T09:25:23+00:00",
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1397197799566069768; screen_name=soccer07011e"
         }
-      ]
+      ],
+      "x_mute_observations": {
+        "yaoroz_clean": {
+          "muted": true,
+          "observed_at": "2026-10-25T03:11:12.580Z",
+          "source": "screenshot_reviewed"
+        }
+      },
+      "x_muted": true
     },
     {
       "id": "mvlcjsgmmjt3",
@@ -11083,7 +11091,15 @@
           "at": "2026-10-24T08:57:12+00:00",
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=630016998; screen_name=marines_swimmer"
         }
-      ]
+      ],
+      "x_mute_observations": {
+        "yaoroz_clean": {
+          "muted": true,
+          "observed_at": "2026-10-25T03:11:12.580Z",
+          "source": "screenshot_reviewed"
+        }
+      },
+      "x_muted": true
     },
     {
       "id": "mvm7win1lvky",
@@ -11135,7 +11151,15 @@
       "archive_url": "https://archive.li/2026.10.24-095041/https://x.com/916jfa/with_replies",
       "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/916jfa/with_replies",
-      "archive_checked_at": "2026-10-24T09:54:07.727Z"
+      "archive_checked_at": "2026-10-24T09:54:07.727Z",
+      "x_mute_observations": {
+        "yaoroz_clean": {
+          "muted": true,
+          "observed_at": "2026-10-25T03:11:12.580Z",
+          "source": "screenshot_reviewed"
+        }
+      },
+      "x_muted": true
     },
     {
       "id": "mvmb41skta0z",
@@ -11222,7 +11246,15 @@
       "archive_url": "https://archive.li/RPTHd",
       "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/pokehanhi/with_replies",
-      "archive_checked_at": "2026-10-24T11:54:33.709Z"
+      "archive_checked_at": "2026-10-24T11:54:33.709Z",
+      "x_mute_observations": {
+        "yaoroz_clean": {
+          "muted": true,
+          "observed_at": "2026-10-25T03:11:12.580Z",
+          "source": "screenshot_reviewed"
+        }
+      },
+      "x_muted": true
     },
     {
       "id": "mvmcm2ze2h72",
@@ -11274,7 +11306,37 @@
       "archive_url": "https://archive.li/2026.10.24-120224/https://x.com/gvahBzBIhQo3QX4/with_replies",
       "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/gvahBzBIhQo3QX4/with_replies",
-      "archive_checked_at": "2026-10-24T12:06:03.109Z"
+      "archive_checked_at": "2026-10-24T12:06:03.109Z",
+      "x_mute_observations": {
+        "yaoroz_clean": {
+          "muted": true,
+          "observed_at": "2026-10-25T03:11:12.580Z",
+          "source": "screenshot_reviewed"
+        }
+      },
+      "x_muted": true
+    },
+    {
+      "id": "mvndntf0zoki",
+      "name": "tamanegir41120",
+      "x_account": "tamanegir41120",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "親露派",
+      "tracking_mode": "monitor_only",
+      "works": [
+        {
+          "url": "https://x.com/tamanegir41120/status/1630936716306698241",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-10-25"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-10-25",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

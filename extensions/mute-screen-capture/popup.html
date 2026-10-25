@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><title>ミュート画面取り込み</title>
+<style>body{width:330px;margin:16px;font:14px/1.6 system-ui,sans-serif;color:#202020}h1{font-size:17px}button,input{box-sizing:border-box;width:100%;padding:10px;margin:6px 0;font:inherit}button{cursor:pointer;border:1px solid #bbb;border-radius:8px;background:#fff}#capture{background:#202020;color:#fff}button:disabled{opacity:.5}small{color:#555}#status{white-space:pre-wrap}label{display:block}</style></head>
+<body><h1>ミュート一覧を1画面取り込む</h1>
+<p>Xのミュート一覧を開いた状態で押してください。表示中の1画面だけを撮影し、トラッカーで画像認識と確認を行います。</p>
+<label for="source">自分のXユーザー名（任意）</label><input id="source" placeholder="@example" autocomplete="off" autocapitalize="none" spellcheck="false">
+<button id="capture">この1画面を取り込む</button><button id="open">Xのミュート一覧を開く</button>
+<p id="status" role="status" aria-live="polite"></p>
+<small>自動スクロール・自動ミュートは行いません。続きがある場合は、X側で手動スクロールして再度押してください。画像は外部の認識サービスへ送信しません。</small>
+<script src="popup.js"></script></body></html>

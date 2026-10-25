@@ -6,6 +6,10 @@ on:
       - 'mute-import*.js'
       - 'vendor/tesseract/**'
       - 'tests/*mute_import*'
+      - 'tests/*mute_extension*'
+      - 'extensions/mute-screen-capture/**'
+      - 'scripts/package_mute_extension.py'
+      - 'downloads/x-tracker-mute-capture-*.zip'
       - '.github/workflows/test_mute_import.yml'
   workflow_dispatch:
 permissions:
@@ -18,10 +22,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - run: node --test tests/test_mute_import.cjs
+      - run: node --test tests/test_mute_import.cjs tests/test_mute_extension.cjs
+      - name: Check extension ZIP matches source
+        run: |
+          python scripts/package_mute_extension.py
+          git diff --exit-code -- downloads/
       - run: npm install --no-save --package-lock=false playwright@1.51.1
       - run: npx playwright install --with-deps chromium
       - name: Check image review and single-frame capture
         run: |
           python -m http.server 8765 --bind 127.0.0.1 > /tmp/tracker-http.log 2>&1 &
           node tests/browser_mute_import.cjs
+          node tests/browser_mute_extension.cjs
+          node tests/browser_native_mute_extension.cjs

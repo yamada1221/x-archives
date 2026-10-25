@@ -87,6 +87,27 @@
     setBusy(true);
     try { await recognize(file); } finally { setBusy(false); }
   });
+  window.addEventListener('message', async event => {
+    if (event.source !== window || event.origin !== location.origin) return;
+    if (event.data?.type === 'X_TRACKER_MUTE_SCREEN_PING') {
+      window.postMessage({ type: 'X_TRACKER_MUTE_SCREEN_READY' }, location.origin);
+      return;
+    }
+    if (event.data?.type !== 'X_TRACKER_MUTE_SCREEN_IMAGE') return;
+    const data = event.data.imageData;
+    if (typeof data !== 'string' || data.length > 4 * 1024 * 1024 || !/^data:image\/png;base64,[A-Za-z0-9+/]+={0,2}$/.test(data)) return;
+    openMuteImport();
+    if (busy) { status('画像を解析中です。完了後、X側で拡張機能をもう一度押してください。'); return; }
+    setBusy(true);
+    try {
+      const bytes = Uint8Array.from(atob(data.split(',')[1]), value => value.charCodeAt(0));
+      if (event.data.sourceAccount) {
+        try { $('muteSourceAccount').value = MuteImportUtils.account(event.data.sourceAccount); } catch (_) {}
+      }
+      await recognize(new Blob([bytes], { type: 'image/png' }));
+    } catch (error) { status('拡張機能の画像を読み込めませんでした: ' + error.message); }
+    finally { setBusy(false); }
+  });
   $('muteCapture').addEventListener('click', async () => {
     if (busy) return;
     setBusy(true);

@@ -4,13 +4,13 @@ Xアカウントの死活監視・アーカイブと、Threadsプロフィール
 
 ## 拡張機能による自動アーカイブ
 
-PC版Chrome／Edgeの拡張機能 v1.2.0 に、自動アーカイブを追加しました。拡張機能の設定画面でGitHubへ接続し、公開プロフィール1件の接続テストが本文確認まで完了したら「自動保存を開始」を押します。
+PC版Chrome／Edgeの拡張機能 v1.3.0 は、archive.liを自動アーカイブの既定の保存先にしています。Ghostarchiveも設定で選べます。拡張機能の設定画面でGitHubへ接続し、公開プロフィール1件の接続テストが本文確認まで完了したら「自動保存を開始」を押します。
 
 「記録対象」の未保存プロフィールをGhostarchiveへ保存し、保存先の本文とアカウントを照合して結果URLをGitHubへ反映します。既存の保存済み・監視のみは新規保存対象にしません。トラッカーのタブを閉じても動作し、ブラウザ終了・PCスリープ時は待機、起動・復帰後に続行します。詳しい設定と再開方法は[拡張機能の説明](extensions/mute-screen-capture/README.md)、構成と検証は[自動アーカイブ](docs/auto-archive-extension.md)を参照してください。
 
 ## ミュート一覧の1画面取り込み
 
-PC版Chrome / Edge用の[拡張機能ZIP](downloads/x-tracker-mute-capture-v1.2.0.zip)を用意しています。[インストール手順](extensions/mute-screen-capture/README.md)に従って読み込み、Xのミュート一覧で拡張機能の「この1画面を取り込む」を押すと、画像をトラッカーへ渡して候補確認画面を開きます。Xのページにはスクリプトを挿入しません。
+PC版Chrome / Edge用の[拡張機能ZIP](downloads/x-tracker-mute-capture-v1.3.0.zip)を用意しています。[インストール手順](extensions/mute-screen-capture/README.md)に従って読み込み、Xのミュート一覧で拡張機能の「この1画面を取り込む」を押すと、画像をトラッカーへ渡して候補確認画面を開きます。Xのページにはスクリプトを挿入しません。
 
 画面上部の「ミュート画像を取り込む」から利用します。自分でXのミュート一覧を開き、PCでは「表示中の1画面を取得」で共有するXのタブを選択してください。取得するのは1フレームだけで、直後に共有を終了します。自動巡回・スクロール・ミュート操作・X APIへのリクエストは行いません。iPhoneなど画面共有に非対応の環境では、保存済みスクリーンショットを選択できます。
 
@@ -32,7 +32,7 @@ PC版Chrome / Edge用の[拡張機能ZIP](downloads/x-tracker-mute-capture-v1.2.
 
 ## アーカイブ先の選択
 
-保存ヘルパーで **archive.md / archive.li / Ghostarchive / Wayback Machine / Perma.cc** を選べます。選択した保存先をこのブラウザで記憶します。対象URLをコピーしてサービス側で保存し、保存結果URLを記録してください。Waybackには過去の保存検索も用意しています。
+保存ヘルパーの既定は **archive.li** です。ウェブ魚拓 / archive.md / Ghostarchive / Wayback Machine / Perma.ccも選べます。選択した保存先をこのブラウザで記憶します。対象URLをコピーしてサービス側で保存し、保存結果URLを記録してください。Waybackには過去の保存検索も用意しています。
 
 複数サービス・複数時点の結果URLは `archives` に保持し、既存の保存結果も引き続き開けます。従来の `archive_url` 等は互換用に残します。サービスを開くだけでは保存済みになりません。X本文が保存できたかは保存先で確認が必要です。
 

@@ -18,7 +18,7 @@
       return this.git.update(CONFIG, old => {
         if (old && (old.version !== 1 || old.artists_path !== this.config.path)) throw Error('共通設定のデータファイルが一致しません');
         if (old?.executor_device_id && old.executor_device_id !== this.device && !takeover) throw Error('別のブラウザが実行担当です。「このブラウザへ引き継ぐ」を選んでください');
-        return { ...old, version: 1, enabled: old?.enabled !== false, artists_path: this.config.path, provider: 'ghostarchive',
+        return { ...old, version: 1, enabled: old?.enabled !== false, artists_path: this.config.path, provider: this.config.provider,
           executor_device_id: this.device, daily_limit: 20, interval_ms: C.MINUTE };
       });
     }
@@ -33,11 +33,13 @@
         const shared = await this.git.update(JOBS, old => {
           const d = C.ledger(old), i = d.jobs.findIndex(j => j.job_id === job.job_id), r = d.jobs[i];
           if (r && (r.artist_id !== job.artist_id || (r.expected_x_user_id && job.expected_x_user_id && r.expected_x_user_id !== job.expected_x_user_id))) throw Error('共有ジョブのアカウントが一致しません');
-          if (r?.receipt && job.receipt && r.receipt !== job.receipt) throw Error('受付URLが競合しています。結果を確認してください');
+          const progressed = r?.receipt && job.receipt_history?.includes(r.receipt) && C.receiptTransition(r.receipt, job.receipt);
+          const remoteProgressed = job.receipt && r?.receipt_history?.includes(job.receipt) && C.receiptTransition(job.receipt, r.receipt);
+          if (r?.receipt && job.receipt && r.receipt !== job.receipt && !progressed && !remoteProgressed) throw Error('受付URLが競合しています。結果を確認してください');
           // A stale cache must not undo a completed capture or a receipt recovered
           // by another executor. Preserve the remote evidence in that case.
           let value = this.publicJob(job);
-          if (r?.state === 'succeeded' || (r?.receipt && !job.receipt) || (r?.submission_started_at && !job.submission_started_at)) value = r;
+          if (r?.state === 'succeeded' || remoteProgressed || (r?.receipt && !job.receipt) || (r?.submission_started_at && !job.submission_started_at)) value = r;
           if (i < 0) d.jobs.push(value); else d.jobs[i] = value;
           return d;
         });
@@ -48,8 +50,8 @@
       for (const job of state.jobs.filter(j => j.state === 'succeeded' && !j.applied)) {
         if (job.kind !== 'connection_test') {
           await this.git.update(this.config.path, doc => { C.applyResult(doc, job); return doc; });
-        } else if (job.executor_device_id === this.device && job.adapter_version === C.ADAPTER_VERSION && job.verification?.ok) {
-          await this.ready(C.ADAPTER_VERSION);
+        } else if (job.executor_device_id === this.device && job.provider === this.config.provider && job.adapter_version === C.adapterVersion(this.config.provider) && job.verification?.ok) {
+          await this.ready(job.adapter_version);
         }
         job.applied = true;
         await this.save(state);
@@ -72,32 +74,42 @@
         const shared = await this.sharedConfig();
         if (shared.executor_device_id !== this.device) throw Error('このブラウザを実行担当にしてください');
         const s = await this.state(); await this.importJobs(s);
+        for (const j of s.jobs.filter(j => j.kind === 'connection_test' && !C.TERMINAL.has(j.state) && (j.provider || 'ghostarchive') !== this.config.provider && !j.receipt && !j.submission_started_at)) {
+          j.state = 'canceled'; j.last_error = '保存先が変わったため未送信の接続テストを中止しました'; this.put(s, j);
+          await this.ghost.close(j).catch(() => {});
+        }
         if (s.jobs.some(j => j.kind === 'connection_test' && !C.TERMINAL.has(j.state))) throw Error('接続テストは既に実行中です');
         this.put(s, { job_id: this.uuid(), kind: 'connection_test', artist_id: 'connection-test:' + this.device,
-          registered_handle: 'X', expected_x_user_id: '783214', state: 'queued', provider: 'ghostarchive',
-          created_at: new Date(this.now()).toISOString(), attempt_count: 0, next_attempt_at: this.now(), executor_device_id: this.device, adapter_version: C.ADAPTER_VERSION });
+          registered_handle: 'X', expected_x_user_id: '783214', state: 'queued', provider: this.config.provider,
+          created_at: new Date(this.now()).toISOString(), attempt_count: 0, next_attempt_at: this.now(), executor_device_id: this.device, adapter_version: C.adapterVersion(this.config.provider) });
         await this.save(s); await this.flush(s);
       } finally { await this.store.release(this.key, lock); }
     }
     async scan(state, force) {
-      if (!this.config.enabled || this.config.providerReady !== C.ADAPTER_VERSION || (!force && state.nextScanAt > this.now())) return;
+      if (!this.config.enabled || this.config.providerReady !== C.adapterVersion(this.config.provider) || (!force && state.nextScanAt > this.now())) return;
+      // Unsent work follows a changed default. A submitted job keeps its
+      // original adapter and receipt, even after the selected provider changes.
+      for (const j of state.jobs.filter(j => !C.TERMINAL.has(j.state) && (j.provider || 'ghostarchive') !== this.config.provider && !j.receipt && !j.submission_started_at)) {
+        j.state = 'canceled'; j.last_error = '保存先の変更に合わせて未送信のジョブを中止しました';
+        this.put(state, j); await this.ghost.close(j).catch(() => {});
+      }
       const data = await this.artists();
       let added = 0;
       for (const a of data.artists) {
         if (added >= 5) break;
-        if (!C.eligible(a) || C.completed(a)) continue;
+        if (!C.eligible(a, this.config.provider) || C.completed(a)) continue;
         if (state.jobs.some(j => j.artist_id === a.id &&
           (j.expected_x_user_id && a.x_user_id ? j.expected_x_user_id === a.x_user_id : j.registered_handle.toLowerCase() === a.x_account.toLowerCase()) &&
           (!['canceled', 'skipped'].includes(j.state) || j.receipt || j.submission_started_at))) continue;
-        const pending = (a.archives || []).find(e => e.provider === 'ghostarchive' && C.resultURL(e.url) &&
+        const pending = (a.archives || []).find(e => C.resultProvider(e.url) === this.config.provider && C.resultURL(e.url) &&
           C.profileURL(e.target_url) === C.profileURL('https://x.com/' + a.x_account));
         this.put(state, { job_id: this.uuid(), kind: 'profile', artist_id: a.id, registered_handle: a.x_account,
           ...(pending ? { receipt: C.resultURL(pending.url), adopted_existing: true } : {}),
-          expected_x_user_id: a.x_user_id || '', state: 'queued', provider: 'ghostarchive', created_at: new Date(this.now()).toISOString(),
+          expected_x_user_id: a.x_user_id || '', state: 'queued', provider: this.config.provider, created_at: new Date(this.now()).toISOString(),
           attempt_count: 0, next_attempt_at: this.now(), executor_device_id: this.device });
         added++;
       }
-      state.candidateCount = data.artists.filter(a => C.eligible(a) && !C.completed(a)).length;
+      state.candidateCount = data.artists.filter(a => C.eligible(a, this.config.provider) && !C.completed(a)).length;
       state.nextScanAt = this.now() + 6 * C.HOUR;
       await this.save(state);
     }
@@ -130,7 +142,7 @@
         d.reservations = d.reservations.filter(r => now - r.at < C.DAY);
         const daily = Math.min(20, Number(shared.daily_limit) || 20);
         if (d.reservations.length >= daily) throw Error('直近24時間の保存依頼上限に達しています');
-        if (d.provider?.paused_until > now) throw Error('保存先の自動処理を一時停止しています');
+        if ((d.provider?.name || 'ghostarchive') === (job.provider || 'ghostarchive') && d.provider?.paused_until > now) throw Error('保存先の自動処理を一時停止しています');
         if (d.reservations.some(r => now - r.at < C.MINUTE)) throw Error('保存依頼の間隔を空けて待機しています');
         if (d.jobs.filter(j => ['submitting', 'processing', 'verifying', 'submission_unknown'].includes(j.state)).length >= 5) throw Error('保存処理中の案件が5件あるため待機しています');
         job.state = 'submitting'; job.submission_started_at = new Date(now).toISOString(); job.operation_id = this.uuid();
@@ -144,7 +156,7 @@
       job.state = 'needs_review'; job.last_error = reason;
       this.put(state, job); await this.save(state);
       if (pause) {
-        await this.git.update(JOBS, old => { const d = C.ledger(old); d.provider = { paused_until: this.now() + C.DAY, reason }; return d; });
+        await this.git.update(JOBS, old => { const d = C.ledger(old); d.provider = { name: job.provider || 'ghostarchive', paused_until: this.now() + C.DAY, reason }; return d; });
       }
     }
     async run({ forceScan = false } = {}) {
@@ -161,7 +173,8 @@
         const inflight = j => ['submitting', 'submission_unknown', 'processing', 'verifying'].includes(j.state);
         const job = state.jobs.filter(j => !C.TERMINAL.has(j.state) && (j.next_attempt_at || 0) <= this.now() &&
           ((inflight(j) && (executor || !shared && j.executor_device_id === this.device)) ||
-            (executor && shared.enabled !== false && (this.config.enabled && this.config.providerReady === C.ADAPTER_VERSION || j.kind === 'connection_test' && j.executor_device_id === this.device))))
+            (executor && shared.enabled !== false && (j.provider || 'ghostarchive') === this.config.provider &&
+              (this.config.enabled && this.config.providerReady === C.adapterVersion(this.config.provider) || j.kind === 'connection_test' && j.executor_device_id === this.device))))
           .sort((a, b) => Number(inflight(b)) - Number(inflight(a)) || (a.next_attempt_at || 0) - (b.next_attempt_at || 0))[0];
         if (job) {
           try { await this.advance(state, job, shared); }
@@ -201,7 +214,7 @@
           job.state = 'skipped'; job.last_error = '同じアカウントの保存依頼を既存ジョブで追跡しています';
         } else { job.state = job.receipt ? 'processing' : 'opening'; job.next_attempt_at = this.now(); job.last_error = ''; }
         this.put(state, job); await this.save(state); await this.flush(state);
-        if (job.state === 'opening') await this.ghost.open(job, 'https://ghostarchive.org/');
+        if (job.state === 'opening') await this.ghost.open(job, C.homeURL(job.provider || 'ghostarchive'));
         return;
       }
       if (job.state === 'opening') {
@@ -231,7 +244,7 @@
       }
       if (job.state === 'submitting' || job.state === 'submission_unknown') {
         const result = await this.ghost.reconcile(job);
-        const receipt = C.resultURL(result.receipt);
+        const receipt = C.resultProvider(result.receipt) === (job.provider || 'ghostarchive') ? C.resultURL(result.receipt) : '';
         if (receipt) { job.receipt = receipt; job.state = 'processing'; job.last_error = ''; job.next_attempt_at = this.now() + C.MINUTE; this.put(state, job); }
         else if (result.kind === 'loading' || result.kind === 'form') {
           job.receipt_checks = (job.receipt_checks || 0) + 1;
@@ -245,7 +258,13 @@
         const page = await this.ghost.inspect(job);
         if (page.kind === 'blocked') return this.review(state, job, '保存先で人間確認・アクセス制限が必要です', true);
         if (!['archive', 'processing', 'loading'].includes(page.kind)) return this.review(state, job, '保存結果の形式を確認できません');
+        if (page.receipt && C.resultURL(page.receipt) !== job.receipt) {
+          if (!C.receiptTransition(job.receipt, page.receipt)) return this.review(state, job, '保存結果URLが変わっています。対象を確認してください');
+          job.receipt_history = [...new Set([...(job.receipt_history || []), job.receipt])]; job.receipt = C.resultURL(page.receipt);
+          this.put(state, job); await this.save(state);
+        }
         if (page.kind === 'archive') {
+          if (C.processingURL(job.receipt)) return this.review(state, job, '処理中のURLから保存完了を確認できません');
           const evidence = C.verify(page, page.frames || [], job, this.now());
           if (evidence.ok) {
             if (!evidence.archived_user_id) await this.profile(job.identity.handle, job.expected_x_user_id);
@@ -260,11 +279,16 @@
       }
     }
     async adopt(jobId, value) {
-      const receipt = C.resultURL(value); if (!receipt) throw Error('Ghostarchiveの保存結果URLを入力してください');
+      const receipt = C.resultURL(value); if (!receipt) throw Error('保存先の保存結果URLを入力してください');
       const owner = this.uuid(); if (!await this.store.acquire(this.key, owner, this.now())) throw Error('処理中です。少し待ってください');
       try {
         const state = await this.state(); const job = state.jobs.find(j => j.job_id === jobId);
         if (!job || !job.identity || job.state === 'succeeded') throw Error('確認対象のジョブが見つかりません');
+        if (C.resultProvider(receipt) !== (job.provider || 'ghostarchive')) throw Error('このジョブと同じ保存先の結果URLを入力してください');
+        if (job.receipt && receipt !== job.receipt) {
+          if (!C.receiptTransition(job.receipt, receipt)) throw Error('受付済みの結果URLを別の保存に変更できません');
+          job.receipt_history = [...new Set([...(job.receipt_history || []), job.receipt])];
+        }
         job.receipt = receipt; job.state = 'processing'; job.next_attempt_at = this.now(); job.verification_checks = 0;
         this.put(state, job); await this.save(state); await this.flush(state);
       } finally { await this.store.release(this.key, owner); }

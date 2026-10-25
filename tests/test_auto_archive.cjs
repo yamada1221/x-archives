@@ -12,9 +12,9 @@ class MemoryStore {
   async release(k){this.locks.delete(k);}
 }
 const artist=()=>({id:'one',x_account:'Example',x_user_id:'1234567890123456789',tracking_mode:'record',note:'残すメモ',threads_posts:[{id:'t',text:'残す'}],x_mute_observations:{owner:{muted:true}}});
-function setup(rows=[artist()]) {
+function setup(rows=[artist()],selected='ghostarchive') {
   let now=Date.parse('2026-10-25T15:00:00Z'), n=0;
-  const config=C.config({token:'fixture',enabled:true,providerReady:C.ADAPTER_VERSION});
+  const config=C.config({token:'fixture',enabled:true,provider:selected,providerReady:C.adapterVersion(selected)});
   const docs=new Map([[config.path,{artists:clone(rows),unrelated_summary:{keep:true}}],[CONFIG,{version:1,enabled:true,executor_device_id:'device',artists_path:config.path}]]);
   const store=new MemoryStore(), calls={post:0,opened:0,closed:0,ready:[],writes:[]};
   const git={get:async k=>({data:clone(docs.get(k)||null),sha:'v'}),update:async(k,f)=>{
@@ -24,7 +24,7 @@ function setup(rows=[artist()]) {
   const ghost={open:async()=>{calls.opened++;},close:async()=>{calls.closed++;},show:async()=>{},
     inspect:async j=>j.state==='opening'?{kind:'form'}:{kind:'archive',receipt:j.receipt,original_url:j.target_url,captured_at:new Date(now).toISOString(),frames:[{kind:'profile',handle:'Example',name:'例',bio:'自己紹介',following:true,user_id:'1234567890123456789',post_ids:['987654321']}]},
     submit:async()=>{calls.post++;if(calls.crashPost)throw Error('fixture worker shutdown');return{submitted:true};},
-    reconcile:async()=>calls.lostReceipt?{kind:'unresolved',reason:'URL不明'}:{kind:'processing',receipt:'https://ghostarchive.org/archive/Ab123'}
+    reconcile:async()=>calls.lostReceipt?{kind:'unresolved',reason:'URL不明'}:{kind:'processing',receipt:selected==='ghostarchive'?'https://ghostarchive.org/archive/Ab123':'https://archive.li/wip/Ab123'}
   };
   const deps={config,store,git,ghost,device:'device',profile:async(h,id)=>({id:id||'1234567890123456789',handle:h,name:'例',bio:'自己紹介'}),now:()=>now,uuid:()=>`job-${++n}`,ready:async v=>calls.ready.push(v),canSubmit:async()=>calls.stopped!==true};
   const make=()=>new Engine(deps); let engine=make();
@@ -116,7 +116,7 @@ test('connection test is allowed while automatic sending is off and only body ve
   const a=setup([]);a.config.enabled=false;a.config.providerReady='';a.deps.profile=async()=>({id:'783214',handle:'X',name:'X',bio:"what's happening?!"});
   a.ghost.inspect=async j=>j.state==='opening'?{kind:'form'}:{kind:'archive',original_url:'https://x.com/X',captured_at:new Date(a.now()).toISOString(),frames:[{kind:'profile',handle:'X',name:'X',bio:"what's happening?!",following:true,user_id:'783214'}]};
   a.restart();await a.engine.enqueueTest();await a.run();a.advance();await a.run();assert.equal(a.calls.ready.length,0);
-  a.advance();await a.run();a.advance();await a.run();assert.deepEqual(a.calls.ready,[C.ADAPTER_VERSION]);assert.equal(a.docs.get(a.config.path).artists.length,0);
+  a.advance();await a.run();a.advance();await a.run();assert.deepEqual(a.calls.ready,[C.adapterVersion('ghostarchive')]);assert.equal(a.docs.get(a.config.path).artists.length,0);
 });
 test('FxTwitter responses require exact string ID, identity, public state and a successful response',()=>{
   const p={code:200,user:{id:'123',screen_name:'NewName',name:'名前',description:''}};
@@ -146,14 +146,14 @@ test('Contents API CAS retries merge new remote fields; bearer token stays on th
 });
 test('extension grants no automatic X page scripting and asks only for the archive module origins',()=>{
   const m=JSON.parse(fs.readFileSync(base+'/manifest.json'));
-  assert.deepEqual(m.optional_permissions,['scripting']);assert.deepEqual(m.optional_host_permissions,['https://api.github.com/*','https://api.fxtwitter.com/*','https://ghostarchive.org/*']);
+  assert.deepEqual(m.optional_permissions,['scripting']);assert.deepEqual(m.optional_host_permissions,[...C.origins(C.DEFAULT_PROVIDER),'https://ghostarchive.org/*']);
   assert.ok(m.content_scripts.every(c=>c.matches.every(p=>p.startsWith('https://yamada1221.github.io/x-archives/'))));
 });
 test('web pages and other extensions cannot save credentials, start tests or take over the executor',async()=>{
   const ctx={URL,Date,Set,Map,Promise,structuredClone,TextEncoder,TextDecoder,AbortController,setTimeout,clearTimeout,crypto:require('node:crypto').webcrypto};
   const data={},listeners=[];ctx.chrome={runtime:{id:'mine',getURL:p=>'chrome-extension://mine/'+p,onStartup:{addListener:f=>listeners.push(f)},onInstalled:{addListener:f=>listeners.push(f)}},
     storage:{local:{get:async k=>({[k]:data[k]}),set:async d=>Object.assign(data,d),setAccessLevel:async()=>{}}},alarms:{onAlarm:{addListener:()=>{}}}};
-  vm.createContext(ctx);for(const name of ['auto-core','auto-storage','auto-github','auto-ghost','auto-engine','auto-runtime'])vm.runInContext(fs.readFileSync(base+'/'+name+'.js','utf8'),ctx);
+  vm.createContext(ctx);for(const name of ['auto-core','auto-storage','auto-github','auto-ghost','auto-today','auto-engine','auto-runtime'])vm.runInContext(fs.readFileSync(base+'/'+name+'.js','utf8'),ctx);
   for(const type of ['AUTO_SAVE','AUTO_START','AUTO_TEST','AUTO_CLAIM','AUTO_ADOPT']){
     await assert.rejects(ctx.AutoArchiveRuntime.handle({type},{id:'mine',url:'https://yamada1221.github.io/x-archives/',frameId:0,tab:{id:1}}),/拡張機能の画面/);
     await assert.rejects(ctx.AutoArchiveRuntime.handle({type},{id:'other',url:'chrome-extension://mine/auto-options.html'}));
@@ -168,7 +168,7 @@ test('credential isolation survives browsers without StorageArea.setAccessLevel'
   ctx.chrome={runtime:{id:'mine',getURL:p=>'chrome-extension://mine/'+p,onStartup:{addListener:()=>{}},onInstalled:{addListener:()=>{}}},
     storage:{local:{get:async k=>({[k]:local[k]}),set:async d=>Object.assign(local,d)}},permissions:{contains:async()=>true},
     alarms:{get:async()=>null,create:async()=>{},clear:async()=>{},onAlarm:{addListener:()=>{}}}};
-  vm.createContext(ctx);for(const name of ['auto-core','auto-ghost','auto-engine'])vm.runInContext(fs.readFileSync(base+'/'+name+'.js','utf8'),ctx);
+  vm.createContext(ctx);for(const name of ['auto-core','auto-ghost','auto-today','auto-engine'])vm.runInContext(fs.readFileSync(base+'/'+name+'.js','utf8'),ctx);
   ctx.AutoArchiveStore=class{constructor(){return db;}};
   ctx.AutoArchiveGitHub=class{async update(k,f){const d=f(clone(repo.get(k)||null));repo.set(k,d);return d;}};
   vm.runInContext(fs.readFileSync(base+'/auto-runtime.js','utf8'),ctx);
@@ -177,4 +177,57 @@ test('credential isolation survives browsers without StorageArea.setAccessLevel'
   assert.equal(result.configured,true);assert.equal(Object.hasOwn(local.autoArchiveSettings,'token'),false);
   assert.equal(await db.get('credential:yamada1221/x-archives:data/artists.json'),'private-fixture-token');
   assert.equal(JSON.stringify(result).includes('private-fixture-token'),false);
+  await ctx.AutoArchiveRuntime.handle({type:'AUTO_SAVE',config:{token:'',provider:'ghostarchive'}},{id:'mine',url:'chrome-extension://mine/auto-options.html'});
+  assert.equal(local.autoArchiveSettings.provider,'ghostarchive');
+  assert.equal(await db.get('credential:yamada1221/x-archives:data/artists.json'),'private-fixture-token');
+});
+test('new and upgraded settings default to archive.li and cannot reuse Ghostarchive readiness',()=>{
+  const config=C.config({token:'fixture',enabled:true,providerReady:'ghostarchive-dom-1'});
+  assert.equal(config.provider,'archive.today');assert.equal(C.homeURL(config.provider),'https://archive.li/');
+  assert.notEqual(config.providerReady,C.adapterVersion(config.provider));
+  assert.equal(C.config({token:'fixture',provider:'archive.li'}).provider,'archive.today');
+  assert.throws(()=>C.config({token:'fixture',provider:'unknown'}));
+  assert.equal(C.eligible({...artist(),auto_archive:{provider:'archive.li'}},config.provider),true);
+  assert.equal(C.eligible({...artist(),auto_archive:{provider:'ghostarchive'}},config.provider),false);
+});
+test('archive.today receipts accept only known HTTPS hosts and capture paths',()=>{
+  for(const url of ['https://archive.li/Ab123','https://archive.ph/wip/Ab123','https://archive.li/2026.10.26-012345/https://x.com/Example']) {
+    assert.equal(C.resultURL(url),url);assert.equal(C.resultProvider(url),'archive.today');
+  }
+  for(const url of ['https://archive.li.evil/Ab123','https://archive.li/submit?url=https://x.com/Example','https://archive.li/about','https://user:pw@archive.li/Ab123','http://archive.li/Ab123','https://archive.li:444/Ab123','https://archive.li/https://x.com/Example'])assert.equal(C.resultURL(url),'');
+  assert.throws(()=>C.ledger({version:1,jobs:[{job_id:'bad',state:'processing',provider:'archive.today',receipt:'https://ghostarchive.org/archive/Ab123'}],reservations:[],provider:{}}));
+});
+test('archive.li transitions from WIP to a verified capture without another submission',async()=>{
+  const a=setup([artist()],'archive.today');await a.run(true);a.advance();await a.run();a.advance();await a.run();
+  assert.equal((await a.state()).jobs[0].receipt,'https://archive.li/wip/Ab123');
+  const inspect=a.ghost.inspect;a.ghost.inspect=async j=>({...await inspect(j),receipt:'https://archive.li/Ab123'});
+  a.advance();await a.run();
+  assert.equal(a.calls.post,1);assert.equal((await a.state()).jobs[0].state,'succeeded');
+  const saved=a.docs.get(a.config.path).artists[0];assert.equal(saved.archive_provider,'archive.today');assert.equal(saved.archive_url,'https://archive.li/Ab123');
+  assert.deepEqual(a.docs.get(JOBS).jobs[0].receipt_history,['https://archive.li/wip/Ab123']);
+});
+test('WIP cannot be marked done and unrelated receipts cannot replace a capture',async()=>{
+  const a=setup([artist()],'archive.today');await a.run(true);a.advance();await a.run();a.advance();await a.run();a.advance();await a.run();
+  assert.equal((await a.state()).jobs[0].state,'needs_review');assert.equal(a.docs.get(a.config.path).artists[0].archive_status,undefined);
+  await a.engine.adopt((await a.state()).jobs[0].job_id,'https://archive.li/Ab123');
+  await assert.rejects(a.engine.adopt((await a.state()).jobs[0].job_id,'https://archive.li/Other'),/変更できません/);
+  await assert.rejects(a.engine.adopt((await a.state()).jobs[0].job_id,'https://ghostarchive.org/archive/Ab123'),/同じ保存先/);
+});
+test('archive.li challenges stop automatically and preserve manual review without POST',async()=>{
+  const a=setup([artist()],'archive.today');await a.run(true);a.ghost.inspect=async()=>({kind:'blocked'});a.advance();await a.run();
+  assert.equal((await a.state()).jobs[0].state,'needs_review');assert.equal(a.calls.post,0);assert.equal(a.docs.get(JOBS).provider.name,'archive.today');
+});
+test('a changed default replaces unsent jobs and keeps submitted Ghostarchive work on its original provider',async()=>{
+  for(const sent of [false,true]){
+    const a=setup();await a.run(true);if(sent){a.advance();await a.run();}
+    a.config.provider='archive.today';a.config.providerReady=C.adapterVersion('archive.today');a.restart();a.advance();await a.run(true);
+    const jobs=(await a.state()).jobs;
+    assert.equal(a.calls.post,sent?1:0);
+    if(sent){assert.equal(jobs.length,1);assert.equal(jobs[0].provider,'ghostarchive');assert.equal(jobs[0].state,'processing');}
+    else {assert.equal(jobs.length,2);assert.equal(jobs[0].state,'canceled');assert.equal(jobs[1].provider,'archive.today');assert.equal(jobs[1].state,'opening');}
+  }
+});
+test('GitHub native-fetch wrapper preserves the global receiver',async()=>{
+  const client=new GitHub(C.config({token:'fixture'}),function(){'use strict';assert.equal(this,globalThis);return Promise.resolve(new Response('{}'));});
+  assert.equal((await client.request('data/artists.json')).ok,true);
 });

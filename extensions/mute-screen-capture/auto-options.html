@@ -1,14 +1,15 @@
 <!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>自動アーカイブ設定</title>
 <link rel="stylesheet" href="auto-options.css"></head><body><main>
-<h1>Xトラッカー 自動アーカイブ</h1><p>「記録対象」の未保存プロフィールをGhostarchiveへ保存し、本文を確認してGitHubへ結果を反映します。</p>
+<h1>Xトラッカー 自動アーカイブ</h1><p>「記録対象」の未保存プロフィールを保存し、本文を確認してGitHubへ結果を反映します。既定の保存先はarchive.liです。</p>
 <section><h2>1. GitHubに接続</h2>
 <form id="connection"><label>Owner<input id="owner" value="yamada1221" required autocomplete="off"></label><label>Repository<input id="repo" value="x-archives" required autocomplete="off"></label>
 <label>データファイル<input id="path" value="data/artists.json" required autocomplete="off"></label><label>Fine-grained PAT<input id="token" type="password" required autocomplete="off" placeholder="Contentsの読み書き権限"></label>
-<p class="hint">トークンはこの拡張機能内に保存します。Webページや保存先には渡しません。接続先を保存すると、GitHub・FxTwitter・Ghostarchiveへのアクセス権限を確認します。</p>
+<label>保存先<select id="provider"><option value="archive.today">archive.li（既定）</option><option value="ghostarchive">Ghostarchive</option></select></label>
+<p class="hint">トークンはこの拡張機能内に保存します。設定済みなら、変更しないトークンは空欄で構いません。接続先を保存すると、GitHub・FxTwitter・選んだ保存先へのアクセス権限を確認します。archive.liでは同系列のドメインへの移動にも対応します。</p>
 <button type="submit">接続先を保存</button></form><button id="claim" class="secondary">このブラウザへ実行担当を引き継ぐ</button></section>
 <section><h2>2. 保存先を確認して開始</h2><p class="hint">接続テストでは公開プロフィール @X を1件保存します。結果のプロフィール本文まで確認できると開始できます。受付だけでは保存成功にしません。</p>
 <div class="buttons"><button id="test">接続テスト（1件）</button><button id="start">自動保存を開始</button><button id="stop" class="secondary">新規保存を停止</button><button id="run" class="secondary">走査・同期を実行</button></div>
 <p class="hint">6時間ごとに走査。送信は1件ずつ、直近24時間に最大20回。Webページを閉じても動作します。PCスリープ・ブラウザ終了中は待機し、再開後に続きを確認します。</p></section>
 <p id="message" role="status" aria-live="polite"></p><section><h2>実行状況</h2><p id="summary" role="status">読み込み中…</p><label class="filter"><input type="checkbox" id="reviewOnly">手動確認が必要なものだけ表示</label><div id="jobs"></div></section>
 <p><a href="https://yamada1221.github.io/x-archives/" target="_blank" rel="noopener">Xトラッカーを開く</a> · <a href="README.md" target="_blank">使い方</a></p>
-</main><script src="auto-options.js"></script></body></html>
+</main><script src="auto-core.js"></script><script src="auto-options.js"></script></body></html>

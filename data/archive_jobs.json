@@ -53,7 +53,7 @@
   "reservations": [],
   "provider": {
     "name": "archive.today",
-    "paused_until": 1793055140428,
+    "paused_until": 1793055310687,
     "reason": "保存フォームの構造を確認できません"
   }
 }

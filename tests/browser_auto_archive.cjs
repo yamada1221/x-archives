@@ -70,9 +70,10 @@ async function fakeNetwork(){
     await page.locator('#token').fill('fixture-token');await page.locator('#connection button').click();
     await page.locator('#summary').filter({hasText:'接続テストが必要'}).waitFor().catch(async e=>{console.error('Settings diagnostics:',await page.locator('#message').innerText());throw e;});
     assert.equal(await worker.evaluate(async()=>Object.hasOwn((await chrome.storage.local.get('autoArchiveSettings')).autoArchiveSettings,'token')),false);
+    const testTab=context.waitForEvent('page');
     await page.locator('#test').click();
     await page.locator('#message').filter({hasText:'反映しました'}).waitFor();
-    const ghostPage=await context.waitForEvent('page', {predicate:p=>p.url().includes('ghostarchive.org')||p.url()==='about:blank',timeout:5000}).catch(()=>context.pages().find(p=>p.url()==='https://ghostarchive.org/'));
+    const first=await testTab;await first.waitForURL('https://ghostarchive.org/');await first.waitForSelector('form input#archive');
     const due=async()=>{
       fixtureNow=await worker.evaluate(async()=>{
         globalThis.fixtureClock+=61000;
@@ -82,18 +83,17 @@ async function fakeNetwork(){
       });
     };
     const state=()=>worker.evaluate(async()=>AutoArchiveRuntime.status(true));
-    const waitForForm=async()=>{
-      const p=context.pages().find(p=>p.url()==='https://ghostarchive.org/')||ghostPage;
-      assert.ok(p,'archive tab created');await p.waitForSelector('form input#archive');return p;
-    };
-    await waitForForm();await due();assert.equal(posts,1);
-    await context.pages().find(p=>p.url().includes('/archive/Fixture1')).waitForLoadState('domcontentloaded');
+    await due();assert.equal(posts,1);
+    await first.waitForURL('https://ghostarchive.org/archive/Fixture1',{waitUntil:'domcontentloaded'});
     await due();assert.equal((await state()).jobs[0].state,'processing');assert.equal((await state()).ready,false);
     captures.get('Fixture1').ready=true;
-    const first=context.pages().find(p=>p.url().includes('/archive/Fixture1'));await first.reload();await first.frameLocator('iframe').locator('[data-testid="UserName"]').waitFor();
+    await first.reload();await first.frameLocator('iframe').locator('[data-testid="UserName"]').waitFor();
     await due();assert.equal((await state()).ready,true);assert.equal((await state()).jobs[0].state,'succeeded');
-    await page.locator('#start').click();await page.locator('#message').filter({hasText:'反映しました'}).waitFor();await waitForForm();await due();assert.equal(posts,2);
-    const second=context.pages().find(p=>p.url().includes('/archive/Fixture2'));await second.waitForLoadState('domcontentloaded');await due();
+    const captureTab=context.waitForEvent('page');
+    await page.locator('#start').click();await page.locator('#message').filter({hasText:'反映しました'}).waitFor();
+    const second=await captureTab;await second.waitForURL('https://ghostarchive.org/');await second.waitForSelector('form input#archive');
+    await due();assert.equal(posts,2);
+    await second.waitForURL('https://ghostarchive.org/archive/Fixture2',{waitUntil:'domcontentloaded'});await due();
     assert.equal((await state()).jobs.find(j=>j.artist_id==='one').state,'processing');
     // Stop the actual MV3 worker. IndexedDB and the shared receipt must survive;
     // waking it must not cause the form POST to run a second time.

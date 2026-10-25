@@ -12,6 +12,7 @@ const assert = require('node:assert/strict');
     let worker = context.serviceWorkers()[0];
     if (!worker) worker = await context.waitForEvent('serviceworker',{timeout:15000});
     assert.ok(worker.url().startsWith('chrome-extension://'));
+    await require('./native_extension_startup.cjs')(worker);
     const errors=[];
     context.on('page', page=>page.on('pageerror', error=>errors.push(error.message)));
     await context.route('https://yamada1221.github.io/x-archives/**',async route=>{
@@ -31,7 +32,10 @@ const assert = require('node:assert/strict');
       await chrome.tabs.update(tab.id,{url:'https://yamada1221.github.io/x-archives/?mute_capture=native-test'});
     },imageData);
     const page=await newPage;
-    await page.waitForFunction(()=>document.getElementById('muteCandidates')?.value==='@Example',{},{timeout:20000});
+    await page.waitForFunction(()=>document.getElementById('muteCandidates')?.value==='@Example',{},{timeout:20000}).catch(async error=>{
+      console.error('Native receiver diagnostics:',JSON.stringify({errors,body:(await page.locator('body').innerText()).slice(-3500),worker:await worker.evaluate(async()=>({runtime:typeof AutoArchiveRuntime,pending:Boolean((await chrome.storage.session.get('pendingMuteScreen')).pendingMuteScreen)}))}));
+      throw error;
+    });
     assert.equal(await page.locator('#muteSourceAccount').inputValue(),'Owner');
     assert.equal(new URL(page.url()).searchParams.has('mute_capture'),false);
     assert.equal(await page.evaluate(()=>artists.length),0);

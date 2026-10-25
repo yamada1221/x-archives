@@ -148,6 +148,7 @@
     <div class="note-settings"><button onclick="openNoteSettings()">メモの定型文を編集</button></div>
   </div>
 
+  <p class="field-hint"><span id="autoArchiveStatus">自動アーカイブ：拡張機能の接続・起動待ち</span> · <a href="extensions/mute-screen-capture/README.md" target="_blank" rel="noopener">拡張機能の設定方法</a></p>
   <div class="stats-row">
     <div class="stat-card"><div class="label">登録アカウント</div><div class="value" id="statAccounts">0</div></div>
     <div class="stat-card"><div class="label">記録対象</div><div class="value" id="statRecord">0</div></div>
@@ -199,7 +200,7 @@
     <p><a href="https://x.com/settings/muted/all" target="_blank" rel="noopener noreferrer">Xのミュート一覧を開く</a></p>
     <div class="row" style="margin:12px 0"><button id="muteCapture">表示中の1画面を取得</button><label>保存済み画像を選択 <input id="muteFile" type="file" accept="image/png,image/jpeg,image/webp" style="max-width:100%"></label></div>
     <p class="field-hint" id="muteCaptureHint">共有対象にはXのミュート一覧のタブを選択してください。iPhoneなどでは画像ファイルの選択をご利用ください。</p>
-    <p class="field-hint"><a href="downloads/x-tracker-mute-capture-v1.1.0.zip" download>Chrome・Edge拡張機能をダウンロード（ZIP）</a> · <a href="extensions/mute-screen-capture/README.md" target="_blank" rel="noopener">インストール手順</a></p>
+    <p class="field-hint"><a href="downloads/x-tracker-mute-capture-v1.2.0.zip" download>Chrome・Edge拡張機能をダウンロード（ZIP）</a> · <a href="extensions/mute-screen-capture/README.md" target="_blank" rel="noopener">インストール手順</a></p>
     <p id="muteStatus" role="status" aria-live="polite" class="field-hint" style="white-space:pre-wrap;margin:12px 0"></p>
     <img id="mutePreview" alt="取り込んだ画像。候補のユーザー名を照合してください" hidden style="max-width:100%;max-height:280px;object-fit:contain">
     <div class="modal-field"><label for="muteSourceAccount">ミュートした自分のXユーザー名（必須）</label><input id="muteSourceAccount" placeholder="@自分のアカウント" autocapitalize="none" spellcheck="false"></div>
@@ -212,6 +213,7 @@
 </div>
 
 <script src="tracker-utils.js"></script>
+<script src="auto-archive-ui.js"></script>
 <script src="mute-import-utils.js"></script>
 <script src="vendor/tesseract/tesseract.min.js"></script>
 <script src="mute-import.js"></script>
@@ -469,6 +471,7 @@ async function syncToGitHub() {
     }
     githubRevision = { apiUrl, sha: saved.content.sha, artists: outgoing, documentData };
     showToast('GitHubに保存しました');
+    if (typeof window !== 'undefined' && typeof CustomEvent === 'function') window.dispatchEvent(new CustomEvent('x-tracker-github-saved'));
     return true;
   } catch (e) {
     showToast(`エラー: ${e.message}`);
@@ -995,7 +998,7 @@ function archiveHelperUrl(artist) {
 function archiveBadge(artist) {
   if (artist.tracking_mode !== 'record') return '';
   if (artist.archive_status === 'done' && artist.archive_url) return '<span class="status-tag archive-done">保存済み</span>';
-  if (artist.archive_status === 'pending') return '<span class="status-tag pending">処理中</span>';
+  if (artist.archive_status === 'pending') return '<span class="status-tag pending">内容未確認</span>';
   return '<span class="status-tag archive-missing">未保存</span>';
 }
 
@@ -1061,6 +1064,7 @@ function renderList() {
           ${artist.x_bio_fetched_at ? `<small>最終取得: ${esc(artist.x_bio_fetched_at)}（取得できなかった場合は前回の文章を表示）</small>` : ''}
         </div>` : ''}
         ${recordTarget ? `
+          ${typeof autoArchiveControls === 'function' ? autoArchiveControls(artist) : ''}
           <div class="record-box">
             <p>このアカウントは「記録対象」です。アーカイブは通常プロフィールが既定値で、保存先を選択できます。必要な場合だけリプライ欄へ切り替えられます。はてブは通常プロフィールを対象にします。</p>
             <div class="row">
@@ -1071,7 +1075,7 @@ function renderList() {
 
         ${TrackerUtils.archiveResults(artist).length ? `
           <div class="row" style="margin-bottom:.75rem">
-            ${TrackerUtils.archiveResults(artist).map(entry => `<a href="${esc(entry.url)}" target="_blank" rel="noopener"><button class="small">${esc(TrackerUtils.archiveLabel(entry.provider))} ${entry.status === 'done' ? '保存済み' : entry.provider === 'gyotaku' ? '内容未確認' : '処理中'}</button></a>`).join('')}
+            ${TrackerUtils.archiveResults(artist).map(entry => `<a href="${esc(entry.url)}" target="_blank" rel="noopener"><button class="small">${esc(TrackerUtils.archiveLabel(entry.provider))} ${entry.status === 'done' ? entry.legacy_unverified ? '保存済み（旧登録）' : '保存済み' : '内容未確認'}</button></a>`).join('')}
           </div>` : ''}
 
         ${artist.threads_share_url ? `

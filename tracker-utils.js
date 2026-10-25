@@ -61,7 +61,8 @@
       const url = new URL(value);
       if (url.protocol !== 'https:' || url.username || url.password || url.port) return null;
       const path = url.pathname;
-      let provider = '', status = 'done';
+      // Parsing an address proves its shape, never the archived page content.
+      let provider = '', status = 'pending';
       if (archiveHosts.includes(url.hostname)) {
         if (/^\/wip\/(?:[a-zA-Z0-9]+|\d{4}\.\d{2}\.\d{2}-\d{6}(?:\/https?:\/\/.+)?)\/?$/.test(path)) status = 'pending';
         else if (!/^\/[a-zA-Z0-9]{5}\/?$/.test(path) && !/^\/(?:\d{8,14}|\d{4}\.\d{2}\.\d{2}-\d{6})\/https?:\/\/.+/.test(path)) return null;
@@ -88,10 +89,11 @@
   function archiveResults(artist) {
     const results = [], seen = new Set();
     const entries = Array.isArray(artist.archives) ? artist.archives : [];
-    for (const entry of [...entries, { url: artist.archive_url, target_url: artist.archive_target_url, saved_at: artist.archive_checked_at }]) {
+    for (const entry of [...entries, { url: artist.archive_url, target_url: artist.archive_target_url, saved_at: artist.archive_checked_at, status: artist.archive_status }]) {
       const parsed = entry && archiveResult(entry.url);
       if (!parsed || seen.has(parsed.url)) continue;
-      results.push({ ...entry, ...parsed, ...(parsed.provider === 'gyotaku' && entry.status === 'done' && entry.content_verified_at ? { status: 'done' } : {}) });
+      const done = entry.status === 'done' && !new URL(parsed.url).pathname.startsWith('/wip/');
+      results.push({ ...entry, ...parsed, status: done ? 'done' : 'pending', ...(done && !entry.content_verified_at ? { legacy_unverified: true } : {}) });
       seen.add(parsed.url);
     }
     return results;
@@ -100,13 +102,17 @@
     const parsed = archiveResult(url);
     if (!parsed) throw new Error('保存結果のURLを入力してください（サービスのトップ・検索・保存画面は登録できません）');
     const existing = archiveResults(artist);
-    if (parsed.provider === 'gyotaku' && (contentVerified || existing.some(entry => entry.url === parsed.url && entry.status === 'done'))) {
+    const previous = existing.find(entry => entry.url === parsed.url);
+    if (!new URL(parsed.url).pathname.startsWith('/wip/') && (contentVerified || previous?.status === 'done')) {
       parsed.status = 'done';
-      parsed.content_verified_at = existing.find(entry => entry.url === parsed.url)?.content_verified_at || now;
+      if (contentVerified || previous?.content_verified_at) {
+        parsed.content_verified_at = previous?.content_verified_at || now;
+        parsed.verification_method = contentVerified ? 'manual' : previous.verification_method;
+      } else parsed.legacy_unverified = true;
     }
     const results = existing.filter(entry => entry.url !== parsed.url &&
       !(parsed.status === 'done' && entry.status === 'pending' && entry.provider === parsed.provider && entry.target_url === target));
-    results.push({ ...parsed, target_url: target, saved_at: now });
+    results.push({ ...previous, ...parsed, target_url: target, saved_at: now });
     artist.archives = results;
     // A second service still processing must not hide an already completed capture.
     const primary = [...results].reverse().find(entry => entry.status === 'done') || results[results.length - 1];

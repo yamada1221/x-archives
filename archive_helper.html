@@ -44,7 +44,7 @@ button:disabled{opacity:.5;cursor:default}.primary{background:#1a1a18;color:#fff
 <div class="step">
   <strong>3. 保存結果を残す</strong>
   <label for="archiveUrl">保存されたArchive URL</label><input id="archiveUrl" placeholder="https://ghostarchive.org/archive/... など">
-  <label id="gyotakuConfirmation" hidden><input id="contentVerified" type="checkbox" style="width:auto"> 手動確認済み（任意）：魚拓を開き、プロフィール・投稿の本文が保存されていることを確認しました</label>
+  <label id="gyotakuConfirmation" hidden><input id="contentVerified" type="checkbox" style="width:auto"> 手動確認済み（任意）：保存結果を開き、対象のプロフィール・投稿の本文が保存されていることを確認しました</label>
   <div class="row"><button onclick="copyArchiveUrl()">結果URLをコピー</button><button onclick="openHatenaArchive()">archive URL自体をはてブ（任意）</button><button class="primary" id="saveResultBtn" onclick="saveArchiveResultToGitHub()">保存結果をGitHubへ記録</button></div>
   <p class="note">複数のサービス・保存時点の結果を残せます。archive.today系の /wip/ は処理中として記録します。完成URLが出たら再度記録してください。魚拓は処理中も同じURLです。登録後にGitHub Actionsでプロフィール本文を自動確認し、成功すると保存済みにします。未確認分は6時間おきに再確認します。個別投稿・空の自己紹介など、自動判定できない場合は内容未確認のままです。</p>
   <p id="status" class="note" role="status" aria-live="polite">保存後の結果URLを記録すると、トラッカーの一覧から開けます。</p>
@@ -142,12 +142,12 @@ function openHatenaProfile() {
 }
 function updateResultConfirmation() {
   document.getElementById('contentVerified').checked = false;
-  document.getElementById('gyotakuConfirmation').hidden = TrackerUtils.archiveResult(archiveUrl.value.trim())?.provider !== 'gyotaku';
+  document.getElementById('gyotakuConfirmation').hidden = !TrackerUtils.archiveResult(archiveUrl.value.trim()) || isWipArchiveUrl(archiveUrl.value.trim());
 }
 archiveUrl.addEventListener('input', updateResultConfirmation);
 updateResultConfirmation();
 function validArchiveUrl(value) { return Boolean(TrackerUtils.archiveResult(value)); }
-function isWipArchiveUrl(value) { return TrackerUtils.archiveResult(value)?.status === 'pending'; }
+function isWipArchiveUrl(value) { return TrackerUtils.archiveResult(value)?.status === 'pending' && new URL(value).pathname.startsWith('/wip/'); }
 async function copyArchiveUrl() {
   const ok = await copyText(archiveUrl.value.trim());
   statusEl.textContent = ok ? '結果URLをコピーしました。' : 'コピーできませんでした。';
@@ -189,7 +189,7 @@ async function saveArchiveResultToGitHub() {
     const result = TrackerUtils.recordArchive(artist, archive, target, new Date().toISOString(), document.getElementById('contentVerified').checked);
     const response = await fetch(api, { method: 'PUT', headers, body: JSON.stringify({ message: `chore: record browser archive [${x}]`, content: encodeGitHubContent(data), sha: file.sha }) });
     if (!response.ok) throw new Error(`GitHub保存 ${response.status}${response.status === 409 ? '（別の更新がありました。再度記録してください）' : ''}`);
-    statusEl.textContent = result.provider === 'gyotaku' && result.status === 'pending' ? `@${x} の魚拓URLを内容未確認として記録しました。プロフィール本文を自動確認します。結果は後でトラッカーの「GitHubから読込」で反映してください。` : result.status === 'pending' ? `@${x} のarchiveは処理中として記録しました。完成URLが出たら再度更新してください。` : `@${x} の保存結果を記録しました。トラッカーで「GitHubから読込」を押すと反映されます。`;
+    statusEl.textContent = result.provider === 'gyotaku' && result.status === 'pending' ? `@${x} の魚拓URLを内容未確認として記録しました。プロフィール本文を自動確認します。結果は後でトラッカーの「GitHubから読込」で反映してください。` : result.status === 'pending' ? `@${x} の結果URLを内容未確認として記録しました。本文を確認してください。処理中の場合は完成URLが出たら再度更新してください。` : `@${x} の保存結果を記録しました。トラッカーで「GitHubから読込」を押すと反映されます。`;
     statusEl.classList.add('ok');
   } catch (error) { statusEl.textContent = `記録に失敗しました: ${error.message}`; statusEl.classList.remove('ok'); }
   finally { savingResult = false; button.disabled = false; button.textContent = '保存結果をGitHubへ記録'; }

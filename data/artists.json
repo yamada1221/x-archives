@@ -11488,7 +11488,21 @@
           "url": "https://x.com/hayashi3063",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archives": [
+        {
+          "url": "https://archive.li/2026.10.24-200433/https://x.com/hayashi3063",
+          "provider": "archive.today",
+          "status": "done",
+          "target_url": "https://x.com/hayashi3063",
+          "saved_at": "2026-10-25T08:30:24.160Z"
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.10.24-200433/https://x.com/hayashi3063",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/hayashi3063",
+      "archive_checked_at": "2026-10-25T08:30:24.160Z"
     }
   ],
   "monitoring_summary": {

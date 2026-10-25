@@ -11804,7 +11804,7 @@
     },
     {
       "id": "mvnxdk936rnr",
-      "name": "enkazashimo",
+      "name": "エンジニアの風下",
       "x_account": "enkazashimo",
       "threads_account": "",
       "threads_share_url": "",
@@ -11814,8 +11814,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-25",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1765307184097923072/1wFbIdBw_normal.jpg",
+      "x_bio": "札幌在住。個人アプリ開発で年商1億円&資産1億円💰のFIRE目指してます。主な収入源はサブスク課金とadmob広告です。0.2BTC₿。副業でSES企業の会社員もやってます（⚠️SESの毒吐きします）。FIREできるなら手段は問わず！ RISS情報処理安全確保支援士（士業）です。",
+      "x_bio_fetched_at": "2026-10-25T14:30:55.646869+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-10-25",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

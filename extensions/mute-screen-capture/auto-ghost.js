@@ -70,7 +70,12 @@
     return { submitted: true };
   }
   class Ghost {
-    constructor(chrome) { this.chrome = chrome; }
+    constructor(chrome) { this.chrome = chrome; this.home = 'https://ghostarchive.org/'; this.inspectDocument = inspectGhostDocument; this.submitDocument = submitGhostDocument; }
+    trusted(url) { return url.origin === 'https://ghostarchive.org'; }
+    pageURL(receipt) { return receipt + '?wr=false'; }
+    matchesReceipt(current, receipt) { return current.origin === receipt.origin && current.pathname.replace(/\/$/, '') === receipt.pathname; }
+    archiveId(receipt) { return receipt?.split('/').pop() || ''; }
+    searchURL(target) { return 'https://ghostarchive.org/search?term=' + encodeURIComponent(target); }
     async binding(job) {
       const key = 'autoArchiveTab:' + job.job_id;
       const id = (await this.chrome.storage.session.get(key))[key];
@@ -78,11 +83,12 @@
       try {
         const tab = await this.chrome.tabs.get(id);
         const u = new URL(tab.url || tab.pendingUrl);
-        if (u.origin !== 'https://ghostarchive.org' && tab.url !== 'about:blank') return null;
+        if (!this.trusted(u) && tab.url !== 'about:blank') return null;
         return tab;
       } catch (_) { return null; }
     }
-    async open(job, url) {
+    async open(job, url = this.home) {
+      if (!this.trusted(new URL(url))) throw Error('保存先のURLが一致しません');
       const existing = await this.binding(job);
       if (existing) return existing;
       const tab = await this.chrome.tabs.create({ url: 'about:blank', active: false });
@@ -93,44 +99,44 @@
       let tab = await this.binding(job);
       if (!tab) {
         if (job.state === 'submitting' || job.state === 'submission_unknown') return { kind: 'missing' };
-        tab = await this.open(job, job.receipt ? job.receipt + '?wr=false' : 'https://ghostarchive.org/');
+        tab = await this.open(job, job.receipt ? this.pageURL(job.receipt) : this.home);
       }
       // A manually reconciled receipt can arrive while the owned tab still
       // shows the submission form or another capture. Verify the selected
       // receipt, rather than treating that stale page as its result.
       if (job.receipt) {
         const current = new URL(tab.pendingUrl || tab.url), receipt = new URL(job.receipt);
-        if (current.origin !== receipt.origin || current.pathname.replace(/\/$/, '') !== receipt.pathname) {
-          await this.chrome.tabs.update(tab.id, { url: job.receipt + '?wr=false' });
+        if (!this.matchesReceipt(current, receipt)) {
+          await this.chrome.tabs.update(tab.id, { url: this.pageURL(job.receipt) });
           return { kind: 'loading' };
         }
       }
       if (tab.status !== 'complete' || tab.pendingUrl) return { kind: 'loading' };
-      const archiveId = job.receipt?.split('/').pop() || '';
-      const results = await this.chrome.scripting.executeScript({ target: { tabId: tab.id, allFrames: true }, func: inspectGhostDocument, args: [archiveId] });
+      const archiveId = this.archiveId(job.receipt);
+      const results = await this.chrome.scripting.executeScript({ target: { tabId: tab.id, allFrames: true }, func: this.inspectDocument, args: [archiveId] });
       const top = results.find(r => r.frameId === 0)?.result;
       if (!top) return { kind: 'loading' };
       if (top.kind === 'archive' && top.fallback && new URL(tab.url).search !== '?wr=false') {
         await this.chrome.tabs.update(tab.id, { url: top.fallback });
         return { ...top, kind: 'loading' };
       }
-      return { ...top, frames: results.filter(r => r.frameId !== 0).map(r => r.result).filter(Boolean) };
+      return { ...top, frames: [...(top.profile ? [top.profile] : []), ...results.filter(r => r.frameId !== 0).map(r => r.result).filter(Boolean)] };
     }
     async submit(job) {
       const tab = await this.binding(job);
       if (!tab) throw Error('送信先のタブを確認できません');
-      const result = await this.chrome.scripting.executeScript({ target: { tabId: tab.id }, func: submitGhostDocument, args: [job.target_url, job.job_id] });
+      const result = await this.chrome.scripting.executeScript({ target: { tabId: tab.id }, func: this.submitDocument, args: [job.target_url, job.job_id] });
       return result[0]?.result || { uncertain: true };
     }
     async reconcile(job) {
       const state = await this.inspect(job);
-      if (state.receipt) return state;
+      if (state.receipt || ['loading', 'form', 'blocked'].includes(state.kind)) return state;
       // An unknown POST is never retried. Show the service's read-only search
       // for human reconciliation instead of choosing an arbitrary old capture.
       return { kind: 'unresolved', reason: '受付URLを確認できません。保存先の検索結果から結果URLを指定してください' };
     }
     async show(job) {
-      const tab = await this.binding(job) || await this.open(job, job.receipt || 'https://ghostarchive.org/search?term=' + encodeURIComponent(job.target_url));
+      const tab = await this.binding(job) || await this.open(job, job.receipt || this.searchURL(job.target_url));
       await this.chrome.tabs.update(tab.id, { active: true });
       await this.chrome.windows.update(tab.windowId, { focused: true });
     }

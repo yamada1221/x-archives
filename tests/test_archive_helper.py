@@ -87,7 +87,9 @@ def test_final_archive_url_can_replace_wip():
 
 
 def test_archive_li_can_be_opened_from_helper():
-    assert '<option value="archive.li">archive.li（同系列）</option>' in HTML
+    assert '<option value="archive.li">archive.li</option>' in HTML
+    options = HTML.split('<select id="archiveProvider"', 1)[1].split('</select>', 1)[0]
+    assert re.search(r'<option value="([^"]+)"', options).group(1) == "archive.li"
     assert "provider.home, '_blank', 'noopener'" in HTML
 
 

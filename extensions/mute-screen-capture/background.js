@@ -1,7 +1,7 @@
 'use strict';
 var autoArchiveInitializationError = '';
 try {
-  if (typeof importScripts === 'function') importScripts('auto-core.js', 'auto-storage.js', 'auto-github.js', 'auto-ghost.js', 'auto-engine.js', 'auto-runtime.js');
+  if (typeof importScripts === 'function') importScripts('auto-core.js', 'auto-storage.js', 'auto-github.js', 'auto-ghost.js', 'auto-today.js', 'auto-engine.js', 'auto-runtime.js');
 } catch (error) { autoArchiveInitializationError = error.stack || error.message; }
 const TRACKER = 'https://yamada1221.github.io/x-archives/';
 const PENDING = 'pendingMuteScreen';

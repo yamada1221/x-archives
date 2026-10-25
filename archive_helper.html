@@ -33,8 +33,9 @@ button:disabled{opacity:.5;cursor:default}.primary{background:#1a1a18;color:#fff
   <div class="row"><button onclick="useProfile()">通常ページ</button><button onclick="useReplies()">リプライ欄に切替</button><button onclick="copyArchiveTarget()">対象URLをコピー</button></div>
   <label for="archiveProvider">保存先</label>
   <select id="archiveProvider" onchange="updateProvider(true)">
+    <option value="archive.li">archive.li</option>
     <option value="gyotaku">ウェブ魚拓</option>
-    <option value="archive.md">archive.md</option><option value="archive.li">archive.li（同系列）</option>
+    <option value="archive.md">archive.md（同系列）</option>
     <option value="ghostarchive">Ghostarchive</option><option value="wayback">Wayback Machine</option><option value="perma">Perma.cc</option>
   </select>
   <p id="providerHint" class="note"></p>
@@ -43,7 +44,7 @@ button:disabled{opacity:.5;cursor:default}.primary{background:#1a1a18;color:#fff
 </div>
 <div class="step">
   <strong>3. 保存結果を残す</strong>
-  <label for="archiveUrl">保存されたArchive URL</label><input id="archiveUrl" placeholder="https://ghostarchive.org/archive/... など">
+  <label for="archiveUrl">保存されたArchive URL</label><input id="archiveUrl" placeholder="https://archive.li/..... など">
   <label id="gyotakuConfirmation" hidden><input id="contentVerified" type="checkbox" style="width:auto"> 手動確認済み（任意）：保存結果を開き、対象のプロフィール・投稿の本文が保存されていることを確認しました</label>
   <div class="row"><button onclick="copyArchiveUrl()">結果URLをコピー</button><button onclick="openHatenaArchive()">archive URL自体をはてブ（任意）</button><button class="primary" id="saveResultBtn" onclick="saveArchiveResultToGitHub()">保存結果をGitHubへ記録</button></div>
   <p class="note">複数のサービス・保存時点の結果を残せます。archive.today系の /wip/ は処理中として記録します。完成URLが出たら再度記録してください。魚拓は処理中も同じURLです。登録後にGitHub Actionsでプロフィール本文を自動確認し、成功すると保存済みにします。未確認分は6時間おきに再確認します。個別投稿・空の自己紹介など、自動判定できない場合は内容未確認のままです。</p>

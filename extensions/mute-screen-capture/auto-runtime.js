@@ -2,7 +2,7 @@
 (function (root) {
   const C = root.AutoArchiveCore, SETTINGS = 'autoArchiveSettings', DEVICE = 'autoArchiveDevice';
   const SCAN = 'auto-archive-scan', STEP = 'auto-archive-step';
-  const ORIGINS = ['https://api.github.com/*', 'https://api.fxtwitter.com/*', 'https://ghostarchive.org/*'];
+  const ORIGINS = C.origins(C.DEFAULT_PROVIDER);
   const store = new root.AutoArchiveStore();
   let running = null;
   async function saveSettings(value) {
@@ -17,7 +17,9 @@
     // page's origin and cannot read this credential, including on browsers
     // which do not implement StorageArea.setAccessLevel.
     if (value.token) { await saveSettings(value); delete value.token; }
-    return { ...value, token: await store.get('credential:' + C.scope(value), '') };
+    const provider = C.provider(value.provider);
+    return { ...value, provider, enabled: value.enabled === true && value.providerReady === C.adapterVersion(provider),
+      token: await store.get('credential:' + C.scope(value), '') };
   }
   async function device() {
     let id = (await chrome.storage.local.get(DEVICE))[DEVICE];
@@ -39,11 +41,13 @@
   async function engine() {
     const value = await settings(); if (!value?.token) return null;
     const config = C.config(value), id = await device();
-    return new root.AutoArchiveEngine.Engine({ config, store, git: new root.AutoArchiveGitHub(config), ghost: new root.AutoArchiveGhost.Ghost(chrome), profile, device: id,
-      ready: async version => { const latest = await settings(); if (latest && C.scope(latest) === C.scope(config)) await saveSettings({ ...latest, providerReady: version }); },
+    return new root.AutoArchiveEngine.Engine({ config, store, git: new root.AutoArchiveGitHub(config), ghost: new root.AutoArchiveToday.Providers(chrome), profile, device: id,
+      ready: async version => { const latest = await settings(); if (latest && C.scope(latest) === C.scope(config) && latest.provider === config.provider && C.adapterVersion(latest.provider) === version) await saveSettings({ ...latest, providerReady: version }); },
       canSubmit: async job => {
         const latest = await settings();
-        return Boolean(latest && C.scope(latest) === C.scope(config) && (job.kind === 'connection_test' || latest.enabled && latest.providerReady === C.ADAPTER_VERSION));
+        return Boolean(latest && C.scope(latest) === C.scope(config) && (job.provider || 'ghostarchive') === latest.provider &&
+          (job.kind === 'connection_test' || latest.enabled && latest.providerReady === C.adapterVersion(latest.provider)) &&
+          await chrome.permissions.contains({ permissions: ['scripting'], origins: C.origins(latest.provider) }));
       } });
   }
   async function ensure() {
@@ -54,7 +58,7 @@
       if (!await chrome.alarms.get(SCAN)) await chrome.alarms.create(SCAN, { when: Math.max(Date.now() + 1000, state.nextScanAt || Date.now()), periodInMinutes: 360 });
     } else await chrome.alarms.clear(SCAN);
     const pending = state.jobs.some(j => !C.TERMINAL.has(j.state) &&
-      (cfg.enabled || j.submission_started_at || j.kind === 'connection_test')) || state.jobs.some(j => j.dirty || j.state === 'succeeded' && !j.applied);
+      (cfg.enabled || j.submission_started_at || j.receipt || j.kind === 'connection_test')) || state.jobs.some(j => j.dirty || j.state === 'succeeded' && !j.applied);
     if (pending) {
       if (!await chrome.alarms.get(STEP)) await chrome.alarms.create(STEP, { delayInMinutes: 1, periodInMinutes: 1 });
     } else await chrome.alarms.clear(STEP);
@@ -63,7 +67,8 @@
     if (running) { await ensure(); return running; }
     running = (async () => {
       const e = await engine(); if (!e) return;
-      if (!await chrome.permissions.contains({ permissions: ['scripting'], origins: ORIGINS })) throw Error('設定画面から保存先・GitHubへのアクセス権限を許可してください');
+      // A changed default must not block verification/sync of older receipts.
+      if (!await chrome.permissions.contains({ permissions: ['scripting'], origins: ['https://api.github.com/*', 'https://api.fxtwitter.com/*'] })) throw Error('設定画面から保存先・GitHubへのアクセス権限を許可してください');
       await e.run({ forceScan });
       const state = await e.state(), attention = state.jobs.filter(j => ['needs_review', 'submission_unknown'].includes(j.state)).length;
       if (attention || state.lastError) {
@@ -90,12 +95,12 @@
     const cfg = await settings(), e = await engine();
     if (!e) return { ok: true, configured: false, enabled: false, jobs: [] };
     const state = await e.state();
-    return { ok: true, configured: true, enabled: cfg.enabled, ready: cfg.providerReady === C.ADAPTER_VERSION,
+    return { ok: true, configured: true, enabled: cfg.enabled, ready: cfg.providerReady === C.adapterVersion(cfg.provider), provider: cfg.provider,
       device: full ? await device() : undefined, nextScanAt: state.nextScanAt, lastRunAt: state.lastRunAt, error: state.lastError,
       candidates: state.candidateCount || 0,
-      config: full ? { owner: cfg.owner, repo: cfg.repo, path: cfg.path } : undefined,
+      config: full ? { owner: cfg.owner, repo: cfg.repo, path: cfg.path, provider: cfg.provider } : undefined,
       jobs: state.jobs.slice(-100).map(j => ({ job_id: j.job_id, artist_id: j.artist_id, handle: j.identity?.handle || j.registered_handle,
-        state: j.state, label: C.LABELS[j.state], error: j.last_error || '', receipt: C.resultURL(j.receipt),
+        state: j.state, label: C.LABELS[j.state], provider: j.provider || 'ghostarchive', error: j.last_error || '', receipt: C.resultURL(j.receipt),
         scope: j.verification?.scope, posts: j.verification?.posts_verification, captured_at: j.verification?.captured_at,
         next_attempt_at: j.next_attempt_at, sync_pending: Boolean(j.dirty || j.state === 'succeeded' && !j.applied),
         test: j.kind === 'connection_test' })) };
@@ -115,19 +120,23 @@
     if (!privileged(sender)) throw Error('拡張機能の画面から操作してください');
     if (message.type === 'AUTO_STATUS') return status(true);
     if (message.type === 'AUTO_SAVE') {
-      const old = await settings(); const next = C.config({ ...message.config, enabled: false });
-      if (old && C.scope(old) === C.scope(next)) next.providerReady = old.providerReady || '';
-      if (!await chrome.permissions.contains({ permissions: ['scripting'], origins: ORIGINS })) throw Error('設定画面で必要なアクセス権限を許可してください');
+      const old = await settings(); const next = C.config({ ...message.config, token: message.config.token || old?.token, enabled: false });
+      if (!message.config.token && old && C.scope(old) !== C.scope(next)) throw Error('接続先を変更する場合はトークンを入力してください');
+      if (old && C.scope(old) === C.scope(next) && old.provider === next.provider) next.providerReady = old.providerReady || '';
+      if (!await chrome.permissions.contains({ permissions: ['scripting'], origins: C.origins(next.provider) })) throw Error('設定画面で必要なアクセス権限を許可してください');
       await saveSettings(next);
       await (await engine()).claim(false); await ensure(); return status(true);
     }
     const e = await engine(); if (!e) throw Error('先にGitHub接続設定を保存してください');
     if (message.type === 'AUTO_CLAIM') { await e.claim(true); return { ok: true }; }
-    if (message.type === 'AUTO_TEST') { await e.enqueueTest(); await kick(false); return status(true); }
+    if (message.type === 'AUTO_TEST') {
+      if (!await chrome.permissions.contains({ permissions: ['scripting'], origins: C.origins(e.config.provider) })) throw Error('「接続先を保存」で保存先へのアクセス権限を許可してください');
+      await e.enqueueTest(); await kick(false); return status(true);
+    }
     if (message.type === 'AUTO_START' || message.type === 'AUTO_STOP') {
       const cfg = await settings();
       if (message.type === 'AUTO_START') {
-        if (cfg.providerReady !== C.ADAPTER_VERSION) throw Error('先に「接続テスト」を完了してください。本文確認後に開始できます');
+        if (cfg.providerReady !== C.adapterVersion(cfg.provider)) throw Error('先に「接続テスト」を完了してください。本文確認後に開始できます');
         await e.claim(false);
       }
       await saveSettings({ ...cfg, enabled: message.type === 'AUTO_START' });

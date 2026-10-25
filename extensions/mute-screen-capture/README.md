@@ -1,4 +1,4 @@
-# Xトラッカー 自動アーカイブ・ミュート取り込み v1.2.0
+# Xトラッカー 自動アーカイブ・ミュート取り込み v1.3.0
 
 PC版Chrome / Edge用のManifest V3拡張です。iPhoneのXアプリでは使えません。
 
@@ -6,7 +6,7 @@ PC版Chrome / Edge用のManifest V3拡張です。iPhoneのXアプリでは使�
 
 拡張機能の「自動アーカイブの設定・実行状況」から設定します。
 
-1. GitHubのowner・repo・データファイル（標準は `data/artists.json`）と、Contentsの読み書き権限があるFine-grained PATを保存します。追加する権限はGitHub API・FxTwitter・Ghostarchiveと、保存先ページを操作するscriptingだけです。
+1. GitHubのowner・repo・データファイル（標準は `data/artists.json`）と、Contentsの読み書き権限があるFine-grained PATを保存します。既定の保存先はarchive.liです。Ghostarchiveも選べます。追加する権限はGitHub API・FxTwitter・選択した保存先と、保存先ページを操作するscriptingです。archive.liは同系列ドメインへの移動にも対応します。
 2. 初めて設定したブラウザを実行担当に登録します。別PCへ移す場合だけ「このブラウザへ実行担当を引き継ぐ」を選びます。
 3. 「接続テスト（1件）」で公開プロフィール `@X` を保存します。保存URLの受付だけでは合格にならず、数値ID・プロフィール本文まで確認できたときに接続テスト済みになります。
 4. 「自動保存を開始」を押します。以降は、トラッカーで「記録対象」を追加してGitHubへ保存すると、拡張機能が未保存プロフィールを自動保存します。追加の取りこぼしは6時間おきに走査します。
@@ -26,6 +26,12 @@ PC版Chrome / Edge用のManifest V3拡張です。iPhoneのXアプリでは使�
 GitHubトークンをWebページ・保存先・共有JSON・ログへ渡しません。拡張機能オリジンのIndexedDBへ保存し、content scriptからは参照できない構成です。storage.localには接続先などの設定だけを保存します。ブラウザ保存をOS資格情報保管庫と同じ暗号化保存とは扱いません。
 
 実装・動作確認の詳細はリポジトリの `docs/auto-archive-extension.md` に記載します。
+
+## v1.2.0からの更新
+
+v1.3.0のZIPを展開して既存フォルダへ上書きし、拡張機能を再読み込みします。設定画面でarchive.liを選び「接続先を保存」で追加のアクセスを許可し、「接続テスト（1件）」の本文確認が通ってから「自動保存を開始」を押してください。接続済みならPATの再入力は不要です。旧版のGhostarchive接続テストの合格をarchive.liへ流用しません。
+
+送信済みのGhostarchiveジョブと保存済みの結果は保持します。まだ送信していないジョブは、保存先変更後の走査でarchive.liへ引き継ぎます。手動保存ヘルパーも初期選択をarchive.liにし、明示的に記憶した保存先の選択は保持します。
 
 ## インストール
 

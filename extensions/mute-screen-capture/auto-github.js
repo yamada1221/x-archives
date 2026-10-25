@@ -1,7 +1,11 @@
 'use strict';
 (function (root) {
   class GitHub {
-    constructor(config, fetcher = fetch) { this.config = config; this.fetcher = fetcher; }
+    constructor(config, fetcher = fetch) {
+      this.config = config;
+      // Native WorkerGlobalScope.fetch must receive the worker as its receiver.
+      this.fetcher = (...args) => Reflect.apply(fetcher, globalThis, args);
+    }
     async request(path, method = 'GET', body) {
       const c = this.config, controller = new AbortController(), timeout = setTimeout(() => controller.abort(), 25000);
       try {

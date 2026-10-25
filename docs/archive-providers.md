@@ -17,7 +17,7 @@
 | 保存先 | 今回の対応 | API・運用条件 |
 | --- | --- | --- |
 | ウェブ魚拓 | URLを入力済みの取得画面を開く。日時付きの結果URLと本文確認を記録 | 無料版で1プロフィール保存を実測。人間確認あり。公式の保存作成API仕様は確認できず |
-| archive.md / archive.li | 既存のブラウザ保存を維持。保存先の選択と結果URLの複数保持 | 同じarchive.today系。ミラーを変えても独立した保存サービスが増えるわけではありません。従来どおり手動保存 |
+| archive.li / archive.md | 拡張機能v1.3.0の自動保存と手動ヘルパーの既定はarchive.li。WIPと本文確認を区別 | 同じarchive.today系。実サイトでの自動保存は利用環境の接続テストを有効化条件とする。人間確認は手動 |
 | Ghostarchive | URLをコピーして保存画面を開く。`/archive/…` の結果を記録 | 公式FAQでは無料・アカウント不要。APIの説明はMemento対応準備中で、安定した保存作成APIの仕様は確認できず。今回はブラウザ操作のみ |
 | Wayback Machine | Save Page Nowを開く。過去の保存検索と、日時つきの保存結果URLの記録 | 公式アプリにSPN2連携の実装あり。今回は認証やAPI自動保存を組み込まず、公式保存フォームを利用。取得制限やログイン依存のページでは保存に失敗する可能性あり |
 | Perma.cc | URLをコピーしてサービスを開く。`XXXX-XXXX` 形式の結果を記録 | 公式REST APIあり。作成は `POST https://api.perma.cc/v1/archives/` にURLをJSON送信、`Authorization: ApiKey …` で認証。完了判定はCapture Jobs APIで確認。アカウント・保存枠が必要 |

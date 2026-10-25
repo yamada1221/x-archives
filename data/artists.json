@@ -11503,6 +11503,21 @@
       "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/hayashi3063",
       "archive_checked_at": "2026-10-25T08:30:24.160Z"
+    },
+    {
+      "id": "mvnks5s8431e",
+      "name": "nomal_user_a",
+      "x_account": "nomal_user_a",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-25",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

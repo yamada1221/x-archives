@@ -104,6 +104,11 @@ test('a completed result clears only the same provider and target pending entry'
 });
 
 const fishUrl = 'https://megalodon.jp/2026-1017-0547-37/https://x.com:443/X';
+test('re-registering a legacy URL never fabricates new verification and keeps job evidence',()=>{
+  const artist={archive_url:'https://ghostarchive.org/archive/Ab123',archive_status:'done',archives:[{url:'https://ghostarchive.org/archive/Ab123',provider:'ghostarchive',status:'done',job_id:'old-job',event_key:'first:123:profile'}]};
+  u.recordArchive(artist,artist.archive_url,'https://x.com/Example','later');
+  assert.equal(artist.archives[0].status,'done');assert.equal(artist.archives[0].content_verified_at,undefined);assert.equal(artist.archives[0].legacy_unverified,true);assert.equal(artist.archives[0].job_id,'old-job');
+});
 test('gyotaku URL starts unverified and can be confirmed without duplication', () => {
   assert.equal(u.archiveResult(fishUrl).status, 'pending');
   const artist = {archive_url:'https://archive.md/Abc12', archive_status:'done', note:'keep'};

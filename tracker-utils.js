@@ -102,14 +102,17 @@
     const parsed = archiveResult(url);
     if (!parsed) throw new Error('保存結果のURLを入力してください（サービスのトップ・検索・保存画面は登録できません）');
     const existing = archiveResults(artist);
-    if (!new URL(parsed.url).pathname.startsWith('/wip/') && (contentVerified || existing.some(entry => entry.url === parsed.url && entry.status === 'done'))) {
+    const previous = existing.find(entry => entry.url === parsed.url);
+    if (!new URL(parsed.url).pathname.startsWith('/wip/') && (contentVerified || previous?.status === 'done')) {
       parsed.status = 'done';
-      parsed.content_verified_at = existing.find(entry => entry.url === parsed.url)?.content_verified_at || now;
-      parsed.verification_method = existing.find(entry => entry.url === parsed.url)?.verification_method || 'manual';
+      if (contentVerified || previous?.content_verified_at) {
+        parsed.content_verified_at = previous?.content_verified_at || now;
+        parsed.verification_method = contentVerified ? 'manual' : previous.verification_method;
+      } else parsed.legacy_unverified = true;
     }
     const results = existing.filter(entry => entry.url !== parsed.url &&
       !(parsed.status === 'done' && entry.status === 'pending' && entry.provider === parsed.provider && entry.target_url === target));
-    results.push({ ...parsed, target_url: target, saved_at: now });
+    results.push({ ...previous, ...parsed, target_url: target, saved_at: now });
     artist.archives = results;
     // A second service still processing must not hide an already completed capture.
     const primary = [...results].reverse().find(entry => entry.status === 'done') || results[results.length - 1];

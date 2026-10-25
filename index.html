@@ -998,7 +998,7 @@ function archiveHelperUrl(artist) {
 function archiveBadge(artist) {
   if (artist.tracking_mode !== 'record') return '';
   if (artist.archive_status === 'done' && artist.archive_url) return '<span class="status-tag archive-done">保存済み</span>';
-  if (artist.archive_status === 'pending') return '<span class="status-tag pending">処理中</span>';
+  if (artist.archive_status === 'pending') return '<span class="status-tag pending">内容未確認</span>';
   return '<span class="status-tag archive-missing">未保存</span>';
 }
 
@@ -1075,7 +1075,7 @@ function renderList() {
 
         ${TrackerUtils.archiveResults(artist).length ? `
           <div class="row" style="margin-bottom:.75rem">
-            ${TrackerUtils.archiveResults(artist).map(entry => `<a href="${esc(entry.url)}" target="_blank" rel="noopener"><button class="small">${esc(TrackerUtils.archiveLabel(entry.provider))} ${entry.status === 'done' ? '保存済み' : entry.provider === 'gyotaku' ? '内容未確認' : '処理中'}</button></a>`).join('')}
+            ${TrackerUtils.archiveResults(artist).map(entry => `<a href="${esc(entry.url)}" target="_blank" rel="noopener"><button class="small">${esc(TrackerUtils.archiveLabel(entry.provider))} ${entry.status === 'done' ? entry.legacy_unverified ? '保存済み（旧登録）' : '保存済み' : '内容未確認'}</button></a>`).join('')}
           </div>` : ''}
 
         ${artist.threads_share_url ? `

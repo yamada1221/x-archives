@@ -133,7 +133,7 @@
   chrome.runtime.onInstalled.addListener(() => { ensure().catch(() => {}); });
   // Lost alarms are reconstructed on every worker start. Configured jobs are
   // resumed by their persisted due times, not by keeping this worker alive.
-  chrome.storage.local.setAccessLevel({ accessLevel: 'TRUSTED_CONTEXTS' }).catch(() => {});
+  Promise.resolve(chrome.storage.local.setAccessLevel({ accessLevel: 'TRUSTED_CONTEXTS' })).catch(() => {});
   ensure().catch(() => {});
   root.AutoArchiveRuntime = { handle, status, kick, ensure, ORIGINS };
 })(globalThis);

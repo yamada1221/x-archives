@@ -95,6 +95,16 @@
         if (job.state === 'submitting' || job.state === 'submission_unknown') return { kind: 'missing' };
         tab = await this.open(job, job.receipt ? job.receipt + '?wr=false' : 'https://ghostarchive.org/');
       }
+      // A manually reconciled receipt can arrive while the owned tab still
+      // shows the submission form or another capture. Verify the selected
+      // receipt, rather than treating that stale page as its result.
+      if (job.receipt) {
+        const current = new URL(tab.pendingUrl || tab.url), receipt = new URL(job.receipt);
+        if (current.origin !== receipt.origin || current.pathname.replace(/\/$/, '') !== receipt.pathname) {
+          await this.chrome.tabs.update(tab.id, { url: job.receipt + '?wr=false' });
+          return { kind: 'loading' };
+        }
+      }
       if (tab.status !== 'complete' || tab.pendingUrl) return { kind: 'loading' };
       const archiveId = job.receipt?.split('/').pop() || '';
       const results = await this.chrome.scripting.executeScript({ target: { tabId: tab.id, allFrames: true }, func: inspectGhostDocument, args: [archiveId] });

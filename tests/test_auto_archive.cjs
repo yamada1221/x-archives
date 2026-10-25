@@ -54,6 +54,13 @@ test('an unknown receipt stays manual instead of creating another capture',async
   const a=setup();await a.run(true);a.calls.crashPost=true;a.advance();await a.run();a.calls.lostReceipt=true;
   a.advance();await a.run();await a.run(true);assert.equal((await a.state()).jobs[0].state,'needs_review');assert.equal(a.calls.post,1);
 });
+test('manual receipt reconciliation navigates the owned tab to that result before reading its body',async()=>{
+  const {Ghost}=require(base+'/auto-ghost.js'), moves=[];
+  const api={storage:{session:{get:async key=>({[key]:7})}},tabs:{get:async()=>({id:7,url:'https://ghostarchive.org/',status:'complete'}),update:async(...args)=>moves.push(args)},
+    scripting:{executeScript:async()=>{throw Error('stale form must not be inspected as the result');}}};
+  const result=await new Ghost(api).inspect({job_id:'manual',state:'processing',receipt:'https://ghostarchive.org/archive/Ab123'});
+  assert.equal(result.kind,'loading');assert.deepEqual(moves,[[7,{url:'https://ghostarchive.org/archive/Ab123?wr=false'}]]);
+});
 test('HTTP 200, metadata, empty frames and wrong account bodies cannot complete a capture',async()=>{
   for(const frame of [null,{kind:'profile',handle:'Other',name:'例',following:true,user_id:'1234567890123456789'},{kind:'profile',handle:'Example',name:'例',following:true,user_id:'999'}]) {
     const a=setup();await a.run(true);a.advance();await a.run();a.advance();await a.run();

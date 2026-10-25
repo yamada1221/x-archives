@@ -1,10 +1,11 @@
 {
   "manifest_version": 3,
   "name": "Xトラッカー ミュート画面取り込み",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "minimum_chrome_version": "112",
-  "description": "自分で開いたミュート一覧の表示中の1画面を、ボタンを押したときだけ撮影してXトラッカーに渡します。",
-  "permissions": ["activeTab", "storage"],
+  "description": "ミュート一覧の表示中の1画面を手動または24時間ごとに撮影します。実行できない場合は通知します。",
+  "permissions": ["activeTab", "storage", "alarms", "notifications"],
+  "icons": { "128": "icon128.png" },
   "action": { "default_popup": "popup.html", "default_title": "ミュート一覧を1画面取り込む" },
   "background": { "service_worker": "background.js" },
   "content_scripts": [{

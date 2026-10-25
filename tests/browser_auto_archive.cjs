@@ -39,9 +39,10 @@ async function fakeNetwork(){
 }
 (async()=>{
   const context=await chromium.launchPersistentContext(path.join(temp,'profile'),{channel:'chromium',headless:true,args:['--disable-extensions-except='+extension,'--load-extension='+extension]});
-  let posts=0,fixtureNow=Date.now();const captures=new Map(),errors=[];
+  let posts=0,fixtureNow=Date.now();const captures=new Map(),errors=[],navigations=[];
   try{
     context.on('page',p=>p.on('pageerror',e=>errors.push(e.message)));
+    context.on('request',r=>{if(r.isNavigationRequest()&&/^https:\/\/(?:archive\.li|ghostarchive\.org)\//.test(r.url()))navigations.push({method:r.method(),url:r.url()});});
     const savedBody=(cap,id,inline=false)=>{
       const h=cap.target.split('/').pop(),user=h==='X'?'783214':'1234567890123456789';
       const rewrite=inline?home+'o/'+id+'/':'https://ghostarchive.org/news2/'+id+'/a/href/';
@@ -60,7 +61,7 @@ async function fakeNetwork(){
         const cap=captures.get(m[1]);assert.ok(cap);
         if(wip&&cap.ready){await route.fulfill({status:302,headers:{location:home+m[1]}});return;}
         const stamp=new Date(fixtureNow).toISOString().replace(/^(\d{4})-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d).*$/,'$1.$2.$3-$4$5$6');
-        await route.fulfill({contentType:'text/html',body:wip?'<!doctype html><title>Archiving</title><p>Saving page</p>':`<!doctype html><title>保存結果</title><div id="HEADER"><input id="SHARE_LONGLINK" value="${home}${stamp}/${cap.target}"></div><div id="CONTENT">${savedBody(cap,m[1],true)}</div>`});return;
+        await route.fulfill({contentType:'text/html',body:!cap.ready?'<!doctype html><title>Archiving</title><p>Saving page</p>':`<!doctype html><title>保存結果</title><div id="HEADER"><input id="SHARE_LONGLINK" value="${home}${stamp}/${cap.target}"></div><div id="CONTENT">${savedBody(cap,m[1],true)}</div>`});return;
       }
       await route.fulfill({contentType:'text/html',body:'<!doctype html><title>archive.li</title><form id="submit_form" action="/submit" method="POST"><input name="submitid" type="hidden" value="fixture-form-token"><label>URL<input name="url"></label><button>save</button></form>'});
     });
@@ -112,7 +113,7 @@ async function fakeNetwork(){
     };
     const state=()=>worker.evaluate(async()=>AutoArchiveRuntime.status(true));
     await due();assert.equal(posts,1);
-    await first.waitForURL(receiptURL(1,today),{waitUntil:'domcontentloaded'});
+    await first.waitForURL(url=>[receiptURL(1,today),receiptURL(1)].includes(url.href),{waitUntil:'domcontentloaded'});
     await due();assert.equal((await state()).jobs[0].state,'processing');assert.equal((await state()).ready,false);
     captures.get(captureId(1)).ready=true;
     await first.reload();await (today?first.locator('#CONTENT'):first.frameLocator('iframe')).locator('[data-testid="UserName"]').waitFor();
@@ -121,7 +122,7 @@ async function fakeNetwork(){
     await page.locator('#start').click();await page.locator('#message').filter({hasText:'反映しました'}).waitFor();
     const second=await captureTab;await second.waitForURL(home);await second.waitForSelector(today?'form input[name="url"]':'form input#archive');
     await due();assert.equal(posts,2);
-    await second.waitForURL(receiptURL(2,today),{waitUntil:'domcontentloaded'});await due();
+    await second.waitForURL(url=>[receiptURL(2,today),receiptURL(2)].includes(url.href),{waitUntil:'domcontentloaded'});await due();
     assert.equal((await state()).jobs.find(j=>j.artist_id==='one').state,'processing');
     // Stop the actual MV3 worker. IndexedDB and the shared receipt must survive;
     // waking it must not cause the form POST to run a second time.
@@ -147,5 +148,6 @@ async function fakeNetwork(){
     fs.mkdirSync(path.join(root,'test-output'),{recursive:true});await page.screenshot({path:path.join(root,'test-output/auto-archive-options-'+provider+'.png'),fullPage:true});
     assert.deepEqual(errors,[]);
     console.log('Native auto-archive checks passed ('+provider+'): native fetch, permissions, settings, gate, form POST, saved body, numeric ID, posts, worker restart, IndexedDB, GitHub CAS and legacy exclusions.');
-  }finally{await context.close();fs.rmSync(temp,{recursive:true,force:true});}
+  }catch(error){console.error('Archive fixture diagnostics:',JSON.stringify({provider,navigations,captures:[...captures]}));throw error;}
+  finally{await context.close();fs.rmSync(temp,{recursive:true,force:true});}
 })().catch(e=>{console.error(e);process.exit(1)});

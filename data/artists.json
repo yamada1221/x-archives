@@ -11447,7 +11447,7 @@
     },
     {
       "id": "mvnkgaaqaega",
-      "name": "hayashi3063",
+      "name": "年無し 割烹 神田",
       "x_account": "hayashi3063",
       "threads_account": "",
       "threads_share_url": "",
@@ -11464,8 +11464,14 @@
       ],
       "threads_posts": [],
       "added_at": "2026-10-25",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1574740521771466752/tzXraief_normal.jpg",
+      "x_bio": "神田須田町の割烹料理屋です、豊洲で自分が目利きをした旬の食材をお客様に合わせてご提供しております、料理を勉強したい店の運営に関わってくださる方を募集しております、ご予約お問い合わせtel 07084733063 mail ryogarenma811109@gmail.com",
+      "x_bio_fetched_at": "2026-10-25T08:29:09.857136+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-10-25",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

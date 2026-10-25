@@ -32,7 +32,7 @@ https://ghostarchive.org/archive/l8oxw
 
 ## 進捗・同期・競合
 
-端末内の設定はchrome.storage.local、ジョブ・受付情報・未同期結果・実行ロックはIndexedDBへ保存する。
+端末内の接続先設定はchrome.storage.local、認証情報・ジョブ・受付情報・未同期結果・実行ロックは拡張機能オリジンのIndexedDBへ保存する。storage.localにはトークンを含めず、StorageArea.setAccessLevelがないブラウザでもcontent scriptから認証情報を読めない構成とする。
 
 共有設定は `data/auto_archive_config.json`、共有ジョブ台帳は `data/archive_jobs.json`。拡張機能からGitHub Contents APIのSHA付き更新で保存する。実行担当はリポジトリごとに1ブラウザプロファイルを登録する。
 

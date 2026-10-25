@@ -74,7 +74,7 @@
         const s = await this.state(); await this.importJobs(s);
         if (s.jobs.some(j => j.kind === 'connection_test' && !C.TERMINAL.has(j.state))) throw Error('接続テストは既に実行中です');
         this.put(s, { job_id: this.uuid(), kind: 'connection_test', artist_id: 'connection-test:' + this.device,
-          registered_handle: 'X', expected_x_user_id: '', state: 'queued', provider: 'ghostarchive',
+          registered_handle: 'X', expected_x_user_id: '783214', state: 'queued', provider: 'ghostarchive',
           created_at: new Date(this.now()).toISOString(), attempt_count: 0, next_attempt_at: this.now(), executor_device_id: this.device, adapter_version: C.ADAPTER_VERSION });
         await this.save(s); await this.flush(s);
       } finally { await this.store.release(this.key, lock); }

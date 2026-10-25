@@ -5,7 +5,20 @@
   const ORIGINS = ['https://api.github.com/*', 'https://api.fxtwitter.com/*', 'https://ghostarchive.org/*'];
   const store = new root.AutoArchiveStore();
   let running = null;
-  async function settings() { return (await chrome.storage.local.get(SETTINGS))[SETTINGS]; }
+  async function saveSettings(value) {
+    const { token, ...publicSettings } = value;
+    if (token) await store.set('credential:' + C.scope(value), token);
+    await chrome.storage.local.set({ [SETTINGS]: { ...publicSettings, hasToken: Boolean(token) } });
+  }
+  async function settings() {
+    const value = (await chrome.storage.local.get(SETTINGS))[SETTINGS];
+    if (!value) return value;
+    // IndexedDB belongs to the extension origin. Content scripts use the web
+    // page's origin and cannot read this credential, including on browsers
+    // which do not implement StorageArea.setAccessLevel.
+    if (value.token) { await saveSettings(value); delete value.token; }
+    return { ...value, token: await store.get('credential:' + C.scope(value), '') };
+  }
   async function device() {
     let id = (await chrome.storage.local.get(DEVICE))[DEVICE];
     if (!id) { id = crypto.randomUUID(); await chrome.storage.local.set({ [DEVICE]: id }); }
@@ -27,7 +40,7 @@
     const value = await settings(); if (!value?.token) return null;
     const config = C.config(value), id = await device();
     return new root.AutoArchiveEngine.Engine({ config, store, git: new root.AutoArchiveGitHub(config), ghost: new root.AutoArchiveGhost.Ghost(chrome), profile, device: id,
-      ready: async version => { const latest = await settings(); if (latest && C.scope(latest) === C.scope(config)) await chrome.storage.local.set({ [SETTINGS]: { ...latest, providerReady: version } }); },
+      ready: async version => { const latest = await settings(); if (latest && C.scope(latest) === C.scope(config)) await saveSettings({ ...latest, providerReady: version }); },
       canSubmit: async job => {
         const latest = await settings();
         return Boolean(latest && C.scope(latest) === C.scope(config) && (job.kind === 'connection_test' || latest.enabled && latest.providerReady === C.ADAPTER_VERSION));
@@ -104,7 +117,7 @@
       const old = await settings(); const next = C.config({ ...message.config, enabled: false });
       if (old && C.scope(old) === C.scope(next)) next.providerReady = old.providerReady || '';
       if (!await chrome.permissions.contains({ permissions: ['scripting'], origins: ORIGINS })) throw Error('設定画面で必要なアクセス権限を許可してください');
-      await chrome.storage.local.set({ [SETTINGS]: next });
+      await saveSettings(next);
       await (await engine()).claim(false); await ensure(); return status(true);
     }
     const e = await engine(); if (!e) throw Error('先にGitHub接続設定を保存してください');
@@ -116,7 +129,7 @@
         if (cfg.providerReady !== C.ADAPTER_VERSION) throw Error('先に「接続テスト」を完了してください。本文確認後に開始できます');
         await e.claim(false);
       }
-      await chrome.storage.local.set({ [SETTINGS]: { ...cfg, enabled: message.type === 'AUTO_START' } });
+      await saveSettings({ ...cfg, enabled: message.type === 'AUTO_START' });
       await ensure(); if (message.type === 'AUTO_START') await kick(true); return status(true);
     }
     if (message.type === 'AUTO_RUN') { await kick(true); return status(true); }
@@ -133,7 +146,7 @@
   chrome.runtime.onInstalled.addListener(() => { ensure().catch(() => {}); });
   // Lost alarms are reconstructed on every worker start. Configured jobs are
   // resumed by their persisted due times, not by keeping this worker alive.
-  Promise.resolve(chrome.storage.local.setAccessLevel({ accessLevel: 'TRUSTED_CONTEXTS' })).catch(() => {});
+  if (typeof chrome.storage.local.setAccessLevel === 'function') Promise.resolve(chrome.storage.local.setAccessLevel({ accessLevel: 'TRUSTED_CONTEXTS' })).catch(() => {});
   ensure().catch(() => {});
   root.AutoArchiveRuntime = { handle, status, kick, ensure, ORIGINS };
 })(globalThis);

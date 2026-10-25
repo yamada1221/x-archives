@@ -66,7 +66,8 @@ async function fakeNetwork(){
     const extensionId=new URL(worker.url()).hostname,page=await context.newPage();
     await page.goto('chrome-extension://'+extensionId+'/auto-options.html');
     await page.locator('#token').fill('fixture-token');await page.locator('#connection button').click();
-    await page.locator('#summary').filter({hasText:'接続テストが必要'}).waitFor();
+    await page.locator('#summary').filter({hasText:'接続テストが必要'}).waitFor().catch(async e=>{console.error('Settings diagnostics:',await page.locator('#message').innerText());throw e;});
+    assert.equal(await worker.evaluate(async()=>Object.hasOwn((await chrome.storage.local.get('autoArchiveSettings')).autoArchiveSettings,'token')),false);
     await page.locator('#test').click();
     const ghostPage=await context.waitForEvent('page', {predicate:p=>p.url().includes('ghostarchive.org')||p.url()==='about:blank',timeout:5000}).catch(()=>context.pages().find(p=>p.url()==='https://ghostarchive.org/'));
     const due=async()=>{

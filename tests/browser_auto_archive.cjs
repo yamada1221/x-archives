@@ -39,7 +39,7 @@ async function fakeNetwork(){
 }
 (async()=>{
   const context=await chromium.launchPersistentContext(path.join(temp,'profile'),{channel:'chromium',headless:true,args:['--disable-extensions-except='+extension,'--load-extension='+extension]});
-  let posts=0,fixtureNow=Date.now();const captures=new Map(),errors=[],navigations=[];
+  let posts=0,fixtureNow=Date.now(),worker;const captures=new Map(),errors=[],navigations=[];
   try{
     context.on('page',p=>p.on('pageerror',e=>errors.push(e.message)));
     context.on('request',r=>{if(r.isNavigationRequest()&&/^https:\/\/(?:archive\.li|ghostarchive\.org)\//.test(r.url()))navigations.push({method:r.method(),url:r.url()});});
@@ -83,7 +83,7 @@ async function fakeNetwork(){
       }
       await route.fulfill({contentType:'text/html',body:'<!doctype html><title>Ghostarchive</title><form action="/archive2" method="POST"><label for="archive">Website to be archived:</label><input id="archive" name="archive"><button>Submit for archival</button></form>'});
     });
-    let worker=context.serviceWorkers()[0]||await context.waitForEvent('serviceworker');
+    worker=context.serviceWorkers()[0]||await context.waitForEvent('serviceworker');
     await require('./native_extension_startup.cjs')(worker);
     await worker.evaluate(async()=>{
       await chrome.storage.local.set({fixtureAPI:{versions:{'data/artists.json':1},docs:{'data/artists.json':{artists:[
@@ -112,9 +112,19 @@ async function fakeNetwork(){
       });
     };
     const state=()=>worker.evaluate(async()=>AutoArchiveRuntime.status(true));
+    const waitProcessing=async id=>{
+      let current;
+      for(let i=0;i<3;i++){
+        await due();current=await state();
+        const job=id?current.jobs.find(j=>j.artist_id===id):current.jobs.find(j=>j.test);
+        if(job?.state==='processing')return;
+        if(['needs_review','canceled','succeeded'].includes(job?.state))break;
+      }
+      assert.fail('Expected processing receipt: '+JSON.stringify(current));
+    };
     await due();assert.equal(posts,1);
-    await first.waitForURL(url=>[receiptURL(1,today),receiptURL(1)].includes(url.href),{waitUntil:'domcontentloaded'});
-    await due();assert.equal((await state()).jobs[0].state,'processing');assert.equal((await state()).ready,false);
+    await first.waitForURL(url=>[receiptURL(1,today),receiptURL(1)].includes(url.href),{waitUntil:'load'});
+    await waitProcessing();assert.equal((await state()).ready,false);
     captures.get(captureId(1)).ready=true;
     await first.reload();await (today?first.locator('#CONTENT'):first.frameLocator('iframe')).locator('[data-testid="UserName"]').waitFor();
     await due();assert.equal((await state()).ready,true);assert.equal((await state()).jobs[0].state,'succeeded');
@@ -122,7 +132,7 @@ async function fakeNetwork(){
     await page.locator('#start').click();await page.locator('#message').filter({hasText:'反映しました'}).waitFor();
     const second=await captureTab;await second.waitForURL(home);await second.waitForSelector(today?'form input[name="url"]':'form input#archive');
     await due();assert.equal(posts,2);
-    await second.waitForURL(url=>[receiptURL(2,today),receiptURL(2)].includes(url.href),{waitUntil:'domcontentloaded'});await due();
+    await second.waitForURL(url=>[receiptURL(2,today),receiptURL(2)].includes(url.href),{waitUntil:'load'});await waitProcessing('one');
     assert.equal((await state()).jobs.find(j=>j.artist_id==='one').state,'processing');
     // Stop the actual MV3 worker. IndexedDB and the shared receipt must survive;
     // waking it must not cause the form POST to run a second time.
@@ -148,6 +158,15 @@ async function fakeNetwork(){
     fs.mkdirSync(path.join(root,'test-output'),{recursive:true});await page.screenshot({path:path.join(root,'test-output/auto-archive-options-'+provider+'.png'),fullPage:true});
     assert.deepEqual(errors,[]);
     console.log('Native auto-archive checks passed ('+provider+'): native fetch, permissions, settings, gate, form POST, saved body, numeric ID, posts, worker restart, IndexedDB, GitHub CAS and legacy exclusions.');
-  }catch(error){console.error('Archive fixture diagnostics:',JSON.stringify({provider,navigations,captures:[...captures]}));throw error;}
+  }catch(error){
+    console.error('Archive fixture diagnostics:',JSON.stringify({provider,navigations,captures:[...captures]}));
+    if(worker)try{console.error('Worker inspection diagnostics:',JSON.stringify(await worker.evaluate(async()=>{
+      const cfg=(await chrome.storage.local.get('autoArchiveSettings')).autoArchiveSettings;
+      const s=await new AutoArchiveStore().get(AutoArchiveCore.scope(cfg));const j=s?.jobs?.find(j=>!AutoArchiveCore.TERMINAL.has(j.state));
+      try{return {jobs:s?.jobs,inspection:j?await new AutoArchiveToday.Providers(chrome).inspect(j):null};}
+      catch(e){return {jobs:s?.jobs,error:e.stack||e.message};}
+    })));}catch(e){console.error('Could not inspect worker:',e.message);}
+    throw error;
+  }
   finally{await context.close();fs.rmSync(temp,{recursive:true,force:true});}
 })().catch(e=>{console.error(e);process.exit(1)});

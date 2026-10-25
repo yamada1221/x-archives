@@ -14,6 +14,7 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -21,7 +22,9 @@ jobs:
           node-version: '24'
       - run: node --test tests/test_auto_archive.cjs tests/test_mute_extension.cjs tests/test_github_load.cjs tests/test_tracker_features.cjs
       - run: npm install --no-save --package-lock=false playwright@1.51.1
-      - run: npx playwright install --with-deps chromium
+      # The hosted image already provides Chrome's system libraries. Avoid
+      # apt/service restarts here; install only the pinned test browser.
+      - run: npx playwright install chromium
       - run: node tests/browser_auto_archive.cjs
       - run: node tests/browser_auto_archive.cjs
         env:

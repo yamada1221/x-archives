@@ -12143,7 +12143,7 @@
     },
     {
       "id": "mvogjk20pc33",
-      "name": "ci_ysd",
+      "name": "R",
       "x_account": "ci_ysd",
       "threads_account": "",
       "threads_share_url": "",
@@ -12153,8 +12153,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-25",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-10-25T23:27:29.489644+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-10-25",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

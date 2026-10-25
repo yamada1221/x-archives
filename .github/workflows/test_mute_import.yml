@@ -1,0 +1,27 @@
+name: Test single-screen mute import
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'mute-import*.js'
+      - 'vendor/tesseract/**'
+      - 'tests/*mute_import*'
+      - '.github/workflows/test_mute_import.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: node --test tests/test_mute_import.cjs
+      - run: npm install --no-save --package-lock=false playwright@1.51.1
+      - run: npx playwright install --with-deps chromium
+      - name: Check image review and single-frame capture
+        run: |
+          python -m http.server 8765 --bind 127.0.0.1 > /tmp/tracker-http.log 2>&1 &
+          node tests/browser_mute_import.cjs

@@ -11801,6 +11801,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mvnxdk936rnr",
+      "name": "enkazashimo",
+      "x_account": "enkazashimo",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-25",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

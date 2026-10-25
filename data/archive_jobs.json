@@ -27,5 +27,9 @@
     }
   ],
   "reservations": [],
-  "provider": {}
+  "provider": {
+    "name": "archive.today",
+    "paused_until": 1793055140428,
+    "reason": "保存フォームの構造を確認できません"
+  }
 }

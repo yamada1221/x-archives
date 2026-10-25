@@ -100,12 +100,13 @@ async function fakeNetwork(){
     // Close the extension worker's target, as in Chrome's termination testing
     // guide. stopAllWorkers can reuse the CDP target and leave Playwright 1.51
     // waiting for a new worker event which Chrome never emits.
-    const cdp=await context.newCDPSession(page), {targetInfos}=await cdp.send('Target.getTargets');
-    const target=targetInfos.find(t=>t.type==='service_worker'&&t.url===worker.url());assert.ok(target);
+    const cdp=await context.newCDPSession(page), workerURL=worker.url(), {targetInfos}=await cdp.send('Target.getTargets');
+    const target=targetInfos.find(t=>t.type==='service_worker'&&t.url===workerURL);assert.ok(target);
     await worker.evaluate(()=>{globalThis.fixtureBeforeRestart=true;});
-    const nextWorker=context.waitForEvent('serviceworker');
     const stopped=await cdp.send('Target.closeTarget',{targetId:target.targetId});assert.equal(stopped.success,true);
-    await page.evaluate(()=>chrome.runtime.sendMessage({type:'AUTO_STATUS'}));worker=await nextWorker;
+    await page.evaluate(()=>chrome.runtime.sendMessage({type:'AUTO_STATUS'}));
+    const restarted=(await cdp.send('Target.getTargets')).targetInfos.find(t=>t.type==='service_worker'&&t.url===workerURL);assert.ok(restarted);
+    worker=await require('./native_cdp_worker.cjs')(cdp,restarted.targetId);
     assert.equal(await worker.evaluate(()=>typeof fixtureBeforeRestart),'undefined');await worker.evaluate(fakeNetwork);
     captures.get('Fixture2').ready=true;await second.reload();await second.frameLocator('iframe').locator('[data-testid="UserName"]').waitFor();
     await due();assert.equal(posts,2);

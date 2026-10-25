@@ -79,7 +79,8 @@
     } finally { running = null; await ensure(); }
   }
   function privileged(sender) {
-    return sender.id === chrome.runtime.id && !sender.tab && ['popup.html', 'auto-options.html'].some(p => sender.url === chrome.runtime.getURL(p));
+    return sender.id === chrome.runtime.id && (sender.frameId === undefined || sender.frameId === 0) &&
+      ['popup.html', 'auto-options.html'].some(p => sender.url === chrome.runtime.getURL(p));
   }
   function tracker(sender) {
     if (sender.id !== chrome.runtime.id || !sender.tab || sender.frameId !== 0) return false;

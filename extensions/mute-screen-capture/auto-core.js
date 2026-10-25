@@ -88,9 +88,11 @@
     if (!p.user_id && (!job.identity || norm(p.name) !== norm(job.identity.name) || job.identity.bio === null || norm(p.bio) !== norm(job.identity.bio))) {
       return { ok: false, reason: '本文から同じアカウントだと確認する証拠が不足しています' };
     }
+    const reused = Boolean(job.adopted_existing) || stamp < Date.parse(job.submission_started_at) - 5 * MINUTE;
+    if (reused && !p.user_id) return { ok: false, reason: '過去の保存を採用するには、保存本文の数値IDによる照合が必要です' };
     return { ok: true, captured_at: new Date(stamp).toISOString(), verified_at: new Date(now).toISOString(),
       method: 'archived_profile_body', scope: ['profile'], posts_verification: p.post_ids?.length ? 'confirmed' : 'unconfirmed',
-      post_ids: (p.post_ids || []).slice(0, 20), archived_user_id: p.user_id || '', reused_existing: Boolean(job.adopted_existing) || stamp < Date.parse(job.submission_started_at) - 5 * MINUTE };
+      post_ids: (p.post_ids || []).slice(0, 20), archived_user_id: p.user_id || '', reused_existing: reused };
   }
   function applyResult(doc, job) {
     validateArtists(doc);

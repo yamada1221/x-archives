@@ -120,6 +120,13 @@ test('result URL and GitHub config validation reject credentials, lookalikes and
   for(const value of ['https://ghostarchive.org.evil/archive/Ab123','https://user:pw@ghostarchive.org/archive/Ab123','https://ghostarchive.org/search?term=Example','http://ghostarchive.org/archive/Ab123'])assert.equal(C.resultURL(value),'');
   assert.throws(()=>C.config({token:'fixture',path:'../secrets.json'}));
 });
+test('a recycled handle cannot attach an old archive without an archived numeric ID',()=>{
+  const now=Date.now(),job={target_url:'https://x.com/Example',expected_x_user_id:'123',identity:{handle:'Example',name:'同じ名前',bio:'同じ自己紹介'},submission_started_at:new Date(now).toISOString()};
+  const page={original_url:job.target_url,captured_at:new Date(now-86400000).toISOString()};
+  const body={kind:'profile',handle:'Example',name:'同じ名前',bio:'同じ自己紹介',following:true};
+  assert.equal(C.verify(page,[body],job,now).ok,false);
+  assert.equal(C.verify(page,[{...body,user_id:'123'}],job,now).ok,true);
+});
 test('Contents API CAS retries merge new remote fields; bearer token stays on the GitHub host',async()=>{
   let gets=0,puts=0;const client=new GitHub(C.config({token:'secret-fixture'}),async(url,opts)=>{
     assert.equal(new URL(url).hostname,'api.github.com');assert.equal(opts.headers.Authorization,'Bearer secret-fixture');assert.equal(opts.redirect,'error');
@@ -145,4 +152,22 @@ test('web pages and other extensions cannot save credentials, start tests or tak
     await assert.rejects(ctx.AutoArchiveRuntime.handle({type},{id:'other',url:'chrome-extension://mine/auto-options.html'}));
   }
   const result=await ctx.AutoArchiveRuntime.handle({type:'AUTO_STATUS'},{id:'mine',url:'chrome-extension://mine/auto-options.html'});assert.equal(result.configured,false);assert.equal('token' in result,false);
+  const inTab=await ctx.AutoArchiveRuntime.handle({type:'AUTO_STATUS'},{id:'mine',url:'chrome-extension://mine/auto-options.html',tab:{id:1},frameId:0});assert.equal(inTab.configured,false);
+  await assert.rejects(ctx.AutoArchiveRuntime.handle({type:'AUTO_STATUS'},{id:'mine',url:'chrome-extension://mine/auto-options.html',tab:{id:1},frameId:1}));
+});
+test('credential isolation survives browsers without StorageArea.setAccessLevel',async()=>{
+  const ctx={URL,Date,Set,Map,Promise,structuredClone,TextEncoder,TextDecoder,AbortController,setTimeout,clearTimeout,crypto:require('node:crypto').webcrypto};
+  const local={},db=new MemoryStore(),repo=new Map();
+  ctx.chrome={runtime:{id:'mine',getURL:p=>'chrome-extension://mine/'+p,onStartup:{addListener:()=>{}},onInstalled:{addListener:()=>{}}},
+    storage:{local:{get:async k=>({[k]:local[k]}),set:async d=>Object.assign(local,d)}},permissions:{contains:async()=>true},
+    alarms:{get:async()=>null,create:async()=>{},clear:async()=>{},onAlarm:{addListener:()=>{}}}};
+  vm.createContext(ctx);for(const name of ['auto-core','auto-ghost','auto-engine'])vm.runInContext(fs.readFileSync(base+'/'+name+'.js','utf8'),ctx);
+  ctx.AutoArchiveStore=class{constructor(){return db;}};
+  ctx.AutoArchiveGitHub=class{async update(k,f){const d=f(clone(repo.get(k)||null));repo.set(k,d);return d;}};
+  vm.runInContext(fs.readFileSync(base+'/auto-runtime.js','utf8'),ctx);
+  assert.equal(typeof ctx.AutoArchiveRuntime,'object');
+  const result=await ctx.AutoArchiveRuntime.handle({type:'AUTO_SAVE',config:{token:'private-fixture-token'}},{id:'mine',url:'chrome-extension://mine/auto-options.html'});
+  assert.equal(result.configured,true);assert.equal(Object.hasOwn(local.autoArchiveSettings,'token'),false);
+  assert.equal(await db.get('credential:yamada1221/x-archives:data/artists.json'),'private-fixture-token');
+  assert.equal(JSON.stringify(result).includes('private-fixture-token'),false);
 });

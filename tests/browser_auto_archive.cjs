@@ -11,6 +11,8 @@ manifest.permissions.push(...manifest.optional_permissions);manifest.host_permis
 delete manifest.optional_permissions;delete manifest.optional_host_permissions;
 fs.writeFileSync(path.join(extension,'manifest.json'),JSON.stringify(manifest));
 async function fakeNetwork(){
+  globalThis.fixtureClock=(await chrome.storage.local.get('fixtureClock')).fixtureClock || Date.now();
+  Date.now=()=>globalThis.fixtureClock;
   globalThis.fetch=async(url,opts={})=>{
     const u=new URL(url);
     if(u.hostname==='api.fxtwitter.com'){
@@ -33,7 +35,7 @@ async function fakeNetwork(){
 }
 (async()=>{
   const context=await chromium.launchPersistentContext(path.join(temp,'profile'),{channel:'chromium',headless:true,args:['--disable-extensions-except='+extension,'--load-extension='+extension]});
-  let posts=0;const captures=new Map(),errors=[];
+  let posts=0,fixtureNow=Date.now();const captures=new Map(),errors=[];
   try{
     context.on('page',p=>p.on('pageerror',e=>errors.push(e.message)));
     await context.route('https://ghostarchive.org/**',async route=>{
@@ -46,7 +48,7 @@ async function fakeNetwork(){
       }
       const m=u.pathname.match(/^\/archive\/(Fixture\d+)$/);
       if(m){const cap=captures.get(m[1]);assert.ok(cap);
-        await route.fulfill({contentType:'text/html',body:cap.ready?`<!doctype html><title>保存結果</title><input id="searchInput" value="${cap.target}"><p>Archive date: ${new Date().toUTCString()}</p><iframe src="/news2/${m[1]}/web/ghost/"></iframe>`:'<!doctype html><title>Archiving in progress.....</title><p>When the archival process is finished, this page will automatically refresh.</p>'});return;
+        await route.fulfill({contentType:'text/html',body:cap.ready?`<!doctype html><title>保存結果</title><input id="searchInput" value="${cap.target}"><p>Archive date: ${new Date(fixtureNow).toUTCString()}</p><iframe src="/news2/${m[1]}/web/ghost/"></iframe>`:'<!doctype html><title>Archiving in progress.....</title><p>When the archival process is finished, this page will automatically refresh.</p>'});return;
       }
       const frame=u.pathname.match(/^\/news2\/(Fixture\d+)\/web\/ghost\/$/);
       if(frame){const cap=captures.get(frame[1]),h=cap.target.split('/').pop(),id=h==='X'?'783214':'1234567890123456789';
@@ -69,11 +71,14 @@ async function fakeNetwork(){
     await page.locator('#summary').filter({hasText:'接続テストが必要'}).waitFor().catch(async e=>{console.error('Settings diagnostics:',await page.locator('#message').innerText());throw e;});
     assert.equal(await worker.evaluate(async()=>Object.hasOwn((await chrome.storage.local.get('autoArchiveSettings')).autoArchiveSettings,'token')),false);
     await page.locator('#test').click();
+    await page.locator('#message').filter({hasText:'反映しました'}).waitFor();
     const ghostPage=await context.waitForEvent('page', {predicate:p=>p.url().includes('ghostarchive.org')||p.url()==='about:blank',timeout:5000}).catch(()=>context.pages().find(p=>p.url()==='https://ghostarchive.org/'));
     const due=async()=>{
-      await worker.evaluate(async()=>{
-        const cfg=(await chrome.storage.local.get('autoArchiveSettings')).autoArchiveSettings,key=AutoArchiveCore.scope(cfg),store=new AutoArchiveStore();
-        const state=await store.get(key);state.jobs.forEach(j=>j.next_attempt_at=0);await store.set(key,state);await AutoArchiveRuntime.kick(false);
+      fixtureNow=await worker.evaluate(async()=>{
+        globalThis.fixtureClock+=61000;
+        await chrome.storage.local.set({fixtureClock:globalThis.fixtureClock});
+        await AutoArchiveRuntime.kick(false);
+        return globalThis.fixtureClock;
       });
     };
     const state=()=>worker.evaluate(async()=>AutoArchiveRuntime.status(true));
@@ -87,7 +92,7 @@ async function fakeNetwork(){
     captures.get('Fixture1').ready=true;
     const first=context.pages().find(p=>p.url().includes('/archive/Fixture1'));await first.reload();await first.frameLocator('iframe').locator('[data-testid="UserName"]').waitFor();
     await due();assert.equal((await state()).ready,true);assert.equal((await state()).jobs[0].state,'succeeded');
-    await page.locator('#start').click();await waitForForm();await due();assert.equal(posts,2);
+    await page.locator('#start').click();await page.locator('#message').filter({hasText:'反映しました'}).waitFor();await waitForForm();await due();assert.equal(posts,2);
     const second=context.pages().find(p=>p.url().includes('/archive/Fixture2'));await second.waitForLoadState('domcontentloaded');await due();
     assert.equal((await state()).jobs.find(j=>j.artist_id==='one').state,'processing');
     // Stop the actual MV3 worker. IndexedDB and the shared receipt must survive;

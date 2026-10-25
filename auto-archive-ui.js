@@ -6,10 +6,11 @@ function autoArchiveJobText(id) {
     autoArchiveExtensionStatus?.configured ? '拡張機能の次回走査で確認します' : '拡張機能の接続・起動待ち';
 }
 function autoArchiveControls(artist) {
-  const mode = artist.auto_archive?.enabled || 'inherit';
+  const enabled = artist.auto_archive?.enabled;
+  const mode = enabled === false ? 'off' : enabled === true ? 'on' : enabled || 'inherit';
   return `<div class="record-box"><strong>自動アーカイブ</strong>
     <p data-auto-archive-id="${esc(artist.id)}">${esc(autoArchiveJobText(artist.id))}</p>
-    <label>初回保存 <select onchange="setAutoArchiveMode('${esc(artist.id)}',this.value)">
+    <label>初回保存 <select data-artist-id="${esc(artist.id)}" onchange="setAutoArchiveMode(this.dataset.artistId,this.value)">
       <option value="inherit"${mode === 'inherit' ? ' selected' : ''}>拡張機能の設定に従う</option>
       <option value="on"${mode === 'on' ? ' selected' : ''}>有効</option>
       <option value="off"${mode === 'off' ? ' selected' : ''}>停止</option></select></label>

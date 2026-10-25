@@ -11943,6 +11943,28 @@
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-25",
       "profile_source": "fxtwitter"
+    },
+    {
+      "id": "mvo6jtxl0pzu",
+      "name": "atpwkg",
+      "x_account": "atpwkg",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "スパム",
+      "tracking_mode": "monitor_only",
+      "works": [
+        {
+          "url": "https://x.com/atpwkg/status/2114226368364106056",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-10-25"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-10-25",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

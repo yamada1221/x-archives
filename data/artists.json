@@ -11918,7 +11918,7 @@
     },
     {
       "id": "mvo6jgbb9ccw",
-      "name": "yinkmvt",
+      "name": "晒す⚠️",
       "x_account": "yinkmvt",
       "threads_account": "",
       "threads_share_url": "",
@@ -11935,8 +11935,14 @@
       ],
       "threads_posts": [],
       "added_at": "2026-10-25",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2103374201990348800/UUEElGxh_normal.jpg",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-10-25T18:47:27.365594+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-10-25",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

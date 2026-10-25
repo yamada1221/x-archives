@@ -5,6 +5,10 @@
 <p>Xのミュート一覧を開いた状態で押してください。表示中の1画面だけを撮影し、トラッカーで画像認識と確認を行います。</p>
 <label for="source">自分のXユーザー名（任意）</label><input id="source" placeholder="@example" autocomplete="off" autocapitalize="none" spellcheck="false">
 <button id="capture">この1画面を取り込む</button><button id="open">Xのミュート一覧を開く</button>
+<hr><h2 style="font-size:15px">1日1回の定期取得</h2>
+<p><small>このタブを専用ウィンドウへ移し、初回は24時間後に取得します。他の作業は別ウィンドウで行ってください。自分のXユーザー名は必須です。</small></p>
+<button id="startDaily">専用ウィンドウへ移して定期実行を開始</button><button id="stopDaily">定期実行を停止</button>
+<p id="dailyStatus" role="status" style="white-space:pre-wrap;font-size:12px"></p>
 <p id="status" role="status" aria-live="polite"></p>
 <small>自動スクロール・自動ミュートは行いません。続きがある場合は、X側で手動スクロールして再度押してください。画像は外部の認識サービスへ送信しません。</small>
 <script src="popup.js"></script></body></html>

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "enabled": true,
+  "artists_path": "data/artists.json",
+  "provider": "archive.today",
+  "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+  "daily_limit": 20,
+  "interval_ms": 60000
+}

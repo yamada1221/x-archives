@@ -343,9 +343,9 @@
       "provider": "archive.today",
       "created_at": "2026-10-26T02:26:51.463Z",
       "attempt_count": 1,
-      "next_attempt_at": 1792982692211,
+      "next_attempt_at": 1792982812221,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-10-26T02:43:52.211Z",
+      "updated_at": "2026-10-26T02:45:52.221Z",
       "identity": {
         "id": "1514078567889772548",
         "handle": "it3sd",
@@ -354,11 +354,15 @@
       },
       "target_url": "https://x.com/it3sd",
       "event_key": "first:1514078567889772548:profile",
-      "last_error": "",
+      "last_error": "本文から同じアカウントだと確認する証拠が不足しています",
       "submission_started_at": "2026-10-26T02:41:53.059Z",
       "operation_id": "4da222b6-0316-4f98-bfd2-8647bb987017",
       "lease_expires_at": 1792984313059,
-      "receipt": "https://archive.li/wip/nXD7o"
+      "receipt": "https://archive.li/nXD7o",
+      "receipt_history": [
+        "https://archive.li/wip/nXD7o"
+      ],
+      "verification_checks": 1
     },
     {
       "job_id": "bf7865cb-7329-41ec-9d76-645bdd18e91b",

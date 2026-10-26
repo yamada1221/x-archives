@@ -103,14 +103,23 @@
       "artist_id": "connection-test:3e468c95-0461-4472-99ef-2084c41793c7",
       "registered_handle": "X",
       "expected_x_user_id": "783214",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-10-26T00:42:54.157Z",
       "attempt_count": 0,
-      "next_attempt_at": 1792975374158,
+      "next_attempt_at": 1792975376390,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "adapter_version": "archive-today-dom-3",
-      "updated_at": "2026-10-26T00:42:54.158Z"
+      "updated_at": "2026-10-26T00:42:56.390Z",
+      "identity": {
+        "id": "783214",
+        "handle": "X",
+        "name": "X",
+        "bio": "what's happening?!"
+      },
+      "target_url": "https://x.com/X",
+      "event_key": "test:51f10a05-eb43-4077-a5bc-a4b73cf6e618:profile",
+      "last_error": ""
     }
   ],
   "reservations": [],

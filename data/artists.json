@@ -12178,6 +12178,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mvomqk9wjkb7",
+      "name": "YOSHIKI_0819",
+      "x_account": "YOSHIKI_0819",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "汚言 クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-26",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

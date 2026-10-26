@@ -12296,6 +12296,28 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mvowkohzw7e2",
+      "name": "tkgria",
+      "x_account": "tkgria",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/tkgria/status/2114365045807460773",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-10-26"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-10-26",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

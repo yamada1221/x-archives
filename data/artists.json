@@ -12602,7 +12602,7 @@
     },
     {
       "id": "mvpr0h1yzd8l",
-      "name": "osos12310164767",
+      "name": "osos123",
       "x_account": "osos12310164767",
       "threads_account": "",
       "threads_share_url": "",
@@ -12612,8 +12612,31 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-26",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1613066950363738113/DZ-4fSGN_normal.jpg",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-10-26T21:08:35.370479+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-10-26",
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-26T21:08:35+00:00",
+        "x_account": "osos12310164767",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=osos12310164767",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/osos12310164767",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

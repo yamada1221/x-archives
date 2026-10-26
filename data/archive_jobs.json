@@ -107,10 +107,10 @@
       "provider": "archive.today",
       "created_at": "2026-10-26T00:42:54.157Z",
       "attempt_count": 1,
-      "next_attempt_at": 1792981384984,
+      "next_attempt_at": 1792981447170,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "adapter_version": "archive-today-dom-3",
-      "updated_at": "2026-10-26T02:23:04.984Z",
+      "updated_at": "2026-10-26T02:23:07.170Z",
       "identity": {
         "id": "783214",
         "handle": "X",

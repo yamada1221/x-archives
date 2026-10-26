@@ -421,10 +421,10 @@
       "artist_id": "mvowkohzw7e2",
       "registered_handle": "tkgria",
       "expected_x_user_id": "1363522164549242886",
-      "state": "opening",
+      "state": "submitting",
       "provider": "archive.today",
       "created_at": "2026-10-26T08:26:53.022Z",
-      "attempt_count": 0,
+      "attempt_count": 1,
       "next_attempt_at": 1793003213870,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "updated_at": "2026-10-26T08:26:53.870Z",
@@ -436,7 +436,10 @@
       },
       "target_url": "https://x.com/TKGRia",
       "event_key": "first:1363522164549242886:profile",
-      "last_error": ""
+      "last_error": "",
+      "submission_started_at": "2026-10-26T08:27:57.650Z",
+      "operation_id": "639d1423-aa50-4136-bf77-83b4c990f01b",
+      "lease_expires_at": 1793005077650
     }
   ],
   "reservations": [
@@ -468,6 +471,11 @@
     {
       "job_id": "3894789d-8772-4055-8657-53ceae72ac8b",
       "at": 1792982993763,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
+    },
+    {
+      "job_id": "c22e1fbb-12e4-432a-8c63-b25c4a89a519",
+      "at": 1793003277650,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
     }
   ],

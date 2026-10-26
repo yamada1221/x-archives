@@ -11762,7 +11762,33 @@
           "at": "2026-10-25T09:13:59+00:00",
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=2067585961232625664; screen_name=nomal_user_a"
         }
-      ]
+      ],
+      "archives": [
+        {
+          "provider": "archive.today",
+          "url": "https://archive.li/osnVz",
+          "target_url": "https://x.com/nomal_user_a",
+          "status": "done",
+          "job_id": "5b90d451-da08-493a-8f7d-97c1f44a7864",
+          "event_key": "first:2067585961232625664:profile",
+          "x_user_id": "2067585961232625664",
+          "requested_at": "2026-10-26T02:35:53.301Z",
+          "captured_at": "2026-10-26T02:36:07.000Z",
+          "saved_at": "2026-10-26T02:39:52.194Z",
+          "content_verified_at": "2026-10-26T02:39:52.194Z",
+          "verification_method": "archived_profile_body",
+          "verified_scope": [
+            "profile"
+          ],
+          "posts_verification": "confirmed",
+          "reused_existing": false
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/osnVz",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/nomal_user_a",
+      "archive_checked_at": "2026-10-26T02:39:52.194Z"
     },
     {
       "id": "mvnvbtdjorpx",

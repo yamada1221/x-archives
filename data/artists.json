@@ -11967,7 +11967,34 @@
           "url": "https://x.com/kipikyapi",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archives": [
+        {
+          "provider": "archive.today",
+          "url": "https://archive.li/dFvN5",
+          "target_url": "https://x.com/kipikyapi",
+          "status": "done",
+          "job_id": "bf7865cb-7329-41ec-9d76-645bdd18e91b",
+          "event_key": "first:2583111457:profile",
+          "x_user_id": "2583111457",
+          "requested_at": "2026-10-26T02:42:53.565Z",
+          "captured_at": "2026-10-26T02:43:06.000Z",
+          "saved_at": "2026-10-26T02:46:52.449Z",
+          "content_verified_at": "2026-10-26T02:46:52.449Z",
+          "verification_method": "archived_profile_body",
+          "verified_scope": [
+            "profile"
+          ],
+          "posts_verification": "unconfirmed",
+          "reused_existing": false
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/dFvN5",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/kipikyapi",
+      "archive_checked_at": "2026-10-26T02:46:52.449Z",
+      "x_user_id": "2583111457"
     },
     {
       "id": "mvo6jgbb9ccw",

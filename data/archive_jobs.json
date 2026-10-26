@@ -103,14 +103,14 @@
       "artist_id": "connection-test:3e468c95-0461-4472-99ef-2084c41793c7",
       "registered_handle": "X",
       "expected_x_user_id": "783214",
-      "state": "needs_review",
+      "state": "processing",
       "provider": "archive.today",
       "created_at": "2026-10-26T00:42:54.157Z",
       "attempt_count": 1,
-      "next_attempt_at": 1792975500336,
+      "next_attempt_at": 1792979251679,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "adapter_version": "archive-today-dom-3",
-      "updated_at": "2026-10-26T00:45:58.370Z",
+      "updated_at": "2026-10-26T01:47:31.679Z",
       "identity": {
         "id": "783214",
         "handle": "X",
@@ -122,7 +122,9 @@
       "last_error": "受付結果が不明です。保存先の画面または検索結果で確認してください",
       "submission_started_at": "2026-10-26T00:43:58.954Z",
       "operation_id": "e8765f5f-73a2-418e-bab6-857f3af433b8",
-      "lease_expires_at": 1792977238954
+      "lease_expires_at": 1792977238954,
+      "receipt": "https://archive.li/AUjOR",
+      "verification_checks": 0
     }
   ],
   "reservations": [

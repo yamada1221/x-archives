@@ -134,14 +134,14 @@
       "artist_id": "connection-test:3e468c95-0461-4472-99ef-2084c41793c7",
       "registered_handle": "X",
       "expected_x_user_id": "783214",
-      "state": "processing",
+      "state": "succeeded",
       "provider": "archive.today",
       "created_at": "2026-10-25T23:29:46.560Z",
       "attempt_count": 0,
       "next_attempt_at": 1792981857476,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "adapter_version": "archive-today-dom-2",
-      "updated_at": "2026-10-26T02:29:57.476Z",
+      "updated_at": "2026-10-26T02:33:52.356Z",
       "identity": {
         "id": "783214",
         "handle": "X",
@@ -150,9 +150,22 @@
       },
       "target_url": "https://x.com/X",
       "event_key": "test:15a7a17a-c874-499f-b578-c079a558714e:profile",
-      "last_error": "保存フォームの構造を確認できません",
+      "last_error": "",
       "receipt": "https://archive.li/wNGtE",
-      "verification_checks": 0
+      "verification_checks": 0,
+      "verification": {
+        "ok": true,
+        "captured_at": "2025-01-10T23:11:40.000Z",
+        "verified_at": "2026-10-26T02:33:52.356Z",
+        "method": "archived_profile_body",
+        "scope": [
+          "profile"
+        ],
+        "posts_verification": "unconfirmed",
+        "post_ids": [],
+        "archived_user_id": "783214",
+        "reused_existing": false
+      }
     },
     {
       "job_id": "51f10a05-eb43-4077-a5bc-a4b73cf6e618",

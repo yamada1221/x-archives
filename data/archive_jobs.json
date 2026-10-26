@@ -447,10 +447,10 @@
       "artist_id": "mvozwvyh2ni6",
       "registered_handle": "ZACCO_0120",
       "expected_x_user_id": "2885942491",
-      "state": "opening",
+      "state": "submitting",
       "provider": "archive.today",
       "created_at": "2026-10-26T14:26:52.934Z",
-      "attempt_count": 0,
+      "attempt_count": 1,
       "next_attempt_at": 1793024814074,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "updated_at": "2026-10-26T14:26:54.074Z",
@@ -462,7 +462,10 @@
       },
       "target_url": "https://x.com/ZACCO_0120",
       "event_key": "first:2885942491:profile",
-      "last_error": ""
+      "last_error": "",
+      "submission_started_at": "2026-10-26T14:27:57.620Z",
+      "operation_id": "c263c924-31ed-4c1d-879b-745abbea92fe",
+      "lease_expires_at": 1793026677620
     }
   ],
   "reservations": [
@@ -499,6 +502,11 @@
     {
       "job_id": "c22e1fbb-12e4-432a-8c63-b25c4a89a519",
       "at": 1793003277650,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
+    },
+    {
+      "job_id": "e9615a4e-e3c2-449e-a0d1-72c2287a001e",
+      "at": 1793024877620,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
     }
   ],

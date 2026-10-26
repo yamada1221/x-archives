@@ -370,13 +370,13 @@
       "artist_id": "mvo5sthl9jb3",
       "registered_handle": "kipikyapi",
       "expected_x_user_id": "2583111457",
-      "state": "processing",
+      "state": "succeeded",
       "provider": "archive.today",
       "created_at": "2026-10-26T02:26:51.463Z",
       "attempt_count": 1,
       "next_attempt_at": 1792982752346,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-10-26T02:44:52.346Z",
+      "updated_at": "2026-10-26T02:46:52.449Z",
       "identity": {
         "id": "2583111457",
         "handle": "kipikyapi",
@@ -389,7 +389,23 @@
       "submission_started_at": "2026-10-26T02:42:53.565Z",
       "operation_id": "360d4869-7503-42a5-80e5-8cce2a4e9ab0",
       "lease_expires_at": 1792984373565,
-      "receipt": "https://archive.li/wip/dFvN5"
+      "receipt": "https://archive.li/dFvN5",
+      "receipt_history": [
+        "https://archive.li/wip/dFvN5"
+      ],
+      "verification": {
+        "ok": true,
+        "captured_at": "2026-10-26T02:43:06.000Z",
+        "verified_at": "2026-10-26T02:46:52.449Z",
+        "method": "archived_profile_body",
+        "scope": [
+          "profile"
+        ],
+        "posts_verification": "unconfirmed",
+        "post_ids": [],
+        "archived_user_id": "2583111457",
+        "reused_existing": false
+      }
     }
   ],
   "reservations": [

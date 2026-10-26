@@ -12344,7 +12344,7 @@
     },
     {
       "id": "mvozwvyh2ni6",
-      "name": "ZACCO_0120",
+      "name": "ZACCO(ザッコ)",
       "x_account": "ZACCO_0120",
       "threads_account": "",
       "threads_share_url": "",
@@ -12354,8 +12354,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-26",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1251392496510222338/pWX5gsA6_normal.jpg",
+      "x_bio": "最近やってるゲームはアナデンとゆるーくポケモンGO",
+      "x_bio_fetched_at": "2026-10-26T08:29:44.247561+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-10-26",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

@@ -390,13 +390,13 @@
       "artist_id": "mvomqk9wjkb7",
       "registered_handle": "YOSHIKI_0819",
       "expected_x_user_id": "2048031363199356928",
-      "state": "submitting",
+      "state": "processing",
       "provider": "archive.today",
       "created_at": "2026-10-26T02:26:51.463Z",
       "attempt_count": 1,
-      "next_attempt_at": 1792983056208,
+      "next_attempt_at": 1792983172154,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-10-26T02:49:56.208Z",
+      "updated_at": "2026-10-26T02:51:52.154Z",
       "identity": {
         "id": "2048031363199356928",
         "handle": "YOSHIKI_0819",
@@ -408,7 +408,8 @@
       "last_error": "",
       "submission_started_at": "2026-10-26T02:49:53.763Z",
       "operation_id": "74ab1eef-be64-42ab-abf5-5748d8ab6a87",
-      "lease_expires_at": 1792984793763
+      "lease_expires_at": 1792984793763,
+      "receipt": "https://archive.li/wip/rL19C"
     }
   ],
   "reservations": [

@@ -11864,7 +11864,34 @@
           "url": "https://x.com/enkazashimo",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archives": [
+        {
+          "provider": "archive.today",
+          "url": "https://archive.li/LoWaP",
+          "target_url": "https://x.com/enkazashimo",
+          "status": "done",
+          "job_id": "32a829df-58b7-40c8-af15-a087ec9cf049",
+          "event_key": "first:1765306302694367232:profile",
+          "x_user_id": "1765306302694367232",
+          "requested_at": "2026-10-26T02:36:53.564Z",
+          "captured_at": "2026-10-26T02:37:05.000Z",
+          "saved_at": "2026-10-26T02:40:52.156Z",
+          "content_verified_at": "2026-10-26T02:40:52.156Z",
+          "verification_method": "archived_profile_body",
+          "verified_scope": [
+            "profile"
+          ],
+          "posts_verification": "confirmed",
+          "reused_existing": false
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/LoWaP",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/enkazashimo",
+      "archive_checked_at": "2026-10-26T02:40:52.156Z",
+      "x_user_id": "1765306302694367232"
     },
     {
       "id": "mvo52hmvy13d",

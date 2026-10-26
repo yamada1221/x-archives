@@ -337,13 +337,13 @@
       "artist_id": "mvnxdk936rnr",
       "registered_handle": "enkazashimo",
       "expected_x_user_id": "1765306302694367232",
-      "state": "processing",
+      "state": "succeeded",
       "provider": "archive.today",
       "created_at": "2026-10-26T02:26:51.463Z",
       "attempt_count": 1,
       "next_attempt_at": 1792982392217,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-10-26T02:38:52.217Z",
+      "updated_at": "2026-10-26T02:40:52.156Z",
       "identity": {
         "id": "1765306302694367232",
         "handle": "enkazashimo",
@@ -356,7 +356,28 @@
       "submission_started_at": "2026-10-26T02:36:53.564Z",
       "operation_id": "927fa573-c940-4b19-bc26-5bbeaadfe06d",
       "lease_expires_at": 1792984013564,
-      "receipt": "https://archive.li/wip/LoWaP"
+      "receipt": "https://archive.li/LoWaP",
+      "receipt_history": [
+        "https://archive.li/wip/LoWaP"
+      ],
+      "verification": {
+        "ok": true,
+        "captured_at": "2026-10-26T02:37:05.000Z",
+        "verified_at": "2026-10-26T02:40:52.156Z",
+        "method": "archived_profile_body",
+        "scope": [
+          "profile"
+        ],
+        "posts_verification": "confirmed",
+        "post_ids": [
+          "1871418873301639456",
+          "2114314795906454014",
+          "2114099531503857908",
+          "2113397440015642992"
+        ],
+        "archived_user_id": "1765306302694367232",
+        "reused_existing": false
+      }
     }
   ],
   "reservations": [

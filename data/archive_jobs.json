@@ -394,9 +394,9 @@
       "provider": "archive.today",
       "created_at": "2026-10-26T02:26:51.463Z",
       "attempt_count": 1,
-      "next_attempt_at": 1792983232445,
+      "next_attempt_at": 1792983352537,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-10-26T02:52:52.445Z",
+      "updated_at": "2026-10-26T02:54:52.537Z",
       "identity": {
         "id": "2048031363199356928",
         "handle": "YOSHIKI_0819",
@@ -405,11 +405,15 @@
       },
       "target_url": "https://x.com/YOSHIKI_0819",
       "event_key": "first:2048031363199356928:profile",
-      "last_error": "",
+      "last_error": "プロフィール本文・対象ハンドルを確認できません",
       "submission_started_at": "2026-10-26T02:49:53.763Z",
       "operation_id": "74ab1eef-be64-42ab-abf5-5748d8ab6a87",
       "lease_expires_at": 1792984793763,
-      "receipt": "https://archive.li/wip/rL19C"
+      "receipt": "https://archive.li/rL19C",
+      "receipt_history": [
+        "https://archive.li/wip/rL19C"
+      ],
+      "verification_checks": 1
     }
   ],
   "reservations": [

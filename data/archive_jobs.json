@@ -214,29 +214,6 @@
       }
     },
     {
-      "job_id": "32a829df-58b7-40c8-af15-a087ec9cf049",
-      "kind": "profile",
-      "artist_id": "mvnxdk936rnr",
-      "registered_handle": "enkazashimo",
-      "expected_x_user_id": "1765306302694367232",
-      "state": "opening",
-      "provider": "archive.today",
-      "created_at": "2026-10-26T02:26:51.463Z",
-      "attempt_count": 0,
-      "next_attempt_at": 1792981673433,
-      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-10-26T02:27:53.433Z",
-      "identity": {
-        "id": "1765306302694367232",
-        "handle": "enkazashimo",
-        "name": "エンジニアの風下",
-        "bio": "札幌在住。個人アプリ開発で年商1億円&資産1億円💰のFIRE目指してます。主な収入源はサブスク課金とadmob広告です。0.2BTC₿。副業でSES企業の会社員もやってます（⚠️SESの毒吐きします）。FIREできるなら手段は問わず！ RISS情報処理安全確保支援士（士業）です。"
-      },
-      "target_url": "https://x.com/enkazashimo",
-      "event_key": "first:1765306302694367232:profile",
-      "last_error": ""
-    },
-    {
       "job_id": "6eb528b9-8820-4163-a337-f9e80e57ff5f",
       "kind": "profile",
       "artist_id": "mvo52hmvy13d",
@@ -330,6 +307,32 @@
       "submission_started_at": "2026-10-26T02:35:53.301Z",
       "operation_id": "d4b195ea-3089-4dcf-9dba-ac25683bf681",
       "lease_expires_at": 1792983953301
+    },
+    {
+      "job_id": "32a829df-58b7-40c8-af15-a087ec9cf049",
+      "kind": "profile",
+      "artist_id": "mvnxdk936rnr",
+      "registered_handle": "enkazashimo",
+      "expected_x_user_id": "1765306302694367232",
+      "state": "submitting",
+      "provider": "archive.today",
+      "created_at": "2026-10-26T02:26:51.463Z",
+      "attempt_count": 1,
+      "next_attempt_at": 1792981673433,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-10-26T02:27:53.433Z",
+      "identity": {
+        "id": "1765306302694367232",
+        "handle": "enkazashimo",
+        "name": "エンジニアの風下",
+        "bio": "札幌在住。個人アプリ開発で年商1億円&資産1億円💰のFIRE目指してます。主な収入源はサブスク課金とadmob広告です。0.2BTC₿。副業でSES企業の会社員もやってます（⚠️SESの毒吐きします）。FIREできるなら手段は問わず！ RISS情報処理安全確保支援士（士業）です。"
+      },
+      "target_url": "https://x.com/enkazashimo",
+      "event_key": "first:1765306302694367232:profile",
+      "last_error": "",
+      "submission_started_at": "2026-10-26T02:36:53.564Z",
+      "operation_id": "927fa573-c940-4b19-bc26-5bbeaadfe06d",
+      "lease_expires_at": 1792984013564
     }
   ],
   "reservations": [
@@ -341,6 +344,11 @@
     {
       "job_id": "5b90d451-da08-493a-8f7d-97c1f44a7864",
       "at": 1792982153301,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
+    },
+    {
+      "job_id": "32a829df-58b7-40c8-af15-a087ec9cf049",
+      "at": 1792982213564,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
     }
   ],

@@ -12654,10 +12654,27 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/2104153190140956672/dWQkTNrg_normal.jpg",
       "x_bio": "にっこり",
-      "x_bio_fetched_at": "2026-10-27T04:51:45.193717+00:00",
+      "x_bio_fetched_at": "2026-10-27T04:51:54.408746+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-27",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-27T04:51:54+00:00",
+        "x_account": "lycoris403",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=lycoris403",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/lycoris403",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

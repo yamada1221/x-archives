@@ -473,10 +473,10 @@
       "artist_id": "mvpr0h1yzd8l",
       "registered_handle": "osos12310164767",
       "expected_x_user_id": "1609095574644740096",
-      "state": "opening",
+      "state": "submitting",
       "provider": "archive.today",
       "created_at": "2026-10-27T02:26:53.279Z",
-      "attempt_count": 0,
+      "attempt_count": 1,
       "next_attempt_at": 1793068014057,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "updated_at": "2026-10-27T02:26:54.057Z",
@@ -488,15 +488,13 @@
       },
       "target_url": "https://x.com/osos12310164767",
       "event_key": "first:1609095574644740096:profile",
-      "last_error": ""
+      "last_error": "",
+      "submission_started_at": "2026-10-27T02:27:57.412Z",
+      "operation_id": "67f5edf3-c70b-411b-b728-e20cadee8fd4",
+      "lease_expires_at": 1793069877412
     }
   ],
   "reservations": [
-    {
-      "job_id": "51f10a05-eb43-4077-a5bc-a4b73cf6e618",
-      "at": 1792975438954,
-      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
-    },
     {
       "job_id": "5b90d451-da08-493a-8f7d-97c1f44a7864",
       "at": 1792982153301,
@@ -530,6 +528,11 @@
     {
       "job_id": "e9615a4e-e3c2-449e-a0d1-72c2287a001e",
       "at": 1793024877620,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
+    },
+    {
+      "job_id": "3c2ab721-cfc8-46d3-b72a-f735a4371b61",
+      "at": 1793068077412,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
     }
   ],

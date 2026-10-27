@@ -503,9 +503,9 @@
       "provider": "archive.today",
       "created_at": "2026-10-27T08:26:52.851Z",
       "attempt_count": 0,
-      "next_attempt_at": 1793089678671,
+      "next_attempt_at": 1793089859250,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-10-27T08:27:58.671Z",
+      "updated_at": "2026-10-27T08:29:59.250Z",
       "identity": {
         "id": "2012819906455392256",
         "handle": "omgwst128549",
@@ -514,7 +514,7 @@
       },
       "target_url": "https://x.com/omgwst128549",
       "event_key": "first:2012819906455392256:profile",
-      "last_error": ""
+      "last_error": "保存依頼の間隔を空けて待機しています"
     },
     {
       "job_id": "8417b04d-2d94-4bd4-a27b-a168eeb60e2a",

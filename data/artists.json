@@ -12678,7 +12678,7 @@
     },
     {
       "id": "mvqbe4m2vkza",
-      "name": "omgwst128549",
+      "name": "オーマイガット出水トゥギャ樹",
       "x_account": "omgwst128549",
       "threads_account": "",
       "threads_share_url": "",
@@ -12688,8 +12688,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-27",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2012820011824623616/5wcJvQcG_normal.png",
+      "x_bio": "雑魚ですが、ネットの流れに疑問が多いので、自分の心で信じた事を呟きたい/金持ちフォロワー持ちの言う事が正しいとは限らない/",
+      "x_bio_fetched_at": "2026-10-27T06:38:50.957531+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-10-27",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

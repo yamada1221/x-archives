@@ -12640,7 +12640,7 @@
     },
     {
       "id": "mvq7kfkwbsno",
-      "name": "lycoris403",
+      "name": "LYCORIS",
       "x_account": "lycoris403",
       "threads_account": "",
       "threads_share_url": "",
@@ -12650,8 +12650,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-10-27",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2104153190140956672/dWQkTNrg_normal.jpg",
+      "x_bio": "にっこり",
+      "x_bio_fetched_at": "2026-10-27T04:51:45.193717+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-10-27",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

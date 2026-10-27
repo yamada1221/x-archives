@@ -594,6 +594,29 @@
       "next_attempt_at": 1793111241290,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "updated_at": "2026-10-27T14:27:21.290Z"
+    },
+    {
+      "job_id": "3636d100-6816-41e8-9f8a-56f578b3a49f",
+      "kind": "profile",
+      "artist_id": "mvqmw8rwn9uv",
+      "registered_handle": "tamika47488",
+      "expected_x_user_id": "1808120200296124418",
+      "state": "opening",
+      "provider": "archive.today",
+      "created_at": "2026-10-27T14:27:21.290Z",
+      "attempt_count": 0,
+      "next_attempt_at": 1793111248881,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-10-27T14:27:28.881Z",
+      "identity": {
+        "id": "1808120200296124418",
+        "handle": "tamika47488",
+        "name": "裏ちゃん",
+        "bio": ""
+      },
+      "target_url": "https://x.com/tamika47488",
+      "event_key": "first:1808120200296124418:profile",
+      "last_error": ""
     }
   ],
   "reservations": [

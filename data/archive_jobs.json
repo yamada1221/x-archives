@@ -409,13 +409,13 @@
       "artist_id": "mvomqk9wjkb7",
       "registered_handle": "YOSHIKI_0819",
       "expected_x_user_id": "2048031363199356928",
-      "state": "processing",
+      "state": "succeeded",
       "provider": "archive.today",
       "created_at": "2026-10-26T02:26:51.463Z",
       "attempt_count": 1,
       "next_attempt_at": 1793099219316,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-10-27T11:05:59.316Z",
+      "updated_at": "2026-10-27T11:07:59.380Z",
       "identity": {
         "id": "2048031363199356928",
         "handle": "YOSHIKI_0819",
@@ -432,7 +432,24 @@
       "receipt_history": [
         "https://archive.li/wip/rL19C"
       ],
-      "verification_checks": 0
+      "verification_checks": 0,
+      "verification": {
+        "ok": true,
+        "captured_at": "2026-10-26T02:51:10.000Z",
+        "verified_at": "2026-10-27T11:07:59.380Z",
+        "method": "archived_profile_body",
+        "scope": [
+          "profile"
+        ],
+        "posts_verification": "confirmed",
+        "post_ids": [
+          "2114306150976110864",
+          "2114548312611442716",
+          "2114368832051814605"
+        ],
+        "archived_user_id": "2048031363199356928",
+        "reused_existing": false
+      }
     },
     {
       "job_id": "c22e1fbb-12e4-432a-8c63-b25c4a89a519",

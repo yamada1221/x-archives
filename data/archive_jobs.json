@@ -591,9 +591,9 @@
       "provider": "archive.today",
       "created_at": "2026-10-27T14:27:21.290Z",
       "attempt_count": 0,
-      "next_attempt_at": 1793111940833,
+      "next_attempt_at": 1793112061736,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-10-27T14:38:00.833Z",
+      "updated_at": "2026-10-27T14:40:01.736Z",
       "identity": {
         "id": "1808120200296124418",
         "handle": "tamika47488",
@@ -602,7 +602,7 @@
       },
       "target_url": "https://x.com/tamika47488",
       "event_key": "first:1808120200296124418:profile",
-      "last_error": ""
+      "last_error": "保存依頼の間隔を空けて待機しています"
     },
     {
       "job_id": "ef317c95-6c5b-4f99-85b6-ac28b8f17749",

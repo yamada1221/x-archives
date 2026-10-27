@@ -12863,6 +12863,28 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=2012819906455392256; screen_name=omgwst128549"
         }
       ]
+    },
+    {
+      "id": "mvqmw8rwn9uv",
+      "name": "tamika47488",
+      "x_account": "tamika47488",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "インプ稼ぎ / 青バッチ",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/tamika47488/status/2114898073638076518",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-10-27"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-10-27",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

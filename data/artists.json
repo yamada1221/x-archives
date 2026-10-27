@@ -12885,9 +12885,29 @@
       "added_at": "2026-10-27",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://pbs.twimg.com/profile_images/2053109747902193664/0Eon14mq_400x400.jpg",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2053109747902193664/0Eon14mq_normal.jpg",
       "profile_fetched_at": "2026-10-27",
-      "profile_source": "x_html"
+      "profile_source": "fxtwitter",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-10-27T12:01:03.976642+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-27T12:01:04+00:00",
+        "x_account": "tamika47488",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=tamika47488",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/tamika47488",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

@@ -582,29 +582,6 @@
       "lease_expires_at": 1793091718707
     },
     {
-      "job_id": "ef317c95-6c5b-4f99-85b6-ac28b8f17749",
-      "kind": "profile",
-      "artist_id": "mvqn4hajzc43",
-      "registered_handle": "dn0q1y",
-      "expected_x_user_id": "1826573074579554304",
-      "state": "opening",
-      "provider": "archive.today",
-      "created_at": "2026-10-27T14:27:21.290Z",
-      "attempt_count": 0,
-      "next_attempt_at": 1793111823832,
-      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-10-27T14:37:03.832Z",
-      "identity": {
-        "id": "1826573074579554304",
-        "handle": "dn0q1y",
-        "name": "ｼｺ始皇帝",
-        "bio": "Twitterの身内ノリクソほど寒い"
-      },
-      "target_url": "https://x.com/dn0q1y",
-      "event_key": "first:1826573074579554304:profile",
-      "last_error": ""
-    },
-    {
       "job_id": "3636d100-6816-41e8-9f8a-56f578b3a49f",
       "kind": "profile",
       "artist_id": "mvqmw8rwn9uv",
@@ -626,14 +603,35 @@
       "target_url": "https://x.com/tamika47488",
       "event_key": "first:1808120200296124418:profile",
       "last_error": ""
+    },
+    {
+      "job_id": "ef317c95-6c5b-4f99-85b6-ac28b8f17749",
+      "kind": "profile",
+      "artist_id": "mvqn4hajzc43",
+      "registered_handle": "dn0q1y",
+      "expected_x_user_id": "1826573074579554304",
+      "state": "submitting",
+      "provider": "archive.today",
+      "created_at": "2026-10-27T14:27:21.290Z",
+      "attempt_count": 1,
+      "next_attempt_at": 1793111823832,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-10-27T14:37:03.832Z",
+      "identity": {
+        "id": "1826573074579554304",
+        "handle": "dn0q1y",
+        "name": "ｼｺ始皇帝",
+        "bio": "Twitterの身内ノリクソほど寒い"
+      },
+      "target_url": "https://x.com/dn0q1y",
+      "event_key": "first:1826573074579554304:profile",
+      "last_error": "",
+      "submission_started_at": "2026-10-27T14:39:01.708Z",
+      "operation_id": "f775fcb2-0a64-4788-a9f3-7475045924b1",
+      "lease_expires_at": 1793113741708
     }
   ],
   "reservations": [
-    {
-      "job_id": "e9615a4e-e3c2-449e-a0d1-72c2287a001e",
-      "at": 1793024877620,
-      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
-    },
     {
       "job_id": "3c2ab721-cfc8-46d3-b72a-f735a4371b61",
       "at": 1793068077412,
@@ -647,6 +645,11 @@
     {
       "job_id": "8e618665-c5ee-429a-a95b-e06391ad4c7a",
       "at": 1793089918707,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
+    },
+    {
+      "job_id": "ef317c95-6c5b-4f99-85b6-ac28b8f17749",
+      "at": 1793111941708,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
     }
   ],

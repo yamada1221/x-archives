@@ -466,6 +466,29 @@
       "submission_started_at": "2026-10-26T14:27:57.620Z",
       "operation_id": "c263c924-31ed-4c1d-879b-745abbea92fe",
       "lease_expires_at": 1793026677620
+    },
+    {
+      "job_id": "3c2ab721-cfc8-46d3-b72a-f735a4371b61",
+      "kind": "profile",
+      "artist_id": "mvpr0h1yzd8l",
+      "registered_handle": "osos12310164767",
+      "expected_x_user_id": "1609095574644740096",
+      "state": "opening",
+      "provider": "archive.today",
+      "created_at": "2026-10-27T02:26:53.279Z",
+      "attempt_count": 0,
+      "next_attempt_at": 1793068014057,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-10-27T02:26:54.057Z",
+      "identity": {
+        "id": "1609095574644740096",
+        "handle": "osos12310164767",
+        "name": "osos123",
+        "bio": ""
+      },
+      "target_url": "https://x.com/osos12310164767",
+      "event_key": "first:1609095574644740096:profile",
+      "last_error": ""
     }
   ],
   "reservations": [

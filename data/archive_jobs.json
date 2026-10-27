@@ -522,10 +522,10 @@
       "artist_id": "mvq7kfkwbsno",
       "registered_handle": "lycoris403",
       "expected_x_user_id": "1415140052523384832",
-      "state": "opening",
+      "state": "submitting",
       "provider": "archive.today",
       "created_at": "2026-10-27T08:26:52.851Z",
-      "attempt_count": 0,
+      "attempt_count": 1,
       "next_attempt_at": 1793089613545,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "updated_at": "2026-10-27T08:26:53.545Z",
@@ -537,40 +537,13 @@
       },
       "target_url": "https://x.com/lycoris403",
       "event_key": "first:1415140052523384832:profile",
-      "last_error": ""
+      "last_error": "",
+      "submission_started_at": "2026-10-27T08:28:59.063Z",
+      "operation_id": "0a5f60b1-bf8e-4ca3-b6c2-cc71330388a4",
+      "lease_expires_at": 1793091539063
     }
   ],
   "reservations": [
-    {
-      "job_id": "5b90d451-da08-493a-8f7d-97c1f44a7864",
-      "at": 1792982153301,
-      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
-    },
-    {
-      "job_id": "32a829df-58b7-40c8-af15-a087ec9cf049",
-      "at": 1792982213564,
-      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
-    },
-    {
-      "job_id": "6eb528b9-8820-4163-a337-f9e80e57ff5f",
-      "at": 1792982513059,
-      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
-    },
-    {
-      "job_id": "bf7865cb-7329-41ec-9d76-645bdd18e91b",
-      "at": 1792982573565,
-      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
-    },
-    {
-      "job_id": "3894789d-8772-4055-8657-53ceae72ac8b",
-      "at": 1792982993763,
-      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
-    },
-    {
-      "job_id": "c22e1fbb-12e4-432a-8c63-b25c4a89a519",
-      "at": 1793003277650,
-      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
-    },
     {
       "job_id": "e9615a4e-e3c2-449e-a0d1-72c2287a001e",
       "at": 1793024877620,
@@ -579,6 +552,11 @@
     {
       "job_id": "3c2ab721-cfc8-46d3-b72a-f735a4371b61",
       "at": 1793068077412,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
+    },
+    {
+      "job_id": "8417b04d-2d94-4bd4-a27b-a168eeb60e2a",
+      "at": 1793089739063,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
     }
   ],

@@ -498,14 +498,23 @@
       "kind": "profile",
       "artist_id": "mvqbe4m2vkza",
       "registered_handle": "omgwst128549",
-      "expected_x_user_id": "",
-      "state": "queued",
+      "expected_x_user_id": "2012819906455392256",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-10-27T08:26:52.851Z",
       "attempt_count": 0,
-      "next_attempt_at": 1793089612851,
+      "next_attempt_at": 1793089678671,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-10-27T08:26:52.851Z"
+      "updated_at": "2026-10-27T08:27:58.671Z",
+      "identity": {
+        "id": "2012819906455392256",
+        "handle": "omgwst128549",
+        "name": "オーマイガット出水トゥギャ樹",
+        "bio": "雑魚ですが、ネットの流れに疑問が多いので、自分の心で信じた事を呟きたい/金持ちフォロワー持ちの言う事が正しいとは限らない/"
+      },
+      "target_url": "https://x.com/omgwst128549",
+      "event_key": "first:2012819906455392256:profile",
+      "last_error": ""
     },
     {
       "job_id": "8417b04d-2d94-4bd4-a27b-a168eeb60e2a",

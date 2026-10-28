@@ -632,6 +632,29 @@
       "submission_started_at": "2026-10-27T14:42:01.742Z",
       "operation_id": "86852be1-b69c-4542-b997-21efee91ac7c",
       "lease_expires_at": 1793113921742
+    },
+    {
+      "job_id": "9a736083-d839-4886-b82c-1f0165f12ad4",
+      "kind": "profile",
+      "artist_id": "mvrk647ry0wf",
+      "registered_handle": "hiropon170207",
+      "expected_x_user_id": "838733713743630337",
+      "state": "opening",
+      "provider": "archive.today",
+      "created_at": "2026-10-28T08:26:54.205Z",
+      "attempt_count": 0,
+      "next_attempt_at": 1793176015042,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-10-28T08:26:55.042Z",
+      "identity": {
+        "id": "838733713743630337",
+        "handle": "hiropon170207",
+        "name": "G-MEN",
+        "bio": ""
+      },
+      "target_url": "https://x.com/hiropon170207",
+      "event_key": "first:838733713743630337:profile",
+      "last_error": ""
     }
   ],
   "reservations": [

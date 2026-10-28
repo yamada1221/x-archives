@@ -639,10 +639,10 @@
       "artist_id": "mvrk647ry0wf",
       "registered_handle": "hiropon170207",
       "expected_x_user_id": "838733713743630337",
-      "state": "opening",
+      "state": "submitting",
       "provider": "archive.today",
       "created_at": "2026-10-28T08:26:54.205Z",
-      "attempt_count": 0,
+      "attempt_count": 1,
       "next_attempt_at": 1793176015042,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "updated_at": "2026-10-28T08:26:55.042Z",
@@ -654,15 +654,13 @@
       },
       "target_url": "https://x.com/hiropon170207",
       "event_key": "first:838733713743630337:profile",
-      "last_error": ""
+      "last_error": "",
+      "submission_started_at": "2026-10-28T08:28:00.989Z",
+      "operation_id": "08b8a2b1-71f6-4482-b24f-db0e844beb3e",
+      "lease_expires_at": 1793177880989
     }
   ],
   "reservations": [
-    {
-      "job_id": "3c2ab721-cfc8-46d3-b72a-f735a4371b61",
-      "at": 1793068077412,
-      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
-    },
     {
       "job_id": "8417b04d-2d94-4bd4-a27b-a168eeb60e2a",
       "at": 1793089739063,
@@ -681,6 +679,11 @@
     {
       "job_id": "3636d100-6816-41e8-9f8a-56f578b3a49f",
       "at": 1793112121742,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
+    },
+    {
+      "job_id": "9a736083-d839-4886-b82c-1f0165f12ad4",
+      "at": 1793176080989,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
     }
   ],

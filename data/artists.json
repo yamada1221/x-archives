@@ -13277,6 +13277,21 @@
       "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/hnnvwoobq097523/status/2115351170504130968?s=46",
       "archive_checked_at": "2026-10-29T16:38:56.131Z"
+    },
+    {
+      "id": "mvts37hcyqhh",
+      "name": "d_oug_hnu_t",
+      "x_account": "d_oug_hnu_t",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-29",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

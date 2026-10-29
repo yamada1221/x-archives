@@ -658,6 +658,20 @@
       "submission_started_at": "2026-10-28T08:28:00.989Z",
       "operation_id": "08b8a2b1-71f6-4482-b24f-db0e844beb3e",
       "lease_expires_at": 1793177880989
+    },
+    {
+      "job_id": "dafa945c-301d-4f4b-a2b4-f0cc6b554d6c",
+      "kind": "profile",
+      "artist_id": "mvt4jj0wkgcs",
+      "registered_handle": "vamostarozelvi",
+      "expected_x_user_id": "",
+      "state": "queued",
+      "provider": "archive.today",
+      "created_at": "2026-10-29T08:26:54.353Z",
+      "attempt_count": 0,
+      "next_attempt_at": 1793262414353,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-10-29T08:26:54.353Z"
     }
   ],
   "reservations": [

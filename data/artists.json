@@ -13074,10 +13074,27 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/1493122236139864067/Qz7baSTo_normal.jpg",
       "x_bio": "東京在住のお気楽サラリーマン。 のんびりまったりゆったりが生きがい・・・。争いは嫌い。争いはお腹が減るだけだよ！ 争うくらいならラーメン食べようぜ(✌'ω' ✌) 好き：#ヨッシースタンプ、#筋トレ、#スポーツジム、#DANCE、#レザークラフト、#ラーメン、 #ダイエット",
-      "x_bio_fetched_at": "2026-10-29T05:49:46.008489+00:00",
+      "x_bio_fetched_at": "2026-10-29T05:49:55.466166+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-10-29",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-29T05:49:55+00:00",
+        "x_account": "m_naoking",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=m_naoking",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/m_naoking",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

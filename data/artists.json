@@ -13050,6 +13050,28 @@
         "last_source": "x_public",
         "last_reason": ""
       }
+    },
+    {
+      "id": "mvt4ipy3h8sb",
+      "name": "m_naoking",
+      "x_account": "m_naoking",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/m_naoking/status/2115598420312482247",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-10-29"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-10-29",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

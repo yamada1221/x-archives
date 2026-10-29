@@ -660,29 +660,6 @@
       "lease_expires_at": 1793177880989
     },
     {
-      "job_id": "dafa945c-301d-4f4b-a2b4-f0cc6b554d6c",
-      "kind": "profile",
-      "artist_id": "mvt4jj0wkgcs",
-      "registered_handle": "vamostarozelvi",
-      "expected_x_user_id": "2080744214636478464",
-      "state": "opening",
-      "provider": "archive.today",
-      "created_at": "2026-10-29T08:26:54.353Z",
-      "attempt_count": 0,
-      "next_attempt_at": 1793262481293,
-      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-10-29T08:28:01.293Z",
-      "identity": {
-        "id": "2080744214636478464",
-        "handle": "vamostarozelvi",
-        "name": "鈴木彩艶",
-        "bio": "ゼルサポ"
-      },
-      "target_url": "https://x.com/vamostarozelvi",
-      "event_key": "first:2080744214636478464:profile",
-      "last_error": ""
-    },
-    {
       "job_id": "4c19e8f8-7b5b-40cf-9284-a059d093890e",
       "kind": "profile",
       "artist_id": "mvt4ipy3h8sb",
@@ -707,12 +684,43 @@
       "submission_started_at": "2026-10-29T08:29:01.607Z",
       "operation_id": "71bc609f-bfb3-4d61-8729-cd34856f9021",
       "lease_expires_at": 1793264341607
+    },
+    {
+      "job_id": "dafa945c-301d-4f4b-a2b4-f0cc6b554d6c",
+      "kind": "profile",
+      "artist_id": "mvt4jj0wkgcs",
+      "registered_handle": "vamostarozelvi",
+      "expected_x_user_id": "2080744214636478464",
+      "state": "submitting",
+      "provider": "archive.today",
+      "created_at": "2026-10-29T08:26:54.353Z",
+      "attempt_count": 1,
+      "next_attempt_at": 1793262481293,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-10-29T08:28:01.293Z",
+      "identity": {
+        "id": "2080744214636478464",
+        "handle": "vamostarozelvi",
+        "name": "鈴木彩艶",
+        "bio": "ゼルサポ"
+      },
+      "target_url": "https://x.com/vamostarozelvi",
+      "event_key": "first:2080744214636478464:profile",
+      "last_error": "",
+      "submission_started_at": "2026-10-29T08:32:01.111Z",
+      "operation_id": "65a1f324-7f57-48fa-8509-bdc20b0f15a2",
+      "lease_expires_at": 1793264521111
     }
   ],
   "reservations": [
     {
       "job_id": "4c19e8f8-7b5b-40cf-9284-a059d093890e",
       "at": 1793262541607,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
+    },
+    {
+      "job_id": "dafa945c-301d-4f4b-a2b4-f0cc6b554d6c",
+      "at": 1793262721111,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
     }
   ],

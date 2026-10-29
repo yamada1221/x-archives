@@ -13216,6 +13216,28 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=2080744214636478464; screen_name=vamostarozelvi"
         }
       ]
+    },
+    {
+      "id": "mvtrjnp9qcyk",
+      "name": "hnnvwoobq097523",
+      "x_account": "hnnvwoobq097523",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/hnnvwoobq097523/status/2115351170504130968",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-10-29"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-10-29",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

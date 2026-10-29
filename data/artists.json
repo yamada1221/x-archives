@@ -13095,6 +13095,28 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mvt4jj0wkgcs",
+      "name": "vamostarozelvi",
+      "x_account": "vamostarozelvi",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/vamostarozelvi/status/2115658665785278924",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-10-29"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-10-29",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

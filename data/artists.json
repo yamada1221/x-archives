@@ -13427,6 +13427,28 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mvufzyds6mik",
+      "name": "donbe",
+      "x_account": "donbe",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "青バッチ / ネトウヨ",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/donbe/status/2116008055251104006",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-10-30"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-10-30",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

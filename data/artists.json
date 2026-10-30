@@ -13430,7 +13430,7 @@
     },
     {
       "id": "mvufzyds6mik",
-      "name": "donbe",
+      "name": "どんちゃん",
       "x_account": "donbe",
       "threads_account": "",
       "threads_share_url": "",
@@ -13447,8 +13447,14 @@
       ],
       "threads_posts": [],
       "added_at": "2026-10-30",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1921874622687133696/ppqAso_x_normal.jpg",
+      "x_bio": "アズレンでは重桜。ウマ娘ではミホノブルボン。不労所得で一生食っていくことを目指すFPS好き。FF外とか気にしないのでRTでも何でもご自由にどうぞ。",
+      "x_bio_fetched_at": "2026-10-30T03:58:52.189917+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-10-30",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

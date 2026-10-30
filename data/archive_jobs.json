@@ -710,6 +710,20 @@
       "submission_started_at": "2026-10-29T08:32:01.111Z",
       "operation_id": "65a1f324-7f57-48fa-8509-bdc20b0f15a2",
       "lease_expires_at": 1793264521111
+    },
+    {
+      "job_id": "afc23dfd-d3bc-4aa5-863b-f29ecf246b43",
+      "kind": "profile",
+      "artist_id": "mvts3zcelv9o",
+      "registered_handle": "vtlol_www",
+      "expected_x_user_id": "",
+      "state": "queued",
+      "provider": "archive.today",
+      "created_at": "2026-10-30T02:26:54.088Z",
+      "attempt_count": 0,
+      "next_attempt_at": 1793327214088,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-10-30T02:26:54.088Z"
     }
   ],
   "reservations": [

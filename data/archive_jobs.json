@@ -712,29 +712,6 @@
       "lease_expires_at": 1793264521111
     },
     {
-      "job_id": "a43ba8b7-17c9-4417-bfa5-1096a74d43d8",
-      "kind": "profile",
-      "artist_id": "mvubxoa6hmzy",
-      "registered_handle": "ThrowLDPInJapan",
-      "expected_x_user_id": "1352455598005080065",
-      "state": "opening",
-      "provider": "archive.today",
-      "created_at": "2026-10-30T02:26:54.088Z",
-      "attempt_count": 0,
-      "next_attempt_at": 1793327341204,
-      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-10-30T02:29:01.204Z",
-      "identity": {
-        "id": "1352455598005080065",
-        "handle": "ThrowLDPInJapan",
-        "name": "日本が焦土と化すまで見守る事しか出来ない狂人・俺",
-        "bio": "@N462020 @88since1932 @akiranochild @wastinghour2020 @livesince2020\n@mentalcrashing \n@mrwG6ZYTI16OuCO 凍結の連続。虫歯1本発覚→大腸良性腫瘍→目の網膜断裂とガタ。時流に乗れない私は野垂れ死にするしか無いのか・・・。"
-      },
-      "target_url": "https://x.com/ThrowLDPInJapan",
-      "event_key": "first:1352455598005080065:profile",
-      "last_error": ""
-    },
-    {
       "job_id": "9dbdb5d6-a586-46d4-872c-d299428a5a7a",
       "kind": "profile",
       "artist_id": "mvts37hcyqhh",
@@ -785,6 +762,32 @@
       "submission_started_at": "2026-10-30T02:31:01.869Z",
       "operation_id": "4ac97eba-d666-4b05-9f2e-2c20ee3d98e7",
       "lease_expires_at": 1793329261869
+    },
+    {
+      "job_id": "a43ba8b7-17c9-4417-bfa5-1096a74d43d8",
+      "kind": "profile",
+      "artist_id": "mvubxoa6hmzy",
+      "registered_handle": "ThrowLDPInJapan",
+      "expected_x_user_id": "1352455598005080065",
+      "state": "submitting",
+      "provider": "archive.today",
+      "created_at": "2026-10-30T02:26:54.088Z",
+      "attempt_count": 1,
+      "next_attempt_at": 1793327341204,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-10-30T02:29:01.204Z",
+      "identity": {
+        "id": "1352455598005080065",
+        "handle": "ThrowLDPInJapan",
+        "name": "日本が焦土と化すまで見守る事しか出来ない狂人・俺",
+        "bio": "@N462020 @88since1932 @akiranochild @wastinghour2020 @livesince2020\n@mentalcrashing \n@mrwG6ZYTI16OuCO 凍結の連続。虫歯1本発覚→大腸良性腫瘍→目の網膜断裂とガタ。時流に乗れない私は野垂れ死にするしか無いのか・・・。"
+      },
+      "target_url": "https://x.com/ThrowLDPInJapan",
+      "event_key": "first:1352455598005080065:profile",
+      "last_error": "",
+      "submission_started_at": "2026-10-30T02:35:01.681Z",
+      "operation_id": "ea8ab89f-e591-4705-9fca-cb8dcaa80153",
+      "lease_expires_at": 1793329501681
     }
   ],
   "reservations": [
@@ -806,6 +809,11 @@
     {
       "job_id": "afc23dfd-d3bc-4aa5-863b-f29ecf246b43",
       "at": 1793327461869,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
+    },
+    {
+      "job_id": "a43ba8b7-17c9-4417-bfa5-1096a74d43d8",
+      "at": 1793327701681,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
     }
   ],

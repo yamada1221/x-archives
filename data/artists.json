@@ -13385,7 +13385,7 @@
     },
     {
       "id": "mvufyxphj6ox",
-      "name": "hisa_labs",
+      "name": "Hisa",
       "x_account": "hisa_labs",
       "threads_account": "",
       "threads_share_url": "",
@@ -13402,8 +13402,31 @@
       ],
       "threads_posts": [],
       "added_at": "2026-10-30",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2103341635690180608/DRNvVl_G_normal.jpg",
+      "x_bio": "founder @xfinlabs, cs @ melbourne",
+      "x_bio_fetched_at": "2026-10-30T03:58:19.854939+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-10-30",
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-10-30T03:58:19+00:00",
+        "x_account": "hisa_labs",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=hisa_labs",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/hisa_labs",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

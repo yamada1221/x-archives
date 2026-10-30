@@ -13627,6 +13627,28 @@
           "reason": "FxTwitter HTTP 404; code=404; message=User not found; fallback: non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/donbe; contains_username=True; suspended_marker=False; missing_marker=False; bytes=179033; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"b5d619d59ff8a06ad1a541260ba87ce875366068\"><head><meta charSet=\"utf-8\"/><meta name'"
         }
       ]
+    },
+    {
+      "id": "mvvbftkoausa",
+      "name": "narinaritousyok",
+      "x_account": "narinaritousyok",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ / パロディアカウント",
+      "tracking_mode": "monitor_only",
+      "works": [
+        {
+          "url": "https://x.com/narinaritousyok/status/2116167121877246384",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-10-30"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-10-30",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

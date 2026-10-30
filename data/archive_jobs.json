@@ -763,10 +763,10 @@
       "artist_id": "mvts37hcyqhh",
       "registered_handle": "d_oug_hnu_t",
       "expected_x_user_id": "1413263137344688129",
-      "state": "opening",
+      "state": "submitting",
       "provider": "archive.today",
       "created_at": "2026-10-30T02:26:54.088Z",
-      "attempt_count": 0,
+      "attempt_count": 1,
       "next_attempt_at": 1793327214840,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "updated_at": "2026-10-30T02:26:54.840Z",
@@ -778,7 +778,10 @@
       },
       "target_url": "https://x.com/d_oug_hnu_t",
       "event_key": "first:1413263137344688129:profile",
-      "last_error": ""
+      "last_error": "",
+      "submission_started_at": "2026-10-30T02:30:01.688Z",
+      "operation_id": "2f5e63ac-7578-4cae-bca6-968afc1b9283",
+      "lease_expires_at": 1793329201688
     }
   ],
   "reservations": [
@@ -790,6 +793,11 @@
     {
       "job_id": "dafa945c-301d-4f4b-a2b4-f0cc6b554d6c",
       "at": 1793262721111,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
+    },
+    {
+      "job_id": "9dbdb5d6-a586-46d4-872c-d299428a5a7a",
+      "at": 1793327401688,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7"
     }
   ],

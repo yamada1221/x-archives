@@ -13382,6 +13382,28 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mvufyxphj6ox",
+      "name": "hisa_labs",
+      "x_account": "hisa_labs",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "汚言 / 青バッチ",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/hisa_labs/status/2115361951874416924",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-10-30"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-10-30",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

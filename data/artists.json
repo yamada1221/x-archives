@@ -13784,6 +13784,21 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1029002179451863042; screen_name=xshuanghuax"
         }
       ]
+    },
+    {
+      "id": "mvwfw117yr6f",
+      "name": "raymond_supdev",
+      "x_account": "raymond_supdev",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "ハッカーのアカウントと考えられている",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-10-31",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

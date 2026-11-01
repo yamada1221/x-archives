@@ -14038,10 +14038,27 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/1956305861896519681/GfCgrF9z_normal.jpg",
       "x_bio": "・お米と読書が好き\n・海、山、川がきれいなとこに住みたい",
-      "x_bio_fetched_at": "2026-11-01T13:02:37.644068+00:00",
+      "x_bio_fetched_at": "2026-11-01T13:02:47.593730+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-01",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-01T13:02:47+00:00",
+        "x_account": "medaka003",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=medaka003",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/medaka003",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

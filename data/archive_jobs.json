@@ -486,13 +486,13 @@
       "artist_id": "mvozwvyh2ni6",
       "registered_handle": "ZACCO_0120",
       "expected_x_user_id": "2885942491",
-      "state": "needs_review",
+      "state": "submission_unknown",
       "provider": "archive.today",
       "created_at": "2026-10-26T14:26:52.934Z",
       "attempt_count": 1,
-      "next_attempt_at": 1793024939869,
+      "next_attempt_at": 1793497838591,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-10-26T14:30:11.756Z",
+      "updated_at": "2026-11-01T01:50:38.591Z",
       "identity": {
         "id": "2885942491",
         "handle": "ZACCO_0120",
@@ -501,10 +501,13 @@
       },
       "target_url": "https://x.com/ZACCO_0120",
       "event_key": "first:2885942491:profile",
-      "last_error": "受付結果が不明です。保存先の画面または検索結果で確認してください",
+      "last_error": "送信済みの保存結果を再確認しています。保存依頼は出し直しません",
       "submission_started_at": "2026-10-26T14:27:57.620Z",
       "operation_id": "c263c924-31ed-4c1d-879b-745abbea92fe",
-      "lease_expires_at": 1793026677620
+      "lease_expires_at": 1793026677620,
+      "receipt_checks": 0,
+      "receipt_recovery_required": true,
+      "receipt_recovery_started_at": "2026-11-01T01:50:38.591Z"
     },
     {
       "job_id": "3c2ab721-cfc8-46d3-b72a-f735a4371b61",

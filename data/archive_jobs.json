@@ -892,13 +892,13 @@
       "artist_id": "mvwfw117yr6f",
       "registered_handle": "raymond_supdev",
       "expected_x_user_id": "1925187899299127296",
-      "state": "needs_review",
+      "state": "submission_unknown",
       "provider": "archive.today",
       "created_at": "2026-10-31T14:26:54.110Z",
       "attempt_count": 1,
-      "next_attempt_at": 1793456940721,
+      "next_attempt_at": 1793497838591,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-10-31T14:29:57.303Z",
+      "updated_at": "2026-11-01T01:50:38.591Z",
       "identity": {
         "id": "1925187899299127296",
         "handle": "raymond_supdev",
@@ -907,10 +907,13 @@
       },
       "target_url": "https://x.com/raymond_supdev",
       "event_key": "first:1925187899299127296:profile",
-      "last_error": "受付結果が不明です。保存先の画面または検索結果で確認してください",
+      "last_error": "送信済みの保存結果を再確認しています。保存依頼は出し直しません",
       "submission_started_at": "2026-10-31T14:27:58.245Z",
       "operation_id": "8a82e0ce-e509-4f8a-967b-a6b56ff10fbe",
-      "lease_expires_at": 1793458678245
+      "lease_expires_at": 1793458678245,
+      "receipt_checks": 0,
+      "receipt_recovery_required": true,
+      "receipt_recovery_started_at": "2026-11-01T01:50:38.591Z"
     }
   ],
   "reservations": [

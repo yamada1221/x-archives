@@ -13857,6 +13857,28 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mvxnaln52sgm",
+      "name": "combat_rec",
+      "x_account": "combat_rec",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "チクチク",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/combat_rec/status/2116142327085617575",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-01"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-11-01",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

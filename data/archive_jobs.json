@@ -515,13 +515,13 @@
       "artist_id": "mvpr0h1yzd8l",
       "registered_handle": "osos12310164767",
       "expected_x_user_id": "1609095574644740096",
-      "state": "needs_review",
+      "state": "submission_unknown",
       "provider": "archive.today",
       "created_at": "2026-10-27T02:26:53.279Z",
       "attempt_count": 1,
-      "next_attempt_at": 1793068140001,
+      "next_attempt_at": 1793497838591,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-10-27T02:29:56.453Z",
+      "updated_at": "2026-11-01T01:50:38.591Z",
       "identity": {
         "id": "1609095574644740096",
         "handle": "osos12310164767",
@@ -530,10 +530,13 @@
       },
       "target_url": "https://x.com/osos12310164767",
       "event_key": "first:1609095574644740096:profile",
-      "last_error": "受付結果が不明です。保存先の画面または検索結果で確認してください",
+      "last_error": "送信済みの保存結果を再確認しています。保存依頼は出し直しません",
       "submission_started_at": "2026-10-27T02:27:57.412Z",
       "operation_id": "67f5edf3-c70b-411b-b728-e20cadee8fd4",
-      "lease_expires_at": 1793069877412
+      "lease_expires_at": 1793069877412,
+      "receipt_checks": 0,
+      "receipt_recovery_required": true,
+      "receipt_recovery_started_at": "2026-11-01T01:50:38.591Z"
     },
     {
       "job_id": "8417b04d-2d94-4bd4-a27b-a168eeb60e2a",

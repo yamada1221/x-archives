@@ -14014,6 +14014,28 @@
         "last_source": "x_public",
         "last_reason": ""
       }
+    },
+    {
+      "id": "mvxuaz0kunbm",
+      "name": "medaka003",
+      "x_account": "medaka003",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/medaka003/status/2116870266081173572",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-01"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-11-01",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

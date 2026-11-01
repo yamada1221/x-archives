@@ -915,6 +915,20 @@
       "receipt_checks": 0,
       "receipt_recovery_required": true,
       "receipt_recovery_started_at": "2026-11-01T01:50:38.591Z"
+    },
+    {
+      "job_id": "61c26a3b-08fc-461c-9574-78828257fa5f",
+      "kind": "profile",
+      "artist_id": "mvxjq1h4kb35",
+      "registered_handle": "mJng1GGsSaoPBaf",
+      "expected_x_user_id": "",
+      "state": "queued",
+      "provider": "archive.today",
+      "created_at": "2026-11-01T08:26:55.486Z",
+      "attempt_count": 0,
+      "next_attempt_at": 1793521615487,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-11-01T08:26:55.487Z"
     }
   ],
   "reservations": [

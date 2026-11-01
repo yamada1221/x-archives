@@ -13902,6 +13902,28 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mvxp2vv39fcn",
+      "name": "ur11ur11",
+      "x_account": "ur11ur11",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "汚言 クソリプ",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/ur11ur11/status/2116822657417310563",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-01"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-11-01",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

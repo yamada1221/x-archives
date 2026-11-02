@@ -14062,7 +14062,7 @@
     },
     {
       "id": "mvyjguzwx0wv",
-      "name": "churadacco",
+      "name": "ちゅらだっこ",
       "x_account": "churadacco",
       "threads_account": "",
       "threads_share_url": "",
@@ -14079,8 +14079,14 @@
       ],
       "threads_posts": [],
       "added_at": "2026-11-02",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2099655983597502464/M1zr63nT_normal.jpg",
+      "x_bio": "友人や家族の実体験や実話をベースにしたものをイラストや画像に起こしてます！いつもはスレッズにいます\n無断転載もしないでね。めちゃくちゃ転載されるので文言載せました。\n面白いと思ったらシェアお願いします。\nAmazonアソシエイト参加中",
+      "x_bio_fetched_at": "2026-11-02T00:47:08.088295+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-02",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

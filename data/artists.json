@@ -14188,6 +14188,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mw0c7kw24cwj",
+      "name": "nickolaswdip",
+      "x_account": "nickolaswdip",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "スパム / インプ稼ぎ 同じ画像をリプライ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-03",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

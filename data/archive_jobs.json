@@ -660,13 +660,13 @@
       "artist_id": "mvrk647ry0wf",
       "registered_handle": "hiropon170207",
       "expected_x_user_id": "838733713743630337",
-      "state": "submission_unknown",
+      "state": "needs_review",
       "provider": "archive.today",
       "created_at": "2026-10-28T08:26:54.205Z",
       "attempt_count": 1,
       "next_attempt_at": 1793670639229,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-03T01:45:39.229Z",
+      "updated_at": "2026-11-03T01:51:39.187Z",
       "identity": {
         "id": "838733713743630337",
         "handle": "hiropon170207",
@@ -675,14 +675,13 @@
       },
       "target_url": "https://x.com/hiropon170207",
       "event_key": "first:838733713743630337:profile",
-      "last_error": "保存先の人間確認が必要です。「保存先で確認」で完了してください。完了後は自動で結果を確認します",
+      "last_error": "48時間を超えて完了を確認できません。結果URLを確認してください",
       "submission_started_at": "2026-10-28T08:28:00.989Z",
       "operation_id": "08b8a2b1-71f6-4482-b24f-db0e844beb3e",
       "lease_expires_at": 1793177880989,
       "receipt_checks": 0,
       "receipt_recovery_required": true,
-      "receipt_recovery_started_at": "2026-11-01T01:50:38.591Z",
-      "access_wait": "human"
+      "receipt_recovery_started_at": "2026-11-01T01:50:38.591Z"
     },
     {
       "job_id": "4c19e8f8-7b5b-40cf-9284-a059d093890e",

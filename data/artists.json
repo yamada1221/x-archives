@@ -14191,7 +14191,7 @@
     },
     {
       "id": "mw0c7kw24cwj",
-      "name": "nickolaswdip",
+      "name": "nickolas",
       "x_account": "nickolaswdip",
       "threads_account": "",
       "threads_share_url": "",
@@ -14201,8 +14201,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-03",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2000294602704891904/FNmzfOmq_normal.jpg",
+      "x_bio": "The company’s owner, Chairman and CEO of a century-old publicly listed high-tech company.",
+      "x_bio_fetched_at": "2026-11-03T06:59:25.237663+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-03",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

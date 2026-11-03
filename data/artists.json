@@ -14226,6 +14226,28 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mw0ifbi4gowr",
+      "name": "2cbx5r6nokdk6ik",
+      "x_account": "2cbx5r6nokdk6ik",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/2cbx5r6nokdk6ik/status/2117551805328703551",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-03"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-11-03",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

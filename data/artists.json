@@ -14413,12 +14413,29 @@
       "added_at": "2026-11-03",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://pbs.twimg.com/profile_images/2117650056530771968/oFe4c6Q__normal.jpg",
+      "avatar_url": "https://unavatar.io/x/vlogsshogeki?fallback=false",
       "x_bio": "ネットの裏側を暴く。\n\nSNSで話題の衝撃映像・事件・炎上・未解決の謎を独自の視点で紹介。\n\n表では語られない情報を、あなたのタイムラインへ。",
       "x_bio_fetched_at": "2026-11-03T18:22:27.884571+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-03",
-      "profile_source": "fxtwitter"
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-03T18:23:15+00:00",
+        "x_account": "vlogsshogeki",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=vlogsshogeki",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/vlogsshogeki",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

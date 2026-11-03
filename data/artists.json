@@ -14398,6 +14398,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mw10liljmyp5",
+      "name": "vlogsshogeki",
+      "x_account": "vlogsshogeki",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "スパム",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-03",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

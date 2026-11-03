@@ -14360,6 +14360,21 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1451351665928392705; screen_name=2CbX5r6nokdk6IK"
         }
       ]
+    },
+    {
+      "id": "mw10gdri3h6f",
+      "name": "hillowworld",
+      "x_account": "hillowworld",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ？",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-03",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

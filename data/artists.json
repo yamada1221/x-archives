@@ -14401,7 +14401,7 @@
     },
     {
       "id": "mw10liljmyp5",
-      "name": "vlogsshogeki",
+      "name": "晒しヤクザ|ネットの裏側",
       "x_account": "vlogsshogeki",
       "threads_account": "",
       "threads_share_url": "",
@@ -14411,8 +14411,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-03",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2117650056530771968/oFe4c6Q__normal.jpg",
+      "x_bio": "ネットの裏側を暴く。\n\nSNSで話題の衝撃映像・事件・炎上・未解決の謎を独自の視点で紹介。\n\n表では語られない情報を、あなたのタイムラインへ。",
+      "x_bio_fetched_at": "2026-11-03T18:22:27.884571+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-03",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

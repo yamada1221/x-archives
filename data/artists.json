@@ -14153,7 +14153,7 @@
     },
     {
       "id": "mw04lyy9cx1n",
-      "name": "cCrTS3qTmN50836",
+      "name": "やなかまん",
       "x_account": "cCrTS3qTmN50836",
       "threads_account": "",
       "threads_share_url": "",
@@ -14163,8 +14163,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-03",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1923566120977526784/MC0-SMGC_normal.jpg",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-03T03:26:40.088872+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-03",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

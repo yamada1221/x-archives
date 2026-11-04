@@ -14515,7 +14515,7 @@
     },
     {
       "id": "mw1z42tk0odi",
-      "name": "GurukunSaa",
+      "name": "グルクン",
       "x_account": "GurukunSaa",
       "threads_account": "",
       "threads_share_url": "",
@@ -14525,8 +14525,71 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-04",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2116133676920791040/-X8ecUSg_normal.jpg",
+      "x_bio": "ぷかぷかおよぐよ",
+      "x_bio_fetched_at": "2026-11-04T10:28:45.329102+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-04",
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-04T10:28:45+00:00",
+        "x_account": "GurukunSaa",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=GurukunSaa",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/GurukunSaa",
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "final_url": "https://x.com/GurukunSaa",
+          "bytes": 175693,
+          "contains_username": true,
+          "screen_name_marker": false,
+          "profile_image_url_count": 18,
+          "profile_image_candidates": [
+            "https://pbs.twimg.com/profile_images/2116133676920791040/-X8ecUSg_400x400.jpg",
+            "https://pbs.twimg.com/profile_images/2116133676920791040/-X8ecUSg_normal.jpg",
+            "https://pbs.twimg.com/profile_images/1631528026222780416/2A8B_T4m_normal.jpg",
+            "https://pbs.twimg.com/profile_images/1540675475218935813/mm1VaEzK_normal.jpg",
+            "https://pbs.twimg.com/profile_images/1273199623482400768/jgZF89rB_normal.jpg",
+            "https://pbs.twimg.com/profile_images/1665625102183182340/r9mL_NyL_normal.jpg",
+            "https://pbs.twimg.com/profile_images/2116133676920791040/-X8ecUSg_x96.jpg",
+            "https://pbs.twimg.com/profile_images/2116133676920791040/-X8ecUSg_reasonably_small.jpg",
+            "https://pbs.twimg.com/profile_images/2116133676920791040/-X8ecUSg_mini.jpg",
+            "https://pbs.twimg.com/profile_images/1631528026222780416/2A8B_T4m_mini.jpg",
+            "https://pbs.twimg.com/profile_images/1631528026222780416/2A8B_T4m_bigger.jpg",
+            "https://pbs.twimg.com/profile_images/1540675475218935813/mm1VaEzK_mini.jpg",
+            "https://pbs.twimg.com/profile_images/1540675475218935813/mm1VaEzK_bigger.jpg",
+            "https://pbs.twimg.com/profile_images/1273199623482400768/jgZF89rB_mini.jpg",
+            "https://pbs.twimg.com/profile_images/1273199623482400768/jgZF89rB_bigger.jpg",
+            "https://pbs.twimg.com/profile_images/2116133676920791040/-X8ecUSg_bigger.jpg",
+            "https://pbs.twimg.com/profile_images/1665625102183182340/r9mL_NyL_mini.jpg",
+            "https://pbs.twimg.com/profile_images/1665625102183182340/r9mL_NyL_bigger.jpg"
+          ],
+          "meta_keys": [
+            "og:image",
+            "og:title",
+            "twitter:image",
+            "twitter:title"
+          ],
+          "og_title_present": true,
+          "og_image_present": true,
+          "twitter_title_present": true,
+          "twitter_image_present": true,
+          "og_title": "Xユーザーのグルクン（@GurukunSaa）さん",
+          "og_image": "https://pbs.twimg.com/profile_images/2116133676920791040/-X8ecUSg_400x400.jpg",
+          "twitter_title": "Xユーザーのグルクン（@GurukunSaa）さん",
+          "twitter_image": "https://pbs.twimg.com/profile_banners/2109561889734995968/1791809093"
+        }
+      }
     }
   ],
   "monitoring_summary": {

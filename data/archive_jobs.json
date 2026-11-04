@@ -1068,6 +1068,20 @@
       "next_attempt_at": 1793780819757,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "updated_at": "2026-11-04T08:26:59.757Z"
+    },
+    {
+      "job_id": "d19b7ddc-eb29-443d-be1d-284e9f4b1a9e",
+      "kind": "profile",
+      "artist_id": "mw1z42tk0odi",
+      "registered_handle": "GurukunSaa",
+      "expected_x_user_id": "2109561889734995968",
+      "state": "queued",
+      "provider": "archive.today",
+      "created_at": "2026-11-04T14:26:55.590Z",
+      "attempt_count": 0,
+      "next_attempt_at": 1793802415590,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-11-04T14:26:55.590Z"
     }
   ],
   "reservations": [

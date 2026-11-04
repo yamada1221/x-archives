@@ -14691,6 +14691,28 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=2109561889734995968; screen_name=GurukunSaa"
         }
       ]
+    },
+    {
+      "id": "mw2qs08k0ujt",
+      "name": "aonboaonbo",
+      "x_account": "aonboaonbo",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "青バッチ",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/aonboaonbo/status/2117825736245727583",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-04"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-11-04",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

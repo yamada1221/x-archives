@@ -14474,6 +14474,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mw1ytofroyy3",
+      "name": "WhPDqjKfp763591",
+      "x_account": "WhPDqjKfp763591",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "リプライ用アカウント",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-04",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

@@ -1054,6 +1054,20 @@
       "next_attempt_at": 1793737615753,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "updated_at": "2026-11-03T20:26:55.753Z"
+    },
+    {
+      "job_id": "1baeb882-7df5-4e15-8d53-5ec55991a43a",
+      "kind": "profile",
+      "artist_id": "mw1k4dukxnfe",
+      "registered_handle": "karako_mori",
+      "expected_x_user_id": "",
+      "state": "queued",
+      "provider": "archive.today",
+      "created_at": "2026-11-04T08:26:59.757Z",
+      "attempt_count": 0,
+      "next_attempt_at": 1793780819757,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-11-04T08:26:59.757Z"
     }
   ],
   "reservations": [

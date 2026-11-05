@@ -14834,6 +14834,21 @@
         "last_source": "x_public",
         "last_reason": ""
       }
+    },
+    {
+      "id": "mw3j9mw3q38q",
+      "name": "yqbvj",
+      "x_account": "yqbvj",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "井上たきなアイコン",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-05",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

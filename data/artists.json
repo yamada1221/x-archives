@@ -14837,7 +14837,7 @@
     },
     {
       "id": "mw3j9mw3q38q",
-      "name": "yqbvj",
+      "name": "🤎",
       "x_account": "yqbvj",
       "threads_account": "",
       "threads_share_url": "",
@@ -14847,8 +14847,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-05",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2093212419086790656/dRrLBJJy_normal.jpg",
+      "x_bio": "文学部",
+      "x_bio_fetched_at": "2026-11-05T12:40:18.406594+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-05",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

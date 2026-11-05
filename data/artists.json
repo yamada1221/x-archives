@@ -14849,12 +14849,70 @@
       "added_at": "2026-11-05",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://pbs.twimg.com/profile_images/2093212419086790656/dRrLBJJy_normal.jpg",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2093212419086790656/dRrLBJJy_400x400.jpg",
       "x_bio": "文学部",
       "x_bio_fetched_at": "2026-11-05T12:40:18.406594+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-05",
-      "profile_source": "fxtwitter"
+      "profile_source": "x_html",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-05T12:40:33+00:00",
+        "x_account": "yqbvj",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=yqbvj",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/yqbvj",
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "final_url": "https://x.com/yqbvj",
+          "bytes": 175956,
+          "contains_username": true,
+          "screen_name_marker": false,
+          "profile_image_url_count": 20,
+          "profile_image_candidates": [
+            "https://pbs.twimg.com/profile_images/2093212419086790656/dRrLBJJy_400x400.jpg",
+            "https://pbs.twimg.com/profile_images/2093212419086790656/dRrLBJJy_normal.jpg",
+            "https://pbs.twimg.com/profile_images/2084155253583429632/WwMMSBEV_normal.jpg",
+            "https://pbs.twimg.com/profile_images/2104281241709346816/xZT_OGgj_normal.jpg",
+            "https://pbs.twimg.com/profile_images/2108195451807969280/A0bqf2b__normal.jpg",
+            "https://pbs.twimg.com/profile_images/2114358924707340288/caC2jegE_normal.jpg",
+            "https://pbs.twimg.com/profile_images/2045853680277323776/X-61VxBI_normal.jpg",
+            "https://pbs.twimg.com/profile_images/1925968745429676032/VV0hUYGY_normal.jpg",
+            "https://pbs.twimg.com/profile_images/2093212419086790656/dRrLBJJy_x96.jpg",
+            "https://pbs.twimg.com/profile_images/2093212419086790656/dRrLBJJy_reasonably_small.jpg",
+            "https://pbs.twimg.com/profile_images/2084155253583429632/WwMMSBEV_mini.jpg",
+            "https://pbs.twimg.com/profile_images/2084155253583429632/WwMMSBEV_bigger.jpg",
+            "https://pbs.twimg.com/profile_images/2108195451807969280/A0bqf2b__mini.jpg",
+            "https://pbs.twimg.com/profile_images/2108195451807969280/A0bqf2b__bigger.jpg",
+            "https://pbs.twimg.com/profile_images/2114358924707340288/caC2jegE_mini.jpg",
+            "https://pbs.twimg.com/profile_images/2114358924707340288/caC2jegE_bigger.jpg",
+            "https://pbs.twimg.com/profile_images/2045853680277323776/X-61VxBI_mini.jpg",
+            "https://pbs.twimg.com/profile_images/2045853680277323776/X-61VxBI_bigger.jpg",
+            "https://pbs.twimg.com/profile_images/1925968745429676032/VV0hUYGY_mini.jpg",
+            "https://pbs.twimg.com/profile_images/1925968745429676032/VV0hUYGY_bigger.jpg"
+          ],
+          "meta_keys": [
+            "og:image",
+            "og:title",
+            "twitter:title"
+          ],
+          "og_title_present": true,
+          "og_image_present": true,
+          "twitter_title_present": true,
+          "twitter_image_present": false,
+          "og_title": "Xユーザーの🤎（@yqbvj）さん",
+          "og_image": "https://pbs.twimg.com/profile_images/2093212419086790656/dRrLBJJy_400x400.jpg",
+          "twitter_title": "Xユーザーの🤎（@yqbvj）さん",
+          "twitter_image": ""
+        }
+      }
     }
   ],
   "monitoring_summary": {

@@ -15254,12 +15254,19 @@
       "threads_account": "",
       "threads_share_url": "",
       "pixiv_user": "",
-      "note": "タグ：共和党関連・発言確認（要確認）。 返信タグ：ポリコレへの懸念、民主党への否定的評価の可能性（要確認）。政治的配慮が広まることを残念だと述べる。本人の支持政党は未確認。 出典：2026-11-06の提供画像、返信先 https://x.com/alpaca_w_rabbit/status/2118423529297441275",
+      "note": "タグ：共和党関連・発言確認（要確認）。 返信タグ：ポリコレへの懸念、民主党への否定的評価の可能性（要確認）。政治的配慮が広まることを残念だと述べる。本人の支持政党は未確認。 出典：2026-11-06の提供画像、返信先 https://x.com/alpaca_w_rabbit/status/2118423529297441275 / ネトウヨ",
       "tracking_mode": "monitor_only",
-      "works": [],
+      "works": [
+        {
+          "url": "https://x.com/xylishb/status/2118668080046072157?a=dua6mBh_Y0uE-OKNGk0&s=46",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-06"
+        }
+      ],
       "threads_posts": [],
       "added_at": "2026-11-07",
-      "fetch_status": "done",
+      "fetch_status": "pending",
       "threads_fetch_status": "none",
       "avatar_url": "https://unavatar.io/x/XylishB?fallback=false",
       "profile_fetched_at": "2026-11-06",

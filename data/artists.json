@@ -12774,7 +12774,33 @@
           "at": "2026-10-27T09:54:00+00:00",
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=2885942491; screen_name=ZACCO_0120"
         }
-      ]
+      ],
+      "archives": [
+        {
+          "provider": "archive.today",
+          "url": "https://archive.li/JyMq6",
+          "target_url": "https://x.com/ZACCO_0120",
+          "status": "done",
+          "job_id": "e9615a4e-e3c2-449e-a0d1-72c2287a001e",
+          "event_key": "first:2885942491:profile",
+          "x_user_id": "2885942491",
+          "requested_at": "2026-10-26T14:27:57.620Z",
+          "captured_at": "2026-11-06T10:06:50.000Z",
+          "saved_at": "2026-11-06T10:11:56.882Z",
+          "content_verified_at": "2026-11-06T10:11:56.882Z",
+          "verification_method": "archived_profile_body",
+          "verified_scope": [
+            "profile"
+          ],
+          "posts_verification": "confirmed",
+          "reused_existing": false
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/JyMq6",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/ZACCO_0120",
+      "archive_checked_at": "2026-11-06T10:11:56.882Z"
     },
     {
       "id": "mvpr0h1yzd8l",

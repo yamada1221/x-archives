@@ -15439,7 +15439,7 @@
       "threads_account": "",
       "threads_share_url": "",
       "pixiv_user": "",
-      "note": "クソコメ",
+      "note": "クソコメ / ネトウヨ",
       "tracking_mode": "monitor_only",
       "works": [],
       "threads_posts": [],
@@ -15469,6 +15469,28 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mw579xce5kk1",
+      "name": "isaf118thmobius",
+      "x_account": "isaf118thmobius",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "ネトウヨ",
+      "tracking_mode": "monitor_only",
+      "works": [
+        {
+          "url": "https://x.com/isaf118thmobius/status/2118438508868366789",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-06"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-11-06",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

@@ -487,13 +487,13 @@
       "artist_id": "mvozwvyh2ni6",
       "registered_handle": "ZACCO_0120",
       "expected_x_user_id": "2885942491",
-      "state": "needs_review",
+      "state": "processing",
       "provider": "archive.today",
       "created_at": "2026-10-26T14:26:52.934Z",
       "attempt_count": 1,
-      "next_attempt_at": 1793959535417,
+      "next_attempt_at": 1793959903107,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-06T10:05:38.220Z",
+      "updated_at": "2026-11-06T10:11:43.107Z",
       "identity": {
         "id": "2885942491",
         "handle": "ZACCO_0120",
@@ -507,9 +507,9 @@
       "operation_id": "c263c924-31ed-4c1d-879b-745abbea92fe",
       "lease_expires_at": 1793026677620,
       "receipt_checks": 0,
-      "receipt_recovery_required": true,
-      "receipt_recovery_started_at": "2026-11-06T10:05:35.417Z",
-      "verification_checks": 0
+      "receipt_recovery_started_at": "2026-11-06T10:11:43.107Z",
+      "verification_checks": 0,
+      "receipt": "https://archive.li/JyMq6"
     },
     {
       "job_id": "3c2ab721-cfc8-46d3-b72a-f735a4371b61",

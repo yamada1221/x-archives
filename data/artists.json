@@ -15431,6 +15431,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mw56syetohwa",
+      "name": "mcyVlR4umVpZSno",
+      "x_account": "mcyVlR4umVpZSno",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソコメ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-06",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

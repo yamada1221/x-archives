@@ -612,13 +612,13 @@
       "artist_id": "mvqbe4m2vkza",
       "registered_handle": "omgwst128549",
       "expected_x_user_id": "2012819906455392256",
-      "state": "processing",
+      "state": "succeeded",
       "provider": "archive.today",
       "created_at": "2026-10-27T08:26:52.851Z",
       "attempt_count": 1,
       "next_attempt_at": 1793960079450,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-06T10:13:39.450Z",
+      "updated_at": "2026-11-06T10:17:40.111Z",
       "identity": {
         "id": "2012819906455392256",
         "handle": "omgwst128549",
@@ -627,14 +627,38 @@
       },
       "target_url": "https://x.com/omgwst128549",
       "event_key": "first:2012819906455392256:profile",
-      "last_error": "送信済みの保存先タブを特定できません。「保存先で確認」で保存一覧を開き、個別の保存結果を選んでください",
+      "last_error": "",
       "submission_started_at": "2026-10-27T08:31:58.707Z",
       "operation_id": "7ead9590-ad79-40c8-8a1b-6b3385b04bcb",
       "lease_expires_at": 1793091718707,
       "receipt_checks": 0,
       "receipt_recovery_started_at": "2026-11-06T10:12:56.556Z",
       "receipt": "https://archive.li/mju7u",
-      "verification_checks": 0
+      "verification_checks": 0,
+      "verification": {
+        "ok": true,
+        "captured_at": "2026-11-06T10:06:19.000Z",
+        "verified_at": "2026-11-06T10:17:39.531Z",
+        "method": "archived_profile_body",
+        "scope": [
+          "profile"
+        ],
+        "posts_verification": "confirmed",
+        "post_ids": [
+          "2117618763407233045",
+          "2117561526144160182",
+          "2117556952452768028",
+          "2117527665779298414",
+          "2117460126433267917",
+          "2117437248476262453",
+          "2117420548867387812",
+          "2117418699154170300",
+          "2117185580463444424",
+          "2117176194538037527"
+        ],
+        "archived_user_id": "",
+        "reused_existing": false
+      }
     },
     {
       "job_id": "ef317c95-6c5b-4f99-85b6-ac28b8f17749",

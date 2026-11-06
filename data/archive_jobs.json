@@ -582,13 +582,13 @@
       "artist_id": "mvq7kfkwbsno",
       "registered_handle": "lycoris403",
       "expected_x_user_id": "1415140052523384832",
-      "state": "needs_review",
+      "state": "processing",
       "provider": "archive.today",
       "created_at": "2026-10-27T08:26:52.851Z",
       "attempt_count": 1,
-      "next_attempt_at": 1793959550098,
+      "next_attempt_at": 1793959935021,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-06T10:05:52.862Z",
+      "updated_at": "2026-11-06T10:12:15.022Z",
       "identity": {
         "id": "1415140052523384832",
         "handle": "lycoris403",
@@ -602,9 +602,9 @@
       "operation_id": "0a5f60b1-bf8e-4ca3-b6c2-cc71330388a4",
       "lease_expires_at": 1793091539063,
       "receipt_checks": 0,
-      "receipt_recovery_required": true,
-      "receipt_recovery_started_at": "2026-11-06T10:05:50.098Z",
-      "verification_checks": 0
+      "receipt_recovery_started_at": "2026-11-06T10:12:15.021Z",
+      "verification_checks": 0,
+      "receipt": "https://archive.li/V4Izq"
     },
     {
       "job_id": "8e618665-c5ee-429a-a95b-e06391ad4c7a",

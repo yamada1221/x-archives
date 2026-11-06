@@ -15058,7 +15058,7 @@
     },
     {
       "id": "mw4uys9z8w0w",
-      "name": "nishiwaki_hk",
+      "name": "西脇ひろき｜福岡市長候補",
       "x_account": "nishiwaki_hk",
       "threads_account": "",
       "threads_share_url": "",
@@ -15068,8 +15068,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-06",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2102968681852805120/eLUFw0E9_normal.jpg",
+      "x_bio": "35歳｜会社員｜完全無所属\n\n11月1日正式立候補！\n\n「食の街」福岡を、「文化・芸術」でも知られる街へ。\n\n選挙に革命をおこす🔥\n駅立ち・辻立ち・ビラ配り・選挙カーなし。\n古い政治をぶっ壊す。そのためにはまず古い選挙のやり方から変える。\n\n支持政党なし｜完全支援なし｜舞鶴高専卒｜博多区在住",
+      "x_bio_fetched_at": "2026-11-06T10:55:31.811187+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-06",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

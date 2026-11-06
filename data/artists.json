@@ -15055,6 +15055,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mw4uys9z8w0w",
+      "name": "nishiwaki_hk",
+      "x_account": "nishiwaki_hk",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "男性薬剤師差別？",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-06",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

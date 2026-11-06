@@ -15304,11 +15304,59 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-07",
-      "fetch_status": "pending",
+      "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://unavatar.io/x/WhiteFlute?fallback=false",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2098913862326341632/VYCPDOHB_normal.jpg",
       "profile_fetched_at": "2026-11-06",
-      "profile_source": "unavatar"
+      "profile_source": "fxtwitter",
+      "x_bio": "小さな光を 胸に抱いて\n青空へと飛ばそう 希望の種",
+      "x_bio_fetched_at": "2026-11-06T16:18:21.863300+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-06T16:18:21+00:00",
+        "x_account": "WhiteFlute",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=WhiteFlute",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/WhiteFlute",
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "final_url": "https://x.com/WhiteFlute",
+          "bytes": 142947,
+          "contains_username": true,
+          "screen_name_marker": false,
+          "profile_image_url_count": 7,
+          "profile_image_candidates": [
+            "https://pbs.twimg.com/profile_images/2098913862326341632/VYCPDOHB_mini.jpg",
+            "https://pbs.twimg.com/profile_images/2098913862326341632/VYCPDOHB_normal.jpg",
+            "https://pbs.twimg.com/profile_images/2098913862326341632/VYCPDOHB_bigger.jpg",
+            "https://pbs.twimg.com/profile_images/2098913862326341632/VYCPDOHB_x96.jpg",
+            "https://pbs.twimg.com/profile_images/2098913862326341632/VYCPDOHB_reasonably_small.jpg",
+            "https://pbs.twimg.com/profile_images/2098913862326341632/VYCPDOHB_200x200.jpg",
+            "https://pbs.twimg.com/profile_images/2098913862326341632/VYCPDOHB_400x400.jpg"
+          ],
+          "meta_keys": [
+            "og:image",
+            "og:title",
+            "twitter:title"
+          ],
+          "og_title_present": true,
+          "og_image_present": true,
+          "twitter_title_present": true,
+          "twitter_image_present": false,
+          "og_title": "XユーザーのFlute（@WhiteFlute）さん",
+          "og_image": "https://pbs.twimg.com/profile_images/2098913862326341632/VYCPDOHB_400x400.jpg",
+          "twitter_title": "XユーザーのFlute（@WhiteFlute）さん",
+          "twitter_image": ""
+        }
+      }
     },
     {
       "id": "mw53v2t3fx60cc",

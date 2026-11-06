@@ -668,9 +668,9 @@
       "provider": "archive.today",
       "created_at": "2026-10-28T08:26:54.205Z",
       "attempt_count": 1,
-      "next_attempt_at": 1793959779187,
+      "next_attempt_at": 1793959893338,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-06T10:08:39.187Z",
+      "updated_at": "2026-11-06T10:10:33.338Z",
       "identity": {
         "id": "838733713743630337",
         "handle": "hiropon170207",
@@ -679,14 +679,14 @@
       },
       "target_url": "https://x.com/hiropon170207",
       "event_key": "first:838733713743630337:profile",
-      "last_error": "48時間を超えて完了を確認できません。結果URLを確認してください",
+      "last_error": "本文から同じアカウントだと確認する証拠が不足しています",
       "submission_started_at": "2026-10-28T08:28:00.989Z",
       "operation_id": "08b8a2b1-71f6-4482-b24f-db0e844beb3e",
       "lease_expires_at": 1793177880989,
       "receipt_checks": 0,
       "receipt_recovery_started_at": "2026-11-06T10:05:13.886Z",
       "receipt": "https://archive.li/8WUIi",
-      "verification_checks": 0
+      "verification_checks": 1
     },
     {
       "job_id": "4c19e8f8-7b5b-40cf-9284-a059d093890e",

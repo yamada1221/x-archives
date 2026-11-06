@@ -12687,7 +12687,33 @@
           "at": "2026-10-26T10:17:27+00:00",
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1363522164549242886; screen_name=TKGRia"
         }
-      ]
+      ],
+      "archives": [
+        {
+          "provider": "archive.today",
+          "url": "https://archive.li/3YNMZ",
+          "target_url": "https://x.com/TKGRia",
+          "status": "done",
+          "job_id": "c22e1fbb-12e4-432a-8c63-b25c4a89a519",
+          "event_key": "first:1363522164549242886:profile",
+          "x_user_id": "1363522164549242886",
+          "requested_at": "2026-10-26T08:27:57.650Z",
+          "captured_at": "2026-11-06T10:07:54.000Z",
+          "saved_at": "2026-11-06T10:11:45.410Z",
+          "content_verified_at": "2026-11-06T10:11:45.410Z",
+          "verification_method": "archived_profile_body",
+          "verified_scope": [
+            "profile"
+          ],
+          "posts_verification": "confirmed",
+          "reused_existing": false
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/3YNMZ",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/TKGRia",
+      "archive_checked_at": "2026-11-06T10:11:45.410Z"
     },
     {
       "id": "mvozwvyh2ni6",

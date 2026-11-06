@@ -748,13 +748,13 @@
       "artist_id": "mvrk647ry0wf",
       "registered_handle": "hiropon170207",
       "expected_x_user_id": "838733713743630337",
-      "state": "processing",
+      "state": "needs_review",
       "provider": "archive.today",
       "created_at": "2026-10-28T08:26:54.205Z",
       "attempt_count": 1,
       "next_attempt_at": 1793960259282,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-06T10:16:39.282Z",
+      "updated_at": "2026-11-06T10:22:39.216Z",
       "identity": {
         "id": "838733713743630337",
         "handle": "hiropon170207",
@@ -770,7 +770,7 @@
       "receipt_checks": 0,
       "receipt_recovery_started_at": "2026-11-06T10:05:13.886Z",
       "receipt": "https://archive.li/8WUIi",
-      "verification_checks": 2
+      "verification_checks": 3
     },
     {
       "job_id": "4c19e8f8-7b5b-40cf-9284-a059d093890e",

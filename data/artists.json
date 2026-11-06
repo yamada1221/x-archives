@@ -15233,12 +15233,19 @@
       "threads_account": "",
       "threads_share_url": "",
       "pixiv_user": "",
-      "note": "タグ：共和党関連・発言確認（要確認）。 返信タグ：バイデン政権批判、共和党寄りの可能性（要確認）。バイデン政権で致命傷を負ったと述べる。本人の支持政党は未確認。 出典：2026-11-06の提供画像、返信先 https://x.com/alpaca_w_rabbit/status/2118423529297441275",
+      "note": "タグ：共和党関連・発言確認（要確認）。 返信タグ：バイデン政権批判、共和党寄りの可能性（要確認）。バイデン政権で致命傷を負ったと述べる。本人の支持政党は未確認。 出典：2026-11-06の提供画像、返信先 https://x.com/alpaca_w_rabbit/status/2118423529297441275 / ネトウヨ",
       "tracking_mode": "monitor_only",
-      "works": [],
+      "works": [
+        {
+          "url": "https://x.com/l0wol/status/2118534704840507447?a=9_RzhEYlVmbz18rTits&s=46",
+          "type": "x_post",
+          "memo": "ネトウヨ",
+          "saved_at": "2026-11-06"
+        }
+      ],
       "threads_posts": [],
       "added_at": "2026-11-07",
-      "fetch_status": "done",
+      "fetch_status": "pending",
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/2066859349348425728/eAgit5Dm_normal.jpg",
       "x_bio": "気になるニュース、情報を振り返る為のリポスト、情報収集垢。ミームも好き🐟🐟🐟",
@@ -15514,6 +15521,28 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mw57af8uxz6t",
+      "name": "nobutake55",
+      "x_account": "nobutake55",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "ネトウヨ",
+      "tracking_mode": "monitor_only",
+      "works": [
+        {
+          "url": "https://x.com/nobutake55/status/2118439207828107309",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-06"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-11-06",
+      "fetch_status": "error",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

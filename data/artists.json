@@ -15182,6 +15182,118 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=2080513520265998336; screen_name=nishiwaki_hk"
         }
       ]
+    },
+    {
+      "id": "mw53v2t329d6qz",
+      "name": "アルパカ＠猫型ロボット",
+      "x_account": "alpaca_w_rabbit",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "投稿タグ：民主党批判、共和党寄りの可能性。トランプ氏と比較して民主党をより強く批判。本人の支持政党は未確認。2026-11-06の投稿。",
+      "tracking_mode": "monitor_only",
+      "works": [
+        {
+          "url": "https://x.com/alpaca_w_rabbit/status/2118423529297441275",
+          "type": "x_post",
+          "memo": "民主党批判・共和党寄りの可能性（支持政党は未確認）",
+          "saved_at": "2026-11-07"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-11-07",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
+    },
+    {
+      "id": "mw53v2t3jr0wdw",
+      "name": "まぼねこ",
+      "x_account": "maboroshi_neko",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "返信タグ：共和党の次期大統領選勝利を期待する趣旨（推定）。今回の敗北と次の大統領選での勝利を比較。本人の支持政党は未確認。 出典：2026-11-06の提供画像、返信先 https://x.com/alpaca_w_rabbit/status/2118423529297441275",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-07",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
+    },
+    {
+      "id": "mw53v2t3bjnbvf",
+      "name": "lllwol_ECHO",
+      "x_account": "l0wol",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "返信タグ：バイデン政権批判、共和党寄りの可能性（要確認）。バイデン政権で致命傷を負ったと述べる。本人の支持政党は未確認。 出典：2026-11-06の提供画像、返信先 https://x.com/alpaca_w_rabbit/status/2118423529297441275",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-07",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
+    },
+    {
+      "id": "mw53v2t32sdmsa",
+      "name": "xylish-soda-blue",
+      "x_account": "XylishB",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "返信タグ：ポリコレへの懸念、民主党への否定的評価の可能性（要確認）。政治的配慮が広まることを残念だと述べる。本人の支持政党は未確認。 出典：2026-11-06の提供画像、返信先 https://x.com/alpaca_w_rabbit/status/2118423529297441275",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-07",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
+    },
+    {
+      "id": "mw53v2t3ay2hzt",
+      "name": "Flute",
+      "x_account": "WhiteFlute",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "返信タグ：バイデン政権の政策批判、共和党寄りの可能性（要確認）。バイデン氏の政策がインフレを招いたと主張。本人の支持政党は未確認。 出典：2026-11-06の提供画像、返信先 https://x.com/alpaca_w_rabbit/status/2118423529297441275",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-07",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
+    },
+    {
+      "id": "mw53v2t3fx60cc",
+      "name": "うなぎ３",
+      "x_account": "akf011",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "返信タグ：民主党支持者に関する動画の引用、意図要確認。『この白人が全てを物語っている』と発言。動画の文脈と本人の支持政党は未確認。 出典：2026-11-06の提供画像、返信先 https://x.com/alpaca_w_rabbit/status/2118423529297441275",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-07",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
+    },
+    {
+      "id": "mw53v2t3e2o1qm",
+      "name": "東北バビロン",
+      "x_account": "HT90136867",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "返信タグ：民主党を批判する元投稿への同意の可能性（要確認）。『それ、忘れないで欲しかった』と返信。本人の支持政党は未確認。 出典：2026-11-06の提供画像、返信先 https://x.com/alpaca_w_rabbit/status/2118423529297441275",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-07",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

@@ -582,13 +582,13 @@
       "artist_id": "mvq7kfkwbsno",
       "registered_handle": "lycoris403",
       "expected_x_user_id": "1415140052523384832",
-      "state": "processing",
+      "state": "succeeded",
       "provider": "archive.today",
       "created_at": "2026-10-27T08:26:52.851Z",
       "attempt_count": 1,
       "next_attempt_at": 1793960199175,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-06T10:15:39.175Z",
+      "updated_at": "2026-11-06T10:21:39.901Z",
       "identity": {
         "id": "1415140052523384832",
         "handle": "lycoris403",
@@ -597,14 +597,38 @@
       },
       "target_url": "https://x.com/lycoris403",
       "event_key": "first:1415140052523384832:profile",
-      "last_error": "送信済みの保存先タブを特定できません。「保存先で確認」で保存一覧を開き、個別の保存結果を選んでください",
+      "last_error": "",
       "submission_started_at": "2026-10-27T08:28:59.063Z",
       "operation_id": "0a5f60b1-bf8e-4ca3-b6c2-cc71330388a4",
       "lease_expires_at": 1793091539063,
       "receipt_checks": 0,
       "receipt_recovery_started_at": "2026-11-06T10:12:15.021Z",
       "verification_checks": 0,
-      "receipt": "https://archive.li/V4Izq"
+      "receipt": "https://archive.li/V4Izq",
+      "verification": {
+        "ok": true,
+        "captured_at": "2026-11-06T10:07:19.000Z",
+        "verified_at": "2026-11-06T10:21:39.477Z",
+        "method": "archived_profile_body",
+        "scope": [
+          "profile"
+        ],
+        "posts_verification": "confirmed",
+        "post_ids": [
+          "2118314422200619195",
+          "2117373271498965245",
+          "2116869265408311793",
+          "2116458693768450393",
+          "2116173525249847448",
+          "2116171595513524491",
+          "2116167008727568442",
+          "2114340981839687864",
+          "2112766007999893698",
+          "2111280468339671281"
+        ],
+        "archived_user_id": "",
+        "reused_existing": false
+      }
     },
     {
       "job_id": "8e618665-c5ee-429a-a95b-e06391ad4c7a",

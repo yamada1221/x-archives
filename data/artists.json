@@ -14913,6 +14913,21 @@
           "twitter_image": ""
         }
       }
+    },
+    {
+      "id": "mw4ri2jz1l54",
+      "name": "5cohp",
+      "x_account": "5cohp",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-06",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

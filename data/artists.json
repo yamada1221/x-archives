@@ -12922,7 +12922,33 @@
           "at": "2026-10-27T09:54:00+00:00",
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1415140052523384832; screen_name=lycoris403"
         }
-      ]
+      ],
+      "archives": [
+        {
+          "provider": "archive.today",
+          "url": "https://archive.li/V4Izq",
+          "target_url": "https://x.com/lycoris403",
+          "status": "done",
+          "job_id": "8417b04d-2d94-4bd4-a27b-a168eeb60e2a",
+          "event_key": "first:1415140052523384832:profile",
+          "x_user_id": "1415140052523384832",
+          "requested_at": "2026-10-27T08:28:59.063Z",
+          "captured_at": "2026-11-06T10:07:19.000Z",
+          "saved_at": "2026-11-06T10:21:39.477Z",
+          "content_verified_at": "2026-11-06T10:21:39.477Z",
+          "verification_method": "archived_profile_body",
+          "verified_scope": [
+            "profile"
+          ],
+          "posts_verification": "confirmed",
+          "reused_existing": false
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/V4Izq",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/lycoris403",
+      "archive_checked_at": "2026-11-06T10:21:39.477Z"
     },
     {
       "id": "mvqbe4m2vkza",

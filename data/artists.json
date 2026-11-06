@@ -15072,10 +15072,27 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/2102968681852805120/eLUFw0E9_normal.jpg",
       "x_bio": "35歳｜会社員｜完全無所属\n\n11月1日正式立候補！\n\n「食の街」福岡を、「文化・芸術」でも知られる街へ。\n\n選挙に革命をおこす🔥\n駅立ち・辻立ち・ビラ配り・選挙カーなし。\n古い政治をぶっ壊す。そのためにはまず古い選挙のやり方から変える。\n\n支持政党なし｜完全支援なし｜舞鶴高専卒｜博多区在住",
-      "x_bio_fetched_at": "2026-11-06T10:55:31.811187+00:00",
+      "x_bio_fetched_at": "2026-11-06T10:55:42.289603+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-06",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-06T10:55:42+00:00",
+        "x_account": "nishiwaki_hk",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=nishiwaki_hk",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/nishiwaki_hk",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

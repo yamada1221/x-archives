@@ -15318,6 +15318,21 @@
       "avatar_url": "https://unavatar.io/x/HT90136867?fallback=false",
       "profile_fetched_at": "2026-11-06",
       "profile_source": "unavatar"
+    },
+    {
+      "id": "mw56bvjidr0i",
+      "name": "STR00000001",
+      "x_account": "STR00000001",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "ネトウヨ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-06",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

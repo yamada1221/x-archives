@@ -15202,8 +15202,11 @@
       ],
       "threads_posts": [],
       "added_at": "2026-11-07",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://unavatar.io/x/alpaca_w_rabbit?fallback=false",
+      "profile_fetched_at": "2026-11-06",
+      "profile_source": "unavatar"
     },
     {
       "id": "mw53v2t3jr0wdw",
@@ -15217,8 +15220,11 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-07",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://unavatar.io/x/maboroshi_neko?fallback=false",
+      "profile_fetched_at": "2026-11-06",
+      "profile_source": "unavatar"
     },
     {
       "id": "mw53v2t3bjnbvf",
@@ -15232,8 +15238,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-07",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2066859349348425728/eAgit5Dm_normal.jpg",
+      "x_bio": "気になるニュース、情報を振り返る為のリポスト、情報収集垢。ミームも好き🐟🐟🐟",
+      "x_bio_fetched_at": "2026-11-06T15:04:50.527755+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-06",
+      "profile_source": "fxtwitter"
     },
     {
       "id": "mw53v2t32sdmsa",
@@ -15247,8 +15259,11 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-07",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://unavatar.io/x/XylishB?fallback=false",
+      "profile_fetched_at": "2026-11-06",
+      "profile_source": "unavatar"
     },
     {
       "id": "mw53v2t3ay2hzt",
@@ -15262,8 +15277,11 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-07",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://unavatar.io/x/WhiteFlute?fallback=false",
+      "profile_fetched_at": "2026-11-06",
+      "profile_source": "unavatar"
     },
     {
       "id": "mw53v2t3fx60cc",
@@ -15277,8 +15295,11 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-07",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://unavatar.io/x/akf011?fallback=false",
+      "profile_fetched_at": "2026-11-06",
+      "profile_source": "unavatar"
     },
     {
       "id": "mw53v2t3e2o1qm",
@@ -15292,8 +15313,11 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-07",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://unavatar.io/x/HT90136867?fallback=false",
+      "profile_fetched_at": "2026-11-06",
+      "profile_source": "unavatar"
     }
   ],
   "monitoring_summary": {

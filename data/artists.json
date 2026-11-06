@@ -14916,7 +14916,7 @@
     },
     {
       "id": "mw4ri2jz1l54",
-      "name": "5cohp",
+      "name": "佐藤勝男",
       "x_account": "5cohp",
       "threads_account": "",
       "threads_share_url": "",
@@ -14926,8 +14926,31 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-06",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2074067646933553152/p-jmlvf8_normal.jpg",
+      "x_bio": "國士舘大学武道学科卒業\n元國士舘大学剣道部三将\n戈を止めると書いて「武」",
+      "x_bio_fetched_at": "2026-11-06T09:18:51.581264+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-06",
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-06T09:18:51+00:00",
+        "x_account": "5cohp",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=5cohp",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/5cohp",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

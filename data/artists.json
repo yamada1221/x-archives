@@ -15999,6 +15999,21 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=2084189935977017344; screen_name=HBDrr56"
         }
       ]
+    },
+    {
+      "id": "mw6dn09opt7o",
+      "name": "Ranfvoi",
+      "x_account": "Ranfvoi",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-07",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

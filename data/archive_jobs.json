@@ -1605,6 +1605,20 @@
       "next_attempt_at": 1794089434107,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "updated_at": "2026-11-07T22:10:34.107Z"
+    },
+    {
+      "job_id": "760bbeb4-a2ab-414f-8720-9aaf3d5596fe",
+      "kind": "profile",
+      "artist_id": "mtucpojm8czc",
+      "registered_handle": "hensinsimasen",
+      "expected_x_user_id": "1932010345704706048",
+      "state": "queued",
+      "provider": "archive.today",
+      "created_at": "2026-11-07T22:10:34.107Z",
+      "attempt_count": 0,
+      "next_attempt_at": 1794089434107,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-11-07T22:10:34.107Z"
     }
   ],
   "reservations": [

@@ -16040,7 +16040,7 @@
     },
     {
       "id": "mw6dtn76pm26",
-      "name": "korsango",
+      "name": "@八百長サッカー",
       "x_account": "korsango",
       "threads_account": "",
       "threads_share_url": "",
@@ -16050,8 +16050,11 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-07",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2058513393867493376/qzHyiwBR_400x400.jpg",
+      "profile_fetched_at": "2026-11-07",
+      "profile_source": "x_html"
     }
   ],
   "monitoring_summary": {

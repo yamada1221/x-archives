@@ -16157,7 +16157,23 @@
           "url": "https://x.com/bellaernes816",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archives": [
+        {
+          "url": "https://archive.li/2026.11.07-133657/https://x.com/bellaernes816/with_replies",
+          "provider": "archive.today",
+          "status": "done",
+          "content_verified_at": "2026-11-07T13:40:01.451Z",
+          "verification_method": "manual",
+          "target_url": "https://x.com/bellaernes816/with_replies",
+          "saved_at": "2026-11-07T13:40:01.451Z"
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.11.07-133657/https://x.com/bellaernes816/with_replies",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/bellaernes816/with_replies",
+      "archive_checked_at": "2026-11-07T13:40:01.451Z"
     }
   ],
   "monitoring_summary": {

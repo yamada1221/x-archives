@@ -16215,7 +16215,7 @@
     },
     {
       "id": "mw6m29djuohc",
-      "name": "t_asuka_2003",
+      "name": "Asuka➕",
       "x_account": "t_asuka_2003",
       "threads_account": "",
       "threads_share_url": "",
@@ -16225,8 +16225,59 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-07",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2021429363842187264/gMh120pR_400x400.jpg",
+      "profile_fetched_at": "2026-11-07",
+      "profile_source": "x_html",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-07T16:22:05+00:00",
+        "x_account": "t_asuka_2003",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=t_asuka_2003",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/t_asuka_2003",
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "final_url": "https://x.com/t_asuka_2003",
+          "bytes": 192992,
+          "contains_username": true,
+          "screen_name_marker": false,
+          "profile_image_url_count": 9,
+          "profile_image_candidates": [
+            "https://pbs.twimg.com/profile_images/2021429363842187264/gMh120pR_mini.jpg",
+            "https://pbs.twimg.com/profile_images/2021429363842187264/gMh120pR_normal.jpg",
+            "https://pbs.twimg.com/profile_images/2021429363842187264/gMh120pR_bigger.jpg",
+            "https://pbs.twimg.com/profile_images/2021429363842187264/gMh120pR_x96.jpg",
+            "https://pbs.twimg.com/profile_images/2021429363842187264/gMh120pR_reasonably_small.jpg",
+            "https://pbs.twimg.com/profile_images/2021429363842187264/gMh120pR_200x200.jpg",
+            "https://pbs.twimg.com/profile_images/2021429363842187264/gMh120pR_400x400.jpg",
+            "https://pbs.twimg.com/profile_images/2090463275138031616/MLmW9Vd7_normal.jpg",
+            "https://pbs.twimg.com/profile_images/2090463275138031616/MLmW9Vd7_mini.jpg"
+          ],
+          "meta_keys": [
+            "og:image",
+            "og:title",
+            "twitter:image",
+            "twitter:title"
+          ],
+          "og_title_present": true,
+          "og_image_present": true,
+          "twitter_title_present": true,
+          "twitter_image_present": true,
+          "og_title": "XユーザーのAsuka➕（@t_asuka_2003）さん",
+          "og_image": "https://pbs.twimg.com/profile_images/2021429363842187264/gMh120pR_400x400.jpg",
+          "twitter_title": "XユーザーのAsuka➕（@t_asuka_2003）さん",
+          "twitter_image": "https://pbs.twimg.com/profile_banners/1828459645029228548/1753715020"
+        }
+      }
     }
   ],
   "monitoring_summary": {

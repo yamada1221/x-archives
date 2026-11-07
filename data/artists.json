@@ -15639,7 +15639,7 @@
     },
     {
       "id": "mw63xmf9yjaq",
-      "name": "HBDrr56",
+      "name": "毒ネズミ",
       "x_account": "HBDrr56",
       "threads_account": "",
       "threads_share_url": "",
@@ -15649,8 +15649,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-07",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2086072241847218176/Pqnnha8K_normal.jpg",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-07T07:54:20.961784+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-07",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

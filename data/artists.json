@@ -15601,6 +15601,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mw60rh77g4qb",
+      "name": "camihl",
+      "x_account": "camihl",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "スパム",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-07",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

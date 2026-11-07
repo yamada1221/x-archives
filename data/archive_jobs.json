@@ -1575,6 +1575,21 @@
       "next_attempt_at": 1794067834376,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "updated_at": "2026-11-07T16:10:34.376Z"
+    },
+    {
+      "job_id": "bc4499f0-79c1-4578-82a3-04837ccc6bed",
+      "kind": "profile",
+      "artist_id": "mttjru0l7nph",
+      "registered_handle": "Ub1Bu",
+      "target_kind": "replies",
+      "expected_x_user_id": "1964267010889777152",
+      "state": "queued",
+      "provider": "archive.today",
+      "created_at": "2026-11-07T22:10:34.107Z",
+      "attempt_count": 0,
+      "next_attempt_at": 1794089434107,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-11-07T22:10:34.107Z"
     }
   ],
   "reservations": [

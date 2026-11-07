@@ -15673,7 +15673,23 @@
           "url": "https://x.com/HBDrr56",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archives": [
+        {
+          "url": "https://archive.li/2026.11.07-075540/https://x.com/HBDrr56/with_replies",
+          "provider": "archive.today",
+          "status": "done",
+          "content_verified_at": "2026-11-07T07:59:53.988Z",
+          "verification_method": "manual",
+          "target_url": "https://x.com/HBDrr56/with_replies",
+          "saved_at": "2026-11-07T07:59:53.988Z"
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.11.07-075540/https://x.com/HBDrr56/with_replies",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/HBDrr56/with_replies",
+      "archive_checked_at": "2026-11-07T07:59:53.988Z"
     }
   ],
   "monitoring_summary": {

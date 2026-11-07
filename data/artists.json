@@ -16281,7 +16281,7 @@
     },
     {
       "id": "mw6n422uxvmg",
-      "name": "QaaFTYXYL45okVP",
+      "name": "ボヤンスキー",
       "x_account": "QaaFTYXYL45okVP",
       "threads_account": "",
       "threads_share_url": "",
@@ -16291,8 +16291,31 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-07",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1583426308758913024/XQKk0fUP_normal.png",
+      "x_bio": "ベジタリアン、💹投資判断、反共、防共、既得権益の打破、核武装、愛子様を天皇に、反高市内閣、なんかプチ炎上で楽しいｗ",
+      "x_bio_fetched_at": "2026-11-07T16:51:28.590995+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-07",
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-07T16:51:28+00:00",
+        "x_account": "QaaFTYXYL45okVP",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=QaaFTYXYL45okVP",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/QaaFTYXYL45okVP",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

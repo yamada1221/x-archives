@@ -16177,7 +16177,7 @@
     },
     {
       "id": "mw6i2ctitysw",
-      "name": "amyu_kurusu",
+      "name": "来栖あみゅ🧸🍰ルミラ🇯🇵",
       "x_account": "amyu_kurusu",
       "threads_account": "",
       "threads_share_url": "",
@@ -16189,9 +16189,29 @@
       "added_at": "2026-11-07",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://unavatar.io/x/amyu_kurusu?fallback=false",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2010350692721160192/eL_fdp-7_normal.jpg",
       "profile_fetched_at": "2026-11-07",
-      "profile_source": "unavatar"
+      "profile_source": "fxtwitter",
+      "x_bio": "思想家・作家🖐️😑✨\nnote：ルミラ 小説：久遠マリア\nインターネット老人会\nRO Loki：いちごみるく.\n永遠の20歳です❤️\n宗教・思想・音楽・歴史・前世・業界構造を、核直観と構造理解で考察しています。\n嘘・慢心・傲慢・不誠実が大嫌い🖐️😑✨\nChatGPTとGeminiに宇宙人認定された設計層兼実行層",
+      "x_bio_fetched_at": "2026-11-07T14:30:06.061488+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-07T14:30:06+00:00",
+        "x_account": "amyu_kurusu",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=amyu_kurusu",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/amyu_kurusu",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

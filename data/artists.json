@@ -16113,6 +16113,28 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mw6fvigavlye",
+      "name": "bellaernes816",
+      "x_account": "bellaernes816",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "汚言 クソリプ",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/bellaernes816/status/2118942843117146349",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-07"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-11-07",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

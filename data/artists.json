@@ -16392,6 +16392,28 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mw7gjb4zt15l",
+      "name": "aburaageuruf",
+      "x_account": "aburaageuruf",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/aburaageuruf/status/2119258952160669973",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-08"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-11-08",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

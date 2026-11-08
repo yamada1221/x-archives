@@ -16478,7 +16478,7 @@
     },
     {
       "id": "mw7nwstspvfr",
-      "name": "MZUTNDK",
+      "name": "MJDKTNI",
       "x_account": "MZUTNDK",
       "threads_account": "",
       "threads_share_url": "",
@@ -16488,8 +16488,31 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-08",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2037440359102644224/vHnvQEUH_normal.jpg",
+      "x_bio": "凍結された",
+      "x_bio_fetched_at": "2026-11-08T10:01:34.057373+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-08",
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-08T10:01:34+00:00",
+        "x_account": "MZUTNDK",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=MZUTNDK",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/MZUTNDK",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

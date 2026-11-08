@@ -16367,8 +16367,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-08",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/527467332013006849/9C24ZQm2_normal.jpeg",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-08T05:08:13.634134+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-08",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

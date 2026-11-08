@@ -16395,7 +16395,7 @@
     },
     {
       "id": "mw7gjb4zt15l",
-      "name": "aburaageuruf",
+      "name": "あぶらげ",
       "x_account": "aburaageuruf",
       "threads_account": "",
       "threads_share_url": "",
@@ -16412,8 +16412,31 @@
       ],
       "threads_posts": [],
       "added_at": "2026-11-08",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-08T06:35:08.601608+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-08",
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-08T06:35:08+00:00",
+        "x_account": "aburaageuruf",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=aburaageuruf",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/aburaageuruf",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

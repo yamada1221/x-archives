@@ -16766,6 +16766,28 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=2087067932459491328; screen_name=goto5535525"
         }
       ]
+    },
+    {
+      "id": "mw7yh4e2r1jh",
+      "name": "hzbselijst26213",
+      "x_account": "hzbselijst26213",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/hzbselijst26213/status/2119428156570640655",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-08"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-11-08",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

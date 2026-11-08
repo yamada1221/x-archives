@@ -15860,7 +15860,23 @@
           "at": "2026-11-07T11:11:10+00:00",
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=3384884932; screen_name=GS_GOGAT"
         }
-      ]
+      ],
+      "archives": [
+        {
+          "url": "https://archive.li/2026.11.08-180535/https://x.com/GS_GOGAT/with_replies",
+          "provider": "archive.today",
+          "status": "done",
+          "content_verified_at": "2026-11-08T18:55:09.377Z",
+          "verification_method": "manual",
+          "target_url": "https://x.com/GS_GOGAT/with_replies",
+          "saved_at": "2026-11-08T18:55:09.377Z"
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.11.08-180535/https://x.com/GS_GOGAT/with_replies",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/GS_GOGAT/with_replies",
+      "archive_checked_at": "2026-11-08T18:55:09.377Z"
     },
     {
       "id": "mw60rh77g4qb",

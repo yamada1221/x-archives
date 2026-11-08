@@ -1925,6 +1925,20 @@
       "next_attempt_at": 1794175834523,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "updated_at": "2026-11-08T22:10:34.523Z"
+    },
+    {
+      "job_id": "9974224c-3afe-4089-98dc-22783895f07c",
+      "kind": "profile",
+      "artist_id": "mv193q3p8gy7",
+      "registered_handle": "Carbonara_soup",
+      "expected_x_user_id": "2022368008212271104",
+      "state": "queued",
+      "provider": "archive.today",
+      "created_at": "2026-11-08T22:10:34.523Z",
+      "attempt_count": 0,
+      "next_attempt_at": 1794175834523,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-11-08T22:10:34.523Z"
     }
   ],
   "reservations": [

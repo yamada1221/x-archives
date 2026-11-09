@@ -2273,6 +2273,20 @@
       "next_attempt_at": 1794262234978,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "updated_at": "2026-11-09T22:10:34.978Z"
+    },
+    {
+      "job_id": "1ff0f94f-48cc-425d-9533-4a40345f83f0",
+      "kind": "profile",
+      "artist_id": "mvkirz52abe6",
+      "registered_handle": "soccer07011e",
+      "expected_x_user_id": "1397197799566069768",
+      "state": "queued",
+      "provider": "archive.today",
+      "created_at": "2026-11-09T22:10:34.979Z",
+      "attempt_count": 0,
+      "next_attempt_at": 1794262234979,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-11-09T22:10:34.979Z"
     }
   ],
   "reservations": [

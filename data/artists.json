@@ -16998,7 +16998,7 @@
     },
     {
       "id": "mw9714575rdq",
-      "name": "abstruct3",
+      "name": "abstruct",
       "x_account": "abstruct3",
       "threads_account": "",
       "threads_share_url": "",
@@ -17010,9 +17010,29 @@
       "added_at": "2026-11-09",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://unavatar.io/x/abstruct3?fallback=false",
+      "avatar_url": "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png",
       "profile_fetched_at": "2026-11-09",
-      "profile_source": "unavatar"
+      "profile_source": "fxtwitter",
+      "x_bio": "肥溜めは肥料が作られるから肥溜め。肥溜めに非ずは？",
+      "x_bio_fetched_at": "2026-11-09T11:44:42.464999+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-09T11:44:42+00:00",
+        "x_account": "abstruct3",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=abstruct3",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/abstruct3",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

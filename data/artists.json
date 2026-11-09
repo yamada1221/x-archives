@@ -16936,6 +16936,21 @@
           "twitter_image": "https://pbs.twimg.com/profile_banners/751308930664443904/1789387107"
         }
       }
+    },
+    {
+      "id": "mw93mlva7vzr",
+      "name": "ocha_sacha",
+      "x_account": "ocha_sacha",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "アイコン良い",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-09",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

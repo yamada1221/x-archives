@@ -16862,6 +16862,28 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mw8vwqip2omf",
+      "name": "87zono_erika",
+      "x_account": "87zono_erika",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/87zono_erika/status/2119278422258225312",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-09"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-11-09",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

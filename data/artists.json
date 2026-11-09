@@ -16939,7 +16939,7 @@
     },
     {
       "id": "mw93mlva7vzr",
-      "name": "ocha_sacha",
+      "name": "幸茶(さちゃ)",
       "x_account": "ocha_sacha",
       "threads_account": "",
       "threads_share_url": "",
@@ -16951,9 +16951,29 @@
       "added_at": "2026-11-09",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://unavatar.io/x/ocha_sacha?fallback=false",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2107640669397549056/l2j_QcRd_normal.jpg",
       "profile_fetched_at": "2026-11-09",
-      "profile_source": "unavatar"
+      "profile_source": "fxtwitter",
+      "x_bio": "※アイコンとヘッダーはお借りしてるものなので保存❌\nﾍｯﾀﾞｰ @YanA888777 様\nｱｲｺﾝ:@merumo_ia 様\n\nツイ廃ﾒﾝﾍﾗ鬱女‼️\nポケユニ/Reality/Avvy/まどドラ",
+      "x_bio_fetched_at": "2026-11-09T10:09:19.464509+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-09T10:09:19+00:00",
+        "x_account": "ocha_sacha",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=ocha_sacha",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/ocha_sacha",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

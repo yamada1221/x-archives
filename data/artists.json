@@ -17014,10 +17014,10 @@
       "profile_fetched_at": "2026-11-09",
       "profile_source": "fxtwitter",
       "x_bio": "肥溜めは肥料が作られるから肥溜め。肥溜めに非ずは？",
-      "x_bio_fetched_at": "2026-11-09T11:44:42.464999+00:00",
+      "x_bio_fetched_at": "2026-11-09T11:44:54.254768+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetch_diagnostic": {
-        "checked_at": "2026-11-09T11:44:42+00:00",
+        "checked_at": "2026-11-09T11:44:54+00:00",
         "x_account": "abstruct3",
         "fetch_status_after_attempt": "done",
         "syndication": {

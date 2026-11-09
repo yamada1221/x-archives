@@ -16974,6 +16974,36 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mw948ga03cdw",
+      "name": "rokkaiten0925",
+      "x_account": "rokkaiten0925",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "Togetter用 鍵アカ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-09",
+      "fetch_status": "error",
+      "threads_fetch_status": "none"
+    },
+    {
+      "id": "mw9714575rdq",
+      "name": "abstruct3",
+      "x_account": "abstruct3",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-09",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

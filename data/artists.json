@@ -16865,7 +16865,7 @@
     },
     {
       "id": "mw8vwqip2omf",
-      "name": "87zono_erika",
+      "name": "花園えりか🧸🪄︎︎＠個人Vtuber",
       "x_account": "87zono_erika",
       "threads_account": "",
       "threads_share_url": "",
@@ -16882,8 +16882,60 @@
       ],
       "threads_posts": [],
       "added_at": "2026-11-09",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2099683402542960640/l6UH3OXT_normal.jpg",
+      "x_bio": "きゅりりーん✨✨✨魔界のアイドル教祖 🥀🕯\nママ：@Galaxy_ito パパ：@Roki_Tsukuyomi",
+      "x_bio_fetched_at": "2026-11-09T06:33:16.693795+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-09",
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-09T06:33:16+00:00",
+        "x_account": "87zono_erika",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=87zono_erika",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/87zono_erika",
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "final_url": "https://x.com/87zono_erika",
+          "bytes": 150637,
+          "contains_username": true,
+          "screen_name_marker": false,
+          "profile_image_url_count": 7,
+          "profile_image_candidates": [
+            "https://pbs.twimg.com/profile_images/2099683402542960640/l6UH3OXT_mini.jpg",
+            "https://pbs.twimg.com/profile_images/2099683402542960640/l6UH3OXT_normal.jpg",
+            "https://pbs.twimg.com/profile_images/2099683402542960640/l6UH3OXT_bigger.jpg",
+            "https://pbs.twimg.com/profile_images/2099683402542960640/l6UH3OXT_x96.jpg",
+            "https://pbs.twimg.com/profile_images/2099683402542960640/l6UH3OXT_reasonably_small.jpg",
+            "https://pbs.twimg.com/profile_images/2099683402542960640/l6UH3OXT_200x200.jpg",
+            "https://pbs.twimg.com/profile_images/2099683402542960640/l6UH3OXT_400x400.jpg"
+          ],
+          "meta_keys": [
+            "og:image",
+            "og:title",
+            "twitter:image",
+            "twitter:title"
+          ],
+          "og_title_present": true,
+          "og_image_present": true,
+          "twitter_title_present": true,
+          "twitter_image_present": true,
+          "og_title": "Xユーザーの花園えりか🧸🪄︎︎＠個人Vtuber（@87zono_erika）さん",
+          "og_image": "https://pbs.twimg.com/profile_images/2099683402542960640/l6UH3OXT_400x400.jpg",
+          "twitter_title": "Xユーザーの花園えりか🧸🪄︎︎＠個人Vtuber（@87zono_erika）さん",
+          "twitter_image": "https://pbs.twimg.com/profile_banners/751308930664443904/1789387107"
+        }
+      }
     }
   ],
   "monitoring_summary": {

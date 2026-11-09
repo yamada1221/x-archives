@@ -16977,7 +16977,7 @@
     },
     {
       "id": "mw948ga03cdw",
-      "name": "rokkaiten0925",
+      "name": "S A",
       "x_account": "rokkaiten0925",
       "threads_account": "",
       "threads_share_url": "",
@@ -16987,8 +16987,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-09",
-      "fetch_status": "error",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1923450089026224129/AWFNOpXg_normal.jpg",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-09T11:44:22.388370+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-09",
+      "profile_source": "fxtwitter"
     },
     {
       "id": "mw9714575rdq",
@@ -17002,8 +17008,11 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-09",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://unavatar.io/x/abstruct3?fallback=false",
+      "profile_fetched_at": "2026-11-09",
+      "profile_source": "unavatar"
     }
   ],
   "monitoring_summary": {

@@ -17311,7 +17311,7 @@
     },
     {
       "id": "mwasm3ouub33",
-      "name": "ansoku_labo",
+      "name": "Yoshino,S│An-soku LABO",
       "x_account": "ansoku_labo",
       "threads_account": "",
       "threads_share_url": "",
@@ -17328,8 +17328,31 @@
       ],
       "threads_posts": [],
       "added_at": "2026-11-10",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2087291231630188544/Kf4cgrsT_normal.jpg",
+      "x_bio": "世界のどこかで誰かの負荷を少し減らしたい。\nAIアライメント／AIシステム設計を研究中\nLMT（Load Minimization Theory）\nMinimal Cognitive Load, Gentle Synchronization.\n最小の認知負荷で、やさしく同期する。\n｜理論｜設計｜実験｜観測｜",
+      "x_bio_fetched_at": "2026-11-10T14:36:33.997420+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-10",
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-10T14:36:34+00:00",
+        "x_account": "ansoku_labo",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=ansoku_labo",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/ansoku_labo",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

@@ -2523,6 +2523,21 @@
       "next_attempt_at": 1794327035401,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "updated_at": "2026-11-10T16:10:35.401Z"
+    },
+    {
+      "job_id": "93d301c9-8e3b-4d6c-8d64-231806b68482",
+      "kind": "profile",
+      "artist_id": "mvt4ipy3h8sb",
+      "registered_handle": "m_naoking",
+      "target_kind": "replies",
+      "expected_x_user_id": "175038458",
+      "state": "queued",
+      "provider": "archive.today",
+      "created_at": "2026-11-10T22:10:34.402Z",
+      "attempt_count": 0,
+      "next_attempt_at": 1794348634402,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-11-10T22:10:34.402Z"
     }
   ],
   "reservations": [

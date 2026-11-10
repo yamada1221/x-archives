@@ -2403,6 +2403,21 @@
       "next_attempt_at": 1794305434696,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "updated_at": "2026-11-10T10:10:34.696Z"
+    },
+    {
+      "job_id": "8cb93911-52d5-455f-b255-6c27462c511c",
+      "kind": "profile",
+      "artist_id": "mvomqk9wjkb7",
+      "registered_handle": "YOSHIKI_0819",
+      "target_kind": "replies",
+      "expected_x_user_id": "2048031363199356928",
+      "state": "queued",
+      "provider": "archive.today",
+      "created_at": "2026-11-10T10:10:34.696Z",
+      "attempt_count": 0,
+      "next_attempt_at": 1794305434696,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-11-10T10:10:34.696Z"
     }
   ],
   "reservations": [

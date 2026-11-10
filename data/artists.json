@@ -17308,6 +17308,28 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1119409296184205313; screen_name=abstruct3"
         }
       ]
+    },
+    {
+      "id": "mwasm3ouub33",
+      "name": "ansoku_labo",
+      "x_account": "ansoku_labo",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/ansoku_labo/status/2119928007079137649",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-10"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-11-10",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

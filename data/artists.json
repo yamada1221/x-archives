@@ -17352,7 +17352,21 @@
           "url": "https://x.com/ansoku_labo",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archives": [
+        {
+          "url": "https://archive.li/2026.11.10-144716/https://x.com/ansoku_labo/with_replies",
+          "provider": "archive.today",
+          "status": "pending",
+          "target_url": "https://x.com/ansoku_labo/with_replies",
+          "saved_at": "2026-11-10T14:50:22.057Z"
+        }
+      ],
+      "archive_status": "pending",
+      "archive_url": "https://archive.li/2026.11.10-144716/https://x.com/ansoku_labo/with_replies",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/ansoku_labo/with_replies",
+      "archive_checked_at": "2026-11-10T14:50:22.057Z"
     }
   ],
   "monitoring_summary": {

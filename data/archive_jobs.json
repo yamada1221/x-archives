@@ -2673,6 +2673,21 @@
       "next_attempt_at": 1794370235297,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "updated_at": "2026-11-11T04:10:35.297Z"
+    },
+    {
+      "job_id": "fccb9b8c-5b95-47a2-9d1a-2de4c5378d07",
+      "kind": "profile",
+      "artist_id": "mw1z42tk0odi",
+      "registered_handle": "GurukunSaa",
+      "target_kind": "replies",
+      "expected_x_user_id": "2109561889734995968",
+      "state": "queued",
+      "provider": "archive.today",
+      "created_at": "2026-11-11T10:10:34.968Z",
+      "attempt_count": 0,
+      "next_attempt_at": 1794391834968,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-11-11T10:10:34.968Z"
     }
   ],
   "reservations": [

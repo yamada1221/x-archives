@@ -799,13 +799,13 @@
       "artist_id": "mvt4ipy3h8sb",
       "registered_handle": "m_naoking",
       "expected_x_user_id": "175038458",
-      "state": "needs_review",
+      "state": "processing",
       "provider": "archive.today",
       "created_at": "2026-10-29T08:26:54.353Z",
       "attempt_count": 1,
-      "next_attempt_at": 1793497838591,
+      "next_attempt_at": 1794419935748,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-01T02:11:39.369Z",
+      "updated_at": "2026-11-11T17:58:55.748Z",
       "identity": {
         "id": "175038458",
         "handle": "m_naoking",
@@ -819,8 +819,9 @@
       "operation_id": "71bc609f-bfb3-4d61-8729-cd34856f9021",
       "lease_expires_at": 1793264341607,
       "receipt_checks": 0,
-      "receipt_recovery_required": true,
-      "receipt_recovery_started_at": "2026-11-01T01:50:38.591Z"
+      "receipt_recovery_started_at": "2026-11-11T17:58:55.748Z",
+      "receipt": "https://archive.li/IZzqc",
+      "verification_checks": 0
     },
     {
       "job_id": "dafa945c-301d-4f4b-a2b4-f0cc6b554d6c",

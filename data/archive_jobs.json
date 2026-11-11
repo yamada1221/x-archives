@@ -690,13 +690,13 @@
       "artist_id": "mvqn4hajzc43",
       "registered_handle": "dn0q1y",
       "expected_x_user_id": "1826573074579554304",
-      "state": "needs_review",
+      "state": "processing",
       "provider": "archive.today",
       "created_at": "2026-10-27T14:27:21.290Z",
       "attempt_count": 1,
-      "next_attempt_at": 1793497838591,
+      "next_attempt_at": 1794419918832,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-01T02:08:39.209Z",
+      "updated_at": "2026-11-11T17:58:38.832Z",
       "identity": {
         "id": "1826573074579554304",
         "handle": "dn0q1y",
@@ -710,8 +710,9 @@
       "operation_id": "f775fcb2-0a64-4788-a9f3-7475045924b1",
       "lease_expires_at": 1793113741708,
       "receipt_checks": 0,
-      "receipt_recovery_required": true,
-      "receipt_recovery_started_at": "2026-11-01T01:50:38.591Z"
+      "receipt_recovery_started_at": "2026-11-11T17:58:38.832Z",
+      "receipt": "https://archive.li/O63GJ",
+      "verification_checks": 0
     },
     {
       "job_id": "3636d100-6816-41e8-9f8a-56f578b3a49f",

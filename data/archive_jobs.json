@@ -2613,6 +2613,21 @@
       "next_attempt_at": 1794370235297,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "updated_at": "2026-11-11T04:10:35.297Z"
+    },
+    {
+      "job_id": "e43d32a0-d914-4134-8bab-5811d9891df7",
+      "kind": "profile",
+      "artist_id": "mvxuaz0kunbm",
+      "registered_handle": "medaka003",
+      "target_kind": "replies",
+      "expected_x_user_id": "1583702149590298624",
+      "state": "queued",
+      "provider": "archive.today",
+      "created_at": "2026-11-11T04:10:35.297Z",
+      "attempt_count": 0,
+      "next_attempt_at": 1794370235297,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-11-11T04:10:35.297Z"
     }
   ],
   "reservations": [

@@ -17518,7 +17518,7 @@
     },
     {
       "id": "mwc59rp2wwx9",
-      "name": "gsj0rc9v7232679",
+      "name": "こ",
       "x_account": "gsj0rc9v7232679",
       "threads_account": "",
       "threads_share_url": "",
@@ -17537,9 +17537,56 @@
       "added_at": "2026-11-11",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://unavatar.io/x/gsj0rc9v7232679?fallback=false",
+      "avatar_url": "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png",
       "profile_fetched_at": "2026-11-11",
-      "profile_source": "unavatar"
+      "profile_source": "fxtwitter",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-11T13:18:36.716992+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-11T13:18:36+00:00",
+        "x_account": "gsj0rc9v7232679",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=gsj0rc9v7232679",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/gsj0rc9v7232679",
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "final_url": "https://x.com/gsj0rc9v7232679",
+          "bytes": 149815,
+          "contains_username": true,
+          "screen_name_marker": false,
+          "profile_image_url_count": 6,
+          "profile_image_candidates": [
+            "https://pbs.twimg.com/profile_images/2018886207409909760/-7oT42ZL_normal.jpg",
+            "https://pbs.twimg.com/profile_images/2033174464956104704/r6zDz5nA_normal.jpg",
+            "https://pbs.twimg.com/profile_images/2018886207409909760/-7oT42ZL_mini.jpg",
+            "https://pbs.twimg.com/profile_images/2018886207409909760/-7oT42ZL_bigger.jpg",
+            "https://pbs.twimg.com/profile_images/2033174464956104704/r6zDz5nA_mini.jpg",
+            "https://pbs.twimg.com/profile_images/2033174464956104704/r6zDz5nA_bigger.jpg"
+          ],
+          "meta_keys": [
+            "og:image",
+            "og:title",
+            "twitter:title"
+          ],
+          "og_title_present": true,
+          "og_image_present": true,
+          "twitter_title_present": true,
+          "twitter_image_present": false,
+          "og_title": "Xユーザーのこ（@gsj0rc9V7232679）さん",
+          "og_image": "https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png",
+          "twitter_title": "Xユーザーのこ（@gsj0rc9V7232679）さん",
+          "twitter_image": ""
+        }
+      }
     }
   ],
   "monitoring_summary": {

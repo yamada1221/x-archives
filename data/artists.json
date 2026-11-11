@@ -17473,7 +17473,7 @@
     },
     {
       "id": "mwc54yxuvkdd",
-      "name": "goemonbolognese",
+      "name": "五右衛門伝統のミートソース",
       "x_account": "goemonbolognese",
       "threads_account": "",
       "threads_share_url": "",
@@ -17490,8 +17490,14 @@
       ],
       "threads_posts": [],
       "added_at": "2026-11-11",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2056564114529648640/kg9O6-Xg_normal.jpg",
+      "x_bio": "趣味のことを好きにつぶやいたりします。\n批判的なことも結構言います。\n\nゲーム・音楽・グルメ・ドライブ・旅行　など\n\n好きなゲーム　→　MMORPG、RPG、コロニーシム\n好きな音楽　→　トランス、ユーロビート、ゲーム音楽\n好きな食事　→　寿司、ステーキ、中華、パスタ\n\n人生で一番好きなゲームはラグナロクオンライン。",
+      "x_bio_fetched_at": "2026-11-11T13:14:41.404151+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-11",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

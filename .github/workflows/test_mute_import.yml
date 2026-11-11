@@ -17,6 +17,7 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -28,7 +29,7 @@ jobs:
           python scripts/package_mute_extension.py
           git diff --exit-code -- downloads/
       - run: npm install --no-save --package-lock=false playwright@1.51.1
-      - run: npx playwright install --with-deps chromium
+      - run: npx playwright install chromium
       - name: Check image review and single-frame capture
         run: |
           python -m http.server 8765 --bind 127.0.0.1 > /tmp/tracker-http.log 2>&1 &

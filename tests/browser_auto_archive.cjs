@@ -39,13 +39,23 @@ async function fakeNetwork(){
 }
 (async()=>{
   const context=await chromium.launchPersistentContext(path.join(temp,'profile'),{channel:'chromium',headless:true,args:['--disable-extensions-except='+extension,'--load-extension='+extension]});
-  let posts=0,fixtureNow=Date.now(),worker,stage='startup';const captures=new Map(),errors=[],navigations=[];
+  let posts=0,fixtureNow=Date.now(),worker,stage='startup';const captures=new Map(),errors=[],navigations=[],routedNavigations=new Map();
   const mark=value=>{stage=value;console.log('Archive check:',provider,stage);};
   const watchdog=setTimeout(()=>{console.error('Archive browser timeout:',JSON.stringify({provider,stage,navigations,captures:[...captures]}));process.exit(1);},90000);
   watchdog.unref();
   try{
     context.on('page',p=>p.on('pageerror',e=>errors.push(e.message)));
     context.on('request',r=>{if(r.isNavigationRequest()&&/^https:\/\/(?:archive\.li|ghostarchive\.org)\//.test(r.url()))navigations.push({method:r.method(),url:r.url()});});
+    // Playwright routes only the first request of an HTTP redirect chain.
+    // Use fresh document navigations below so every archive response remains
+    // intercepted, and abort any browser request outside these fixture hosts.
+    await context.route('**/*',async route=>{
+      const url=route.request().url();
+      if(/^https?:/.test(url)){errors.push('Unexpected browser network: '+url);await route.abort();}
+      else await route.continue();
+    });
+    const routed=req=>{if(req.isNavigationRequest()){const key=req.method()+' '+req.url();routedNavigations.set(key,(routedNavigations.get(key)||0)+1);}};
+    const navigate=(route,url)=>route.fulfill({contentType:'text/html',body:'<!doctype html><script>location.replace('+JSON.stringify(url)+')</script>'});
     const savedBody=(cap,id,inline=false)=>{
       const h=cap.target.split('/').pop(),user=h==='X'?'783214':'1234567890123456789';
       const rewrite=inline?home+'o/'+id+'/':'https://ghostarchive.org/news2/'+id+'/a/href/';
@@ -53,28 +63,32 @@ async function fakeNetwork(){
     };
     await context.route('https://archive.li/**',async route=>{
       const req=route.request(),u=new URL(req.url());
+      routed(req);
       if(u.pathname==='/submit'){
         assert.equal(req.method(),'POST');const params=new URLSearchParams(req.postData()),target=params.get('url');
         assert.equal(params.get('submitid'),'fixture-form-token');assert.match(target,/^https:\/\/x\.com\/(X|Example)$/);
-        const n=++posts;captures.set(captureId(n),{target,ready:false});
-        await route.fulfill({status:302,headers:{location:receiptURL(n,true)}});return;
+        const n=++posts;captures.set(captureId(n),{target,ready:false,challenge:n===1});
+        await navigate(route,receiptURL(n,true));return;
       }
       const wip=u.pathname.match(/^\/wip\/(Fx00\d)$/),final=u.pathname.match(/^\/(Fx00\d)$/),m=wip||final;
       if(m){
         const cap=captures.get(m[1]);assert.ok(cap);
-        if(wip&&cap.ready){await route.fulfill({status:302,headers:{location:home+m[1]}});return;}
+        if(wip&&cap.ready){await navigate(route,home+m[1]);return;}
         const stamp=new Date(fixtureNow).toISOString().replace(/^(\d{4})-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d).*$/,'$1.$2.$3-$4$5$6');
-        await route.fulfill({contentType:'text/html',body:!cap.ready?'<!doctype html><title>Archiving</title><p>Saving page</p>':`<!doctype html><title>保存結果</title><div id="HEADER"><input id="SHARE_LONGLINK" value="${home}${stamp}/${cap.target}"></div><div id="CONTENT">${savedBody(cap,m[1],true)}</div>`});return;
+        await route.fulfill({contentType:'text/html',body:!cap.ready?(cap.challenge?
+          '<!doctype html><title>Verify you are human</title><form id="challenge-form"><p>Verify you are human</p></form>':
+          '<!doctype html><title>Archiving</title><p>Saving page</p>'):`<!doctype html><title>保存結果</title><div id="HEADER"><input id="SHARE_LONGLINK" value="${home}${stamp}/${cap.target}"></div><div id="CONTENT">${savedBody(cap,m[1],true)}</div>`});return;
       }
       await route.fulfill({contentType:'text/html',body:'<!doctype html><title>archive.li</title><form id="submit_form" action="/submit" method="POST"><input name="submitid" type="hidden" value="fixture-form-token"><label>URL<input name="url"></label><button>save</button></form>'});
     });
     await context.route('https://ghostarchive.org/**',async route=>{
       const req=route.request(),u=new URL(req.url());
+      routed(req);
       if(u.pathname==='/archive2'){
         assert.equal(req.method(),'POST');const target=new URLSearchParams(req.postData()).get('archive');
         assert.match(target,/^https:\/\/x\.com\/(X|Example)$/);
         const id='Fixture'+(++posts);captures.set(id,{target,ready:false});
-        await route.fulfill({status:302,headers:{location:'https://ghostarchive.org/archive/'+id}});return;
+        await navigate(route,'https://ghostarchive.org/archive/'+id);return;
       }
       const m=u.pathname.match(/^\/archive\/(Fixture\d+)$/);
       if(m){const cap=captures.get(m[1]);assert.ok(cap);
@@ -127,10 +141,26 @@ async function fakeNetwork(){
     };
     mark('test submission');await due();assert.equal(posts,1);
     await first.waitForURL(url=>[receiptURL(1,today),receiptURL(1)].includes(url.href),{waitUntil:'load'});
-    mark('test receipt');await waitProcessing();assert.equal((await state()).ready,false);
+    mark('test receipt');
+    if(today){
+      // A receipt URL behind a human challenge is evidence of the original
+      // request, not a processing/success signal and never grounds to resubmit.
+      await due();const held=await state(),job=held.jobs.find(j=>j.test);
+      assert.equal(job.state,'submission_unknown');assert.equal(job.access_wait,'human');
+      assert.equal(job.receipt,receiptURL(1,true));assert.equal(job.can_recheck,true);
+      assert.equal(held.submissionHeld,true);assert.equal(held.ready,false);assert.equal(posts,1);
+      await due();assert.equal(posts,1);assert.equal((await state()).jobs.find(j=>j.test).access_wait,'human');
+      await page.reload();await page.locator('#jobs').filter({hasText:'人間確認待ち'}).waitFor();
+    }else await waitProcessing();
+    assert.equal((await state()).ready,false);
     captures.get(captureId(1)).ready=true;
     mark('test body');await first.reload();await (today?first.locator('#CONTENT'):first.frameLocator('iframe')).locator('[data-testid="UserName"]').waitFor();
-    await due();assert.equal((await state()).ready,true);assert.equal((await state()).jobs[0].state,'succeeded');
+    if(today){
+      mark('confirmed challenge recheck');await page.getByRole('button',{name:'確認後に再確認',exact:true}).click();
+      await page.locator('#message').filter({hasText:'反映しました'}).waitFor();
+    }else await due();
+    assert.equal(posts,1);assert.equal((await state()).ready,true);assert.equal((await state()).jobs[0].state,'succeeded');
+    assert.equal((await state()).jobs[0].access_wait,undefined);
     mark('profile queue');const captureTab=context.waitForEvent('page');
     await page.locator('#start').click();await page.locator('#message').filter({hasText:'反映しました'}).waitFor();
     const second=await captureTab;await second.waitForURL(home);await second.waitForSelector(today?'form input[name="url"]':'form input#archive');
@@ -159,6 +189,8 @@ async function fakeNetwork(){
     assert.equal(saved.artists[0].archive_provider,provider);assert.equal(saved.artists[0].archive_url,receiptURL(2));
     mark('result display');await page.reload();await page.locator('#summary').filter({hasText:'有効'}).waitFor();
     fs.mkdirSync(path.join(root,'test-output'),{recursive:true});await page.screenshot({path:path.join(root,'test-output/auto-archive-options-'+provider+'.png'),fullPage:true});
+    const requestedNavigations=new Map();for(const r of navigations){const key=r.method+' '+r.url;requestedNavigations.set(key,(requestedNavigations.get(key)||0)+1);}
+    assert.deepEqual([...routedNavigations].sort(),[...requestedNavigations].sort(),'Every archive navigation must have a fixture response');
     assert.deepEqual(errors,[]);
     console.log('Native auto-archive checks passed ('+provider+'): native fetch, permissions, settings, gate, form POST, saved body, numeric ID, posts, worker restart, IndexedDB, GitHub CAS and legacy exclusions.');
   }catch(error){
@@ -173,3 +205,4 @@ async function fakeNetwork(){
   }
   finally{mark('cleanup');await context.close();clearTimeout(watchdog);fs.rmSync(temp,{recursive:true,force:true});}
 })().catch(e=>{console.error(e);process.exit(1)});
+

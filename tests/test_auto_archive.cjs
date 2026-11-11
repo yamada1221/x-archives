@@ -153,14 +153,18 @@ test('web pages and other extensions cannot save credentials, start tests or tak
   const ctx={URL,Date,Set,Map,Promise,structuredClone,TextEncoder,TextDecoder,AbortController,setTimeout,clearTimeout,crypto:require('node:crypto').webcrypto};
   const data={},listeners=[];ctx.chrome={runtime:{id:'mine',getURL:p=>'chrome-extension://mine/'+p,onStartup:{addListener:f=>listeners.push(f)},onInstalled:{addListener:f=>listeners.push(f)}},
     storage:{local:{get:async k=>({[k]:data[k]}),set:async d=>Object.assign(data,d),setAccessLevel:async()=>{}}},alarms:{onAlarm:{addListener:()=>{}}}};
-  vm.createContext(ctx);for(const name of ['auto-core','auto-storage','auto-github','auto-ghost','auto-today','auto-engine','auto-runtime'])vm.runInContext(fs.readFileSync(base+'/'+name+'.js','utf8'),ctx);
-  for(const type of ['AUTO_SAVE','AUTO_START','AUTO_TEST','AUTO_CLAIM','AUTO_ADOPT']){
+  vm.createContext(ctx);for(const name of ['auto-core','auto-storage','auto-github','auto-ghost','auto-today','auto-engine','auto-form-diagnostics','auto-receipt-picker','auto-runtime'])vm.runInContext(fs.readFileSync(base+'/'+name+'.js','utf8'),ctx);
+  for(const type of ['AUTO_SAVE','AUTO_START','AUTO_TEST','AUTO_CLAIM','AUTO_ADOPT','AUTO_RECHECK','AUTO_FORM_DIAGNOSTICS','AUTO_RECEIPT_CANDIDATES']){
     await assert.rejects(ctx.AutoArchiveRuntime.handle({type},{id:'mine',url:'https://yamada1221.github.io/x-archives/',frameId:0,tab:{id:1}}),/拡張機能の画面/);
     await assert.rejects(ctx.AutoArchiveRuntime.handle({type},{id:'other',url:'chrome-extension://mine/auto-options.html'}));
   }
   const result=await ctx.AutoArchiveRuntime.handle({type:'AUTO_STATUS'},{id:'mine',url:'chrome-extension://mine/auto-options.html'});assert.equal(result.configured,false);assert.equal('token' in result,false);
   const inTab=await ctx.AutoArchiveRuntime.handle({type:'AUTO_STATUS'},{id:'mine',url:'chrome-extension://mine/auto-options.html',tab:{id:1},frameId:0});assert.equal(inTab.configured,false);
   await assert.rejects(ctx.AutoArchiveRuntime.handle({type:'AUTO_STATUS'},{id:'mine',url:'chrome-extension://mine/auto-options.html',tab:{id:1},frameId:1}));
+  ctx.chrome.tabs={query:async()=>[]};ctx.chrome.runtime.getManifest=()=>({version:'1.3.2'});
+  const diagnostic=await ctx.AutoArchiveRuntime.handle({type:'AUTO_FORM_DIAGNOSTICS'},{id:'mine',url:'chrome-extension://mine/auto-options.html'});
+  assert.equal(diagnostic.ok,true);assert.equal(diagnostic.diagnostics.pages.length,0);
+  assert.ok(data.autoArchiveFormDiagnostics);
 });
 test('credential isolation survives browsers without StorageArea.setAccessLevel',async()=>{
   const ctx={URL,Date,Set,Map,Promise,structuredClone,TextEncoder,TextDecoder,AbortController,setTimeout,clearTimeout,crypto:require('node:crypto').webcrypto};
@@ -215,9 +219,13 @@ test('WIP cannot be marked done and unrelated receipts cannot replace a capture'
   await assert.rejects(a.engine.adopt((await a.state()).jobs[0].job_id,'https://archive.li/Other'),/変更できません/);
   await assert.rejects(a.engine.adopt((await a.state()).jobs[0].job_id,'https://ghostarchive.org/archive/Ab123'),/同じ保存先/);
 });
-test('archive.li challenges stop automatically and preserve manual review without POST',async()=>{
+test('archive.li preflight challenges stay observable without a POST and resume only after the form is available',async()=>{
   const a=setup([artist()],'archive.today');await a.run(true);a.ghost.inspect=async()=>({kind:'blocked'});a.advance();await a.run();
-  assert.equal((await a.state()).jobs[0].state,'needs_review');assert.equal(a.calls.post,0);assert.equal(a.docs.get(JOBS).provider.name,'archive.today');
+  let j=(await a.state()).jobs[0];
+  assert.equal(j.state,'opening');assert.equal(j.access_wait,'human');assert.equal(a.calls.post,0);
+  assert.equal(C.jobLabel(j),'人間確認待ち');assert.equal(C.attention(j),true);assert.equal(C.submissionHold([j],'archive.today'),true);
+  a.ghost.inspect=async()=>({kind:'form'});await a.engine.recheck(j.job_id);await a.run();
+  j=(await a.state()).jobs[0];assert.equal(j.state,'submitting');assert.equal(j.access_wait,undefined);assert.equal(a.calls.post,1);
 });
 test('a changed default replaces unsent jobs and keeps submitted Ghostarchive work on its original provider',async()=>{
   for(const sent of [false,true]){
@@ -233,3 +241,194 @@ test('GitHub native-fetch wrapper preserves the global receiver',async()=>{
   const client=new GitHub(C.config({token:'fixture'}),function(){'use strict';assert.equal(this,globalThis);return Promise.resolve(new Response('{}'));});
   assert.equal((await client.request('data/artists.json')).ok,true);
 });
+
+test('an explicit connection test recovers a structural pause after recognizing the form',async()=>{
+  const a=setup([artist()],'archive.today');
+  a.config.enabled=false;
+  await a.engine.enqueueTest();
+  const ledger=a.docs.get(JOBS);
+  ledger.provider={name:'archive.today',paused_until:a.now()+C.DAY,reason:'保存フォームの構造を確認できません'};
+  a.docs.set(JOBS,ledger);
+  await a.run();a.advance();await a.run();
+  assert.equal(a.calls.post,1);
+  assert.equal(a.docs.get(JOBS).provider.paused_until,0);
+  assert.equal(a.docs.get(JOBS).reservations.length,1);
+});
+test('normal captures cannot lift structural pauses, and connection tests cannot lift access restrictions',async()=>{
+  for(const [connection,reason] of [[false,'保存フォームの構造を確認できません'],[true,'保存先で人間確認・アクセス制限が必要です']]){
+    const a=setup([artist()],'archive.today');
+    if(connection){a.config.enabled=false;await a.engine.enqueueTest();}
+    await a.run(!connection);
+    const ledger=a.docs.get(JOBS),until=a.now()+C.DAY;
+    ledger.provider={name:'archive.today',paused_until:until,reason};a.docs.set(JOBS,ledger);
+    a.advance();await a.run();
+    assert.equal(a.calls.post,0);
+    assert.equal(a.docs.get(JOBS).provider.paused_until,until);
+    assert.equal((await a.state()).jobs.at(-1).state,'opening');
+  }
+});
+test('a connection test cannot lift a structural pause without recognizing the form',async()=>{
+  const a=setup([artist()],'archive.today');a.config.enabled=false;await a.engine.enqueueTest();
+  const ledger=a.docs.get(JOBS);
+  ledger.provider={name:'archive.today',paused_until:a.now()+C.DAY,reason:'保存フォームの構造を確認できません'};a.docs.set(JOBS,ledger);
+  a.ghost.inspect=async()=>({kind:'changed'});
+  await a.run();a.advance();await a.run();
+  assert.equal(a.calls.post,0);
+  assert.ok(a.docs.get(JOBS).provider.paused_until>a.now());
+  assert.equal((await a.state()).jobs.at(-1).state,'needs_review');
+});
+test('adopting a search URL explains how to choose a capture without changing a job',async()=>{
+  const a=setup();
+  await assert.rejects(a.engine.adopt('missing','https://archive.li/https://x.com/X'),/保存履歴の検索ページ/);
+  assert.equal(a.calls.post,0);assert.equal(a.calls.writes.length,0);
+});
+async function seedBodyFailure(a, changes={}) {
+  const job={job_id:'old-body',kind:'profile',artist_id:'one',registered_handle:'Example',expected_x_user_id:'1234567890123456789',
+    target_url:'https://x.com/Example',provider:'archive.today',state:'needs_review',executor_device_id:'device',
+    created_at:new Date(a.now()).toISOString(),submission_started_at:new Date(a.now()).toISOString(),attempt_count:1,
+    receipt:'https://archive.li/Ab123',receipt_history:['https://archive.li/wip/Ab123'],verification_checks:3,
+    identity:{handle:'Example',name:'例',bio:'自己紹介'},last_error:'本文から同じアカウントだと確認する証拠が不足しています',...changes};
+  await a.engine.save({...await a.state(),jobs:[clone(job)]});
+  a.docs.set(JOBS,{version:1,jobs:[clone(job)],reservations:[],provider:{}});
+  return job;
+}
+test('an update rechecks an owned recorded receipt without another save request',async()=>{
+  const a=setup([artist()],'archive.today');a.config.enabled=false;
+  const old=await seedBodyFailure(a);
+  assert.equal(await a.engine.recheckKnownBodies(),1);
+  let state=await a.state();assert.equal(state.jobs[0].state,'processing');
+  assert.equal(state.jobs[0].attempt_count,1);assert.equal(state.jobs[0].submission_started_at,old.submission_started_at);
+  assert.deepEqual(state.jobs[0].receipt_history,old.receipt_history);
+  assert.equal(a.calls.writes.length,0);
+  await a.run();state=await a.state();
+  assert.equal(state.jobs[0].state,'succeeded');assert.equal(a.docs.get(a.config.path).artists[0].archive_status,'done');
+  assert.equal(a.calls.post,0);assert.equal(a.calls.opened,0);assert.deepEqual(a.docs.get(JOBS).reservations,[]);
+});
+test('the same reader version does not loop a body failure after restart',async()=>{
+  const a=setup([artist()],'archive.today');a.config.enabled=false;await seedBodyFailure(a);
+  a.ghost.inspect=async j=>({kind:'archive',receipt:j.receipt,original_url:j.target_url,captured_at:new Date(a.now()).toISOString(),frames:[]});
+  await a.engine.recheckKnownBodies();
+  for(let i=0;i<3;i++){await a.run();a.advance();}
+  assert.equal((await a.state()).jobs[0].state,'needs_review');
+  a.restart();assert.equal(await a.engine.recheckKnownBodies(),0);
+  assert.equal(a.calls.post,0);
+});
+test('automatic body recovery excludes missing receipts, foreign executors and other review reasons',async()=>{
+  for(const changes of [{receipt:undefined},{executor_device_id:'another-device'},{last_error:'保存本文の数値IDが別のアカウントです'},{last_error:'保存先で人間確認・アクセス制限が必要です'},{provider:'ghostarchive',receipt:'https://ghostarchive.org/archive/Ab123'}]){
+    const a=setup([artist()],'archive.today');await seedBodyFailure(a,changes);
+    assert.equal(await a.engine.recheckKnownBodies(),0);
+    assert.equal((await a.state()).jobs[0].state,'needs_review');assert.equal(a.calls.post,0);
+  }
+});
+
+test('a challenge after submission is visible, blocks new saves, and resumes verification without a second request',async()=>{
+  const a=setup([artist()],'archive.today');await a.run(true);a.advance();await a.run();
+  const original=clone((await a.state()).jobs[0]);
+  a.ghost.reconcile=async()=>({kind:'blocked',block_type:'human'});a.advance();await a.run();
+  let j=(await a.state()).jobs[0];
+  assert.equal(j.state,'submission_unknown');assert.equal(j.access_wait,'human');assert.match(j.last_error,/人間確認/);
+  assert.notEqual(j.last_error,'受付結果が不明です。保存先の画面または検索結果で確認してください');
+  a.docs.get(a.config.path).artists.push({...artist(),id:'two',x_account:'Other',x_user_id:'999'});
+  a.advance();await a.run(true);assert.equal(a.calls.post,1);
+  assert.equal((await a.state()).jobs.find(j=>j.artist_id==='two').state,'queued');
+  a.ghost.reconcile=async()=>({kind:'archive',receipt:'https://archive.li/Ab123'});
+  for(let i=0;i<6;i++)a.advance();await a.run();
+  j=(await a.state()).jobs.find(j=>j.job_id===original.job_id);assert.equal(j.state,'processing');
+  a.advance();await a.run();j=(await a.state()).jobs.find(j=>j.job_id===original.job_id);
+  assert.equal(j.state,'succeeded');assert.equal(j.access_wait,undefined);assert.equal(a.calls.post,1);
+  assert.equal(j.submission_started_at,original.submission_started_at);assert.equal(j.attempt_count,1);
+  assert.equal(a.docs.get(JOBS).reservations.length,1);
+});
+test('a blocked receipt remains under human confirmation, then preserves its WIP history when it completes',async()=>{
+  const a=setup([artist()],'archive.today');await a.run(true);a.advance();await a.run();a.advance();await a.run();
+  const inspect=a.ghost.inspect;a.ghost.inspect=async()=>({kind:'blocked',block_type:'human',receipt:'https://archive.li/wip/Ab123'});
+  a.advance();await a.run();let j=(await a.state()).jobs[0];
+  assert.equal(j.state,'submission_unknown');assert.equal(j.receipt,'https://archive.li/wip/Ab123');
+  a.restart();a.ghost.reconcile=async()=>({kind:'archive',receipt:'https://archive.li/Ab123'});a.ghost.inspect=async j=>({...await inspect(j),receipt:'https://archive.li/Ab123'});
+  await a.engine.recheck(j.job_id);await a.run();a.advance();await a.run();j=(await a.state()).jobs[0];
+  assert.equal(j.state,'succeeded');assert.deepEqual(j.receipt_history,['https://archive.li/wip/Ab123']);assert.equal(a.calls.post,1);
+});
+test('rate limits are distinguished from CAPTCHA and keep the provider pause',async()=>{
+  const a=setup([artist()],'archive.today');await a.run(true);a.advance();await a.run();
+  a.ghost.reconcile=async()=>({kind:'blocked',block_type:'rate_limit'});a.advance();await a.run();
+  const j=(await a.state()).jobs[0];assert.equal(j.access_wait,'rate_limit');assert.match(C.jobLabel(j),/アクセス制限/);
+  assert.ok(a.docs.get(JOBS).provider.paused_until>a.now());assert.equal(a.calls.post,1);
+});
+test('old unknown receipts are checked once on update, including requests older than 48 hours, without reposting',async()=>{
+  const a=setup([artist()],'archive.today');a.config.enabled=false;
+  const old=await seedBodyFailure(a,{receipt:undefined,receipt_history:undefined,last_error:'受付結果が不明です。保存先の画面または検索結果で確認してください',
+    submission_started_at:new Date(a.now()-4*C.DAY).toISOString()});
+  assert.equal(await a.engine.recheckKnownReceipts(),1);assert.equal(a.calls.writes.length,0);
+  a.ghost.reconcile=async()=>({kind:'archive',receipt:'https://archive.li/Ab123'});
+  await a.run();a.advance();await a.run();const j=(await a.state()).jobs[0];
+  assert.equal(j.state,'succeeded');assert.equal(j.submission_started_at,old.submission_started_at);
+  assert.equal(j.attempt_count,1);assert.equal(a.calls.post,0);assert.equal(a.calls.opened,0);
+  assert.deepEqual(a.docs.get(JOBS).reservations,[]);
+});
+test('unrecoverable old receipts do not loop or release new submissions after restart',async()=>{
+  const a=setup([artist()],'archive.today');a.config.enabled=false;
+  await seedBodyFailure(a,{receipt:undefined,last_error:'受付結果が不明です。保存先の画面または検索結果で確認してください'});
+  await a.engine.recheckKnownReceipts();a.ghost.reconcile=async()=>({kind:'unresolved',reason:'送信済みタブなし'});await a.run();
+  a.restart();assert.equal(await a.engine.recheckKnownReceipts(),0);
+  const j=(await a.state()).jobs[0];assert.equal(j.state,'needs_review');assert.equal(j.receipt_recovery_required,true);
+  assert.equal(C.submissionHold([j],'archive.today'),true);assert.equal(a.calls.post,0);
+});
+test('old unknown-receipt recovery excludes other executors and unrelated review errors',async()=>{
+  for(const changes of [{executor_device_id:'another-device'},{last_error:'保存本文の数値IDが別のアカウントです'},{provider:'ghostarchive'}]){
+    const a=setup([artist()],'archive.today');await seedBodyFailure(a,{receipt:undefined,last_error:'受付結果が不明です。保存先の画面または検索結果で確認してください',...changes});
+    assert.equal(await a.engine.recheckKnownReceipts(),0);assert.equal(a.calls.post,0);
+  }
+});
+test('a human-confirmation check while sending is stopped never sends an unsent form',async()=>{
+  const a=setup([artist()],'archive.today');await a.run(true);a.ghost.inspect=async()=>({kind:'blocked'});a.advance();await a.run();
+  const j=(await a.state()).jobs[0];a.config.enabled=false;a.calls.stopped=true;a.ghost.inspect=async()=>({kind:'form'});
+  await a.engine.recheck(j.job_id);await a.run();assert.equal(a.calls.post,0);assert.equal((await a.state()).jobs[0].access_wait,'human');
+});
+test('manual receipt verification can recover an old job while retaining account identity safeguards',async()=>{
+  const a=setup([artist()],'archive.today');a.config.enabled=false;
+  const j=await seedBodyFailure(a,{submission_started_at:new Date(a.now()-4*C.DAY).toISOString()});
+  await a.engine.adopt(j.job_id,j.receipt);await a.run();
+  assert.equal((await a.state()).jobs[0].state,'succeeded');assert.equal(a.calls.post,0);
+});
+test('reply targets require an exact tag, record mode, and remain separate from existing profiles',async()=>{
+  const rows=[{...artist(),note:'汚言 クソリプ',archive_status:'done',archive_url:'https://archive.li/Old01'},
+    {...artist(),id:'monitor',x_account:'Monitor',note:'クソリプ',tracking_mode:'monitor_only'},
+    {...artist(),id:'not-tagged',x_account:'Other',note:'クソリプ以外',archive_status:'done',archive_url:'https://archive.li/Old02'}];
+  const a=setup(rows,'archive.today');await a.run(true);
+  const jobs=(await a.state()).jobs;assert.equal(jobs.length,1);assert.equal(jobs[0].target_kind,'replies');
+  assert.equal(jobs[0].target_url,'https://x.com/Example/with_replies');assert.match(jobs[0].event_key,/:replies$/);
+  assert.equal(a.calls.post,0);
+});
+test('a new tagged record queues both independent profile and replies jobs without confusing completion',async()=>{
+  const a=setup([{...artist(),note:'クソリプ / 要確認'}],'archive.today');await a.run(true);
+  assert.deepEqual((await a.state()).jobs.map(j=>j.target_kind||'profile').sort(),['profile','replies']);
+  assert.equal(C.completed({x_account:'Example',archives:[{status:'done',target_url:'https://x.com/Example/with_replies'}]}),false);
+  assert.equal(C.completed({x_account:'Example',archives:[{status:'done',target_url:'https://x.com/Example/with_replies'}]},'replies'),true);
+});
+test('reply body must confirm the requested tab and target before separate archive application',()=>{
+  const now=Date.now(),j={artist_id:'one',provider:'archive.today',kind:'profile',target_kind:'replies',registered_handle:'Example',expected_x_user_id:'1234567890123456789',
+    target_url:'https://x.com/Example/with_replies',identity:{handle:'Example',name:'例',bio:'自己紹介'},submission_started_at:new Date(now).toISOString(),receipt:'https://archive.li/Ab123',event_key:'first:123:replies'};
+  const outer={original_url:j.target_url,captured_at:new Date(now).toISOString()},p={kind:'profile',handle:'Example',name:'例',bio:'自己紹介',following:true,user_id:j.expected_x_user_id,post_ids:['987']};
+  assert.equal(C.verify(outer,[p],j,now).ok,false);
+  assert.equal(C.verify({...outer,original_url:'https://x.com/Example'},[{...p,replies_tab_confirmed:true}],j,now).ok,false);
+  j.verification=C.verify(outer,[{...p,replies_tab_confirmed:true}],j,now);assert.deepEqual(j.verification.scope,['replies']);
+  const a={...artist(),note:'クソリプ',archive_status:'done',archive_url:'https://archive.li/Old01',archive_target_url:'https://x.com/Example'};
+  const doc={artists:[a]};assert.equal(C.applyResult(doc,j),true);assert.equal(a.archive_url,'https://archive.li/Old01');
+  assert.equal(a.archives[0].target_url,j.target_url);assert.equal(a.archives[0].status,'done');
+});
+test('profile and replies save independently and preserve the primary profile result',async()=>{
+  const a=setup([{...artist(),note:'クソリプ'}],'archive.today');
+  a.ghost.reconcile=async j=>({kind:'archive',receipt:j.target_kind==='replies'?'https://archive.li/Rep01':'https://archive.li/Pro01'});
+  a.ghost.inspect=async j=>j.state==='opening'?{kind:'form'}:{kind:'archive',receipt:j.receipt,original_url:j.target_url,captured_at:new Date(a.now()).toISOString(),
+    frames:[{kind:'profile',handle:'Example',name:'例',bio:'自己紹介',following:true,user_id:'1234567890123456789',post_ids:['987'],replies_tab_confirmed:j.target_kind==='replies'}]};
+  await a.run(true);for(let i=0;i<10;i++){a.advance();await a.run();}
+  const jobs=(await a.state()).jobs;assert.deepEqual(jobs.map(j=>j.state).sort(),['succeeded','succeeded']);assert.equal(a.calls.post,2);
+  const saved=a.docs.get(a.config.path).artists[0];assert.equal(saved.archive_url,'https://archive.li/Pro01');
+  assert.deepEqual(saved.archives.map(e=>e.target_url).sort(),['https://x.com/Example','https://x.com/Example/with_replies']);
+});
+test('a mismatched reply kind and target cannot verify or enter the ledger',()=>{
+  const j={job_id:'x',state:'queued',target_kind:'profile',target_url:'https://x.com/Example/with_replies'};
+  assert.throws(()=>C.ledger({version:1,jobs:[j],reservations:[],provider:{}}),/保存対象/);
+  assert.equal(C.verify({original_url:j.target_url},[],j,Date.now()).ok,false);
+});
+

@@ -13170,7 +13170,33 @@
           "at": "2026-10-28T10:40:38+00:00",
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1826573074579554304; screen_name=dn0q1y"
         }
-      ]
+      ],
+      "archives": [
+        {
+          "provider": "archive.today",
+          "url": "https://archive.li/O63GJ",
+          "target_url": "https://x.com/dn0q1y",
+          "status": "done",
+          "job_id": "ef317c95-6c5b-4f99-85b6-ac28b8f17749",
+          "event_key": "first:1826573074579554304:profile",
+          "x_user_id": "1826573074579554304",
+          "requested_at": "2026-10-27T14:39:01.708Z",
+          "captured_at": "2026-11-11T16:48:58.000Z",
+          "saved_at": "2026-11-11T17:58:42.520Z",
+          "content_verified_at": "2026-11-11T17:58:42.520Z",
+          "verification_method": "archived_profile_body",
+          "verified_scope": [
+            "profile"
+          ],
+          "posts_verification": "confirmed",
+          "reused_existing": false
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/O63GJ",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/dn0q1y",
+      "archive_checked_at": "2026-11-11T17:58:42.520Z"
     },
     {
       "id": "mvrk647ry0wf",

@@ -17390,6 +17390,21 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1582477502257061888; screen_name=ansoku_labo"
         }
       ]
+    },
+    {
+      "id": "mwc3i1tazfow",
+      "name": "Lfn0Ytiou475063",
+      "x_account": "Lfn0Ytiou475063",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "togetter用アカウント 鍵アカウント",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-11",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

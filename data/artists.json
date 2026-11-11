@@ -17470,6 +17470,28 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mwc54yxuvkdd",
+      "name": "goemonbolognese",
+      "x_account": "goemonbolognese",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "汚言 クソリプ",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/goemonbolognese/status/2120270646420873254",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-11"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-11-11",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

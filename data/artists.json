@@ -17425,6 +17425,28 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mwc4mt98rr8t",
+      "name": "ms759sk",
+      "x_account": "ms759sk",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "炎上 ローカルフードフェス",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/ms759sk/status/2120317312121368663",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-11"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-11-11",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

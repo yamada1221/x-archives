@@ -11,12 +11,16 @@ function render(data) {
   latest = data;
   byId('token').required = !data.configured;
   byId('summary').textContent = !data.configured ? 'GitHub接続設定を保存してください。' :
-    `自動保存: ${data.enabled ? '有効' : '停止中'}\n保存先: ${C.providerLabel(data.provider)}（${data.ready ? '本文確認済み' : '接続テストが必要'}）\n未保存候補: ${data.candidates || 0}件` +
+    `自動保存: ${data.enabled ? '有効' : '停止中'}\n保存先: ${C.providerLabel(data.provider)}（${data.ready ? '本文確認済み' : '接続テストが必要'}）\n未保存候補: ${data.candidates || 0}件\n手動確認が必要: ${data.reviewCount || 0}件` +
     (data.lastRunAt ? '\n最終実行: ' + new Date(data.lastRunAt).toLocaleString() : '') +
     (data.nextScanAt && data.enabled ? '\n次回走査予定: ' + new Date(data.nextScanAt).toLocaleString() : '') +
     (data.error ? '\n同期・実行の問題: ' + data.error : '');
   const jobs = byId('jobs'); jobs.replaceChildren();
-  for (const j of (data.jobs || []).filter(j => !byId('reviewOnly').checked || ['needs_review', 'submission_unknown'].includes(j.state)).reverse()) {
+  const needsReview = j => ['needs_review', 'submission_unknown'].includes(j.state);
+  const ordered = [...(data.jobs || [])].reverse();
+  const visible = byId('reviewOnly').checked ? ordered.filter(needsReview) :
+    [...ordered.filter(needsReview), ...ordered.filter(j => !needsReview(j))];
+  for (const j of visible) {
     const box = document.createElement('div'); box.className = 'job';
     const name = document.createElement('strong'); name.textContent = `@${j.handle} — ${j.label} / ${C.providerLabel(j.provider)}${j.test ? '（接続テスト）' : ''}`; box.append(name);
     const detail = document.createElement('p'); detail.textContent = [j.sync_pending ? 'GitHub同期待ち' : '', j.error,
@@ -55,3 +59,4 @@ byId('reviewOnly').addEventListener('change', () => latest && render(latest));
 send('AUTO_STATUS').then(data => { if (data.config) for (const key of ['owner', 'repo', 'path', 'provider']) byId(key).value = data.config[key]; if (data.configured) byId('token').required = false; render(data); }).catch(e => { message.textContent = e.message; });
 // Only this open UI refreshes on a timer. The worker's actual scheduler uses alarms.
 setInterval(() => refresh().catch(() => {}), 15000);
+

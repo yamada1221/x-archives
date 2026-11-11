@@ -183,6 +183,31 @@ test('credential isolation survives browsers without StorageArea.setAccessLevel'
   assert.equal(local.autoArchiveSettings.provider,'ghostarchive');
   assert.equal(await db.get('credential:yamada1221/x-archives:data/artists.json'),'private-fixture-token');
 });
+test('extension status retains older review items when more than 100 newer jobs are queued',async()=>{
+  const ctx={URL,Date,Set,Map,Promise,structuredClone,TextEncoder,TextDecoder,AbortController,setTimeout,clearTimeout,crypto:require('node:crypto').webcrypto};
+  const config=C.config({token:'fixture-token',provider:'archive.today',enabled:true,providerReady:C.adapterVersion('archive.today')});
+  delete config.token;
+  const local={autoArchiveSettings:config,autoArchiveDevice:'device'},db=new MemoryStore();
+  const review=[{job_id:'review',registered_handle:'OldReview',state:'needs_review',last_error:'要確認'},
+    {job_id:'unknown',registered_handle:'OldUnknown',state:'submission_unknown'}];
+  const queued=Array.from({length:125},(_,i)=>({job_id:`queued-${i}`,registered_handle:`Queued${i}`,state:'queued'}));
+  queued[120]={job_id:'recent-review',registered_handle:'RecentReview',state:'needs_review'};
+  await db.set('credential:'+C.scope(config),'fixture-token');
+  await db.set(C.scope(config),{jobs:[...review,...queued],lastRunAt:0,nextScanAt:0});
+  ctx.chrome={runtime:{id:'mine',getURL:p=>'chrome-extension://mine/'+p,onStartup:{addListener:()=>{}},onInstalled:{addListener:()=>{}}},
+    storage:{local:{get:async k=>({[k]:local[k]}),set:async d=>Object.assign(local,d)}},
+    alarms:{get:async()=>null,create:async()=>{},clear:async()=>{},onAlarm:{addListener:()=>{}}}};
+  vm.createContext(ctx);for(const name of ['auto-core','auto-ghost','auto-today','auto-engine'])vm.runInContext(fs.readFileSync(base+'/'+name+'.js','utf8'),ctx);
+  ctx.AutoArchiveStore=class{constructor(){return db;}};ctx.AutoArchiveGitHub=class{};
+  vm.runInContext(fs.readFileSync(base+'/auto-runtime.js','utf8'),ctx);
+  const full=await ctx.AutoArchiveRuntime.status(true), page=await ctx.AutoArchiveRuntime.status(false);
+  assert.equal(full.reviewCount,3);assert.equal(full.jobs.length,102);
+  assert.equal(full.jobs.filter(j=>j.job_id==='review').length,1);
+  assert.equal(full.jobs.filter(j=>j.job_id==='unknown').length,1);
+  assert.equal(full.jobs.filter(j=>j.job_id==='recent-review').length,1);
+  assert.equal(page.jobs.length,100);assert.equal(page.jobs.some(j=>j.job_id==='review'),false);
+  assert.equal((await db.get(C.scope(config))).jobs.length,127);
+});
 test('new and upgraded settings default to archive.li and cannot reuse Ghostarchive readiness',()=>{
   const config=C.config({token:'fixture',enabled:true,providerReady:'ghostarchive-dom-1'});
   assert.equal(config.provider,'archive.today');assert.equal(C.homeURL(config.provider),'https://archive.li/');
@@ -233,3 +258,4 @@ test('GitHub native-fetch wrapper preserves the global receiver',async()=>{
   const client=new GitHub(C.config({token:'fixture'}),function(){'use strict';assert.equal(this,globalThis);return Promise.resolve(new Response('{}'));});
   assert.equal((await client.request('data/artists.json')).ok,true);
 });
+

@@ -95,11 +95,18 @@
     const cfg = await settings(), e = await engine();
     if (!e) return { ok: true, configured: false, enabled: false, jobs: [] };
     const state = await e.state();
+    // Keep every actionable job visible in the extension's settings even if
+    // newer queued jobs have pushed it outside the most recent 100 entries.
+    // The public tracker still receives only the recent, bounded list.
+    const needsReview = j => ['needs_review', 'submission_unknown'].includes(j.state);
+    const cutoff = Math.max(0, state.jobs.length - 100);
+    const visibleJobs = state.jobs.filter((j, i) => i >= cutoff || full && needsReview(j));
     return { ok: true, configured: true, enabled: cfg.enabled, ready: cfg.providerReady === C.adapterVersion(cfg.provider), provider: cfg.provider,
       device: full ? await device() : undefined, nextScanAt: state.nextScanAt, lastRunAt: state.lastRunAt, error: state.lastError,
       candidates: state.candidateCount || 0,
+      reviewCount: full ? state.jobs.filter(needsReview).length : undefined,
       config: full ? { owner: cfg.owner, repo: cfg.repo, path: cfg.path, provider: cfg.provider } : undefined,
-      jobs: state.jobs.slice(-100).map(j => ({ job_id: j.job_id, artist_id: j.artist_id, handle: j.identity?.handle || j.registered_handle,
+      jobs: visibleJobs.map(j => ({ job_id: j.job_id, artist_id: j.artist_id, handle: j.identity?.handle || j.registered_handle,
         state: j.state, label: C.LABELS[j.state], provider: j.provider || 'ghostarchive', error: j.last_error || '', receipt: C.resultURL(j.receipt),
         scope: j.verification?.scope, posts: j.verification?.posts_verification, captured_at: j.verification?.captured_at,
         next_attempt_at: j.next_attempt_at, sync_pending: Boolean(j.dirty || j.state === 'succeeded' && !j.applied),
@@ -160,3 +167,4 @@
   ensure().catch(() => {});
   root.AutoArchiveRuntime = { handle, status, kick, ensure, ORIGINS };
 })(globalThis);
+

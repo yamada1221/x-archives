@@ -17590,7 +17590,7 @@
     },
     {
       "id": "mwc67duha5v2",
-      "name": "gudetama339",
+      "name": "鉄火巻",
       "x_account": "gudetama339",
       "threads_account": "",
       "threads_share_url": "",
@@ -17600,8 +17600,73 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-11",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1039511063278931975/a_JXTez7_normal.jpg",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-11T13:44:46.519739+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-11",
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-11T13:44:46+00:00",
+        "x_account": "gudetama339",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=gudetama339",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/gudetama339",
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "final_url": "https://x.com/gudetama339",
+          "bytes": 174226,
+          "contains_username": true,
+          "screen_name_marker": false,
+          "profile_image_url_count": 25,
+          "profile_image_candidates": [
+            "https://pbs.twimg.com/profile_images/1039511063278931975/a_JXTez7_mini.jpg",
+            "https://pbs.twimg.com/profile_images/1039511063278931975/a_JXTez7_normal.jpg",
+            "https://pbs.twimg.com/profile_images/1039511063278931975/a_JXTez7_bigger.jpg",
+            "https://pbs.twimg.com/profile_images/1039511063278931975/a_JXTez7_x96.jpg",
+            "https://pbs.twimg.com/profile_images/1039511063278931975/a_JXTez7_reasonably_small.jpg",
+            "https://pbs.twimg.com/profile_images/1039511063278931975/a_JXTez7_200x200.jpg",
+            "https://pbs.twimg.com/profile_images/1039511063278931975/a_JXTez7_400x400.jpg",
+            "https://pbs.twimg.com/profile_images/1501152281068064768/O-AedOpn_normal.jpg",
+            "https://pbs.twimg.com/profile_images/1398801425208025090/WRo3_fBa_normal.jpg",
+            "https://pbs.twimg.com/profile_images/1798898088708562944/ifNaR_87_normal.jpg",
+            "https://pbs.twimg.com/profile_images/2077652685491490816/9coGqWMC_normal.jpg",
+            "https://pbs.twimg.com/profile_images/622639478255960064/-6OgnpoB_normal.jpg",
+            "https://pbs.twimg.com/profile_images/1965351320275259392/7Zl1KkM__normal.jpg",
+            "https://pbs.twimg.com/profile_images/1501152281068064768/O-AedOpn_mini.jpg",
+            "https://pbs.twimg.com/profile_images/1501152281068064768/O-AedOpn_bigger.jpg",
+            "https://pbs.twimg.com/profile_images/1398801425208025090/WRo3_fBa_mini.jpg",
+            "https://pbs.twimg.com/profile_images/1398801425208025090/WRo3_fBa_bigger.jpg",
+            "https://pbs.twimg.com/profile_images/1798898088708562944/ifNaR_87_mini.jpg",
+            "https://pbs.twimg.com/profile_images/1798898088708562944/ifNaR_87_bigger.jpg",
+            "https://pbs.twimg.com/profile_images/2077652685491490816/9coGqWMC_mini.jpg"
+          ],
+          "meta_keys": [
+            "og:image",
+            "og:title",
+            "twitter:image",
+            "twitter:title"
+          ],
+          "og_title_present": true,
+          "og_image_present": true,
+          "twitter_title_present": true,
+          "twitter_image_present": true,
+          "og_title": "Xユーザーの鉄火巻（@gudetama339）さん",
+          "og_image": "https://pbs.twimg.com/profile_images/1039511063278931975/a_JXTez7_400x400.jpg",
+          "twitter_title": "Xユーザーの鉄火巻（@gudetama339）さん",
+          "twitter_image": "https://pbs.twimg.com/profile_banners/4679384198/1536674278"
+        }
+      }
     }
   ],
   "monitoring_summary": {

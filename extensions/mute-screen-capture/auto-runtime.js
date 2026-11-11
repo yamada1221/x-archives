@@ -53,7 +53,10 @@
   async function ensure() {
     const cfg = await settings();
     if (!cfg?.token) return;
-    const e = await engine(), state = await e.state();
+    const e = await engine();
+    await e.recheckKnownBodies();
+    await e.recheckKnownReceipts();
+    const state = await e.state();
     if (cfg.enabled) {
       if (!await chrome.alarms.get(SCAN)) await chrome.alarms.create(SCAN, { when: Math.max(Date.now() + 1000, state.nextScanAt || Date.now()), periodInMinutes: 360 });
     } else await chrome.alarms.clear(SCAN);
@@ -70,7 +73,7 @@
       // A changed default must not block verification/sync of older receipts.
       if (!await chrome.permissions.contains({ permissions: ['scripting'], origins: ['https://api.github.com/*', 'https://api.fxtwitter.com/*'] })) throw Error('設定画面から保存先・GitHubへのアクセス権限を許可してください');
       await e.run({ forceScan });
-      const state = await e.state(), attention = state.jobs.filter(j => ['needs_review', 'submission_unknown'].includes(j.state)).length;
+      const state = await e.state(), attention = state.jobs.filter(C.attention).length;
       if (attention || state.lastError) {
         await chrome.action.setBadgeText({ text: 'A!' }); await chrome.action.setBadgeBackgroundColor({ color: '#a33d13' });
       } else if ((await settings())?.enabled) await chrome.action.setBadgeText({ text: '' });
@@ -94,20 +97,21 @@
   async function status(full = false) {
     const cfg = await settings(), e = await engine();
     if (!e) return { ok: true, configured: false, enabled: false, jobs: [] };
-    const state = await e.state();
-    // Keep every actionable job visible in the extension's settings even if
-    // newer queued jobs have pushed it outside the most recent 100 entries.
-    // The public tracker still receives only the recent, bounded list.
-    const needsReview = j => ['needs_review', 'submission_unknown'].includes(j.state);
+    const state = await e.state(), id = await device();
+    // Older actionable jobs must stay reachable in settings even when newer
+    // queued work fills the recent list shared with the public tracker.
     const cutoff = Math.max(0, state.jobs.length - 100);
-    const visibleJobs = state.jobs.filter((j, i) => i >= cutoff || full && needsReview(j));
+    const visibleJobs = state.jobs.filter((j, i) => i >= cutoff || full && C.attention(j));
     return { ok: true, configured: true, enabled: cfg.enabled, ready: cfg.providerReady === C.adapterVersion(cfg.provider), provider: cfg.provider,
-      device: full ? await device() : undefined, nextScanAt: state.nextScanAt, lastRunAt: state.lastRunAt, error: state.lastError,
+      device: full ? id : undefined, nextScanAt: state.nextScanAt, lastRunAt: state.lastRunAt, error: state.lastError,
       candidates: state.candidateCount || 0,
-      reviewCount: full ? state.jobs.filter(needsReview).length : undefined,
+      reviewCount: full ? state.jobs.filter(C.attention).length : undefined,
+      submissionHeld: C.submissionHold(state.jobs, cfg.provider),
       config: full ? { owner: cfg.owner, repo: cfg.repo, path: cfg.path, provider: cfg.provider } : undefined,
       jobs: visibleJobs.map(j => ({ job_id: j.job_id, artist_id: j.artist_id, handle: j.identity?.handle || j.registered_handle,
-        state: j.state, label: C.LABELS[j.state], provider: j.provider || 'ghostarchive', error: j.last_error || '', receipt: C.resultURL(j.receipt),
+        state: j.state, label: C.jobLabel(j), target_kind: j.target_kind || 'profile', attention: C.attention(j), access_wait: j.access_wait,
+        can_recheck: j.executor_device_id === id && Boolean(j.submission_started_at || j.receipt || j.access_wait),
+        provider: j.provider || 'ghostarchive', error: j.last_error || '', receipt: C.resultURL(j.receipt),
         scope: j.verification?.scope, posts: j.verification?.posts_verification, captured_at: j.verification?.captured_at,
         next_attempt_at: j.next_attempt_at, sync_pending: Boolean(j.dirty || j.state === 'succeeded' && !j.applied),
         test: j.kind === 'connection_test' })) };
@@ -125,6 +129,7 @@
       throw Error('対応していない操作です');
     }
     if (!privileged(sender)) throw Error('拡張機能の画面から操作してください');
+    if (message.type === 'AUTO_FORM_DIAGNOSTICS') return { ok: true, diagnostics: await root.AutoArchiveFormDiagnostics.collect(chrome) };
     if (message.type === 'AUTO_STATUS') return status(true);
     if (message.type === 'AUTO_SAVE') {
       const old = await settings(); const next = C.config({ ...message.config, token: message.config.token || old?.token, enabled: false });
@@ -135,6 +140,11 @@
       await (await engine()).claim(false); await ensure(); return status(true);
     }
     const e = await engine(); if (!e) throw Error('先にGitHub接続設定を保存してください');
+    if (message.type === 'AUTO_RECEIPT_CANDIDATES') {
+      const state = await e.state(), job = state.jobs.find(j => j.job_id === message.job_id);
+      if (!job) throw Error('確認対象のジョブが見つかりません');
+      return { ok: true, candidates: await root.AutoArchiveReceiptPicker.collect(chrome, job) };
+    }
     if (message.type === 'AUTO_CLAIM') { await e.claim(true); return { ok: true }; }
     if (message.type === 'AUTO_TEST') {
       if (!await chrome.permissions.contains({ permissions: ['scripting'], origins: C.origins(e.config.provider) })) throw Error('「接続先を保存」で保存先へのアクセス権限を許可してください');
@@ -151,6 +161,7 @@
     }
     if (message.type === 'AUTO_RUN') { await kick(true); return status(true); }
     if (message.type === 'AUTO_ADOPT') { await e.adopt(message.job_id, message.receipt); await kick(); return status(true); }
+    if (message.type === 'AUTO_RECHECK') { await e.recheck(message.job_id); await kick(); return status(true); }
     if (message.type === 'AUTO_SHOW') {
       const state = await e.state(), job = state.jobs.find(j => j.job_id === message.job_id);
       if (!job) throw Error('確認対象が見つかりません');
@@ -167,4 +178,3 @@
   ensure().catch(() => {});
   root.AutoArchiveRuntime = { handle, status, kick, ensure, ORIGINS };
 })(globalThis);
-

@@ -3,7 +3,7 @@
   const MINUTE = 60000, HOUR = 60 * MINUTE, DAY = 24 * HOUR;
   const DEFAULT_PROVIDER = 'archive.today';
   const ARCHIVE_HOSTS = ['archive.li', 'archive.md', 'archive.ph', 'archive.is', 'archive.today', 'archive.vn', 'archive.fo'];
-  const ADAPTERS = { 'archive.today': 'archive-today-dom-1', ghostarchive: 'ghostarchive-dom-1' };
+  const ADAPTERS = { 'archive.today': 'archive-today-dom-3', ghostarchive: 'ghostarchive-dom-1' };
   const ADAPTER_VERSION = ADAPTERS[DEFAULT_PROVIDER];
   const provider = value => value === 'archive.li' ? DEFAULT_PROVIDER : value || DEFAULT_PROVIDER;
   const adapterVersion = value => Object.hasOwn(ADAPTERS, provider(value)) ? ADAPTERS[provider(value)] : '';
@@ -15,6 +15,13 @@
     verifying: '内容確認中', succeeded: '保存済み', retry_wait: '再試行待ち', submission_unknown: '受付結果不明',
     needs_review: '手動確認が必要', canceled: '中止', skipped: '対象外' };
   const TERMINAL = new Set(['succeeded', 'canceled', 'skipped', 'needs_review']);
+  const UNKNOWN_RECEIPT_ERRORS = new Set(['受付結果が不明です。保存先の画面または検索結果で確認してください',
+    '受付URLを確認できません。保存先の画面で確認してください', '受付URLを確認できません。保存先の検索結果から結果URLを指定してください']);
+  const attention = job => ['needs_review', 'submission_unknown'].includes(job.state) || Boolean(job.access_wait);
+  const jobLabel = job => job.access_wait === 'human' ? '人間確認待ち' : job.access_wait ? 'アクセス制限の解除待ち' : LABELS[job.state];
+  const submissionHold = (jobs, selected) => jobs.some(j => (j.provider || 'ghostarchive') === selected &&
+    !['succeeded', 'canceled', 'skipped'].includes(j.state) && (j.access_wait || j.receipt_recovery_required ||
+      j.state === 'needs_review' && j.submission_started_at && !j.receipt && UNKNOWN_RECEIPT_ERRORS.has(j.last_error)));
   const norm = s => String(s ?? '').replace(/\s+/g, ' ').trim();
   const handle = s => typeof s === 'string' && /^[A-Za-z0-9_]{1,15}$/.test(s) &&
     !/^(home|search|settings|i|intent|login|logout|explore|messages|notifications)$/i.test(s);
@@ -34,6 +41,24 @@
       if (u.protocol !== 'https:' || u.username || u.password || u.port || !['x.com', 'twitter.com', 'www.x.com', 'www.twitter.com'].includes(u.hostname)) return '';
       const h = u.pathname.replace(/^\//, '').replace(/\/$/, '');
       return handle(h) ? 'https://x.com/' + h.toLowerCase() : '';
+    } catch (_) { return ''; }
+  }
+  function targetURL(value) {
+    try {
+      const u = new URL(value);
+      if (u.protocol !== 'https:' || u.username || u.password || u.port || !['x.com', 'twitter.com', 'www.x.com', 'www.twitter.com'].includes(u.hostname)) return '';
+      const match = u.pathname.match(/^\/([A-Za-z0-9_]{1,15})(\/with_replies)?\/?$/i);
+      return match && handle(match[1]) ? 'https://x.com/' + match[1].toLowerCase() + (match[2] ? '/with_replies' : '') : '';
+    } catch (_) { return ''; }
+  }
+  const repliesTagged = a => String(a?.note || '').split(/[\s/、,，]+/u).includes('クソリプ');
+  function searchTarget(value) {
+    try {
+      const u = new URL(value);
+      if (u.protocol !== 'https:' || u.port || u.username || u.password) return '';
+      if (ARCHIVE_HOSTS.includes(u.hostname)) return targetURL(decodeURIComponent(u.pathname.slice(1)));
+      if (u.hostname === 'ghostarchive.org' && u.pathname === '/search') return targetURL(u.searchParams.get('term'));
+      return '';
     } catch (_) { return ''; }
   }
   function resultURL(value) {
@@ -58,12 +83,15 @@
     return c.enabled !== 'off' && c.enabled !== false && (!c.policy || c.policy === 'first_only') &&
       (!c.target || c.target === 'profile') && (!c.provider || c.provider === 'inherit' || provider(c.provider) === provider(selected));
   }
-  function completed(a) {
+  function completed(a, target = 'profile') {
+    if (target === 'replies') return (a.archives || []).some(e => e?.status === 'done' && targetURL(e.target_url) === targetURL('https://x.com/' + a.x_account + '/with_replies'));
     // Preserve legacy registrations without claiming that they passed new verification.
-    return Boolean(a.archive_status === 'done' && a.archive_url) || (a.archives || []).some(e => e?.status === 'done');
+    return Boolean(a.archive_status === 'done' && a.archive_url && !targetURL(a.archive_target_url).endsWith('/with_replies')) ||
+      (a.archives || []).some(e => e?.status === 'done' && !targetURL(e.target_url).endsWith('/with_replies'));
   }
   function sameAccount(a, job) {
     if (!a || a.id !== job.artist_id || !eligible(a, job.provider || 'ghostarchive')) return false;
+    if (job.target_kind === 'replies' && !repliesTagged(a)) return false;
     if (job.expected_x_user_id && a.x_user_id) return a.x_user_id === job.expected_x_user_id;
     return a.x_account.toLowerCase() === job.registered_handle.toLowerCase();
   }
@@ -96,18 +124,21 @@
       if (j.provider && !Object.hasOwn(ADAPTERS, j.provider)) throw Error('共有ジョブの保存先が不正です');
       if (j.receipt && resultProvider(j.receipt) !== (j.provider || 'ghostarchive')) throw Error('共有ジョブの保存先と結果URLが一致しません');
       if (j.receipt) j.receipt = resultURL(j.receipt);
-      if (j.target_url && !profileURL(j.target_url)) throw Error('共有ジョブの対象URLが不正です');
+      if (j.target_url && !targetURL(j.target_url)) throw Error('共有ジョブの対象URLが不正です');
+      if (j.target_url && targetURL(j.target_url).endsWith('/with_replies') !== (j.target_kind === 'replies')) throw Error('共有ジョブの保存対象が一致しません');
       if (j.expected_x_user_id && (typeof j.expected_x_user_id !== 'string' || !/^\d+$/.test(j.expected_x_user_id))) throw Error('共有ジョブの数値IDが不正です');
       ids.add(j.job_id);
     }
     return doc;
   }
   function verify(outer, frames, job, now) {
-    if (!outer || profileURL(outer.original_url) !== profileURL(job.target_url)) return { ok: false, reason: '保存先の対象URLが一致しません' };
+    if (!outer || !targetURL(job.target_url) || targetURL(outer.original_url) !== targetURL(job.target_url)) return { ok: false, reason: '保存先の対象URLが一致しません' };
+    if (targetURL(job.target_url).endsWith('/with_replies') !== (job.target_kind === 'replies')) return { ok: false, reason: '保存対象の種類が一致しません' };
     const stamp = Date.parse(outer.captured_at);
     if (!Number.isFinite(stamp) || stamp > now + 5 * MINUTE) return { ok: false, reason: '保存先の取得時刻を確認できません' };
     const p = frames.find(f => f.kind === 'profile' && f.handle?.toLowerCase() === job.identity?.handle.toLowerCase());
     if (!p || !p.following || !p.name) return { ok: false, reason: 'プロフィール本文・対象ハンドルを確認できません' };
+    if (job.target_kind === 'replies' && !p.replies_tab_confirmed) return { ok: false, reason: '返信タブの本文を確認できません' };
     if (p.user_id && p.user_id !== job.expected_x_user_id) return { ok: false, reason: '保存本文の数値IDが別のアカウントです' };
     if (!p.user_id && (!job.identity || norm(p.name) !== norm(job.identity.name) || job.identity.bio === null || norm(p.bio) !== norm(job.identity.bio))) {
       return { ok: false, reason: '本文から同じアカウントだと確認する証拠が不足しています' };
@@ -115,7 +146,7 @@
     const reused = Boolean(job.adopted_existing) || stamp < Date.parse(job.submission_started_at) - 5 * MINUTE;
     if (reused && !p.user_id) return { ok: false, reason: '過去の保存を採用するには、保存本文の数値IDによる照合が必要です' };
     return { ok: true, captured_at: new Date(stamp).toISOString(), verified_at: new Date(now).toISOString(),
-      method: 'archived_profile_body', scope: ['profile'], posts_verification: p.post_ids?.length ? 'confirmed' : 'unconfirmed',
+      method: 'archived_profile_body', scope: [job.target_kind === 'replies' ? 'replies' : 'profile'], posts_verification: p.post_ids?.length ? 'confirmed' : 'unconfirmed',
       post_ids: (p.post_ids || []).slice(0, 20), archived_user_id: p.user_id || '', reused_existing: reused };
   }
   function applyResult(doc, job) {
@@ -129,14 +160,16 @@
       reused_existing: job.verification.reused_existing };
     if (!e.url || processingURL(e.url) || e.provider !== (job.provider || 'ghostarchive') || !job.verification.ok) throw Error('未検証の結果は保存済みにできません');
     a.archives = [...(a.archives || []).filter(p => p.url !== e.url), e];
-    a.archive_status = 'done'; a.archive_url = e.url; a.archive_provider = e.provider;
-    a.archive_target_url = e.target_url; a.archive_checked_at = e.content_verified_at;
+    if (job.target_kind !== 'replies') {
+      a.archive_status = 'done'; a.archive_url = e.url; a.archive_provider = e.provider;
+      a.archive_target_url = e.target_url; a.archive_checked_at = e.content_verified_at;
+    }
     if (!a.x_user_id) a.x_user_id = job.expected_x_user_id;
     delete a.archive_error;
     return true;
   }
   const api = { MINUTE, HOUR, DAY, DEFAULT_PROVIDER, ARCHIVE_HOSTS, ADAPTERS, ADAPTER_VERSION, provider, adapterVersion, providerLabel, homeURL, origins,
-    LABELS, TERMINAL, norm, handle, config, scope, profileURL, resultURL, resultProvider, processingURL, receiptTransition,
+    LABELS, TERMINAL, UNKNOWN_RECEIPT_ERRORS, attention, jobLabel, submissionHold, norm, handle, config, scope, profileURL, targetURL, repliesTagged, searchTarget, resultURL, resultProvider, processingURL, receiptTransition,
     eligible, completed, sameAccount, classifyProfile, validateArtists, ledger, verify, applyResult };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.AutoArchiveCore = api;
 })(globalThis);

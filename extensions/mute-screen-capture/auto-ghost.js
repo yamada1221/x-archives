@@ -53,12 +53,14 @@
         const m = path && path.match(new RegExp('^/' + h[1].toLowerCase() + '/status/(\\d+)$'));
         return m && article.querySelector('[data-testid="tweetText"]')?.innerText.trim() ? [m[1]] : [];
       });
-      return { kind: 'profile', handle: h[1], name, bio: primary.querySelector('[data-testid="UserDescription"]')?.innerText || '', user_id: id, following, post_ids: post_ids.slice(0, 20) };
+      const replies_tab_confirmed = [...primary.querySelectorAll('a[role="tab"][href][aria-selected="true"],a[role="tab"][href][aria-current="page"]')]
+        .some(a => original(a.href) === '/' + h[1].toLowerCase() + '/with_replies');
+      return { kind: 'profile', handle: h[1], name, bio: primary.querySelector('[data-testid="UserDescription"]')?.innerText || '', user_id: id, following, post_ids: post_ids.slice(0, 20), replies_tab_confirmed };
     }
     return { kind: 'untrusted' };
   }
   function submitGhostDocument(target, jobId) {
-    if (location.href !== 'https://ghostarchive.org/' || !/^https:\/\/x\.com\/[A-Za-z0-9_]{1,15}$/.test(target)) return { submitted: false, reason: '対象URLを確認できません' };
+    if (location.href !== 'https://ghostarchive.org/' || !/^https:\/\/x\.com\/[A-Za-z0-9_]{1,15}(?:\/with_replies)?$/.test(target)) return { submitted: false, reason: '対象URLを確認できません' };
     if (/verify (?:that )?you are human|checking your browser|just a moment|error code: 1010/i.test(document.body?.innerText || '') ||
       document.querySelector('iframe[src*="challenges.cloudflare.com"],input[name="cf-turnstile-response"]')) return { submitted: false, reason: '保存先で人間確認が必要です' };
     const input = document.querySelector('input#archive[name="archive"]'), form = input?.form;
@@ -92,13 +94,14 @@
       const existing = await this.binding(job);
       if (existing) return existing;
       const tab = await this.chrome.tabs.create({ url: 'about:blank', active: false });
-      await this.chrome.storage.session.set({ ['autoArchiveTab:' + job.job_id]: tab.id });
+      await this.chrome.storage.session.set({ ['autoArchiveTab:' + job.job_id]: tab.id,
+        ['autoArchiveBorrowedTab:' + job.job_id]: false });
       return this.chrome.tabs.update(tab.id, { url });
     }
     async inspect(job) {
       let tab = await this.binding(job);
       if (!tab) {
-        if (job.state === 'submitting' || job.state === 'submission_unknown') return { kind: 'missing' };
+        if (!job.receipt && (job.state === 'submitting' || job.state === 'submission_unknown')) return { kind: 'missing' };
         tab = await this.open(job, job.receipt ? this.pageURL(job.receipt) : this.home);
       }
       // A manually reconciled receipt can arrive while the owned tab still
@@ -131,7 +134,7 @@
     async reconcile(job) {
       const state = await this.inspect(job);
       if (state.receipt || ['loading', 'form', 'blocked'].includes(state.kind)) return state;
-      // An unknown POST is never retried. Show the service's read-only search
+      // An unknown submission is never retried. Show the service's read-only search
       // for human reconciliation instead of choosing an arbitrary old capture.
       return { kind: 'unresolved', reason: '受付URLを確認できません。保存先の検索結果から結果URLを指定してください' };
     }
@@ -142,8 +145,10 @@
     }
     async close(job) {
       const tab = await this.binding(job);
-      if (tab) await this.chrome.tabs.remove(tab.id).catch(() => {});
+      const borrowed = (await this.chrome.storage.session.get('autoArchiveBorrowedTab:' + job.job_id))['autoArchiveBorrowedTab:' + job.job_id] === true;
+      if (tab && !borrowed) await this.chrome.tabs.remove(tab.id).catch(() => {});
       await this.chrome.storage.session.remove('autoArchiveTab:' + job.job_id);
+      await this.chrome.storage.session.remove('autoArchiveBorrowedTab:' + job.job_id);
     }
   }
   const api = { Ghost, inspectGhostDocument, submitGhostDocument };

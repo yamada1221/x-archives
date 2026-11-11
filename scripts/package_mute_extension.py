@@ -8,7 +8,7 @@ SOURCE = ROOT / "extensions/mute-screen-capture"
 
 
 def package():
-    manifest = json.loads((SOURCE / "manifest.json").read_text())
+    manifest = json.loads((SOURCE / "manifest.json").read_text(encoding="utf-8"))
     output = ROOT / "downloads" / f"x-tracker-mute-capture-v{manifest['version']}.zip"
     output.parent.mkdir(exist_ok=True)
     with zipfile.ZipFile(output, "w", zipfile.ZIP_DEFLATED) as archive:
@@ -24,3 +24,4 @@ def package():
 
 if __name__ == "__main__":
     print(package())
+

@@ -38,9 +38,7 @@ async function fakeNetwork(){
   };
 }
 (async()=>{
-  const context=await chromium.launchPersistentContext(path.join(temp,'profile'),{channel:'chromium',headless:true,
-    ...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH ? {executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH} : {}),
-    args:['--disable-extensions-except='+extension,'--load-extension='+extension]});
+  const context=await chromium.launchPersistentContext(path.join(temp,'profile'),{channel:'chromium',headless:true,args:['--disable-extensions-except='+extension,'--load-extension='+extension]});
   let posts=0,fixtureNow=Date.now(),worker,stage='startup';const captures=new Map(),errors=[],navigations=[];
   const mark=value=>{stage=value;console.log('Archive check:',provider,stage);};
   const watchdog=setTimeout(()=>{console.error('Archive browser timeout:',JSON.stringify({provider,stage,navigations,captures:[...captures]}));process.exit(1);},90000);
@@ -160,21 +158,6 @@ async function fakeNetwork(){
     assert.equal(saved.artists[0].archives[0].posts_verification,'confirmed');assert.equal(saved.artists[1].archive_status,undefined);assert.equal(saved.artists[2].archive_url,'https://archive.md/Abc12');
     assert.equal(saved.artists[0].archive_provider,provider);assert.equal(saved.artists[0].archive_url,receiptURL(2));
     mark('result display');await page.reload();await page.locator('#summary').filter({hasText:'有効'}).waitFor();
-    // Older manual-review entries must remain actionable even when a backlog
-    // contains more than 100 newer queued jobs.
-    mark('review backlog');await worker.evaluate(async()=>{
-      const cfg=(await chrome.storage.local.get('autoArchiveSettings')).autoArchiveSettings;
-      const store=new AutoArchiveStore(),key=AutoArchiveCore.scope(cfg),s=await store.get(key);
-      s.jobs=[{job_id:'old-review',artist_id:'old-review',registered_handle:'OldReview',state:'needs_review',provider:'archive.today',last_error:'要確認'},
-        ...Array.from({length:125},(_,i)=>({job_id:'queue-'+i,artist_id:'queue-'+i,registered_handle:'Queue'+i,state:'queued',provider:'archive.today'}))];
-      await store.set(key,s);
-    });
-    await page.reload();await page.locator('#summary').filter({hasText:'手動確認が必要: 1件'}).waitFor();
-    assert.match(await page.locator('#jobs .job').first().innerText(),/@OldReview — 手動確認が必要/);
-    assert.equal(await page.locator('#jobs .job').first().getByRole('button',{name:'保存先で確認'}).count(),1);
-    await page.locator('#reviewOnly').check();
-    assert.equal(await page.locator('#jobs .job').count(),1);
-    assert.match(await page.locator('#jobs').innerText(),/@OldReview/);
     fs.mkdirSync(path.join(root,'test-output'),{recursive:true});await page.screenshot({path:path.join(root,'test-output/auto-archive-options-'+provider+'.png'),fullPage:true});
     assert.deepEqual(errors,[]);
     console.log('Native auto-archive checks passed ('+provider+'): native fetch, permissions, settings, gate, form POST, saved body, numeric ID, posts, worker restart, IndexedDB, GitHub CAS and legacy exclusions.');
@@ -190,4 +173,3 @@ async function fakeNetwork(){
   }
   finally{mark('cleanup');await context.close();clearTimeout(watchdog);fs.rmSync(temp,{recursive:true,force:true});}
 })().catch(e=>{console.error(e);process.exit(1)});
-

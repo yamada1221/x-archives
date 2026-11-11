@@ -6,7 +6,7 @@ on:
       - 'auto-archive-ui.js'
       - 'index.html'
       - 'tracker-utils.js'
-      - 'tests/*auto_archive*'
+      - 'tests/**'
       - '.github/workflows/test_auto_archive.yml'
   workflow_dispatch:
 permissions:
@@ -20,11 +20,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - run: node --test tests/test_auto_archive.cjs tests/test_mute_extension.cjs tests/test_github_load.cjs tests/test_tracker_features.cjs
+      - run: node --test tests/test_auto_archive.cjs tests/test_mute_extension.cjs tests/test_github_load.cjs tests/test_tracker_features.cjs tests/test_receipt_picker.cjs tests/test_receipt_recovery.cjs tests/test_review_backlog.cjs
       - run: npm install --no-save --package-lock=false playwright@1.51.1
       # The hosted image already provides Chrome's system libraries. Avoid
       # apt/service restarts here; install only the pinned test browser.
       - run: npx playwright install chromium
+      - run: node --test tests/test_archive_today_forms.cjs tests/test_auto_options.cjs tests/test_saved_archive.cjs tests/test_additional_archives.cjs
       - run: node tests/browser_auto_archive.cjs
       - run: node tests/browser_auto_archive.cjs
         env:
@@ -35,3 +36,4 @@ jobs:
           name: automatic-archive-browser-checks
           path: test-output/
           if-no-files-found: ignore
+

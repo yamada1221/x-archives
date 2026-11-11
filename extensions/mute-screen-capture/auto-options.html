@@ -10,6 +10,7 @@
 <section><h2>2. 保存先を確認して開始</h2><p class="hint">接続テストでは公開プロフィール @X を1件保存します。結果のプロフィール本文まで確認できると開始できます。受付だけでは保存成功にしません。</p>
 <div class="buttons"><button id="test">接続テスト（1件）</button><button id="start">自動保存を開始</button><button id="stop" class="secondary">新規保存を停止</button><button id="run" class="secondary">走査・同期を実行</button></div>
 <p class="hint">6時間ごとに走査。送信は1件ずつ、直近24時間に最大20回。Webページを閉じても動作します。PCスリープ・ブラウザ終了中は待機し、再開後に続きを確認します。</p></section>
+<details><summary>保存フォームの診断</summary><p class="hint">保存先のトップページを開いたまま押してください。フォームの設定だけを端末内で確認します。保存要求・外部送信は行いません。</p><button id="diagnoseForms" class="secondary" type="button">保存フォームを診断</button><pre id="formDiagnostics" role="status" style="white-space:pre-wrap;overflow-wrap:anywhere"></pre></details>
 <p id="message" role="status" aria-live="polite"></p><section><h2>実行状況</h2><p id="summary" role="status">読み込み中…</p><label class="filter"><input type="checkbox" id="reviewOnly">手動確認が必要なものだけ表示</label><div id="jobs"></div></section>
 <p><a href="https://yamada1221.github.io/x-archives/" target="_blank" rel="noopener">Xトラッカーを開く</a> · <a href="README.md" target="_blank">使い方</a></p>
 </main><script src="auto-core.js"></script><script src="auto-options.js"></script></body></html>

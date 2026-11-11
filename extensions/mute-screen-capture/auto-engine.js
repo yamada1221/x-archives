@@ -2,6 +2,9 @@
 (function (root) {
   const C = typeof module !== 'undefined' && module.exports ? require('./auto-core.js') : root.AutoArchiveCore;
   const JOBS = 'data/archive_jobs.json', CONFIG = 'data/auto_archive_config.json';
+  const BODY_READER_REVISION = 'archive-card-labels-20261027';
+  const RECEIPT_READER_REVISION = 'archive-challenge-recovery-20261029';
+  const BODY_READER_ERRORS = new Set(['プロフィール本文・対象ハンドルを確認できません', '本文から同じアカウントだと確認する証拠が不足しています']);
   class Engine {
     constructor({ config, store, git, ghost, profile, device, now = Date.now, uuid = () => crypto.randomUUID(), ready = async () => {}, canSubmit = async () => true }) {
       Object.assign(this, { config, store, git, ghost, profile, device, now, uuid, ready, canSubmit });
@@ -14,6 +17,78 @@
       state.jobs = [...state.jobs.filter(j => j.job_id !== job.job_id), job];
     }
     publicJob(job) { const { dirty, applied, ...value } = job; return value; }
+    prepareBodyRechecks(state) {
+      const revisions = new Map(state.bodyReaderRevisions || []);
+      let changed = 0;
+      for (const job of [...state.jobs]) {
+        if (job.kind !== 'profile' || job.provider !== 'archive.today' || job.executor_device_id !== this.device ||
+            job.state !== 'needs_review' || !BODY_READER_ERRORS.has(job.last_error) ||
+            C.resultProvider(job.receipt) !== 'archive.today' || revisions.get(job.job_id) === BODY_READER_REVISION) continue;
+        // Retry the recorded receipt, never the original save form. Keep the
+        // original submission time, request count and receipt history intact.
+        revisions.set(job.job_id, BODY_READER_REVISION);
+        job.state = 'processing'; job.verification_checks = 0; job.next_attempt_at = this.now(); job.last_error = '';
+        this.put(state, job); changed++;
+      }
+      if (changed) state.bodyReaderRevisions = [...revisions];
+      return changed;
+    }
+    async recheckKnownBodies() {
+      const owner = this.uuid();
+      if (!await this.store.acquire(this.key, owner, this.now())) return 0;
+      try {
+        const state = await this.state(), changed = this.prepareBodyRechecks(state);
+        if (changed) await this.save(state);
+        return changed;
+      } finally { await this.store.release(this.key, owner); }
+    }
+    prepareReceiptRechecks(state) {
+      const revisions = new Map(state.receiptReaderRevisions || []);
+      let changed = 0;
+      for (const job of state.jobs) {
+        if (job.provider !== 'archive.today' || job.executor_device_id !== this.device || job.state !== 'needs_review' ||
+            !job.submission_started_at || job.receipt || !C.UNKNOWN_RECEIPT_ERRORS.has(job.last_error) ||
+            revisions.get(job.job_id) === RECEIPT_READER_REVISION) continue;
+        revisions.set(job.job_id, RECEIPT_READER_REVISION);
+        job.state = 'submission_unknown'; job.receipt_checks = 0; job.receipt_recovery_required = true;
+        job.receipt_recovery_started_at = new Date(this.now()).toISOString();
+        job.next_attempt_at = this.now(); job.last_error = '送信済みの保存結果を再確認しています。保存依頼は出し直しません';
+        this.put(state, job); changed++;
+      }
+      if (changed) state.receiptReaderRevisions = [...revisions];
+      return changed;
+    }
+    async recheckKnownReceipts() {
+      const owner = this.uuid();
+      if (!await this.store.acquire(this.key, owner, this.now())) return 0;
+      try {
+        const state = await this.state(), changed = this.prepareReceiptRechecks(state);
+        if (changed) await this.save(state);
+        return changed;
+      } finally { await this.store.release(this.key, owner); }
+    }
+    clearAccessWait(job) { delete job.access_wait; delete job.receipt_recovery_required; }
+    acceptReceipt(job, receipt) {
+      if (job.receipt && job.receipt !== receipt) {
+        if (!C.receiptTransition(job.receipt, receipt)) return false;
+        job.receipt_history = [...new Set([...(job.receipt_history || []), job.receipt])];
+      }
+      job.receipt = receipt;
+      return true;
+    }
+    async waitForAccess(state, job, page) {
+      job.access_wait = page.block_type || 'human';
+      job.state = job.submission_started_at || job.receipt ? 'submission_unknown' : 'opening';
+      job.last_error = job.access_wait === 'human' ?
+        '保存先の人間確認が必要です。「保存先で確認」で完了してください。完了後は自動で結果を確認します' :
+        '保存先のアクセス制限を確認しました。新規依頼を止め、既存の依頼の結果だけを再確認します';
+      job.next_attempt_at = this.now() + (job.access_wait === 'human' ? 5 * C.MINUTE : C.HOUR);
+      this.put(state, job); await this.save(state);
+      if (job.access_wait !== 'human') {
+        await this.git.update(JOBS, old => { const d = C.ledger(old);
+          d.provider = { ...d.provider, name: job.provider || 'ghostarchive', paused_until: Math.max(d.provider.paused_until || 0, this.now() + C.DAY), reason: job.last_error }; return d; });
+      }
+    }
     async claim(takeover = false) {
       return this.git.update(CONFIG, old => {
         if (old && (old.version !== 1 || old.artists_path !== this.config.path)) throw Error('共通設定のデータファイルが一致しません');
@@ -45,6 +120,8 @@
         });
         const saved = shared.jobs.find(j => j.job_id === job.job_id);
         Object.assign(job, saved, { dirty: false });
+        if (!saved.access_wait) delete job.access_wait;
+        if (!saved.receipt_recovery_required) delete job.receipt_recovery_required;
         await this.save(state);
       }
       for (const job of state.jobs.filter(j => j.state === 'succeeded' && !j.applied)) {
@@ -97,19 +174,26 @@
       let added = 0;
       for (const a of data.artists) {
         if (added >= 5) break;
-        if (!C.eligible(a, this.config.provider) || C.completed(a)) continue;
+        if (!C.eligible(a, this.config.provider)) continue;
+        for (const targetKind of C.repliesTagged(a) ? ['profile', 'replies'] : ['profile']) {
+        if (added >= 5) break;
+        if (C.completed(a, targetKind)) continue;
         if (state.jobs.some(j => j.artist_id === a.id &&
+          (j.target_kind || 'profile') === targetKind &&
           (j.expected_x_user_id && a.x_user_id ? j.expected_x_user_id === a.x_user_id : j.registered_handle.toLowerCase() === a.x_account.toLowerCase()) &&
           (!['canceled', 'skipped'].includes(j.state) || j.receipt || j.submission_started_at))) continue;
-        const pending = (a.archives || []).find(e => C.resultProvider(e.url) === this.config.provider && C.resultURL(e.url) &&
-          C.profileURL(e.target_url) === C.profileURL('https://x.com/' + a.x_account));
+        const target = 'https://x.com/' + a.x_account + (targetKind === 'replies' ? '/with_replies' : '');
+        const pending = (a.archives || []).find(e => e.status !== 'done' && C.resultProvider(e.url) === this.config.provider && C.resultURL(e.url) &&
+          C.targetURL(e.target_url) === C.targetURL(target));
         this.put(state, { job_id: this.uuid(), kind: 'profile', artist_id: a.id, registered_handle: a.x_account,
+          ...(targetKind === 'replies' ? { target_kind: 'replies' } : {}),
           ...(pending ? { receipt: C.resultURL(pending.url), adopted_existing: true } : {}),
           expected_x_user_id: a.x_user_id || '', state: 'queued', provider: this.config.provider, created_at: new Date(this.now()).toISOString(),
           attempt_count: 0, next_attempt_at: this.now(), executor_device_id: this.device });
         added++;
+        }
       }
-      state.candidateCount = data.artists.filter(a => C.eligible(a, this.config.provider) && !C.completed(a)).length;
+      state.candidateCount = data.artists.reduce((n,a) => n + (C.eligible(a, this.config.provider) ? Number(!C.completed(a)) + Number(C.repliesTagged(a) && !C.completed(a, 'replies')) : 0), 0);
       state.nextScanAt = this.now() + 6 * C.HOUR;
       await this.save(state);
     }
@@ -122,12 +206,12 @@
     }
     async identity(job, artist) {
       const p = await this.profile(artist.x_account, job.expected_x_user_id || artist.x_user_id || '');
-      job.expected_x_user_id = p.id; job.identity = p; job.target_url = 'https://x.com/' + p.handle;
-      job.event_key = (job.kind === 'connection_test' ? 'test:' + job.job_id : 'first:' + p.id) + ':profile';
+      job.expected_x_user_id = p.id; job.identity = p; job.target_url = 'https://x.com/' + p.handle + (job.target_kind === 'replies' ? '/with_replies' : '');
+      job.event_key = (job.kind === 'connection_test' ? 'test:' + job.job_id : 'first:' + p.id) + ':' + (job.target_kind || 'profile');
     }
     async cancelIfChanged(state, job) {
       const a = await this.currentArtist(job);
-      if (!C.sameAccount(a, job) || (job.kind !== 'connection_test' && C.completed(a))) {
+      if (!C.sameAccount(a, job) || (job.kind !== 'connection_test' && C.completed(a, job.target_kind || 'profile'))) {
         job.state = 'canceled'; job.last_error = '登録の削除・対象変更・保存済みへの変更を確認したため送信を中止しました';
         this.put(state, job); await this.save(state); await this.ghost.close(job); return null;
       }
@@ -139,10 +223,19 @@
         const d = C.ledger(old), existing = d.jobs.find(j => j.job_id === job.job_id);
         if (existing?.submission_started_at || existing?.receipt || (existing && existing.state !== 'opening')) throw Error('このジョブは既に送信が開始されています');
         if (d.jobs.some(j => j.job_id !== job.job_id && j.event_key === job.event_key && !['canceled', 'skipped'].includes(j.state))) throw Error('同じ対象の保存依頼が既にあります');
+        if (C.submissionHold(d.jobs.filter(j => j.job_id !== job.job_id), job.provider || 'ghostarchive')) throw Error('保存先の確認が必要な依頼があるため、新規依頼を待機しています');
         d.reservations = d.reservations.filter(r => now - r.at < C.DAY);
         const daily = Math.min(20, Number(shared.daily_limit) || 20);
         if (d.reservations.length >= daily) throw Error('直近24時間の保存依頼上限に達しています');
-        if ((d.provider?.name || 'ghostarchive') === (job.provider || 'ghostarchive') && d.provider?.paused_until > now) throw Error('保存先の自動処理を一時停止しています');
+        if ((d.provider?.name || 'ghostarchive') === (job.provider || 'ghostarchive') && d.provider?.paused_until > now) {
+          // An explicit connection test can recover a prior structural failure
+          // only after advance() has recognized a valid form. Rate limits and
+          // human-verification pauses retain their full waiting period.
+          const retest = job.kind === 'connection_test' && job.provider === 'archive.today' &&
+            job.adapter_version === C.adapterVersion(job.provider) && d.provider.reason === '保存フォームの構造を確認できません';
+          if (!retest) throw Error('保存先の自動処理を一時停止しています');
+          d.provider = { ...d.provider, paused_until: 0, reason: '' };
+        }
         if (d.reservations.some(r => now - r.at < C.MINUTE)) throw Error('保存依頼の間隔を空けて待機しています');
         if (d.jobs.filter(j => ['submitting', 'processing', 'verifying', 'submission_unknown'].includes(j.state)).length >= 5) throw Error('保存処理中の案件が5件あるため待機しています');
         job.state = 'submitting'; job.submission_started_at = new Date(now).toISOString(); job.operation_id = this.uuid();
@@ -153,6 +246,9 @@
       });
     }
     async review(state, job, reason, pause = false) {
+      if (job.access_wait) job.receipt_recovery_required = true;
+      delete job.access_wait;
+      if (job.submission_started_at && !job.receipt) job.receipt_recovery_required = true;
       job.state = 'needs_review'; job.last_error = reason;
       this.put(state, job); await this.save(state);
       if (pause) {
@@ -168,12 +264,15 @@
         let shared;
         try { await this.flush(state); shared = await this.sharedConfig(); await this.importJobs(state); }
         catch (error) { state.lastError = error.message; }
+        this.prepareBodyRechecks(state);
+        this.prepareReceiptRechecks(state);
         const executor = shared?.executor_device_id === this.device;
         if (executor && shared.enabled !== false) await this.scan(state, forceScan);
         const inflight = j => ['submitting', 'submission_unknown', 'processing', 'verifying'].includes(j.state);
         const job = state.jobs.filter(j => !C.TERMINAL.has(j.state) && (j.next_attempt_at || 0) <= this.now() &&
-          ((inflight(j) && (executor || !shared && j.executor_device_id === this.device)) ||
+          (((inflight(j) || j.access_wait) && (executor || !shared && j.executor_device_id === this.device)) ||
             (executor && shared.enabled !== false && (j.provider || 'ghostarchive') === this.config.provider &&
+              !C.submissionHold(state.jobs, this.config.provider) &&
               (this.config.enabled && this.config.providerReady === C.adapterVersion(this.config.provider) || j.kind === 'connection_test' && j.executor_device_id === this.device))))
           .sort((a, b) => Number(inflight(b)) - Number(inflight(a)) || (a.next_attempt_at || 0) - (b.next_attempt_at || 0))[0];
         if (job) {
@@ -203,7 +302,7 @@
       } finally { await this.store.release(this.key, owner); }
     }
     async advance(state, job, shared) {
-      if ((job.submission_started_at || job.receipt) && this.now() - Date.parse(job.submission_started_at || job.created_at) > 2 * C.DAY) {
+      if ((job.submission_started_at || job.receipt) && this.now() - Date.parse(job.receipt_recovery_started_at || job.submission_started_at || job.created_at) > 2 * C.DAY) {
         return this.review(state, job, '48時間を超えて完了を確認できません。結果URLを確認してください');
       }
       if (job.state === 'retry_wait') job.state = job.resume_state || 'queued';
@@ -221,11 +320,13 @@
         const a = await this.cancelIfChanged(state, job); if (!a) return;
         const page = await this.ghost.inspect(job);
         if (page.kind === 'loading') { job.next_attempt_at = this.now() + C.MINUTE; this.put(state, job); return; }
-        if (page.kind !== 'form') return this.review(state, job, page.kind === 'blocked' ? '保存先で人間確認・アクセス制限が必要です' : '保存フォームの構造を確認できません', true);
+        if (page.kind === 'blocked') return this.waitForAccess(state, job, page);
+        if (page.kind !== 'form') return this.review(state, job, '保存フォームの構造を確認できません', true);
         await this.identity(job, a);
         const latest = await this.sharedConfig();
         if (!shared || latest.executor_device_id !== this.device || latest.enabled === false || !await this.canSubmit(job)) return;
-        // Reserve in the shared CAS ledger before allowing this POST.
+        this.clearAccessWait(job);
+        // Reserve in the shared CAS ledger before allowing the save request.
         try { await this.reserve(job, latest); }
         catch (error) { job.state = job.submission_started_at ? 'submission_unknown' : 'opening'; job.last_error = error.message; job.next_attempt_at = this.now() + C.MINUTE; this.put(state, job); return; }
         this.put(state, job); await this.save(state);
@@ -237,6 +338,7 @@
         }
         const sent = await this.ghost.submit(job);
         if (!sent?.submitted) {
+          if (sent?.blocked) return this.waitForAccess(state, job, sent);
           job.state = sent?.uncertain ? 'submission_unknown' : 'needs_review'; job.last_error = sent?.reason || '保存先の受付を確認できません';
         }
         job.next_attempt_at = this.now() + C.MINUTE; this.put(state, job); await this.save(state);
@@ -244,25 +346,42 @@
       }
       if (job.state === 'submitting' || job.state === 'submission_unknown') {
         const result = await this.ghost.reconcile(job);
+        // A challenge may already have a short receipt URL. Keep it as evidence,
+        // but do not mistake the CAPTCHA itself for successful acceptance.
         const receipt = C.resultProvider(result.receipt) === (job.provider || 'ghostarchive') ? C.resultURL(result.receipt) : '';
-        if (receipt) { job.receipt = receipt; job.state = 'processing'; job.last_error = ''; job.next_attempt_at = this.now() + C.MINUTE; this.put(state, job); }
+        if (result.kind === 'blocked') {
+          if (receipt) this.acceptReceipt(job, receipt);
+          return this.waitForAccess(state, job, result);
+        }
+        if (receipt) {
+          if (!this.acceptReceipt(job, receipt)) return this.review(state, job, '保存結果URLが変わっています。対象を確認してください');
+          this.clearAccessWait(job); job.state = 'processing'; job.last_error = ''; job.next_attempt_at = this.now() + C.MINUTE; this.put(state, job);
+        }
         else if (result.kind === 'loading' || result.kind === 'form') {
           job.receipt_checks = (job.receipt_checks || 0) + 1;
           if (job.receipt_checks >= 3) return this.review(state, job, '受付URLを確認できません。保存先の画面で確認してください');
           job.state = 'submission_unknown'; job.next_attempt_at = this.now() + C.MINUTE; this.put(state, job);
         }
-        else await this.review(state, job, result.reason || '受付結果が不明です。保存先の画面または検索結果で確認してください');
+        else {
+          delete job.access_wait; job.receipt_recovery_required = true;
+          await this.review(state, job, result.reason || '受付結果が不明です。保存先の画面または検索結果で確認してください');
+        }
         return;
       }
       if (job.state === 'processing' || job.state === 'verifying') {
+        if (job.provider === 'archive.today') {
+          const revisions = new Map(state.bodyReaderRevisions || []);
+          revisions.set(job.job_id, BODY_READER_REVISION); state.bodyReaderRevisions = [...revisions];
+        }
         const page = await this.ghost.inspect(job);
-        if (page.kind === 'blocked') return this.review(state, job, '保存先で人間確認・アクセス制限が必要です', true);
+        if (page.kind === 'blocked') return this.waitForAccess(state, job, page);
         if (!['archive', 'processing', 'loading'].includes(page.kind)) return this.review(state, job, '保存結果の形式を確認できません');
         if (page.receipt && C.resultURL(page.receipt) !== job.receipt) {
           if (!C.receiptTransition(job.receipt, page.receipt)) return this.review(state, job, '保存結果URLが変わっています。対象を確認してください');
           job.receipt_history = [...new Set([...(job.receipt_history || []), job.receipt])]; job.receipt = C.resultURL(page.receipt);
           this.put(state, job); await this.save(state);
         }
+        this.clearAccessWait(job);
         if (page.kind === 'archive') {
           if (C.processingURL(job.receipt)) return this.review(state, job, '処理中のURLから保存完了を確認できません');
           const evidence = C.verify(page, page.frames || [], job, this.now());
@@ -279,7 +398,11 @@
       }
     }
     async adopt(jobId, value) {
-      const receipt = C.resultURL(value); if (!receipt) throw Error('保存先の保存結果URLを入力してください');
+      const receipt = C.resultURL(value);
+      if (!receipt) {
+        if (C.searchTarget(value)) throw Error('これは保存履歴の検索ページです。「開いている保存ページから選ぶ」で個別の保存結果を選択してください');
+        throw Error('保存先の保存結果URLを入力してください');
+      }
       const owner = this.uuid(); if (!await this.store.acquire(this.key, owner, this.now())) throw Error('処理中です。少し待ってください');
       try {
         const state = await this.state(); const job = state.jobs.find(j => j.job_id === jobId);
@@ -289,8 +412,22 @@
           if (!C.receiptTransition(job.receipt, receipt)) throw Error('受付済みの結果URLを別の保存に変更できません');
           job.receipt_history = [...new Set([...(job.receipt_history || []), job.receipt])];
         }
+        this.clearAccessWait(job);
         job.receipt = receipt; job.state = 'processing'; job.next_attempt_at = this.now(); job.verification_checks = 0;
+        job.receipt_recovery_started_at = new Date(this.now()).toISOString();
         this.put(state, job); await this.save(state); await this.flush(state);
+      } finally { await this.store.release(this.key, owner); }
+    }
+    async recheck(jobId) {
+      const owner = this.uuid(); if (!await this.store.acquire(this.key, owner, this.now())) throw Error('処理中です。少し待ってください');
+      try {
+        const state = await this.state(), job = state.jobs.find(j => j.job_id === jobId);
+        if (!job || job.executor_device_id !== this.device || !C.attention(job)) throw Error('このブラウザの確認対象が見つかりません');
+        if (!job.submission_started_at && !job.receipt && !job.access_wait) throw Error('保存結果を確認する対象がありません');
+        job.state = job.receipt ? 'processing' : job.submission_started_at ? 'submission_unknown' : 'opening';
+        job.receipt_checks = 0; job.verification_checks = 0; job.next_attempt_at = this.now();
+        job.receipt_recovery_started_at = new Date(this.now()).toISOString();
+        this.put(state, job); await this.save(state);
       } finally { await this.store.release(this.key, owner); }
     }
   }

@@ -17428,7 +17428,7 @@
     },
     {
       "id": "mwc4mt98rr8t",
-      "name": "ms759sk",
+      "name": "松林安美",
       "x_account": "ms759sk",
       "threads_account": "",
       "threads_share_url": "",
@@ -17445,8 +17445,14 @@
       ],
       "threads_posts": [],
       "added_at": "2026-11-11",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2120318977343987712/QLCI1tMh_normal.jpg",
+      "x_bio": "死の淵から生還しました。ご迷惑をおかけして申し訳ありませんでした。もう何も失うものがないのですべて嘘偽りなく話していきます。消せと言われても消しません。SNSの使用を止められていて更新不可能。希死念慮が強い持病を持っていますのでお手柔らかにお願いします…。",
+      "x_bio_fetched_at": "2026-11-11T13:00:35.198231+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-11",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

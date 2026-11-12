@@ -17722,7 +17722,7 @@
     },
     {
       "id": "mwd90f6mexc5",
-      "name": "tCoba33",
+      "name": "tCoba",
       "x_account": "tCoba33",
       "threads_account": "",
       "threads_share_url": "",
@@ -17732,8 +17732,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-12",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1906122463488126976/SJM8hdVs_normal.jpg",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-12T07:50:52.856808+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-12",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

@@ -17819,7 +17819,7 @@
     },
     {
       "id": "mwdjogx1yvwa",
-      "name": "rougai_consul",
+      "name": "コムギ｜老害コンサルタント",
       "x_account": "rougai_consul",
       "threads_account": "",
       "threads_share_url": "",
@@ -17829,8 +17829,31 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-12",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2118715747350536192/8_NUy7aq_normal.jpg",
+      "x_bio": "想像上の古き良き外資ファーム時代に生きたMDの亡霊（数多の屍の上に成り上がっただけの老害）｜https://rougai-consul.com/consul-view/",
+      "x_bio_fetched_at": "2026-11-12T12:49:50.405568+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-12",
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-12T12:49:50+00:00",
+        "x_account": "rougai_consul",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=rougai_consul",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/rougai_consul",
+          "error": "HTTPError 403"
+        }
+      }
     },
     {
       "id": "mwdjoz6icptn",

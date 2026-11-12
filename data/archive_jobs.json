@@ -850,9 +850,9 @@
       "provider": "archive.today",
       "created_at": "2026-10-29T08:26:54.353Z",
       "attempt_count": 1,
-      "next_attempt_at": 1794499967049,
+      "next_attempt_at": 1794500070016,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-12T16:11:47.049Z",
+      "updated_at": "2026-11-12T16:13:30.016Z",
       "identity": {
         "id": "2080744214636478464",
         "handle": "vamostarozelvi",
@@ -861,14 +861,14 @@
       },
       "target_url": "https://x.com/vamostarozelvi",
       "event_key": "first:2080744214636478464:profile",
-      "last_error": "送信済みの保存先タブを特定できません。「保存先で確認」で保存一覧を開き、個別の保存結果を選んでください",
+      "last_error": "保存先の対象URLが一致しません",
       "submission_started_at": "2026-10-29T08:32:01.111Z",
       "operation_id": "65a1f324-7f57-48fa-8509-bdc20b0f15a2",
       "lease_expires_at": 1793264521111,
       "receipt_checks": 0,
       "receipt_recovery_started_at": "2026-11-12T16:11:41.062Z",
       "receipt": "https://archive.li/ivuQw",
-      "verification_checks": 0
+      "verification_checks": 1
     },
     {
       "job_id": "9dbdb5d6-a586-46d4-872c-d299428a5a7a",

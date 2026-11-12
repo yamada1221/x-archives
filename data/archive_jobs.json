@@ -846,13 +846,13 @@
       "artist_id": "mvt4jj0wkgcs",
       "registered_handle": "vamostarozelvi",
       "expected_x_user_id": "2080744214636478464",
-      "state": "processing",
+      "state": "needs_review",
       "provider": "archive.today",
       "created_at": "2026-10-29T08:26:54.353Z",
       "attempt_count": 1,
       "next_attempt_at": 1794500190890,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-12T16:15:30.890Z",
+      "updated_at": "2026-11-12T16:17:30.303Z",
       "identity": {
         "id": "2080744214636478464",
         "handle": "vamostarozelvi",
@@ -868,7 +868,7 @@
       "receipt_checks": 0,
       "receipt_recovery_started_at": "2026-11-12T16:11:41.062Z",
       "receipt": "https://archive.li/ivuQw",
-      "verification_checks": 2
+      "verification_checks": 3
     },
     {
       "job_id": "9dbdb5d6-a586-46d4-872c-d299428a5a7a",

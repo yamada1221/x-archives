@@ -17781,7 +17781,7 @@
     },
     {
       "id": "mwdjnap6a7bj",
-      "name": "consultnt_a",
+      "name": "とあるコンサルタント",
       "x_account": "consultnt_a",
       "threads_account": "",
       "threads_share_url": "",
@@ -17791,8 +17791,31 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-12",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1509836419295969280/5UiKYOM3_normal.jpg",
+      "x_bio": "シンクタンク所属のコンサル\nAmazonアソシエイト\n質問→ http://mond.how/ja/consultnt_a\n書いた文章→http://note.com/consultnt_a",
+      "x_bio_fetched_at": "2026-11-12T12:48:53.584381+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-12",
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-12T12:48:53+00:00",
+        "x_account": "consultnt_a",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=consultnt_a",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/consultnt_a",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

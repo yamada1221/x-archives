@@ -17719,6 +17719,21 @@
           "twitter_image": "https://pbs.twimg.com/profile_banners/4679384198/1536674278"
         }
       }
+    },
+    {
+      "id": "mwd90f6mexc5",
+      "name": "tCoba33",
+      "x_account": "tCoba33",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-12",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

@@ -17740,6 +17740,21 @@
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-12",
       "profile_source": "fxtwitter"
+    },
+    {
+      "id": "mwdiirjw3cjy",
+      "name": "zri7nj",
+      "x_account": "zri7nj",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-12",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

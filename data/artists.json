@@ -17816,6 +17816,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mwdjogx1yvwa",
+      "name": "rougai_consul",
+      "x_account": "rougai_consul",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "青バッチ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-12",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

@@ -17743,7 +17743,7 @@
     },
     {
       "id": "mwdiirjw3cjy",
-      "name": "zri7nj",
+      "name": "田中太郎",
       "x_account": "zri7nj",
       "threads_account": "",
       "threads_share_url": "",
@@ -17753,8 +17753,31 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-12",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-12T12:17:19.960473+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-12",
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-12T12:17:20+00:00",
+        "x_account": "zri7nj",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=zri7nj",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/zri7nj",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

@@ -17778,6 +17778,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mwdjnap6a7bj",
+      "name": "consultnt_a",
+      "x_account": "consultnt_a",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "青バッチ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-12",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

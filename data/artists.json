@@ -18075,6 +18075,21 @@
         "last_source": "x_public",
         "last_reason": ""
       }
+    },
+    {
+      "id": "mwdmdhaorbmi",
+      "name": "x4aPryP7C9X2256",
+      "x_account": "x4aPryP7C9X2256",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "ネトウヨ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-12",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

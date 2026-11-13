@@ -13780,7 +13780,21 @@
           "at": "2026-10-30T10:55:52+00:00",
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1993185559242850306; screen_name=hisa_labs"
         }
-      ]
+      ],
+      "archives": [
+        {
+          "url": "https://archive.li/KrRlv",
+          "provider": "archive.today",
+          "status": "pending",
+          "target_url": "https://x.com/hisa_labs/with_replies",
+          "saved_at": "2026-11-13T13:43:57.395Z"
+        }
+      ],
+      "archive_status": "pending",
+      "archive_url": "https://archive.li/KrRlv",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/hisa_labs/with_replies",
+      "archive_checked_at": "2026-11-13T13:43:57.395Z"
     },
     {
       "id": "mvufzyds6mik",

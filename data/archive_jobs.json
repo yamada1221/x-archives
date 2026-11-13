@@ -990,9 +990,9 @@
       "provider": "archive.today",
       "created_at": "2026-10-30T08:26:54.171Z",
       "attempt_count": 1,
-      "next_attempt_at": 1794576950934,
+      "next_attempt_at": 1794577050260,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-13T13:34:50.934Z",
+      "updated_at": "2026-11-13T13:36:30.260Z",
       "identity": {
         "id": "1993185559242850306",
         "handle": "hisa_labs",
@@ -1001,14 +1001,14 @@
       },
       "target_url": "https://x.com/hisa_labs",
       "event_key": "first:1993185559242850306:profile",
-      "last_error": "送信済みの保存先タブを特定できません。「保存先で確認」で保存一覧を開き、個別の保存結果を選んでください",
+      "last_error": "保存先の対象URLが一致しません",
       "submission_started_at": "2026-10-30T08:30:00.809Z",
       "operation_id": "6b4484d9-5532-473c-9702-cf6d990359fe",
       "lease_expires_at": 1793350800809,
       "receipt_checks": 0,
       "receipt_recovery_started_at": "2026-11-13T13:34:45.746Z",
       "receipt": "https://archive.li/2L4p5",
-      "verification_checks": 0
+      "verification_checks": 1
     },
     {
       "job_id": "be206d1b-7fbe-4ff0-a4e2-5c1aa14dd472",

@@ -13564,7 +13564,21 @@
           "at": "2026-10-30T10:55:52+00:00",
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1413263137344688129; screen_name=d_oug_hnu_t"
         }
-      ]
+      ],
+      "archives": [
+        {
+          "url": "https://archive.li/FCq3C",
+          "provider": "archive.today",
+          "status": "pending",
+          "target_url": "https://x.com/d_oug_hnu_t",
+          "saved_at": "2026-11-13T13:51:13.988Z"
+        }
+      ],
+      "archive_status": "pending",
+      "archive_url": "https://archive.li/FCq3C",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/d_oug_hnu_t",
+      "archive_checked_at": "2026-11-13T13:51:13.988Z"
     },
     {
       "id": "mvts3zcelv9o",

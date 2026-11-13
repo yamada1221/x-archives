@@ -13686,7 +13686,33 @@
           "at": "2026-10-30T10:55:52+00:00",
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1352455598005080065; screen_name=ThrowLDPInJapan"
         }
-      ]
+      ],
+      "archives": [
+        {
+          "provider": "archive.today",
+          "url": "https://archive.li/rwY5t",
+          "target_url": "https://x.com/ThrowLDPInJapan",
+          "status": "done",
+          "job_id": "a43ba8b7-17c9-4417-bfa5-1096a74d43d8",
+          "event_key": "first:1352455598005080065:profile",
+          "x_user_id": "1352455598005080065",
+          "requested_at": "2026-10-30T02:35:01.681Z",
+          "captured_at": "2026-11-12T16:50:13.000Z",
+          "saved_at": "2026-11-13T13:34:29.990Z",
+          "content_verified_at": "2026-11-13T13:34:29.990Z",
+          "verification_method": "archived_profile_body",
+          "verified_scope": [
+            "profile"
+          ],
+          "posts_verification": "confirmed",
+          "reused_existing": false
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/rwY5t",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/ThrowLDPInJapan",
+      "archive_checked_at": "2026-11-13T13:34:29.990Z"
     },
     {
       "id": "mvufyxphj6ox",

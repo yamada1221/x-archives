@@ -936,13 +936,13 @@
       "artist_id": "mvubxoa6hmzy",
       "registered_handle": "ThrowLDPInJapan",
       "expected_x_user_id": "1352455598005080065",
-      "state": "processing",
+      "state": "succeeded",
       "provider": "archive.today",
       "created_at": "2026-10-30T02:26:54.088Z",
       "attempt_count": 1,
       "next_attempt_at": 1794576866666,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-13T13:34:26.666Z",
+      "updated_at": "2026-11-13T13:34:30.246Z",
       "identity": {
         "id": "1352455598005080065",
         "handle": "ThrowLDPInJapan",
@@ -951,14 +951,34 @@
       },
       "target_url": "https://x.com/ThrowLDPInJapan",
       "event_key": "first:1352455598005080065:profile",
-      "last_error": "送信済みの保存先タブを特定できません。「保存先で確認」で保存一覧を開き、個別の保存結果を選んでください",
+      "last_error": "",
       "submission_started_at": "2026-10-30T02:35:01.681Z",
       "operation_id": "ea8ab89f-e591-4705-9fca-cb8dcaa80153",
       "lease_expires_at": 1793329501681,
       "receipt_checks": 0,
       "receipt_recovery_started_at": "2026-11-13T13:34:26.666Z",
       "receipt": "https://archive.li/rwY5t",
-      "verification_checks": 0
+      "verification_checks": 0,
+      "verification": {
+        "ok": true,
+        "captured_at": "2026-11-12T16:50:13.000Z",
+        "verified_at": "2026-11-13T13:34:29.990Z",
+        "method": "archived_profile_body",
+        "scope": [
+          "profile"
+        ],
+        "posts_verification": "confirmed",
+        "post_ids": [
+          "2120311984558424089",
+          "2120308969281552658",
+          "2120306553660268867",
+          "2120304898055237654",
+          "2120303391809392844",
+          "2120300842628862254"
+        ],
+        "archived_user_id": "",
+        "reused_existing": false
+      }
     },
     {
       "job_id": "97338c6d-bc7d-4c3f-916c-854575b3bc8d",

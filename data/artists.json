@@ -18498,7 +18498,7 @@
     },
     {
       "id": "mwgci8d4s553",
-      "name": "blackright0",
+      "name": "black（黔騎士)",
       "x_account": "blackright0",
       "threads_account": "",
       "threads_share_url": "",
@@ -18508,8 +18508,31 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-14",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2103076603161186304/JVf6LXwP_normal.jpg",
+      "x_bio": "世界とビジネスの「リアル」が丸裸になる。綺麗事抜きの洞察を発信。日本米中露情勢・経済｜Big Tech (OpenAI/Google/Anthropic/Nvidia/Apple)｜イーロンマスク（elon mask）｜AI・IT・セキュリティ・WEB｜半導体｜仕事｜表面的なnews（ニュース）に騙されたくない人へ。",
+      "x_bio_fetched_at": "2026-11-14T11:52:14.380451+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-14",
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-14T11:52:14+00:00",
+        "x_account": "blackright0",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=blackright0",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/blackright0",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

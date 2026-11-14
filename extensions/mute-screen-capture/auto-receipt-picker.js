@@ -1,6 +1,8 @@
 'use strict';
 (function (root) {
   const C = typeof module !== 'undefined' && module.exports ? require('./auto-core.js') : root.AutoArchiveCore;
+  const Today = typeof module !== 'undefined' && module.exports ? require('./auto-today.js') : root.AutoArchiveToday;
+  const Ghost = typeof module !== 'undefined' && module.exports ? require('./auto-ghost.js') : root.AutoArchiveGhost;
   // Isolated-world, read-only lookup. Strip queries and never collect input
   // values, navigate a tab, follow a link or make a new save request.
   function readSearchResultLinks({ expectedURL, origins }) {
@@ -29,19 +31,35 @@
       if (!url || C.resultProvider(url) !== provider || found.has(url) || found.size >= 20) return;
       found.set(url, { url, label: String(label || '').slice(0, 180), source });
     }
-    let inspected = 0;
+    let inspected = 0, directInspected = 0;
     for (const tab of tabs) {
+      if (found.size >= 20) break;
       let u; try { u = new URL(tab.url || ''); } catch (_) { continue; }
       if (!origins.includes(u.origin) || u.username || u.password || u.port) continue;
       if (!await chrome.permissions.contains({ permissions: ['scripting'], origins: [u.origin + '/*'] })) continue;
       if (C.resultProvider(tab.url) === provider) {
-        add(tab.url, tab.title, '保存結果ページ'); continue;
+        if (directInspected >= 40 || tab.pendingUrl || tab.status && tab.status !== 'complete') continue;
+        directInspected++;
+        try {
+          const func = provider === 'archive.today' ? Today.inspectTodayDocument : Ghost.inspectGhostDocument;
+          const frames = await chrome.scripting.executeScript({ target: { tabId: tab.id }, func,
+            args: provider === 'ghostarchive' ? [u.pathname.split('/').filter(Boolean).pop()] : [] });
+          const page = frames[0]?.result;
+          // A result tab may belong to another account or to its replies tab.
+          // Read its wrapper metadata before offering it; body verification
+          // still runs separately when the user adopts the selected result.
+          if (page?.kind === 'archive' && C.targetURL(page.original_url) === target &&
+              C.resultProvider(page.receipt) === provider && C.resultURL(page.receipt) === C.resultURL(tab.url)) {
+            add(page.receipt, tab.title, '保存結果ページ（対象URL確認済み・本文未確認）');
+          }
+        } catch (_) { /* Missing metadata, challenges or a changed tab are excluded. */ }
+        continue;
       }
       if (C.searchTarget(tab.url) !== target || inspected >= 5) continue;
       inspected++;
       try {
         const frames = await chrome.scripting.executeScript({ target: { tabId: tab.id }, func: readSearchResultLinks, args: [{ expectedURL: tab.url, origins }] });
-        for (const link of frames[0]?.result || []) add(link.url, link.label, '保存一覧のリンク');
+        for (const link of frames[0]?.result || []) add(link.url, link.label, '保存一覧のリンク（本文未確認）');
       } catch (_) { /* An unloaded/challenge page yields no selectable result. */ }
     }
     return [...found.values()];

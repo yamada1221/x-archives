@@ -109,7 +109,7 @@
       submissionHeld: C.submissionHold(state.jobs, cfg.provider),
       config: full ? { owner: cfg.owner, repo: cfg.repo, path: cfg.path, provider: cfg.provider } : undefined,
       jobs: visibleJobs.map(j => ({ job_id: j.job_id, artist_id: j.artist_id, handle: j.identity?.handle || j.registered_handle,
-        state: j.state, label: C.jobLabel(j), target_kind: j.target_kind || 'profile', attention: C.attention(j), access_wait: j.access_wait,
+        state: j.state, label: C.jobLabel(j), target_kind: j.target_kind || 'profile', target_url: C.targetURL(j.target_url), attention: C.attention(j), access_wait: j.access_wait,
         can_recheck: j.executor_device_id === id && Boolean(j.submission_started_at || j.receipt || j.access_wait),
         provider: j.provider || 'ghostarchive', error: j.last_error || '', receipt: C.resultURL(j.receipt),
         scope: j.verification?.scope, posts: j.verification?.posts_verification, captured_at: j.verification?.captured_at,

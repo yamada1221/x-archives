@@ -432,3 +432,271 @@ test('a mismatched reply kind and target cannot verify or enter the ledger',()=>
   assert.equal(C.verify({original_url:j.target_url},[],j,Date.now()).ok,false);
 });
 
+test('receipt diagnostics distinguish target metadata, account and profile/reply mismatches without accepting them',()=>{
+  const now=Date.now(),stamp=new Date(now).toISOString();
+  const profile={target_url:'https://x.com/Example',expected_x_user_id:'1234567890123456789',
+    identity:{handle:'Example',name:'例',bio:'自己紹介'},submission_started_at:stamp,adopted_existing:true};
+  const replies={...profile,target_kind:'replies',target_url:'https://x.com/Example/with_replies'};
+  const body={kind:'profile',handle:'Example',name:'例',bio:'自己紹介',following:true,user_id:profile.expected_x_user_id,replies_tab_confirmed:true};
+  const outer=url=>({original_url:url,captured_at:stamp});
+  const rejected=(page,job,reason)=>assert.deepEqual(C.verify(page,[body],job,now),{ok:false,reason});
+  for(const job of [profile,replies]){
+    const good=C.verify(outer(job.target_url),[body],job,now);
+    assert.equal(good.ok,true);assert.deepEqual(good.scope,[job.target_kind||'profile']);
+    assert.equal(good.archived_user_id,profile.expected_x_user_id);
+    assert.equal(C.verify(outer(job.target_url),[{...body,user_id:'999'}],job,now).ok,false);
+  }
+  rejected(outer('https://twitter.com/EXAMPLE/with_replies/?test=1'),profile,'保存先は返信タブです。プロフィールの保存結果を選んでください');
+  rejected(outer('https://www.x.com/EXAMPLE/'),replies,'保存先はプロフィールです。返信タブの保存結果を選んでください');
+  for(const target of ['https://x.com/Other','https://x.com/Other/with_replies']){
+    rejected(outer(target),profile,'保存先の対象アカウントが一致しません');
+    rejected(outer(target),replies,'保存先の対象アカウントが一致しません');
+  }
+  for(const missing of [undefined,'','https://x.com/Example/status/123']){
+    rejected(outer(profile.target_url),{...profile,target_url:missing},'保存対象のURLを確認できません');
+  }
+  for(const invalid of [undefined,'','https://x.com.evil/Example','https://user@x.com/Example','http://x.com/Example','https://x.com/Example/status/123']){
+    rejected(outer(invalid),profile,'保存先の対象URLを確認できません');
+    rejected(outer(invalid),replies,'保存先の対象URLを確認できません');
+  }
+  rejected(null,profile,'保存先の対象URLを確認できません');
+});
+
+test('manual correction of a mismatched receipt preserves the profile job and history without another save request',async()=>{
+  for(const last_error of ['保存先の対象URLが一致しません','保存先の対象アカウントが一致しません',
+    '保存先は返信タブです。プロフィールの保存結果を選んでください','保存先はプロフィールです。返信タブの保存結果を選んでください',
+    '保存対象の種類が一致しません']){
+    const a=setup([artist()],'archive.today');a.config.enabled=false;
+    const old=await seedBodyFailure(a,{receipt:'https://archive.li/Rep01',receipt_history:['https://archive.li/wip/Rep01'],last_error});
+    await a.engine.adopt(old.job_id,'https://archive.li/Pro01');
+    let job=(await a.state()).jobs[0];
+    assert.equal(job.state,'processing');assert.equal(job.receipt,'https://archive.li/Pro01');
+    assert.deepEqual(job.receipt_history,['https://archive.li/wip/Rep01','https://archive.li/Rep01']);
+    await a.run();job=(await a.state()).jobs[0];
+    assert.equal(job.state,'succeeded');assert.deepEqual(job.verification.scope,['profile']);
+    assert.equal(job.target_kind,old.target_kind);assert.equal(job.target_url,old.target_url);
+    assert.equal(job.expected_x_user_id,old.expected_x_user_id);assert.equal(job.submission_started_at,old.submission_started_at);
+    assert.equal(job.attempt_count,old.attempt_count);assert.equal(a.calls.post,0);assert.equal(a.calls.opened,0);
+    assert.equal(a.docs.get(a.config.path).artists[0].archive_url,'https://archive.li/Pro01');
+    assert.deepEqual(a.docs.get(JOBS).jobs[0].receipt_history,job.receipt_history);
+    assert.equal(Object.hasOwn(job,'receiptCorrection'),false);
+    assert.equal(Object.hasOwn(a.docs.get(JOBS).jobs[0],'receiptCorrection'),false);
+  }
+});
+
+test('a corrected receipt still fails full account, target-kind and numeric-ID verification',async()=>{
+  for(const failure of ['account','replies','id']){
+    const a=setup([artist()],'archive.today');a.config.enabled=false;
+    const old=await seedBodyFailure(a,{receipt:'https://archive.li/Rep01',last_error:'保存先は返信タブです。プロフィールの保存結果を選んでください'});
+    const inspect=a.ghost.inspect;
+    a.ghost.inspect=async job=>{
+      const page=await inspect(job);
+      if(failure==='account')page.original_url='https://x.com/Other';
+      if(failure==='replies')page.original_url='https://x.com/Example/with_replies';
+      if(failure==='id')page.frames[0].user_id='999999999';
+      return page;
+    };
+    await a.engine.adopt(old.job_id,'https://archive.li/Pro01');
+    for(let i=0;i<3;i++){await a.run();a.advance();}
+    const job=(await a.state()).jobs[0];
+    assert.equal(job.state,'needs_review');assert.equal(job.verification?.ok,undefined);
+    assert.equal(job.last_error,failure==='account'?'保存先の対象アカウントが一致しません':
+      failure==='replies'?'保存先は返信タブです。プロフィールの保存結果を選んでください':'保存本文の数値IDが別のアカウントです');
+    assert.equal(job.target_kind,old.target_kind);assert.equal(job.target_url,old.target_url);
+    assert.ok(job.receipt_history.includes('https://archive.li/Rep01'));
+    assert.equal(a.docs.get(a.config.path).artists[0].archive_status,undefined);
+    assert.equal(a.calls.post,0);assert.equal(a.calls.opened,0);
+  }
+});
+
+test('manual receipt replacement is unavailable outside target-mismatch review or across providers',async()=>{
+  const mismatch='保存先は返信タブです。プロフィールの保存結果を選んでください';
+  const cases=[
+    {state:'succeeded',last_error:mismatch},{state:'processing',last_error:mismatch},{state:'verifying',last_error:mismatch},
+    {last_error:'本文から同じアカウントだと確認する証拠が不足しています'},
+    {last_error:'プロフィール本文・対象ハンドルを確認できません'},
+    {last_error:'保存本文の数値IDが別のアカウントです'},
+    {last_error:'保存先の対象URLを確認できません'},
+    {last_error:'保存先で人間確認・アクセス制限が必要です'},
+    {last_error:mismatch,newReceipt:'https://ghostarchive.org/archive/Pro01'}
+  ];
+  for(const {newReceipt='https://archive.li/Pro01',...changes} of cases){
+    const a=setup([artist()],'archive.today');a.config.enabled=false;
+    const old=await seedBodyFailure(a,{receipt:'https://archive.li/Rep01',...changes});
+    const before=await a.state();
+    await assert.rejects(a.engine.adopt(old.job_id,newReceipt),/確認対象|変更できません|同じ保存先/);
+    assert.deepEqual(await a.state(),before);assert.equal(a.calls.writes.length,0);
+    assert.equal(a.calls.post,0);assert.equal(a.calls.opened,0);
+  }
+});
+
+test('manual correction survives a failed sync and worker restart without publishing its authorization or another POST',async()=>{
+  const a=setup([artist()],'archive.today');a.config.enabled=false;
+  const old=await seedBodyFailure(a,{receipt:'https://archive.li/Rep01',last_error:'保存先の対象URLが一致しません'});
+  a.calls.failSync=true;
+  await assert.rejects(a.engine.adopt(old.job_id,'https://archive.li/Pro01'),/offline/);
+  const pending=(await a.state()).jobs[0];
+  assert.equal(pending.receiptCorrection.from,'https://archive.li/Rep01');
+  assert.equal(pending.receiptCorrection.to,'https://archive.li/Pro01');
+  assert.equal(a.docs.get(JOBS).jobs[0].receipt,'https://archive.li/Rep01');
+  a.restart();a.calls.failSync=false;
+  await a.run();
+  const saved=(await a.state()).jobs[0],remote=a.docs.get(JOBS).jobs[0];
+  assert.equal(saved.state,'succeeded');assert.equal(remote.receipt,'https://archive.li/Pro01');
+  assert.ok(remote.receipt_history.includes('https://archive.li/Rep01'));
+  assert.equal(Object.hasOwn(saved,'receiptCorrection'),false);assert.equal(Object.hasOwn(remote,'receiptCorrection'),false);
+  await a.run();
+  assert.equal(a.calls.writes.filter(k=>k===a.config.path).length,1);
+  assert.equal(a.calls.post,0);assert.equal(a.calls.opened,0);
+});
+
+test('a manual correction cannot overwrite remote completion, a new receipt, or changed target identity',async()=>{
+  const mismatch='保存先は返信タブです。プロフィールの保存結果を選んでください';
+  for(const change of [
+    {state:'succeeded'},{state:'processing'},{receipt:'https://archive.li/Rem01'},
+    {target_url:'https://x.com/Other'},
+    {target_kind:'replies',target_url:'https://x.com/Example/with_replies'},
+    {expected_x_user_id:'999999999'},
+    {identity:{handle:'Other',name:'例',bio:'自己紹介'}},
+    {last_error:'保存本文の数値IDが別のアカウントです'},
+    {provider:'ghostarchive',receipt:'https://ghostarchive.org/archive/Rem01'},
+    {updated_at:'2026-10-25T15:00:01.000Z'}
+  ]){
+    const a=setup([artist()],'archive.today');a.config.enabled=false;
+    const old=await seedBodyFailure(a,{receipt:'https://archive.li/Rep01',last_error:mismatch});
+    Object.assign(a.docs.get(JOBS).jobs[0],change);
+    const remote=clone(a.docs.get(JOBS));
+    await assert.rejects(a.engine.adopt(old.job_id,'https://archive.li/Pro01'),/競合|アカウントが一致/);
+    assert.deepEqual(a.docs.get(JOBS),remote);
+    const restored=(await a.state()).jobs[0];
+    assert.deepEqual(a.engine.publicJob(restored),remote.jobs[0]);
+    assert.equal(restored.dirty,false);assert.equal(Object.hasOwn(restored,'receiptCorrection'),false);
+    assert.equal(restored.rejectedReceiptCorrections[0].receipt,'https://archive.li/Pro01');
+    assert.equal(a.calls.writes.length,0);assert.equal(a.calls.post,0);assert.equal(a.calls.opened,0);
+  }
+});
+
+test('a version conflict stays rejected across wakeups and restarts, then a fresh explicit selection can recover',async()=>{
+  const a=setup([artist()],'archive.today');a.config.enabled=false;
+  const old=await seedBodyFailure(a,{receipt:'https://archive.li/Rep01',last_error:'保存先の対象URLが一致しません',updated_at:new Date(a.now()).toISOString()});
+  a.docs.get(JOBS).jobs[0].updated_at=new Date(a.now()+1000).toISOString();
+  const remote=clone(a.docs.get(JOBS)),seen=[];
+  const inspect=a.ghost.inspect;a.ghost.inspect=async job=>{seen.push(job.receipt);return inspect(job);};
+  await assert.rejects(a.engine.adopt(old.job_id,'https://archive.li/Pro01'),/競合/);
+  for(let i=0;i<3;i++){a.restart();a.advance();await a.run();}
+  let restored=(await a.state()).jobs[0];
+  assert.equal(restored.state,'needs_review');assert.equal(restored.receipt,'https://archive.li/Rep01');
+  assert.equal(restored.rejectedReceiptCorrections[0].receipt,'https://archive.li/Pro01');
+  assert.deepEqual(a.docs.get(JOBS),remote);assert.deepEqual(seen,[]);assert.equal(a.calls.writes.length,0);
+  await a.engine.adopt(old.job_id,'https://archive.li/Pro01');await a.run();
+  restored=(await a.state()).jobs[0];
+  assert.equal(restored.state,'succeeded');assert.equal(restored.receipt,'https://archive.li/Pro01');
+  assert.equal(restored.rejectedReceiptCorrections.length,1);assert.deepEqual(seen,['https://archive.li/Pro01']);
+  assert.equal(Object.hasOwn(a.docs.get(JOBS).jobs[0],'rejectedReceiptCorrections'),false);
+  assert.equal(Object.hasOwn(a.docs.get(JOBS).jobs[0],'receiptCorrection'),false);
+  assert.equal(a.calls.post,0);assert.equal(a.calls.opened,0);
+});
+
+test('a rejected correction preserves a remote success and later applies only that authoritative result',async()=>{
+  const a=setup([artist()],'archive.today');a.config.enabled=false;
+  const old=await seedBodyFailure(a,{receipt:'https://archive.li/Rep01',last_error:'保存先の対象URLが一致しません'});
+  const completed={...old,state:'succeeded',receipt:'https://archive.li/Rem01',last_error:''};
+  const page=await a.ghost.inspect(completed);
+  completed.verification=C.verify(page,page.frames,completed,a.now());assert.equal(completed.verification.ok,true);
+  a.docs.get(JOBS).jobs[0]=clone(completed);
+  await assert.rejects(a.engine.adopt(old.job_id,'https://archive.li/Pro01'),/競合/);
+  const restored=(await a.state()).jobs[0];
+  assert.deepEqual(a.engine.publicJob(restored),completed);assert.equal(restored.applied,false);
+  assert.equal(a.calls.writes.length,0);assert.equal(a.docs.get(a.config.path).artists[0].archive_status,undefined);
+  a.restart();await a.run();a.restart();await a.run();
+  assert.equal((await a.state()).jobs[0].receipt,'https://archive.li/Rem01');
+  assert.equal(a.docs.get(a.config.path).artists[0].archive_url,'https://archive.li/Rem01');
+  assert.equal(a.calls.writes.filter(k=>k===a.config.path).length,1);
+  assert.equal(a.calls.post,0);assert.equal(a.calls.opened,0);
+});
+
+test('remote processing after a correction conflict never inspects the refused local selection',async()=>{
+  const a=setup([artist()],'archive.today');a.config.enabled=false;
+  const old=await seedBodyFailure(a,{receipt:'https://archive.li/Rep01',last_error:'保存先の対象URLが一致しません'});
+  a.docs.get(JOBS).jobs[0].state='processing';
+  const seen=[];a.ghost.inspect=async job=>{seen.push(job.receipt);return{kind:'loading',receipt:job.receipt};};
+  await assert.rejects(a.engine.adopt(old.job_id,'https://archive.li/Pro01'),/競合/);
+  assert.equal(a.calls.writes.length,0);
+  for(let i=0;i<3;i++){a.restart();a.advance();await a.run();}
+  assert.equal((await a.state()).jobs[0].state,'processing');
+  assert.equal(a.docs.get(JOBS).jobs[0].receipt,'https://archive.li/Rep01');
+  assert.ok(seen.length>0);assert.ok(seen.every(receipt=>receipt==='https://archive.li/Rep01'));
+  assert.equal(a.docs.get(a.config.path).artists[0].archive_status,undefined);assert.equal(a.calls.post,0);
+});
+
+test('a correction cannot resurrect a deleted shared job across wakeups or restarts',async()=>{
+  const a=setup([artist()],'archive.today');a.config.enabled=false;
+  const old=await seedBodyFailure(a,{receipt:'https://archive.li/Rep01',last_error:'保存先の対象URLが一致しません'});
+  a.docs.get(JOBS).jobs=[];
+  await assert.rejects(a.engine.adopt(old.job_id,'https://archive.li/Pro01'),/競合/);
+  const state=await a.state();assert.equal(state.jobs.length,0);
+  assert.equal(state.rejectedReceiptCorrections[0].job_id,old.job_id);
+  assert.equal(state.rejectedReceiptCorrections[0].receipt,'https://archive.li/Pro01');
+  for(let i=0;i<3;i++){a.restart();a.advance();await a.run();}
+  assert.equal((await a.state()).jobs.length,0);assert.equal(a.docs.get(JOBS).jobs.length,0);
+  assert.equal(a.calls.writes.length,0);assert.equal(a.calls.post,0);assert.equal(a.calls.opened,0);
+});
+
+test('an old WIP in receipt history cannot bypass manual correction authorization after remote progress',async()=>{
+  const a=setup([artist()],'archive.today');a.config.enabled=false;
+  const old=await seedBodyFailure(a,{receipt:'https://archive.li/Rep01',receipt_history:['https://archive.li/wip/Rep01'],
+    last_error:'保存先の対象URLが一致しません',updated_at:new Date(a.now()).toISOString()});
+  Object.assign(a.docs.get(JOBS).jobs[0],{receipt:'https://archive.li/wip/Rep01',state:'processing',
+    target_url:'https://x.com/Other',updated_at:new Date(a.now()+1000).toISOString()});
+  const remote=clone(a.docs.get(JOBS)),seen=[];
+  a.ghost.inspect=async job=>{seen.push(job.receipt);return{kind:'loading',receipt:job.receipt};};
+  await assert.rejects(a.engine.adopt(old.job_id,'https://archive.li/Pro01'),/競合/);
+  assert.deepEqual(a.docs.get(JOBS),remote);assert.equal(a.calls.writes.length,0);
+  assert.deepEqual(a.engine.publicJob((await a.state()).jobs[0]),remote.jobs[0]);
+  for(let i=0;i<3;i++){a.restart();a.advance();await a.run();}
+  const restored=(await a.state()).jobs[0];
+  assert.equal(restored.state,'processing');assert.equal(restored.target_url,'https://x.com/Other');
+  assert.equal(restored.receipt,'https://archive.li/wip/Rep01');
+  assert.ok(seen.length>0);assert.ok(seen.every(receipt=>receipt==='https://archive.li/wip/Rep01'));
+  assert.equal(a.docs.get(a.config.path).artists[0].archive_status,undefined);assert.equal(a.calls.post,0);
+});
+
+test('an accepted correction with a lost PUT response retries the same receipt and applies its result once',async()=>{
+  const a=setup([artist()],'archive.today');a.config.enabled=false;
+  const old=await seedBodyFailure(a,{receipt:'https://archive.li/Rep01',last_error:'保存先の対象URLが一致しません'});
+  const update=a.git.update;let loseResponse=true;
+  a.git.update=async(key,change)=>{
+    const result=await update(key,change);
+    if(key===JOBS&&loseResponse){loseResponse=false;throw Error('503 response lost after accepted PUT');}
+    return result;
+  };
+  await assert.rejects(a.engine.adopt(old.job_id,'https://archive.li/Pro01'),/503/);
+  assert.equal(a.docs.get(JOBS).jobs[0].receipt,'https://archive.li/Pro01');
+  assert.equal((await a.state()).jobs[0].receiptCorrection.to,'https://archive.li/Pro01');
+  assert.equal(Object.hasOwn(a.docs.get(JOBS).jobs[0],'receiptCorrection'),false);
+  a.restart();await a.run();a.restart();await a.run();
+  const saved=(await a.state()).jobs[0];
+  assert.equal(saved.state,'succeeded');assert.equal(saved.receipt,'https://archive.li/Pro01');
+  assert.equal(Object.hasOwn(saved,'receiptCorrection'),false);
+  assert.deepEqual(saved.receipt_history,['https://archive.li/wip/Ab123','https://archive.li/Rep01']);
+  assert.equal(a.docs.get(a.config.path).artists[0].archive_url,'https://archive.li/Pro01');
+  assert.equal(a.calls.writes.filter(key=>key===a.config.path).length,1);
+  assert.equal(a.calls.post,0);assert.equal(a.calls.opened,0);
+});
+
+test('same-receipt correction retries cannot overwrite a changed remote target or identity',async()=>{
+  for(const change of [{target_url:'https://x.com/Other'},
+    {target_kind:'replies',target_url:'https://x.com/Example/with_replies'},
+    {expected_x_user_id:'999999999'},{identity:{handle:'Other',name:'例',bio:'自己紹介'}}]){
+    const a=setup([artist()],'archive.today');a.config.enabled=false;
+    const old=await seedBodyFailure(a,{receipt:'https://archive.li/Rep01',last_error:'保存先の対象URLが一致しません'});
+    Object.assign(a.docs.get(JOBS).jobs[0],{receipt:'https://archive.li/Pro01',state:'processing',
+      updated_at:new Date(a.now()+1000).toISOString(),...change});
+    const remote=clone(a.docs.get(JOBS));
+    await assert.rejects(a.engine.adopt(old.job_id,'https://archive.li/Pro01'),/競合|アカウントが一致/);
+    assert.deepEqual(a.docs.get(JOBS),remote);
+    assert.deepEqual(a.engine.publicJob((await a.state()).jobs[0]),remote.jobs[0]);
+    assert.equal(a.calls.writes.length,0);assert.equal(a.calls.post,0);assert.equal(a.calls.opened,0);
+  }
+});
+

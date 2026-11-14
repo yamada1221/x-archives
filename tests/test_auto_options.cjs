@@ -51,7 +51,7 @@ test('status changes preserve the focused editor and its draft after rendering r
     assert.equal(await input.evaluate(e => document.activeElement === e), true);
     await input.blur(); await page.evaluate(() => fixtureStatusPoll());
     assert.equal(await input.inputValue(), 'https://archive.li/Ab123');
-    assert.equal(await page.locator('.job p').first().innerText(), 'updated error');
+    assert.equal(await page.locator('.job p').first().textContent(), '保存対象: https://x.com/x\nupdated error');
   });
 });
 test('a candidate from an open archive page fills the result field without starting another test', async () => {
@@ -117,8 +117,8 @@ test('older manual and access checks stay first in a large backlog without losin
     const names = await page.locator('#jobs .job strong').allTextContents();
     assert.equal(names.length, 129);
     assert.deepEqual(names.slice(0, 5).map(text => text.split(' — ')[0]),
-      ['@RecentReview', '@OldLimit', '@OldHuman（返信タブ）', '@OldUnknown', '@OldReview']);
-    assert.match(names[5], /^@Queue124 — 保存待ち/);
+      ['@RecentReview（プロフィール）', '@OldLimit（プロフィール）', '@OldHuman（返信タブ）', '@OldUnknown（プロフィール）', '@OldReview（プロフィール）']);
+    assert.match(names[5], /^@Queue124（プロフィール） — 保存待ち/);
     const input = page.getByLabel('@OldHuman の結果URL');
     await input.fill('https://archive.li/Ab123');
     await page.evaluate(() => { fixtureStatus.jobs.push({ job_id: 'new-queued', handle: 'Newest', state: 'queued',
@@ -135,5 +135,32 @@ test('older manual and access checks stay first in a large backlog without losin
     assert.equal(requests.find(message => message.type === 'AUTO_RECHECK').job_id, 'old-human');
     assert.equal(requests.some(message => ['AUTO_TEST', 'AUTO_START', 'AUTO_ADOPT'].includes(message.type)), false);
     assert.equal(await page.getByLabel('@OldHuman の結果URL').inputValue(), 'https://archive.li/Ab123');
+  });
+});
+
+test('the same account has distinct profile and replies editors with the exact save target', async () => {
+  await screen(async page => {
+    await page.evaluate(() => {
+      fixtureStatus.jobs = [
+        { job_id: 'profile', handle: 'X', target_kind: 'profile', target_url: 'https://x.com/X', state: 'needs_review', label: '手動確認が必要', provider: 'archive.today' },
+        { job_id: 'replies', handle: 'X', target_kind: 'replies', target_url: 'https://x.com/X/with_replies', state: 'needs_review', label: '手動確認が必要', provider: 'archive.today' }
+      ];
+      return fixtureStatusPoll();
+    });
+    const profile = page.locator('.job').filter({ has: page.getByText('@X（プロフィール）', { exact: false }) });
+    const replies = page.locator('.job').filter({ has: page.getByText('@X（返信タブ）', { exact: false }) });
+    assert.match(await profile.locator('p').innerText(), /^保存対象: https:\/\/x\.com\/x$/);
+    assert.match(await replies.locator('p').innerText(), /^保存対象: https:\/\/x\.com\/x\/with_replies$/);
+    assert.equal(await profile.getByRole('link', { name: 'プロフィールの保存一覧を開く', exact: true }).getAttribute('href'), 'https://archive.li/https://x.com/x');
+    assert.equal(await replies.getByRole('link', { name: '返信タブの保存一覧を開く', exact: true }).getAttribute('href'), 'https://archive.li/https://x.com/x/with_replies');
+    await profile.locator('input').fill('https://archive.li/Pro01');
+    await replies.locator('input').fill('https://archive.li/Rep01');
+    await page.evaluate(() => fixtureStatusPoll());
+    assert.equal(await profile.locator('input').inputValue(), 'https://archive.li/Pro01');
+    await replies.getByRole('button', { name: 'この結果の本文を再確認', exact: true }).click();
+    const request = await page.evaluate(() => fixtureMessages.find(message => message.type === 'AUTO_ADOPT'));
+    assert.equal(request.job_id, 'replies');
+    assert.equal(request.receipt, 'https://archive.li/Rep01');
+    assert.equal(await profile.locator('input').inputValue(), 'https://archive.li/Pro01');
   });
 });

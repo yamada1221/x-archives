@@ -18388,7 +18388,7 @@
     },
     {
       "id": "mwgbg47hs7gw",
-      "name": "k_kitagawa7",
+      "name": "キタガワ",
       "x_account": "k_kitagawa7",
       "threads_account": "",
       "threads_share_url": "",
@@ -18398,8 +18398,31 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-14",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2107075310550417408/mbep1vZn_normal.jpg",
+      "x_bio": "大女優💅｜借金340万円返済中｜人生毎日ダウンタイム｜\n将来の夢→隠居｜好きなドラマ→ブザービート～崖っぷちのヒーロー～｜",
+      "x_bio_fetched_at": "2026-11-14T11:22:38.046778+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-14",
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-14T11:22:38+00:00",
+        "x_account": "k_kitagawa7",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=k_kitagawa7",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/k_kitagawa7",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

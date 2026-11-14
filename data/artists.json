@@ -18570,7 +18570,21 @@
           "url": "https://x.com/uochandeath",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archives": [
+        {
+          "url": "https://archive.li/2026.11.12-024316/https://x.com/uochandeath/with_replies",
+          "provider": "archive.today",
+          "status": "pending",
+          "target_url": "https://x.com/uochandeath/with_replies",
+          "saved_at": "2026-11-14T11:58:50.586Z"
+        }
+      ],
+      "archive_status": "pending",
+      "archive_url": "https://archive.li/2026.11.12-024316/https://x.com/uochandeath/with_replies",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/uochandeath/with_replies",
+      "archive_checked_at": "2026-11-14T11:58:50.586Z"
     }
   ],
   "monitoring_summary": {

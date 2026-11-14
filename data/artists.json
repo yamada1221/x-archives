@@ -18312,7 +18312,7 @@
     },
     {
       "id": "mwfrxe0j7vkv",
-      "name": "meganemegane727",
+      "name": "片山修",
       "x_account": "meganemegane727",
       "threads_account": "",
       "threads_share_url": "",
@@ -18322,8 +18322,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-14",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2080304937180053504/kFldMg1y_normal.jpg",
+      "x_bio": "丸の内で働いているコンサルマンです！１７３センチ２９歳です。ぽっちゃりさんと仲良くなりたいな！よろしくお願いします。",
+      "x_bio_fetched_at": "2026-11-14T02:15:55.674951+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-14",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

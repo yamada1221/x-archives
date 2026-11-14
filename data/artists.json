@@ -18495,6 +18495,21 @@
         "last_source": "x_public",
         "last_reason": ""
       }
+    },
+    {
+      "id": "mwgci8d4s553",
+      "name": "blackright0",
+      "x_account": "blackright0",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "青バッチ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-14",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

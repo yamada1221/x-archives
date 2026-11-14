@@ -51,6 +51,11 @@
       return match && handle(match[1]) ? 'https://x.com/' + match[1].toLowerCase() + (match[2] ? '/with_replies' : '') : '';
     } catch (_) { return ''; }
   }
+  function targetCovers(requested, captured) {
+    const target = targetURL(requested), actual = targetURL(captured);
+    return Boolean(target && actual && (target === actual ||
+      !target.endsWith('/with_replies') && actual === target + '/with_replies'));
+  }
   const repliesTagged = a => String(a?.note || '').split(/[\s/、,，]+/u).includes('クソリプ');
   function searchTarget(value) {
     try {
@@ -84,10 +89,14 @@
       (!c.target || c.target === 'profile') && (!c.provider || c.provider === 'inherit' || provider(c.provider) === provider(selected));
   }
   function completed(a, target = 'profile') {
-    if (target === 'replies') return (a.archives || []).some(e => e?.status === 'done' && targetURL(e.target_url) === targetURL('https://x.com/' + a.x_account + '/with_replies'));
+    if (target === 'replies') return (a.archives || []).some(e => e?.status === 'done' &&
+      targetURL(e.target_url) === targetURL('https://x.com/' + a.x_account + '/with_replies') &&
+      (!Array.isArray(e.verified_scope) || e.verified_scope.includes('replies')));
     // Preserve legacy registrations without claiming that they passed new verification.
     return Boolean(a.archive_status === 'done' && a.archive_url && !targetURL(a.archive_target_url).endsWith('/with_replies')) ||
-      (a.archives || []).some(e => e?.status === 'done' && !targetURL(e.target_url).endsWith('/with_replies'));
+      (a.archives || []).some(e => e?.status === 'done' && (Array.isArray(e.verified_scope) ?
+        e.verified_scope.includes('profile') && targetCovers('https://x.com/' + a.x_account, e.target_url) :
+        !targetURL(e.target_url).endsWith('/with_replies')));
   }
   function sameAccount(a, job) {
     if (!a || a.id !== job.artist_id || !eligible(a, job.provider || 'ghostarchive')) return false;
@@ -135,11 +144,9 @@
     const requested = targetURL(job.target_url), captured = targetURL(outer?.original_url);
     if (!requested) return { ok: false, reason: '保存対象のURLを確認できません' };
     if (!captured) return { ok: false, reason: '保存先の対象URLを確認できません' };
-    if (captured !== requested) {
+    if (!targetCovers(requested, captured)) {
       if (captured.replace(/\/with_replies$/, '') !== requested.replace(/\/with_replies$/, '')) return { ok: false, reason: '保存先の対象アカウントが一致しません' };
-      return { ok: false, reason: captured.endsWith('/with_replies') ?
-        '保存先は返信タブです。プロフィールの保存結果を選んでください' :
-        '保存先はプロフィールです。返信タブの保存結果を選んでください' };
+      return { ok: false, reason: '保存先はプロフィールです。返信タブの保存結果を選んでください' };
     }
     if (requested.endsWith('/with_replies') !== (job.target_kind === 'replies')) return { ok: false, reason: '保存対象の種類が一致しません' };
     const stamp = Date.parse(outer.captured_at);
@@ -154,21 +161,32 @@
     const reused = Boolean(job.adopted_existing) || stamp < Date.parse(job.submission_started_at) - 5 * MINUTE;
     if (reused && !p.user_id) return { ok: false, reason: '過去の保存を採用するには、保存本文の数値IDによる照合が必要です' };
     return { ok: true, captured_at: new Date(stamp).toISOString(), verified_at: new Date(now).toISOString(),
-      method: 'archived_profile_body', scope: [job.target_kind === 'replies' ? 'replies' : 'profile'], posts_verification: p.post_ids?.length ? 'confirmed' : 'unconfirmed',
+      method: 'archived_profile_body', captured_target_url: captured,
+      scope: captured.endsWith('/with_replies') && p.replies_tab_confirmed ? ['profile', 'replies'] : ['profile'],
+      posts_verification: p.post_ids?.length ? 'confirmed' : 'unconfirmed',
       post_ids: (p.post_ids || []).slice(0, 20), archived_user_id: p.user_id || '', reused_existing: reused };
   }
   function applyResult(doc, job) {
     validateArtists(doc);
     const a = doc.artists.find(a => a.id === job.artist_id);
     if (!sameAccount(a, job)) return false;
-    const e = { provider: resultProvider(job.receipt), url: resultURL(job.receipt), target_url: job.target_url, status: 'done',
+    const actualTarget = job.verification?.captured_target_url === undefined ? targetURL(job.target_url) : targetURL(job.verification.captured_target_url);
+    const hadPrimary = Boolean(a.archive_status === 'done' && a.archive_url);
+    const e = { provider: resultProvider(job.receipt), url: resultURL(job.receipt), target_url: actualTarget,
+      requested_target_url: job.target_url, status: 'done',
       job_id: job.job_id, event_key: job.event_key, x_user_id: job.expected_x_user_id, requested_at: job.adopted_existing ? null : job.submission_started_at,
       captured_at: job.verification.captured_at, saved_at: job.verification.verified_at, content_verified_at: job.verification.verified_at,
       verification_method: job.verification.method, verified_scope: job.verification.scope, posts_verification: job.verification.posts_verification,
       reused_existing: job.verification.reused_existing };
-    if (!e.url || processingURL(e.url) || e.provider !== (job.provider || 'ghostarchive') || !job.verification.ok) throw Error('未検証の結果は保存済みにできません');
+    if (!e.url || processingURL(e.url) || e.provider !== (job.provider || 'ghostarchive') || !job.verification.ok ||
+        !targetCovers(job.target_url, actualTarget)) throw Error('未検証の結果は保存済みにできません');
+    const sameCapture = (a.archives || []).filter(p => p?.status === 'done' && resultURL(p.url) === e.url &&
+      (p.x_user_id ? p.x_user_id === e.x_user_id :
+        targetURL(p.target_url).replace(/\/with_replies$/, '') === actualTarget.replace(/\/with_replies$/, '')));
+    const scopes = new Set([...(e.verified_scope || []), ...sameCapture.flatMap(p => p.verified_scope || [])]);
+    e.verified_scope = ['profile', 'replies'].filter(value => scopes.has(value));
     a.archives = [...(a.archives || []).filter(p => p.url !== e.url), e];
-    if (job.target_kind !== 'replies') {
+    if (e.verified_scope.includes('profile') && (!actualTarget.endsWith('/with_replies') || !hadPrimary)) {
       a.archive_status = 'done'; a.archive_url = e.url; a.archive_provider = e.provider;
       a.archive_target_url = e.target_url; a.archive_checked_at = e.content_verified_at;
     }
@@ -177,7 +195,7 @@
     return true;
   }
   const api = { MINUTE, HOUR, DAY, DEFAULT_PROVIDER, ARCHIVE_HOSTS, ADAPTERS, ADAPTER_VERSION, provider, adapterVersion, providerLabel, homeURL, origins,
-    LABELS, TERMINAL, UNKNOWN_RECEIPT_ERRORS, attention, jobLabel, submissionHold, norm, handle, config, scope, profileURL, targetURL, repliesTagged, searchTarget, resultURL, resultProvider, processingURL, receiptTransition,
+    LABELS, TERMINAL, UNKNOWN_RECEIPT_ERRORS, attention, jobLabel, submissionHold, norm, handle, config, scope, profileURL, targetURL, targetCovers, repliesTagged, searchTarget, resultURL, resultProvider, processingURL, receiptTransition,
     eligible, completed, sameAccount, classifyProfile, validateArtists, ledger, verify, applyResult };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.AutoArchiveCore = api;
 })(globalThis);

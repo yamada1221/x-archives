@@ -18585,6 +18585,21 @@
       "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/uochandeath/with_replies",
       "archive_checked_at": "2026-11-14T11:58:50.586Z"
+    },
+    {
+      "id": "mwgf3pxoh8a7",
+      "name": "CurrencyMartin",
+      "x_account": "CurrencyMartin",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "スパム",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-14",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

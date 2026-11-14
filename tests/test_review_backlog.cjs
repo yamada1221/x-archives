@@ -42,7 +42,7 @@ test('settings retain all older attention states and replies metadata beyond a 1
     { job_id: 'old-review', registered_handle: 'OldReview', state: 'needs_review' },
     { job_id: 'old-unknown', registered_handle: 'OldUnknown', state: 'submission_unknown' },
     { job_id: 'old-human', registered_handle: 'OldHuman', state: 'opening', access_wait: 'human',
-      target_kind: 'replies', executor_device_id: 'device', provider: 'archive.today' },
+      target_kind: 'replies', target_url: 'https://x.com/OldHuman/with_replies', executor_device_id: 'device', provider: 'archive.today' },
     { job_id: 'old-limit', registered_handle: 'OldLimit', state: 'retry_wait', access_wait: 'rate_limit',
       executor_device_id: 'other', provider: 'archive.today' }
   ];
@@ -59,6 +59,7 @@ test('settings retain all older attention states and replies metadata beyond a 1
   assert.equal(full.jobs.filter(j => j.job_id === 'recent-review').length, 1);
   const human = full.jobs.find(j => j.job_id === 'old-human');
   assert.equal(human.target_kind, 'replies');
+  assert.equal(human.target_url, 'https://x.com/oldhuman/with_replies');
   assert.equal(human.label, '人間確認待ち');
   assert.equal(human.attention, true);
   assert.equal(human.access_wait, 'human');

@@ -5,6 +5,9 @@
   const BODY_READER_REVISION = 'archive-card-labels-20261027';
   const RECEIPT_READER_REVISION = 'archive-challenge-recovery-20261029';
   const BODY_READER_ERRORS = new Set(['プロフィール本文・対象ハンドルを確認できません', '本文から同じアカウントだと確認する証拠が不足しています']);
+  const MANUAL_RECEIPT_REPLACEMENT_ERRORS = new Set(['保存先の対象URLが一致しません', '保存先の対象アカウントが一致しません',
+    '保存先は返信タブです。プロフィールの保存結果を選んでください', '保存先はプロフィールです。返信タブの保存結果を選んでください',
+    '保存対象の種類が一致しません']);
   class Engine {
     constructor({ config, store, git, ghost, profile, device, now = Date.now, uuid = () => crypto.randomUUID(), ready = async () => {}, canSubmit = async () => true }) {
       Object.assign(this, { config, store, git, ghost, profile, device, now, uuid, ready, canSubmit });
@@ -16,7 +19,7 @@
       job.updated_at = new Date(this.now()).toISOString(); job.dirty = true;
       state.jobs = [...state.jobs.filter(j => j.job_id !== job.job_id), job];
     }
-    publicJob(job) { const { dirty, applied, ...value } = job; return value; }
+    publicJob(job) { const { dirty, applied, receiptCorrection, rejectedReceiptCorrections, ...value } = job; return value; }
     prepareBodyRechecks(state) {
       const revisions = new Map(state.bodyReaderRevisions || []);
       let changed = 0;
@@ -105,21 +108,61 @@
     async artists() { return C.validateArtists((await this.git.get(this.config.path)).data); }
     async flush(state) {
       for (const job of state.jobs.filter(j => j.dirty)) {
-        const shared = await this.git.update(JOBS, old => {
+        let shared;
+        try { shared = await this.git.update(JOBS, old => {
           const d = C.ledger(old), i = d.jobs.findIndex(j => j.job_id === job.job_id), r = d.jobs[i];
-          if (r && (r.artist_id !== job.artist_id || (r.expected_x_user_id && job.expected_x_user_id && r.expected_x_user_id !== job.expected_x_user_id))) throw Error('共有ジョブのアカウントが一致しません');
+          const conflict = reason => {
+            const error = Error(reason);
+            if (job.receiptCorrection) error.receiptCorrectionConflict = { remote: r ? this.publicJob(r) : null };
+            throw error;
+          };
+          if (r && (r.artist_id !== job.artist_id || (r.expected_x_user_id && job.expected_x_user_id && r.expected_x_user_id !== job.expected_x_user_id))) conflict('共有ジョブのアカウントが一致しません');
           const progressed = r?.receipt && job.receipt_history?.includes(r.receipt) && C.receiptTransition(r.receipt, job.receipt);
           const remoteProgressed = job.receipt && r?.receipt_history?.includes(job.receipt) && C.receiptTransition(job.receipt, r.receipt);
-          if (r?.receipt && job.receipt && r.receipt !== job.receipt && !progressed && !remoteProgressed) throw Error('受付URLが競合しています。結果を確認してください');
+          const correction = job.receiptCorrection;
+          const sameCorrectionScope = r && (r.provider || 'ghostarchive') === (job.provider || 'ghostarchive') &&
+            C.resultProvider(job.receipt) === (r.provider || 'ghostarchive') &&
+            C.targetURL(r.target_url) && C.targetURL(r.target_url) === C.targetURL(job.target_url) &&
+            (r.target_kind || 'profile') === (job.target_kind || 'profile') &&
+            r.expected_x_user_id === job.expected_x_user_id && r.identity?.handle?.toLowerCase() === job.identity?.handle?.toLowerCase();
+          const corrected = correction && correction.from === r?.receipt && correction.to === job.receipt &&
+            job.receipt_history?.includes(r.receipt) && r.state === 'needs_review' &&
+            MANUAL_RECEIPT_REPLACEMENT_ERRORS.has(r.last_error) && correction.reason === r.last_error && correction.updated_at === r.updated_at &&
+            sameCorrectionScope;
+          const alreadyCorrected = correction && correction.to === job.receipt && r?.receipt === job.receipt &&
+            job.receipt_history?.includes(correction.from) && sameCorrectionScope;
+          if (correction && !corrected && !alreadyCorrected) conflict('受付URLが競合しています。結果を確認してください');
+          if (job.receipt && r?.receipt !== job.receipt && (r?.receipt || correction) && !progressed && !remoteProgressed && !corrected) conflict('受付URLが競合しています。結果を確認してください');
           // A stale cache must not undo a completed capture or a receipt recovered
           // by another executor. Preserve the remote evidence in that case.
           let value = this.publicJob(job);
           if (r?.state === 'succeeded' || remoteProgressed || (r?.receipt && !job.receipt) || (r?.submission_started_at && !job.submission_started_at)) value = r;
           if (i < 0) d.jobs.push(value); else d.jobs[i] = value;
           return d;
-        });
+        }); } catch (error) {
+          if (error.receiptCorrectionConflict) {
+            const rejectedReceiptCorrections = [...(job.rejectedReceiptCorrections || []), {
+              receipt: job.receiptCorrection.to, reason: error.message, rejected_at: new Date(this.now()).toISOString()
+            }].slice(-10);
+            const remote = error.receiptCorrectionConflict.remote;
+            // The server rejected this explicit selection. Resume from its
+            // authoritative evidence, never verify the refused local receipt.
+            if (remote) {
+              const restored = { ...remote, dirty: false, rejectedReceiptCorrections,
+                applied: job.applied === true && job.receipt === remote.receipt };
+              state.jobs = state.jobs.map(j => j.job_id === job.job_id ? restored : j);
+            } else {
+              state.jobs = state.jobs.filter(j => j.job_id !== job.job_id);
+              state.rejectedReceiptCorrections = [...(state.rejectedReceiptCorrections || []),
+                ...rejectedReceiptCorrections.map(rejection => ({ job_id: job.job_id, ...rejection }))].slice(-10);
+            }
+            state.lastError = error.message; await this.save(state);
+          }
+          throw error;
+        }
         const saved = shared.jobs.find(j => j.job_id === job.job_id);
         Object.assign(job, saved, { dirty: false });
+        delete job.receiptCorrection;
         if (!saved.access_wait) delete job.access_wait;
         if (!saved.receipt_recovery_required) delete job.receipt_recovery_required;
         await this.save(state);
@@ -139,7 +182,8 @@
       const local = new Map(state.jobs.map(j => [j.job_id, j]));
       for (const job of remote.jobs) {
         const cached = local.get(job.job_id);
-        if (!cached?.dirty) local.set(job.job_id, { ...job, applied: cached?.applied || false, dirty: false });
+        if (!cached?.dirty) local.set(job.job_id, { ...this.publicJob(job), applied: cached?.applied || false, dirty: false,
+          ...(cached?.rejectedReceiptCorrections ? { rejectedReceiptCorrections: cached.rejectedReceiptCorrections } : {}) });
       }
       state.jobs = [...local.values()]; state.provider = remote.provider;
       return remote;
@@ -409,7 +453,11 @@
         if (!job || !job.identity || job.state === 'succeeded') throw Error('確認対象のジョブが見つかりません');
         if (C.resultProvider(receipt) !== (job.provider || 'ghostarchive')) throw Error('このジョブと同じ保存先の結果URLを入力してください');
         if (job.receipt && receipt !== job.receipt) {
-          if (!C.receiptTransition(job.receipt, receipt)) throw Error('受付済みの結果URLを別の保存に変更できません');
+          const correctingMismatch = job.state === 'needs_review' && MANUAL_RECEIPT_REPLACEMENT_ERRORS.has(job.last_error);
+          if (!C.receiptTransition(job.receipt, receipt)) {
+            if (!correctingMismatch) throw Error('受付済みの結果URLを別の保存に変更できません');
+            job.receiptCorrection = { from: job.receipt, to: receipt, reason: job.last_error, updated_at: job.updated_at };
+          }
           job.receipt_history = [...new Set([...(job.receipt_history || []), job.receipt])];
         }
         this.clearAccessWait(job);

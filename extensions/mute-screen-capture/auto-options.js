@@ -32,12 +32,20 @@ function render(data) {
   jobsRenderKey = viewKey; jobs.replaceChildren();
   for (const j of shown) {
     const box = document.createElement('div'); box.className = 'job';
-    const name = document.createElement('strong'); name.textContent = `@${j.handle}${j.target_kind === 'replies' ? '（返信タブ）' : ''} — ${j.label} / ${C.providerLabel(j.provider)}${j.test ? '（接続テスト）' : ''}`; box.append(name);
-    const detail = document.createElement('p'); detail.textContent = [j.sync_pending ? 'GitHub同期待ち' : '', j.error,
+    const targetLabel = j.target_kind === 'replies' ? '返信タブ' : 'プロフィール';
+    const target = C.targetURL(j.target_url) || C.targetURL('https://x.com/' + j.handle + (j.target_kind === 'replies' ? '/with_replies' : ''));
+    const name = document.createElement('strong'); name.textContent = `@${j.handle}（${targetLabel}） — ${j.label} / ${C.providerLabel(j.provider)}${j.test ? '（接続テスト）' : ''}`; box.append(name);
+    const detail = document.createElement('p'); detail.textContent = [target ? '保存対象: ' + target : '', j.sync_pending ? 'GitHub同期待ち' : '', j.error,
       j.captured_at ? '取得日時: ' + new Date(j.captured_at).toLocaleString() : '',
       j.scope?.length ? (j.scope.includes('replies') ? '返信タブ確認済み' : 'プロフィール確認済み') + '／投稿本文' + (j.posts === 'confirmed' ? 'も確認' : 'は未確認') : ''].filter(Boolean).join('\n'); box.append(detail);
     if (j.receipt) { const link = document.createElement('a'); link.href = j.receipt; link.target = '_blank'; link.rel = 'noopener'; link.textContent = '保存結果を開く'; box.append(link); }
     if (j.attention || C.attention(j)) {
+      if (target) {
+        const history = document.createElement('a');
+        history.href = C.provider(j.provider) === 'archive.today' ? C.homeURL(j.provider) + target : C.homeURL(j.provider) + 'search?term=' + encodeURIComponent(target);
+        history.target = '_blank'; history.rel = 'noopener'; history.textContent = targetLabel + 'の保存一覧を開く'; history.style.display = 'block';
+        box.append(history);
+      }
       const show = document.createElement('button'); show.textContent = '保存先で確認'; show.className = 'secondary';
       show.onclick = () => action('AUTO_SHOW', { job_id: j.job_id }); box.append(show);
       if (j.can_recheck) {
@@ -45,6 +53,7 @@ function render(data) {
         recheck.textContent = '確認後に再確認'; recheck.onclick = () => action('AUTO_RECHECK', { job_id: j.job_id }); box.append(recheck);
       }
       const input = document.createElement('input'); input.type = 'url'; input.placeholder = j.provider === 'ghostarchive' ? 'https://ghostarchive.org/archive/…' : 'https://archive.li/…'; input.setAttribute('aria-label', '@' + j.handle + ' の結果URL');
+      input.title = targetLabel + 'の保存結果URLを選んでください。';
       input.dataset.jobId = j.job_id; input.value = receiptDrafts.has(j.job_id) ? receiptDrafts.get(j.job_id) : (j.receipt || '');
       input.addEventListener('input', () => receiptDrafts.set(j.job_id, input.value));
       const picker = document.createElement('button'); picker.type = 'button'; picker.className = 'secondary'; picker.textContent = '開いている保存ページから選ぶ';
@@ -53,14 +62,14 @@ function render(data) {
         try {
           const result = await send('AUTO_RECEIPT_CANDIDATES', { job_id: j.job_id });
           receiptCandidates.set(j.job_id, result.candidates || []); jobsRenderKey = ''; render(latest);
-          message.textContent = result.candidates?.length ? '候補から保存結果を選び、本文を再確認してください。' : '候補が見つかりません。保存一覧または個別の保存結果のタブを開いたまま、もう一度押してください。';
+          message.textContent = result.candidates?.length ? targetLabel + 'の候補から保存結果を選び、本文を再確認してください。' : targetLabel + 'に一致する候補が見つかりません。保存対象が一致する個別の保存結果か、その対象の保存一覧を開いて、もう一度押してください。';
         } catch (e) { message.textContent = e.message; }
         finally { picker.disabled = false; }
       };
       box.append(picker);
       for (const candidate of receiptCandidates.get(j.job_id) || []) {
         const choose = document.createElement('button'); choose.type = 'button'; choose.className = 'secondary';
-        choose.textContent = [candidate.label || candidate.source, candidate.url].filter(Boolean).join('\n');
+        choose.textContent = [candidate.label, candidate.source, candidate.url].filter(Boolean).join('\n');
         choose.onclick = () => { input.value = candidate.url; receiptDrafts.set(j.job_id, candidate.url); input.focus(); message.textContent = '結果URLを入力しました。「この結果の本文を再確認」を押してください。'; };
         box.append(choose);
       }

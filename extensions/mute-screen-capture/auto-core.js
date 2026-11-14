@@ -132,8 +132,16 @@
     return doc;
   }
   function verify(outer, frames, job, now) {
-    if (!outer || !targetURL(job.target_url) || targetURL(outer.original_url) !== targetURL(job.target_url)) return { ok: false, reason: '保存先の対象URLが一致しません' };
-    if (targetURL(job.target_url).endsWith('/with_replies') !== (job.target_kind === 'replies')) return { ok: false, reason: '保存対象の種類が一致しません' };
+    const requested = targetURL(job.target_url), captured = targetURL(outer?.original_url);
+    if (!requested) return { ok: false, reason: '保存対象のURLを確認できません' };
+    if (!captured) return { ok: false, reason: '保存先の対象URLを確認できません' };
+    if (captured !== requested) {
+      if (captured.replace(/\/with_replies$/, '') !== requested.replace(/\/with_replies$/, '')) return { ok: false, reason: '保存先の対象アカウントが一致しません' };
+      return { ok: false, reason: captured.endsWith('/with_replies') ?
+        '保存先は返信タブです。プロフィールの保存結果を選んでください' :
+        '保存先はプロフィールです。返信タブの保存結果を選んでください' };
+    }
+    if (requested.endsWith('/with_replies') !== (job.target_kind === 'replies')) return { ok: false, reason: '保存対象の種類が一致しません' };
     const stamp = Date.parse(outer.captured_at);
     if (!Number.isFinite(stamp) || stamp > now + 5 * MINUTE) return { ok: false, reason: '保存先の取得時刻を確認できません' };
     const p = frames.find(f => f.kind === 'profile' && f.handle?.toLowerCase() === job.identity?.handle.toLowerCase());

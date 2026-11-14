@@ -18588,7 +18588,7 @@
     },
     {
       "id": "mwgf3pxoh8a7",
-      "name": "CurrencyMartin",
+      "name": "Martin Walugembe",
       "x_account": "CurrencyMartin",
       "threads_account": "",
       "threads_share_url": "",
@@ -18598,8 +18598,11 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-14",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1966136373196333056/T2I019Ba_400x400.jpg",
+      "profile_fetched_at": "2026-11-14",
+      "profile_source": "x_html"
     }
   ],
   "monitoring_summary": {

@@ -18350,7 +18350,7 @@
     },
     {
       "id": "mwfxk31h6xqp",
-      "name": "rty1096245",
+      "name": "根暗/陰キャ/幼稚/短気/自己中心的/わがまま/性格破綻/人格難あり/逆ギレ常習/自己矛盾",
       "x_account": "rty1096245",
       "threads_account": "",
       "threads_share_url": "",
@@ -18360,8 +18360,31 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-14",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2108868454598205440/2V-hYv21_normal.jpg",
+      "x_bio": "場違い発言常習/悪口製造機/口だけ番長/コミュ障/会話不成立/嫌われ体質/周囲の迷惑/社会不適合/ニート/借金持ち/恋愛経験皆無/童貞/恋愛弱者/友達皆無/低身長コンプ/顔面偏差値底辺/無能自認/劣等感の塊/存在価値迷子/人生ガチャ爆死/人生詰み/救済不能/社会の粗大ゴミ/遺伝子の敗北者/自然淘汰候補/存在が事故",
+      "x_bio_fetched_at": "2026-11-14T04:53:47.694746+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-14",
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-14T04:53:47+00:00",
+        "x_account": "rty1096245",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=rty1096245",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/rty1096245",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

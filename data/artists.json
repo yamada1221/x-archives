@@ -18309,6 +18309,21 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1637110272543571969; screen_name=H08gBwmdwp73242"
         }
       ]
+    },
+    {
+      "id": "mwfrxe0j7vkv",
+      "name": "meganemegane727",
+      "x_account": "meganemegane727",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-14",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

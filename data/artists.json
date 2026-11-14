@@ -18640,7 +18640,7 @@
     },
     {
       "id": "mwgk076lkcs8",
-      "name": "haru_u7216",
+      "name": "投資家",
       "x_account": "haru_u7216",
       "threads_account": "",
       "threads_share_url": "",
@@ -18650,8 +18650,31 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-14",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2121019919240429568/y0ETR-EG_normal.jpg",
+      "x_bio": "元楽天証券社員｜株式投資歴28年📈\n長年の経験を活かして日本株を徹底分析。\n短期急騰株から長期成長株まで幅広く研究。\n次の大化け候補をいち早くキャッチ。\n相場のチャンスを分かりやすくお届けします。",
+      "x_bio_fetched_at": "2026-11-14T15:22:38.569764+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-14",
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-14T15:22:38+00:00",
+        "x_account": "haru_u7216",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=haru_u7216",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/haru_u7216",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

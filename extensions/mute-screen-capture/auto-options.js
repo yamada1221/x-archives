@@ -37,7 +37,7 @@ function render(data) {
     const name = document.createElement('strong'); name.textContent = `@${j.handle}（${targetLabel}） — ${j.label} / ${C.providerLabel(j.provider)}${j.test ? '（接続テスト）' : ''}`; box.append(name);
     const detail = document.createElement('p'); detail.textContent = [target ? '保存対象: ' + target : '', j.sync_pending ? 'GitHub同期待ち' : '', j.error,
       j.captured_at ? '取得日時: ' + new Date(j.captured_at).toLocaleString() : '',
-      j.scope?.length ? (j.scope.includes('replies') ? '返信タブ確認済み' : 'プロフィール確認済み') + '／投稿本文' + (j.posts === 'confirmed' ? 'も確認' : 'は未確認') : ''].filter(Boolean).join('\n'); box.append(detail);
+      j.scope?.length ? [j.scope.includes('profile') ? 'プロフィール' : '', j.scope.includes('replies') ? '返信タブ' : ''].filter(Boolean).join('・') + '確認済み／投稿本文' + (j.posts === 'confirmed' ? 'も確認' : 'は未確認') : ''].filter(Boolean).join('\n'); box.append(detail);
     if (j.receipt) { const link = document.createElement('a'); link.href = j.receipt; link.target = '_blank'; link.rel = 'noopener'; link.textContent = '保存結果を開く'; box.append(link); }
     if (j.attention || C.attention(j)) {
       if (target) {

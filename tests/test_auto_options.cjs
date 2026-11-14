@@ -164,3 +164,18 @@ test('the same account has distinct profile and replies editors with the exact s
     assert.equal(await profile.locator('input').inputValue(), 'https://archive.li/Pro01');
   });
 });
+
+test('a verified replies capture shows both confirmed areas for a profile request', async () => {
+  await screen(async page => {
+    await page.evaluate(() => {
+      Object.assign(fixtureStatus.jobs[0], { state: 'succeeded', label: '保存済み', target_kind: 'profile',
+        scope: ['profile', 'replies'], posts: 'confirmed', error: '', receipt: 'https://archive.li/Rep01' });
+      return fixtureStatusPoll();
+    });
+    assert.match(await page.locator('.job strong').innerText(), /@X（プロフィール）/);
+    assert.match(await page.locator('.job p').textContent(), /プロフィール・返信タブ確認済み／投稿本文も確認/);
+    assert.equal(await page.getByRole('link', { name: '保存結果を開く', exact: true }).getAttribute('href'), 'https://archive.li/Rep01');
+    assert.equal(await page.getByRole('button', { name: 'この結果の本文を再確認', exact: true }).count(), 0);
+    assert.equal(await page.evaluate(() => fixtureMessages.some(message => message.type === 'AUTO_TEST' || message.type === 'AUTO_START')), false);
+  });
+});

@@ -45,21 +45,25 @@
           const frames = await chrome.scripting.executeScript({ target: { tabId: tab.id }, func,
             args: provider === 'ghostarchive' ? [u.pathname.split('/').filter(Boolean).pop()] : [] });
           const page = frames[0]?.result;
-          // A result tab may belong to another account or to its replies tab.
-          // Read its wrapper metadata before offering it; body verification
+          // A same-account replies capture can also contain its profile.
+          // Read the wrapper target before offering it; body verification
           // still runs separately when the user adopts the selected result.
-          if (page?.kind === 'archive' && C.targetURL(page.original_url) === target &&
+          const capturedTarget = C.targetURL(page?.original_url);
+          if (page?.kind === 'archive' && C.targetCovers(target, capturedTarget) &&
               C.resultProvider(page.receipt) === provider && C.resultURL(page.receipt) === C.resultURL(tab.url)) {
-            add(page.receipt, tab.title, '保存結果ページ（対象URL確認済み・本文未確認）');
+            add(page.receipt, tab.title, capturedTarget !== target ?
+              '返信タブの保存結果（プロフィール確認候補・本文未確認）' : '保存結果ページ（対象URL確認済み・本文未確認）');
           }
         } catch (_) { /* Missing metadata, challenges or a changed tab are excluded. */ }
         continue;
       }
-      if (C.searchTarget(tab.url) !== target || inspected >= 5) continue;
+      const searchTarget = C.searchTarget(tab.url);
+      if (!C.targetCovers(target, searchTarget) || inspected >= 5) continue;
       inspected++;
       try {
         const frames = await chrome.scripting.executeScript({ target: { tabId: tab.id }, func: readSearchResultLinks, args: [{ expectedURL: tab.url, origins }] });
-        for (const link of frames[0]?.result || []) add(link.url, link.label, '保存一覧のリンク（本文未確認）');
+        for (const link of frames[0]?.result || []) add(link.url, link.label, searchTarget !== target ?
+          '返信タブの保存結果（プロフィール確認候補・本文未確認）' : '保存一覧のリンク（本文未確認）');
       } catch (_) { /* An unloaded/challenge page yields no selectable result. */ }
     }
     return [...found.values()];

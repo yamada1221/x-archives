@@ -51,7 +51,7 @@ test('receipt picking respects existing site permissions', async () => {
 for (const provider of ['archive.today', 'ghostarchive']) {
   const receipt = n => provider === 'archive.today' ? 'https://archive.li/Ab' + String(n).padStart(3, '0') : 'https://ghostarchive.org/archive/Ab' + n;
   const inspector = provider === 'archive.today' ? inspectTodayDocument : inspectGhostDocument;
-  test(provider + ' direct results require the exact account and profile/replies target without side effects', async () => {
+  test(provider + ' profile candidates include same-account replies captures while replies candidates exclude profiles', async () => {
     const mutations = [], reads = [];
     const forbidden = name => () => { mutations.push(name); throw Error('Unexpected ' + name); };
     const pages = [
@@ -62,7 +62,8 @@ for (const provider of ['archive.today', 'ghostarchive']) {
       { kind: 'blocked', original_url: 'https://x.com/X', block_type: 'human' },
       { kind: 'archive', original_url: 'https://x.com/X', receipt: provider === 'archive.today' ? 'https://ghostarchive.org/archive/Wrong' : 'https://archive.li/Wrong' },
       { kind: 'processing', original_url: 'https://x.com/X' },
-      { kind: 'archive', original_url: 'https://x.com/X', receipt: receipt(99) }
+      { kind: 'archive', original_url: 'https://x.com/X', receipt: receipt(99) },
+      { kind: 'archive', original_url: 'https://x.com/Other/with_replies' }
     ].map((page, index) => ({ receipt: receipt(index), ...page }));
     const tabs = pages.map((_, index) => ({ id: index, url: receipt(index), title: 'Saved ' + index, status: 'complete' }));
     const chrome = {
@@ -78,8 +79,9 @@ for (const provider of ['archive.today', 'ghostarchive']) {
       } }
     };
     const profile = await collect(chrome, { provider, target_url: 'https://x.com/X' });
-    assert.deepEqual(profile.map(result => result.url), [receipt(0)]);
+    assert.deepEqual(profile.map(result => result.url), [receipt(0), receipt(1)]);
     assert.match(profile[0].source, /対象URL確認済み.*本文未確認/);
+    assert.equal(profile[1].source, '返信タブの保存結果（プロフィール確認候補・本文未確認）');
     const replies = await collect(chrome, { provider, target_url: 'https://x.com/X/with_replies' });
     assert.deepEqual(replies.map(result => result.url), [receipt(1)]);
     assert.equal(reads.length, pages.length * 2);
@@ -97,18 +99,25 @@ for (const provider of ['archive.today', 'ghostarchive']) {
     assert.equal(injected, 0);
   });
 
-  test(provider + ' reads only the matching target-kind search list and keeps links unverified', async () => {
+  test(provider + ' profile searches include replies lists but replies searches exclude profile lists', async () => {
     const searched = [], base = provider === 'archive.today' ? 'https://archive.li/' : 'https://ghostarchive.org/search?term=';
     const search = target => base + (provider === 'archive.today' ? target : encodeURIComponent(target));
     const chrome = { tabs: { query: async () => [{ id: 1, url: search('https://x.com/X') },
       { id: 2, url: search('https://x.com/X/with_replies') }, { id: 3, url: search('https://x.com/Other/with_replies') }] },
     permissions: { contains: async () => true }, scripting: { executeScript: async request => {
       searched.push(request.target.tabId);
-      return [{ result: [{ url: receipt(1), label: 'Unverified archive' }] }];
+      return [{ result: [{ url: receipt(request.target.tabId), label: 'Unverified archive' }] }];
     } } };
+    const profile = await collect(chrome, { provider, target_url: 'https://x.com/X' });
+    assert.deepEqual(searched, [1, 2]);
+    assert.deepEqual(profile.map(result => result.url), [receipt(1), receipt(2)]);
+    assert.match(profile[0].source, /保存一覧.*本文未確認/);
+    assert.equal(profile[1].source, '返信タブの保存結果（プロフィール確認候補・本文未確認）');
+    searched.length = 0;
     const results = await collect(chrome, { provider, target_url: 'https://x.com/X/with_replies' });
     assert.deepEqual(searched, [2]);
     assert.equal(results.length, 1);
+    assert.equal(results[0].url, receipt(2));
     assert.match(results[0].source, /保存一覧.*本文未確認/);
   });
 }

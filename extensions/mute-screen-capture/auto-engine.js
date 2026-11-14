@@ -3,6 +3,8 @@
   const C = typeof module !== 'undefined' && module.exports ? require('./auto-core.js') : root.AutoArchiveCore;
   const JOBS = 'data/archive_jobs.json', CONFIG = 'data/auto_archive_config.json';
   const BODY_READER_REVISION = 'archive-card-labels-20261027';
+  const PROFILE_COVERAGE_REVISION = 'profile-from-reply-capture-20261114';
+  const PROFILE_COVERAGE_ERRORS = new Set(['保存先の対象URLが一致しません', '保存先は返信タブです。プロフィールの保存結果を選んでください']);
   const RECEIPT_READER_REVISION = 'archive-challenge-recovery-20261029';
   const BODY_READER_ERRORS = new Set(['プロフィール本文・対象ハンドルを確認できません', '本文から同じアカウントだと確認する証拠が不足しています']);
   const MANUAL_RECEIPT_REPLACEMENT_ERRORS = new Set(['保存先の対象URLが一致しません', '保存先の対象アカウントが一致しません',
@@ -24,13 +26,19 @@
       const revisions = new Map(state.bodyReaderRevisions || []);
       let changed = 0;
       for (const job of [...state.jobs]) {
-        if (job.kind !== 'profile' || job.provider !== 'archive.today' || job.executor_device_id !== this.device ||
-            job.state !== 'needs_review' || !BODY_READER_ERRORS.has(job.last_error) ||
-            C.resultProvider(job.receipt) !== 'archive.today' || revisions.get(job.job_id) === BODY_READER_REVISION) continue;
+        const requested = C.targetURL(job.target_url);
+        const coverage = job.target_kind !== 'replies' && requested && !requested.endsWith('/with_replies') && PROFILE_COVERAGE_ERRORS.has(job.last_error);
+        const revision = coverage ? PROFILE_COVERAGE_REVISION : BODY_READER_REVISION;
+        const savedProvider = C.resultProvider(job.receipt);
+        const matchingProvider = coverage ? savedProvider === (job.provider || 'ghostarchive') : job.provider === 'archive.today' && savedProvider === 'archive.today';
+        if (job.kind !== 'profile' || job.executor_device_id !== this.device || job.state !== 'needs_review' ||
+            (!BODY_READER_ERRORS.has(job.last_error) && !coverage) || !matchingProvider ||
+            revisions.get(job.job_id) === revision || !coverage && revisions.get(job.job_id) === PROFILE_COVERAGE_REVISION) continue;
         // Retry the recorded receipt, never the original save form. Keep the
         // original submission time, request count and receipt history intact.
-        revisions.set(job.job_id, BODY_READER_REVISION);
+        revisions.set(job.job_id, revision);
         job.state = 'processing'; job.verification_checks = 0; job.next_attempt_at = this.now(); job.last_error = '';
+        if (coverage) job.receipt_recovery_started_at = new Date(this.now()).toISOString();
         this.put(state, job); changed++;
       }
       if (changed) state.bodyReaderRevisions = [...revisions];

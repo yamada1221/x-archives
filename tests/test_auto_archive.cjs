@@ -411,10 +411,10 @@ test('reply body must confirm the requested tab and target before separate archi
   const outer={original_url:j.target_url,captured_at:new Date(now).toISOString()},p={kind:'profile',handle:'Example',name:'例',bio:'自己紹介',following:true,user_id:j.expected_x_user_id,post_ids:['987']};
   assert.equal(C.verify(outer,[p],j,now).ok,false);
   assert.equal(C.verify({...outer,original_url:'https://x.com/Example'},[{...p,replies_tab_confirmed:true}],j,now).ok,false);
-  j.verification=C.verify(outer,[{...p,replies_tab_confirmed:true}],j,now);assert.deepEqual(j.verification.scope,['replies']);
+  j.verification=C.verify(outer,[{...p,replies_tab_confirmed:true}],j,now);assert.deepEqual(j.verification.scope,['profile','replies']);
   const a={...artist(),note:'クソリプ',archive_status:'done',archive_url:'https://archive.li/Old01',archive_target_url:'https://x.com/Example'};
   const doc={artists:[a]};assert.equal(C.applyResult(doc,j),true);assert.equal(a.archive_url,'https://archive.li/Old01');
-  assert.equal(a.archives[0].target_url,j.target_url);assert.equal(a.archives[0].status,'done');
+  assert.equal(a.archives[0].target_url,C.targetURL(j.target_url));assert.equal(a.archives[0].status,'done');
 });
 test('profile and replies save independently and preserve the primary profile result',async()=>{
   const a=setup([{...artist(),note:'クソリプ'}],'archive.today');
@@ -424,7 +424,7 @@ test('profile and replies save independently and preserve the primary profile re
   await a.run(true);for(let i=0;i<10;i++){a.advance();await a.run();}
   const jobs=(await a.state()).jobs;assert.deepEqual(jobs.map(j=>j.state).sort(),['succeeded','succeeded']);assert.equal(a.calls.post,2);
   const saved=a.docs.get(a.config.path).artists[0];assert.equal(saved.archive_url,'https://archive.li/Pro01');
-  assert.deepEqual(saved.archives.map(e=>e.target_url).sort(),['https://x.com/Example','https://x.com/Example/with_replies']);
+  assert.deepEqual(saved.archives.map(e=>e.target_url).sort(),['https://x.com/example','https://x.com/example/with_replies']);
 });
 test('a mismatched reply kind and target cannot verify or enter the ledger',()=>{
   const j={job_id:'x',state:'queued',target_kind:'profile',target_url:'https://x.com/Example/with_replies'};
@@ -432,7 +432,7 @@ test('a mismatched reply kind and target cannot verify or enter the ledger',()=>
   assert.equal(C.verify({original_url:j.target_url},[],j,Date.now()).ok,false);
 });
 
-test('receipt diagnostics distinguish target metadata, account and profile/reply mismatches without accepting them',()=>{
+test('receipt diagnostics accept profile coverage from replies while rejecting reverse, account and metadata mismatches',()=>{
   const now=Date.now(),stamp=new Date(now).toISOString();
   const profile={target_url:'https://x.com/Example',expected_x_user_id:'1234567890123456789',
     identity:{handle:'Example',name:'例',bio:'自己紹介'},submission_started_at:stamp,adopted_existing:true};
@@ -442,11 +442,13 @@ test('receipt diagnostics distinguish target metadata, account and profile/reply
   const rejected=(page,job,reason)=>assert.deepEqual(C.verify(page,[body],job,now),{ok:false,reason});
   for(const job of [profile,replies]){
     const good=C.verify(outer(job.target_url),[body],job,now);
-    assert.equal(good.ok,true);assert.deepEqual(good.scope,[job.target_kind||'profile']);
+    assert.equal(good.ok,true);assert.deepEqual(good.scope,job.target_kind==='replies'?['profile','replies']:['profile']);
     assert.equal(good.archived_user_id,profile.expected_x_user_id);
     assert.equal(C.verify(outer(job.target_url),[{...body,user_id:'999'}],job,now).ok,false);
   }
-  rejected(outer('https://twitter.com/EXAMPLE/with_replies/?test=1'),profile,'保存先は返信タブです。プロフィールの保存結果を選んでください');
+  const covered=C.verify(outer('https://twitter.com/EXAMPLE/with_replies/?test=1'),[body],profile,now);
+  assert.equal(covered.ok,true);assert.deepEqual(covered.scope,['profile','replies']);
+  assert.equal(covered.captured_target_url,'https://x.com/example/with_replies');
   rejected(outer('https://www.x.com/EXAMPLE/'),replies,'保存先はプロフィールです。返信タブの保存結果を選んでください');
   for(const target of ['https://x.com/Other','https://x.com/Other/with_replies']){
     rejected(outer(target),profile,'保存先の対象アカウントが一致しません');
@@ -484,15 +486,14 @@ test('manual correction of a mismatched receipt preserves the profile job and hi
   }
 });
 
-test('a corrected receipt still fails full account, target-kind and numeric-ID verification',async()=>{
-  for(const failure of ['account','replies','id']){
+test('a corrected receipt still fails full account and numeric-ID verification',async()=>{
+  for(const failure of ['account','id']){
     const a=setup([artist()],'archive.today');a.config.enabled=false;
     const old=await seedBodyFailure(a,{receipt:'https://archive.li/Rep01',last_error:'保存先は返信タブです。プロフィールの保存結果を選んでください'});
     const inspect=a.ghost.inspect;
     a.ghost.inspect=async job=>{
       const page=await inspect(job);
       if(failure==='account')page.original_url='https://x.com/Other';
-      if(failure==='replies')page.original_url='https://x.com/Example/with_replies';
       if(failure==='id')page.frames[0].user_id='999999999';
       return page;
     };
@@ -500,8 +501,7 @@ test('a corrected receipt still fails full account, target-kind and numeric-ID v
     for(let i=0;i<3;i++){await a.run();a.advance();}
     const job=(await a.state()).jobs[0];
     assert.equal(job.state,'needs_review');assert.equal(job.verification?.ok,undefined);
-    assert.equal(job.last_error,failure==='account'?'保存先の対象アカウントが一致しません':
-      failure==='replies'?'保存先は返信タブです。プロフィールの保存結果を選んでください':'保存本文の数値IDが別のアカウントです');
+    assert.equal(job.last_error,failure==='account'?'保存先の対象アカウントが一致しません':'保存本文の数値IDが別のアカウントです');
     assert.equal(job.target_kind,old.target_kind);assert.equal(job.target_url,old.target_url);
     assert.ok(job.receipt_history.includes('https://archive.li/Rep01'));
     assert.equal(a.docs.get(a.config.path).artists[0].archive_status,undefined);
@@ -578,7 +578,7 @@ test('a manual correction cannot overwrite remote completion, a new receipt, or 
 
 test('a version conflict stays rejected across wakeups and restarts, then a fresh explicit selection can recover',async()=>{
   const a=setup([artist()],'archive.today');a.config.enabled=false;
-  const old=await seedBodyFailure(a,{receipt:'https://archive.li/Rep01',last_error:'保存先の対象URLが一致しません',updated_at:new Date(a.now()).toISOString()});
+  const old=await seedBodyFailure(a,{receipt:'https://archive.li/Rep01',last_error:'保存先の対象アカウントが一致しません',updated_at:new Date(a.now()).toISOString()});
   a.docs.get(JOBS).jobs[0].updated_at=new Date(a.now()+1000).toISOString();
   const remote=clone(a.docs.get(JOBS)),seen=[];
   const inspect=a.ghost.inspect;a.ghost.inspect=async job=>{seen.push(job.receipt);return inspect(job);};
@@ -698,5 +698,155 @@ test('same-receipt correction retries cannot overwrite a changed remote target o
     assert.deepEqual(a.engine.publicJob((await a.state()).jobs[0]),remote.jobs[0]);
     assert.equal(a.calls.writes.length,0);assert.equal(a.calls.post,0);assert.equal(a.calls.opened,0);
   }
+});
+
+function captureProof({kind='profile',captured='https://x.com/Example/with_replies',selected=true,receipt='https://archive.li/Rep01'}={}){
+  const now=Date.parse('2026-11-14T00:00:00Z'),stamp=new Date(now).toISOString();
+  const job={kind:'profile',artist_id:'one',registered_handle:'Example',expected_x_user_id:'1234567890123456789',provider:'archive.today',
+    target_kind:kind==='replies'?'replies':undefined,target_url:'https://x.com/Example'+(kind==='replies'?'/with_replies':''),
+    identity:{handle:'Example',name:'例',bio:'自己紹介'},submission_started_at:stamp,receipt};
+  const body={kind:'profile',handle:'Example',name:'例',bio:'自己紹介',following:true,user_id:job.expected_x_user_id,replies_tab_confirmed:selected};
+  const outer={original_url:captured,captured_at:stamp};
+  job.verification=C.verify(outer,[body],job,now);
+  return{job,body,outer,now};
+}
+
+test('target coverage is one-way for the same normalized account and refuses untrusted or different accounts',()=>{
+  assert.equal(C.targetCovers('https://x.com/Example','https://twitter.com/EXAMPLE/'),true);
+  assert.equal(C.targetCovers('https://x.com/Example','https://www.x.com/EXAMPLE/with_replies/?test=1'),true);
+  assert.equal(C.targetCovers('https://x.com/Example/with_replies','https://x.com/Example/with_replies'),true);
+  assert.equal(C.targetCovers('https://x.com/Example/with_replies','https://x.com/Example'),false);
+  for(const captured of ['https://x.com/Other','https://x.com/Other/with_replies','https://x.com.evil/Example','http://x.com/Example',undefined]){
+    assert.equal(C.targetCovers('https://x.com/Example',captured),false);
+  }
+  assert.equal(C.targetCovers('', 'https://x.com/Example'),false);
+});
+
+test('a reply capture proves its profile header without claiming unconfirmed replies and retains identity and time checks',()=>{
+  const {job,body,outer,now}=captureProof({selected:false,captured:'https://twitter.com/EXAMPLE/with_replies/?test=1'});
+  assert.equal(job.verification.ok,true);assert.deepEqual(job.verification.scope,['profile']);
+  assert.equal(job.verification.captured_target_url,'https://x.com/example/with_replies');
+  const both=C.verify(outer,[{...body,replies_tab_confirmed:true}],job,now);
+  assert.deepEqual(both.scope,['profile','replies']);
+  assert.equal(C.verify(outer,[{...body,user_id:'999'}],job,now).ok,false);
+  assert.equal(C.verify({...outer,original_url:'https://x.com/Other/with_replies'},[body],job,now).ok,false);
+  assert.equal(C.verify(outer,[{...body,handle:'Other'}],job,now).ok,false);
+  assert.equal(C.verify(outer,[{...body,user_id:'',bio:'違う自己紹介'}],job,now).ok,false);
+  assert.equal(C.verify({...outer,captured_at:new Date(now+10*C.MINUTE).toISOString()},[body],job,now).ok,false);
+  assert.equal(C.verify({...outer,captured_at:new Date(now-C.DAY).toISOString()},[{...body,user_id:''}],job,now).ok,false);
+  const replyJob={...job,target_kind:'replies',target_url:'https://x.com/Example/with_replies'};
+  assert.equal(C.verify(outer,[body],replyJob,now).ok,false);
+  assert.equal(C.verify({...outer,original_url:'https://x.com/Example'},[{...body,replies_tab_confirmed:true}],replyJob,now).ok,false);
+});
+
+test('archive provenance records the actual reply capture while completing only scopes that were verified',()=>{
+  const {job}=captureProof({selected:false});
+  const doc={artists:[{...artist(),note:'クソリプ'}]};assert.equal(C.applyResult(doc,job),true);
+  const saved=doc.artists[0],event=saved.archives[0];
+  assert.equal(event.target_url,'https://x.com/example/with_replies');assert.equal(event.requested_target_url,job.target_url);
+  assert.deepEqual(event.verified_scope,['profile']);assert.equal(saved.archive_target_url,event.target_url);
+  assert.equal(C.completed(saved,'profile'),true);assert.equal(C.completed(saved,'replies'),false);
+});
+
+test('a verified replies job also fills an empty primary profile and completes both scopes',()=>{
+  const {job}=captureProof({kind:'replies'});
+  const doc={artists:[{...artist(),note:'クソリプ'}]};assert.equal(C.applyResult(doc,job),true);
+  const saved=doc.artists[0];
+  assert.equal(saved.archive_url,job.receipt);assert.equal(saved.archive_target_url,'https://x.com/example/with_replies');
+  assert.deepEqual(saved.archives[0].verified_scope,['profile','replies']);
+  assert.equal(C.completed(saved,'profile'),true);assert.equal(C.completed(saved,'replies'),true);
+});
+
+test('reply coverage preserves an existing complete primary profile',()=>{
+  const {job}=captureProof();
+  const original={archive_status:'done',archive_url:'https://archive.li/Old01',archive_provider:'archive.today',
+    archive_target_url:'https://x.com/Example',archive_checked_at:'2026-01-01T00:00:00Z'};
+  const doc={artists:[{...artist(),...original}]};C.applyResult(doc,job);
+  const saved=doc.artists[0];
+  for(const [key,value]of Object.entries(original))assert.equal(saved[key],value);
+  assert.equal(saved.archives[0].url,job.receipt);assert.equal(C.completed(saved,'profile'),true);assert.equal(C.completed(saved,'replies'),true);
+});
+
+test('later profile-only verification preserves broader proof for the same capture and account',()=>{
+  const broad=captureProof({kind:'replies'}).job,narrow=captureProof({selected:false}).job;
+  const doc={artists:[{...artist(),note:'クソリプ'}]};C.applyResult(doc,broad);C.applyResult(doc,narrow);
+  const saved=doc.artists[0];assert.equal(saved.archives.length,1);
+  assert.deepEqual(saved.archives[0].verified_scope,['profile','replies']);
+  assert.equal(saved.archives[0].requested_target_url,narrow.target_url);
+  assert.equal(C.completed(saved,'profile'),true);assert.equal(C.completed(saved,'replies'),true);
+  const other={artists:[{...artist(),archives:[{status:'done',url:narrow.receipt,target_url:'https://x.com/Example/with_replies',
+    x_user_id:'999',verified_scope:['profile','replies']}]}]};
+  C.applyResult(other,narrow);assert.deepEqual(other.artists[0].archives[0].verified_scope,['profile']);
+});
+
+test('legacy completion and verification without actual-target metadata remain compatible',()=>{
+  const profile={...artist(),archives:[{status:'done',target_url:'https://x.com/Example'}]};
+  const replies={...artist(),archives:[{status:'done',target_url:'https://x.com/Example/with_replies'}]};
+  assert.equal(C.completed(profile,'profile'),true);assert.equal(C.completed(replies,'replies'),true);
+  assert.equal(C.completed(replies,'profile'),false);
+  const {job}=captureProof({captured:'https://x.com/Example'});delete job.verification.captured_target_url;
+  const doc={artists:[artist()]};assert.equal(C.applyResult(doc,job),true);
+  assert.equal(doc.artists[0].archives[0].target_url,'https://x.com/example');
+  assert.equal(doc.artists[0].archives[0].requested_target_url,job.target_url);
+  const invalid=captureProof().job;invalid.verification.captured_target_url='https://x.com/Other/with_replies';
+  assert.throws(()=>C.applyResult({artists:[artist()]},invalid),/未検証/);
+});
+
+test('old profile URL mismatches recheck a reply capture once without resubmitting and preserve submission history',async()=>{
+  for(const provider of ['archive.today','ghostarchive']){
+    const a=setup([artist()],provider);a.config.enabled=false;
+    const receipt=provider==='archive.today'?'https://archive.li/Rep01':'https://ghostarchive.org/archive/Rep01';
+    const old=await seedBodyFailure(a,{provider,receipt,receipt_history:[],last_error:'保存先は返信タブです。プロフィールの保存結果を選んでください',
+      submission_started_at:new Date(a.now()-4*C.DAY).toISOString()});
+    const inspect=a.ghost.inspect;a.ghost.inspect=async job=>({...await inspect(job),original_url:'https://x.com/Example/with_replies',
+      frames:[{kind:'profile',handle:'Example',name:'例',bio:'自己紹介',following:true,user_id:job.expected_x_user_id,replies_tab_confirmed:true}]});
+    assert.equal(await a.engine.recheckKnownBodies(),1);
+    let job=(await a.state()).jobs[0];assert.equal(job.state,'processing');assert.equal(job.receipt,receipt);
+    assert.equal(job.receipt_recovery_started_at,new Date(a.now()).toISOString());
+    await a.run();job=(await a.state()).jobs[0];
+    assert.equal(job.state,'succeeded');assert.deepEqual(job.verification.scope,['profile','replies']);
+    assert.equal(job.submission_started_at,old.submission_started_at);assert.equal(job.attempt_count,old.attempt_count);
+    assert.deepEqual(job.receipt_history,old.receipt_history);assert.equal(a.calls.post,0);assert.equal(a.calls.opened,0);
+    const saved=a.docs.get(a.config.path).artists[0];assert.equal(C.completed(saved,'profile'),true);assert.equal(C.completed(saved,'replies'),true);
+    a.restart();assert.equal(await a.engine.recheckKnownBodies(),0);
+  }
+});
+
+test('coverage rechecks do not loop after a wrong account or numeric ID and exclude other executors or reply jobs',async()=>{
+  for(const failure of ['account','id']){
+    const a=setup([artist()],'archive.today');a.config.enabled=false;
+    await seedBodyFailure(a,{last_error:'保存先の対象URLが一致しません'});
+    const inspect=a.ghost.inspect;a.ghost.inspect=async job=>{
+      const page=await inspect(job);page.original_url='https://x.com/'+(failure==='account'?'Other':'Example')+'/with_replies';
+      if(failure==='id')page.frames[0].user_id='999';return page;
+    };
+    assert.equal(await a.engine.recheckKnownBodies(),1);
+    for(let i=0;i<3;i++){await a.run();a.advance();}
+    assert.equal((await a.state()).jobs[0].state,'needs_review');a.restart();assert.equal(await a.engine.recheckKnownBodies(),0);
+    assert.equal(a.calls.post,0);assert.equal(a.docs.get(a.config.path).artists[0].archive_status,undefined);
+  }
+  for(const change of [{executor_device_id:'another-device'},
+    {target_kind:'replies',target_url:'https://x.com/Example/with_replies'}]){
+    const a=setup([artist()],'archive.today');a.config.enabled=false;
+    await seedBodyFailure(a,{last_error:'保存先の対象URLが一致しません',...change});
+    assert.equal(await a.engine.recheckKnownBodies(),0);assert.equal((await a.state()).jobs[0].state,'needs_review');
+    assert.equal(a.calls.post,0);
+  }
+});
+
+test('a queued replies request is canceled without a POST once an existing capture proves both scopes',async()=>{
+  const a=setup([{...artist(),note:'クソリプ'}],'archive.today');
+  const old=await seedBodyFailure(a,{last_error:'保存先の対象URLが一致しません',submission_started_at:new Date(a.now()-4*C.DAY).toISOString()});
+  const queued={job_id:'queued-replies',kind:'profile',target_kind:'replies',artist_id:'one',registered_handle:'Example',
+    expected_x_user_id:old.expected_x_user_id,state:'queued',provider:'archive.today',executor_device_id:'device',
+    created_at:new Date(a.now()).toISOString(),attempt_count:0,next_attempt_at:a.now()};
+  await a.engine.save({...await a.state(),jobs:[old,queued]});a.docs.get(JOBS).jobs.push(clone(queued));
+  const inspect=a.ghost.inspect;a.ghost.inspect=async job=>({...await inspect(job),original_url:'https://x.com/Example/with_replies',
+    frames:[{kind:'profile',handle:'Example',name:'例',bio:'自己紹介',following:true,user_id:job.expected_x_user_id,replies_tab_confirmed:true}]});
+  await a.run();a.advance();await a.run();
+  const state=await a.state();assert.equal(state.jobs.find(job=>job.job_id===old.job_id).state,'succeeded');
+  assert.equal(state.jobs.find(job=>job.job_id===queued.job_id).state,'canceled');
+  const saved=a.docs.get(a.config.path).artists[0];assert.equal(C.completed(saved,'profile'),true);assert.equal(C.completed(saved,'replies'),true);
+  assert.equal(a.calls.post,0);assert.equal(a.calls.opened,0);
 });
 

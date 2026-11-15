@@ -4628,13 +4628,14 @@
       "receipt": "https://archive.li/2026.11.10-144716/https://x.com/ansoku_labo/with_replies",
       "adopted_existing": true,
       "expected_x_user_id": "1582477502257061888",
-      "state": "queued",
+      "state": "needs_review",
       "provider": "archive.today",
       "created_at": "2026-11-13T03:10:35.053Z",
       "attempt_count": 0,
       "next_attempt_at": 1794539435053,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-13T03:10:35.053Z"
+      "updated_at": "2026-11-15T20:37:50.149Z",
+      "last_error": "48時間を超えて完了を確認できません。結果URLを確認してください"
     },
     {
       "job_id": "a2bfc5be-6027-48fe-a00e-aa5895758b24",

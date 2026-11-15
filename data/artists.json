@@ -18743,18 +18743,32 @@
       },
       "archives": [
         {
-          "url": "https://archive.li/2026.11.12-024316/https://x.com/uochandeath/with_replies",
           "provider": "archive.today",
-          "status": "pending",
+          "url": "https://archive.li/2026.11.12-024316/https://x.com/uochandeath/with_replies",
           "target_url": "https://x.com/uochandeath/with_replies",
-          "saved_at": "2026-11-14T11:58:50.586Z"
+          "requested_target_url": "https://x.com/uochandeath/with_replies",
+          "status": "done",
+          "job_id": "b17c932f-db6b-4481-a4e6-cf8584c4044c",
+          "event_key": "first:1869324806761660416:replies",
+          "x_user_id": "1869324806761660416",
+          "requested_at": null,
+          "captured_at": "2026-11-12T02:43:16.000Z",
+          "saved_at": "2026-11-15T21:23:50.328Z",
+          "content_verified_at": "2026-11-15T21:23:50.328Z",
+          "verification_method": "archived_profile_body",
+          "verified_scope": [
+            "profile",
+            "replies"
+          ],
+          "posts_verification": "confirmed",
+          "reused_existing": true
         }
       ],
-      "archive_status": "pending",
+      "archive_status": "done",
       "archive_url": "https://archive.li/2026.11.12-024316/https://x.com/uochandeath/with_replies",
       "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/uochandeath/with_replies",
-      "archive_checked_at": "2026-11-14T11:58:50.586Z",
+      "archive_checked_at": "2026-11-15T21:23:50.328Z",
       "monitoring": {
         "status": "active",
         "last_checked_at": "2026-11-15T12:03:14+00:00",

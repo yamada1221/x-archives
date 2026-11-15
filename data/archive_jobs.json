@@ -5291,14 +5291,23 @@
       "artist_id": "mwhbkhc3kr64",
       "registered_handle": "PMDTkxu2x0gk5B2",
       "target_kind": "replies",
-      "expected_x_user_id": "",
-      "state": "queued",
+      "expected_x_user_id": "1351773044939780102",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-15T09:11:05.860Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794733865860,
+      "next_attempt_at": 1794778311526,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-15T09:11:05.860Z"
+      "updated_at": "2026-11-15T21:31:51.526Z",
+      "identity": {
+        "id": "1351773044939780102",
+        "handle": "PMDTkxu2x0gk5B2",
+        "name": "概念",
+        "bio": "子育て中ワーママ。 5歳女児。3歳男児。都内。"
+      },
+      "target_url": "https://x.com/PMDTkxu2x0gk5B2/with_replies",
+      "event_key": "first:1351773044939780102:replies",
+      "last_error": ""
     },
     {
       "job_id": "d314738d-db57-4d5d-b98c-2b54ea23eb7f",

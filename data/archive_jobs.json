@@ -4989,13 +4989,22 @@
       "artist_id": "mweq7bzf0880",
       "registered_handle": "H08gBwmdwp73242",
       "expected_x_user_id": "1637110272543571969",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-13T21:10:35.296Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794604235296,
+      "next_attempt_at": 1794777051925,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-13T21:10:35.296Z"
+      "updated_at": "2026-11-15T21:10:51.925Z",
+      "identity": {
+        "id": "1637110272543571969",
+        "handle": "H08gBwmdwp73242",
+        "name": "etsuko",
+        "bio": ""
+      },
+      "target_url": "https://x.com/H08gBwmdwp73242",
+      "event_key": "first:1637110272543571969:profile",
+      "last_error": ""
     },
     {
       "job_id": "6b077406-12e8-493a-906c-31e6a3646a98",

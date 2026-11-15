@@ -19021,8 +19021,11 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-15",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://unavatar.io/x/_bebotodasqvier?fallback=false",
+      "profile_fetched_at": "2026-11-15",
+      "profile_source": "unavatar"
     }
   ],
   "monitoring_summary": {

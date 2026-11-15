@@ -4801,13 +4801,22 @@
       "artist_id": "mwd90f6mexc5",
       "registered_handle": "tCoba33",
       "expected_x_user_id": "1552302620244844546",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-13T09:10:36.012Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794561036012,
+      "next_attempt_at": 1794776091385,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-13T09:10:36.012Z"
+      "updated_at": "2026-11-15T20:54:51.385Z",
+      "identity": {
+        "id": "1552302620244844546",
+        "handle": "tCoba33",
+        "name": "tCoba",
+        "bio": ""
+      },
+      "target_url": "https://x.com/tCoba33",
+      "event_key": "first:1552302620244844546:profile",
+      "last_error": ""
     },
     {
       "job_id": "8cefe6ac-bebf-485f-a996-09f4b4d73ebe",

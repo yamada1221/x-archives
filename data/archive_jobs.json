@@ -5314,14 +5314,23 @@
       "kind": "profile",
       "artist_id": "mwhdjjekdzu8",
       "registered_handle": "deepdiscountsco",
-      "expected_x_user_id": "",
-      "state": "queued",
+      "expected_x_user_id": "1305435278",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-15T09:11:05.860Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794733865860,
+      "next_attempt_at": 1794778370712,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-15T09:11:05.860Z"
+      "updated_at": "2026-11-15T21:32:50.712Z",
+      "identity": {
+        "id": "1305435278",
+        "handle": "DeepDiscountsco",
+        "name": "おもしろツイート",
+        "bio": ""
+      },
+      "target_url": "https://x.com/DeepDiscountsco",
+      "event_key": "first:1305435278:profile",
+      "last_error": ""
     },
     {
       "job_id": "305b2551-abeb-4e67-b40a-b5a21127498a",

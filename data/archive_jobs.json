@@ -4157,13 +4157,22 @@
       "artist_id": "mw6n422uxvmg",
       "registered_handle": "QaaFTYXYL45okVP",
       "expected_x_user_id": "1548847358250590211",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-12T03:10:35.240Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794453035240,
+      "next_attempt_at": 1794772671051,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-12T03:10:35.240Z"
+      "updated_at": "2026-11-15T19:57:51.051Z",
+      "identity": {
+        "id": "1548847358250590211",
+        "handle": "QaaFTYXYL45okVP",
+        "name": "ボヤンスキー",
+        "bio": "ベジタリアン、💹投資判断、反共、防共、既得権益の打破、核武装、愛子様を天皇に、反高市内閣、群れ雑魚歓迎ｗ"
+      },
+      "target_url": "https://x.com/QaaFTYXYL45okVP",
+      "event_key": "first:1548847358250590211:profile",
+      "last_error": ""
     },
     {
       "job_id": "ced57796-9641-46ef-9ea0-02211941452b",

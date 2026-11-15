@@ -3549,13 +3549,22 @@
       "registered_handle": "hiropon170207",
       "target_kind": "replies",
       "expected_x_user_id": "838733713743630337",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-10T16:10:35.401Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794327035401,
+      "next_attempt_at": 1794770031791,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-10T16:10:35.401Z"
+      "updated_at": "2026-11-15T19:13:51.791Z",
+      "identity": {
+        "id": "838733713743630337",
+        "handle": "hiropon170207",
+        "name": "G-MEN",
+        "bio": ""
+      },
+      "target_url": "https://x.com/hiropon170207/with_replies",
+      "event_key": "first:838733713743630337:replies",
+      "last_error": ""
     },
     {
       "job_id": "93d301c9-8e3b-4d6c-8d64-231806b68482",

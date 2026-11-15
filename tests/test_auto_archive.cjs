@@ -28,7 +28,7 @@ function setup(rows=[artist()],selected='ghostarchive') {
   };
   const deps={config,store,git,ghost,device:'device',profile:async(h,id)=>({id:id||'1234567890123456789',handle:h,name:'例',bio:'自己紹介'}),now:()=>now,uuid:()=>`job-${++n}`,ready:async v=>calls.ready.push(v),canSubmit:async()=>calls.stopped!==true};
   const make=()=>new Engine(deps); let engine=make();
-  return {config,docs,store,calls,git,ghost,deps,get engine(){return engine;},restart(){engine=make();},advance(){now+=C.MINUTE+1;},now:()=>now,
+  return {config,docs,store,calls,git,ghost,deps,get engine(){return engine;},restart(){engine=make();},advance(){now+=C.MINUTE+1;},elapse(milliseconds){now+=milliseconds;},now:()=>now,
     async run(force=false){await engine.run({forceScan:force});},async state(){return engine.state();}};
 }
 test('first-only policy excludes monitor-only and preserves legacy completed registrations',async()=>{
@@ -82,7 +82,7 @@ test('deletion, mode change or identity change while preparing cancels without a
   }
 });
 test('stop during a send reservation suppresses the actual POST',async()=>{
-  const a=setup();await a.run(true);let checks=0;a.deps.canSubmit=async()=>++checks<2;a.restart();a.advance();await a.run();
+  const a=setup();await a.run(true);let checks=0;a.deps.canSubmit=async()=>++checks<3;a.restart();a.advance();await a.run();
   assert.equal(a.calls.post,0);assert.equal((await a.state()).jobs[0].state,'canceled');
 });
 test('profile transport failures preserve monitoring state and never confirm account loss',async()=>{
@@ -848,5 +848,194 @@ test('a queued replies request is canceled without a POST once an existing captu
   assert.equal(state.jobs.find(job=>job.job_id===queued.job_id).state,'canceled');
   const saved=a.docs.get(a.config.path).artists[0];assert.equal(C.completed(saved,'profile'),true);assert.equal(C.completed(saved,'replies'),true);
   assert.equal(a.calls.post,0);assert.equal(a.calls.opened,0);
+});
+
+function floodRows(count){return Array.from({length:count},(_,index)=>({...artist(),id:'row-'+index,x_account:'Example'+index,x_user_id:'12345678901234'+String(index).padStart(4,'0')}));}
+function floodJob(a,row,index,changes={}){
+  return{job_id:'flood-'+String(index).padStart(3,'0'),kind:'profile',artist_id:row.id,registered_handle:row.x_account,
+    expected_x_user_id:row.x_user_id,identity:{id:row.x_user_id,handle:row.x_account,name:'例',bio:'自己紹介'},
+    target_url:'https://x.com/'+row.x_account,event_key:'first:'+row.x_user_id+':profile',provider:'archive.today',state:'opening',
+    executor_device_id:'device',created_at:new Date(a.now()-C.HOUR+index).toISOString(),attempt_count:0,next_attempt_at:a.now(),...changes};
+}
+async function floodState(a,jobs,{reservations=[],provider={}}={}){
+  await a.engine.save({...await a.state(),jobs:clone(jobs),nextScanAt:a.now()+6*C.HOUR});
+  a.docs.set(JOBS,{version:1,jobs:clone(jobs),reservations:clone(reservations),provider:clone(provider)});
+}
+function mockBoundTabs(a){
+  const bindings=new Set(),opened=[],inspected=[],responses=new Map();
+  a.ghost.open=async(job,url)=>{if(!bindings.has(job.job_id)){bindings.add(job.job_id);opened.push({job_id:job.job_id,url});a.calls.opened++;}};
+  a.ghost.inspect=async(job,{allowOpen=true}={})=>{
+    inspected.push({job_id:job.job_id,receipt:job.receipt,allowOpen});
+    if(!bindings.has(job.job_id)){
+      if(!allowOpen)return{kind:'missing_binding'};
+      await a.ghost.open(job,job.receipt||C.homeURL(job.provider));
+    }
+    if(responses.has(job.job_id)){const response=responses.get(job.job_id);return typeof response==='function'?response(job):clone(response);}
+    if(job.state==='opening')return{kind:'form'};
+    return{kind:'archive',receipt:job.receipt?.replace('/wip/','/'),original_url:job.target_url,captured_at:new Date(a.now()).toISOString(),
+      frames:[{kind:'profile',handle:job.identity.handle,name:job.identity.name,bio:job.identity.bio,following:true,user_id:job.expected_x_user_id}]};
+  };
+  a.ghost.close=async job=>{bindings.delete(job.job_id);a.calls.closed++;};
+  return{bindings,opened,inspected,responses,homes:()=>opened.filter(tab=>tab.url==='https://archive.li/')};
+}
+
+test('a large queued batch prepares one home and finishes due submitted work before preparing another',async()=>{
+  const rows=floodRows(75),a=setup(rows,'archive.today'),tabs=mockBoundTabs(a);
+  await floodState(a,rows.map((row,index)=>floodJob(a,row,index,{state:'queued'})));
+  await a.run();assert.equal(tabs.homes().length,1);assert.equal(a.calls.post,0);
+  const first=tabs.homes()[0].job_id;
+  a.advance();await a.run();assert.equal(a.calls.post,1);assert.equal(tabs.homes().length,1);
+  assert.equal((await a.state()).jobs.find(job=>job.job_id===first).state,'submitting');
+  a.advance();await a.run();assert.equal(tabs.homes().length,1);
+  a.advance();await a.run();assert.equal((await a.state()).jobs.find(job=>job.job_id===first).state,'succeeded');
+  assert.equal(tabs.homes().length,1);
+  a.advance();await a.run();assert.equal(tabs.homes().length,2);assert.equal(a.calls.post,1);
+});
+
+test('full quota, interval, provider pause and five active requests prevent new homepage creation',async()=>{
+  for(const policy of ['daily','interval','pause','inflight']){
+    const rows=floodRows(6),a=setup(rows,'archive.today'),tabs=mockBoundTabs(a);
+    const jobs=[floodJob(a,rows[0],0,{state:'queued'})];
+    const options={};
+    if(policy==='daily')options.reservations=Array.from({length:20},(_,index)=>({job_id:'old-'+index,at:a.now()-C.HOUR}));
+    if(policy==='interval')options.reservations=[{job_id:'recent',at:a.now()}];
+    if(policy==='pause')options.provider={name:'archive.today',paused_until:a.now()+C.HOUR,reason:'人間確認・アクセス制限'};
+    if(policy==='inflight')jobs.push(...rows.slice(1).map((row,index)=>floodJob(a,row,index+1,{state:'processing',receipt:'https://archive.li/Ab00'+index,
+      submission_started_at:new Date(a.now()-C.MINUTE).toISOString(),attempt_count:1,next_attempt_at:a.now()+C.HOUR})));
+    await floodState(a,jobs,options);await a.run();a.restart();await a.run();
+    assert.equal(tabs.homes().length,0,policy);assert.equal(a.calls.post,0,policy);
+    assert.equal((await a.state()).jobs.find(job=>job.job_id===jobs[0].job_id).state,'queued');
+  }
+});
+
+test('home preparation reads the current shared ledger rather than the just-imported snapshot',async()=>{
+  const rows=floodRows(1),a=setup(rows,'archive.today'),tabs=mockBoundTabs(a);
+  await floodState(a,[floodJob(a,rows[0],0,{state:'queued'})]);
+  const get=a.git.get;let reads=0;
+  a.git.get=async(key,fresh)=>{
+    if(key===JOBS&&++reads===2){assert.equal(fresh,true);a.docs.get(JOBS).reservations=Array.from({length:20},(_,index)=>({job_id:'late-'+index,at:a.now()-1000}));}
+    return get(key,fresh);
+  };
+  await a.run();assert.ok(reads>=2);assert.equal(tabs.homes().length,0);assert.equal(a.calls.post,0);
+});
+
+test('preparation releases exactly at the minute and daily reservation boundaries without premature homes',async()=>{
+  for(const policy of ['interval','daily']){
+    const rows=floodRows(1),a=setup(rows,'archive.today'),tabs=mockBoundTabs(a);
+    const reservations=policy==='interval'?[{job_id:'recent',at:a.now()}]:
+      Array.from({length:21},(_,index)=>({job_id:'old-'+index,at:a.now()-C.DAY+(index===0?1000:2000)}));
+    await floodState(a,[floodJob(a,rows[0],0,{state:'queued'})],{reservations});await a.run();
+    const release=policy==='interval'?C.MINUTE:2000;
+    a.elapse(release-1);await a.run();assert.equal(tabs.homes().length,0,policy);
+    a.elapse(1);await a.run();assert.equal(tabs.homes().length,1,policy);assert.equal(a.calls.post,0);
+  }
+});
+
+test('a future stable leader parks historical opening jobs and queued jobs without canceling or closing them',async()=>{
+  const rows=floodRows(171),a=setup(rows,'archive.today'),tabs=mockBoundTabs(a);
+  const jobs=rows.map((row,index)=>floodJob(a,row,index,{state:index<96?'opening':'queued',executor_device_id:index<96?'old-device':'device'}));
+  jobs[0].next_attempt_at=a.now()+C.HOUR;
+  await floodState(a,[...jobs].reverse());
+  for(let index=0;index<5;index++){await a.run();a.restart();a.advance();}
+  assert.equal(tabs.homes().length,0);assert.equal(a.calls.closed,0);
+  a.elapse(C.HOUR);tabs.responses.set(jobs[0].job_id,{kind:'loading'});
+  for(let index=0;index<5;index++){await a.run();a.restart();a.advance();}
+  assert.equal(tabs.homes().length,1);assert.ok(tabs.inspected.every(read=>read.job_id===jobs[0].job_id));
+  tabs.bindings.clear();
+  for(let index=0;index<4;index++){await a.run();a.restart();a.advance();}
+  assert.equal(tabs.homes().length,2);assert.ok(tabs.homes().every(tab=>tab.job_id===jobs[0].job_id));
+  const state=await a.state();assert.equal(state.jobs.filter(job=>job.state==='opening').length,96);
+  assert.equal(state.jobs.filter(job=>job.state==='queued').length,75);assert.equal(a.calls.closed,0);assert.equal(a.calls.post,0);
+  assert.ok(state.jobs.every(job=>!job.submission_started_at&&!job.receipt&&job.attempt_count===0));
+});
+
+test('retry-wait opening retains leadership while its retry is in the future',async()=>{
+  const rows=floodRows(3),a=setup(rows,'archive.today'),tabs=mockBoundTabs(a);
+  const jobs=rows.map((row,index)=>floodJob(a,row,index,{state:index===0?'retry_wait':'queued',resume_state:index===0?'opening':undefined,
+    next_attempt_at:a.now()+(index===0?C.HOUR:0)}));
+  await floodState(a,[jobs[2],jobs[1],jobs[0]]);await a.run();a.advance();a.restart();await a.run();
+  assert.equal(tabs.homes().length,0);
+  a.elapse(C.HOUR);tabs.responses.set(jobs[0].job_id,{kind:'loading'});await a.run();
+  assert.deepEqual(tabs.homes().map(tab=>tab.job_id),[jobs[0].job_id]);assert.equal(a.calls.post,0);
+});
+
+test('legacy human waits are checked one at a time and all holds remain until their forms are confirmed',async()=>{
+  const rows=floodRows(4),a=setup(rows,'archive.today'),tabs=mockBoundTabs(a);
+  const jobs=rows.map((row,index)=>floodJob(a,row,index,{state:index===3?'queued':'opening',
+    ...(index===1||index===2?{access_wait:'human'}:{})}));
+  await floodState(a,jobs);jobs.slice(0,3).forEach(job=>tabs.bindings.add(job.job_id));
+  tabs.responses.set(jobs[1].job_id,{kind:'blocked',block_type:'human'});
+  await a.run();assert.equal(tabs.inspected[0].job_id,jobs[1].job_id);assert.equal(tabs.inspected[0].allowOpen,false);
+  a.advance();await a.run();assert.equal(tabs.inspected.length,1);assert.equal(a.calls.post,0);
+  tabs.responses.set(jobs[1].job_id,{kind:'form'});a.elapse(5*C.MINUTE);await a.run();
+  assert.equal(a.calls.post,0);assert.equal((await a.state()).jobs.find(job=>job.job_id===jobs[1].job_id).access_wait,undefined);
+  a.advance();await a.run();assert.equal(tabs.inspected.at(-1).job_id,jobs[2].job_id);
+  assert.equal(a.calls.post,1);assert.equal(tabs.homes().length,0);
+  assert.equal((await a.state()).jobs.find(job=>job.job_id===jobs[2].job_id).state,'submitting');
+});
+
+test('missing bindings for held leaders wait without automatic homes, review transitions or canceled history',async()=>{
+  const rows=floodRows(3),a=setup(rows,'archive.today'),tabs=mockBoundTabs(a);
+  const jobs=rows.map((row,index)=>floodJob(a,row,index,{state:index===2?'queued':'opening',access_wait:index<2?'human':undefined}));
+  await floodState(a,jobs);
+  for(let index=0;index<4;index++){await a.run();a.restart();a.elapse(5*C.MINUTE);}
+  assert.equal(tabs.homes().length,0);assert.equal(a.calls.post,0);assert.equal(a.calls.closed,0);
+  assert.ok(tabs.inspected.every(read=>read.job_id===jobs[0].job_id&&!read.allowOpen));
+  const state=await a.state();assert.equal(state.jobs.find(job=>job.job_id===jobs[0].job_id).state,'opening');
+  assert.equal(state.jobs.find(job=>job.job_id===jobs[0].job_id).access_wait,'human');
+});
+
+test('an ordinary quota-waiting leader without a binding reports the quota rather than an unavailable manual control',async()=>{
+  const rows=floodRows(1),a=setup(rows,'archive.today'),tabs=mockBoundTabs(a);
+  await floodState(a,[floodJob(a,rows[0],0)],{reservations:Array.from({length:20},(_,index)=>({job_id:'prior-'+index,at:a.now()-C.HOUR}))});
+  await a.run();const job=(await a.state()).jobs[0];
+  assert.match(job.last_error,/上限/);assert.doesNotMatch(job.last_error,/保存先で確認/);
+  assert.equal(C.attention(job),false);assert.equal(job.state,'opening');assert.equal(tabs.homes().length,0);
+  assert.equal(tabs.inspected[0].allowOpen,false);assert.equal(a.calls.post,0);
+});
+
+test('stopping new saves never reopens an unsent human tab but still verifies an existing receipt',async()=>{
+  const rows=floodRows(2),a=setup(rows,'archive.today'),tabs=mockBoundTabs(a);a.config.enabled=false;
+  const held=floodJob(a,rows[0],0,{access_wait:'human'}),receipt=floodJob(a,rows[1],1,{state:'queued',receipt:'https://archive.li/Done1',adopted_existing:true});
+  await floodState(a,[held,receipt]);
+  await a.run();a.advance();await a.run();a.restart();a.advance();await a.run();
+  const state=await a.state();assert.equal(state.jobs.find(job=>job.job_id===receipt.job_id).state,'succeeded');
+  assert.equal(state.jobs.find(job=>job.job_id===held.job_id).state,'opening');
+  assert.equal(state.jobs.find(job=>job.job_id===held.job_id).access_wait,'human');
+  assert.equal(tabs.homes().length,0);assert.ok(tabs.inspected.every(read=>read.job_id===receipt.job_id));assert.equal(a.calls.post,0);
+});
+
+test('an explicit connection test is not starved by an old normal leader while automatic saves are stopped',async()=>{
+  const rows=floodRows(1),a=setup(rows,'archive.today'),tabs=mockBoundTabs(a);a.config.enabled=false;a.config.providerReady='';
+  const held=floodJob(a,rows[0],0,{next_attempt_at:a.now()+C.HOUR});
+  await floodState(a,[held]);await a.engine.enqueueTest();
+  await a.run();assert.equal(tabs.homes().length,1);
+  for(let index=0;index<3;index++){a.advance();await a.run();}
+  const state=await a.state();assert.equal(state.jobs.find(job=>job.kind==='connection_test').state,'succeeded');
+  assert.equal(state.jobs.find(job=>job.job_id===held.job_id).state,'opening');
+  assert.equal(tabs.homes().length,1);assert.equal(a.calls.post,1);assert.equal(a.calls.ready.length,1);
+});
+
+test('only an explicit structural connection retest may prepare a home during the matching provider pause',async()=>{
+  for(const reason of ['保存フォームの構造を確認できません','保存先で人間確認・アクセス制限が必要です']){
+    const a=setup([],'archive.today'),tabs=mockBoundTabs(a);a.config.enabled=false;
+    await floodState(a,[],{provider:{name:'archive.today',paused_until:a.now()+C.DAY,reason}});await a.engine.enqueueTest();
+    await a.run();a.advance();await a.run();
+    const structural=reason==='保存フォームの構造を確認できません';
+    assert.equal(tabs.homes().length,structural?1:0);assert.equal(a.calls.post,structural?1:0);
+    assert.equal(a.docs.get(JOBS).provider.paused_until,structural?0:a.now()-C.MINUTE-1+C.DAY);
+  }
+});
+
+test('a reservation filled after preflight is still rejected by the final CAS check without another home or POST',async()=>{
+  const rows=floodRows(1),a=setup(rows,'archive.today'),tabs=mockBoundTabs(a);
+  await floodState(a,[floodJob(a,rows[0],0,{state:'queued'})]);await a.run();
+  const update=a.git.update;let changed=false;
+  a.git.update=async(key,change)=>update(key,old=>{
+    if(key===JOBS&&!changed){changed=true;old.reservations=Array.from({length:20},(_,index)=>({job_id:'race-'+index,at:a.now()}));}
+    return change(old);
+  });
+  a.advance();await a.run();assert.equal(a.calls.post,0);assert.equal(tabs.homes().length,1);
+  assert.match((await a.state()).jobs[0].last_error,/上限/);
 });
 

@@ -20,7 +20,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - run: node --test tests/test_auto_archive.cjs tests/test_mute_extension.cjs tests/test_github_load.cjs tests/test_tracker_features.cjs tests/test_receipt_picker.cjs tests/test_receipt_recovery.cjs tests/test_review_backlog.cjs
+      - run: node --test tests/test_auto_archive.cjs tests/test_mute_extension.cjs tests/test_github_load.cjs tests/test_tracker_features.cjs tests/test_receipt_picker.cjs tests/test_receipt_recovery.cjs tests/test_review_backlog.cjs tests/test_tab_opening_adapter.cjs
       - run: npm install --no-save --package-lock=false playwright@1.51.1
       # The hosted image already provides Chrome's system libraries. Avoid
       # apt/service restarts here; install only the pinned test browser.

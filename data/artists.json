@@ -19083,7 +19083,21 @@
           "url": "https://x.com/CHZIKJ",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archives": [
+        {
+          "url": "https://archive.li/2026.11.15-091303/https://x.com/CHZIKJ",
+          "provider": "archive.today",
+          "status": "pending",
+          "target_url": "https://x.com/CHZIKJ",
+          "saved_at": "2026-11-15T09:30:18.857Z"
+        }
+      ],
+      "archive_status": "pending",
+      "archive_url": "https://archive.li/2026.11.15-091303/https://x.com/CHZIKJ",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/CHZIKJ",
+      "archive_checked_at": "2026-11-15T09:30:18.857Z"
     }
   ],
   "monitoring_summary": {

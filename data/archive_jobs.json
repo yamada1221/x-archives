@@ -1249,14 +1249,23 @@
       "kind": "profile",
       "artist_id": "mvxuaz0kunbm",
       "registered_handle": "medaka003",
-      "expected_x_user_id": "",
-      "state": "queued",
+      "expected_x_user_id": "1583702149590298624",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-01T14:26:55.960Z",
       "attempt_count": 0,
-      "next_attempt_at": 1793543215960,
+      "next_attempt_at": 1794761586587,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-01T14:26:55.960Z"
+      "updated_at": "2026-11-15T16:53:06.587Z",
+      "identity": {
+        "id": "1583702149590298624",
+        "handle": "medaka003",
+        "name": "人生は仕事だ！！",
+        "bio": "・お米と読書が好き\n・海、山、川がきれいなとこに住みたい"
+      },
+      "target_url": "https://x.com/medaka003",
+      "event_key": "first:1583702149590298624:profile",
+      "last_error": ""
     },
     {
       "job_id": "306bc699-9dcd-436a-9c75-a0d844c6ffc6",

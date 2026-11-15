@@ -1434,13 +1434,22 @@
       "artist_id": "mw1z42tk0odi",
       "registered_handle": "GurukunSaa",
       "expected_x_user_id": "2109561889734995968",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-04T14:26:55.590Z",
       "attempt_count": 0,
-      "next_attempt_at": 1793802415590,
+      "next_attempt_at": 1794762126078,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-04T14:26:55.590Z"
+      "updated_at": "2026-11-15T17:02:06.078Z",
+      "identity": {
+        "id": "2109561889734995968",
+        "handle": "GurukunSaa",
+        "name": "グルクン",
+        "bio": "ぷかぷかおよぐよ"
+      },
+      "target_url": "https://x.com/GurukunSaa",
+      "event_key": "first:2109561889734995968:profile",
+      "last_error": ""
     },
     {
       "job_id": "94227ef2-257e-4fe9-9c23-28c0d714c166",

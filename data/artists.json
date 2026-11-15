@@ -13419,7 +13419,35 @@
           "at": "2026-10-29T10:58:21+00:00",
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=2080744214636478464; screen_name=vamostarozelvi"
         }
-      ]
+      ],
+      "archives": [
+        {
+          "provider": "archive.today",
+          "url": "https://archive.li/ivuQw",
+          "target_url": "https://x.com/vamostarozelvi/with_replies",
+          "requested_target_url": "https://x.com/vamostarozelvi",
+          "status": "done",
+          "job_id": "dafa945c-301d-4f4b-a2b4-f0cc6b554d6c",
+          "event_key": "first:2080744214636478464:profile",
+          "x_user_id": "2080744214636478464",
+          "requested_at": "2026-10-29T08:32:01.111Z",
+          "captured_at": "2026-11-12T07:25:57.000Z",
+          "saved_at": "2026-11-15T04:37:05.426Z",
+          "content_verified_at": "2026-11-15T04:37:05.426Z",
+          "verification_method": "archived_profile_body",
+          "verified_scope": [
+            "profile",
+            "replies"
+          ],
+          "posts_verification": "confirmed",
+          "reused_existing": false
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/ivuQw",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/vamostarozelvi/with_replies",
+      "archive_checked_at": "2026-11-15T04:37:05.426Z"
     },
     {
       "id": "mvtrjnp9qcyk",

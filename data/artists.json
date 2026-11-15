@@ -18883,8 +18883,28 @@
       ],
       "threads_posts": [],
       "added_at": "2026-11-15",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://unavatar.io/x/gul4change?fallback=false",
+      "profile_fetched_at": "2026-11-15",
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-15T05:10:26+00:00",
+        "x_account": "gul4change",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=gul4change",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/gul4change",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

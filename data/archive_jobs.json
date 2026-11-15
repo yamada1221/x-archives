@@ -2508,13 +2508,22 @@
       "registered_handle": "fZdRDATduM20752",
       "target_kind": "replies",
       "expected_x_user_id": "2000774354469281792",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-08T16:10:34.245Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794154234245,
+      "next_attempt_at": 1794766791390,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-08T16:10:34.245Z"
+      "updated_at": "2026-11-15T18:19:51.390Z",
+      "identity": {
+        "id": "2000774354469281792",
+        "handle": "fZdRDATduM20752",
+        "name": "呪",
+        "bio": "アレフ在家新車"
+      },
+      "target_url": "https://x.com/fZdRDATduM20752/with_replies",
+      "event_key": "first:2000774354469281792:replies",
+      "last_error": ""
     },
     {
       "job_id": "d3c2662c-30a2-43c8-bae6-f09bf7dac0df",

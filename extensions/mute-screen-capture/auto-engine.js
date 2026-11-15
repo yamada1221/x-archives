@@ -269,6 +269,74 @@
       }
       return a;
     }
+    preparationState(job) { return job.state === 'retry_wait' ? job.resume_state || 'queued' : job.state; }
+    isUnsentOpening(job) {
+      return !job.submission_started_at && !job.receipt && this.preparationState(job) === 'opening' && !C.TERMINAL.has(job.state);
+    }
+    openingLeaders(jobs) {
+      const leaders = new Map();
+      const created = job => Number.isFinite(Date.parse(job.created_at)) ? Date.parse(job.created_at) : 0;
+      const ordered = jobs.filter(job => this.isUnsentOpening(job) &&
+        (job.kind !== 'connection_test' || job.executor_device_id === this.device)).sort((a, b) =>
+        Number(Boolean(b.access_wait)) - Number(Boolean(a.access_wait)) || created(a) - created(b) || String(a.job_id).localeCompare(String(b.job_id)));
+      for (const job of ordered) if (!leaders.has(job.provider || 'ghostarchive')) leaders.set(job.provider || 'ghostarchive', job.job_id);
+      return leaders;
+    }
+    selectJob(state, shared) {
+      const executor = shared?.executor_device_id === this.device;
+      const leaders = this.openingLeaders(state.jobs);
+      const continuation = job => Boolean(job.receipt || job.submission_started_at || ['submitting', 'submission_unknown', 'processing', 'verifying'].includes(job.state));
+      const candidates = state.jobs.filter(job => {
+        if (C.TERMINAL.has(job.state) || (job.next_attempt_at || 0) > this.now()) return false;
+        if (continuation(job)) return executor || !shared && job.executor_device_id === this.device;
+        const test = job.kind === 'connection_test' && job.executor_device_id === this.device;
+        if (!executor || shared.enabled === false || (job.provider || 'ghostarchive') !== this.config.provider ||
+            !(test || this.config.enabled && this.config.providerReady === C.adapterVersion(this.config.provider))) return false;
+        const phase = this.preparationState(job), leader = leaders.get(job.provider || 'ghostarchive');
+        if (phase === 'opening') return job.job_id === leader || test && !job.access_wait;
+        if (phase === 'queued') return !leader || test;
+        return false;
+      });
+      const priority = job => continuation(job) ? 0 : job.access_wait ? 1 : job.kind === 'connection_test' ? 2 : this.isUnsentOpening(job) ? 3 : 4;
+      return candidates.sort((a, b) => priority(a) - priority(b) || (a.next_attempt_at || 0) - (b.next_attempt_at || 0) ||
+        String(a.job_id).localeCompare(String(b.job_id)))[0];
+    }
+    structuralRetest(job, ledger) {
+      return job.kind === 'connection_test' && job.provider === 'archive.today' &&
+        job.adapter_version === C.adapterVersion(job.provider) && ledger.provider.reason === '保存フォームの構造を確認できません';
+    }
+    reservationWait(ledger, job, shared) {
+      const now = this.now(), selected = job.provider || 'ghostarchive';
+      if (C.submissionHold(ledger.jobs.filter(other => other.job_id !== job.job_id), selected)) {
+        return { reason: '保存先の確認が必要な依頼があるため、新規依頼を待機しています', until: now + C.MINUTE };
+      }
+      const recent = ledger.reservations.filter(item => now - item.at < C.DAY).sort((a, b) => a.at - b.at);
+      const daily = Math.min(20, Number(shared.daily_limit) || 20);
+      if (recent.length >= daily) return { reason: '直近24時間の保存依頼上限に達しています', until: Math.min(now + C.MINUTE, recent[recent.length - daily].at + C.DAY) };
+      if ((ledger.provider?.name || 'ghostarchive') === selected && ledger.provider?.paused_until > now && !this.structuralRetest(job, ledger)) {
+        return { reason: '保存先の自動処理を一時停止しています', until: Math.min(now + C.MINUTE, ledger.provider.paused_until) };
+      }
+      const latest = recent[recent.length - 1];
+      if (latest && now - latest.at < C.MINUTE) return { reason: '保存依頼の間隔を空けて待機しています', until: latest.at + C.MINUTE };
+      if (ledger.jobs.filter(other => ['submitting', 'processing', 'verifying', 'submission_unknown'].includes(other.state)).length >= 5) {
+        return { reason: '保存処理中の案件が5件あるため待機しています', until: now + C.MINUTE };
+      }
+      return null;
+    }
+    async preparationWait(job, shared) {
+      const test = job.kind === 'connection_test' && job.executor_device_id === this.device;
+      if (!shared || shared.executor_device_id !== this.device || shared.enabled === false ||
+          (job.provider || 'ghostarchive') !== this.config.provider ||
+          !(test || this.config.enabled && this.config.providerReady === C.adapterVersion(this.config.provider)) || !await this.canSubmit(job)) {
+        return { reason: '新規保存を開始できるまで待機しています', until: this.now() + C.MINUTE };
+      }
+      try { return this.reservationWait(C.ledger((await this.git.get(JOBS, true)).data), job, shared); }
+      catch (_) { return { reason: 'GitHubで保存枠を確認できるまで待機しています', until: this.now() + C.MINUTE }; }
+    }
+    deferPreparation(state, job, wait) {
+      job.last_error = wait.reason; job.next_attempt_at = Math.max(this.now() + 1000, wait.until || this.now() + C.MINUTE);
+      this.put(state, job);
+    }
     async reserve(job, shared) {
       const now = this.now();
       return this.git.update(JOBS, old => {
@@ -283,8 +351,7 @@
           // An explicit connection test can recover a prior structural failure
           // only after advance() has recognized a valid form. Rate limits and
           // human-verification pauses retain their full waiting period.
-          const retest = job.kind === 'connection_test' && job.provider === 'archive.today' &&
-            job.adapter_version === C.adapterVersion(job.provider) && d.provider.reason === '保存フォームの構造を確認できません';
+          const retest = this.structuralRetest(job, d);
           if (!retest) throw Error('保存先の自動処理を一時停止しています');
           d.provider = { ...d.provider, paused_until: 0, reason: '' };
         }
@@ -320,13 +387,7 @@
         this.prepareReceiptRechecks(state);
         const executor = shared?.executor_device_id === this.device;
         if (executor && shared.enabled !== false) await this.scan(state, forceScan);
-        const inflight = j => ['submitting', 'submission_unknown', 'processing', 'verifying'].includes(j.state);
-        const job = state.jobs.filter(j => !C.TERMINAL.has(j.state) && (j.next_attempt_at || 0) <= this.now() &&
-          (((inflight(j) || j.access_wait) && (executor || !shared && j.executor_device_id === this.device)) ||
-            (executor && shared.enabled !== false && (j.provider || 'ghostarchive') === this.config.provider &&
-              !C.submissionHold(state.jobs, this.config.provider) &&
-              (this.config.enabled && this.config.providerReady === C.adapterVersion(this.config.provider) || j.kind === 'connection_test' && j.executor_device_id === this.device))))
-          .sort((a, b) => Number(inflight(b)) - Number(inflight(a)) || (a.next_attempt_at || 0) - (b.next_attempt_at || 0))[0];
+        const job = this.selectJob(state, shared);
         if (job) {
           try { await this.advance(state, job, shared); }
           catch (error) {
@@ -360,6 +421,10 @@
       if (job.state === 'retry_wait') job.state = job.resume_state || 'queued';
       if (job.state === 'queued') {
         const a = await this.cancelIfChanged(state, job); if (!a) return;
+        if (!job.receipt && !job.submission_started_at) {
+          const wait = await this.preparationWait(job, shared);
+          if (wait) { this.deferPreparation(state, job, wait); return; }
+        }
         await this.identity(job, a);
         if (state.jobs.some(j => j.job_id !== job.job_id && j.event_key === job.event_key && !['canceled', 'skipped'].includes(j.state))) {
           job.state = 'skipped'; job.last_error = '同じアカウントの保存依頼を既存ジョブで追跡しています';
@@ -370,14 +435,23 @@
       }
       if (job.state === 'opening') {
         const a = await this.cancelIfChanged(state, job); if (!a) return;
-        const page = await this.ghost.inspect(job);
+        const wait = !job.submission_started_at && !job.receipt ? await this.preparationWait(job, shared) : null;
+        const page = await this.ghost.inspect(job, { allowOpen: !wait && !job.access_wait });
+        if (page.kind === 'missing_binding') {
+          this.deferPreparation(state, job, job.access_wait ? {
+            reason: '保存先のタブが見つかりません。「保存先で確認」で開いてください',
+            until: wait?.until || this.now() + (job.access_wait === 'human' ? 5 * C.MINUTE : C.MINUTE)
+          } : wait || { reason: '保存先を準備できるまで待機しています', until: this.now() + C.MINUTE });
+          return;
+        }
         if (page.kind === 'loading') { job.next_attempt_at = this.now() + C.MINUTE; this.put(state, job); return; }
         if (page.kind === 'blocked') return this.waitForAccess(state, job, page);
         if (page.kind !== 'form') return this.review(state, job, '保存フォームの構造を確認できません', true);
+        this.clearAccessWait(job);
+        if (wait) { this.deferPreparation(state, job, wait); return; }
         await this.identity(job, a);
         const latest = await this.sharedConfig();
         if (!shared || latest.executor_device_id !== this.device || latest.enabled === false || !await this.canSubmit(job)) return;
-        this.clearAccessWait(job);
         // Reserve in the shared CAS ledger before allowing the save request.
         try { await this.reserve(job, latest); }
         catch (error) { job.state = job.submission_started_at ? 'submission_unknown' : 'opening'; job.last_error = error.message; job.next_attempt_at = this.now() + C.MINUTE; this.put(state, job); return; }

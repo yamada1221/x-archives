@@ -1,10 +1,10 @@
-# 拡張機能からの自動アーカイブ（v1.3.11）
+# 拡張機能からの自動アーカイブ（v1.3.12）
 
-更新：2026-11-14。対象はPC版Chrome／Edge、Manifest V3。返信タブに含まれるプロフィール本文も、同じアカウントと照合できればプロフィール確認として扱う。
+更新：2026-11-16。対象はPC版Chrome／Edge、Manifest V3。保存先の準備タブを一度に1件に制限し、送信できない間は新しい準備タブを開かずに待機する。
 
 ## 使い始める
 
-1. `downloads/x-tracker-mute-capture-v1.3.11.zip` を展開し、拡張機能の管理画面から読み込む。更新する場合は現在の展開先へ全ファイルを上書きして「再読み込み」を押す。v1.3.8〜v1.3.10で接続済みなら追加の接続テストは不要。
+1. `downloads/x-tracker-mute-capture-v1.3.12.zip` を展開し、拡張機能の管理画面から読み込む。更新する場合は現在の展開先へ全ファイルを上書きして「再読み込み」を押す。v1.3.8〜v1.3.11で接続済みなら追加の接続テストは不要。
 2. 拡張機能の「自動アーカイブの設定・実行状況」を開く。
 3. owner・repo・データファイル・Fine-grained PAT（Contentsの読み書き）を保存し、必要なホストへのアクセスを許可する。
 4. 「接続テスト（1件）」を実行する。公開プロフィール @X を実際に保存し、保存された本文を照合する。テストの途中経過は画面を閉じても保持する。
@@ -29,6 +29,12 @@ https://ghostarchive.org/archive/l8oxw
 ## 更新時の扱い
 
 v1.2.0の保存先未指定設定はarchive.liを既定とする。旧版のGhostarchive接続テストをarchive.liへ流用せず、保存先のアクセス許可と接続テストを改めて必要とする。設定画面で接続先を保存する際、同じリポジトリならPATは再入力不要。保存済み・送信済みのGhostarchiveジョブは保持し、元の保存先で照合・同期を続ける。未送信ジョブは新しい保存先での走査へ引き継ぐ。
+
+## v1.3.12のタブ数と進行
+
+未送信の自動保存の準備は一度に1件ずつ進める。送信上限・間隔・保存先の一時停止によって送信できない間は、別の準備タブを開かない。設定画面から明示した接続テストは別に1件実行できる。送信済みの依頼や取得済みの結果URLの確認は継続する。以前から待機中の依頼も順に処理する。
+
+拡張機能の再読み込みやブラウザ再起動でタブの対応情報が消えた場合も、準備中の依頼をまとめて開き直さず、順に確認する。既存のタブは更新時に一括で閉じない。人間確認や保存結果のページを確認し、不要なトップページは利用者が閉じる。拡張機能が作成したタブは、対応する依頼の処理完了時に閉じる場合がある。
 
 ## v1.3.11のプロフィール確認範囲
 
@@ -72,7 +78,7 @@ POST後に実行が停止して受付URLが不明な場合、保存先の結果�
 
 ## 検証
 
-- `node --test tests/test_auto_archive.cjs tests/test_receipt_picker.cjs tests/test_receipt_recovery.cjs tests/test_review_backlog.cjs`：状態遷移、二重送信、通信断、同期待ち、対象削除、ID・URL検証、権限境界、保存枠、接続テスト、返信タブ、結果候補選択、再読み込み時の追跡、100件を超える一覧と公開状態の制限。
+- `node --test tests/test_auto_archive.cjs tests/test_receipt_picker.cjs tests/test_receipt_recovery.cjs tests/test_review_backlog.cjs tests/test_tab_opening_adapter.cjs`：状態遷移、二重送信、通信断、同期待ち、対象削除、ID・URL検証、権限境界、保存枠、接続テスト、返信タブ、結果候補選択、再読み込み時の追跡、多数の待機依頼でのタブ数制御、100件を超える一覧と公開状態の制限。
 - Playwright導入後の `node --test tests/test_archive_today_forms.cjs tests/test_auto_options.cjs`：GET／POSTフォーム、合成した保存本文、返信タブ、確認待ち優先表示、URL入力保持。外部通信をモックする。
 - `test_saved_archive.cjs` と `test_additional_archives.cjs` はローカルの実HTMLが環境変数で指定された場合だけ追加検証する。後者は `SAVED_ARCHIVE_JOBS` にローカルの対応ジョブJSONも指定する。公開CIでは個人のHTMLやジョブ情報を必要としない。
 - `node tests/browser_auto_archive.cjs` と `ARCHIVE_PROVIDER=ghostarchive node tests/browser_auto_archive.cjs`：本物のMV3拡張をインストールし、設定UI、IndexedDB、alarm、保存先フォームPOST、保存本文フレーム、Service Worker停止・再開とGitHub同期を検証。外部サービスの応答は固定フィクスチャを使用する。archive.liでは通常フォームの隠し項目の保持、WIPから完成URLへの遷移、保存本文を検証し、Ghostarchiveでは保存本文フレームを検証する。通信を置き換える前にネイティブのWorkerGlobalScope.fetchも検証する。

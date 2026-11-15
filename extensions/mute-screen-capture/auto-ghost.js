@@ -98,10 +98,13 @@
         ['autoArchiveBorrowedTab:' + job.job_id]: false });
       return this.chrome.tabs.update(tab.id, { url });
     }
-    async inspect(job) {
+    async inspect(job, options = {}) {
       let tab = await this.binding(job);
       if (!tab) {
         if (!job.receipt && (job.state === 'submitting' || job.state === 'submission_unknown')) return { kind: 'missing' };
+        // When submission is on hold, an existing page may be read without
+        // creating another home tab. A user may still explicitly open it.
+        if (options.allowOpen === false) return { kind: 'missing_binding' };
         tab = await this.open(job, job.receipt ? this.pageURL(job.receipt) : this.home);
       }
       // A manually reconciled receipt can arrive while the owned tab still
@@ -139,7 +142,8 @@
       return { kind: 'unresolved', reason: '受付URLを確認できません。保存先の検索結果から結果URLを指定してください' };
     }
     async show(job) {
-      const tab = await this.binding(job) || await this.open(job, job.receipt || this.searchURL(job.target_url));
+      const destination = job.receipt || (job.access_wait && !job.submission_started_at ? this.home : this.searchURL(job.target_url));
+      const tab = await this.binding(job) || await this.open(job, destination);
       await this.chrome.tabs.update(tab.id, { active: true });
       await this.chrome.windows.update(tab.windowId, { focused: true });
     }

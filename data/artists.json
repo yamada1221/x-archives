@@ -18818,6 +18818,28 @@
       "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/PMDTkxu2x0gk5B2",
       "archive_checked_at": "2026-11-15T04:19:26.349Z"
+    },
+    {
+      "id": "mwhdjjekdzu8",
+      "name": "deepdiscountsco",
+      "x_account": "deepdiscountsco",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "スパム / インプ稼ぎ",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/deepdiscountsco/status/2121826454107541572",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-15"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-11-15",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

@@ -5155,14 +5155,23 @@
       "target_kind": "replies",
       "receipt": "https://archive.li/2026.11.12-024316/https://x.com/uochandeath/with_replies",
       "adopted_existing": true,
-      "expected_x_user_id": "",
-      "state": "queued",
+      "expected_x_user_id": "1869324806761660416",
+      "state": "processing",
       "provider": "archive.today",
       "created_at": "2026-11-14T15:10:40.302Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794669040302,
+      "next_attempt_at": 1794777651343,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-14T15:10:40.302Z"
+      "updated_at": "2026-11-15T21:20:51.343Z",
+      "identity": {
+        "id": "1869324806761660416",
+        "handle": "uochandeath",
+        "name": "うおチャン👹",
+        "bio": "Vアンチではありません。\nヒカマーアンチでもないでｽｶﾄﾛ\nVアンチしないヒカマーは嫌いじゃないね、言うまでもない。\nイーロンマスクとアンチを許すな‼️🫵\nフォロー非推奨。自衛頼んだ🙏"
+      },
+      "target_url": "https://x.com/uochandeath/with_replies",
+      "event_key": "first:1869324806761660416:replies",
+      "last_error": ""
     },
     {
       "job_id": "b3a8fe00-3b70-4707-b859-5000ed893e5d",

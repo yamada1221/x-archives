@@ -2490,13 +2490,16 @@
       "registered_handle": "bot164736",
       "target_kind": "replies",
       "expected_x_user_id": "1900933923896782849",
-      "state": "queued",
+      "state": "retry_wait",
       "provider": "archive.today",
       "created_at": "2026-11-08T16:10:34.245Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794154234245,
+      "next_attempt_at": 1794770333149,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-08T16:10:34.245Z"
+      "updated_at": "2026-11-15T18:18:53.149Z",
+      "preflight_failures": 1,
+      "last_error": "プロフィール取得は判定不能です",
+      "resume_state": "queued"
     },
     {
       "job_id": "c29bbdd7-cdb2-4838-8ab2-87021de1fd48",

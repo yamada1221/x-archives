@@ -4660,13 +4660,22 @@
       "artist_id": "mwc54yxuvkdd",
       "registered_handle": "goemonbolognese",
       "expected_x_user_id": "2056563884988026880",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-13T03:10:35.053Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794539435053,
+      "next_attempt_at": 1794775251340,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-13T03:10:35.053Z"
+      "updated_at": "2026-11-15T20:40:51.340Z",
+      "identity": {
+        "id": "2056563884988026880",
+        "handle": "GoemonBolognese",
+        "name": "五右衛門伝統のミートソース",
+        "bio": "趣味のことを好きにつぶやいたりします。\n批判的なことも結構言います。\n\nゲーム・音楽・グルメ・ドライブ・旅行　など\n\n好きなゲーム　→　MMORPG、RPG、コロニーシム\n好きな音楽　→　トランス、ユーロビート、ゲーム音楽\n好きな食事　→　寿司、ステーキ、中華、パスタ\n\n人生で一番好きなゲームはラグナロクオンライン。"
+      },
+      "target_url": "https://x.com/GoemonBolognese",
+      "event_key": "first:2056563884988026880:profile",
+      "last_error": ""
     },
     {
       "job_id": "b4161aab-fddf-4a90-93d0-68dc35f54dab",

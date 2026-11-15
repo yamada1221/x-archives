@@ -19434,6 +19434,21 @@
           "reason": "FxTwitter HTTP 404; code=404; message=User not found; fallback: non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/gNkxVYppfCRlsAn; contains_username=True; suspended_marker=False; missing_marker=False; bytes=129336; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"ec61450c772e92ce6709479d286bbe63833358e5\"><head><meta charSet=\"utf-8\"/><meta name'"
         }
       ]
+    },
+    {
+      "id": "mwi1kzdxgpar",
+      "name": "frskt_ap02",
+      "x_account": "frskt_ap02",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-15",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

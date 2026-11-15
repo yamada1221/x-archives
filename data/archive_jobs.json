@@ -4556,13 +4556,22 @@
       "artist_id": "mw8vwqip2omf",
       "registered_handle": "87zono_erika",
       "expected_x_user_id": "751308930664443904",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-12T21:10:35.373Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794517835373,
+      "next_attempt_at": 1794774770897,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-12T21:10:35.373Z"
+      "updated_at": "2026-11-15T20:32:50.897Z",
+      "identity": {
+        "id": "751308930664443904",
+        "handle": "87zono_erika",
+        "name": "花園えりか🧸🪄︎︎＠個人Vtuber",
+        "bio": "きゅりりーん✨✨✨魔界のアイドル教祖 🥀🕯\nママ：@Galaxy_ito パパ：@Roki_Tsukuyomi"
+      },
+      "target_url": "https://x.com/87zono_erika",
+      "event_key": "first:751308930664443904:profile",
+      "last_error": ""
     },
     {
       "job_id": "7c52275c-97a8-497b-b7b8-1116b5dc6410",

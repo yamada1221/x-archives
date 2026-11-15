@@ -2096,13 +2096,22 @@
       "registered_handle": "Ub1Bu",
       "target_kind": "replies",
       "expected_x_user_id": "1964267010889777152",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-07T22:10:34.107Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794089434107,
+      "next_attempt_at": 1794764106716,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-07T22:10:34.107Z"
+      "updated_at": "2026-11-15T17:35:06.716Z",
+      "identity": {
+        "id": "1964267010889777152",
+        "handle": "Ub1Bu",
+        "name": "女王様👑",
+        "bio": ""
+      },
+      "target_url": "https://x.com/Ub1Bu/with_replies",
+      "event_key": "first:1964267010889777152:replies",
+      "last_error": ""
     },
     {
       "job_id": "36f3bffc-09c6-4c68-84f5-ebbc71764c46",

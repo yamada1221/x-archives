@@ -1882,13 +1882,22 @@
       "registered_handle": "99sLEHWL2e0Al2e",
       "target_kind": "replies",
       "expected_x_user_id": "3681637711",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-07T10:10:34.252Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794046234252,
+      "next_attempt_at": 1794763567120,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-07T10:10:34.252Z"
+      "updated_at": "2026-11-15T17:26:07.120Z",
+      "identity": {
+        "id": "3681637711",
+        "handle": "99sLEHWL2e0Al2e",
+        "name": "85h",
+        "bio": "世直しします\n反論できなくなったらブロックするの敗北宣言だからね笑\n訴訟4件係争中"
+      },
+      "target_url": "https://x.com/99sLEHWL2e0Al2e/with_replies",
+      "event_key": "first:3681637711:replies",
+      "last_error": ""
     },
     {
       "job_id": "79f2a15e-6bb2-420d-beda-968b516bc5d3",

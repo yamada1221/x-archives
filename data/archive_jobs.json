@@ -5409,13 +5409,13 @@
       "receipt": "https://archive.li/2026.11.15-091303/https://x.com/CHZIKJ",
       "adopted_existing": true,
       "expected_x_user_id": "1788343326585806848",
-      "state": "processing",
+      "state": "succeeded",
       "provider": "archive.today",
       "created_at": "2026-11-15T15:10:39.259Z",
       "attempt_count": 0,
       "next_attempt_at": 1794778790296,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-15T21:38:50.296Z",
+      "updated_at": "2026-11-15T21:39:50.667Z",
       "identity": {
         "id": "1788343326585806848",
         "handle": "CHZIKJ",
@@ -5424,7 +5424,26 @@
       },
       "target_url": "https://x.com/CHZIKJ",
       "event_key": "first:1788343326585806848:profile",
-      "last_error": ""
+      "last_error": "",
+      "verification": {
+        "ok": true,
+        "captured_at": "2026-11-15T09:13:03.000Z",
+        "verified_at": "2026-11-15T21:39:50.667Z",
+        "method": "archived_profile_body",
+        "captured_target_url": "https://x.com/chzikj",
+        "scope": [
+          "profile"
+        ],
+        "posts_verification": "confirmed",
+        "post_ids": [
+          "2120054261333586343",
+          "2121873827701416183",
+          "2121855712091652242",
+          "2121822655187927460"
+        ],
+        "archived_user_id": "1788343326585806848",
+        "reused_existing": true
+      }
     },
     {
       "job_id": "c2012a48-2229-4b77-9427-6ff07989ff99",

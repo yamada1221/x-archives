@@ -13681,7 +13681,35 @@
           "at": "2026-10-30T10:55:52+00:00",
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1345953476879126528; screen_name=vtlol_www"
         }
-      ]
+      ],
+      "archives": [
+        {
+          "provider": "archive.today",
+          "url": "https://archive.li/WQATn",
+          "target_url": "https://x.com/vtlol_www/with_replies",
+          "requested_target_url": "https://x.com/vtlol_www",
+          "status": "done",
+          "job_id": "afc23dfd-d3bc-4aa5-863b-f29ecf246b43",
+          "event_key": "first:1345953476879126528:profile",
+          "x_user_id": "1345953476879126528",
+          "requested_at": "2026-10-30T02:31:01.869Z",
+          "captured_at": "2026-11-12T16:47:15.000Z",
+          "saved_at": "2026-11-15T04:42:05.475Z",
+          "content_verified_at": "2026-11-15T04:42:05.475Z",
+          "verification_method": "archived_profile_body",
+          "verified_scope": [
+            "profile",
+            "replies"
+          ],
+          "posts_verification": "confirmed",
+          "reused_existing": false
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/WQATn",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/vtlol_www/with_replies",
+      "archive_checked_at": "2026-11-15T04:42:05.475Z"
     },
     {
       "id": "mvubxoa6hmzy",

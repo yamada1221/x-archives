@@ -18678,7 +18678,7 @@
     },
     {
       "id": "mwhbkhc3kr64",
-      "name": "PMDTkxu2x0gk5B2",
+      "name": "概念",
       "x_account": "PMDTkxu2x0gk5B2",
       "threads_account": "",
       "threads_share_url": "",
@@ -18688,8 +18688,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-15",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1822973677765541888/uOYt4ft9_normal.jpg",
+      "x_bio": "子育て中ワーママ。 5歳女児。3歳男児。都内。",
+      "x_bio_fetched_at": "2026-11-15T04:13:42.860197+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-15",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

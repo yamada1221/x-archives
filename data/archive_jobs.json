@@ -949,13 +949,13 @@
       "artist_id": "mvts3zcelv9o",
       "registered_handle": "vtlol_www",
       "expected_x_user_id": "1345953476879126528",
-      "state": "processing",
+      "state": "succeeded",
       "provider": "archive.today",
       "created_at": "2026-10-30T02:26:54.088Z",
       "attempt_count": 1,
       "next_attempt_at": 1794717365685,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-15T04:35:05.685Z",
+      "updated_at": "2026-11-15T04:42:05.475Z",
       "identity": {
         "id": "1345953476879126528",
         "handle": "vtlol_www",
@@ -971,7 +971,30 @@
       "receipt_checks": 0,
       "receipt_recovery_started_at": "2026-11-15T04:29:04.752Z",
       "receipt": "https://archive.li/WQATn",
-      "verification_checks": 0
+      "verification_checks": 0,
+      "verification": {
+        "ok": true,
+        "captured_at": "2026-11-12T16:47:15.000Z",
+        "verified_at": "2026-11-15T04:42:05.475Z",
+        "method": "archived_profile_body",
+        "captured_target_url": "https://x.com/vtlol_www/with_replies",
+        "scope": [
+          "profile",
+          "replies"
+        ],
+        "posts_verification": "confirmed",
+        "post_ids": [
+          "2119973305730089020",
+          "2117425094683480072",
+          "2117087315164278794",
+          "2116013580999180732",
+          "2115961592978477357",
+          "2115746921138782691",
+          "2115628914634801275"
+        ],
+        "archived_user_id": "1345953476879126528",
+        "reused_existing": false
+      }
     },
     {
       "job_id": "a43ba8b7-17c9-4417-bfa5-1096a74d43d8",

@@ -1410,14 +1410,23 @@
       "kind": "profile",
       "artist_id": "mw1k4dukxnfe",
       "registered_handle": "karako_mori",
-      "expected_x_user_id": "",
-      "state": "queued",
+      "expected_x_user_id": "1066854790427103232",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-04T08:26:59.757Z",
       "attempt_count": 0,
-      "next_attempt_at": 1793780819757,
+      "next_attempt_at": 1794762066137,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-04T08:26:59.757Z"
+      "updated_at": "2026-11-15T17:01:06.137Z",
+      "identity": {
+        "id": "1066854790427103232",
+        "handle": "karako_mori",
+        "name": "殻篭もり",
+        "bio": "クソリプに目覚めし者。不快なら消すので連絡ください。ご迷惑おかけします"
+      },
+      "target_url": "https://x.com/karako_mori",
+      "event_key": "first:1066854790427103232:profile",
+      "last_error": ""
     },
     {
       "job_id": "d19b7ddc-eb29-443d-be1d-284e9f4b1a9e",

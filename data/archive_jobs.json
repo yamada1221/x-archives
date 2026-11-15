@@ -895,13 +895,13 @@
       "artist_id": "mvts37hcyqhh",
       "registered_handle": "d_oug_hnu_t",
       "expected_x_user_id": "1413263137344688129",
-      "state": "processing",
+      "state": "succeeded",
       "provider": "archive.today",
       "created_at": "2026-10-30T02:26:54.088Z",
       "attempt_count": 1,
       "next_attempt_at": 1794717185472,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-15T04:32:05.472Z",
+      "updated_at": "2026-11-15T04:39:05.474Z",
       "identity": {
         "id": "1413263137344688129",
         "handle": "d_oug_hnu_t",
@@ -917,7 +917,31 @@
       "receipt_checks": 0,
       "receipt_recovery_started_at": "2026-11-15T04:29:04.752Z",
       "receipt": "https://archive.li/FCq3C",
-      "verification_checks": 0
+      "verification_checks": 0,
+      "verification": {
+        "ok": true,
+        "captured_at": "2026-11-12T16:15:22.000Z",
+        "verified_at": "2026-11-15T04:39:05.474Z",
+        "method": "archived_profile_body",
+        "captured_target_url": "https://x.com/d_oug_hnu_t/with_replies",
+        "scope": [
+          "profile",
+          "replies"
+        ],
+        "posts_verification": "confirmed",
+        "post_ids": [
+          "2120274599879561702",
+          "2119143187134718159",
+          "2119140427366563935",
+          "2119135747035013544",
+          "2119132087945199751",
+          "2119023206648721890",
+          "2118726582001180798",
+          "2118291545300578767"
+        ],
+        "archived_user_id": "1413263137344688129",
+        "reused_existing": false
+      }
     },
     {
       "job_id": "afc23dfd-d3bc-4aa5-863b-f29ecf246b43",

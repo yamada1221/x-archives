@@ -18905,6 +18905,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mwheys0bgsrr",
+      "name": "SNSunyou_Master",
+      "x_account": "SNSunyou_Master",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ / 青バッチ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-15",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

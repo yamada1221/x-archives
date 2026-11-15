@@ -1456,14 +1456,23 @@
       "kind": "profile",
       "artist_id": "mw2qs08k0ujt",
       "registered_handle": "aonboaonbo",
-      "expected_x_user_id": "",
-      "state": "queued",
+      "expected_x_user_id": "2811217682",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-05T02:26:55.248Z",
       "attempt_count": 0,
-      "next_attempt_at": 1793845615249,
+      "next_attempt_at": 1794762306473,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-05T02:26:55.249Z"
+      "updated_at": "2026-11-15T17:05:06.474Z",
+      "identity": {
+        "id": "2811217682",
+        "handle": "aonboaonbo",
+        "name": "あおんぼ@総合WEBマーケター×AIエンジニア",
+        "bio": "2024年ビジネス本グランプリ入賞『美しくバズる技術』著者 | Webマーケティング総合スペシャリスト|ビジネスYouTube累計10億再生超| ビジネス系YouTube/ショート動画とAIを極めた人。経営中事業は、オンサロ、スクール、EC、SNS運用受託、シーシャ屋fiction新宿、AI SaaS #青木創士"
+      },
+      "target_url": "https://x.com/aonboaonbo",
+      "event_key": "first:2811217682:profile",
+      "last_error": ""
     },
     {
       "job_id": "a805d8c6-fe36-4ce7-8f2c-efe08f1b214c",

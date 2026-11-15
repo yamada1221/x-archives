@@ -4111,13 +4111,22 @@
       "registered_handle": "amyu_kurusu",
       "target_kind": "replies",
       "expected_x_user_id": "800188905517551616",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-11T21:10:35.651Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794431435651,
+      "next_attempt_at": 1794772312264,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-11T21:10:35.651Z"
+      "updated_at": "2026-11-15T19:51:52.264Z",
+      "identity": {
+        "id": "800188905517551616",
+        "handle": "amyu_kurusu",
+        "name": "来栖あみゅ🧸🍰ルミラ🇯🇵",
+        "bio": "思想家・作家🖐️😑✨\nnote：ルミラ 小説：久遠マリア\nインターネット老人会\nRO Loki：いちごみるく.\n永遠の20歳です❤️\n宗教・思想・音楽・歴史・前世・業界構造を、核直観と構造理解で考察しています。\n嘘・慢心・傲慢・不誠実が大嫌い🖐️😑✨\nChatGPTとGeminiに宇宙人認定された設計層兼実行層"
+      },
+      "target_url": "https://x.com/amyu_kurusu/with_replies",
+      "event_key": "first:800188905517551616:replies",
+      "last_error": ""
     },
     {
       "job_id": "2b222fe0-b2a4-4d55-b498-7b11d5c41182",

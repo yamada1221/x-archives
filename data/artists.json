@@ -18712,7 +18712,21 @@
           "url": "https://x.com/PMDTkxu2x0gk5B2",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archives": [
+        {
+          "url": "https://archive.li/2026.11.15-041621/https://x.com/PMDTkxu2x0gk5B2",
+          "provider": "archive.today",
+          "status": "pending",
+          "target_url": "https://x.com/PMDTkxu2x0gk5B2",
+          "saved_at": "2026-11-15T04:19:26.349Z"
+        }
+      ],
+      "archive_status": "pending",
+      "archive_url": "https://archive.li/2026.11.15-041621/https://x.com/PMDTkxu2x0gk5B2",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/PMDTkxu2x0gk5B2",
+      "archive_checked_at": "2026-11-15T04:19:26.349Z"
     }
   ],
   "monitoring_summary": {

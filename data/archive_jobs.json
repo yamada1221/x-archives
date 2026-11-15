@@ -5408,14 +5408,23 @@
       "registered_handle": "CHZIKJ",
       "receipt": "https://archive.li/2026.11.15-091303/https://x.com/CHZIKJ",
       "adopted_existing": true,
-      "expected_x_user_id": "",
-      "state": "queued",
+      "expected_x_user_id": "1788343326585806848",
+      "state": "processing",
       "provider": "archive.today",
       "created_at": "2026-11-15T15:10:39.259Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794755439259,
+      "next_attempt_at": 1794778611489,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-15T15:10:39.259Z"
+      "updated_at": "2026-11-15T21:36:51.489Z",
+      "identity": {
+        "id": "1788343326585806848",
+        "handle": "CHZIKJ",
+        "name": "橙子🍊",
+        "bio": "💥新闻吋事/生活趣闻/即兴吃瓜/深度点坪\n💥投稿｜合作：XChet私信"
+      },
+      "target_url": "https://x.com/CHZIKJ",
+      "event_key": "first:1788343326585806848:profile",
+      "last_error": ""
     },
     {
       "job_id": "c2012a48-2229-4b77-9427-6ff07989ff99",

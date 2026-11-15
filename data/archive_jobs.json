@@ -4579,13 +4579,22 @@
       "artist_id": "mw9714575rdq",
       "registered_handle": "abstruct3",
       "expected_x_user_id": "1119409296184205313",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-12T21:10:35.373Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794517835373,
+      "next_attempt_at": 1794774830915,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-12T21:10:35.373Z"
+      "updated_at": "2026-11-15T20:33:50.915Z",
+      "identity": {
+        "id": "1119409296184205313",
+        "handle": "abstruct3",
+        "name": "abstruct",
+        "bio": "肥溜めは肥料が作られるから肥溜め。肥溜めに非ずは？"
+      },
+      "target_url": "https://x.com/abstruct3",
+      "event_key": "first:1119409296184205313:profile",
+      "last_error": ""
     },
     {
       "job_id": "0857e86c-c372-4591-b5cc-ce93cc26a181",

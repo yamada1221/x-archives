@@ -19008,6 +19008,21 @@
       "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/Tecla_Farias15/with_replies",
       "archive_checked_at": "2026-11-15T08:04:10.132Z"
+    },
+    {
+      "id": "mwhjwuhqzlri",
+      "name": "_bebotodasqvier",
+      "x_account": "_bebotodasqvier",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "スパム",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-15",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

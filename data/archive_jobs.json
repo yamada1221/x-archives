@@ -5106,14 +5106,23 @@
       "artist_id": "mwfxk31h6xqp",
       "registered_handle": "rty1096245",
       "target_kind": "replies",
-      "expected_x_user_id": "",
-      "state": "queued",
+      "expected_x_user_id": "2023051044553670656",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-14T09:10:36.156Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794647436156,
+      "next_attempt_at": 1794777530657,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-14T09:10:36.156Z"
+      "updated_at": "2026-11-15T21:18:50.657Z",
+      "identity": {
+        "id": "2023051044553670656",
+        "handle": "rty1096245",
+        "name": "根暗/陰キャ/幼稚/短気/自己中心的/わがまま/性格破綻/人格難あり/逆ギレ常習/自己矛盾",
+        "bio": "場違い発言常習/悪口製造機/口だけ番長/コミュ障/会話不成立/嫌われ体質/周囲の迷惑/社会不適合/ニート/借金持ち/恋愛経験皆無/童貞/恋愛弱者/友達皆無/低身長コンプ/顔面偏差値底辺/無能自認/劣等感の塊/存在価値迷子/人生ガチャ爆死/人生詰み/救済不能/社会の粗大ゴミ/遺伝子の敗北者/自然淘汰候補/存在が事故"
+      },
+      "target_url": "https://x.com/rty1096245/with_replies",
+      "event_key": "first:2023051044553670656:replies",
+      "last_error": ""
     },
     {
       "job_id": "ffa0ffb3-477f-423b-8df3-8f6647e6fc4a",

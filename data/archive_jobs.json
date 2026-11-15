@@ -1794,13 +1794,22 @@
       "registered_handle": "syokusukesuke",
       "target_kind": "replies",
       "expected_x_user_id": "1768247491689066496",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-07T04:10:34.320Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794024634320,
+      "next_attempt_at": 1794763326215,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-07T04:10:34.320Z"
+      "updated_at": "2026-11-15T17:22:06.215Z",
+      "identity": {
+        "id": "1768247491689066496",
+        "handle": "syokusukesuke",
+        "name": "食助＠クソリプおじさん代表",
+        "bio": "世界クソリプ五輪で日本一になるために毎日膨大な実践クソリプを投げつけてます。見た人が思わず苦笑いしたりニヤツキながらつい上から目線でリプしたくなるようなクソリプを心掛けてます。※誹謗中傷や人が傷つくようなクソリプはしないように心掛けてます。目指せクソリプで世界平和。"
+      },
+      "target_url": "https://x.com/syokusukesuke/with_replies",
+      "event_key": "first:1768247491689066496:replies",
+      "last_error": ""
     },
     {
       "job_id": "87f54c29-203b-44a1-b23c-84b12278e448",

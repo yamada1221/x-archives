@@ -2048,13 +2048,22 @@
       "registered_handle": "Marldr0y",
       "target_kind": "replies",
       "expected_x_user_id": "2018838132414930944",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-07T16:10:34.376Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794067834376,
+      "next_attempt_at": 1794763986597,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-07T16:10:34.376Z"
+      "updated_at": "2026-11-15T17:33:06.597Z",
+      "identity": {
+        "id": "2018838132414930944",
+        "handle": "Marldr0y",
+        "name": "Mar",
+        "bio": ""
+      },
+      "target_url": "https://x.com/Marldr0y/with_replies",
+      "event_key": "first:2018838132414930944:replies",
+      "last_error": ""
     },
     {
       "job_id": "b6bcd2f6-c40a-48e6-bb35-1c68a484ff21",

@@ -18863,6 +18863,28 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mwhdlcbw42s7",
+      "name": "gul4change",
+      "x_account": "gul4change",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "インプ稼ぎ",
+      "tracking_mode": "monitor_only",
+      "works": [
+        {
+          "url": "https://x.com/gul4change/status/2118300608470167777",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-15"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-11-15",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

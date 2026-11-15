@@ -18954,18 +18954,31 @@
       },
       "archives": [
         {
-          "url": "https://archive.li/2026.11.15-041621/https://x.com/PMDTkxu2x0gk5B2",
           "provider": "archive.today",
-          "status": "pending",
-          "target_url": "https://x.com/PMDTkxu2x0gk5B2",
-          "saved_at": "2026-11-15T04:19:26.349Z"
+          "url": "https://archive.li/2026.11.15-041621/https://x.com/PMDTkxu2x0gk5B2",
+          "target_url": "https://x.com/pmdtkxu2x0gk5b2",
+          "requested_target_url": "https://x.com/PMDTkxu2x0gk5B2",
+          "status": "done",
+          "job_id": "2e40bce4-898a-4408-ae97-1fd58989d7e3",
+          "event_key": "first:1351773044939780102:profile",
+          "x_user_id": "1351773044939780102",
+          "requested_at": null,
+          "captured_at": "2026-11-15T04:16:21.000Z",
+          "saved_at": "2026-11-15T21:30:50.400Z",
+          "content_verified_at": "2026-11-15T21:30:50.400Z",
+          "verification_method": "archived_profile_body",
+          "verified_scope": [
+            "profile"
+          ],
+          "posts_verification": "confirmed",
+          "reused_existing": true
         }
       ],
-      "archive_status": "pending",
+      "archive_status": "done",
       "archive_url": "https://archive.li/2026.11.15-041621/https://x.com/PMDTkxu2x0gk5B2",
       "archive_provider": "archive.today",
-      "archive_target_url": "https://x.com/PMDTkxu2x0gk5B2",
-      "archive_checked_at": "2026-11-15T04:19:26.349Z",
+      "archive_target_url": "https://x.com/pmdtkxu2x0gk5b2",
+      "archive_checked_at": "2026-11-15T21:30:50.400Z",
       "monitoring": {
         "status": "active",
         "last_checked_at": "2026-11-15T12:03:14+00:00",

@@ -1502,14 +1502,23 @@
       "kind": "profile",
       "artist_id": "mw4ri2jz1l54",
       "registered_handle": "5cohp",
-      "expected_x_user_id": "",
-      "state": "queued",
+      "expected_x_user_id": "2071547054674092032",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-06T10:10:33.310Z",
       "attempt_count": 0,
-      "next_attempt_at": 1793959833310,
+      "next_attempt_at": 1794762426850,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-06T10:10:33.310Z"
+      "updated_at": "2026-11-15T17:07:06.850Z",
+      "identity": {
+        "id": "2071547054674092032",
+        "handle": "5cohp",
+        "name": "佐藤勝男",
+        "bio": "國士舘大学武道学科卒業\n元國士舘大学剣道部三将\n戈を止めると書いて「武」"
+      },
+      "target_url": "https://x.com/5cohp",
+      "event_key": "first:2071547054674092032:profile",
+      "last_error": ""
     },
     {
       "job_id": "9229ed91-4f39-48f1-8eae-89922ea9be14",

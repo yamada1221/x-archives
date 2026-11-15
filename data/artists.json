@@ -19385,18 +19385,31 @@
       },
       "archives": [
         {
-          "url": "https://archive.li/2026.11.15-091303/https://x.com/CHZIKJ",
           "provider": "archive.today",
-          "status": "pending",
-          "target_url": "https://x.com/CHZIKJ",
-          "saved_at": "2026-11-15T09:30:18.857Z"
+          "url": "https://archive.li/2026.11.15-091303/https://x.com/CHZIKJ",
+          "target_url": "https://x.com/chzikj",
+          "requested_target_url": "https://x.com/CHZIKJ",
+          "status": "done",
+          "job_id": "c88c8538-8788-42d2-84d8-e9e3f7f56595",
+          "event_key": "first:1788343326585806848:profile",
+          "x_user_id": "1788343326585806848",
+          "requested_at": null,
+          "captured_at": "2026-11-15T09:13:03.000Z",
+          "saved_at": "2026-11-15T21:39:50.667Z",
+          "content_verified_at": "2026-11-15T21:39:50.667Z",
+          "verification_method": "archived_profile_body",
+          "verified_scope": [
+            "profile"
+          ],
+          "posts_verification": "confirmed",
+          "reused_existing": true
         }
       ],
-      "archive_status": "pending",
+      "archive_status": "done",
       "archive_url": "https://archive.li/2026.11.15-091303/https://x.com/CHZIKJ",
       "archive_provider": "archive.today",
-      "archive_target_url": "https://x.com/CHZIKJ",
-      "archive_checked_at": "2026-11-15T09:30:18.857Z",
+      "archive_target_url": "https://x.com/chzikj",
+      "archive_checked_at": "2026-11-15T21:39:50.667Z",
       "monitoring": {
         "status": "active",
         "last_checked_at": "2026-11-15T12:03:14+00:00",
@@ -19416,7 +19429,8 @@
           "at": "2026-11-15T12:03:14+00:00",
           "reason": "FxTwitter HTTP 404; code=404; message=User not found; fallback: non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/CHZIKJ; contains_username=True; suspended_marker=False; missing_marker=False; bytes=188628; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"ec61450c772e92ce6709479d286bbe63833358e5\"><head><meta charSet=\"utf-8\"/><meta name'"
         }
-      ]
+      ],
+      "x_user_id": "1788343326585806848"
     },
     {
       "id": "mwhp24ecesc8",

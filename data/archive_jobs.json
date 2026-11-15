@@ -2854,13 +2854,22 @@
       "artist_id": "mv8l2nkon3x0",
       "registered_handle": "pGR2MB4YjU8459",
       "expected_x_user_id": "2012908023946391552",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-09T10:10:34.775Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794219034775,
+      "next_attempt_at": 1794767931426,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-09T10:10:34.775Z"
+      "updated_at": "2026-11-15T18:38:51.426Z",
+      "identity": {
+        "id": "2012908023946391552",
+        "handle": "pGR2MB4YjU8459",
+        "name": "山田小太郎",
+        "bio": "つれづれなるまゝに"
+      },
+      "target_url": "https://x.com/pGR2MB4YjU8459",
+      "event_key": "first:2012908023946391552:profile",
+      "last_error": ""
     },
     {
       "job_id": "f76811f3-d3c1-47f6-a4cd-2eaaa3b94cf5",

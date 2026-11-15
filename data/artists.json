@@ -13872,13 +13872,34 @@
           "status": "pending",
           "target_url": "https://x.com/hisa_labs/with_replies",
           "saved_at": "2026-11-13T13:43:57.395Z"
+        },
+        {
+          "provider": "archive.today",
+          "url": "https://archive.li/2L4p5",
+          "target_url": "https://x.com/hisa_labs/with_replies",
+          "requested_target_url": "https://x.com/hisa_labs",
+          "status": "done",
+          "job_id": "97338c6d-bc7d-4c3f-916c-854575b3bc8d",
+          "event_key": "first:1993185559242850306:profile",
+          "x_user_id": "1993185559242850306",
+          "requested_at": "2026-10-30T08:30:00.809Z",
+          "captured_at": "2026-11-12T16:52:22.000Z",
+          "saved_at": "2026-11-15T04:45:05.678Z",
+          "content_verified_at": "2026-11-15T04:45:05.678Z",
+          "verification_method": "archived_profile_body",
+          "verified_scope": [
+            "profile",
+            "replies"
+          ],
+          "posts_verification": "confirmed",
+          "reused_existing": false
         }
       ],
-      "archive_status": "pending",
-      "archive_url": "https://archive.li/KrRlv",
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2L4p5",
       "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/hisa_labs/with_replies",
-      "archive_checked_at": "2026-11-13T13:43:57.395Z"
+      "archive_checked_at": "2026-11-15T04:45:05.678Z"
     },
     {
       "id": "mvufzyds6mik",

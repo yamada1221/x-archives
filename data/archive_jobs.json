@@ -4895,13 +4895,22 @@
       "artist_id": "mwdjoz6icptn",
       "registered_handle": "shikoshikoo72",
       "expected_x_user_id": "2104007139731902464",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-13T15:10:40.427Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794582640427,
+      "next_attempt_at": 1794776511181,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-13T15:10:40.427Z"
+      "updated_at": "2026-11-15T21:01:51.181Z",
+      "identity": {
+        "id": "2104007139731902464",
+        "handle": "shikoshikoo72",
+        "name": "萬光",
+        "bio": ""
+      },
+      "target_url": "https://x.com/shikoshikoo72",
+      "event_key": "first:2104007139731902464:profile",
+      "last_error": ""
     },
     {
       "job_id": "a69aca4b-40bd-40d5-a956-eddd4758e9b5",

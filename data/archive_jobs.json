@@ -2449,13 +2449,22 @@
       "artist_id": "mur6goi2x0zv",
       "registered_handle": "W6lqBmmZ8U40298",
       "expected_x_user_id": "1803077479370006528",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-08T16:10:34.245Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794154234245,
+      "next_attempt_at": 1794766431570,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-08T16:10:34.245Z"
+      "updated_at": "2026-11-15T18:13:51.570Z",
+      "identity": {
+        "id": "1803077479370006528",
+        "handle": "W6lqBmmZ8U40298",
+        "name": "うみ",
+        "bio": ""
+      },
+      "target_url": "https://x.com/W6lqBmmZ8U40298",
+      "event_key": "first:1803077479370006528:profile",
+      "last_error": ""
     },
     {
       "job_id": "0eecf5ac-ed6f-490f-a989-012d02c2fa50",

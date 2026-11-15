@@ -3860,13 +3860,22 @@
       "artist_id": "mw56bvjidr0i",
       "registered_handle": "STR00000001",
       "expected_x_user_id": "1428880504674144256",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-11T10:10:34.968Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794391834968,
+      "next_attempt_at": 1794771171272,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-11T10:10:34.968Z"
+      "updated_at": "2026-11-15T19:32:51.272Z",
+      "identity": {
+        "id": "1428880504674144256",
+        "handle": "STR00000001",
+        "name": "STR",
+        "bio": "適当に身近な出来事を呟いています😃😡🥲😊😇🤗🙃\n情報収集が目的ですのでフォローバックは基本しません🙏"
+      },
+      "target_url": "https://x.com/STR00000001",
+      "event_key": "first:1428880504674144256:profile",
+      "last_error": ""
     },
     {
       "job_id": "344b65b8-b5a2-4738-81da-4f602ac95d41",

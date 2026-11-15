@@ -5222,14 +5222,23 @@
       "kind": "profile",
       "artist_id": "mwgk076lkcs8",
       "registered_handle": "haru_u7216",
-      "expected_x_user_id": "",
-      "state": "queued",
+      "expected_x_user_id": "1475015998806052865",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-14T21:10:36.137Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794690636137,
+      "next_attempt_at": 1794777951015,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-14T21:10:36.137Z"
+      "updated_at": "2026-11-15T21:25:51.015Z",
+      "identity": {
+        "id": "1475015998806052865",
+        "handle": "haru_u7216",
+        "name": "投資家",
+        "bio": "元楽天証券社員｜株式投資歴28年📈\n長年の経験を活かして日本株を徹底分析。\n短期急騰株から長期成長株まで幅広く研究。\n次の大化け候補をいち早くキャッチ。\n相場のチャンスを分かりやすくお届けします。"
+      },
+      "target_url": "https://x.com/haru_u7216",
+      "event_key": "first:1475015998806052865:profile",
+      "last_error": ""
     },
     {
       "job_id": "2e40bce4-898a-4408-ae97-1fd58989d7e3",

@@ -3766,6 +3766,20 @@
       "next_attempt_at": 1794733865860,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "updated_at": "2026-11-15T09:11:05.860Z"
+    },
+    {
+      "job_id": "305b2551-abeb-4e67-b40a-b5a21127498a",
+      "kind": "profile",
+      "artist_id": "mwheys0bgsrr",
+      "registered_handle": "SNSunyou_Master",
+      "expected_x_user_id": "",
+      "state": "queued",
+      "provider": "archive.today",
+      "created_at": "2026-11-15T09:11:05.860Z",
+      "attempt_count": 0,
+      "next_attempt_at": 1794733865860,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-11-15T09:11:05.860Z"
     }
   ],
   "reservations": [

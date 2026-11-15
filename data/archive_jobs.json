@@ -743,9 +743,9 @@
       "provider": "archive.today",
       "created_at": "2026-10-27T14:27:21.290Z",
       "attempt_count": 1,
-      "next_attempt_at": 1794764570225,
+      "next_attempt_at": 1794764930130,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-15T17:41:50.225Z",
+      "updated_at": "2026-11-15T17:47:50.130Z",
       "identity": {
         "id": "1808120200296124418",
         "handle": "tamika47488",
@@ -761,7 +761,7 @@
       "receipt_checks": 0,
       "receipt_recovery_started_at": "2026-11-15T17:39:09.416Z",
       "receipt": "https://archive.li/ItK3b",
-      "verification_checks": 0
+      "verification_checks": 1
     },
     {
       "job_id": "9a736083-d839-4886-b82c-1f0165f12ad4",

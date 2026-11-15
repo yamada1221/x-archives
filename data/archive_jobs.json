@@ -4415,13 +4415,22 @@
       "artist_id": "mw7pog7b55z2",
       "registered_handle": "goto5535525",
       "expected_x_user_id": "2087067932459491328",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-12T15:10:37.702Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794496237702,
+      "next_attempt_at": 1794773750809,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-12T15:10:37.702Z"
+      "updated_at": "2026-11-15T20:15:50.809Z",
+      "identity": {
+        "id": "2087067932459491328",
+        "handle": "goto5535525",
+        "name": "トモ",
+        "bio": ""
+      },
+      "target_url": "https://x.com/goto5535525",
+      "event_key": "first:2087067932459491328:profile",
+      "last_error": ""
     },
     {
       "job_id": "cd77eaae-ae76-499c-a6bc-db8008770083",

@@ -1151,13 +1151,13 @@
       "artist_id": "mvwfw117yr6f",
       "registered_handle": "raymond_supdev",
       "expected_x_user_id": "1925187899299127296",
-      "state": "processing",
+      "state": "needs_review",
       "provider": "archive.today",
       "created_at": "2026-10-31T14:26:54.110Z",
       "attempt_count": 1,
       "next_attempt_at": 1794761405505,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-15T16:49:05.505Z",
+      "updated_at": "2026-11-15T16:51:06.168Z",
       "identity": {
         "id": "1925187899299127296",
         "handle": "raymond_supdev",
@@ -1173,7 +1173,7 @@
       "receipt_checks": 0,
       "receipt_recovery_started_at": "2026-11-15T16:47:11.886Z",
       "receipt": "https://archive.li/Mveil",
-      "verification_checks": 2
+      "verification_checks": 3
     },
     {
       "job_id": "61c26a3b-08fc-461c-9574-78828257fa5f",

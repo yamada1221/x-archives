@@ -2297,13 +2297,22 @@
       "registered_handle": "talmein",
       "target_kind": "replies",
       "expected_x_user_id": "1499658391060643843",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-08T04:10:34.738Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794111034738,
+      "next_attempt_at": 1794765951768,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-08T04:10:34.738Z"
+      "updated_at": "2026-11-15T18:05:51.768Z",
+      "identity": {
+        "id": "1499658391060643843",
+        "handle": "talmein",
+        "name": "@",
+        "bio": ""
+      },
+      "target_url": "https://x.com/talmein/with_replies",
+      "event_key": "first:1499658391060643843:replies",
+      "last_error": ""
     },
     {
       "job_id": "6c1da36b-6edb-4002-b545-6a571de4150f",

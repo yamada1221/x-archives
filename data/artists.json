@@ -19011,7 +19011,7 @@
     },
     {
       "id": "mwhjwuhqzlri",
-      "name": "_bebotodasqvier",
+      "name": "🌷さわこ🍀@日本",
       "x_account": "_bebotodasqvier",
       "threads_account": "",
       "threads_share_url": "",
@@ -19023,9 +19023,29 @@
       "added_at": "2026-11-15",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://unavatar.io/x/_bebotodasqvier?fallback=false",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2099237031012700161/x9tfV2JM_normal.jpg",
       "profile_fetched_at": "2026-11-15",
-      "profile_source": "unavatar"
+      "profile_source": "fxtwitter",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-15T08:07:19.686616+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-15T08:07:19+00:00",
+        "x_account": "_bebotodasqvier",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=_bebotodasqvier",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/_bebotodasqvier",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

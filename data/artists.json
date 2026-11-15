@@ -13967,7 +13967,35 @@
           "reason": "FxTwitter HTTP 404; code=404; message=User not found; fallback: non-JSON public response; HTTP 200; content-type=unknown; body=''; profile page HTTP 200; content-type=text/html; charset=UTF-8; final_url=https://x.com/donbe; contains_username=True; suspended_marker=False; missing_marker=False; bytes=179033; body='<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" data-app-env=\"prod\" data-app-version=\"b5d619d59ff8a06ad1a541260ba87ce875366068\"><head><meta charSet=\"utf-8\"/><meta name'"
         }
       ],
-      "x_user_id": "224335899"
+      "x_user_id": "224335899",
+      "archives": [
+        {
+          "provider": "archive.today",
+          "url": "https://archive.li/4n5Cn",
+          "target_url": "https://x.com/donbe/with_replies",
+          "requested_target_url": "https://x.com/Donbe",
+          "status": "done",
+          "job_id": "be206d1b-7fbe-4ff0-a4e2-5c1aa14dd472",
+          "event_key": "first:224335899:profile",
+          "x_user_id": "224335899",
+          "requested_at": "2026-10-30T08:31:01.149Z",
+          "captured_at": "2026-11-13T13:37:20.000Z",
+          "saved_at": "2026-11-15T16:45:05.342Z",
+          "content_verified_at": "2026-11-15T16:45:05.342Z",
+          "verification_method": "archived_profile_body",
+          "verified_scope": [
+            "profile",
+            "replies"
+          ],
+          "posts_verification": "confirmed",
+          "reused_existing": false
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/4n5Cn",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/donbe/with_replies",
+      "archive_checked_at": "2026-11-15T16:45:05.342Z"
     },
     {
       "id": "mvvbftkoausa",

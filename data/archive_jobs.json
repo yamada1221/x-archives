@@ -4941,14 +4941,23 @@
       "kind": "profile",
       "artist_id": "mwep3gh0l6me",
       "registered_handle": "abcd48510381",
-      "expected_x_user_id": "",
-      "state": "queued",
+      "expected_x_user_id": "1419103095573807111",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-13T21:10:35.296Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794604235296,
+      "next_attempt_at": 1794776811961,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-13T21:10:35.296Z"
+      "updated_at": "2026-11-15T21:06:51.961Z",
+      "identity": {
+        "id": "1419103095573807111",
+        "handle": "abcd48510381",
+        "name": "🪱",
+        "bio": "毎朝の空気も無添加にこだわっています。雑草と泥を食して生命力を維持。文明の電波は一切遮断して生活しております。😊"
+      },
+      "target_url": "https://x.com/abcd48510381",
+      "event_key": "first:1419103095573807111:profile",
+      "last_error": ""
     },
     {
       "job_id": "a39e9802-0ff8-4f74-be85-5e112c3b6aed",

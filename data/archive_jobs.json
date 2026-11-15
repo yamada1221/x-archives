@@ -3429,13 +3429,22 @@
       "registered_handle": "ZACCO_0120",
       "target_kind": "replies",
       "expected_x_user_id": "2885942491",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-10T10:10:34.696Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794305434696,
+      "next_attempt_at": 1794769670939,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-10T10:10:34.696Z"
+      "updated_at": "2026-11-15T19:07:50.939Z",
+      "identity": {
+        "id": "2885942491",
+        "handle": "ZACCO_0120",
+        "name": "ZACCO(ザッコ)",
+        "bio": "最近やってるゲームはアナデンとゆるーくポケモンGO"
+      },
+      "target_url": "https://x.com/ZACCO_0120/with_replies",
+      "event_key": "first:2885942491:replies",
+      "last_error": ""
     },
     {
       "job_id": "0167c94f-995e-430f-991a-ece82b7ae727",

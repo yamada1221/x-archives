@@ -3765,13 +3765,22 @@
       "registered_handle": "karako_mori",
       "target_kind": "replies",
       "expected_x_user_id": "1066854790427103232",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-11T04:10:35.297Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794370235297,
+      "next_attempt_at": 1794770871120,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-11T04:10:35.297Z"
+      "updated_at": "2026-11-15T19:27:51.120Z",
+      "identity": {
+        "id": "1066854790427103232",
+        "handle": "karako_mori",
+        "name": "殻篭もり",
+        "bio": "クソリプに目覚めし者。不快なら消すので連絡ください。ご迷惑おかけします"
+      },
+      "target_url": "https://x.com/karako_mori/with_replies",
+      "event_key": "first:1066854790427103232:replies",
+      "last_error": ""
     },
     {
       "job_id": "fccb9b8c-5b95-47a2-9d1a-2de4c5378d07",

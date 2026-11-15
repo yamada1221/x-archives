@@ -4321,13 +4321,22 @@
       "artist_id": "mw7lsucmfz2q",
       "registered_handle": "Yamadaawvh",
       "expected_x_user_id": "2014885701381455879",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-12T09:10:35.505Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794474635505,
+      "next_attempt_at": 1794773331198,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-12T09:10:35.505Z"
+      "updated_at": "2026-11-15T20:08:51.198Z",
+      "identity": {
+        "id": "2014885701381455879",
+        "handle": "Yamadaawvh",
+        "name": "Yamada",
+        "bio": ""
+      },
+      "target_url": "https://x.com/Yamadaawvh",
+      "event_key": "first:2014885701381455879:profile",
+      "last_error": ""
     },
     {
       "job_id": "7ef3ab37-e37e-4a3b-93e1-ab795283f332",

@@ -2214,13 +2214,22 @@
       "registered_handle": "1m_55cm",
       "target_kind": "replies",
       "expected_x_user_id": "1623263466076405761",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-08T04:10:34.738Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794111034738,
+      "next_attempt_at": 1794765651743,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-08T04:10:34.738Z"
+      "updated_at": "2026-11-15T18:00:51.743Z",
+      "identity": {
+        "id": "1623263466076405761",
+        "handle": "1m_55cm",
+        "name": "隻腕ニキ 3rd stage",
+        "bio": "【確かにこの身体だと不自由な事は沢山ある。 だけど不自由である事と不幸である事はイコールじゃない】"
+      },
+      "target_url": "https://x.com/1m_55cm/with_replies",
+      "event_key": "first:1623263466076405761:replies",
+      "last_error": ""
     },
     {
       "job_id": "3307992c-4504-480c-a528-1be584c8a139",

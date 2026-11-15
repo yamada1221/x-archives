@@ -3405,13 +3405,22 @@
       "registered_handle": "tkgria",
       "target_kind": "replies",
       "expected_x_user_id": "1363522164549242886",
-      "state": "queued",
+      "state": "opening",
       "provider": "archive.today",
       "created_at": "2026-11-10T10:10:34.696Z",
       "attempt_count": 0,
-      "next_attempt_at": 1794305434696,
+      "next_attempt_at": 1794769611227,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-10T10:10:34.696Z"
+      "updated_at": "2026-11-15T19:06:51.227Z",
+      "identity": {
+        "id": "1363522164549242886",
+        "handle": "TKGRia",
+        "name": "ばなな",
+        "bio": "ハモンは後ろ足 パレタは前足の生ハムなんですって ぼーのぼーの𓃟\nりあだったり、豆腐だったり湯葉な人\nさっきまでりあだった 💊若手()薬剤師🥼"
+      },
+      "target_url": "https://x.com/TKGRia/with_replies",
+      "event_key": "first:1363522164549242886:replies",
+      "last_error": ""
     },
     {
       "job_id": "04796bf2-4c57-4f6a-8b57-5bda1995b995",

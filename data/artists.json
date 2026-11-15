@@ -19098,6 +19098,21 @@
       "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/CHZIKJ",
       "archive_checked_at": "2026-11-15T09:30:18.857Z"
+    },
+    {
+      "id": "mwhp24ecesc8",
+      "name": "gNkxVYppfCRlsAn",
+      "x_account": "gNkxVYppfCRlsAn",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-15",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

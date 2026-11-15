@@ -5248,13 +5248,13 @@
       "receipt": "https://archive.li/2026.11.15-041621/https://x.com/PMDTkxu2x0gk5B2",
       "adopted_existing": true,
       "expected_x_user_id": "1351773044939780102",
-      "state": "processing",
+      "state": "succeeded",
       "provider": "archive.today",
       "created_at": "2026-11-15T09:11:05.860Z",
       "attempt_count": 0,
       "next_attempt_at": 1794778190218,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-15T21:28:50.218Z",
+      "updated_at": "2026-11-15T21:30:50.401Z",
       "identity": {
         "id": "1351773044939780102",
         "handle": "PMDTkxu2x0gk5B2",
@@ -5263,7 +5263,27 @@
       },
       "target_url": "https://x.com/PMDTkxu2x0gk5B2",
       "event_key": "first:1351773044939780102:profile",
-      "last_error": ""
+      "last_error": "",
+      "verification": {
+        "ok": true,
+        "captured_at": "2026-11-15T04:16:21.000Z",
+        "verified_at": "2026-11-15T21:30:50.400Z",
+        "method": "archived_profile_body",
+        "captured_target_url": "https://x.com/pmdtkxu2x0gk5b2",
+        "scope": [
+          "profile"
+        ],
+        "posts_verification": "confirmed",
+        "post_ids": [
+          "2121614897478054266",
+          "2121812787349668103",
+          "2121810062113198311",
+          "2121809319574589600",
+          "2121806253756424683"
+        ],
+        "archived_user_id": "1351773044939780102",
+        "reused_existing": true
+      }
     },
     {
       "job_id": "7902e03e-1b84-4806-8cf8-1e77aad76a00",

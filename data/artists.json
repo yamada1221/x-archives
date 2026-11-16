@@ -19541,6 +19541,28 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mwj21097x29z",
+      "name": "ipatrioticmom4",
+      "x_account": "ipatrioticmom4",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "親露派",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/ipatrioticmom4/status/2121765743637549555",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-16"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-11-16",
+      "fetch_status": "error",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

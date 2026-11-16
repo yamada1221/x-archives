@@ -1,5 +1,5 @@
 // Real MV3 worker, IndexedDB, alarms, isolated-world DOM operations and browser
-// form POSTs. External service responses are fixtures; DOM operations are real.
+// save navigations/form POSTs. Service responses are fixtures; DOM operations are real.
 const {chromium}=require('playwright');
 const fs=require('node:fs'),os=require('node:os'),path=require('node:path'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..'), temp=fs.mkdtempSync(path.join(os.tmpdir(),'x-archive-mv3-'));
@@ -39,7 +39,7 @@ async function fakeNetwork(){
 }
 (async()=>{
   const context=await chromium.launchPersistentContext(path.join(temp,'profile'),{channel:'chromium',headless:true,args:['--disable-extensions-except='+extension,'--load-extension='+extension]});
-  let posts=0,fixtureNow=Date.now(),worker,stage='startup';const captures=new Map(),errors=[],navigations=[],routedNavigations=new Map();
+  let posts=0,formPosts=0,fixtureNow=Date.now(),worker,stage='startup';const captures=new Map(),errors=[],navigations=[],routedNavigations=new Map(),runRequests=[];
   const mark=value=>{stage=value;console.log('Archive check:',provider,stage);};
   const watchdog=setTimeout(()=>{console.error('Archive browser timeout:',JSON.stringify({provider,stage,navigations,captures:[...captures]}));process.exit(1);},90000);
   watchdog.unref();
@@ -56,6 +56,26 @@ async function fakeNetwork(){
     });
     const routed=req=>{if(req.isNavigationRequest()){const key=req.method()+' '+req.url();routedNavigations.set(key,(routedNavigations.get(key)||0)+1);}};
     const navigate=(route,url)=>route.fulfill({contentType:'text/html',body:'<!doctype html><script>location.replace('+JSON.stringify(url)+')</script>'});
+    const reservedRunJobs=new Set();
+    const assertRunReservation=async target=>{
+      assert.ok(worker,'A save navigation must have a running extension worker');
+      const reserved=await worker.evaluate(async target=>{
+        const cfg=(await chrome.storage.local.get('autoArchiveSettings')).autoArchiveSettings;
+        const api=(await chrome.storage.local.get('fixtureAPI')).fixtureAPI,ledger=api.docs['data/archive_jobs.json'];
+        const job=ledger?.jobs.find(j=>j.target_url===target&&j.state==='submitting');
+        const local=await new AutoArchiveStore().get(AutoArchiveCore.scope(cfg));
+        const cached=local?.jobs.find(j=>j.job_id===job?.job_id);
+        return{job_id:job?.job_id,operation_id:job?.operation_id,started:job?.submission_started_at,attempts:job?.attempt_count,
+          reservation:ledger?.reservations.some(r=>r.job_id===job?.job_id),localState:cached?.state,
+          localStarted:cached?.submission_started_at,localOperation:cached?.operation_id};
+      },target);
+      assert.ok(reserved.job_id);assert.ok(reserved.operation_id);assert.ok(Number.isFinite(Date.parse(reserved.started)));
+      assert.equal(reserved.attempts,1);assert.equal(reserved.reservation,true);
+      assert.equal(reserved.localState,'submitting');assert.equal(reserved.localStarted,reserved.started);
+      assert.equal(reserved.localOperation,reserved.operation_id);
+      assert.equal(reservedRunJobs.has(reserved.job_id),false,'Each reserved job may visit run=1 only once');
+      reservedRunJobs.add(reserved.job_id);runRequests.push({job_id:reserved.job_id,target});
+    };
     const savedBody=(cap,id,inline=false)=>{
       const h=cap.target.split('/').pop(),user=h==='X'?'783214':'1234567890123456789';
       const rewrite=inline?home+'o/'+id+'/':'https://ghostarchive.org/news2/'+id+'/a/href/';
@@ -64,12 +84,18 @@ async function fakeNetwork(){
     await context.route('https://archive.li/**',async route=>{
       const req=route.request(),u=new URL(req.url());
       routed(req);
-      if(u.pathname==='/submit'){
-        assert.equal(req.method(),'POST');const params=new URLSearchParams(req.postData()),target=params.get('url');
-        assert.equal(params.get('submitid'),'fixture-form-token');assert.match(target,/^https:\/\/x\.com\/(X|Example)$/);
+      if(u.pathname==='/'&&u.searchParams.get('run')==='1'){
+        assert.equal(req.method(),'GET');assert.deepEqual([...u.searchParams.keys()].sort(),['run','url']);
+        const target=u.searchParams.get('url');assert.match(target,/^https:\/\/x\.com\/(X|Example)$/);
+        await assertRunReservation(target);
         const n=++posts;captures.set(captureId(n),{target,ready:false,challenge:n===1});
+        // The save entry can remain a prefilled form before a receipt appears.
+        // The extension must reconcile it rather than submit that form again.
+        if(n===1){await route.fulfill({contentType:'text/html',body:`<!doctype html><title>archive.li</title><form id="submit_form" action="/submit" method="POST"><input name="submitid" type="hidden" value="fixture-form-token"><label>URL<input name="url" value="${target}"></label><button>save</button></form>`});return;}
         await navigate(route,receiptURL(n,true));return;
       }
+      if(/^\/submit\/?$/.test(u.pathname)){formPosts++;errors.push('Unexpected archive.today form resubmission');await route.abort();return;}
+      assert.notEqual(u.pathname,'/','archive.today must first open the reserved run=1 URL, never a blank homepage');
       const wip=u.pathname.match(/^\/wip\/(Fx00\d)$/),final=u.pathname.match(/^\/(Fx00\d)$/),m=wip||final;
       if(m){
         const cap=captures.get(m[1]);assert.ok(cap);
@@ -85,6 +111,7 @@ async function fakeNetwork(){
       const req=route.request(),u=new URL(req.url());
       routed(req);
       if(u.pathname==='/archive2'){
+        formPosts++;
         assert.equal(req.method(),'POST');const target=new URLSearchParams(req.postData()).get('archive');
         assert.match(target,/^https:\/\/x\.com\/(X|Example)$/);
         const id='Fixture'+(++posts);captures.set(id,{target,ready:false});
@@ -116,10 +143,6 @@ async function fakeNetwork(){
     await page.locator('#token').fill('fixture-token');await page.locator('#connection button').click();
     await page.locator('#summary').filter({hasText:'接続テストが必要'}).waitFor().catch(async e=>{console.error('Settings diagnostics:',await page.locator('#message').innerText());throw e;});
     assert.equal(await worker.evaluate(async()=>Object.hasOwn((await chrome.storage.local.get('autoArchiveSettings')).autoArchiveSettings,'token')),false);
-    mark('connection test');const testTab=context.waitForEvent('page');
-    await page.locator('#test').click();
-    await page.locator('#message').filter({hasText:'反映しました'}).waitFor();
-    const first=await testTab;await first.waitForURL(home);await first.waitForSelector(today?'form input[name="url"]':'form input#archive');
     const due=async()=>{
       fixtureNow=await worker.evaluate(async()=>{
         globalThis.fixtureClock+=61000;
@@ -128,6 +151,19 @@ async function fakeNetwork(){
         return globalThis.fixtureClock;
       });
     };
+    mark('connection test');const testTab=context.waitForEvent('page');
+    await page.locator('#test').click();
+    await page.locator('#message').filter({hasText:'反映しました'}).waitFor();
+    if(today){assert.equal(navigations.length,0);assert.equal(posts,0);mark('test submission');await due();}
+    const first=await testTab;
+    if(today){
+      await first.waitForURL(url=>url.origin===home.slice(0,-1)&&url.pathname==='/'&&url.searchParams.get('run')==='1',{waitUntil:'load'});
+      await first.waitForSelector('form input[name="url"]');assert.equal(posts,1);assert.equal(formPosts,0);
+      for(let i=0;i<2;i++){await due();assert.equal(posts,1);assert.equal(runRequests.length,1);assert.equal(formPosts,0);}
+      // Simulate the service completing that original request; this navigation
+      // does not revisit the save endpoint or issue another form submission.
+      await first.goto(receiptURL(1,true));
+    }else{await first.waitForURL(home);await first.waitForSelector('form input#archive');}
     const state=()=>worker.evaluate(async()=>AutoArchiveRuntime.status(true));
     const waitProcessing=async id=>{
       let current;
@@ -139,7 +175,7 @@ async function fakeNetwork(){
       }
       assert.fail('Expected processing receipt: '+JSON.stringify(current));
     };
-    mark('test submission');await due();assert.equal(posts,1);
+    if(!today){mark('test submission');await due();}assert.equal(posts,1);
     await first.waitForURL(url=>[receiptURL(1,today),receiptURL(1)].includes(url.href),{waitUntil:'load'});
     mark('test receipt');
     if(today){
@@ -163,9 +199,11 @@ async function fakeNetwork(){
     assert.equal((await state()).jobs[0].access_wait,undefined);
     mark('profile queue');const captureTab=context.waitForEvent('page');
     await page.locator('#start').click();await page.locator('#message').filter({hasText:'反映しました'}).waitFor();
-    const second=await captureTab;await second.waitForURL(home);await second.waitForSelector(today?'form input[name="url"]':'form input#archive');
-    mark('profile submission');await due();assert.equal(posts,2);
+    if(today){assert.equal(posts,1);assert.equal(runRequests.length,1);mark('profile submission');await due();}
+    const second=await captureTab;
+    if(!today){await second.waitForURL(home);await second.waitForSelector('form input#archive');mark('profile submission');await due();}
     await second.waitForURL(url=>[receiptURL(2,today),receiptURL(2)].includes(url.href),{waitUntil:'load'});await waitProcessing('one');
+    assert.equal(posts,2);
     assert.equal((await state()).jobs.find(j=>j.artist_id==='one').state,'processing');
     // Stop the actual MV3 worker. IndexedDB and the shared receipt must survive;
     // waking it must not cause the form POST to run a second time.
@@ -187,12 +225,18 @@ async function fakeNetwork(){
     const saved=api.docs['data/artists.json'];assert.equal(saved.artists[0].archive_status,'done');assert.equal(saved.artists[0].note,'手元のメモ');assert.equal(saved.artists[0].threads_posts[0].text,'残す');
     assert.equal(saved.artists[0].archives[0].posts_verification,'confirmed');assert.equal(saved.artists[1].archive_status,undefined);assert.equal(saved.artists[2].archive_url,'https://archive.md/Abc12');
     assert.equal(saved.artists[0].archive_provider,provider);assert.equal(saved.artists[0].archive_url,receiptURL(2));
+    assert.equal(formPosts,today?0:2);
+    assert.equal(runRequests.length,today?2:0);
+    if(today){
+      assert.deepEqual(runRequests.map(request=>request.target),['https://x.com/X','https://x.com/Example']);
+      assert.equal(navigations.filter(request=>new URL(request.url).searchParams.get('run')==='1').length,2);
+    }
     mark('result display');await page.reload();await page.locator('#summary').filter({hasText:'有効'}).waitFor();
     fs.mkdirSync(path.join(root,'test-output'),{recursive:true});await page.screenshot({path:path.join(root,'test-output/auto-archive-options-'+provider+'.png'),fullPage:true});
     const requestedNavigations=new Map();for(const r of navigations){const key=r.method+' '+r.url;requestedNavigations.set(key,(requestedNavigations.get(key)||0)+1);}
     assert.deepEqual([...routedNavigations].sort(),[...requestedNavigations].sort(),'Every archive navigation must have a fixture response');
     assert.deepEqual(errors,[]);
-    console.log('Native auto-archive checks passed ('+provider+'): native fetch, permissions, settings, gate, form POST, saved body, numeric ID, posts, worker restart, IndexedDB, GitHub CAS and legacy exclusions.');
+    console.log('Native auto-archive checks passed ('+provider+'): native fetch, permissions, settings, reserved save '+(today?'run=1 navigation':'form POST')+', saved body, numeric ID, worker restart, no resubmission, IndexedDB, GitHub CAS and legacy exclusions.');
   }catch(error){
     console.error('Archive fixture diagnostics:',JSON.stringify({provider,stage,navigations,captures:[...captures]}));
     if(worker)try{console.error('Worker inspection diagnostics:',JSON.stringify(await worker.evaluate(async()=>{

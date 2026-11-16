@@ -5484,13 +5484,13 @@
       "registered_handle": "kurfaraway",
       "target_kind": "replies",
       "expected_x_user_id": "2046064802733465600",
-      "state": "submitting",
+      "state": "submission_unknown",
       "provider": "archive.today",
       "created_at": "2026-11-09T16:10:34.827Z",
       "attempt_count": 1,
-      "next_attempt_at": 1794787554374,
+      "next_attempt_at": 1794787910210,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
-      "updated_at": "2026-11-16T00:04:54.374Z",
+      "updated_at": "2026-11-16T00:06:50.210Z",
       "identity": {
         "id": "2046064802733465600",
         "handle": "kurfaraway",
@@ -5499,10 +5499,11 @@
       },
       "target_url": "https://x.com/kurfaraway/with_replies",
       "event_key": "first:2046064802733465600:replies",
-      "last_error": "",
+      "last_error": "保存先の人間確認が必要です。「保存先で確認」で完了してください。完了後は自動で結果を確認します",
       "submission_started_at": "2026-11-16T00:04:51.578Z",
       "operation_id": "efb371ed-d9da-4eb6-b804-c026bbe03be4",
-      "lease_expires_at": 1794789291578
+      "lease_expires_at": 1794789291578,
+      "access_wait": "human"
     },
     {
       "job_id": "1df93773-7d19-4c54-a88c-1312ff301d3d",

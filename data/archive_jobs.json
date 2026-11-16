@@ -5531,6 +5531,20 @@
       "operation_id": "bf6abee4-328e-4150-b364-9a6bb7fad169",
       "lease_expires_at": 1794789351839,
       "receipt_recovery_required": true
+    },
+    {
+      "job_id": "2861a904-d23f-44e4-af1d-f16b79f0d49e",
+      "kind": "profile",
+      "artist_id": "mwj21097x29z",
+      "registered_handle": "ipatrioticmom4",
+      "expected_x_user_id": "",
+      "state": "queued",
+      "provider": "archive.today",
+      "created_at": "2026-11-16T15:10:42.959Z",
+      "attempt_count": 0,
+      "next_attempt_at": 1794841842959,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-11-16T15:10:42.959Z"
     }
   ],
   "reservations": [

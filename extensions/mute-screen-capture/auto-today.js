@@ -185,6 +185,32 @@
     archiveId() { return ''; }
     matchesReceipt(current, receipt) { return super.matchesReceipt(current, receipt) || C.receiptTransition(receipt.href, current.href); }
     searchURL(target) { return 'https://archive.li/' + target; }
+    async submit(job) {
+      const target = job.target_url;
+      if (job.state !== 'submitting' || !Number.isFinite(Date.parse(job.submission_started_at)) ||
+          !job.operation_id || job.receipt || !C.targetURL(target)) throw Error('保存依頼の予約を確認できません');
+      const key = 'autoArchiveRun:' + job.job_id;
+      if ((await this.chrome.storage.session.get(key))[key] === job.operation_id) {
+        return { submitted: false, uncertain: true, reason: 'この保存依頼は既に開始しています。既存の結果を確認してください' };
+      }
+      // Record the one-shot navigation before creating or updating a tab. A
+      // failed or interrupted navigation remains uncertain and is not resent.
+      await this.chrome.storage.session.set({ [key]: job.operation_id });
+      let tab = await this.binding(job);
+      if (!tab) {
+        tab = await this.chrome.tabs.create({ url: 'about:blank', active: false });
+        await this.chrome.storage.session.set({ ['autoArchiveTab:' + job.job_id]: tab.id,
+          ['autoArchiveBorrowedTab:' + job.job_id]: false });
+      }
+      const destination = new URL(this.home);
+      destination.searchParams.set('run', '1'); destination.searchParams.set('url', target);
+      await this.chrome.tabs.update(tab.id, { url: destination.href });
+      return { submitted: true };
+    }
+    async close(job) {
+      await super.close(job);
+      await this.chrome.storage.session.remove('autoArchiveRun:' + job.job_id);
+    }
     async recoverBinding(job) {
       // Reloading clears session storage. Read only exact submitted GET targets
       // or fresh, already-open capture wrappers; never send another request.
@@ -194,6 +220,10 @@
       for (const tab of tabs.slice(0, 40)) {
         let u; try { u = new URL(tab.url || ''); } catch (_) { continue; }
         if (!this.trusted(u)) continue;
+        if (u.pathname === '/' && u.searchParams.get('run') === '1' && u.searchParams.getAll('run').length === 1 &&
+            u.searchParams.getAll('url').length === 1 && C.targetURL(u.searchParams.get('url')) === C.targetURL(job.target_url)) {
+          candidates.push({ tab }); continue;
+        }
         if (/^\/submit\/?$/.test(u.pathname) && C.targetURL(u.searchParams.get('url')) === C.targetURL(job.target_url)) {
           candidates.push({ tab }); continue;
         }

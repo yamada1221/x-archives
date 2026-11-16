@@ -219,8 +219,10 @@ test('WIP cannot be marked done and unrelated receipts cannot replace a capture'
   await assert.rejects(a.engine.adopt((await a.state()).jobs[0].job_id,'https://archive.li/Other'),/変更できません/);
   await assert.rejects(a.engine.adopt((await a.state()).jobs[0].job_id,'https://ghostarchive.org/archive/Ab123'),/同じ保存先/);
 });
-test('archive.li preflight challenges stay observable without a POST and resume only after the form is available',async()=>{
-  const a=setup([artist()],'archive.today');await a.run(true);a.ghost.inspect=async()=>({kind:'blocked'});a.advance();await a.run();
+test('legacy unsent archive.li challenges stay observable and resume only after their existing form is available',async()=>{
+  const a=setup([artist()],'archive.today');
+  await seedBodyFailure(a,{state:'opening',receipt:undefined,submission_started_at:undefined,access_wait:'human',attempt_count:0});
+  a.ghost.inspect=async()=>({kind:'blocked'});await a.run();
   let j=(await a.state()).jobs[0];
   assert.equal(j.state,'opening');assert.equal(j.access_wait,'human');assert.equal(a.calls.post,0);
   assert.equal(C.jobLabel(j),'人間確認待ち');assert.equal(C.attention(j),true);assert.equal(C.submissionHold([j],'archive.today'),true);
@@ -242,7 +244,7 @@ test('GitHub native-fetch wrapper preserves the global receiver',async()=>{
   assert.equal((await client.request('data/artists.json')).ok,true);
 });
 
-test('an explicit connection test recovers a structural pause after recognizing the form',async()=>{
+test('an explicit URL connection test may run through a legacy structural pause without clearing it',async()=>{
   const a=setup([artist()],'archive.today');
   a.config.enabled=false;
   await a.engine.enqueueTest();
@@ -251,7 +253,7 @@ test('an explicit connection test recovers a structural pause after recognizing 
   a.docs.set(JOBS,ledger);
   await a.run();a.advance();await a.run();
   assert.equal(a.calls.post,1);
-  assert.equal(a.docs.get(JOBS).provider.paused_until,0);
+  assert.equal(a.docs.get(JOBS).provider.paused_until,a.now()-C.MINUTE-1+C.DAY);
   assert.equal(a.docs.get(JOBS).reservations.length,1);
 });
 test('normal captures cannot lift structural pauses, and connection tests cannot lift access restrictions',async()=>{
@@ -267,13 +269,14 @@ test('normal captures cannot lift structural pauses, and connection tests cannot
     assert.equal((await a.state()).jobs.at(-1).state,'opening');
   }
 });
-test('a connection test cannot lift a structural pause without recognizing the form',async()=>{
+test('a URL connection test left on a form never resubmits or automatically clears a structural pause',async()=>{
   const a=setup([artist()],'archive.today');a.config.enabled=false;await a.engine.enqueueTest();
   const ledger=a.docs.get(JOBS);
   ledger.provider={name:'archive.today',paused_until:a.now()+C.DAY,reason:'保存フォームの構造を確認できません'};a.docs.set(JOBS,ledger);
-  a.ghost.inspect=async()=>({kind:'changed'});
+  a.ghost.reconcile=async()=>({kind:'form'});
   await a.run();a.advance();await a.run();
-  assert.equal(a.calls.post,0);
+  for(let index=0;index<3;index++){a.advance();await a.run();}
+  assert.equal(a.calls.post,1);
   assert.ok(a.docs.get(JOBS).provider.paused_until>a.now());
   assert.equal((await a.state()).jobs.at(-1).state,'needs_review');
 });
@@ -380,7 +383,9 @@ test('old unknown-receipt recovery excludes other executors and unrelated review
   }
 });
 test('a human-confirmation check while sending is stopped never sends an unsent form',async()=>{
-  const a=setup([artist()],'archive.today');await a.run(true);a.ghost.inspect=async()=>({kind:'blocked'});a.advance();await a.run();
+  const a=setup([artist()],'archive.today');
+  await seedBodyFailure(a,{state:'opening',receipt:undefined,submission_started_at:undefined,access_wait:'human',attempt_count:0});
+  a.ghost.inspect=async()=>({kind:'blocked'});await a.run();
   const j=(await a.state()).jobs[0];a.config.enabled=false;a.calls.stopped=true;a.ghost.inspect=async()=>({kind:'form'});
   await a.engine.recheck(j.job_id);await a.run();assert.equal(a.calls.post,0);assert.equal((await a.state()).jobs[0].access_wait,'human');
 });
@@ -862,7 +867,7 @@ async function floodState(a,jobs,{reservations=[],provider={}}={}){
   a.docs.set(JOBS,{version:1,jobs:clone(jobs),reservations:clone(reservations),provider:clone(provider)});
 }
 function mockBoundTabs(a){
-  const bindings=new Set(),opened=[],inspected=[],responses=new Map();
+  const bindings=new Set(),opened=[],inspected=[],responses=new Map(),started=[];
   a.ghost.open=async(job,url)=>{if(!bindings.has(job.job_id)){bindings.add(job.job_id);opened.push({job_id:job.job_id,url});a.calls.opened++;}};
   a.ghost.inspect=async(job,{allowOpen=true}={})=>{
     inspected.push({job_id:job.job_id,receipt:job.receipt,allowOpen});
@@ -876,20 +881,32 @@ function mockBoundTabs(a){
       frames:[{kind:'profile',handle:job.identity.handle,name:job.identity.name,bio:job.identity.bio,following:true,user_id:job.expected_x_user_id}]};
   };
   a.ghost.close=async job=>{bindings.delete(job.job_id);a.calls.closed++;};
-  return{bindings,opened,inspected,responses,homes:()=>opened.filter(tab=>tab.url==='https://archive.li/')};
+  const submit=a.ghost.submit;
+  a.ghost.submit=async job=>{
+    if(job.provider==='archive.today'){
+      const local=(await a.state()).jobs.find(value=>value.job_id===job.job_id),remote=a.docs.get(JOBS).jobs.find(value=>value.job_id===job.job_id);
+      assert.equal(local.state,'submitting');assert.equal(remote.state,'submitting');assert.equal(remote.operation_id,job.operation_id);
+      const url=new URL('https://archive.li/');url.searchParams.set('run','1');url.searchParams.set('url',job.target_url);
+      await a.ghost.open(job,url.href);started.push({job_id:job.job_id,url:url.href});
+    }
+    return submit(job);
+  };
+  return{bindings,opened,inspected,responses,started,homes:()=>opened.filter(tab=>new URL(tab.url).pathname==='/'&&new URL(tab.url).origin==='https://archive.li')};
 }
 
 test('a large queued batch prepares one home and finishes due submitted work before preparing another',async()=>{
   const rows=floodRows(75),a=setup(rows,'archive.today'),tabs=mockBoundTabs(a);
   await floodState(a,rows.map((row,index)=>floodJob(a,row,index,{state:'queued'})));
-  await a.run();assert.equal(tabs.homes().length,1);assert.equal(a.calls.post,0);
-  const first=tabs.homes()[0].job_id;
+  await a.run();assert.equal(tabs.homes().length,0);assert.equal(a.calls.post,0);
+  const first=(await a.state()).jobs.find(job=>job.state==='opening').job_id;
   a.advance();await a.run();assert.equal(a.calls.post,1);assert.equal(tabs.homes().length,1);
   assert.equal((await a.state()).jobs.find(job=>job.job_id===first).state,'submitting');
   a.advance();await a.run();assert.equal(tabs.homes().length,1);
   a.advance();await a.run();assert.equal((await a.state()).jobs.find(job=>job.job_id===first).state,'succeeded');
   assert.equal(tabs.homes().length,1);
-  a.advance();await a.run();assert.equal(tabs.homes().length,2);assert.equal(a.calls.post,1);
+  a.advance();await a.run();assert.equal(tabs.homes().length,1);assert.equal(a.calls.post,1);
+  a.advance();await a.run();assert.equal(tabs.homes().length,2);assert.equal(a.calls.post,2);
+  assert.ok(tabs.homes().every(tab=>new URL(tab.url).searchParams.get('run')==='1'));
 });
 
 test('full quota, interval, provider pause and five active requests prevent new homepage creation',async()=>{
@@ -927,7 +944,8 @@ test('preparation releases exactly at the minute and daily reservation boundarie
     await floodState(a,[floodJob(a,rows[0],0,{state:'queued'})],{reservations});await a.run();
     const release=policy==='interval'?C.MINUTE:2000;
     a.elapse(release-1);await a.run();assert.equal(tabs.homes().length,0,policy);
-    a.elapse(1);await a.run();assert.equal(tabs.homes().length,1,policy);assert.equal(a.calls.post,0);
+    a.elapse(1);await a.run();assert.equal(tabs.homes().length,0,policy);assert.equal(a.calls.post,0);
+    a.advance();await a.run();assert.equal(tabs.homes().length,1,policy);assert.equal(a.calls.post,1);
   }
 });
 
@@ -938,15 +956,16 @@ test('a future stable leader parks historical opening jobs and queued jobs witho
   await floodState(a,[...jobs].reverse());
   for(let index=0;index<5;index++){await a.run();a.restart();a.advance();}
   assert.equal(tabs.homes().length,0);assert.equal(a.calls.closed,0);
-  a.elapse(C.HOUR);tabs.responses.set(jobs[0].job_id,{kind:'loading'});
+  a.elapse(C.HOUR);a.ghost.reconcile=async()=>({kind:'blocked',block_type:'human'});
   for(let index=0;index<5;index++){await a.run();a.restart();a.advance();}
-  assert.equal(tabs.homes().length,1);assert.ok(tabs.inspected.every(read=>read.job_id===jobs[0].job_id));
+  assert.equal(tabs.homes().length,1);assert.ok(tabs.homes().every(tab=>tab.job_id===jobs[0].job_id));
   tabs.bindings.clear();
   for(let index=0;index<4;index++){await a.run();a.restart();a.advance();}
-  assert.equal(tabs.homes().length,2);assert.ok(tabs.homes().every(tab=>tab.job_id===jobs[0].job_id));
-  const state=await a.state();assert.equal(state.jobs.filter(job=>job.state==='opening').length,96);
-  assert.equal(state.jobs.filter(job=>job.state==='queued').length,75);assert.equal(a.calls.closed,0);assert.equal(a.calls.post,0);
-  assert.ok(state.jobs.every(job=>!job.submission_started_at&&!job.receipt&&job.attempt_count===0));
+  assert.equal(tabs.homes().length,1);assert.ok(tabs.homes().every(tab=>tab.job_id===jobs[0].job_id));
+  const state=await a.state();assert.equal(state.jobs.filter(job=>job.state==='opening').length,95);
+  assert.equal(state.jobs.filter(job=>job.state==='queued').length,75);assert.equal(a.calls.closed,0);assert.equal(a.calls.post,1);
+  assert.equal(state.jobs.find(job=>job.job_id===jobs[0].job_id).state,'submission_unknown');
+  assert.ok(state.jobs.filter(job=>job.job_id!==jobs[0].job_id).every(job=>!job.submission_started_at&&!job.receipt&&job.attempt_count===0));
 });
 
 test('retry-wait opening retains leadership while its retry is in the future',async()=>{
@@ -956,7 +975,7 @@ test('retry-wait opening retains leadership while its retry is in the future',as
   await floodState(a,[jobs[2],jobs[1],jobs[0]]);await a.run();a.advance();a.restart();await a.run();
   assert.equal(tabs.homes().length,0);
   a.elapse(C.HOUR);tabs.responses.set(jobs[0].job_id,{kind:'loading'});await a.run();
-  assert.deepEqual(tabs.homes().map(tab=>tab.job_id),[jobs[0].job_id]);assert.equal(a.calls.post,0);
+  assert.deepEqual(tabs.homes().map(tab=>tab.job_id),[jobs[0].job_id]);assert.equal(a.calls.post,1);
 });
 
 test('legacy human waits are checked one at a time and all holds remain until their forms are confirmed',async()=>{
@@ -1009,21 +1028,21 @@ test('an explicit connection test is not starved by an old normal leader while a
   const rows=floodRows(1),a=setup(rows,'archive.today'),tabs=mockBoundTabs(a);a.config.enabled=false;a.config.providerReady='';
   const held=floodJob(a,rows[0],0,{next_attempt_at:a.now()+C.HOUR});
   await floodState(a,[held]);await a.engine.enqueueTest();
-  await a.run();assert.equal(tabs.homes().length,1);
+  await a.run();assert.equal(tabs.homes().length,0);
   for(let index=0;index<3;index++){a.advance();await a.run();}
   const state=await a.state();assert.equal(state.jobs.find(job=>job.kind==='connection_test').state,'succeeded');
   assert.equal(state.jobs.find(job=>job.job_id===held.job_id).state,'opening');
   assert.equal(tabs.homes().length,1);assert.equal(a.calls.post,1);assert.equal(a.calls.ready.length,1);
 });
 
-test('only an explicit structural connection retest may prepare a home during the matching provider pause',async()=>{
+test('only an explicit structural connection retest may start a URL request during the matching provider pause',async()=>{
   for(const reason of ['保存フォームの構造を確認できません','保存先で人間確認・アクセス制限が必要です']){
     const a=setup([],'archive.today'),tabs=mockBoundTabs(a);a.config.enabled=false;
     await floodState(a,[],{provider:{name:'archive.today',paused_until:a.now()+C.DAY,reason}});await a.engine.enqueueTest();
     await a.run();a.advance();await a.run();
     const structural=reason==='保存フォームの構造を確認できません';
     assert.equal(tabs.homes().length,structural?1:0);assert.equal(a.calls.post,structural?1:0);
-    assert.equal(a.docs.get(JOBS).provider.paused_until,structural?0:a.now()-C.MINUTE-1+C.DAY);
+    assert.equal(a.docs.get(JOBS).provider.paused_until,a.now()-C.MINUTE-1+C.DAY);
   }
 });
 
@@ -1035,7 +1054,115 @@ test('a reservation filled after preflight is still rejected by the final CAS ch
     if(key===JOBS&&!changed){changed=true;old.reservations=Array.from({length:20},(_,index)=>({job_id:'race-'+index,at:a.now()}));}
     return change(old);
   });
-  a.advance();await a.run();assert.equal(a.calls.post,0);assert.equal(tabs.homes().length,1);
+  a.advance();await a.run();assert.equal(a.calls.post,0);assert.equal(tabs.homes().length,0);
   assert.match((await a.state()).jobs[0].last_error,/上限/);
+});
+
+function runNavigationChrome(initialTabs=[]){
+  const session={},tabs=clone(initialTabs),calls={created:[],moves:[],scripts:[]},controls={before:undefined,after:undefined};
+  let nextId=100;
+  const chrome={storage:{session:{get:async key=>({[key]:session[key]}),set:async values=>Object.assign(session,values),
+    remove:async keys=>{for(const key of Array.isArray(keys)?keys:[keys])delete session[key];}}},
+    tabs:{get:async id=>{const tab=tabs.find(item=>item.id===id);if(!tab)throw Error('closed');return clone(tab);},
+      query:async()=>clone(tabs.filter(tab=>/^https:\/\/archive\./.test(tab.url))),
+      create:async properties=>{calls.created.push(clone(properties));const tab={id:nextId++,windowId:1,status:'complete',...properties};tabs.push(tab);return clone(tab);},
+      update:async(id,properties)=>{
+        const tab=tabs.find(item=>item.id===id);if(!tab)throw Error('closed');
+        if(controls.before)await controls.before(id,properties);
+        Object.assign(tab,properties);calls.moves.push({id,...clone(properties)});
+        if(controls.after)await controls.after(id,properties);
+        return clone(tab);
+      },remove:async id=>{const index=tabs.findIndex(tab=>tab.id===id);if(index>=0)tabs.splice(index,1);}},
+    scripting:{executeScript:async request=>{calls.scripts.push(request.func);return[{frameId:0,result:{kind:'form'}}];}},
+    windows:{update:async()=>{}}};
+  const runs=()=>calls.moves.filter(move=>move.url&&new URL(move.url).searchParams.get('run')==='1');
+  return{chrome,session,tabs,calls,controls,runs,clearSession(){for(const key of Object.keys(session))delete session[key];}};
+}
+function reservedRunJob(a,changes={}){
+  return{job_id:'reserved-url',provider:'archive.today',state:'submitting',target_url:'https://x.com/Example',
+    submission_started_at:new Date(a.now()).toISOString(),operation_id:'operation-one',...changes};
+}
+
+test('the archive.today adapter starts the exact profile or replies URL once without a DOM form submission',async()=>{
+  const {Today}=require(base+'/auto-today.js');
+  for(const existing of [false,true])for(const target of ['https://x.com/Example','https://x.com/Example/with_replies']){
+    const a=setup(),api=runNavigationChrome(existing?[{id:7,windowId:1,url:'https://archive.li/',status:'complete'}]:[]),today=new Today(api.chrome);
+    const job=reservedRunJob(a,{target_url:target});if(existing)api.session['autoArchiveTab:'+job.job_id]=7;
+    assert.equal((await today.submit(job)).submitted,true);
+    assert.equal(api.runs().length,1);const url=new URL(api.runs()[0].url);
+    assert.equal(url.origin,'https://archive.li');assert.equal(url.pathname,'/');assert.equal(url.searchParams.get('run'),'1');
+    assert.equal(url.searchParams.get('url'),target);assert.equal(api.calls.created.length,existing?0:1);
+    assert.equal(api.calls.scripts.length,0);assert.equal((await today.submit(job)).uncertain,true);assert.equal(api.runs().length,1);
+  }
+});
+
+test('the URL-start adapter refuses unreserved, completed or untrusted targets before creating any tab',async()=>{
+  const {Today}=require(base+'/auto-today.js');
+  for(const change of [{state:'opening'},{operation_id:undefined},{submission_started_at:undefined},
+    {receipt:'https://archive.li/Done1'},{target_url:'https://x.com.evil/Example'}]){
+    const a=setup(),api=runNavigationChrome(),today=new Today(api.chrome);
+    await assert.rejects(today.submit(reservedRunJob(a,change)),/予約を確認/);
+    assert.equal(api.calls.created.length,0);assert.equal(api.calls.moves.length,0);assert.deepEqual(api.session,{});
+  }
+});
+
+test('the first archive.today navigation occurs only after both durable reservation copies and never replays a remaining form',async()=>{
+  const rows=floodRows(2),a=setup(rows,'archive.today'),api=runNavigationChrome();
+  const {Providers,submitTodayDocument}=require(base+'/auto-today.js');a.deps.ghost=new Providers(api.chrome);a.restart();
+  await floodState(a,rows.map((row,index)=>floodJob(a,row,index,{state:'queued'})));
+  api.controls.before=async(_id,properties)=>{
+    if(!properties.url||new URL(properties.url).searchParams.get('run')!=='1')return;
+    const local=(await a.state()).jobs.find(job=>job.state==='submitting'),remote=a.docs.get(JOBS).jobs.find(job=>job.job_id===local?.job_id);
+    assert.ok(local?.operation_id);assert.equal(remote.state,'submitting');assert.equal(remote.operation_id,local.operation_id);
+    assert.equal(remote.attempt_count,1);assert.equal(a.docs.get(JOBS).reservations.length,1);
+    assert.equal(new URL(properties.url).searchParams.get('url'),local.target_url);
+  };
+  await a.run();assert.equal(api.calls.created.length,0);assert.equal(api.calls.moves.length,0);
+  a.advance();await a.run();assert.equal(api.runs().length,1);
+  for(let index=0;index<8;index++){a.advance();a.restart();await a.run();}
+  assert.equal(api.runs().length,1);assert.equal(a.docs.get(JOBS).reservations.length,1);
+  assert.equal((await a.state()).jobs.find(job=>job.job_id==='flood-000').state,'needs_review');
+  assert.equal(api.calls.scripts.includes(submitTodayDocument),false);
+});
+
+test('a crash before or after the reserved run navigation never sends another request after restart',async()=>{
+  const {Providers}=require(base+'/auto-today.js');
+  for(const phase of ['before','after']){
+    const rows=floodRows(1),a=setup(rows,'archive.today'),api=runNavigationChrome();a.deps.ghost=new Providers(api.chrome);a.restart();
+    await floodState(a,[floodJob(a,rows[0],0,{state:'queued'})]);await a.run();
+    api.controls[phase]=async(_id,properties)=>{if(properties.url)throw Error('fixture interrupted navigation');};
+    a.advance();await a.run();
+    let job=(await a.state()).jobs[0];assert.equal(job.state,'submission_unknown');assert.equal(job.attempt_count,1);
+    const submittedAt=job.submission_started_at;delete api.controls[phase];api.clearSession();
+    for(let index=0;index<8;index++){a.advance();a.restart();await a.run();}
+    job=(await a.state()).jobs[0];assert.equal(job.state,'needs_review');assert.equal(job.attempt_count,1);
+    assert.equal(job.submission_started_at,submittedAt);assert.equal(a.docs.get(JOBS).reservations.length,1);
+    assert.equal(api.runs().length,phase==='after'?1:0);assert.equal(api.calls.created.length,1);
+  }
+});
+
+test('multiple matching run tabs after session loss remain ambiguous and never trigger a new navigation',async()=>{
+  const rows=floodRows(1),a=setup(rows,'archive.today'),api=runNavigationChrome();
+  const {Providers}=require(base+'/auto-today.js');a.deps.ghost=new Providers(api.chrome);a.restart();
+  await floodState(a,[floodJob(a,rows[0],0,{state:'queued'})]);await a.run();a.advance();await a.run();
+  assert.equal(api.runs().length,1);api.tabs.push({...clone(api.tabs[0]),id:500});api.clearSession();
+  a.advance();a.restart();await a.run();
+  const job=(await a.state()).jobs[0];assert.equal(job.state,'needs_review');assert.match(job.last_error,/特定できません/);
+  assert.equal(api.runs().length,1);assert.equal(api.calls.created.length,1);assert.equal(a.docs.get(JOBS).reservations.length,1);
+});
+
+test('run-tab recovery binds only one exact target with unambiguous run and url parameters',async()=>{
+  const {Today}=require(base+'/auto-today.js'),a=setup();
+  for(const url of ['https://archive.li/?run=1&url=https%3A%2F%2Fx.com%2FExample',
+    'https://archive.li/?run=1&url=https%3A%2F%2Fx.com%2FOther',
+    'https://archive.li/?run=1&url=https%3A%2F%2Fx.com%2FExample%2Fwith_replies',
+    'https://archive.li/?run=1&url=https%3A%2F%2Fx.com%2FExample&url=https%3A%2F%2Fx.com%2FOther',
+    'https://archive.li/?run=1&run=0&url=https%3A%2F%2Fx.com%2FExample']){
+    const api=runNavigationChrome([{id:7,windowId:1,status:'complete',url}]),today=new Today(api.chrome);
+    const job=reservedRunJob(a,{state:'submission_unknown'}),result=await today.reconcile(job);
+    const exact=new URL(url).searchParams.get('url')===job.target_url&&new URL(url).searchParams.getAll('url').length===1&&new URL(url).searchParams.getAll('run').length===1;
+    assert.equal(result.kind,exact?'form':'unresolved');assert.equal(api.calls.moves.length,0);assert.equal(api.calls.created.length,0);
+    assert.equal(api.session['autoArchiveTab:'+job.job_id],exact?7:undefined);
+  }
 });
 

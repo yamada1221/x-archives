@@ -337,7 +337,7 @@
       job.last_error = wait.reason; job.next_attempt_at = Math.max(this.now() + 1000, wait.until || this.now() + C.MINUTE);
       this.put(state, job);
     }
-    async reserve(job, shared) {
+    async reserve(job, shared, { clearStructuralPause = true } = {}) {
       const now = this.now();
       return this.git.update(JOBS, old => {
         const d = C.ledger(old), existing = d.jobs.find(j => j.job_id === job.job_id);
@@ -353,7 +353,7 @@
           // human-verification pauses retain their full waiting period.
           const retest = this.structuralRetest(job, d);
           if (!retest) throw Error('保存先の自動処理を一時停止しています');
-          d.provider = { ...d.provider, paused_until: 0, reason: '' };
+          if (clearStructuralPause) d.provider = { ...d.provider, paused_until: 0, reason: '' };
         }
         if (d.reservations.some(r => now - r.at < C.MINUTE)) throw Error('保存依頼の間隔を空けて待機しています');
         if (d.jobs.filter(j => ['submitting', 'processing', 'verifying', 'submission_unknown'].includes(j.state)).length >= 5) throw Error('保存処理中の案件が5件あるため待機しています');
@@ -418,7 +418,10 @@
       if ((job.submission_started_at || job.receipt) && this.now() - Date.parse(job.receipt_recovery_started_at || job.submission_started_at || job.created_at) > 2 * C.DAY) {
         return this.review(state, job, '48時間を超えて完了を確認できません。結果URLを確認してください');
       }
-      if (job.state === 'retry_wait') job.state = job.resume_state || 'queued';
+      if (job.state === 'retry_wait') {
+        job.state = job.resume_state || 'queued';
+        this.put(state, job); await this.save(state); await this.flush(state);
+      }
       if (job.state === 'queued') {
         const a = await this.cancelIfChanged(state, job); if (!a) return;
         if (!job.receipt && !job.submission_started_at) {
@@ -430,30 +433,33 @@
           job.state = 'skipped'; job.last_error = '同じアカウントの保存依頼を既存ジョブで追跡しています';
         } else { job.state = job.receipt ? 'processing' : 'opening'; job.next_attempt_at = this.now(); job.last_error = ''; }
         this.put(state, job); await this.save(state); await this.flush(state);
-        if (job.state === 'opening') await this.ghost.open(job, C.homeURL(job.provider || 'ghostarchive'));
+        if (job.state === 'opening' && job.provider !== 'archive.today') await this.ghost.open(job, C.homeURL(job.provider || 'ghostarchive'));
         return;
       }
       if (job.state === 'opening') {
         const a = await this.cancelIfChanged(state, job); if (!a) return;
+        const directRequest = job.provider === 'archive.today';
         const wait = !job.submission_started_at && !job.receipt ? await this.preparationWait(job, shared) : null;
-        const page = await this.ghost.inspect(job, { allowOpen: !wait && !job.access_wait });
-        if (page.kind === 'missing_binding') {
-          this.deferPreparation(state, job, job.access_wait ? {
-            reason: '保存先のタブが見つかりません。「保存先で確認」で開いてください',
-            until: wait?.until || this.now() + (job.access_wait === 'human' ? 5 * C.MINUTE : C.MINUTE)
-          } : wait || { reason: '保存先を準備できるまで待機しています', until: this.now() + C.MINUTE });
-          return;
+        if (!directRequest || wait || job.access_wait) {
+          const page = await this.ghost.inspect(job, { allowOpen: !directRequest && !wait && !job.access_wait });
+          if (page.kind === 'missing_binding') {
+            this.deferPreparation(state, job, job.access_wait ? {
+              reason: '保存先のタブが見つかりません。「保存先で確認」で開いてください',
+              until: wait?.until || this.now() + (job.access_wait === 'human' ? 5 * C.MINUTE : C.MINUTE)
+            } : wait || { reason: '保存先を準備できるまで待機しています', until: this.now() + C.MINUTE });
+            return;
+          }
+          if (page.kind === 'loading') { job.next_attempt_at = this.now() + C.MINUTE; this.put(state, job); return; }
+          if (page.kind === 'blocked') return this.waitForAccess(state, job, page);
+          if (page.kind !== 'form') return this.review(state, job, '保存フォームの構造を確認できません', true);
+          this.clearAccessWait(job);
+          if (wait) { this.deferPreparation(state, job, wait); return; }
         }
-        if (page.kind === 'loading') { job.next_attempt_at = this.now() + C.MINUTE; this.put(state, job); return; }
-        if (page.kind === 'blocked') return this.waitForAccess(state, job, page);
-        if (page.kind !== 'form') return this.review(state, job, '保存フォームの構造を確認できません', true);
-        this.clearAccessWait(job);
-        if (wait) { this.deferPreparation(state, job, wait); return; }
         await this.identity(job, a);
         const latest = await this.sharedConfig();
         if (!shared || latest.executor_device_id !== this.device || latest.enabled === false || !await this.canSubmit(job)) return;
         // Reserve in the shared CAS ledger before allowing the save request.
-        try { await this.reserve(job, latest); }
+        try { await this.reserve(job, latest, { clearStructuralPause: !directRequest }); }
         catch (error) { job.state = job.submission_started_at ? 'submission_unknown' : 'opening'; job.last_error = error.message; job.next_attempt_at = this.now() + C.MINUTE; this.put(state, job); return; }
         this.put(state, job); await this.save(state);
         // Re-read registration after the reservation: concurrent edits cannot

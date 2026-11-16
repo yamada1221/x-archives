@@ -84,8 +84,8 @@ try {
 function updateProvider(persist = false) {
   const key = document.getElementById('archiveProvider').value;
   const provider = TrackerUtils.providers[key];
-  document.getElementById('providerHint').textContent = provider.hint;
-  document.getElementById('openArchiveBtn').textContent = key === 'gyotaku' ? 'ウェブ魚拓の取得画面を開く' : `URLをコピーして${provider.label}を開く`;
+  document.getElementById('providerHint').textContent = ['archive.li', 'archive.md'].includes(key) ? '対象URLを渡して保存画面を開きます。確認が必要な場合は保存先の指示に従ってください。' : provider.hint;
+  document.getElementById('openArchiveBtn').textContent = key === 'gyotaku' ? 'ウェブ魚拓の取得画面を開く' : ['archive.li', 'archive.md'].includes(key) ? `${provider.label}で保存を始める` : `URLをコピーして${provider.label}を開く`;
   if (persist) { try { localStorage.setItem(PROVIDER_KEY, key); } catch (_) {} }
 }
 updateProvider();
@@ -122,10 +122,17 @@ async function openArchive() {
   const key = document.getElementById('archiveProvider').value;
   const provider = TrackerUtils.providers[key];
   // Open synchronously in the click handler so mobile browsers retain user activation.
-  window.open(key === 'gyotaku' ? provider.home + 'pc/main?' + new URLSearchParams({url: target}) : provider.home, '_blank', 'noopener');
+  const today = ['archive.li', 'archive.md'].includes(key);
+  const destination = key === 'gyotaku' ? provider.home + 'pc/main?' + new URLSearchParams({url: target}) : today ? provider.home + '?' + new URLSearchParams({run: '1', url: target}) : provider.home;
+  window.open(destination, '_blank', 'noopener');
   if (key === 'gyotaku') {
     statusEl.classList.remove('ok');
     statusEl.textContent = '魚拓側で人間確認を行い「取得」を押してください。発行されたURLは処理中でも登録できます。登録後にプロフィール本文を自動確認します。';
+    return;
+  }
+  if (today) {
+    statusEl.classList.remove('ok');
+    statusEl.textContent = `${provider.label}に対象URLを渡しました。保存先の画面を確認し、結果URLを登録してください。`;
     return;
   }
   const copied = await copyText(target);

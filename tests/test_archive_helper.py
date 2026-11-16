@@ -90,7 +90,7 @@ def test_archive_li_can_be_opened_from_helper():
     assert '<option value="archive.li">archive.li</option>' in HTML
     options = HTML.split('<select id="archiveProvider"', 1)[1].split('</select>', 1)[0]
     assert re.search(r'<option value="([^"]+)"', options).group(1) == "archive.li"
-    assert "provider.home, '_blank', 'noopener'" in HTML
+    assert "window.open(destination, '_blank', 'noopener')" in HTML
 
 
 def test_archive_li_result_url_is_accepted():

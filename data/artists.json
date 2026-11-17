@@ -19614,7 +19614,7 @@
     },
     {
       "id": "mwkfr59bnz7v",
-      "name": "miko_789_",
+      "name": "みこと。💙ྀི",
       "x_account": "miko_789_",
       "threads_account": "",
       "threads_share_url": "",
@@ -19624,8 +19624,57 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-17",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2116177250492280834/kSfk5i2L_400x400.jpg",
+      "profile_fetched_at": "2026-11-17",
+      "profile_source": "x_html",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-17T08:34:31+00:00",
+        "x_account": "miko_789_",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=miko_789_",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/miko_789_",
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "final_url": "https://x.com/miko_789_",
+          "bytes": 155920,
+          "contains_username": true,
+          "screen_name_marker": false,
+          "profile_image_url_count": 7,
+          "profile_image_candidates": [
+            "https://pbs.twimg.com/profile_images/2116177250492280834/kSfk5i2L_mini.jpg",
+            "https://pbs.twimg.com/profile_images/2116177250492280834/kSfk5i2L_normal.jpg",
+            "https://pbs.twimg.com/profile_images/2116177250492280834/kSfk5i2L_bigger.jpg",
+            "https://pbs.twimg.com/profile_images/2116177250492280834/kSfk5i2L_x96.jpg",
+            "https://pbs.twimg.com/profile_images/2116177250492280834/kSfk5i2L_reasonably_small.jpg",
+            "https://pbs.twimg.com/profile_images/2116177250492280834/kSfk5i2L_200x200.jpg",
+            "https://pbs.twimg.com/profile_images/2116177250492280834/kSfk5i2L_400x400.jpg"
+          ],
+          "meta_keys": [
+            "og:image",
+            "og:title",
+            "twitter:image",
+            "twitter:title"
+          ],
+          "og_title_present": true,
+          "og_image_present": true,
+          "twitter_title_present": true,
+          "twitter_image_present": true,
+          "og_title": "Xユーザーのみこと。💙ྀི（@miko_789_）さん",
+          "og_image": "https://pbs.twimg.com/profile_images/2116177250492280834/kSfk5i2L_400x400.jpg",
+          "twitter_title": "Xユーザーのみこと。💙ྀི（@miko_789_）さん",
+          "twitter_image": "https://pbs.twimg.com/profile_banners/1558700500853198852/1793370974"
+        }
+      }
     }
   ],
   "monitoring_summary": {

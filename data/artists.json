@@ -19611,6 +19611,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mwkfr59bnz7v",
+      "name": "miko_789_",
+      "x_account": "miko_789_",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "汚言 クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-17",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

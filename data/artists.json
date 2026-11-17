@@ -19566,6 +19566,28 @@
       "avatar_url": "https://unavatar.io/x/ipatrioticmom4?fallback=false",
       "profile_fetched_at": "2026-11-16",
       "profile_source": "unavatar"
+    },
+    {
+      "id": "mwjxer61vdju",
+      "name": "jnvzi37s9z44494",
+      "x_account": "jnvzi37s9z44494",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "青バッチ",
+      "tracking_mode": "monitor_only",
+      "works": [
+        {
+          "url": "https://x.com/jnvzi37s9z44494/status/2122270726120173890",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-17"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-11-17",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

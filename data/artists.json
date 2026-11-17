@@ -19674,7 +19674,21 @@
           "twitter_title": "Xユーザーのみこと。💙ྀི（@miko_789_）さん",
           "twitter_image": "https://pbs.twimg.com/profile_banners/1558700500853198852/1793370974"
         }
-      }
+      },
+      "archives": [
+        {
+          "url": "https://archive.li/2026.11.17-083421/https://x.com/miko_789_/with_replies",
+          "provider": "archive.today",
+          "status": "pending",
+          "target_url": "https://x.com/miko_789_/with_replies",
+          "saved_at": "2026-11-17T08:38:20.041Z"
+        }
+      ],
+      "archive_status": "pending",
+      "archive_url": "https://archive.li/2026.11.17-083421/https://x.com/miko_789_/with_replies",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/miko_789_/with_replies",
+      "archive_checked_at": "2026-11-17T08:38:20.041Z"
     }
   ],
   "monitoring_summary": {

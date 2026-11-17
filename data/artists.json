@@ -19824,7 +19824,23 @@
           "url": "https://x.com/shunshum0626",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archives": [
+        {
+          "url": "https://archive.li/2026.11.17-125645/https://x.com/shunshum0626/with_replies",
+          "provider": "archive.today",
+          "status": "done",
+          "content_verified_at": "2026-11-17T13:00:34.002Z",
+          "verification_method": "manual",
+          "target_url": "https://x.com/shunshum0626/with_replies",
+          "saved_at": "2026-11-17T13:00:34.002Z"
+        }
+      ],
+      "archive_status": "done",
+      "archive_url": "https://archive.li/2026.11.17-125645/https://x.com/shunshum0626/with_replies",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/shunshum0626/with_replies",
+      "archive_checked_at": "2026-11-17T13:00:34.002Z"
     }
   ],
   "monitoring_summary": {

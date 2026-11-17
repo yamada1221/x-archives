@@ -19569,7 +19569,7 @@
     },
     {
       "id": "mwjxer61vdju",
-      "name": "jnvzi37s9z44494",
+      "name": "鈴木智哉 l 著書『バズらせない地域SNSで、ひとり起業。』",
       "x_account": "jnvzi37s9z44494",
       "threads_account": "",
       "threads_share_url": "",
@@ -19586,8 +19586,31 @@
       ],
       "threads_posts": [],
       "added_at": "2026-11-17",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2087673118609547264/TbJuvQ86_normal.jpg",
+      "x_bio": "地域メディアFC「まちアカ」本部｜全国FCオーナー180名超｜元大学職員→5年で7事業。焼肉店・フルーツ大福19店舗・ANAKUMA CAFEをM&A売却｜地域を盛り上げたい人",
+      "x_bio_fetched_at": "2026-11-17T00:00:45.663482+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-17",
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-17T00:00:45+00:00",
+        "x_account": "jnvzi37s9z44494",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=jnvzi37s9z44494",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/jnvzi37s9z44494",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

@@ -19742,6 +19742,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mwkkaqlk4oy1",
+      "name": "space1584",
+      "x_account": "space1584",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "ミソジニー",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-17",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

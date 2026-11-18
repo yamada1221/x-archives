@@ -20317,7 +20317,7 @@
     },
     {
       "id": "mwmc8e0j2jpn",
-      "name": "tommy0208death",
+      "name": "Tommy（頭数にならない）",
       "x_account": "tommy0208death",
       "threads_account": "",
       "threads_share_url": "",
@@ -20334,8 +20334,14 @@
       ],
       "threads_posts": [],
       "added_at": "2026-11-18",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2021019006459932672/cC9etKFP_normal.jpg",
+      "x_bio": "@TOMMY5918のアカウントがロックされ、ログイン不能になったので、こちらで復活しました。\n\n高市極右政権打倒！\n憲法改悪反対！\nスパイ防止法、国旗損壊罪制定反対！\n国家情報局設置反対！\n日本軍＝自衛隊の軍拡反対！\n日米の対中国、対朝鮮戦争策動を許さない！\n露宇戦争・中東戦争の即時停戦を！\n天皇制廃止！",
+      "x_bio_fetched_at": "2026-11-18T16:31:05.014589+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-18",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

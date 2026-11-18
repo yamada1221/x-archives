@@ -20171,6 +20171,21 @@
       "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/salang_rg143/with_replies",
       "archive_checked_at": "2026-11-18T12:44:41.461Z"
+    },
+    {
+      "id": "mwm79bwvneaz",
+      "name": "oonkj12__ku",
+      "x_account": "oonkj12__ku",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "汚言 クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-18",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

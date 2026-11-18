@@ -20279,7 +20279,7 @@
     },
     {
       "id": "mwmc7lp3t8go",
-      "name": "SatoshiMasutani",
+      "name": "Mstn @ ドコモロ座の座長",
       "x_account": "SatoshiMasutani",
       "threads_account": "",
       "threads_share_url": "",
@@ -20289,8 +20289,11 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-18",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/378800000616661634/a8ebc94c21df80f156b43218605e0289_400x400.jpeg",
+      "profile_fetched_at": "2026-11-18",
+      "profile_source": "x_html"
     }
   ],
   "monitoring_summary": {

@@ -20415,7 +20415,7 @@
     },
     {
       "id": "mwmogtvrdkmd",
-      "name": "2dzng7",
+      "name": "MOJ",
       "x_account": "2dzng7",
       "threads_account": "",
       "threads_share_url": "",
@@ -20425,8 +20425,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-18",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2007112365956083712/of7Ahkus_normal.jpg",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-18T22:13:27.749173+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-18",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

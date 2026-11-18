@@ -20291,9 +20291,29 @@
       "added_at": "2026-11-18",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://pbs.twimg.com/profile_images/378800000616661634/a8ebc94c21df80f156b43218605e0289_400x400.jpeg",
+      "avatar_url": "https://pbs.twimg.com/profile_images/378800000616661634/a8ebc94c21df80f156b43218605e0289_normal.jpeg",
       "profile_fetched_at": "2026-11-18",
-      "profile_source": "x_html"
+      "profile_source": "fxtwitter",
+      "x_bio": "仙台は寒い。日の丸アイコンは理屈っぽい。二次元アイコンも苦手だ。でもまあ今は古風な二次元アイコンにしたんだけれど。西公園から宮城県立大までLRTが走れば断然便利!  右でも左でもない、碌でもない日本人。",
+      "x_bio_fetched_at": "2026-11-18T16:30:45.387168+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-18T16:30:45+00:00",
+        "x_account": "SatoshiMasutani",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=SatoshiMasutani",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/SatoshiMasutani",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

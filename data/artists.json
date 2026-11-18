@@ -20046,6 +20046,21 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=1917953099970609153; screen_name=shunshum0626"
         }
       ]
+    },
+    {
+      "id": "mwlyj3opms6s",
+      "name": "rldiKFKt5J58069",
+      "x_account": "rldiKFKt5J58069",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-18",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

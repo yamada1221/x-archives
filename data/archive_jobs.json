@@ -5692,6 +5692,20 @@
       "next_attempt_at": 1795014647032,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "updated_at": "2026-11-18T15:10:47.032Z"
+    },
+    {
+      "job_id": "e5975a9f-f15e-47a5-a908-1fe48a58abaa",
+      "kind": "profile",
+      "artist_id": "mwm3w59pld0k",
+      "registered_handle": "salang_rg143",
+      "expected_x_user_id": "",
+      "state": "queued",
+      "provider": "archive.today",
+      "created_at": "2026-11-18T15:10:47.032Z",
+      "attempt_count": 0,
+      "next_attempt_at": 1795014647032,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-11-18T15:10:47.032Z"
     }
   ],
   "reservations": [

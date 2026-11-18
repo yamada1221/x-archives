@@ -20159,18 +20159,33 @@
       },
       "archives": [
         {
-          "url": "https://archive.li/2026.11.18-124124/https://x.com/salang_rg143/with_replies",
           "provider": "archive.today",
-          "status": "pending",
+          "url": "https://archive.li/2026.11.18-124124/https://x.com/salang_rg143/with_replies",
           "target_url": "https://x.com/salang_rg143/with_replies",
-          "saved_at": "2026-11-18T12:44:41.461Z"
+          "requested_target_url": "https://x.com/salang_rg143/with_replies",
+          "status": "done",
+          "job_id": "09496e3a-f548-48eb-ae4e-c3180c4073a1",
+          "event_key": "first:1198852694510714880:replies",
+          "x_user_id": "1198852694510714880",
+          "requested_at": null,
+          "captured_at": "2026-11-18T12:41:24.000Z",
+          "saved_at": "2026-11-18T21:13:20.805Z",
+          "content_verified_at": "2026-11-18T21:13:20.805Z",
+          "verification_method": "archived_profile_body",
+          "verified_scope": [
+            "profile",
+            "replies"
+          ],
+          "posts_verification": "confirmed",
+          "reused_existing": true
         }
       ],
-      "archive_status": "pending",
+      "archive_status": "done",
       "archive_url": "https://archive.li/2026.11.18-124124/https://x.com/salang_rg143/with_replies",
       "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/salang_rg143/with_replies",
-      "archive_checked_at": "2026-11-18T12:44:41.461Z"
+      "archive_checked_at": "2026-11-18T21:13:20.805Z",
+      "x_user_id": "1198852694510714880"
     },
     {
       "id": "mwm79bwvneaz",

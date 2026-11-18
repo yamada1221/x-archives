@@ -20174,7 +20174,7 @@
     },
     {
       "id": "mwm79bwvneaz",
-      "name": "oonkj12__ku",
+      "name": "、",
       "x_account": "oonkj12__ku",
       "threads_account": "",
       "threads_share_url": "",
@@ -20184,8 +20184,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-18",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2017855904897802241/hlyJBr6Q_normal.jpg",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-18T14:11:46.249199+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-18",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

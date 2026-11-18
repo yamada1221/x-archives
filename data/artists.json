@@ -20429,10 +20429,27 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/2007112365956083712/of7Ahkus_normal.jpg",
       "x_bio": "",
-      "x_bio_fetched_at": "2026-11-18T22:13:27.749173+00:00",
+      "x_bio_fetched_at": "2026-11-18T22:14:19.250219+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-18",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-18T22:14:19+00:00",
+        "x_account": "2dzng7",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=2dzng7",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/2dzng7",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

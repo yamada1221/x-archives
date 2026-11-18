@@ -20212,7 +20212,7 @@
     },
     {
       "id": "mwmc454tgpr8",
-      "name": "RcYpWWnLBRubq8z",
+      "name": "武相大熊猫（非国民）",
       "x_account": "RcYpWWnLBRubq8z",
       "threads_account": "",
       "threads_share_url": "",
@@ -20222,8 +20222,60 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-18",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2054389192202035200/FzGs0Skx_normal.jpg",
+      "x_bio": "読書（哲学・宗教・歴史・社会科学・文学）好き。懐メロ好き。\n氷河期世代。\n日蓮正宗法華講。共産主義者。\n＃憲法改悪反対 （「憲法改正反対」「憲法改正」は改憲応援の言葉です）。\n#くたばれウクライナ ＃くたばれイスラエル\n#平和の敵はアメリカ帝国主義\n＃日本には護憲政党は一つもありません \n無言RTご容赦下さい。",
+      "x_bio_fetched_at": "2026-11-18T16:28:00.632958+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-18",
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-18T16:28:00+00:00",
+        "x_account": "RcYpWWnLBRubq8z",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=RcYpWWnLBRubq8z",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/RcYpWWnLBRubq8z",
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "final_url": "https://x.com/RcYpWWnLBRubq8z",
+          "bytes": 151803,
+          "contains_username": true,
+          "screen_name_marker": false,
+          "profile_image_url_count": 7,
+          "profile_image_candidates": [
+            "https://pbs.twimg.com/profile_images/2054389192202035200/FzGs0Skx_mini.jpg",
+            "https://pbs.twimg.com/profile_images/2054389192202035200/FzGs0Skx_normal.jpg",
+            "https://pbs.twimg.com/profile_images/2054389192202035200/FzGs0Skx_bigger.jpg",
+            "https://pbs.twimg.com/profile_images/2054389192202035200/FzGs0Skx_x96.jpg",
+            "https://pbs.twimg.com/profile_images/2054389192202035200/FzGs0Skx_reasonably_small.jpg",
+            "https://pbs.twimg.com/profile_images/2054389192202035200/FzGs0Skx_200x200.jpg",
+            "https://pbs.twimg.com/profile_images/2054389192202035200/FzGs0Skx_400x400.jpg"
+          ],
+          "meta_keys": [
+            "og:image",
+            "og:title",
+            "twitter:image",
+            "twitter:title"
+          ],
+          "og_title_present": true,
+          "og_image_present": true,
+          "twitter_title_present": true,
+          "twitter_image_present": true,
+          "og_title": "Xユーザーの武相大熊猫（非国民）（@RcYpWWnLBRubq8z）さん",
+          "og_image": "https://pbs.twimg.com/profile_images/2054389192202035200/FzGs0Skx_400x400.jpg",
+          "twitter_title": "Xユーザーの武相大熊猫（非国民）（@RcYpWWnLBRubq8z）さん",
+          "twitter_image": "https://pbs.twimg.com/profile_banners/1411291109657956352/1784015001"
+        }
+      }
     }
   ],
   "monitoring_summary": {

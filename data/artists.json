@@ -20134,12 +20134,29 @@
       "added_at": "2026-11-18",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://pbs.twimg.com/profile_images/1956930251663233024/2WkrDOjt_normal.jpg",
+      "avatar_url": "https://unavatar.io/x/salang_rg143?fallback=false",
       "x_bio": "(21)",
       "x_bio_fetched_at": "2026-11-18T12:37:31.498023+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-18",
-      "profile_source": "fxtwitter"
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-18T12:37:45+00:00",
+        "x_account": "salang_rg143",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=salang_rg143",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/salang_rg143",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

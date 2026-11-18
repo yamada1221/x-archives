@@ -20186,12 +20186,29 @@
       "added_at": "2026-11-18",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://pbs.twimg.com/profile_images/2017855904897802241/hlyJBr6Q_normal.jpg",
+      "avatar_url": "https://unavatar.io/x/oonkj12__ku?fallback=false",
       "x_bio": "",
       "x_bio_fetched_at": "2026-11-18T14:11:46.249199+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-18",
-      "profile_source": "fxtwitter"
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-18T14:12:01+00:00",
+        "x_account": "oonkj12__ku",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=oonkj12__ku",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/oonkj12__ku",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

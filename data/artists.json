@@ -20488,6 +20488,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mwmwgpiwavkw",
+      "name": "you06955488",
+      "x_account": "you06955488",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "青バッチ",
+      "tracking_mode": "monitor_only",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-19",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

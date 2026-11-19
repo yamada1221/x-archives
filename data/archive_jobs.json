@@ -5954,6 +5954,21 @@
       "next_attempt_at": 1795079442330,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "updated_at": "2026-11-19T09:10:42.330Z"
+    },
+    {
+      "job_id": "e9c6a9d4-3b92-4aef-8a52-1f07b6b52bf4",
+      "kind": "profile",
+      "artist_id": "mwmwunl47h90",
+      "registered_handle": "poteto_v_potato",
+      "target_kind": "replies",
+      "expected_x_user_id": "",
+      "state": "queued",
+      "provider": "archive.today",
+      "created_at": "2026-11-19T15:10:41.533Z",
+      "attempt_count": 0,
+      "next_attempt_at": 1795101041533,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-11-19T15:10:41.533Z"
     }
   ],
   "reservations": [

@@ -20599,6 +20599,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mwmwwnj5gf1a",
+      "name": "oreno199",
+      "x_account": "oreno199",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-19",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

@@ -20523,6 +20523,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mwmwunl47h90",
+      "name": "poteto_v_potato",
+      "x_account": "poteto_v_potato",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "汚言 クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-19",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

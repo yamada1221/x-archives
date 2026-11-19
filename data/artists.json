@@ -20678,7 +20678,7 @@
     },
     {
       "id": "mwmyn4oiofx3",
-      "name": "nekoto_sakana",
+      "name": "山",
       "x_account": "nekoto_sakana",
       "threads_account": "",
       "threads_share_url": "",
@@ -20688,8 +20688,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-19",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1566118464468631563/C8xqdZcm_normal.jpg",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-19T02:58:18.805170+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-19",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

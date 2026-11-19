@@ -20467,10 +20467,27 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/2116829161457381376/y83hi8aB_normal.jpg",
       "x_bio": "",
-      "x_bio_fetched_at": "2026-11-19T00:37:43.867493+00:00",
+      "x_bio_fetched_at": "2026-11-19T00:37:54.373510+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-19",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-19T00:37:54+00:00",
+        "x_account": "popo_gmsu",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=popo_gmsu",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/popo_gmsu",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

@@ -20453,7 +20453,7 @@
     },
     {
       "id": "mwmtmccw1u1a",
-      "name": "popo_gmsu",
+      "name": "popo",
       "x_account": "popo_gmsu",
       "threads_account": "",
       "threads_share_url": "",
@@ -20463,8 +20463,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-19",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2116829161457381376/y83hi8aB_normal.jpg",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-19T00:37:43.867493+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-19",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

@@ -20564,7 +20564,7 @@
     },
     {
       "id": "mwmwvqk8k571",
-      "name": "pDI1NB1vxY71664",
+      "name": "やました　だったとしたら構文アレルギー",
       "x_account": "pDI1NB1vxY71664",
       "threads_account": "",
       "threads_share_url": "",
@@ -20576,9 +20576,29 @@
       "added_at": "2026-11-19",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://unavatar.io/x/pDI1NB1vxY71664?fallback=false",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2038105614879215616/T5NJPbtC_normal.jpg",
       "profile_fetched_at": "2026-11-19",
-      "profile_source": "unavatar"
+      "profile_source": "fxtwitter",
+      "x_bio": "情報収集とネタポスト用\n\n支持政党→こだわりなし\n思想→どっちかというとネオリベ寄り\nヒト、モノ、カネ、有限資源の中で、過剰な権利主張がそのバランスを崩そうとする言説の多さに辟易しています\n節度と品性を持って前に向かって進む言説を好みます\n弱者の皮をかぶった強者が混乱を巻き起こす現状に苦手意識を感じています",
+      "x_bio_fetched_at": "2026-11-19T02:09:13.076265+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-19T02:09:13+00:00",
+        "x_account": "pDI1NB1vxY71664",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=pDI1NB1vxY71664",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/pDI1NB1vxY71664",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

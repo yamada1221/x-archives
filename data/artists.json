@@ -20692,10 +20692,55 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/1566118464468631563/C8xqdZcm_normal.jpg",
       "x_bio": "",
-      "x_bio_fetched_at": "2026-11-19T02:58:18.805170+00:00",
+      "x_bio_fetched_at": "2026-11-19T02:58:28.132498+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-19",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-19T02:58:28+00:00",
+        "x_account": "nekoto_sakana",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=nekoto_sakana",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/nekoto_sakana",
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "final_url": "https://x.com/nekoto_sakana",
+          "bytes": 128085,
+          "contains_username": true,
+          "screen_name_marker": false,
+          "profile_image_url_count": 7,
+          "profile_image_candidates": [
+            "https://pbs.twimg.com/profile_images/1566118464468631563/C8xqdZcm_mini.jpg",
+            "https://pbs.twimg.com/profile_images/1566118464468631563/C8xqdZcm_normal.jpg",
+            "https://pbs.twimg.com/profile_images/1566118464468631563/C8xqdZcm_bigger.jpg",
+            "https://pbs.twimg.com/profile_images/1566118464468631563/C8xqdZcm_x96.jpg",
+            "https://pbs.twimg.com/profile_images/1566118464468631563/C8xqdZcm_reasonably_small.jpg",
+            "https://pbs.twimg.com/profile_images/1566118464468631563/C8xqdZcm_200x200.jpg",
+            "https://pbs.twimg.com/profile_images/1566118464468631563/C8xqdZcm_400x400.jpg"
+          ],
+          "meta_keys": [
+            "og:image",
+            "og:title",
+            "twitter:title"
+          ],
+          "og_title_present": true,
+          "og_image_present": true,
+          "twitter_title_present": true,
+          "twitter_image_present": false,
+          "og_title": "Xユーザーの山（@nekoto_sakana）さん",
+          "og_image": "https://pbs.twimg.com/profile_images/1566118464468631563/C8xqdZcm_400x400.jpg",
+          "twitter_title": "Xユーザーの山（@nekoto_sakana）さん",
+          "twitter_image": ""
+        }
+      }
     }
   ],
   "monitoring_summary": {

@@ -20779,7 +20779,7 @@
     },
     {
       "id": "mwox29ziexmr",
-      "name": "Kurlus_osman_7",
+      "name": "Japan Shock",
       "x_account": "Kurlus_osman_7",
       "threads_account": "",
       "threads_share_url": "",
@@ -20789,8 +20789,11 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-20",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2048019800585310209/O1JFUu5G_400x400.jpg",
+      "profile_fetched_at": "2026-11-20",
+      "profile_source": "x_html"
     }
   ],
   "monitoring_summary": {

@@ -20791,9 +20791,26 @@
       "added_at": "2026-11-20",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://pbs.twimg.com/profile_images/2048019800585310209/O1JFUu5G_400x400.jpg",
+      "avatar_url": "https://unavatar.io/x/Kurlus_osman_7?fallback=false",
       "profile_fetched_at": "2026-11-20",
-      "profile_source": "x_html"
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-20T11:49:53+00:00",
+        "x_account": "Kurlus_osman_7",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=Kurlus_osman_7",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/Kurlus_osman_7",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

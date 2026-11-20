@@ -20776,6 +20776,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mwox29ziexmr",
+      "name": "Kurlus_osman_7",
+      "x_account": "Kurlus_osman_7",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "スパム / インプレゾンビ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-20",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

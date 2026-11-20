@@ -20810,7 +20810,21 @@
           "url": "https://x.com/Kurlus_osman_7",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archives": [
+        {
+          "url": "https://archive.li/2026.11.20-115008/https://x.com/Kurlus_osman_7/with_replies",
+          "provider": "archive.today",
+          "status": "pending",
+          "target_url": "https://x.com/Kurlus_osman_7/with_replies",
+          "saved_at": "2026-11-20T11:58:04.319Z"
+        }
+      ],
+      "archive_status": "pending",
+      "archive_url": "https://archive.li/2026.11.20-115008/https://x.com/Kurlus_osman_7/with_replies",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/Kurlus_osman_7/with_replies",
+      "archive_checked_at": "2026-11-20T11:58:04.319Z"
     }
   ],
   "monitoring_summary": {

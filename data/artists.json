@@ -20741,6 +20741,21 @@
           "twitter_image": ""
         }
       }
+    },
+    {
+      "id": "mwoq5opts64u",
+      "name": "AAA_Aikawa",
+      "x_account": "AAA_Aikawa",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-20",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

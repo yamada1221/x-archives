@@ -20847,12 +20847,29 @@
       "added_at": "2026-11-21",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://pbs.twimg.com/profile_images/1688841306301493249/uiPDmVH4_normal.jpg",
+      "avatar_url": "https://unavatar.io/x/yokko0216?fallback=false",
       "x_bio": "正直いうと単なるゲームの更新情報得るためにツイッター垢作りました。\nただ最近左翼の横暴酷すぎるわ",
       "x_bio_fetched_at": "2026-11-21T01:53:55.777136+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-21",
-      "profile_source": "fxtwitter"
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-21T01:54:07+00:00",
+        "x_account": "yokko0216",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=yokko0216",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/yokko0216",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

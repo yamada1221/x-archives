@@ -20828,7 +20828,7 @@
     },
     {
       "id": "mwpr7ymofcko",
-      "name": "yokko0216",
+      "name": "よっこ",
       "x_account": "yokko0216",
       "threads_account": "",
       "threads_share_url": "",
@@ -20845,8 +20845,14 @@
       ],
       "threads_posts": [],
       "added_at": "2026-11-21",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1688841306301493249/uiPDmVH4_normal.jpg",
+      "x_bio": "正直いうと単なるゲームの更新情報得るためにツイッター垢作りました。\nただ最近左翼の横暴酷すぎるわ",
+      "x_bio_fetched_at": "2026-11-21T01:53:55.777136+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-21",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

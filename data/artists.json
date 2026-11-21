@@ -20825,6 +20825,28 @@
       "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/Kurlus_osman_7/with_replies",
       "archive_checked_at": "2026-11-20T11:58:04.319Z"
+    },
+    {
+      "id": "mwpr7ymofcko",
+      "name": "yokko0216",
+      "x_account": "yokko0216",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "ネトウヨ",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/yokko0216/status/2123780833752556010",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-21"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-11-21",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

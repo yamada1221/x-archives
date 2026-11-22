@@ -21377,6 +21377,21 @@
       "archive_provider": "archive.today",
       "archive_target_url": "https://x.com/tikapoyo_5/with_replies",
       "archive_checked_at": "2026-11-22T01:57:35.273Z"
+    },
+    {
+      "id": "mwr6xa1bke7c",
+      "name": "ff7408600976353",
+      "x_account": "ff7408600976353",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ / リプライ用アカウント",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-22",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

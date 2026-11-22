@@ -21501,7 +21501,7 @@
     },
     {
       "id": "mwrodk92fg0j",
-      "name": "ff9eyo",
+      "name": "ライア",
       "x_account": "ff9eyo",
       "threads_account": "",
       "threads_share_url": "",
@@ -21511,8 +21511,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-22",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2078406109954723840/cDaYwimM_normal.jpg",
+      "x_bio": "絶望の時こそ強く輝ける時。\n私はそれを知っている",
+      "x_bio_fetched_at": "2026-11-22T10:09:54.133916+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-22",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

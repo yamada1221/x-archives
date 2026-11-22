@@ -21362,7 +21362,21 @@
           "url": "https://x.com/tikapoyo_5",
           "error": "HTTPError 403"
         }
-      }
+      },
+      "archives": [
+        {
+          "url": "https://archive.li/2026.11.22-015053/https://x.com/tikapoyo_5/with_replies",
+          "provider": "archive.today",
+          "status": "pending",
+          "target_url": "https://x.com/tikapoyo_5/with_replies",
+          "saved_at": "2026-11-22T01:57:35.273Z"
+        }
+      ],
+      "archive_status": "pending",
+      "archive_url": "https://archive.li/2026.11.22-015053/https://x.com/tikapoyo_5/with_replies",
+      "archive_provider": "archive.today",
+      "archive_target_url": "https://x.com/tikapoyo_5/with_replies",
+      "archive_checked_at": "2026-11-22T01:57:35.273Z"
     }
   ],
   "monitoring_summary": {

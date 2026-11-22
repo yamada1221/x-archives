@@ -21418,7 +21418,7 @@
     },
     {
       "id": "mwra85s9b5kt",
-      "name": "satenruiko01",
+      "name": "佐天涙子",
       "x_account": "satenruiko01",
       "threads_account": "",
       "threads_share_url": "",
@@ -21430,9 +21430,29 @@
       "added_at": "2026-11-22",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://unavatar.io/x/satenruiko01?fallback=false",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1660654976174047236/k7IG5Pw1_normal.jpg",
       "profile_fetched_at": "2026-11-22",
-      "profile_source": "unavatar"
+      "profile_source": "fxtwitter",
+      "x_bio": "関",
+      "x_bio_fetched_at": "2026-11-22T03:33:53.214930+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-22T03:33:53+00:00",
+        "x_account": "satenruiko01",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=satenruiko01",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/satenruiko01",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

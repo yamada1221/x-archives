@@ -6212,6 +6212,20 @@
       "event_key": "first:3253020889:replies",
       "last_error": "返信タブの本文を確認できません",
       "verification_checks": 3
+    },
+    {
+      "job_id": "ebd31fc3-2114-467f-98b2-2703f1680f03",
+      "kind": "profile",
+      "artist_id": "mwra85s9b5kt",
+      "registered_handle": "satenruiko01",
+      "expected_x_user_id": "",
+      "state": "queued",
+      "provider": "archive.today",
+      "created_at": "2026-11-22T09:10:42.307Z",
+      "attempt_count": 0,
+      "next_attempt_at": 1795338642307,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-11-22T09:10:42.307Z"
     }
   ],
   "reservations": [

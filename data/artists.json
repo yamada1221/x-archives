@@ -21321,7 +21321,7 @@
     },
     {
       "id": "mwr6jfvuif93",
-      "name": "tikapoyo_5",
+      "name": "ちかぽよ",
       "x_account": "tikapoyo_5",
       "threads_account": "",
       "threads_share_url": "",
@@ -21338,8 +21338,31 @@
       ],
       "threads_posts": [],
       "added_at": "2026-11-22",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/613071224554401792/1wqVZCZw_normal.jpg",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-22T01:50:40.500659+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-22",
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-22T01:50:40+00:00",
+        "x_account": "tikapoyo_5",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=tikapoyo_5",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/tikapoyo_5",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

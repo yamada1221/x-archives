@@ -21318,6 +21318,28 @@
           "reason": "FxTwitter HTTP 200; code=200; message=OK; user_id=715179997539934208; screen_name=yokko0216"
         }
       ]
+    },
+    {
+      "id": "mwr6jfvuif93",
+      "name": "tikapoyo_5",
+      "x_account": "tikapoyo_5",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/tikapoyo_5/status/2124296689372803123",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-22"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-11-22",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

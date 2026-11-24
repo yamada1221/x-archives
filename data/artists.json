@@ -21551,12 +21551,29 @@
       "added_at": "2026-11-24",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://pbs.twimg.com/profile_images/2070481618091798528/Wrz8rWcp_normal.jpg",
+      "avatar_url": "https://unavatar.io/x/96_ameyalaly?fallback=false",
       "x_bio": "メインひらけなくなった",
       "x_bio_fetched_at": "2026-11-24T05:59:14.771320+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-24",
-      "profile_source": "fxtwitter"
+      "profile_source": "unavatar",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-24T05:59:26+00:00",
+        "x_account": "96_ameyalaly",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=96_ameyalaly",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/96_ameyalaly",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

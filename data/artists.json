@@ -21612,6 +21612,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mwufuuh1lt91",
+      "name": "browncat1610801",
+      "x_account": "browncat1610801",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-24",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

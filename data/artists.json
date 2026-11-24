@@ -21720,6 +21720,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mwunc36u2wn8",
+      "name": "SeishunKnight",
+      "x_account": "SeishunKnight",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-24",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

@@ -6329,6 +6329,20 @@
       "next_attempt_at": 1795506567383,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "updated_at": "2026-11-24T07:49:27.383Z"
+    },
+    {
+      "job_id": "f4265048-6dc9-4804-945c-46248c02054d",
+      "kind": "profile",
+      "artist_id": "mwue8yivfoj8",
+      "registered_handle": "Frogg45045954",
+      "expected_x_user_id": "",
+      "state": "queued",
+      "provider": "archive.today",
+      "created_at": "2026-11-24T07:49:27.383Z",
+      "attempt_count": 0,
+      "next_attempt_at": 1795506567383,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-11-24T07:49:27.383Z"
     }
   ],
   "reservations": [

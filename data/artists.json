@@ -21577,7 +21577,7 @@
     },
     {
       "id": "mwue8yivfoj8",
-      "name": "Frogg45045954",
+      "name": "Frogg",
       "x_account": "Frogg45045954",
       "threads_account": "",
       "threads_share_url": "",
@@ -21587,8 +21587,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-24",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-24T07:49:42.330282+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-24",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

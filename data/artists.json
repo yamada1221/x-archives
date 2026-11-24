@@ -21539,7 +21539,7 @@
     },
     {
       "id": "mwuab3rwm1yn",
-      "name": "96_ameyalaly",
+      "name": "あめあ",
       "x_account": "96_ameyalaly",
       "threads_account": "",
       "threads_share_url": "",
@@ -21549,8 +21549,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-24",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2070481618091798528/Wrz8rWcp_normal.jpg",
+      "x_bio": "メインひらけなくなった",
+      "x_bio_fetched_at": "2026-11-24T05:59:14.771320+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-24",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

@@ -21776,6 +21776,28 @@
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-25",
       "profile_source": "fxtwitter"
+    },
+    {
+      "id": "mww05nkduz8i",
+      "name": "kame_gxdirector",
+      "x_account": "kame_gxdirector",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "青バッチ",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/kame_gxdirector/status/2125170553443205154",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-25"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-11-25",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

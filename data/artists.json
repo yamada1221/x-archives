@@ -21779,7 +21779,7 @@
     },
     {
       "id": "mww05nkduz8i",
-      "name": "kame_gxdirector",
+      "name": "かめ｜27歳｜再エネ訪販で年商15億の取締役",
       "x_account": "kame_gxdirector",
       "threads_account": "",
       "threads_share_url": "",
@@ -21798,9 +21798,61 @@
       "added_at": "2026-11-25",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://unavatar.io/x/kame_gxdirector?fallback=false",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2113470804403109888/PCFvQRye_normal.jpg",
       "profile_fetched_at": "2026-11-25",
-      "profile_source": "unavatar"
+      "profile_source": "fxtwitter",
+      "x_bio": "向かい風の訪販業界で、\n3期目で年商15億の営業会社 取締役(27歳)\nうちと組んで伸びた組織\n・光回線の営業組織→丸ごと再エネに参入して覚醒\n・営業未経験の異業種→新規事業で拡大\n・学生団体→インターンから営業組織に\n商材も、売り方も、事務も支えます\n代理店・協業のご相談はDMへ",
+      "x_bio_fetched_at": "2026-11-25T10:50:55.465332+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-25T10:50:55+00:00",
+        "x_account": "kame_gxdirector",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=kame_gxdirector",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/kame_gxdirector",
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "final_url": "https://x.com/kame_gxdirector",
+          "bytes": 160851,
+          "contains_username": true,
+          "screen_name_marker": false,
+          "profile_image_url_count": 10,
+          "profile_image_candidates": [
+            "https://pbs.twimg.com/profile_images/2113470804403109888/PCFvQRye_mini.jpg",
+            "https://pbs.twimg.com/profile_images/2113470804403109888/PCFvQRye_normal.jpg",
+            "https://pbs.twimg.com/profile_images/2113470804403109888/PCFvQRye_bigger.jpg",
+            "https://pbs.twimg.com/profile_images/2113470804403109888/PCFvQRye_x96.jpg",
+            "https://pbs.twimg.com/profile_images/2113470804403109888/PCFvQRye_reasonably_small.jpg",
+            "https://pbs.twimg.com/profile_images/2113470804403109888/PCFvQRye_200x200.jpg",
+            "https://pbs.twimg.com/profile_images/2113470804403109888/PCFvQRye_400x400.jpg",
+            "https://pbs.twimg.com/profile_images/2115622617604579328/r6VoyLNV_normal.jpg",
+            "https://pbs.twimg.com/profile_images/2115622617604579328/r6VoyLNV_mini.jpg",
+            "https://pbs.twimg.com/profile_images/2115622617604579328/r6VoyLNV_bigger.jpg"
+          ],
+          "meta_keys": [
+            "og:image",
+            "og:title",
+            "twitter:image",
+            "twitter:title"
+          ],
+          "og_title_present": true,
+          "og_image_present": true,
+          "twitter_title_present": true,
+          "twitter_image_present": true,
+          "og_title": "Xユーザーのかめ｜27歳｜再エネ訪販で年商15億の取締役（@kame_gxdirector）さん",
+          "og_image": "https://pbs.twimg.com/profile_images/2113470804403109888/PCFvQRye_400x400.jpg",
+          "twitter_title": "Xユーザーのかめ｜27歳｜再エネ訪販で年商15億の取締役（@kame_gxdirector）さん",
+          "twitter_image": "https://pbs.twimg.com/profile_banners/2022944024819376128/1790670322"
+        }
+      }
     }
   ],
   "monitoring_summary": {

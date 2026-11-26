@@ -21894,7 +21894,7 @@
     },
     {
       "id": "mwxh3oh703r2",
-      "name": "kise_of",
+      "name": "カーナビ",
       "x_account": "kise_of",
       "threads_account": "",
       "threads_share_url": "",
@@ -21904,8 +21904,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-26",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2035480249681711104/J6PKnzMZ_normal.jpg",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-26T11:32:49.436071+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-26",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

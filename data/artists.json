@@ -21915,7 +21915,7 @@
     },
     {
       "id": "xpost2125900061100142800",
-      "name": "tanakamxui",
+      "name": "tanaka",
       "x_account": "tanakamxui",
       "pixiv_user": "",
       "note": "クソリプ",
@@ -21928,12 +21928,18 @@
         }
       ],
       "added_at": "2026-11-26",
-      "fetch_status": "pending",
-      "tracking_mode": "record"
+      "fetch_status": "done",
+      "tracking_mode": "record",
+      "avatar_url": "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-26T11:46:03.512213+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-26",
+      "profile_source": "fxtwitter"
     },
     {
       "id": "xpost2125897038982418500",
-      "name": "magical1682",
+      "name": "まじかる☆",
       "x_account": "magical1682",
       "pixiv_user": "",
       "note": "クソリプ",
@@ -21946,12 +21952,18 @@
         }
       ],
       "added_at": "2026-11-26",
-      "fetch_status": "pending",
-      "tracking_mode": "record"
+      "fetch_status": "done",
+      "tracking_mode": "record",
+      "avatar_url": "https://pbs.twimg.com/profile_images/968392835807436800/F6IqrFZC_normal.jpg",
+      "x_bio": "ラーメンとおもちゃ、時々ゲーム\n80年代の少年マンガ大好きです",
+      "x_bio_fetched_at": "2026-11-26T11:46:06.713080+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-26",
+      "profile_source": "fxtwitter"
     },
     {
       "id": "xpost2125875481837007107",
-      "name": "0bx34",
+      "name": "ツナマヨ",
       "x_account": "0bx34",
       "pixiv_user": "",
       "note": "クソリプ",
@@ -21964,12 +21976,18 @@
         }
       ],
       "added_at": "2026-11-26",
-      "fetch_status": "pending",
-      "tracking_mode": "record"
+      "fetch_status": "done",
+      "tracking_mode": "record",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1997231156631318528/_VTodyKJ_normal.jpg",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-26T11:46:09.884825+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-26",
+      "profile_source": "fxtwitter"
     },
     {
       "id": "xpost2125877615449997434",
-      "name": "11tk_2",
+      "name": "T-X",
       "x_account": "11tk_2",
       "pixiv_user": "",
       "note": "クソリプ",
@@ -21982,12 +22000,18 @@
         }
       ],
       "added_at": "2026-11-26",
-      "fetch_status": "pending",
-      "tracking_mode": "record"
+      "fetch_status": "done",
+      "tracking_mode": "record",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1119652001384521728/YkbDzx8X_normal.jpg",
+      "x_bio": "君もTOYOってる？ 反高市早苗派の人達のおかげでメシウマだよ🤣　#戦争反対",
+      "x_bio_fetched_at": "2026-11-26T11:46:13.363251+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-26",
+      "profile_source": "fxtwitter"
     },
     {
       "id": "xpost2125881918030069857",
-      "name": "shname6",
+      "name": "ネモフィ",
       "x_account": "shname6",
       "pixiv_user": "",
       "note": "クソリプ",
@@ -22000,12 +22024,18 @@
         }
       ],
       "added_at": "2026-11-26",
-      "fetch_status": "pending",
-      "tracking_mode": "record"
+      "fetch_status": "done",
+      "tracking_mode": "record",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2110605436445736960/0P_YXlTo_normal.jpg",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-26T11:46:16.554115+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-26",
+      "profile_source": "fxtwitter"
     },
     {
       "id": "xpost2125889652670575093",
-      "name": "90op3xpjqvge3lx",
+      "name": "Dead Experience",
       "x_account": "90op3xpjqvge3lx",
       "pixiv_user": "",
       "note": "クソリプ",
@@ -22018,12 +22048,18 @@
         }
       ],
       "added_at": "2026-11-26",
-      "fetch_status": "pending",
-      "tracking_mode": "record"
+      "fetch_status": "done",
+      "tracking_mode": "record",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1964222877722611712/FX-JUBnc_normal.jpg",
+      "x_bio": "やりたいことだけやって生きていきたい",
+      "x_bio_fetched_at": "2026-11-26T11:46:19.717264+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-26",
+      "profile_source": "fxtwitter"
     },
     {
       "id": "xpost2125886305561346457",
-      "name": "kidegami3490",
+      "name": "松吉",
       "x_account": "kidegami3490",
       "pixiv_user": "",
       "note": "クソリプ",
@@ -22036,12 +22072,18 @@
         }
       ],
       "added_at": "2026-11-26",
-      "fetch_status": "pending",
-      "tracking_mode": "record"
+      "fetch_status": "done",
+      "tracking_mode": "record",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2095160032308707328/VM85Hv-f_normal.jpg",
+      "x_bio": "27歳|外資営業|ADHD（不注意優勢）",
+      "x_bio_fetched_at": "2026-11-26T11:46:22.943914+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-26",
+      "profile_source": "fxtwitter"
     },
     {
       "id": "xpost2125875234633134412",
-      "name": "zvgddpzkveenazf",
+      "name": "ゆーらしあん",
       "x_account": "zvgddpzkveenazf",
       "pixiv_user": "",
       "note": "クソリプ",
@@ -22054,12 +22096,18 @@
         }
       ],
       "added_at": "2026-11-26",
-      "fetch_status": "pending",
-      "tracking_mode": "record"
+      "fetch_status": "done",
+      "tracking_mode": "record",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1891826410051993603/qTL4RVgc_normal.jpg",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-26T11:46:26.082340+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-26",
+      "profile_source": "fxtwitter"
     },
     {
       "id": "xpost2125897625610420506",
-      "name": "potekyuse",
+      "name": "高校野球大好きだそうです",
       "x_account": "potekyuse",
       "pixiv_user": "",
       "note": "クソリプ",
@@ -22072,12 +22120,18 @@
         }
       ],
       "added_at": "2026-11-26",
-      "fetch_status": "pending",
-      "tracking_mode": "record"
+      "fetch_status": "done",
+      "tracking_mode": "record",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1978077007272677376/8SCWpxEV_normal.jpg",
+      "x_bio": "別垢\n@RIcoeVkqDx29457\n@f68UK4rFfo98581\n@YQ0h3MkaFX22241\n@GezGIDcTbm48048",
+      "x_bio_fetched_at": "2026-11-26T11:46:29.382735+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-26",
+      "profile_source": "fxtwitter"
     },
     {
       "id": "xpost2125899998852489614",
-      "name": "ucf_e",
+      "name": "e-ucf",
       "x_account": "ucf_e",
       "pixiv_user": "",
       "note": "クソリプ",
@@ -22090,8 +22144,14 @@
         }
       ],
       "added_at": "2026-11-26",
-      "fetch_status": "pending",
-      "tracking_mode": "record"
+      "fetch_status": "done",
+      "tracking_mode": "record",
+      "avatar_url": "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-26T11:46:32.594345+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-26",
+      "profile_source": "fxtwitter"
     },
     {
       "id": "xpost2125900078825210167",
@@ -22108,12 +22168,15 @@
         }
       ],
       "added_at": "2026-11-26",
-      "fetch_status": "pending",
-      "tracking_mode": "record"
+      "fetch_status": "done",
+      "tracking_mode": "record",
+      "avatar_url": "https://unavatar.io/x/nyannnyann0215?fallback=false",
+      "profile_fetched_at": "2026-11-26",
+      "profile_source": "unavatar"
     },
     {
       "id": "xpost2125884196375896543",
-      "name": "hffbwk2mi12224",
+      "name": "イカさん",
       "x_account": "hffbwk2mi12224",
       "pixiv_user": "",
       "note": "クソリプ",
@@ -22126,12 +22189,18 @@
         }
       ],
       "added_at": "2026-11-26",
-      "fetch_status": "pending",
-      "tracking_mode": "record"
+      "fetch_status": "done",
+      "tracking_mode": "record",
+      "avatar_url": "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-26T11:46:40.593331+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-26",
+      "profile_source": "fxtwitter"
     },
     {
       "id": "xpost2125880503484223840",
-      "name": "omegacc_bst",
+      "name": "おいちゃん",
       "x_account": "omegacc_bst",
       "pixiv_user": "",
       "note": "クソリプ",
@@ -22144,8 +22213,14 @@
         }
       ],
       "added_at": "2026-11-26",
-      "fetch_status": "pending",
-      "tracking_mode": "record"
+      "fetch_status": "done",
+      "tracking_mode": "record",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1663343680504369152/ec4dqk1p_normal.jpg",
+      "x_bio": "新日本プロレスメイン、NOAH(嗜み程度)のプロレスファン、基本箱推し。\n物申したいことにはズバズバ言うし、共感できることには共感する。\n鍵垢でぺちゃくちゃ文句言うダサいヤツは嫌い。",
+      "x_bio_fetched_at": "2026-11-26T11:46:43.793450+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-26",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

@@ -21856,7 +21856,7 @@
     },
     {
       "id": "mwx214bjzo3b",
-      "name": "yoshi_zep",
+      "name": "yoshi",
       "x_account": "yoshi_zep",
       "threads_account": "",
       "threads_share_url": "",
@@ -21868,9 +21868,29 @@
       "added_at": "2026-11-26",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://unavatar.io/x/yoshi_zep?fallback=false",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1688800654645493760/-urqNO8a_normal.jpg",
       "profile_fetched_at": "2026-11-26",
-      "profile_source": "unavatar"
+      "profile_source": "fxtwitter",
+      "x_bio": "I WANNA FEEL MY LOVE～✴ただの氷室ファンでいいｾﾞ…\n\n(*´ー｀*)♪\n　　　　\n愛機はZep χ(休眠中)。　　　　　　　　　　\nテンション高く～落ち着いて！スマイル&エネルギーチャージ☆    2024.10/24~退院🏥リハビリ通院へ\n\nマリオカートツアー🏆 サ終残念無念",
+      "x_bio_fetched_at": "2026-11-26T04:31:02.710327+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-26T04:31:02+00:00",
+        "x_account": "yoshi_zep",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=yoshi_zep",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/yoshi_zep",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

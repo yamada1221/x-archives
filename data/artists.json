@@ -21891,6 +21891,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mwxh3oh703r2",
+      "name": "kise_of",
+      "x_account": "kise_of",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-26",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

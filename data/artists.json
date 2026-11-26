@@ -21853,6 +21853,21 @@
           "twitter_image": "https://pbs.twimg.com/profile_banners/2022944024819376128/1790670322"
         }
       }
+    },
+    {
+      "id": "mwx214bjzo3b",
+      "name": "yoshi_zep",
+      "x_account": "yoshi_zep",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-26",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

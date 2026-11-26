@@ -21912,6 +21912,240 @@
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-26",
       "profile_source": "fxtwitter"
+    },
+    {
+      "id": "xpost2125900061100142800",
+      "name": "tanakamxui",
+      "x_account": "tanakamxui",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "works": [
+        {
+          "url": "https://x.com/tanakamxui/status/2125900061100142800",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-26"
+        }
+      ],
+      "added_at": "2026-11-26",
+      "fetch_status": "pending",
+      "tracking_mode": "record"
+    },
+    {
+      "id": "xpost2125897038982418500",
+      "name": "magical1682",
+      "x_account": "magical1682",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "works": [
+        {
+          "url": "https://x.com/magical1682/status/2125897038982418500",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-26"
+        }
+      ],
+      "added_at": "2026-11-26",
+      "fetch_status": "pending",
+      "tracking_mode": "record"
+    },
+    {
+      "id": "xpost2125875481837007107",
+      "name": "0bx34",
+      "x_account": "0bx34",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "works": [
+        {
+          "url": "https://x.com/0bx34/status/2125875481837007107",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-26"
+        }
+      ],
+      "added_at": "2026-11-26",
+      "fetch_status": "pending",
+      "tracking_mode": "record"
+    },
+    {
+      "id": "xpost2125877615449997434",
+      "name": "11tk_2",
+      "x_account": "11tk_2",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "works": [
+        {
+          "url": "https://x.com/11tk_2/status/2125877615449997434",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-26"
+        }
+      ],
+      "added_at": "2026-11-26",
+      "fetch_status": "pending",
+      "tracking_mode": "record"
+    },
+    {
+      "id": "xpost2125881918030069857",
+      "name": "shname6",
+      "x_account": "shname6",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "works": [
+        {
+          "url": "https://x.com/shname6/status/2125881918030069857",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-26"
+        }
+      ],
+      "added_at": "2026-11-26",
+      "fetch_status": "pending",
+      "tracking_mode": "record"
+    },
+    {
+      "id": "xpost2125889652670575093",
+      "name": "90op3xpjqvge3lx",
+      "x_account": "90op3xpjqvge3lx",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "works": [
+        {
+          "url": "https://x.com/90op3xpjqvge3lx/status/2125889652670575093",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-26"
+        }
+      ],
+      "added_at": "2026-11-26",
+      "fetch_status": "pending",
+      "tracking_mode": "record"
+    },
+    {
+      "id": "xpost2125886305561346457",
+      "name": "kidegami3490",
+      "x_account": "kidegami3490",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "works": [
+        {
+          "url": "https://x.com/kidegami3490/status/2125886305561346457",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-26"
+        }
+      ],
+      "added_at": "2026-11-26",
+      "fetch_status": "pending",
+      "tracking_mode": "record"
+    },
+    {
+      "id": "xpost2125875234633134412",
+      "name": "zvgddpzkveenazf",
+      "x_account": "zvgddpzkveenazf",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "works": [
+        {
+          "url": "https://x.com/zvgddpzkveenazf/status/2125875234633134412",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-26"
+        }
+      ],
+      "added_at": "2026-11-26",
+      "fetch_status": "pending",
+      "tracking_mode": "record"
+    },
+    {
+      "id": "xpost2125897625610420506",
+      "name": "potekyuse",
+      "x_account": "potekyuse",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "works": [
+        {
+          "url": "https://x.com/potekyuse/status/2125897625610420506",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-26"
+        }
+      ],
+      "added_at": "2026-11-26",
+      "fetch_status": "pending",
+      "tracking_mode": "record"
+    },
+    {
+      "id": "xpost2125899998852489614",
+      "name": "ucf_e",
+      "x_account": "ucf_e",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "works": [
+        {
+          "url": "https://x.com/ucf_e/status/2125899998852489614",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-26"
+        }
+      ],
+      "added_at": "2026-11-26",
+      "fetch_status": "pending",
+      "tracking_mode": "record"
+    },
+    {
+      "id": "xpost2125900078825210167",
+      "name": "nyannnyann0215",
+      "x_account": "nyannnyann0215",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "works": [
+        {
+          "url": "https://x.com/nyannnyann0215/status/2125900078825210167",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-26"
+        }
+      ],
+      "added_at": "2026-11-26",
+      "fetch_status": "pending",
+      "tracking_mode": "record"
+    },
+    {
+      "id": "xpost2125884196375896543",
+      "name": "hffbwk2mi12224",
+      "x_account": "hffbwk2mi12224",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "works": [
+        {
+          "url": "https://x.com/hffbwk2mi12224/status/2125884196375896543",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-26"
+        }
+      ],
+      "added_at": "2026-11-26",
+      "fetch_status": "pending",
+      "tracking_mode": "record"
+    },
+    {
+      "id": "xpost2125880503484223840",
+      "name": "omegacc_bst",
+      "x_account": "omegacc_bst",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "works": [
+        {
+          "url": "https://x.com/omegacc_bst/status/2125880503484223840",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-26"
+        }
+      ],
+      "added_at": "2026-11-26",
+      "fetch_status": "pending",
+      "tracking_mode": "record"
     }
   ],
   "monitoring_summary": {

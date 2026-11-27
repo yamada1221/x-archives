@@ -6620,6 +6620,20 @@
       "next_attempt_at": 1795727441996,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "updated_at": "2026-11-26T21:10:41.996Z"
+    },
+    {
+      "job_id": "2f4f8de1-60d2-41f3-9b71-eef5da1838c2",
+      "kind": "profile",
+      "artist_id": "xpost2125881918030069857",
+      "registered_handle": "shname6",
+      "expected_x_user_id": "",
+      "state": "queued",
+      "provider": "archive.today",
+      "created_at": "2026-11-27T03:10:44.205Z",
+      "attempt_count": 0,
+      "next_attempt_at": 1795749044205,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-11-27T03:10:44.205Z"
     }
   ],
   "reservations": [

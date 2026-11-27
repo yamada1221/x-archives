@@ -6678,6 +6678,20 @@
       "next_attempt_at": 1795749044205,
       "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
       "updated_at": "2026-11-27T03:10:44.205Z"
+    },
+    {
+      "job_id": "7cd3f8a1-2f0f-4035-9bea-8231fa3efa9f",
+      "kind": "profile",
+      "artist_id": "xpost2125886305561346457",
+      "registered_handle": "kidegami3490",
+      "expected_x_user_id": "",
+      "state": "queued",
+      "provider": "archive.today",
+      "created_at": "2026-11-27T03:10:44.205Z",
+      "attempt_count": 0,
+      "next_attempt_at": 1795749044205,
+      "executor_device_id": "3e468c95-0461-4472-99ef-2084c41793c7",
+      "updated_at": "2026-11-27T03:10:44.205Z"
     }
   ],
   "reservations": [

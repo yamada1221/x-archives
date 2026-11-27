@@ -21935,7 +21935,8 @@
       "x_bio_fetched_at": "2026-11-26T11:46:03.512213+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-26",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "threads_posts": []
     },
     {
       "id": "xpost2125897038982418500",
@@ -21959,7 +21960,8 @@
       "x_bio_fetched_at": "2026-11-26T11:46:06.713080+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-26",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "threads_posts": []
     },
     {
       "id": "xpost2125875481837007107",
@@ -21983,7 +21985,8 @@
       "x_bio_fetched_at": "2026-11-26T11:46:09.884825+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-26",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "threads_posts": []
     },
     {
       "id": "xpost2125877615449997434",
@@ -22007,7 +22010,8 @@
       "x_bio_fetched_at": "2026-11-26T11:46:13.363251+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-26",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "threads_posts": []
     },
     {
       "id": "xpost2125881918030069857",
@@ -22031,7 +22035,8 @@
       "x_bio_fetched_at": "2026-11-26T11:46:16.554115+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-26",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "threads_posts": []
     },
     {
       "id": "xpost2125889652670575093",
@@ -22055,7 +22060,8 @@
       "x_bio_fetched_at": "2026-11-26T11:46:19.717264+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-26",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "threads_posts": []
     },
     {
       "id": "xpost2125886305561346457",
@@ -22079,7 +22085,8 @@
       "x_bio_fetched_at": "2026-11-26T11:46:22.943914+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-26",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "threads_posts": []
     },
     {
       "id": "xpost2125875234633134412",
@@ -22103,7 +22110,8 @@
       "x_bio_fetched_at": "2026-11-26T11:46:26.082340+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-26",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "threads_posts": []
     },
     {
       "id": "xpost2125897625610420506",
@@ -22127,7 +22135,8 @@
       "x_bio_fetched_at": "2026-11-26T11:46:29.382735+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-26",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "threads_posts": []
     },
     {
       "id": "xpost2125899998852489614",
@@ -22151,7 +22160,8 @@
       "x_bio_fetched_at": "2026-11-26T11:46:32.594345+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-26",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "threads_posts": []
     },
     {
       "id": "xpost2125900078825210167",
@@ -22172,7 +22182,8 @@
       "tracking_mode": "record",
       "avatar_url": "https://unavatar.io/x/nyannnyann0215?fallback=false",
       "profile_fetched_at": "2026-11-26",
-      "profile_source": "unavatar"
+      "profile_source": "unavatar",
+      "threads_posts": []
     },
     {
       "id": "xpost2125884196375896543",
@@ -22196,7 +22207,8 @@
       "x_bio_fetched_at": "2026-11-26T11:46:40.593331+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-26",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "threads_posts": []
     },
     {
       "id": "xpost2125880503484223840",
@@ -22220,7 +22232,23 @@
       "x_bio_fetched_at": "2026-11-26T11:46:43.793450+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-26",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "threads_posts": []
+    },
+    {
+      "id": "mwyppahe5gfm",
+      "name": "zetubouseitoku",
+      "x_account": "zetubouseitoku",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-27",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

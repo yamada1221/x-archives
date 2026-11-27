@@ -33,13 +33,13 @@ test('the actual saved archive without data-testid identifies the profile and pa
     assert.equal(verified.archived_user_id, '783214');
   });
 });
-test('the actual old archive still requires an archived numeric ID after the DOM fallback', { skip: !source }, async () => {
+test('the actual old archive can verify by handle after the DOM fallback without a numeric ID', { skip: !source }, async () => {
   await snapshot(async page => {
     await page.evaluate(() => document.querySelector('img[currentsourceurl*="profile_banners/"]').removeAttribute('currentsourceurl'));
     const result = await page.evaluate(inspectTodayDocument);
     const verified = C.verify(result, result.profile ? [result.profile] : [], job, Date.parse('2026-10-26T02:00:00Z'));
-    assert.equal(verified.ok, false);
-    assert.match(verified.reason, /数値ID/);
+    assert.equal(verified.ok, true);
+    assert.equal(verified.archived_user_id, '');
   });
 });
 test('a different banner account ID in the actual saved archive cannot verify the requested account', { skip: !source }, async () => {
@@ -59,7 +59,7 @@ test('a banner without its matching profile header-photo link cannot provide an 
     await page.evaluate(() => document.querySelector('img[currentsourceurl*="profile_banners/"]').closest('a').setAttribute('href', 'https://archive.li/o/AUjOR/https://x.com/Other/header_photo'));
     const result = await page.evaluate(inspectTodayDocument);
     const verified = C.verify(result, result.profile ? [result.profile] : [], job, Date.parse('2026-10-26T02:00:00Z'));
-    assert.equal(verified.ok, false); assert.match(verified.reason, /数値ID/);
+    assert.equal(verified.ok, true); assert.equal(verified.archived_user_id, '');
   });
 });
 test('following links only inside a post cannot be mistaken for the saved profile header', { skip: !source }, async () => {

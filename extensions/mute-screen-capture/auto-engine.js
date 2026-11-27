@@ -2,11 +2,13 @@
 (function (root) {
   const C = typeof module !== 'undefined' && module.exports ? require('./auto-core.js') : root.AutoArchiveCore;
   const JOBS = 'data/archive_jobs.json', CONFIG = 'data/auto_archive_config.json';
-  const BODY_READER_REVISION = 'archive-card-labels-20261027';
+  const BODY_READER_REVISION = 'archive-handle-verification-20261127';
   const PROFILE_COVERAGE_REVISION = 'profile-from-reply-capture-20261114';
   const PROFILE_COVERAGE_ERRORS = new Set(['保存先の対象URLが一致しません', '保存先は返信タブです。プロフィールの保存結果を選んでください']);
   const RECEIPT_READER_REVISION = 'archive-challenge-recovery-20261029';
-  const BODY_READER_ERRORS = new Set(['プロフィール本文・対象ハンドルを確認できません', '本文から同じアカウントだと確認する証拠が不足しています']);
+  const IDENTITY_RECHECK_ERRORS = new Set(['本文から同じアカウントだと確認する証拠が不足しています',
+    '過去の保存を採用するには、保存本文の数値IDによる照合が必要です']);
+  const BODY_READER_ERRORS = new Set(['プロフィール本文・対象ハンドルを確認できません', ...IDENTITY_RECHECK_ERRORS]);
   const MANUAL_RECEIPT_REPLACEMENT_ERRORS = new Set(['保存先の対象URLが一致しません', '保存先の対象アカウントが一致しません',
     '保存先は返信タブです。プロフィールの保存結果を選んでください', '保存先はプロフィールです。返信タブの保存結果を選んでください',
     '保存対象の種類が一致しません']);
@@ -30,10 +32,11 @@
         const coverage = job.target_kind !== 'replies' && requested && !requested.endsWith('/with_replies') && PROFILE_COVERAGE_ERRORS.has(job.last_error);
         const revision = coverage ? PROFILE_COVERAGE_REVISION : BODY_READER_REVISION;
         const savedProvider = C.resultProvider(job.receipt);
-        const matchingProvider = coverage ? savedProvider === (job.provider || 'ghostarchive') : job.provider === 'archive.today' && savedProvider === 'archive.today';
+        const identityFailure = IDENTITY_RECHECK_ERRORS.has(job.last_error);
+        const matchingProvider = coverage || identityFailure ? savedProvider === (job.provider || 'ghostarchive') : job.provider === 'archive.today' && savedProvider === 'archive.today';
         if (job.kind !== 'profile' || job.executor_device_id !== this.device || job.state !== 'needs_review' ||
             (!BODY_READER_ERRORS.has(job.last_error) && !coverage) || !matchingProvider ||
-            revisions.get(job.job_id) === revision || !coverage && revisions.get(job.job_id) === PROFILE_COVERAGE_REVISION) continue;
+            revisions.get(job.job_id) === revision || !coverage && !identityFailure && revisions.get(job.job_id) === PROFILE_COVERAGE_REVISION) continue;
         // Retry the recorded receipt, never the original save form. Keep the
         // original submission time, request count and receipt history intact.
         revisions.set(job.job_id, revision);
@@ -518,7 +521,8 @@
           if (C.processingURL(job.receipt)) return this.review(state, job, '処理中のURLから保存完了を確認できません');
           const evidence = C.verify(page, page.frames || [], job, this.now());
           if (evidence.ok) {
-            if (!evidence.archived_user_id) await this.profile(job.identity.handle, job.expected_x_user_id);
+            // The target identity was established during preparation; do not
+            // require another live lookup merely because the archive lacks an ID.
             job.verification = evidence; job.state = 'succeeded'; job.last_error = '';
             this.put(state, job); await this.save(state);
             await this.ghost.close(job).catch(() => {}); return;

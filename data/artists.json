@@ -22335,6 +22335,28 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mwz8n0k7p1z7",
+      "name": "mailyuyuyu",
+      "x_account": "mailyuyuyu",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "ネトウヨ / クソリプ",
+      "tracking_mode": "record",
+      "works": [
+        {
+          "url": "https://x.com/mailyuyuyu/status/2126254311089049860",
+          "type": "x_post",
+          "memo": "",
+          "saved_at": "2026-11-27"
+        }
+      ],
+      "threads_posts": [],
+      "added_at": "2026-11-27",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

@@ -155,11 +155,9 @@
     if (!p || !p.following || !p.name) return { ok: false, reason: 'プロフィール本文・対象ハンドルを確認できません' };
     if (job.target_kind === 'replies' && !p.replies_tab_confirmed) return { ok: false, reason: '返信タブの本文を確認できません' };
     if (p.user_id && p.user_id !== job.expected_x_user_id) return { ok: false, reason: '保存本文の数値IDが別のアカウントです' };
-    if (!p.user_id && (!job.identity || norm(p.name) !== norm(job.identity.name) || job.identity.bio === null || norm(p.bio) !== norm(job.identity.bio))) {
-      return { ok: false, reason: '本文から同じアカウントだと確認する証拠が不足しています' };
-    }
+    // A matching source URL and recognized profile handle are sufficient.
+    // Display names and bios can change or be absent; archive age is metadata.
     const reused = Boolean(job.adopted_existing) || stamp < Date.parse(job.submission_started_at) - 5 * MINUTE;
-    if (reused && !p.user_id) return { ok: false, reason: '過去の保存を採用するには、保存本文の数値IDによる照合が必要です' };
     return { ok: true, captured_at: new Date(stamp).toISOString(), verified_at: new Date(now).toISOString(),
       method: 'archived_profile_body', captured_target_url: captured,
       scope: captured.endsWith('/with_replies') && p.replies_tab_confirmed ? ['profile', 'replies'] : ['profile'],

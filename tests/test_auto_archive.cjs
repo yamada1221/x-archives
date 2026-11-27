@@ -69,11 +69,17 @@ test('HTTP 200, metadata, empty frames and wrong account bodies cannot complete 
     assert.equal((await a.state()).jobs[0].state,'needs_review');assert.equal(a.docs.get(a.config.path).artists[0].archive_status,undefined);
   }
 });
-test('empty biography can verify using an archived numeric ID; weak evidence cannot',()=>{
-  const now=Date.now(),j={target_url:'https://x.com/Example',expected_x_user_id:'123',identity:{handle:'Example',name:'例',bio:''},submission_started_at:new Date(now).toISOString()};
+test('matching profile handle verifies independently of display name, biography and missing archived ID',()=>{
+  const now=Date.now(),j={target_url:'https://x.com/Example',expected_x_user_id:'123',identity:{handle:'Example',name:'例',bio:null},submission_started_at:new Date(now).toISOString()};
   const outer={original_url:j.target_url,captured_at:new Date(now).toISOString()};
-  assert.equal(C.verify(outer,[{kind:'profile',handle:'Example',name:'例',bio:'',following:true,user_id:'123'}],j,now).ok,true);
-  assert.equal(C.verify(outer,[{kind:'profile',handle:'Example',name:'別人',bio:'',following:true}],j,now).ok,false);
+  const body={kind:'profile',handle:'EXAMPLE',name:'変更後の表示名',following:true};
+  for(const profile of [body,{...body,bio:''},{...body,bio:'変更後の自己紹介'},{...body,user_id:'123'}]){
+    assert.equal(C.verify(outer,[profile],j,now).ok,true);
+  }
+  assert.equal(C.verify(outer,[{...body,user_id:'999'}],j,now).ok,false);
+  assert.equal(C.verify(outer,[{...body,handle:'Other'}],j,now).ok,false);
+  assert.equal(C.verify(outer,[{...body,following:false}],j,now).ok,false);
+  assert.equal(C.verify({...outer,original_url:'https://x.com/Other'},[body],j,now).ok,false);
 });
 test('deletion, mode change or identity change while preparing cancels without a POST or resurrecting the account',async()=>{
   for(const change of [d=>d.artists=[],d=>d.artists[0].tracking_mode='monitor_only',d=>d.artists[0].x_user_id='999']) {
@@ -127,12 +133,16 @@ test('result URL and GitHub config validation reject credentials, lookalikes and
   for(const value of ['https://ghostarchive.org.evil/archive/Ab123','https://user:pw@ghostarchive.org/archive/Ab123','https://ghostarchive.org/search?term=Example','http://ghostarchive.org/archive/Ab123'])assert.equal(C.resultURL(value),'');
   assert.throws(()=>C.config({token:'fixture',path:'../secrets.json'}));
 });
-test('a recycled handle cannot attach an old archive without an archived numeric ID',()=>{
+test('old and explicitly adopted captures use the same handle checks without requiring an archived ID',()=>{
   const now=Date.now(),job={target_url:'https://x.com/Example',expected_x_user_id:'123',identity:{handle:'Example',name:'同じ名前',bio:'同じ自己紹介'},submission_started_at:new Date(now).toISOString()};
   const page={original_url:job.target_url,captured_at:new Date(now-86400000).toISOString()};
   const body={kind:'profile',handle:'Example',name:'同じ名前',bio:'同じ自己紹介',following:true};
-  assert.equal(C.verify(page,[body],job,now).ok,false);
-  assert.equal(C.verify(page,[{...body,user_id:'123'}],job,now).ok,true);
+  for(const candidate of [job,{...job,adopted_existing:true}]){
+    const result=C.verify(page,[body],candidate,now);
+    assert.equal(result.ok,true);assert.equal(result.reused_existing,true);assert.equal(result.archived_user_id,'');
+    assert.equal(C.verify(page,[{...body,user_id:'123'}],candidate,now).ok,true);
+    assert.equal(C.verify(page,[{...body,user_id:'999'}],candidate,now).ok,false);
+  }
 });
 test('Contents API CAS retries merge new remote fields; bearer token stays on the GitHub host',async()=>{
   let gets=0,puts=0;const client=new GitHub(C.config({token:'secret-fixture'}),async(url,opts)=>{
@@ -307,6 +317,18 @@ test('an update rechecks an owned recorded receipt without another save request'
   assert.equal(state.jobs[0].state,'succeeded');assert.equal(a.docs.get(a.config.path).artists[0].archive_status,'done');
   assert.equal(a.calls.post,0);assert.equal(a.calls.opened,0);assert.deepEqual(a.docs.get(JOBS).reservations,[]);
 });
+test('previous identity-only review failures are rechecked without another submission, including old captures and Ghostarchive',async()=>{
+  for(const provider of ['archive.today','ghostarchive']){
+    const a=setup([artist()],provider);a.config.enabled=false;
+    const receipt=provider==='ghostarchive'?'https://ghostarchive.org/archive/Ab123':'https://archive.li/Ab123';
+    await seedBodyFailure(a,{provider,receipt,last_error:'過去の保存を採用するには、保存本文の数値IDによる照合が必要です'});
+    a.ghost.inspect=async j=>({kind:'archive',receipt:j.receipt,original_url:j.target_url,captured_at:new Date(a.now()-C.DAY).toISOString(),
+      frames:[{kind:'profile',handle:'Example',name:'変更後',following:true}]});
+    assert.equal(await a.engine.recheckKnownBodies(),1);
+    await a.run();assert.equal((await a.state()).jobs[0].state,'succeeded');
+    assert.equal(a.calls.post,0);assert.equal(a.calls.opened,0);
+  }
+});
 test('the same reader version does not loop a body failure after restart',async()=>{
   const a=setup([artist()],'archive.today');a.config.enabled=false;await seedBodyFailure(a);
   a.ghost.inspect=async j=>({kind:'archive',receipt:j.receipt,original_url:j.target_url,captured_at:new Date(a.now()).toISOString(),frames:[]});
@@ -317,7 +339,7 @@ test('the same reader version does not loop a body failure after restart',async(
   assert.equal(a.calls.post,0);
 });
 test('automatic body recovery excludes missing receipts, foreign executors and other review reasons',async()=>{
-  for(const changes of [{receipt:undefined},{executor_device_id:'another-device'},{last_error:'保存本文の数値IDが別のアカウントです'},{last_error:'保存先で人間確認・アクセス制限が必要です'},{provider:'ghostarchive',receipt:'https://ghostarchive.org/archive/Ab123'}]){
+  for(const changes of [{receipt:undefined},{executor_device_id:'another-device'},{last_error:'保存本文の数値IDが別のアカウントです'},{last_error:'保存先で人間確認・アクセス制限が必要です'},{provider:'ghostarchive',receipt:'https://ghostarchive.org/archive/Ab123',last_error:'プロフィール本文・対象ハンドルを確認できません'}]){
     const a=setup([artist()],'archive.today');await seedBodyFailure(a,changes);
     assert.equal(await a.engine.recheckKnownBodies(),0);
     assert.equal((await a.state()).jobs[0].state,'needs_review');assert.equal(a.calls.post,0);
@@ -736,9 +758,9 @@ test('a reply capture proves its profile header without claiming unconfirmed rep
   assert.equal(C.verify(outer,[{...body,user_id:'999'}],job,now).ok,false);
   assert.equal(C.verify({...outer,original_url:'https://x.com/Other/with_replies'},[body],job,now).ok,false);
   assert.equal(C.verify(outer,[{...body,handle:'Other'}],job,now).ok,false);
-  assert.equal(C.verify(outer,[{...body,user_id:'',bio:'違う自己紹介'}],job,now).ok,false);
+  assert.equal(C.verify(outer,[{...body,user_id:'',bio:'違う自己紹介'}],job,now).ok,true);
   assert.equal(C.verify({...outer,captured_at:new Date(now+10*C.MINUTE).toISOString()},[body],job,now).ok,false);
-  assert.equal(C.verify({...outer,captured_at:new Date(now-C.DAY).toISOString()},[{...body,user_id:''}],job,now).ok,false);
+  assert.equal(C.verify({...outer,captured_at:new Date(now-C.DAY).toISOString()},[{...body,user_id:''}],job,now).ok,true);
   const replyJob={...job,target_kind:'replies',target_url:'https://x.com/Example/with_replies'};
   assert.equal(C.verify(outer,[body],replyJob,now).ok,false);
   assert.equal(C.verify({...outer,original_url:'https://x.com/Example'},[{...body,replies_tab_confirmed:true}],replyJob,now).ok,false);

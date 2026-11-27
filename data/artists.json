@@ -22237,7 +22237,7 @@
     },
     {
       "id": "mwyppahe5gfm",
-      "name": "zetubouseitoku",
+      "name": "絶望人生くそ聖徳、くそ金子も当然禁止",
       "x_account": "zetubouseitoku",
       "threads_account": "",
       "threads_share_url": "",
@@ -22247,8 +22247,14 @@
       "works": [],
       "threads_posts": [],
       "added_at": "2026-11-27",
-      "fetch_status": "pending",
-      "threads_fetch_status": "none"
+      "fetch_status": "done",
+      "threads_fetch_status": "none",
+      "avatar_url": "https://pbs.twimg.com/profile_images/2020876464636440576/_xZqKwZh_normal.png",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-27T08:21:15.167153+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetched_at": "2026-11-27",
+      "profile_source": "fxtwitter"
     }
   ],
   "monitoring_summary": {

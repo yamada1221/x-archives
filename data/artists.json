@@ -22338,7 +22338,7 @@
     },
     {
       "id": "mwz8n0k7p1z7",
-      "name": "mailyuyuyu",
+      "name": "yuyuyu_no_yu",
       "x_account": "mailyuyuyu",
       "threads_account": "",
       "threads_share_url": "",
@@ -22357,9 +22357,29 @@
       "added_at": "2026-11-27",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://unavatar.io/x/mailyuyuyu?fallback=false",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1449261053653643270/9Gm0YMqe_normal.jpg",
       "profile_fetched_at": "2026-11-27",
-      "profile_source": "unavatar"
+      "profile_source": "fxtwitter",
+      "x_bio": "アニメ垢でしたがX闇に触れてしまったので人格が変わりました。どこかの老舗の人事の管理職やってます。その代わり生活費8割、家事9割、育児2割負担です。妻はありがとうって言ってくれます。それだけで僕は頑張れます。男女でしか物を語れないヤツはバカだと思ってます。",
+      "x_bio_fetched_at": "2026-11-27T17:11:34.600055+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-27T17:11:34+00:00",
+        "x_account": "mailyuyuyu",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=mailyuyuyu",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/mailyuyuyu",
+          "error": "HTTPError 403"
+        }
+      }
     }
   ],
   "monitoring_summary": {

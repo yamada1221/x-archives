@@ -22251,10 +22251,55 @@
       "threads_fetch_status": "none",
       "avatar_url": "https://pbs.twimg.com/profile_images/2020876464636440576/_xZqKwZh_normal.png",
       "x_bio": "",
-      "x_bio_fetched_at": "2026-11-27T08:21:15.167153+00:00",
+      "x_bio_fetched_at": "2026-11-27T08:21:31.858749+00:00",
       "x_bio_source": "fxtwitter",
       "profile_fetched_at": "2026-11-27",
-      "profile_source": "fxtwitter"
+      "profile_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-27T08:21:31+00:00",
+        "x_account": "zetubouseitoku",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=zetubouseitoku",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/zetubouseitoku",
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "final_url": "https://x.com/zetubouseitoku",
+          "bytes": 151110,
+          "contains_username": true,
+          "screen_name_marker": false,
+          "profile_image_url_count": 7,
+          "profile_image_candidates": [
+            "https://pbs.twimg.com/profile_images/2020876464636440576/_xZqKwZh_mini.png",
+            "https://pbs.twimg.com/profile_images/2020876464636440576/_xZqKwZh_normal.png",
+            "https://pbs.twimg.com/profile_images/2020876464636440576/_xZqKwZh_bigger.png",
+            "https://pbs.twimg.com/profile_images/2020876464636440576/_xZqKwZh_x96.png",
+            "https://pbs.twimg.com/profile_images/2020876464636440576/_xZqKwZh_reasonably_small.png",
+            "https://pbs.twimg.com/profile_images/2020876464636440576/_xZqKwZh_200x200.png",
+            "https://pbs.twimg.com/profile_images/2020876464636440576/_xZqKwZh_400x400.png"
+          ],
+          "meta_keys": [
+            "og:image",
+            "og:title",
+            "twitter:title"
+          ],
+          "og_title_present": true,
+          "og_image_present": true,
+          "twitter_title_present": true,
+          "twitter_image_present": false,
+          "og_title": "Xユーザーの絶望人生くそ聖徳、くそ金子も当然禁止（@zetubouseitoku）さん",
+          "og_image": "https://pbs.twimg.com/profile_images/2020876464636440576/_xZqKwZh_400x400.png",
+          "twitter_title": "Xユーザーの絶望人生くそ聖徳、くそ金子も当然禁止（@zetubouseitoku）さん",
+          "twitter_image": ""
+        }
+      }
     }
   ],
   "monitoring_summary": {

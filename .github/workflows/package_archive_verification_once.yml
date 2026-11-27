@@ -1,0 +1,29 @@
+name: Package extension for archive verification fix
+on:
+  push:
+    branches:
+      - fix/archive-handle-verification
+    paths:
+      - '.github/workflows/package_archive_verification_once.yml'
+permissions:
+  contents: write
+jobs:
+  package:
+    if: github.repository == 'yamada1221/x-archives' && github.ref == 'refs/heads/fix/archive-handle-verification'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/archive-handle-verification
+      - name: Build extension ZIP
+        run: python scripts/package_mute_extension.py
+      - name: Commit package to fix branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add downloads/x-tracker-mute-capture-v1.3.14.zip
+          if ! git diff --cached --quiet; then
+            git commit -m "Build extension v1.3.14 distribution ZIP"
+            git push origin HEAD:refs/heads/fix/archive-handle-verification
+          fi

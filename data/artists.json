@@ -22380,6 +22380,21 @@
           "error": "HTTPError 403"
         }
       }
+    },
+    {
+      "id": "mwzz6mldf02p",
+      "name": "animalaide65705",
+      "x_account": "animalaide65705",
+      "threads_account": "",
+      "threads_share_url": "",
+      "pixiv_user": "",
+      "note": "クソリプ",
+      "tracking_mode": "record",
+      "works": [],
+      "threads_posts": [],
+      "added_at": "2026-11-28",
+      "fetch_status": "pending",
+      "threads_fetch_status": "none"
     }
   ],
   "monitoring_summary": {

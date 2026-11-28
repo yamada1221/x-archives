@@ -22383,7 +22383,7 @@
     },
     {
       "id": "mwzz6mldf02p",
-      "name": "animalaide65705",
+      "name": "むちょむちょ",
       "x_account": "animalaide65705",
       "threads_account": "",
       "threads_share_url": "",
@@ -22395,9 +22395,70 @@
       "added_at": "2026-11-28",
       "fetch_status": "done",
       "threads_fetch_status": "none",
-      "avatar_url": "https://unavatar.io/x/animalaide65705?fallback=false",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1887473889909088261/WMfNQw6Z_normal.png",
       "profile_fetched_at": "2026-11-28",
-      "profile_source": "unavatar"
+      "profile_source": "fxtwitter",
+      "x_bio": "",
+      "x_bio_fetched_at": "2026-11-28T05:34:43.117277+00:00",
+      "x_bio_source": "fxtwitter",
+      "profile_fetch_diagnostic": {
+        "checked_at": "2026-11-28T05:34:43+00:00",
+        "x_account": "animalaide65705",
+        "fetch_status_after_attempt": "done",
+        "syndication": {
+          "url": "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=animalaide65705",
+          "http_status": 200,
+          "content_type": "unknown",
+          "bytes": 0,
+          "json_ok": false,
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        },
+        "html": {
+          "url": "https://x.com/animalaide65705",
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "final_url": "https://x.com/animalaide65705",
+          "bytes": 170458,
+          "contains_username": true,
+          "screen_name_marker": false,
+          "profile_image_url_count": 24,
+          "profile_image_candidates": [
+            "https://pbs.twimg.com/profile_images/1887473889909088261/WMfNQw6Z_mini.png",
+            "https://pbs.twimg.com/profile_images/1887473889909088261/WMfNQw6Z_normal.png",
+            "https://pbs.twimg.com/profile_images/1887473889909088261/WMfNQw6Z_bigger.png",
+            "https://pbs.twimg.com/profile_images/1887473889909088261/WMfNQw6Z_x96.png",
+            "https://pbs.twimg.com/profile_images/1887473889909088261/WMfNQw6Z_reasonably_small.png",
+            "https://pbs.twimg.com/profile_images/1887473889909088261/WMfNQw6Z_200x200.png",
+            "https://pbs.twimg.com/profile_images/1887473889909088261/WMfNQw6Z_400x400.png",
+            "https://pbs.twimg.com/profile_images/2114592921735618560/ooqQLSkf_normal.jpg",
+            "https://pbs.twimg.com/profile_images/1959809320243314688/Rw4-10og_normal.jpg",
+            "https://pbs.twimg.com/profile_images/1830799496047140866/ZCVNnx0r_normal.jpg",
+            "https://pbs.twimg.com/profile_images/1105314382571945984/gA7Jnsso_normal.png",
+            "https://pbs.twimg.com/profile_images/1900178464269099009/8dth9cM__normal.jpg",
+            "https://pbs.twimg.com/profile_images/1355682698304471043/WlaDH3yS_normal.jpg",
+            "https://pbs.twimg.com/profile_images/2114592921735618560/ooqQLSkf_mini.jpg",
+            "https://pbs.twimg.com/profile_images/1959809320243314688/Rw4-10og_mini.jpg",
+            "https://pbs.twimg.com/profile_images/1959809320243314688/Rw4-10og_bigger.jpg",
+            "https://pbs.twimg.com/profile_images/1830799496047140866/ZCVNnx0r_mini.jpg",
+            "https://pbs.twimg.com/profile_images/1830799496047140866/ZCVNnx0r_bigger.jpg",
+            "https://pbs.twimg.com/profile_images/1105314382571945984/gA7Jnsso_mini.png",
+            "https://pbs.twimg.com/profile_images/1105314382571945984/gA7Jnsso_bigger.png"
+          ],
+          "meta_keys": [
+            "og:image",
+            "og:title",
+            "twitter:title"
+          ],
+          "og_title_present": true,
+          "og_image_present": true,
+          "twitter_title_present": true,
+          "twitter_image_present": false,
+          "og_title": "Xユーザーのむちょむちょ（@animalaide65705）さん",
+          "og_image": "https://pbs.twimg.com/profile_images/1887473889909088261/WMfNQw6Z_400x400.png",
+          "twitter_title": "Xユーザーのむちょむちょ（@animalaide65705）さん",
+          "twitter_image": ""
+        }
+      }
     }
   ],
   "monitoring_summary": {
